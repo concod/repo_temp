@@ -1,0 +1,127 @@
+--liquibase formatted sql
+--changeset sreevathsa.sp@impactanalytics.co:product_attributes_filter_2 stripComments:false splitStatements:false context:Release_1_0 labels:liquibase_project_start
+--comment: initial changeset for product_attributes_filter_2
+
+CREATE TABLE if not exists "global".product_attributes_filter (
+    product_code varchar NOT NULL,
+	product_name varchar NOT NULL,
+	product_description text NULL,
+	price float8 NULL,
+	"cost" float8 NULL,
+	original_price float8 NULL,
+	active bool NOT NULL,
+	clearance bool NOT NULL,
+	receipt_date date NULL,
+	created_at timestamptz NULL,
+	updated_at timestamptz NULL,
+	created_by int4 NULL,
+	updated_by int4 NULL,
+	replacement_product_codes _varchar NULL,
+	reference_product_codes _varchar NULL,
+	is_deleted bool NULL,
+	color varchar NULL,
+	style_color_id varchar NULL,
+	vendor varchar NULL,
+	l0_id varchar NOT NULL,
+	l0_name varchar NOT NULL,
+	l0_id_name varchar NOT NULL,
+	l1_id varchar NOT NULL,
+	l1_name varchar NOT NULL,
+	l1_id_name varchar NOT NULL,
+	l2_id varchar NOT NULL,
+	l2_name varchar NOT NULL,
+	l2_id_name varchar NOT NULL,
+	l3_id varchar NOT NULL,
+	l3_name varchar NOT NULL,
+	l3_id_name varchar NOT NULL,
+	l4_id varchar NOT NULL,
+	l4_name varchar NOT NULL,
+	l5_name varchar NOT NULL,
+	"style" varchar NULL,
+	"size" varchar NULL,
+	article varchar NULL,
+	size_name varchar NULL,
+	upc varchar NOT NULL,
+	sku varchar NOT NULL,
+	launch_date date NULL,
+	clearance_date date NULL,
+	brand varchar NULL,
+	color_name varchar NULL,
+	launch_price float8 NULL,
+	markdown_ind varchar NULL,
+	lifecycle varchar NULL,
+	dropship_flag bool NULL,
+	product_bucket_code int8 NULL,
+	product_channel varchar NULL,
+	vendor_case_pack varchar NULL,
+	l3_name_brand varchar NULL,
+	supersede_flag varchar NULL,
+	attri_1 varchar NULL,
+	attri_2 varchar NULL,
+	attri_3 varchar NULL,
+	attri_4 varchar NULL,
+	attri_5 varchar NULL,
+	attri_7 varchar NULL,
+	attri_8 varchar NULL,
+	attri_9 varchar NULL,
+	attri_10 varchar NULL,
+	attri_12 varchar NULL,
+	attri_13 varchar NULL,
+	attri_14 varchar NULL,
+	attri_15 varchar NULL,
+	attri_16 varchar NULL,
+	attri_17 varchar NULL,
+	attri_18 varchar NULL,
+	attri_21 varchar NULL,
+	attri_22 varchar NULL,
+	attri_23 varchar NULL,
+	attri_24 varchar NULL,
+	attri_25 varchar NULL,
+	attri_26 varchar NULL,
+	attri_27 varchar NULL,
+	attri_28 varchar NULL,
+	attri_29 varchar NULL,
+	attri_30 varchar NULL,
+	attri_32 varchar NULL,
+	attri_33 varchar NULL,
+	attri_34 varchar NULL,
+	attri_35 varchar NULL,
+	attri_36 varchar NULL,
+	attri_37 varchar NULL,
+	attri_38 varchar NULL,
+	attri_39 varchar NULL,
+	attri_40 varchar NULL,
+	attri_41 varchar NULL,
+	attri_42 varchar NULL,
+	attri_43 varchar NULL,
+	attri_44 varchar NULL,
+	attri_45 varchar NULL,
+	attri_46 varchar NULL,
+	attri_47 varchar NULL,
+	attri_48 varchar NULL,
+	attri_50 varchar NULL,
+	ladder varchar NULL,
+	fit varchar NULL,
+    rcl_hash jsonb DEFAULT '{}'::jsonb NOT NULL,
+    style_color_description varchar NULL,
+    CONSTRAINT product_attributes_filter_pk PRIMARY KEY (product_code, l0_name),
+    CONSTRAINT product_attributes_filter_fk FOREIGN KEY (product_code) REFERENCES "global".product_master(product_code) ON DELETE CASCADE
+)
+PARTITION BY LIST (l0_name);
+CREATE INDEX if not exists product_attributes_filter_l0_name_idx ON global.product_attributes_filter USING btree (l0_name);
+CREATE INDEX if not exists product_attributes_filter_product_code_idx ON global.product_attributes_filter USING btree (product_code);
+
+--changeset madhumitha.s@impactanalytics.co:paf_article_combine_idx_01 stripComments:false splitStatements:false context:Release_1_0 labels:liquibase_project_start
+--comment: adding index
+
+create index IF NOT EXISTS paf_article_combine_idx on
+ global.product_attributes_filter
+	using btree (l0_name,
+article, product_code)
+where
+(active
+	and (not is_deleted));
+
+--changeset linu.nazil@impactanalytics.co:paf_hash_combine_idx stripComments:false splitStatements:false context:Release_1_0 labels:liquibase_project_start
+--comment: adding hash combine index
+CREATE INDEX IF NOT EXISTS paf_hash_combine_idx ON global.product_attributes_filter USING btree (l0_name, l1_name, l2_name, l3_name, product_code) where active and not is_deleted;

@@ -1,0 +1,4 @@
+source_column_name,source_column_datatype,required_in_product,generic_column_name,is_pk,generic_column_datatype,formula,is_attribute,is_hierarchy,hierarchy_level,is_null_allowed,unique_by,display_name,is_partition_col,is_clustering_col
+U_TICKET_TYPE,int8,TRUE,ticket_type,TRUE,varchar,,FALSE,FALSE,,FALSE,TRUE,,FALSE,
+U_TT_DESCR,varchar,TRUE,ticket_type_description,TRUE,varchar,,FALSE,FALSE,,TRUE,FALSE,,FALSE,
+,,TRUE,ticket_type_ticket_type_description,FALSE,varchar,"concat(U_TICKET_TYPE,'_', U_TT_DESCR)",FALSE,FALSE,,TRUE,FALSE,,FALSE,

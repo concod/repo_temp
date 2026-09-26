@@ -1,0 +1,143 @@
+// Home page specific styles (content only, layout handled by AppLayout)
+.home-banner {
+  width: 100%;
+  min-height: 160px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+  background: linear-gradient(90deg, rgba(238, 222, 255, 0.36) 9.33%, rgba(238, 236, 255, 0.42) 28.84%, rgba(220, 239, 248, 0.30) 44.48%, #FAF4FF 71.02%);
+  padding: 32px 24px;
+
+  &__text {
+    display: flex;
+    width: 650px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+    flex-shrink: 0;
+    padding-left: 0;
+
+    &-title {
+      color: var(--greys-100);
+      align-self: stretch;
+    }
+
+    &-description {
+      color: var(--greys-200);
+      height: 40px;
+      align-self: stretch;
+    }
+  }
+
+
+  &__image {
+    width: 180px;
+    height: 140px;
+    flex-shrink: 0;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+}
+
+.home-featured-apps {
+  display: flex;
+  min-height: 220px;
+  height: auto;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  align-self: stretch;
+
+  &__header {
+    align-self: stretch;
+    color: var(--greys-100);
+  }
+
+  &__cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    justify-content: flex-start;
+    align-items: start;
+    align-self: stretch;
+    min-height: 190px;
+    height: auto;
+    overflow: visible;
+    padding-right: 2px;
+    
+    // Ensure we get at least 4 cards on larger screens
+    @media (min-width: 1400px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    
+    // Responsive breakpoints
+    @media (max-width: 1200px) {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    
+    @media (max-width: 900px) {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 1024px) {
+  .home-banner {
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+    padding: 20px;
+
+    &__text {
+      width: 100%;
+      align-items: center;
+      padding-left: 0;
+
+      &-description {
+        height: auto;
+      }
+    }
+
+    &__image {
+      width: 160px;
+      height: auto;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .home-banner {
+    padding: 16px;
+    
+    &__text {
+      width: 100%;
+      gap: 10px;
+
+      &-title {
+        font-size: 1.4rem;
+      }
+    }
+
+    &__image {
+      width: 120px;
+    }
+  }
+
+  .home-featured-apps {
+    height: auto;
+    
+    &__cards {
+      flex-direction: column;
+      height: auto;
+      gap: 16px;
+    }
+  }
+}

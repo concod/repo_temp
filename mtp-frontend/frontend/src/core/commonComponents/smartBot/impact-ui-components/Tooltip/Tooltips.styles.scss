@@ -1,0 +1,63 @@
+@import "../styles/index.scss";
+
+.impact-tooltip-container {
+  .MuiTooltip-tooltip {
+    font-family: $fontFamily;
+    font-size: 14px;
+    line-height: 21px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 8px;
+    border-radius: 8px;
+    min-height: 30px;
+    min-width: 50px;
+    box-shadow: 0px 0px 12px 0px #1a277c24;
+  }
+
+  .MuiTooltip-arrow {
+    margin-bottom: -0.65em !important;
+  }
+}
+
+.primary-tooltip {
+  .MuiTooltip-tooltip {
+    background: $primaryColor;
+    color: $whiteColor;
+  }
+
+  .MuiTooltip-arrow {
+    color: $primaryColor;
+  }
+}
+
+.secondary-tooltip {
+  .MuiTooltip-tooltip {
+    background: $whiteColor;
+    color: $primaryColor;
+  }
+
+  .MuiTooltip-arrow {
+    color: $whiteColor;
+  }
+}
+
+.tertiary-tooltip {
+  .MuiTooltip-tooltip {
+    background: $offDarkColor;
+    color: $offWhiteColor;
+  }
+
+  .MuiTooltip-arrow {
+    color: $offDarkColor;
+  }
+}
+
+// tooltip wrapper
+//MuiTooltip-popper MuiTooltip-popperInteractive MuiTooltip-popperArrow css-1avkpwt-MuiPopper-root-MuiTooltip-popper MuiPopper-root
+
+//inside tooltip class used
+//MuiTooltip-tooltip MuiTooltip-tooltipArrow MuiTooltip-tooltipPlacementTop css-1k51tf5-MuiTooltip-tooltip
+
+//tool-tip arrow
+//MuiTooltip-arrow css-kudwh-MuiTooltip-arrow

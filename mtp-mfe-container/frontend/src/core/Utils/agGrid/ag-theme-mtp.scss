@@ -1,0 +1,327 @@
+@import "Styles/variables.scss";
+@import "Styles/mixins.scss";
+
+
+.ag-theme-alpine .fiscal-calendar__wrapper .DateRangePickerInput,
+.ag-theme-alpine .fiscal-calendar__wrapper .DateRangePickerInput * {
+  line-height: 0;
+  background-color: transparent;
+}
+
+.fiscal-calendar__calendar-controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-right: 2rem;
+}
+
+.ag-theme-alpine .fiscal-calendar__wrapper .DateRangePickerInput {
+  &_calendarIcon {
+    padding: 0.375rem 0.125rem;
+  }
+}
+
+.ag-theme-alpine {
+
+  .table-setting-column-item,
+  .table-setting-scroll-main-column,
+  .table-setting-scroll-inner-column {
+    min-height: 0px !important;
+  }
+
+  .table-setting-scroll-inner-column-list {
+    margin-left: 0px !important;
+  }
+  .table-setting-column-search-container {
+    padding: 8px !important;
+  }
+  
+  .ag-header-row:not(:first-child) .ag-header-cell:not(.ag-header-span-height.ag-header-span-total, .ag-header-parent-hidden),
+  .ag-header-row:not(:first-child) .ag-header-group-cell.ag-header-group-cell-with-group {
+   border-top: none !important;
+  }
+}
+.ag-body-viewport:has(.ag-client-side-loader) {
+  overflow: hidden !important;
+}
+.ag-grid-skeleton-loader {
+  .ag-overlay-no-rows-wrapper {
+    display: none;
+  }
+
+  .ag-full-width-row.ag-row-loading {
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  .ag-full-width-row.ag-row-loading .ag-cell-wrapper {
+    height: auto !important;
+  }
+
+  .ag-full-width-row.ag-row-loading:has(.ag-loading-text) {
+    height: 46px !important;
+  }
+}
+
+.show-cell {
+  background: $white;
+  border-bottom: 1px solid #dde2eb !important;
+  display: flex !important;
+  align-items: flex-start !important;
+  justify-content: flex-start !important;
+}
+
+.advance-search-modal{
+  width: 900px!important
+}
+
+.ag-selection-column-header{
+  padding-left: 11px!important;
+  padding-right: 11px!important;
+}
+
+.cell-vertical-center-align{
+  display: flex;
+  align-items: center;
+}
+// Style to fix the z-index of the dropdown container within the pivot panel
+.select-dropdown-container:has(.panel-dropdown) {
+  z-index: 1000 !important;
+}
+
+// .ag-status-bar-right {
+//   flex: 1;
+// }
+
+.keyboard-shortcut-table {
+  .ag-root-wrapper {
+    box-shadow: none;
+  }
+  .ag-header {
+    background-color: $gallery;
+    border-bottom: none;
+  }
+  .ag-header-cell-resize {
+    &::after {
+      background: none;
+    }
+  }
+  .ag-cell {
+    border-right: none !important;
+  }
+  .ag-paging-panel {
+    box-shadow: 0 3px 5px 3px $agPanelBoxShadow;
+    border-top: 1px solid $whiteSmoke;
+    margin-top: 0.625rem;
+  }
+}
+.hide-pagination .ag-root-wrapper .ag-paging-panel {
+  display: none !important;
+}
+
+// Cell Comment Panel style
+.impact_drawer_container:has(.cellCommentPanel) {
+  z-index: 1302;
+  max-width: 360px;
+  border-radius: 6px;
+}
+.impact_drawer_container:has(.cellCommentPanel) .impact_drawer_header {
+  display: none;
+}
+.commentBadge {
+  clip-path: polygon(0 0, 100% 0, 100% 100%);
+  background: #4259ee;
+  width: 13px;
+  height: 11px;
+  cursor: pointer;
+}
+
+.cell-with-comment {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: pxToRem(16);
+}
+
+.ag-cell:has(.cell-with-comment) {
+  padding-right: 0 !important;
+}
+
+.ag-theme-alpine .ag-cell:has(.ag-input-cell) {
+  padding: 7px 3px !important;
+  display: flex !important;
+  align-items: center;
+}
+
+.ag-theme-alpine.compact-density .ag-cell:has(.ag-input-cell) {
+  padding: 5px 3px !important;
+}
+
+.cellThreadpopoverWrapper {
+  box-shadow: none;
+  border: none;
+  background: transparent;
+  overflow: hidden;
+}
+
+.cellCommentPanel {
+  height: 100%;
+}
+
+.cell-comment-suggestions {
+  z-index: 2;
+  position: fixed !important;
+  height: fit-content;
+  min-width: 200px;
+  opacity: 0;
+}
+
+#cell-comment-input {
+  overflow-y: auto;
+  line-height: pxToRem(20);
+}
+.comment-popover-input {
+  max-height: unset;
+}
+.comment-popover-input-thread {
+  max-height: pxToRem(20);
+}
+#cell-comment-input:empty::before {
+  content: "Add comment here...";
+  color: #aaa;
+  pointer-events: none;
+}
+
+.MuiTooltip-tooltip:has(.comment-peek-view-tooltip) {
+  background: unset;
+  margin: unset;
+  padding: unset;
+  max-width: unset;
+}
+
+.MuiTooltip-tooltipPlacementRight:has(.comment-peek-view-tooltip) {
+  margin-left: unset !important;
+}
+
+.MuiMenu-root:has(.comment-panel-menu) {
+  z-index: 1302;
+}
+
+.table-setting-action-container {
+  display: block !important;
+  width: 100%;
+}
+
+.settings-main-container {
+  background: url("../../coreAssets/setting-table.svg") no-repeat;
+  background-position: 0 center;
+  width: 14px;
+  height: 14px;
+  padding-left: 20px;
+  color: $mainFontColor;
+  font-size: 12px;
+  font-weight: 500;
+  background-position: 16px center;
+  .ag-menu-option-text {
+    padding-left: 24px;
+  }
+}
+
+// Overriding ag grid icons to match V3 icons
+// .ag-icon-first::before {
+//   content: "\f116" !important;
+// }
+
+// .ag-icon-previous::before {
+//   content: "\f126" !important;
+// }
+
+// .ag-icon-next::before {
+//   content: "\f120" !important;
+// }
+
+// .ag-icon-last::before {
+//   content: "\f119" !important;
+// }
+
+// .ag-icon-tree-closed::before {
+//   content: "\f130" !important;
+// }
+
+// .ag-icon-tree-indeterminate::before {
+//   content: "\f131" !important;
+// }
+
+// .ag-icon-tree-open::before {
+//   content: "\f132" !important;
+// }
+
+// .ag-icon-menu::before {
+//   content: "\f138" !important;
+// }
+
+// Column group parent center align
+.ag-header-group-cell-label {
+   justify-content: center
+}
+
+// restricting header independent scroll
+.ag-header-viewport {
+  overflow: hidden!important;
+}
+
+// Reducing zIndex of table menus so that they don't appear on top of the loader
+.ia-basic-table-layout.table-v32 .ag-menu{
+  z-index: 99;
+}
+
+.ag-paging-button{
+  background: unset !important;
+}
+
+// Ellipsis url button css for when column size is lower than the button size
+.review_btn_overflow{
+  justify-content: start;
+  overflow: hidden;
+}
+#omniReviewBtn span{
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.wrappable-header-table .ag-header-cell-text {
+  overflow: unset !important;
+  line-height: 24px !important;
+  white-space: normal !important;
+}
+
+
+.chat-conversation-event-icon-badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #E15554;
+  font-size: 7px;
+  font-weight: 500;
+  color: white;
+}
+
+.chat-conversation-icon-wrapper {
+  position: relative;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.ag-disabled .override-icons {
+  fill: #b0b6c1 !important;
+
+  path {
+    fill: #b0b6c1 !important;
+  }
+}

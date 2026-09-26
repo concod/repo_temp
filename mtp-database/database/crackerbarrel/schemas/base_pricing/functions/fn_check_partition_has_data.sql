@@ -1,0 +1,43 @@
+--liquibase formatted sql
+--changeset subhasis.jena@impactanalytics.co:fn_check_partition_has_data stripComments:false runOnChange:true splitStatements:false context:Release_1_0 labels: liquibase_project_start
+--comment: changeset for base_pricing.fn_check_partition_has_data
+
+DROP FUNCTION IF EXISTS base_pricing.fn_check_partition_has_data;
+
+CREATE OR REPLACE FUNCTION base_pricing.fn_check_partition_has_data(p_strategy_id integer, p_is_kvi boolean)
+ RETURNS boolean
+ LANGUAGE plpgsql
+ SECURITY DEFINER
+AS $function$
+DECLARE
+    v_partition_suffix text;
+    v_partition_name text;
+    v_count bigint;
+BEGIN
+    -- Determine the suffix based on is_kvi
+    IF p_is_kvi THEN
+        v_partition_suffix := 'true';
+    ELSE
+        v_partition_suffix := 'false';
+    END IF;
+
+    -- Construct the full partition name
+    v_partition_name := 'bp_unlogged_combinations_' || p_strategy_id || '_' || v_partition_suffix;
+
+    -- Check if partition exists
+    IF NOT EXISTS (
+        SELECT 1 FROM pg_tables 
+        WHERE schemaname = 'base_pricing' 
+        AND tablename = v_partition_name
+    ) THEN
+        RETURN false;
+    END IF;
+
+    -- Execute the count query
+    EXECUTE format('SELECT COUNT(*) FROM base_pricing.%I', v_partition_name)
+    INTO v_count;
+
+    RETURN v_count > 0;
+END;
+$function$
+;

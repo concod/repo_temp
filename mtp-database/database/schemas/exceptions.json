@@ -1,0 +1,341 @@
+{
+    "CASCADE": {
+        "exclusions": [
+            "database/schemas/cache/functions/clear_sp_cache.sql",
+            "database/schemas/inventory_smart/triggers/sync_pp_attributes_from_fc_mapping.sql",
+            "database/schemas/cache/procedures/clean_caches.sql",
+            "database/schemas/cache/triggers/clear_sp_cache.sql",
+            "database/schemas/data_platform/functions/update_mail_notification_mapping.sql",
+            "database/schemas/global/functions/get_rcl_version.sql",
+            "database/schemas/global/triggers/clear_di_versions.sql",
+            "database/schemas/global/triggers/clear_rcl_version.sql",
+            "database/schemas/inventory_smart/functions/create_asl_ph_config_temp_table.sql",
+            "database/schemas/inventory_smart/functions/create_asl_ph_data_temp_table.sql",
+            "database/schemas/inventory_smart/functions/create_asl_rcl_constraints_temp_tables.sql",
+            "database/schemas/inventory_smart/functions/create_asl_rcl_psm_temp_tables.sql",
+            "database/schemas/inventory_smart/functions/dynamic_table_operations.sql",
+            "database/schemas/inventory_smart/functions/generate_rcl_constraint_data.sql",
+            "database/schemas/inventory_smart/functions/get_aps_rcl.sql",
+            "database/schemas/inventory_smart/functions/get_product_eligible_store.sql",
+            "database/schemas/inventory_smart/functions/get_product_profiles.sql",
+            "database/schemas/inventory_smart/functions/rcl_min_distribution.sql",
+            "database/schemas/inventory_smart/procedures/build_kpi_mv.sql",
+            "database/schemas/inventory_smart/tables/kpi_result.sql",
+            "database/schemas/plan_smart/procedures/reset_plan_smart.sql",
+            "database/schemas/plan_smart/views/product_hierarchies_filter.sql",
+            "database/schemas/public/procedures/schema_cleanup.sql",
+            "database/schemas/visual_line_planning/tables/presentation_line_plan_join_table.sql",
+            "database/schemas/visual_line_planning/tables/presentation_slide_join_table.sql",
+            "database/schemas/visual_line_planning/tables/presentations.sql",
+            "database/schemas/inventory_smart/functions/article_selection_list.sql"
+        ]
+    },
+    "DROP COLUMN": {
+        "exclusions": [
+            "database/schemas/assort_smart/tables/assort_master_plan.sql",
+            "database/schemas/cache/tables/update_details.sql",
+            "database/schemas/data_platform/tables/notifications.sql",
+            "database/schemas/data_platform/tables/review.sql",
+            "database/schemas/genai/tables/chat_histories.sql",
+            "database/schemas/global/tables/app_bucket_mapping.sql",
+            "database/schemas/global/tables/application_master.sql",
+            "database/schemas/global/tables/new_store_data.sql",
+            "database/schemas/global/tables/new_store_mapping.sql",
+            "database/schemas/global/tables/new_store_reserve.sql",
+            "database/schemas/global/tables/notes_master.sql",
+            "database/schemas/global/tables/notifications_master.sql",
+            "database/schemas/global/tables/product_hierarchies_filter.sql",
+            "database/schemas/global/tables/rcl_priority_mapping.sql",
+            "database/schemas/inventory_smart/functions/rcl_upload_constraints.sql",
+            "database/schemas/inventory_smart/tables/kpi_config.sql",
+            "database/schemas/inventory_smart/tables/kpi_derived_field.sql",
+            "database/schemas/inventory_smart/tables/kpi_formula.sql",
+            "database/schemas/inventory_smart/tables/kpi_result.sql",
+            "database/schemas/inventory_smart/tables/order_batching_access_data.sql",
+            "database/schemas/inventory_smart/tables/rcl_constraint_master.sql",
+            "database/schemas/inventory_smart/tables/rcl_constraint_master_archive.sql",
+            "database/schemas/inventory_smart/tables/rcl_constraint_master_exceptions.sql",
+            "database/schemas/monday_smart/tables/dimension_mapping.sql",
+            "database/schemas/monday_smart/tables/kpis_master.sql",
+            "database/schemas/oms/tables/oms_constraints_order_policy.sql",
+            "database/schemas/visual_line_planning/tables/comments.sql",
+            "database/schemas/visual_line_planning/tables/presentation_comments.sql",
+            "database/schemas/visual_line_planning/tables/presentations.sql",
+            "database/schemas/inventory_smart/tables/product_profile_master.sql",
+            "database/schemas/oms/tables/oms_constraints_safety_stock.sql",
+            "database/schemas/oms/tables/oms_alerts.sql",
+            "database/schemas/oms/tables/ingestion_config_master.sql"
+        ]
+    },
+    "DROP CONSTRAINT": {
+        "exclusions": [
+            "database/schemas/ada_configurator/tables/models.sql",
+            "database/schemas/assort/tables/temp_nle.sql",
+            "database/schemas/cluster_smart/tables/plan_cluster_grade_attributes.sql",
+            "database/schemas/data_platform/tables/data_ingestion_config.sql",
+            "database/schemas/global/functions/create_drop_index_list_ingestion.sql",
+            "database/schemas/global/tables/aggregated_store_groups_mapping.sql",
+            "database/schemas/global/tables/audit_log_control.sql",
+            "database/schemas/global/tables/cloud_task_status.sql",
+            "database/schemas/global/tables/configurator_frontend_templates.sql",
+            "database/schemas/global/tables/configurator_mandatory_attributes.sql",
+            "database/schemas/global/tables/configurator_sidelayout.sql",
+            "database/schemas/global/tables/default_user_table_view_mapping.sql",
+            "database/schemas/global/tables/filter_configurations_compulsory_mapping.sql",
+            "database/schemas/global/tables/filter_configurations_mapping.sql",
+            "database/schemas/global/tables/filter_user_configurations_mapping.sql",
+            "database/schemas/global/tables/gcs_sync_info.sql",
+            "database/schemas/global/tables/index_drop_create.sql",
+            "database/schemas/global/tables/mail_notification_mapping.sql",
+            "database/schemas/global/tables/mtp_audit_log.sql",
+            "database/schemas/global/tables/new_store_mapping.sql",
+            "database/schemas/global/tables/new_store_reserve.sql",
+            "database/schemas/global/tables/notes_component_event_mapping.sql",
+            "database/schemas/global/tables/notes_event_user_mapping.sql",
+            "database/schemas/global/tables/product_asn_dc_mapping.sql",
+            "database/schemas/global/tables/product_attributes.sql",
+            "database/schemas/global/tables/product_group_definitions_rules_mapping.sql",
+            "database/schemas/global/tables/product_groups_aggregation_mapping.sql",
+            "database/schemas/global/tables/product_groups_mapping.sql",
+            "database/schemas/global/tables/product_hierarchies_filter.sql",
+            "database/schemas/global/tables/product_unit_definition_metrics.sql",
+            "database/schemas/global/tables/rcl_priority_mapping.sql",
+            "database/schemas/global/tables/rcl_product_mapping_product_store.sql",
+            "database/schemas/global/tables/rcl_product_mapping_product_store_exceptions.sql",
+            "database/schemas/global/tables/store_attributes.sql",
+            "database/schemas/global/tables/store_groups.sql",
+            "database/schemas/global/tables/store_groups_mapping.sql",
+            "database/schemas/global/tables/style_mapping_style_product_unit.sql",
+            "database/schemas/global/tables/table_config_views.sql",
+            "database/schemas/global/tables/table_configurations_mapping.sql",
+            "database/schemas/global/tables/table_sync_info.sql",
+            "database/schemas/global/tables/tenant_hierarchy_levels.sql",
+            "database/schemas/global/tables/ticket_attributes.sql",
+            "database/schemas/global/tables/upload_filter_configurations_mapping.sql",
+            "database/schemas/global/tables/upload_report_master.sql",
+            "database/schemas/global/tables/user_access_hierarchy_mapping.sql",
+            "database/schemas/global/tables/user_attributes.sql",
+            "database/schemas/global/tables/user_master.sql",
+            "database/schemas/global/tables/user_preference_table_config.sql",
+            "database/schemas/global/tables/user_starred_notes.sql",
+            "database/schemas/global/tables/role_action_module_mapping.sql",
+            "database/schemas/inventory_smart/tables/alerts_reviewed_articles.sql",
+            "database/schemas/inventory_smart/tables/dc_service_levels.sql",
+            "database/schemas/inventory_smart/tables/dc_transfer_constraints.sql",
+            "database/schemas/inventory_smart/tables/kpi_formula_component.sql",
+            "database/schemas/inventory_smart/tables/kpi_module_mapping.sql",
+            "database/schemas/inventory_smart/tables/plan_master.sql",
+            "database/schemas/inventory_smart/tables/product_profile_master.sql",
+            "database/schemas/inventory_smart/tables/rcl_constraint_master_rule.sql",
+            "database/schemas/inventory_smart/tables/rcl_master_attribute_list.sql",
+            "database/schemas/inventory_smart/tables/rcl_psa_config_table.sql",
+            "database/schemas/inventory_smart/tables/store_transfer_config.sql",
+            "database/schemas/monday_smart/tables/reports_master.sql",
+            "database/schemas/plan_smart/tables/lock_info.sql",
+            "database/schemas/visual_line_planning/tables/presentation_comments.sql",
+            "database/schemas/visual_line_planning/tables/presentation_line_plan_join_table.sql",
+            "database/schemas/visual_line_planning/tables/presentation_slide_join_table.sql",
+            "database/schemas/visual_line_planning/tables/user_presentation_mapping.sql",
+            "database/schemas/oms/tables/oms_constraints_order_policy.sql",
+            "database/schemas/oms/tables/oms_alerts.sql",
+            "database/schemas/oms/tables/po_master_por.sql"
+        ]
+    },
+    "DROP INDEX": {
+        "exclusions": [
+            "database/schemas/genai/materialized_views/hierarchy_mapping.sql",
+            "database/schemas/global/functions/create_drop_index_list_ingestion.sql",
+            "database/schemas/global/materialized_views/product_attributes_list.sql",
+            "database/schemas/global/materialized_views/product_unit_definition_attributes_list.sql",
+            "database/schemas/global/materialized_views/store_attributes_list.sql",
+            "database/schemas/global/materialized_views/urm_acl_attributes_list.sql",
+            "database/schemas/global/materialized_views/urm_attributes_list.sql",
+            "database/schemas/global/tables/product_time_attributes.sql",
+            "database/schemas/global/tables/rcl_priority_mapping.sql",
+            "database/schemas/inventory_smart/tables/constraint_master.sql",
+            "database/schemas/inventory_smart/tables/excess_units.sql",
+            "database/schemas/inventory_smart/tables/kpi_result.sql",
+            "database/schemas/inventory_smart/tables/rcl_constraint_master_rule.sql",
+            "database/schemas/oms/tables/oms_orders_recommended.sql",
+            "database/schemas/public/procedures/generate_rcl_week_level_constraint_data.sql",
+            "database/schemas/public/procedures/update_fmt.sql",
+            "database/schemas/visual_line_planning/tables/comments.sql",
+            "database/schemas/oms/tables/oms_orders_approved.sql",
+            "database/schemas/oms/tables/oms_otb.sql",
+            "database/schemas/oms/tables/oms_pack_config.sql",
+            "database/schemas/oms/tables/oms_po_master.sql",
+            "database/schemas/oms/tables/oms_receipt_projection.sql",
+            "database/schemas/oms/tables/oms_total_dc_forecast.sql",
+            "database/schemas/oms/tables/oms_vendor_projection.sql",
+            "database/schemas/oms/tables/oms_kpi.sql",
+            "database/schemas/oms/tables/oms_kpi_master.sql",
+            "database/schemas/oms/tables/oms_late_orders_report.sql",
+            "database/schemas/oms/tables/article_status_tag.sql",
+            "database/schemas/oms/tables/expedite_orders_report.sql",
+            "database/schemas/oms/tables/oms_constraints_safety_stock.sql",
+            "database/schemas/oms/tables/oms_constraints_shipment.sql",
+            "database/schemas/oms/tables/oms_alerts.sql",
+            "database/schemas/oms/tables/oms_central_table.sql",
+            "database/schemas/oms/tables/oms_deep_dive_base.sql",
+            "database/schemas/oms/tables/oms_constraints_lead_time.sql",
+            "database/schemas/oms/tables/oms_constraints_order_policy.sql"
+        ]
+    },
+    "DROP MATERIALIZED VIEW": {
+        "exclusions": [
+            "database/schemas/cache/functions/clear_sp_cache.sql",
+            "database/schemas/cache/procedures/clean_caches.sql",
+            "database/schemas/cache/triggers/clear_sp_cache.sql",
+            "database/schemas/global/procedures/create_paf_buckets.sql",
+            "database/schemas/inventory_smart/materialized_views/kpi_result_flat_mv.sql",
+            "database/schemas/inventory_smart/procedures/build_kpi_mv.sql",
+            "database/schemas/inventory_smart/tables/kpi_result.sql",
+            "database/schemas/public/procedures/schema_cleanup.sql",
+            "database/schemas/visual_line_planning/materialized_views/mv_season_mapping.sql"
+        ]
+    },
+    "DROP SEQUENCE": {
+        "exclusions": [
+            "database/schemas/global/tables/rcl_master.sql",
+            "database/schemas/global/tables/upload_report_master.sql",
+            "database/schemas/inventory_smart/tables/store_transfer_config.sql"
+        ]
+    },
+    "DROP TABLE": {
+        "exclusions": [
+            "database/schemas/genai/functions/create_taxonomy.sql",
+            "database/schemas/global/functions/persist_rcl_pmps_exceptions_main_table.sql",
+            "database/schemas/global/functions/rcl_create_pmps_version_2_tester.sql",
+            "database/schemas/global/procedures/build_product_attributes_filter.sql",
+            "database/schemas/global/procedures/build_product_attributes_filter_delta.sql",
+            "database/schemas/global/procedures/build_product_attributes_filter_delta_rt.sql",
+            "database/schemas/global/procedures/build_product_hierarchies_filter_for_modelling.sql",
+            "database/schemas/global/procedures/build_store_attributes_filter.sql",
+            "database/schemas/global/procedures/build_store_attributes_filter_delta.sql",
+            "database/schemas/global/procedures/build_ticket_attribute_filter.sql",
+            "database/schemas/global/tables/dynamic_ddl_for_replication.sql",
+            "database/schemas/global/tables/product_time_attributes.sql",
+            "database/schemas/global/triggers/clear_rcl_version.sql",
+            "database/schemas/inventory_smart/procedures/build_product_profile_attributes_filter.sql",
+            "database/schemas/inventory_smart/triggers/sync_pp_attributes_from_fc_mapping.sql",
+            "database/schemas/inventory_smart/tables/kpi_result.sql",
+            "database/schemas/inventory_smart/tables/store_transfer_config.sql",
+            "database/schemas/inventory_smart/tables/store_transfer_thresholds.sql",
+            "database/schemas/monday_smart/tables/dimension_attributes.sql",
+            "database/schemas/plan_smart/functions/delete_plan.sql",
+            "database/schemas/public/procedures/build_constraint_master_schema.sql",
+            "database/schemas/public/procedures/build_product_store_mapping_schema.sql",
+            "database/schemas/public/procedures/sync_product_master.sql",
+            "database/schemas/public/procedures/sync_product_master_delta.sql",
+            "database/schemas/public/procedures/sync_product_master_delta_rt.sql",
+            "database/schemas/public/procedures/sync_store_master.sql",
+            "database/schemas/public/procedures/sync_store_master_delta.sql",
+            "database/schemas/visual_line_planning/tables/presentation_comments.sql",
+            "database/schemas/visual_line_planning/tables/user_presentation_mapping.sql"
+        ]
+    },
+    "DROP TRIGGER": {
+        "exclusions": [
+            "database/schemas/global/functions/audit_trigger_create.sql",
+            "database/schemas/global/functions/execute_dynamic_ddl_for_replication.sql",
+            "database/schemas/global/functions/rcl_trigger_function.sql",
+            "database/schemas/inventory_smart/functions/create_store_mapping_partition_function.sql",
+            "database/schemas/inventory_smart/triggers/sync_pp_attributes_from_fc_mapping.sql"
+        ]
+    },
+    "DROP TYPE": {
+        "exclusions": [
+            "database/schemas/base_pricing/types/discount_level_value_enum.sql",
+            "database/schemas/chat_gpt/tables/tb_populate_questions.sql",
+            "database/schemas/genai/tables/chatbot_flow.sql"
+        ]
+    },
+    "DROP VIEW": {
+        "exclusions": [
+            "database/schemas/cache/functions/calculate_updated_table.sql",
+            "database/schemas/global/functions/get_rcl_version.sql",
+            "database/schemas/global/procedures/build_product_hierarchies_filter_flattern.sql",
+            "database/schemas/global/procedures/build_store_hierarchies_filter_flattern.sql"
+        ]
+    },
+    "INHERITS": {
+        "exclusions": []
+    },
+    "ONLY": {
+        "exclusions": [
+            "database/schemas/ada_configurator/functions/get_cascaded_conditions_workstream.sql",
+            "database/schemas/base_pricing/types/offer_distributor_channel_enum.sql",
+            "database/schemas/base_pricing/types/priority_offer_type_enum.sql",
+            "database/schemas/global/functions/create_drop_index_list_ingestion.sql",
+            "database/schemas/global/functions/get_tenant_hierarchy_mapping.sql",
+            "database/schemas/global/procedures/db_health_checkup.sql",
+            "database/schemas/inventory_smart/functions/backup_allocation.sql",
+            "database/schemas/inventory_smart/functions/oms_update_rcl_constraints.sql",
+            "database/schemas/inventory_smart/functions/oms_update_rcl_create_constraints.sql",
+            "database/schemas/public/functions/async_query_status.sql"
+        ]
+    },
+    "RENAME": {
+        "exclusions": [
+            "database/schemas/assort_smart/tables/assort_master_plan.sql",
+            "database/schemas/data_platform/tables/kpi_master.sql",
+            "database/schemas/data_platform/tables/review.sql",
+            "database/schemas/data_platform/tables/rule_master.sql",
+            "database/schemas/global/tables/notes_event_user_mapping.sql",
+            "database/schemas/inventory_smart/tables/dc_service_levels.sql",
+            "database/schemas/inventory_smart/tables/kpi_derived_field.sql",
+            "database/schemas/visual_line_planning/tables/presentations.sql",
+            "database/schemas/inventory_smart/tables/bq_kpi_mapping.sql",
+            "database/schemas/inventory_smart/tables/api_call_logs.sql",
+            "database/schemas/inventory_smart/tables/alerts_reviewed_articles.sql"
+        ]
+    },
+    "RESET": {
+        "exclusions": [
+            "database/schemas/global/functions/resend_otp_complete.sql",
+            "database/schemas/inventory_smart/functions/generate_rcl_constraint_data.sql"
+        ]
+    },
+    "STORAGE": {
+        "exclusions": [
+            "database/schemas/data_retention/procedures/process_cleanup.sql"
+        ]
+    },
+    "TEMPORARY": {
+        "exclusions": [
+            "database/schemas/oms/tables/oms_orders_recommended.sql"
+        ]
+    },
+    "TRUNCATE": {
+        "exclusions": [
+            "database/schemas/inventory_smart/functions/delete_reviewed_articles.sql",
+            "database/schemas/inventory_smart/triggers/sync_pp_attributes_from_fc_mapping.sql",
+            "database/schemas/plan_smart/procedures/reset_plan_smart.sql",
+            "database/schemas/public/procedures/generate_all_week_level_rcl_constraint_data.sql",
+            "database/schemas/visual_line_planning/tables/presentation_comments.sql",
+            "database/schemas/visual_line_planning/tables/presentation_line_plan_join_table.sql",
+            "database/schemas/visual_line_planning/tables/presentation_slide_join_table.sql",
+            "database/schemas/visual_line_planning/tables/presentations.sql",
+            "database/schemas/visual_line_planning/tables/user_presentation_mapping.sql",
+            "database/schemas/inventory_smart/functions/generate_all_rcl_dc_store_policy.sql"
+        ]
+    },
+    "WITHOUT": {
+        "exclusions": [
+            "database/schemas/cache/tables/update_tracker.sql",
+            "database/schemas/data_platform/functions/get_source_mapping.sql",
+            "database/schemas/data_platform/tables/productivity_helper_jobs.sql",
+            "database/schemas/data_platform/tables/source_mapping.sql",
+            "database/schemas/global/procedures/build_product_attributes_filter.sql",
+            "database/schemas/global/procedures/build_product_attributes_filter_delta.sql",
+            "database/schemas/global/procedures/build_product_attributes_filter_delta_rt.sql",
+            "database/schemas/global/procedures/db_health_checkup.sql",
+            "database/schemas/global/tables/health_checkup_master.sql",
+            "database/schemas/inventory_smart/functions/get_store_transfer_recommendation_data.sql",
+            "database/schemas/inventory_smart/functions/sku_dc_allocated_units.sql",
+            "database/schemas/inventory_smart/functions/sku_po_allocated_units.sql",
+            "database/schemas/inventory_smart/functions/store_capacity_breach.sql",
+            "database/schemas/inventory_smart/views/sku_po_allocated_units.sql"
+        ]
+    }
+}

@@ -1,0 +1,36 @@
+"fc_code","label","column_name","type","display_type","level","dimension","is_mandatory","is_multiple_selection","range_min","range_max","default_value","is_disabled","is_clearable","display_order","is_required","extra","is_deleted"
+280,Add User Id,email,non-cascaded,TextField,,product,true,false,,,,false,false,2,true,,false
+280,Add User Name,user_name,non-cascaded,TextField,,product,true,false,,,,false,false,1,true,,false
+1301,Macro Region,s2_name,cascaded,dropdown,1,store,false,true,,,,false,true,1,false,{},false
+1301,Region,s3_name,cascaded,dropdown,2,store,false,true,,,,false,true,2,false,{},false
+1301,City,s5_name,cascaded,dropdown,3,store,false,true,,,,false,true,3,false,{},false
+1301,Store,store_code_name,cascaded,dropdown,4,store,false,true,,,,false,true,4,false,{},false
+1301,Channel,channel_desc,non-cascaded,dropdown,1,Channel,false,true,,,,false,true,3,false,"{""dimension"": ""store""}",false
+1301,Perimeter,perimeter,non-cascaded,dropdown,1,perimeter,false,true,,,,false,true,2,false,"{""dimension"": ""store""}",false
+1301,Aging,inventory_ageing,non-cascaded,dropdown,1,Aging,false,true,,,,false,true,4,false,"{""dimension"": ""product""}",false
+1301,Location,location_type,non-cascaded,dropdown,1,Location,false,true,,,,false,true,5,false,"{""dimension"": ""store""}",false
+1300,Company,s0_id,non-cascaded,dropdown,1,company,false,false,,,Scarpe-Scarpe,false,true,1,false,"{""dimension"": ""store""}",false
+1300,Channel,channel_desc,non-cascaded,dropdown,2,company,false,true,,,,false,true,2,false,"{""dimension"": ""store""}",false
+1300,Aging,inventory_ageing,non-cascaded,dropdown,1,aging,false,true,,,,false,true,1,false,"{""dimension"": ""product""}",false
+1300,Perimeter,perimeter,non-cascaded,dropdown,3,company,false,true,,,,false,true,3,false,"{""dimension"": ""store""}",false
+1300,Location,location_type,non-cascaded,dropdown,4,company,false,true,,,,false,true,4,false,"{""dimension"": ""store""}",false
+1301,Division,l1_name,cascaded,dropdown,1,product,false,true,,,,false,true,1,false,{},false
+1301,Department,l2_name,cascaded,dropdown,2,product,false,true,,,,false,true,2,false,{},false
+1301,Category,l3_name,cascaded,dropdown,3,product,false,true,,,,false,true,3,false,{},false
+1301,Sub Category,l4_name,cascaded,dropdown,4,product,false,true,,,,false,true,4,false,{},false
+1302,Company,s0_id,non-cascaded,dropdown,1,company,false,false,,,Scarpe-Scarpe,false,true,1,false,"{""dimension"": ""store""}",false
+1302,Channel,channel_desc,non-cascaded,dropdown,2,company,false,true,,,,false,true,2,false,"{""dimension"": ""store""}",false
+1302,Aging,inventory_ageing,non-cascaded,dropdown,1,aging,false,true,,,,false,true,1,false,"{""dimension"": ""product""}",false
+1302,Perimeter,perimeter,non-cascaded,dropdown,3,company,false,true,,,,false,true,3,false,"{""dimension"": ""store""}",false
+1302,Location,location_type,non-cascaded,dropdown,4,company,false,true,,,,false,true,4,false,"{""dimension"": ""store""}",false
+1302,Division,l1_name,cascaded,dropdown,1,product,false,true,,,,false,true,1,false,{},false
+1302,Department,l2_name,cascaded,dropdown,2,product,false,true,,,,false,true,2,false,{},false
+1302,Category,l3_name,cascaded,dropdown,3,product,false,true,,,,false,true,3,false,{},false
+1302,Sub Category,l4_name,cascaded,dropdown,4,product,false,true,,,,false,true,4,false,{},false
+1302,Item,style_id_desc,cascaded,dropdown,5,product,false,true,,,,false,true,5,false,{},false
+1302,Country,s1_name,cascaded,dropdown,1,store,false,true,,,,false,true,1,false,{},false
+1302,Macro Region,s2_name,cascaded,dropdown,2,store,false,true,,,,false,true,2,false,{},false
+1302,Region,s3_name,cascaded,dropdown,3,store,false,true,,,,false,true,3,false,{},false
+1302,City,s5_name,cascaded,dropdown,4,store,false,true,,,,false,true,4,false,{},false
+1302,Store,store_code_name,cascaded,dropdown,5,store,false,true,,,,false,true,5,false,{},false
+1301,Company,s0_id,non-cascaded,dropdown,1,Company,false,false,,,Scarpe-Scarpe,false,true,1,false,"{""dimension"": ""store""}",false

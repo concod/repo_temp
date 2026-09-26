@@ -1,0 +1,50 @@
+@import "core/Styles/variables.scss";
+
+.content {
+  padding: 20px;
+}
+
+.checkboxListWrapper {
+  display: flex;
+  padding-bottom: 20px;
+  border-bottom: 1px solid $catskillWhite;
+  margin-bottom: 10px;
+}
+
+.checkboxListWrapper:last-child {
+  border-bottom: 0;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.checkboxList_colLeft {
+  width: 160px;
+  padding-right: 20px;
+  padding-top: 10px;
+}
+
+.checkboxList_title {
+  font-size: 12px;
+  font-weight: 400;
+  color: $slateGrayLight;
+}
+
+.checkboxList_colRight {
+  width: calc(100% - 160px);
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.checkboxList_colRight > [class*="checkbox-container"] {
+  width: calc(100% / 2);
+  padding-right: 10px;
+}
+
+.checkboxList_toggleSwitch {
+  padding-top: 10px;
+}
+
+.checkboxList_checkbox:checked + label::after {
+  width: 5px !important;
+  height: 9px !important;
+}

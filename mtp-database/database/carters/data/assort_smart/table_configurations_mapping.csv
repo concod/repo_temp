@@ -1,0 +1,328 @@
+tc_code,label,column_name,dimension,type,is_frozen,is_editable,is_aggregated,order_of_display,is_hidden,is_required,tc_mapping_code,child_tc_mapping_code,aggregate_type,formatter,is_row_span,footer,is_searchable,extra,is_sortable,width,is_deleted,is_master_group
+41,Cluster,g_cluster,Other,str,FALSE,FALSE,FALSE,1,FALSE,FALSE,283,,,,FALSE,,FALSE,{},FALSE,200,FALSE,FALSE
+41,Cluster Display Name,cluster_display_name,Other,str,FALSE,TRUE,TRUE,2,FALSE,FALSE,43_cluster display name_Cluster Display Name_Other,,custom,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+41,Store Code,store_code,str,str,FALSE,FALSE,TRUE,3,FALSE,TRUE,295,,count,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+41,Store Name,store_name,str,link,FALSE,FALSE,TRUE,4,FALSE,TRUE,296,,count,,FALSE,,TRUE,"{""data_type"": ""str""}",TRUE,200,FALSE,FALSE
+41,Store Format,store_format_new,Other,str,FALSE,FALSE,TRUE,5,FALSE,FALSE,41_store_format_Store Format_Other,,,,FALSE,,TRUE,{},TRUE,150,FALSE,FALSE
+41,Store Volume,volume_cd,Other,str,FALSE,FALSE,TRUE,6,FALSE,FALSE,41_store_volume_Store Volume_Other,,,,FALSE,,TRUE,{},TRUE,150,FALSE,FALSE
+41,Store Grade,q_str_grade,Other,str,FALSE,FALSE,TRUE,7,FALSE,FALSE,41_store_grade_Store Grade_Other,,,,FALSE,,TRUE,{},TRUE,150,FALSE,FALSE
+41,Region,region,Other,str,FALSE,FALSE,TRUE,8,FALSE,FALSE,41_Region_Region_Other,,,,FALSE,,TRUE,{},TRUE,150,FALSE,FALSE
+41,Climate,climate,Other,str,FALSE,FALSE,TRUE,9,FALSE,FALSE,41_climate_Climate_Other,,,,FALSE,,TRUE,{},TRUE,150,FALSE,FALSE
+41,Precipitation,precipitation,Other,str,FALSE,FALSE,TRUE,10,FALSE,FALSE,41_precipitation_Precipitation_Other,,,,FALSE,,TRUE,{},TRUE,150,FALSE,FALSE
+41,performance_cluster_name,performance_cluster_name,str,str,FALSE,FALSE,FALSE,11,TRUE,TRUE,297,,,,FALSE,,FALSE,{},FALSE,200,FALSE,FALSE
+41,attribute_cluster_name,attribute_cluster_name,str,str,FALSE,FALSE,FALSE,12,TRUE,TRUE,298,,,,FALSE,,FALSE,{},FALSE,200,FALSE,FALSE
+41,Store Area,store_area,Other,int,FALSE,FALSE,TRUE,13,FALSE,FALSE,1501,,average,roundOfftoTwoDecimals,FALSE,,TRUE,"{""typeFormat"": ""text""}",TRUE,150,FALSE,FALSE
+41,Sales ($),sales_retail,Other,dollar,FALSE,FALSE,TRUE,14,FALSE,FALSE,285,,average,roundOff,FALSE,,TRUE,{},TRUE,150,FALSE,FALSE
+41,Sales Unit,sales_units,Other,int,FALSE,FALSE,TRUE,15,FALSE,FALSE,289,,average,roundOff,FALSE,,TRUE,"{""typeFormat"": ""text""}",TRUE,125,FALSE,FALSE
+41,AUR,AUR,Other,dollar,FALSE,FALSE,TRUE,16,FALSE,FALSE,287,,average,roundOff,FALSE,,TRUE,{},TRUE,150,FALSE,FALSE
+41,APS,APS,Ohter,float,FALSE,FALSE,TRUE,17,FALSE,FALSE,288,,average,roundOfftoTwoDecimals,FALSE,,TRUE,{},TRUE,125,FALSE,FALSE
+41,GM %,margin_perc,Other,percentage,FALSE,FALSE,TRUE,18,FALSE,FALSE,292,,average,roundOfftoTwoDecimals,FALSE,,TRUE,{},TRUE,125,FALSE,FALSE
+41,GM $,margin,Other,dollar,FALSE,FALSE,TRUE,19,FALSE,FALSE,291,,average,roundOff,FALSE,,TRUE,{},TRUE,150,FALSE,FALSE
+41,GMROI,GMROI,str,float,FALSE,FALSE,TRUE,20,FALSE,FALSE,50043,,average,roundOfftoTwoDecimals,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+41,Receipts Units,unit_receipts,Other,int,FALSE,FALSE,TRUE,21,FALSE,FALSE,294,,average,roundOff,FALSE,,TRUE,"{""typeFormat"": ""text""}",TRUE,125,FALSE,FALSE
+41,ST%,st,Other,percentage,FALSE,FALSE,TRUE,22,FALSE,FALSE,293,,average,roundOfftoTwoDecimals,FALSE,,TRUE,{},TRUE,125,FALSE,FALSE
+41,Avg. Basket Size ($),avg_basket_size,Other,dollar,FALSE,FALSE,TRUE,25,FALSE,FALSE,286,,average,roundOff,FALSE,,TRUE,{},TRUE,150,FALSE,FALSE
+41,Store Initiative,store_initiative,Other,str,FALSE,FALSE,TRUE,26,FALSE,FALSE,41_store_initiative_Store Initiative_Other,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+235,Cluster Plan Name,name,Other,str,TRUE,FALSE,FALSE,1,FALSE,TRUE,3278728d-bb86-40df-98ae-1e2e58cee683,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+235,Channel,channel,Other,list,FALSE,FALSE,FALSE,3,FALSE,TRUE,83be8f37-e83c-4327-814b-81fc115ed6fc,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+235,Created On,created_at,Other,DateTimeField,FALSE,FALSE,FALSE,14,FALSE,TRUE,664991b5-1897-495b-93f0-32c87a2ef687,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+235,Selling Period,selling_period,Other,DateTimeField,FALSE,FALSE,FALSE,12,FALSE,TRUE,76af921b-4408-441a-a656-fb528e621565,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+235,Hierarchy,hierarchy_level,Other,str,FALSE,FALSE,FALSE,4,TRUE,TRUE,5a2847a9-49b7-4395-b746-1dd8d1600178,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+235,Created By,created_by,Other,str,FALSE,FALSE,FALSE,13,FALSE,TRUE,0a61badd-42b8-483e-a3d2-9cb5122cc0b2,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+235,Plan Step,plan_step_desc,Other,str,TRUE,FALSE,FALSE,2,FALSE,FALSE,08420145-6f60-4a32-b9cc-e81d1b306e6d,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+235,Updated On,updated_at,Other,DateTimeField,FALSE,FALSE,FALSE,15,FALSE,FALSE,60bd8baa-eb5d-4a82-9d3a-90a302b3f968,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+235,#Clusters,clusters,Other,clusters,FALSE,FALSE,FALSE,16,FALSE,FALSE,7001,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+235,Status,status,Other,str,FALSE,FALSE,FALSE,17,TRUE,TRUE,6c76ddbe-16e6-4d37-a815-5f425b9b587e,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+236,SBU,l3_name,plan_l3_opt,str,true,false,true,1.0,false,false,"214",,,,false,name,false,"{}",true,200,false,false
+236,LY,budget_ly,plan_l3_opt,dollar,false,false,false,14.2,false,true,"227","225",,roundOff,false,sum,true,"{}",true,150,false,false
+236,LY,receipts_quantity_ly,plan_l3_opt,int,false,false,false,13.2,false,true,"221","219",,roundOff,false,sum,true,"{}",true,125,false,false
+236,LY,penetration_ly,plan_l3_opt,percentage,false,false,false,15.2,false,false,"216","215",,roundOfftoTwoDecimals,false,,true,"{}",true,200,false,false
+236,Receipt($),receipt,plan_l3_opt,dollar,false,false,false,14.0,false,false,"225",,,,false,,false,"{}",true,200,false,false
+236,Receipt Units,rcpts_units,plan_l3_opt,int,false,false,false,13.0,false,false,"219",,,,false,,false,"{}",true,200,false,false
+236,Sales Units,sales_units,plan_l3_opt,float,false,false,false,8.0,false,false,"231",,,,false,,false,"{}",true,200,false,false
+236,TY,budget_ty,plan_l3_opt,dollar,false,true,false,14.1,false,true,"226","225",,roundOff,false,sum,true,"{""typeFormat"": ""text""}",true,150,false,false
+236,Pen%,pen%,plan_l3_opt,float,false,false,false,15.0,false,false,"215",,,,false,,false,"{}",true,200,false,false
+236,GM($),margin,plan_l3_opt,dollar,false,false,false,6.0,false,false,"234",,,,false,,false,"{}",true,200,false,false
+236,LY,sales_units_ly,plan_l3_opt,int,false,false,false,8.2,false,true,"233","231",,roundOfftoTwoDecimals,false,,true,"{}",true,150,false,false
+236,TY,receipts_quantity_ty,plan_l3_opt,int,false,true,false,13.1,false,true,"220","219",,roundOff,false,sum,true,"{}",true,125,false,false
+236,TY,penetration_ty,plan_l3_opt,percentage,false,true,false,15.1,false,false,"217","215",,roundOfftoTwoDecimals,false,,true,"{}",true,200,false,false
+236,AUC,aic,plan_l3_opt,dollar,false,false,false,10.0,false,false,"236_aic_AUC_plan_l3_opt",,,,false,,false,"{}",true,200,false,false
+236,LY,imu_ly,plan_l3_opt,percentage,false,false,false,11.2,false,true,"236_imu_ly_LY_plan_l3_opt","236_imu_IMU(%)_plan_l3_opt",,roundOfftoTwoDecimals,false,,true,"{}",true,150,false,false
+236,IMU(%),imu,plan_l3_opt,percentage,false,false,false,11.0,false,false,"236_imu_IMU(%)_plan_l3_opt",,,roundOfftoTwoDecimals,false,,false,"{}",true,200,false,false
+236,TY,msrp_ty,plan_l3_opt,dollar,false,false,false,16.1,false,true,"236_msrp_ty_TY_plan_l3_opt","236_msrp_MSRP_plan_l3_opt",,roundOfftoTwoDecimals,false,,true,"{}",true,150,false,false
+236,LY,msrp_ly,plan_l3_opt,dollar,false,false,false,16.2,false,true,"236_msrp_ly_LY_plan_l3_opt","236_msrp_MSRP_plan_l3_opt",,roundOfftoTwoDecimals,false,,true,"{}",true,150,false,false
+236,Sales($),revenue,plan_l3_opt,dollar,false,false,false,5.0,false,false,"228",,,,false,,false,"{}",true,200,false,false
+236,TY,revenue_ty,plan_l3_opt,dollar,false,false,false,5.1,false,true,"229","228",,roundOfftoTwoDecimals,false,,true,"{""typeFormat"": ""text""}",true,150,false,false
+236,MSRP,msrp,plan_l3_opt,dollar,false,false,false,16.0,false,false,"236_msrp_MSRP_plan_l3_opt",,,roundOfftoTwoDecimals,false,,false,"{}",true,200,false,false
+236,LY,gross_margin_ly,plan_l3_opt,dollar,false,false,false,6.2,false,true,"236","234",,roundOfftoTwoDecimals,false,,true,"{}",true,150,false,false
+236,GM(%),margin_percentage,plan_l3_opt,percentage,false,false,false,7.0,false,false,"236_margin_percentage_Margin(%)_plan_l3_opt",,,roundOfftoTwoDecimals,false,,false,"{}",true,200,false,false
+236,ST(%),sell_through,plan_l3_opt,percentage,false,false,false,12.0,false,false,"236_sell_through_ST(%)_plan_l3_opt",,,roundOfftoTwoDecimals,false,,false,"{}",true,200,false,false
+236,Age,age,plan_l3_opt,str,true,false,true,2.0,false,false,"236_age_Age_plan_l3_opt",,,,false,name,false,"{}",true,200,false,false
+236,Gender,gender,plan_l3_opt,str,true,false,true,3.0,false,false,"236_gender_Gender_plan_l3_opt",,,,false,name,false,"{}",true,200,false,false
+236,Collection Total,l5_name,plan_l3_opt,str,true,false,true,4.0,false,false,"236_l5_name_Collection Total_plan_l3_opt",,,,false,name,false,"{}",true,200,false,false
+236,TY,margin_percentage_ty,plan_l3_opt,percentage,false,false,false,7.1,false,true,"236_margin_percentage_ty_TY_plan_l3_opt","236_margin_percentage_Margin(%)_plan_l3_opt",,roundOfftoTwoDecimals,false,,true,"{}",true,150,false,false
+236,LY,margin_percentage,plan_l3_opt,percentage,false,false,false,7.2,false,true,"236_margin_percentage_LY_plan_l3_opt","236_margin_percentage_Margin(%)_plan_l3_opt",,roundOfftoTwoDecimals,false,,true,"{}",true,150,false,false
+236,TY,sell_through_ty,plan_l3_opt,percentage,false,false,false,12.1,false,true,"236_sell_through_ty_TY_plan_l3_opt","236_sell_through_ST(%)_plan_l3_opt",,roundOfftoTwoDecimals,false,,true,"{}",true,150,false,false
+236,LY,sell_through,plan_l3_opt,percentage,false,false,false,12.2,false,true,"236_sell_through_LY_plan_l3_opt","236_sell_through_ST(%)_plan_l3_opt",,roundOfftoTwoDecimals,false,,true,"{}",true,150,false,false
+236,TY,imu_ty,plan_l3_opt,percentage,false,false,false,11.1,false,true,"236_imu_ty_TY_plan_l3_opt","236_imu_IMU(%)_plan_l3_opt",,roundOfftoTwoDecimals,false,,true,"{}",true,150,false,false
+236,LY,revenue_ly,plan_l3_opt,dollar,false,false,false,5.2,false,true,"230","228",,roundOfftoTwoDecimals,false,,true,"{}",true,150,false,false
+236,TY,gross_margin_ty,plan_l3_opt,dollar,false,false,false,6.1,false,true,"235","234",,roundOfftoTwoDecimals,false,,true,"{""typeFormat"": ""text""}",true,150,false,false
+236,TY,sales_units_ty,plan_l3_opt,int,false,false,false,8.1,false,true,"232","231",,roundOfftoTwoDecimals,false,,true,"{""typeFormat"": ""text""}",true,150,false,false
+236,AUR,txn_aur,plan_l3_opt,dollar,false,false,false,9.0,false,false,"222",,,,false,,false,"{}",true,200,false,false
+236,TY,txn_aur_ty,plan_l3_opt,dollar,false,true,false,9.1,false,true,"223","222",,roundOfftoTwoDecimals,false,,true,"{}",true,150,false,false
+236,LY,aur_ly,plan_l3_opt,dollar,false,false,false,9.2,false,true,"224","222",,roundOfftoTwoDecimals,false,,true,"{}",true,150,false,false
+236,TY,air_ty,plan_l3_opt,dollar,false,true,false,10.1,false,true,"236_aic_ty_TY_plan_l3_opt","236_aic_AUC_plan_l3_opt",,roundOfftoTwoDecimals,false,,true,"{}",true,150,false,false
+236,LY,air_ly,plan_l3_opt,dollar,false,false,false,10.2,false,true,"236_aic_ly_LY_plan_l3_opt","236_aic_AUC_plan_l3_opt",,roundOfftoTwoDecimals,false,,true,"{}",true,150,false,false
+353,Silhouette Score,silhouette_score,Ohter,float,FALSE,FALSE,FALSE,2,FALSE,FALSE,55271,,,roundOfftoTwoDecimals,FALSE,,FALSE,{},FALSE,150,FALSE,FALSE
+353,Cluster Bucket,bucket_id,Other,int,FALSE,FALSE,FALSE,1,FALSE,FALSE,55270,,,roundOff,FALSE,,FALSE,{},FALSE,125,FALSE,FALSE
+512,Hierarchy,hierarchy_level,dashboard,str,FALSE,FALSE,FALSE,6,FALSE,FALSE,242,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+512,Size & Pack,size-pack,dashboard,str,FALSE,FALSE,FALSE,7.3,FALSE,FALSE,246,243,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+512,Line Review,line-review,dashboard,str,FALSE,FALSE,FALSE,7.2,FALSE,FALSE,245,243,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+512,Strategy,strategy,dashboard,str,FALSE,FALSE,FALSE,7.1,FALSE,FALSE,244,243,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+512,Stage - Current Status,status,dashboard,str,FALSE,FALSE,FALSE,7,FALSE,FALSE,243,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+512,Season,season_name,dashboard,str,FALSE,FALSE,FALSE,1,FALSE,FALSE,237,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+512,Channel,channel_code,dashboard,str,FALSE,FALSE,FALSE,2,FALSE,FALSE,238,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+512,l0_name,l0_name,dashboard,str,FALSE,FALSE,FALSE,3,FALSE,FALSE,239,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+512,l1_name,l1_name,dashboard,str,FALSE,FALSE,FALSE,4,FALSE,FALSE,240,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+512,l2_name,l2_name,dashboard,str,FALSE,FALSE,FALSE,5,FALSE,FALSE,241,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+513,Plan Name,name,dashboard,str,FALSE,FALSE,FALSE,1,FALSE,FALSE,513_plan_name_Plan Name_dashboard,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+513,Created By,created_by,dashboard,str,FALSE,FALSE,FALSE,2,FALSE,FALSE,513_created_by_Created By_dashboard,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+513,Created On,created_at,dashboard,str,FALSE,FALSE,FALSE,3,FALSE,FALSE,513_created_by_Created On_dashboard,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+513,Updated On,updated_at,dashboard,str,FALSE,FALSE,FALSE,4,FALSE,FALSE,513_created_by_Updated On_dashboard,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+513,Sbu,l3_name,dashboard,str,FALSE,FALSE,FALSE,5,FALSE,FALSE,250,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+513,Age,age,dashboard,str,FALSE,FALSE,FALSE,6,FALSE,FALSE,251,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+513,Channel,channel_code,dashboard,str,FALSE,FALSE,FALSE,7,FALSE,FALSE,248,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+513,Selling Period,selling_period,dashboard,DateTimeField,false,false,false,8.0,false,false,"513_selling_period_Selling Period_dashboard",,,,false,,false,"{}",true,200,false,false
+513,Season,season_name,dashboard,str,FALSE,FALSE,FALSE,9,FALSE,FALSE,247,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+513, Status,status,dashboard,str,FALSE,FALSE,FALSE,10,FALSE,FALSE,252,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+513,Approval,approval_status,dashboard,str,FALSE,FALSE,FALSE,11,FALSE,FALSE,253,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+523,Action,is_final,Other,bool,FALSE,TRUE,FALSE,4,FALSE,TRUE,305,,,,FALSE,,FALSE,"{""is_disabled"": true}",TRUE,50,FALSE,FALSE
+523,KPI name,attribute_name,Other,attribute,TRUE,FALSE,FALSE,2,FALSE,TRUE,303,,,,FALSE,,FALSE,{},TRUE,100,FALSE,FALSE
+523,Attribute Type,is_primary,Other,boolean,FALSE,FALSE,FALSE,1,TRUE,TRUE,304,,,,FALSE,,FALSE,{},TRUE,100,FALSE,FALSE
+525,Action,is_final,Other,bool,FALSE,TRUE,FALSE,4,FALSE,TRUE,302,,,,FALSE,,FALSE,"{""is_disabled"": true}",TRUE,50,FALSE,FALSE
+525,Rank,rank,Other,int,FALSE,FALSE,FALSE,3,FALSE,TRUE,301,,,,FALSE,,FALSE,{},TRUE,100,FALSE,FALSE
+525,KPI name,attribute_name,Other,attribute,TRUE,FALSE,FALSE,1,FALSE,TRUE,202,,,,FALSE,,FALSE,{},TRUE,100,FALSE,FALSE
+525,Significance Score,score,Other,float,FALSE,FALSE,FALSE,2,FALSE,TRUE,300,,,roundOfftoTwoDecimals,FALSE,,FALSE,{},TRUE,100,FALSE,FALSE
+1503,Store Number,store_code,store_attributes_filter,link,false,false,false,1.0,false,true,"05b8a252-b5dc-4fbe-80ec-94db1280d743",,,roundOff,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1503,Store Name,store_name,store_attributes_filter,str,false,false,false,2.0,false,true,"1268ed7f-2e34-4ed8-bf7d-4f870742ee58",,,,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1503,Store Format,store_format_new,store_attributes_filter,str,false,false,false,3.0,false,true,"493ca35c-6a99-4aa1-bbf9-91823ede04f3",,,,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1503,Store Initiative,store_initiative,store_attributes_filter,str,false,false,false,4.0,false,true,"32010718-c134-4e10-b120-7ef3b23ebf6b",,,,false,,true,"{}",true,200,false,false
+1503,Center Type,store_type,store_attributes_filter,str,false,false,false,5.0,true,true,"0ad57e80-c2dc-4530-b507-550248f80927",,,,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1503,Center Type Detail,rtl_store_category_dsc,store_attributes_filter,str,false,false,false,6.0,true,true,ec6a4f8e-3a6d-4834-b01e-772d807da77d,,,,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1503,Store Volume,volume_cd,store_attributes_filter,str,false,false,false,7.0,true,true,dd3b9094-1e49-4a41-853d-aed40cba0fd5,,,,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1503,Store Grade,q_str_grade,store_attributes_filter,str,false,false,false,8.0,true,true,"8718427b-ffad-46d9-b7c3-d4ee0f3ce5ba",,,,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1503,Master Store Size,master_store_size,store_attributes_filter,str,false,false,false,9.0,false,true,"6fb75e10-ec95-4982-b7ff-9239e85ba49f",,,,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1503,Age Parent Block,age_parent_block,store_metrics,str,false,false,false,10.0,false,true,"1503_age_parent_block_Age Parent Block_store_metrics",,,,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1503,Total Sq Ft,q_str_sls_sqft,store_attributes_filter,int,false,false,false,13.0,false,true,a3d07f61-c923-4dba-b9e1-68ece457c083,,,roundOff,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1503,Age Status,age_status,store_metrics,str,false,false,false,14.0,false,true,"1503_age_status_Age Status_store_metrics",,,,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1503,CT Status,status,store_metrics,str,false,false,false,15.0,false,true,"5d005b7e-647e-4977-90c2-6ee618dd75ef",,,,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1503,Sellable Sq Ft,sellable_sqft,store_metrics,int,false,false,false,16.0,false,true,fadb0bd4-6ab4-4104-8802-56978f6dbbfe,,,roundOff,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1503,Flex Sq Ft,flex_sqft,store_attributes_filter,int,false,false,false,17.0,false,true,f580c841-94fb-434c-8b48-6dd427b6aa2c,,,roundOff,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1503,Flex CC,flex_cc,store_attributes_filter,int,false,false,false,18.0,false,true,fc7b67d2-6f02-44b6-9ee1-7747145f0365,,,roundOff,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1503,Sales $,sales,store_metrics,dollar,false,false,false,19.0,false,true,"63e6bc9b-3901-4498-9fbc-a6139ec8ea2b",,,roundOff,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1503,Sales $ Density,sales_density,store_metrics,dollar,false,false,false,20.0,false,true,"825f9548-d2d1-48ee-beb0-b8fdc242ea1f",,,roundOff,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1503,Sales $ Density Index,sales_density_index,store_metrics,float,false,false,false,21.0,false,true,"0731b923-3c55-4d37-95f8-5925015a7058",,,roundOfftoTwoDecimals,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1503,GM $,gm,store_metrics,dollar,false,false,false,22.0,false,true,"9bc86e3f-ba5f-4db8-9951-38efb5d31290",,,roundOff,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1503,GM $ Density,gm_density,store_metrics,dollar,false,false,false,23.0,false,true,"1e54428e-c640-43f3-8c00-fe16a3ef667a",,,roundOff,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1503,Sales Units,forecasted_units,store_metrics,int,false,false,false,24.0,false,true,"6cb034a6-6978-4447-a0d9-31e48edf5989",,,roundOff,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1503,Unit Density,unit_density,store_metrics,float,false,false,false,25.0,false,true,"6edc39e8-de52-4f07-b9a4-3c9020f43c75",,,roundOfftoTwoDecimals,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1503,Unit Density Index,unit_density_index,store_metrics,float,false,false,false,26.0,false,true,"23da21d4-466b-4828-9916-534de87f7890",,,roundOfftoTwoDecimals,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1503,Optimized Min CC,optimized_min_cc,store_metrics,int,false,false,false,27.0,false,true,"65f5ee97-6a86-4de6-93c2-db3ac00289c0",,,roundOff,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1503,Optimized Max CC,optimized_max_cc,store_metrics,int,false,false,false,28.0,false,true,b7b9389d-2831-48b2-b5c1-beabc1016206,,,roundOff,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1503,Min Infant PB Constraint,min_infant_pb_constraint,store_attributes_filter,str,false,false,false,29.0,true,true,abb45976-c362-440f-98aa-fc49d4a84f3e,,,,false,,true,"{}",true,200,false,false
+1503,Min Toddler PB Constraint,min_toddler_pb_constraint,store_attributes_filter,str,false,false,false,30.0,true,true,"605a66af-ea07-4f0c-8c11-b7adf0da115f",,,,false,,true,"{}",true,200,false,false
+1503,Min Kid PB Constraint,min_kid_pb_constraint,store_attributes_filter,str,false,false,false,31.0,true,true,c15fe23a-4d47-460b-98ae-f9bb7357dee7,,,,false,,true,"{}",true,200,false,false
+1503,Max Infant PB Constraint,max_infant_pb_constraint,store_attributes_filter,str,false,false,false,32.0,true,true,"20731555-7789-4d7b-9527-9f63a766fe71",,,,false,,true,"{}",true,200,false,false
+1503,Max Toddler PB Constraint,max_toddler_pb_constraint,store_attributes_filter,str,false,false,false,33.0,true,true,b2ecc3b4-f330-40f4-86db-900c8d7469f2,,,,false,,true,"{}",true,200,false,false
+1503,Max Kid PB Constraint,max_kid_pb_constraint,store_attributes_filter,str,false,false,false,34.0,true,true,"56652c28-87bb-42de-8f30-a613440d6282",,,,false,,true,"{}",true,200,false,false
+1503,CT Last Optimized,last_optimized,store_metrics,str,false,false,false,35.0,false,true,"6e62e542-d3a2-487d-bf10-13815d8ddcce",,,,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1503,CT Last Optimized By,last_optimized_by,store_metrics,str,false,false,false,36.0,false,true,"8968a36d-b2ba-4e41-8339-5cfdb3ac2e29",,,,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1503,Age Last Optimized,age_last_optimized,store_metrics,str,false,false,false,37.0,false,true,"1503_age_last_optimized_Age Last Optimized_store_metrics",,,,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1503,Age Last Optimized By,age_last_optimized_by,store_metrics,str,false,false,false,38.0,false,true,"1503_age_last_optimized_by_Age Last Optimized By_store_metrics",,,,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1504,Sellable Sq Ft,sellable_sqft,store_metrics,int,FALSE,FALSE,FALSE,3,FALSE,TRUE,3ef6b42b-cb11-4b21-b14e-1ee54d0eb710,,,roundOff,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1504,Flex Sq Ft,flex_sqft,store_attributes_filter,int,FALSE,FALSE,FALSE,4,FALSE,TRUE,33bfef65-92e0-4e35-87a2-a1d7d375b6b0,,,roundOff,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1504,Flex CC,flex_cc,store_attributes_filter,int,FALSE,FALSE,FALSE,5,FALSE,TRUE,fc7b67d2-6f02-44b6-9ee1-7747145f0,,,roundOff,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1504,Sales $,sales,store_metrics,dollar,FALSE,FALSE,FALSE,6,FALSE,TRUE,e146df8e-8c1a-42da-b4cf-7cf358cde9ad,,,roundOff,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1504,Sales $ Density,sales_density,store_metrics,dollar,FALSE,FALSE,FALSE,7,FALSE,TRUE,a930c38a-91d3-4a53-82d2-160959fa5e23,,,roundOff,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1504,GM $,gm,store_metrics,dollar,FALSE,FALSE,FALSE,8,FALSE,TRUE,575a3cee-74bb-4ce0-b518-6def44e5a03e,,,roundOff,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1504,GM $ Density,gm_density,store_metrics,dollar,FALSE,FALSE,FALSE,9,FALSE,TRUE,af92a790-0168-4e0d-90a1-43a9c2cea6c7,,,roundOff,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1504,Sales Units,forecasted_units,store_metrics,int,FALSE,FALSE,FALSE,10,FALSE,TRUE,66afea1f-c5e0-4114-a5d0-855b7b280c4c,,,roundOff,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1504,Unit Density,unit_density,store_metrics,float,FALSE,FALSE,FALSE,11,FALSE,TRUE,74bb22e6-b5af-43ab-adba-8ae11ab03935,,,roundOfftoTwoDecimals,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1504,Optimized Min CC,optimized_min_cc,store_metrics,int,FALSE,FALSE,FALSE,12,FALSE,TRUE,998c191f-7473-4017-a61e-4e009a42cdcd,,,roundOff,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1504,Optimized Max CC,optimized_max_cc,store_metrics,int,FALSE,FALSE,FALSE,13,FALSE,TRUE,d6784f76-2fb7-4175-a310-a65d80ead250,,,roundOff,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1504,Total Sq Ft,total_sq_ft,store_attributes_filter,int,FALSE,FALSE,FALSE,14,TRUE,TRUE,72234e22-c72f-4c40-b55c-b554cc067ae1,,,roundOff,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1504,# Stores,stores,store_metrics,int,FALSE,FALSE,FALSE,2,FALSE,TRUE,0988ccda-b56b-4681-a454-2553d3c2bd25,,,,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1504,Master Store Size,store_group,store_metrics,str,FALSE,FALSE,FALSE,1,FALSE,TRUE,bddc7b0b-ff6b-4d70-af0e-4d8481836ae4,,,,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1505,Unit Density,unit_density,store_metrics,float,FALSE,FALSE,FALSE,23,FALSE,TRUE,20c026e4-e6b2-4bdd-8f8c-d57dfad37eea,,,roundOfftoTwoDecimals,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1505,Center Type,store_type,store_attributes_filter,str,FALSE,FALSE,FALSE,6,TRUE,TRUE,4f5ad1e2-887a-41d9-9c65-9be4ef090e65,,,,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1505,Center Type Detail,rtl_store_category_dsc,store_attributes_filter,str,FALSE,FALSE,FALSE,7,TRUE,TRUE,ebf74300-6bb8-4dd4-91f2-ed6b511ed3ca,,,,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1505,Forecasted Units,forecasted_units,store_metrics,int,FALSE,FALSE,FALSE,22,FALSE,TRUE,c63dd0ab-8235-461f-b006-95745a8a076d,,,roundOff,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1505,GM $,gm,store_metrics,dollar,FALSE,FALSE,FALSE,20,FALSE,TRUE,4b2bbb02-40df-4af6-810b-9ebd06038ff5,,,roundOff,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1505,GM $ Density,gm_density,store_metrics,dollar,FALSE,FALSE,FALSE,21,FALSE,TRUE,d9e01893-c71f-4780-9e2a-1a5fa0510745,,,roundOff,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1505,ML per PB,ml_per_parent_block,store_metrics,float,FALSE,FALSE,FALSE,27,FALSE,TRUE,03269176-49a4-4f4a-af88-bcedd0400c9d,,,roundOff,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1505,Optimized Max CC,optimized_max_cc,store_metrics,int,FALSE,FALSE,FALSE,26,FALSE,TRUE,2b48c4f0-2164-4814-82d2-4f72a2168a1e,,,roundOff,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,220,FALSE,FALSE
+1505,Optimized Min CC,optimized_min_cc,store_metrics,int,FALSE,FALSE,FALSE,25,FALSE,TRUE,3c71a366-a854-41ee-8ec0-dbec47e28f3b,,,roundOff,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,220,FALSE,FALSE
+1505,PB Size,pb_size,store_metrics,str,FALSE,FALSE,FALSE,10,FALSE,TRUE,05905e86-036a-46a1-9405,,,,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1505,Sales $,sales,store_metrics,dollar,FALSE,FALSE,FALSE,17,FALSE,TRUE,721dddc2-0545-43ae-9433-58202996ceb9,,,roundOff,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1505,Sales $ Density,sales_density,store_metrics,dollar,FALSE,FALSE,FALSE,18,FALSE,TRUE,f992e55e-2cc7-4cd9-a496-45bf5a33e186,,,roundOff,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1505,Sales $ Density Index,sales_density_index,store_metrics,float,FALSE,FALSE,FALSE,19,FALSE,TRUE,9a68195e-7613-4116-9c8c-0c353b15cd95,,,roundOfftoTwoDecimals,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,220,FALSE,FALSE
+1505,Sellable Sq Ft,sellable_sqft,store_metrics,int,FALSE,FALSE,FALSE,16,FALSE,TRUE,02066d1e-c26d-4661-8d67-6c593fb727cb,,,roundOff,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1505,Space Elasticity,space_elasticity,store_attributes_filter,str,FALSE,FALSE,FALSE,17,FALSE,TRUE,47332dd0-fa94-41d7-a9bb-9fe0b9cddd28,,,,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1505,Store Format Detail,store_format_detail,store_metrics,str,FALSE,FALSE,FALSE,4,TRUE,TRUE,3adfd5d5-0265-4b2a-b595-4fc6eba3d838,,,,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1505,Store Format Rollup,store_format_rollup,store_attributes_filter,str,FALSE,FALSE,FALSE,3,FALSE,TRUE,d2247e84-c972-48ce-be45-3c413a5c3b85,,,,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1505,Store Grade,q_str_grade,store_attributes_filter,str,FALSE,FALSE,FALSE,9,TRUE,TRUE,67712c16-292a-48d5-86cc-765adc68209e,,,,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1505,Store Name,store_name,store_attributes_filter,list,FALSE,FALSE,FALSE,2,FALSE,TRUE,6f0af3df-00fb-4832-a1e1-c34a8411eda6,,,,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1505,Store Number,store_code,store_attributes_filter,link,FALSE,FALSE,FALSE,1,FALSE,TRUE,5f9e4b3c-873d-4d66-aa67-4d3124372267,,,roundOff,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1505,Store Volume,volume_cd,store_attributes_filter,str,FALSE,FALSE,FALSE,8,TRUE,TRUE,c94839e7-2c35-4e09-923b-1bfdc7b0fcfc,,,,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1505,Unit Density Index,unit_density_index,store_metrics,float,FALSE,FALSE,FALSE,24,FALSE,TRUE,504b53ef-271f-42d4-a0a8-b28ef1cd0b46,,,roundOfftoTwoDecimals,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,220,FALSE,FALSE
+1505,Store Format,store_format,store_attributes_filter,str,FALSE,FALSE,FALSE,5,FALSE,TRUE,d19b3622-44b9-490b-95ff-7703069c2830,,,,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1506,Forecasted Units,forecasted_units,store_metrics,int,FALSE,FALSE,FALSE,12,FALSE,TRUE,c9da1e9a-0fb9-4799-a007-385e51908e16,,,roundOff,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1506,GM $,gm,store_metrics,dollar,FALSE,FALSE,FALSE,10,FALSE,TRUE,88a04131-2691-4e12-833d-077481ebcb01,,,roundOff,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1506,Unit Density,unit_density,store_metrics,float,FALSE,FALSE,FALSE,13,FALSE,TRUE,02a7e226-28fe-477f-a84c-faa8c92e45ec,,,roundOfftoTwoDecimals,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1506,Optimized Max CC,optimized_max_cc,store_metrics,int,FALSE,FALSE,FALSE,15,FALSE,TRUE,bfd297ac-2d7f-478d-a557-7bbb82c8d450,,,roundOff,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,220,FALSE,FALSE
+1506,Optimized Min CC,optimized_min_cc,store_metrics,int,FALSE,FALSE,FALSE,14,FALSE,TRUE,a4ee71c0-6271-4654-a8b5-59e074a609c1,,,roundOff,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,220,FALSE,FALSE
+1506,Sales $,sales,store_metrics,dollar,FALSE,FALSE,FALSE,8,FALSE,TRUE,fec42db7-87aa-49ae-b420-2441c51b1af2,,,roundOff,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1506,Sales $ Density,sales_density,store_metrics,dollar,FALSE,FALSE,FALSE,9,FALSE,TRUE,a091e7cf-9b11-4807-8f3b-e333f08489ca,,,roundOff,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1506,Sellable Sq Ft,sellable_sqft,store_metrics,int,FALSE,FALSE,FALSE,7,FALSE,TRUE,01bcd55e-97fc-412e-9a24-6e564bede877,,,roundOff,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1506,Master Store Size,store_group,store_metrics,str,FALSE,FALSE,FALSE,1,FALSE,TRUE,e6393795-51f4-4fa3-b3da-77d1ad16c293,,,,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1506,# Stores,stores,store_metrics,int,FALSE,FALSE,FALSE,2,FALSE,TRUE,92ab45cc-5ab1-4681-b291-646fd7a4558b,,,,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1506,GM $ Density,gm_density,store_metrics,dollar,FALSE,FALSE,FALSE,11,FALSE,TRUE,e72a25b4-63d3-4a09-aa46-2232731006fd,,,roundOff,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1507,Percentage Configuration,percentage_config,store_metrics,float,FALSE,FALSE,FALSE,6,FALSE,TRUE,e656d983-9dde-4a4d-9342-69d3716d8180,,,roundOff,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1507,Store Group,store_group,store_metrics,str,FALSE,FALSE,FALSE,1,FALSE,TRUE,fb73a08a-3cef-492b-b8b3-e2e91c40b4ea,,,,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1508,Sbu,l3_name,setup_constraint,str,FALSE,FALSE,FALSE,3,FALSE,TRUE,1508_l3_name_l3_name_setup_constraint,,,,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1508,Sq Ft,sq_ft,setup_constraint,int,FALSE,TRUE,FALSE,8,FALSE,TRUE,1508_sq_ft_Sq Ft_setup_constraint,,,,FALSE,,FALSE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1508,Sq Ft Control,sq_ft_control,setup_constraint,list,FALSE,TRUE,FALSE,9,FALSE,TRUE,1508_sq_ft_control_Sq Ft Control_setup_constraint,,,,FALSE,,FALSE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1508,% Contribution, percentage_contribution,setup_constraint,int,FALSE,FALSE,FALSE,9,FALSE,TRUE,percentage_contribute_setup_constraint,,,roundOfftoTwoDecimals,FALSE,,FALSE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1508,Min,percentage_contribution_min,setup_constraint,percentage,FALSE,FALSE,FALSE,9.1,FALSE,TRUE,percentage_contribute_min_setup_constraint,percentage_contribute_setup_constraint,,roundOfftoTwoDecimals,FALSE,,FALSE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1508,Max,percentage_contribution_max,setup_constraint,percentage,FALSE,FALSE,FALSE,9.2,FALSE,TRUE,percentage_contribute_max_setup_constraint,percentage_contribute_setup_constraint,,roundOfftoTwoDecimals,FALSE,,FALSE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1508,Max,sellable_sqft_max,setup_constraint,int,FALSE,TRUE,FALSE,8.2,FALSE,TRUE,1508_sq_max_Max_setup_constraint,1508_sq_ft_Sq Ft_setup_constraint,,roundOfftoTwoDecimals,FALSE,,FALSE,"{ ""isHyphenDisplayedForEmpty"": true, ""typeFormat"": ""number""  }",TRUE,200,FALSE,FALSE
+1508,Collection Total,l5_name,setup_constraint,str,FALSE,FALSE,FALSE,5,FALSE,TRUE,1508_l5_name_l5_name_setup_constraint,,,,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1508,Country,l0_name,setup_constraint,str,FALSE,FALSE,FALSE,1,TRUE,TRUE,1508_l0_name_l0_name_setup_constraint,,,,FALSE,,FALSE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1508,Department,l4_name,setup_constraint,str,FALSE,FALSE,FALSE,4,TRUE,TRUE,1508_l4_name_l4_name_setup_constraint,,,,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1508,Fixed Sq Ft,sq_ft_fixed,setup_constraint,int,FALSE,TRUE,FALSE,10,FALSE,TRUE,1508_fixed_sq_ft_Fixed Sq Ft_setup_constraint,,,,FALSE,,FALSE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1508,Gender,gender,setup_constraint,str,FALSE,FALSE,FALSE,2,FALSE,TRUE,1508_gender_gender_setup_constraint,,,,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1508,Max,ml_max,setup_constraint,int,FALSE,FALSE,FALSE,7.2,FALSE,TRUE,1508_ml_max_Max_setup_constraint,1508_ml_ML_setup_constraint,,roundOfftoTwoDecimals,FALSE,,FALSE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1508,Max,parent_block_max,setup_constraint,list,FALSE,TRUE,FALSE,6.2,FALSE,TRUE,1508_max_Max_setup_constraint,1508_parent_block_Parent Block_setup_constraint,,,FALSE,,FALSE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1508,Min,ml_min,setup_constraint,int,FALSE,FALSE,FALSE,7.1,FALSE,TRUE,1508_ml_min_Min_setup_constraint,1508_ml_ML_setup_constraint,,roundOfftoTwoDecimals,FALSE,,FALSE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1508,Min,parent_block_min,setup_constraint,list,FALSE,TRUE,FALSE,6.1,FALSE,TRUE,1508_min_Min_setup_constraint,1508_parent_block_Parent Block_setup_constraint,,,FALSE,,FALSE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1508,Min,sellable_sqft_min,setup_constraint,int,FALSE,TRUE,FALSE,8.1,FALSE,TRUE,1508_sq_min_Min_setup_constraint,1508_sq_ft_Sq Ft_setup_constraint,,roundOfftoTwoDecimals,FALSE,,FALSE,"{ ""isHyphenDisplayedForEmpty"": true, ""typeFormat"": ""number"" }",TRUE,200,FALSE,FALSE
+1508,ML,ml,setup_constraint,int,FALSE,FALSE,FALSE,7,FALSE,TRUE,1508_ml_ML_setup_constraint,,,,FALSE,,FALSE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1508,Parent Block,parent_block,setup_constraint,list,FALSE,FALSE,FALSE,6,FALSE,TRUE,1508_parent_block_Parent Block_setup_constraint,,,,FALSE,,FALSE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1509,Space Elasticity,space_elasticity,store_attributes_filter,str,false,false,false,10.0,false,true,dcd88b8d-d8bc-4b1c-b14e-2362066a17ed,,,,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1509,Store Name,store_name,store_metrics,str,false,false,false,2.0,false,true,"1509_store_name_Store Name_store_metrics",,,,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1509,Store Number,store_number,store_metrics,str,false,false,false,1.0,false,true,"2d25046e-d1aa-455e-9b29-db9e97a5e83f",,,,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1509,Store Initiative,store_initiative,store_attributes_filter,str,false,false,false,4.0,true,true,b25c382a-ffcf-4f99-a4d0-32d0b3709d9b,,,,false,,true,"{""isHyphenDisplayedForEmpty"": true}",true,200,false,false
+1509,PB Change Flag,pb_change_flag,store_metrics,str,false,false,false,8.0,false,true,"9d28b5d9-ba57-4017-be69-4df773addeaf",,,,false,,true,"{""isHyphenDisplayedForEmpty"": true}",true,200,false,false
+1509,Master Store Size,store_size,store_attributes_filter,str,false,false,false,5.0,false,true,"1509_store_size_Store Size_store_attributes_filter",,,,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1509,Store Format,store_format_new,store_attributes_filter,str,false,false,false,3.0,true,true,"0e2fff5c-3621-403e-880e-724813037399",,,,false,,true,"{""isHyphenDisplayedForEmpty"": true}",true,200,false,false
+1510,Master Store Size,store_group,store_metrics,str,false,false,false,1.0,false,true,ec194cfe-e4a2-4aa9-944b-82feb34f31f1,,,,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1510,Age,l4_name,l4_name,str,false,false,false,2.0,false,true,f133744b-3a98-44bc-9421-b5aff5a36531,,,,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1510,PB Size,parent_block_optimized,parent_block_optimized,str,false,false,false,3.0,false,true,"402e3aaf-84ab-4336-a2c2-b7acc53049c7",,,,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1510,# Stores,stores,store_metrics,int,false,false,false,4.0,false,true,"43725a36-a921-4fa9-a2b0-f6dff2987949",,,,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+77,l0_name,l0_name,assort_drop_feature,str,TRUE,FALSE,FALSE,1,TRUE,TRUE,10010,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+77,l1_name,l1_name,assort_drop_feature,str,TRUE,FALSE,FALSE,2,TRUE,TRUE,10011,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+77,l2_name,l2_name,assort_drop_feature,str,TRUE,FALSE,FALSE,3,FALSE,TRUE,10012,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+77,l3_name,l3_name,assort_drop_feature,str,FALSE,FALSE,FALSE,4,TRUE,FALSE,10013,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+77,Channel,channel,assort_drop_feature,str,FALSE,FALSE,FALSE,5,TRUE,FALSE,10014,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+77,Launch,launch,assort_drop_feature,str,TRUE,FALSE,FALSE,6,FALSE,TRUE,10015,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+77,Sub Channel,sub_channel,assort_drop_feature,str,FALSE,FALSE,FALSE,7,TRUE,FALSE,10016,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+77,Launch Pen%,launch_pen,assort_drop_feature,float,FALSE,TRUE,FALSE,8,FALSE,TRUE,100001,,,,FALSE,,FALSE,{},FALSE,200,FALSE,FALSE
+77,TY,launch_penetration_ty,assort_drop_feature,percentage,FALSE,TRUE,FALSE,8.1,FALSE,TRUE,100002,100001,256,roundOfftoTwoDecimals,FALSE,sum,FALSE,{},FALSE,125,FALSE,FALSE
+77,LY,launch_penetration_ly,assort_drop_feature,percentage,FALSE,FALSE,FALSE,8.2,FALSE,TRUE,100003,100001,,roundOfftoTwoDecimals,FALSE,sum,FALSE,{},FALSE,125,FALSE,FALSE
+77,Receipt$ Budget,receipt$,assort_drop_feature,dollar,FALSE,FALSE,FALSE,9,TRUE,TRUE,10004,,,,FALSE,,FALSE,{},FALSE,200,FALSE,FALSE
+77,LY,receipt$_ly,assort_drop_feature,dollar,FALSE,FALSE,FALSE,9.1,TRUE,TRUE,10005,10004,,roundOff,FALSE,sum,FALSE,{},FALSE,125,FALSE,FALSE
+77,TY,receipt$_ty,assort_drop_feature,dollar,FALSE,FALSE,FALSE,9.2,TRUE,TRUE,10006,10004,,roundOff,FALSE,sum,FALSE,{},FALSE,125,FALSE,FALSE
+77,Total Budget,total_budget,assort_drop_feature,dollar,FALSE,FALSE,FALSE,10,TRUE,TRUE,10007,,,,FALSE,,FALSE,{},FALSE,200,FALSE,FALSE
+77,TY,total_budget_ty,assort_drop_feature,dollar,FALSE,FALSE,FALSE,10.1,TRUE,TRUE,10008,10007,,roundOff,FALSE,sum,FALSE,{},FALSE,125,FALSE,FALSE
+77,LY,total_budget_ly,assort_drop_feature,dollar,FALSE,FALSE,FALSE,10.2,TRUE,TRUE,10009,10007,,roundOff,FALSE,sum,FALSE,{},FALSE,125,FALSE,FALSE
+526,Region,region,Other,str,FALSE,FALSE,FALSE,6,FALSE,TRUE,fc294c02-d173-4f68-9409-1827099d7085,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+526,Climate,climate,Other,str,FALSE,FALSE,FALSE,1,FALSE,TRUE,532,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+526,Precipitation,precipitation,Other,str,FALSE,FALSE,FALSE,3,FALSE,TRUE,531,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+526,Store Format,store_format_new,Other,str,FALSE,FALSE,FALSE,6,FALSE,TRUE,527,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+526,Store Grade,q_str_grade,Other,str,FALSE,FALSE,FALSE,2,FALSE,TRUE,529,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+526,Store Name,store_name,Other,str,FALSE,FALSE,FALSE,2,FALSE,TRUE,354225f5-85d5-4514-80f0-c20148832ff6,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+526,Store Number,store_code,Other,str,FALSE,FALSE,FALSE,1,FALSE,TRUE,17d8f04a-4aaf-49ae-b05a-12d87d99d44d,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+526,Store Volume,volume_cd,Other,float,FALSE,FALSE,FALSE,5,FALSE,TRUE,528,,,,FALSE,,FALSE,{},TRUE,125,FALSE,FALSE
+59,Attribute Value,attribute_value,cluster_level_plan,attribute,FALSE,FALSE,FALSE,6,FALSE,TRUE,59_attribute_value_Attribute Value_cluster_level_plan,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+59,l5_name,l5_name,cluster_level_plan,str,TRUE,FALSE,FALSE,4,FALSE,TRUE,1b5b895e-850e-4b57-8a0b-35163f9041a4,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+59,LY,penetration_ly,cluster_level_plan,percentage,FALSE,FALSE,FALSE,5.2,FALSE,TRUE,59_penetration_ly_LY_cluster_level_plan,a25edf5f-043d-49c7-a4a6-c51230614722,,roundOfftoTwoDecimals,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+59,LY,total_ly,cluster_level_plan,percentage,FALSE,FALSE,FALSE,7.2,FALSE,TRUE,59_total_ly_LY_cluster_level_plan,59_total_Total_cluster_level_plan,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+59,Pen %,pen%,cluster_level_plan,percentage,FALSE,FALSE,FALSE,5,FALSE,TRUE,a25edf5f-043d-49c7-a4a6-c51230614722,,,roundOfftoTwoDecimals,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+59,Total,total,cluster_level_plan,percentage,FALSE,FALSE,FALSE,7,FALSE,TRUE,59_total_Total_cluster_level_plan,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+59,TY,penetration_ty,cluster_level_plan,percentage,FALSE,FALSE,FALSE,5.1,FALSE,TRUE,59_penetration_ty_TY_cluster_level_plan,a25edf5f-043d-49c7-a4a6-c51230614722,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+59,TY,total_ty,cluster_level_plan,percentage,FALSE,FALSE,FALSE,7.1,FALSE,TRUE,59_total_ty_TY_cluster_level_plan,59_total_Total_cluster_level_plan,,roundOfftoTwoDecimals,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+50009,Collection Total,l5_name,product_list_level,str,FALSE,FALSE,FALSE,2,FALSE,TRUE,50009_l5_name_Collection Total_product_list_level,,,,FALSE,,FALSE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+50009,Gender,gender,product_list_level,str,FALSE,FALSE,FALSE,1,FALSE,TRUE,50009_gender_Gender_product_list_level,,,,FALSE,,FALSE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+50009,Sales ($) ,price,product_list_level,dollar,FALSE,FALSE,FALSE,3,FALSE,TRUE,50009_price_Sales ($) _product_list_level,,,,FALSE,,FALSE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+46,Collection Total,l5_name,product_list,str,FALSE,FALSE,FALSE,1,FALSE,TRUE,1511_l5_name_Collection Total_product_list_l3,,,,FALSE,,FALSE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+46,ID,article,product_list,str,FALSE,FALSE,FALSE,2,FALSE,TRUE,1511_id_ID_product_list_l3,,,,FALSE,,FALSE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+46,Name,style_name,product_list,str,FALSE,FALSE,FALSE,3,FALSE,TRUE,1511_name_Name_product_list_l3,,,,FALSE,,FALSE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+46,Sales ($) ,price,product_list,dollar,FALSE,FALSE,FALSE,4,FALSE,TRUE,1511_sales_Sales ($) _product_list_l3,,,,FALSE,,FALSE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+39,l5_name,l5_name,DepthAndChoice,str,FALSE,FALSE,FALSE,1,FALSE,FALSE,338f033c-a107-4d7e-bc17-67a5e65b2523,,,,FALSE,,TRUE,{},FALSE,100,FALSE,FALSE
+39,CC Constraint,cc_threshold,DepthAndChoice,str,FALSE,TRUE,FALSE,2,FALSE,FALSE,338f033c-a107-4d7e-bc17-67a50P65b2523,,,,FALSE,,TRUE,{},FALSE,100,FALSE,FALSE
+1514,All Store Flag,all_store_flag,line_plan_cluster_launch_delivery_level_view,str,FALSE,TRUE,FALSE,9,FALSE,TRUE,1514_all_store_flag_All Store Flag_line_plan_cluster_launch_delivery_level_view,,,,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1514,Buy Units,buy_units,line_plan_cluster_launch_delivery_level_view,dict,FALSE,FALSE,FALSE,11,FALSE,TRUE,1514_buy_units_Buy Units_line_plan_cluster_launch_delivery_level_view,,,,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1514,Cluster Buy Units,cluster_buy_units,line_plan_cluster_launch_delivery_level_view,str,FALSE,FALSE,FALSE,14,FALSE,TRUE,1514_cluster_buy_units_Cluster Buy Units_line_plan_cluster_launch_delivery_level_view,,,,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1514,Cluster Sales Units,cluster_sales_units,line_plan_cluster_launch_delivery_level_view,str,FALSE,FALSE,FALSE,13,FALSE,TRUE,1514_cluster_sales_units_Cluster Sales Units_line_plan_cluster_launch_delivery_level_view,,,,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1514,Color ID,color_id,line_plan_cluster_launch_delivery_level_view,str,FALSE,FALSE,FALSE,6,FALSE,TRUE,1514_color_id_Color ID_line_plan_cluster_launch_delivery_level_view,,,,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1514,Image,image_url,line_plan_cluster_launch_delivery_level_view,image,FALSE,FALSE,FALSE,4,TRUE,TRUE,1514_image_url_Image_line_plan_cluster_launch_delivery_level_view,,,,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1514,Info,info,line_plan_cluster_launch_delivery_level_view,info_icon,FALSE,TRUE,FALSE,1,FALSE,TRUE,1514_info_Info_line_plan_cluster_launch_delivery_level_view,,,,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1514,Launch,launch,line_plan_cluster_launch_delivery_level_view,str,FALSE,FALSE,FALSE,7,FALSE,TRUE,1514_launch_Launch_line_plan_cluster_launch_delivery_level_view,,,,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1514,Launch Date,launch_date,line_plan_cluster_launch_delivery_level_view,date,FALSE,FALSE,FALSE,8,FALSE,TRUE,1514_launch_date_Launch Date_line_plan_cluster_launch_delivery_level_view,,,,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1514,PH Choice ID,placeholder_choice_id,line_plan_cluster_launch_delivery_level_view,str,FALSE,FALSE,FALSE,2,FALSE,TRUE,1514_placeholder_choice_id_PH Choice ID_line_plan_cluster_launch_delivery_level_view,,,,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1514,PH Style ID,placeholder_style_id,line_plan_cluster_launch_delivery_level_view,str,FALSE,FALSE,FALSE,3,FALSE,TRUE,1514_placeholder_style_id_PH Style ID_line_plan_cluster_launch_delivery_level_view,,,,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1514,Sales Units,sales_units,line_plan_cluster_launch_delivery_level_view,dict,FALSE,FALSE,FALSE,10,FALSE,TRUE,1514_sales_units_Sales Units_line_plan_cluster_launch_delivery_level_view,,,,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1514,Store Count,store_count,line_plan_cluster_launch_delivery_level_view,str,FALSE,FALSE,FALSE,12,FALSE,TRUE,1514_store_count_Store Count_line_plan_cluster_launch_delivery_level_view,,,,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1514,Style ID,style_id,line_plan_cluster_launch_delivery_level_view,str,FALSE,FALSE,FALSE,5,FALSE,TRUE,1514_style_id_Style ID_line_plan_cluster_launch_delivery_level_view,,,,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1515,Action,action,space_ct_optimization_dashboard,str,FALSE,TRUE,FALSE,5,TRUE,TRUE,1515_action_Action_space_ct_optimization_dashboard,,,,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1515,Age,l4_name,space_ct_optimization_dashboard,str,false,false,false,1.0,false,true,"1515_l4_name_Age_space_ct_optimization_dashboard",,,,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1515,Parent Block Size,parent_block,space_ct_optimization_dashboard,str,false,false,false,2.0,false,true,"1515_parent_block_Parent Block Size_space_ct_optimization_dashboard",,,,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1515,Status,status,space_ct_optimization_dashboard,str,FALSE,FALSE,FALSE,4,FALSE,TRUE,1515_status_Status_space_ct_optimization_dashboard,,,,FALSE,,TRUE,"{ ""isHyphenDisplayedForEmpty"": true }",TRUE,200,FALSE,FALSE
+1515,# Strs,#strs,space_ct_optimization_dashboard,int,false,false,true,3.0,false,true,"1515_#strs_#strs_space_ct_optimization_dashboard",,sum,"{ ""isHyphenDisplayedForEmpty"": true }",false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,100,false,false
+1516,Max,sellable_sqft_max,space_setup_constraints_age,list,false,true,false,4.2,false,true,"1516_sq_ft_max_setup_constraint","1516_sq_ft_Sq Ft_setup_constraint",,,false,,false,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1516,Min,sellable_sqft_min,space_setup_constraints_age,int,false,false,false,4.1,false,true,"1516_sq_ft_min_setup_constraint","1516_sq_ft_Sq Ft_setup_constraint",,roundOfftoTwoDecimals,false,,false,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1516,Sq Ft,sq_ft,space_setup_constraints_age,int,false,true,false,4.0,false,true,"1516_sq_ft_Sq Ft_setup_constraint",,,,false,,false,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1516,Max,parent_block_max,space_setup_constraints_age,list,false,true,false,3.2,false,true,"1516_max_Max_setup_constraint","1516_parent_block_Parent Block_setup_constraint",,,false,,false,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1516,Min,parent_block_min,space_setup_constraints_age,list,false,true,false,3.1,false,true,"1516_min_Min_setup_constraint","1516_parent_block_Parent Block_setup_constraint",,,false,,false,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1516,Parent Block,parent_block,space_setup_constraints_age,list,false,false,false,3.0,false,true,"1516_parent_block_Parent Block_setup_constraint",,,,false,,false,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1516,Age,l4_name,space_setup_constraints_age,str,false,false,false,2.0,false,true,"1516_l4_name_l4_name_setup_constraint",,,,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1516,Master Store Size,master_store_size,space_setup_constraints_age,str,false,false,false,1.0,false,true,"1516_master_store_size_Master Store Size_space_setup_constraints_age",,,,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1518,Cluster,cluster,line_arc_choice_cluster_view,str,false,false,false,3.0,false,true,d1428cd7-d568-4c5d-bdd0-e8d9a34baa5e,,,,false,,true,"{""isHyphenDisplayedForEmpty"": true}",true,200,false,false
+1518,Color Id,color_id,line_arc_choice_cluster_view,str,false,false,false,7.0,false,true,e1a6d195-27bd-4e48-9b2f-0f0e200121a1,,,,false,,true,"{""isHyphenDisplayedForEmpty"": true}",true,200,false,false
+1518,Launch,launch,line_arc_choice_cluster_view,str,false,false,false,4.0,false,true,"49c1d218-1e1a-493c-8312-73d50e244b00",,,,false,,true,"{""isHyphenDisplayedForEmpty"": true}",true,200,false,false
+1518,Launch Start Date,launch_start_date,line_arc_choice_cluster_view,str,false,false,false,5.0,false,true,"92333fac-dbc9-4107-8f50-34c1dfc545f0",,,,false,,true,"{""isHyphenDisplayedForEmpty"": true}",true,200,false,false
+1518,Placeholder Choice Id,placeholder_choice_id,line_arc_choice_cluster_view,str,false,false,false,1.0,false,true,d66886ac-20f0-4c58-b44e-fbb75095f9f1,,,,false,,true,"{""isHyphenDisplayedForEmpty"": true}",true,200,false,false
+1518,Placeholder Style Id,placeholder_style_id,line_arc_choice_cluster_view,str,false,false,false,2.0,false,true,d56dadec-388a-4923-b649-997587de4afc,,,,false,,true,"{""isHyphenDisplayedForEmpty"": true}",true,200,false,false
+1518,Style Id,style_id,line_arc_choice_cluster_view,str,false,false,false,6.0,false,true,"7b3d5e16-2812-4068-ac97-8958fe53e597",,,,false,,true,"{""isHyphenDisplayedForEmpty"": true}",true,200,false,false
+1518,Info,info,line_arc_choice_cluster_view,info_icon,false,true,false,1.0,false,true,"1518_info_Info_lline_arc_choice_cluster_view",,,,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1518,Cluster Buy Units,cluster_buy_units,line_arc_choice_cluster_view,str,false,false,false,,false,true,d1408cd4-d568-4c5d-bdd0-e8d9934baa5f,,,"",false,,false,"{""isHyphenDisplayedForEmpty"":true,""subHeaderProperties"":{""labelReplaceKey"":""Delivery"",""labelReplaceValue"":""Buy""}}",false,200,false,false
+1518,Buy Date,delivery_date,line_arc_choice_cluster_view,date,false,false,false,,false,true,d1408cd7-d568-4c5d-bdd0-e8d9934baa5f,,,"",false,,false,"{""isHyphenDisplayedForEmpty"":true,""subHeaderProperties"":{""labelReplaceKey"":""Delivery"",""labelReplaceValue"":""Buy""}}",false,200,false,false
+283,Max Sqft %,sellable_sqft_max_per,space_setup_constraints_ct,percentage,false,true,false,6.0,false,true,"283_sellable_sqft_max_per_space_setup_constraints_ct",,,,false,,false,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+283,Min Sqft %,sellable_sqft_min_per,space_setup_constraints_ct,percentage,false,true,false,5.0,false,true,"283_sellable_sqft_min_per_space_setup_constraints_ct",,,,false,,false,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+283,PB Tagging,parent_block,space_setup_constraints_ct,str,false,false,false,4.0,false,true,"283_parent_block_space_setup_constraints_ct",,,,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+283,CT,l5_name,space_setup_constraints_ct,str,false,false,false,3.0,false,true,"283_l5_name_l5_name_space_setup_constraints_ct",,,,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+283,Age,l4_name,space_setup_constraints_ct,str,false,false,false,1.0,false,true,"283_l4_name_l4_name_space_setup_constraints_ct",,,,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+283,SBU,l3_name,space_setup_constraints_ct,str,false,false,false,2.0,false,true,"283_l3_name_l4_name_space_setup_constraints_ct",,,,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1519,Age,l4_name,store_metrics,str,false,false,false,1.0,false,true,c1c8965b-112a-45f8-9b40-3e63bbaad674,,,,false,,true,"{}",true,200,false,false
+1519,# Stores,stores,store_metrics,int,false,false,false,2.0,false,true,"1f51f335-8ec9-44e3-b41e-b4ec5fbd4cbc",,,,false,,true,"{}",true,200,false,false
+1521,Master Store Size,master_store_size,space_setup_constraints_age,str,false,false,false,1.0,false,true,"1521_space_setup_constraints_age_store_size",,,,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1521,Store,store_code,space_setup_constraints_age,str,false,false,false,2.0,false,true,"1521_space_setup_constraints_age_store_code",,,,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1521,Store Format,store_format_new,space_setup_constraints_age,str,false,false,false,3.0,false,true,"1521_space_setup_constraints_age_store_format",,,,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1521,Store Initiative,store_initiative,space_setup_constraints_age,str,false,false,false,4.0,false,true,"1521_space_setup_constraints_age_store_initative",,,,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1521,Age,l4_name,space_setup_constraints_age,str,false,false,false,5.0,false,true,"1521_space_setup_constraints_age_l4_name",,,,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1521,Max,parent_block_max,space_setup_constraints_age,list,false,true,false,6.2,false,true,"1521_max_Max_setup_constraint","1521_parent_block_parent_block_setup_constraint",,,false,,false,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1521,Max,sellable_sqft_max,space_setup_constraints_age,list,false,true,false,7.2,false,true,"1521_sq_ft_max_setup_constraint","1521_space_setup_constraints_sqft",,,false,,false,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1521,Min,parent_block_min,space_setup_constraints_age,list,false,true,false,6.1,false,true,"1521_min_Min_setup_constraint","1521_parent_block_parent_block_setup_constraint",,,false,,false,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1521,Min,sellable_sqft_min,space_setup_constraints_age,int,false,false,false,7.1,false,true,"1521_sq_ft_min_setup_constraint","1521_space_setup_constraints_sqft",,roundOfftoTwoDecimals,false,,false,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1521,Parent Block,parent_block,space_setup_constraints_age,list,false,false,false,6.0,false,true,"1521_parent_block_parent_block_setup_constraint",,,,false,,false,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1521,Sq Ft,sq_ft,space_setup_constraints_age,int,false,true,false,7.0,false,true,"1521_space_setup_constraints_sqft",,,,false,,false,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1522,Hierarchy Code,hierarchy_code,mfp_hierarchy_level_view,str,false,false,false,1,false,true,058e8d90-f2c4-43ee-839b-116d8371ebdc,,,,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1522,Current WP,depth_ty,mfp_hierarchy_level_view,str,false,false,false,4.1,false,true,3a41b2e8-70ab-4fb6-9d1e-7d7163227484,510001,,,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,150,false,false
+1522,Current WP,choice_ty,mfp_hierarchy_level_view,str,false,false,false,3.1,false,true,f648811d-efd8-49a9-8b87-c7e1c08bc910,510000,,,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,150,false,false
+1522,Depth,depth,mfp_hierarchy_level_view,str,false,false,false,4,false,true,510001,,,,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1522,Var %,choice_change,mfp_hierarchy_level_view,percentage,false,false,false,3.3,false,true,9829eb4f-8f47-4753-bd12-e74558b418d8,510000,,,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,150,false,false
+1522,Choice Count,choice_count,mfp_hierarchy_level_view,str,false,false,false,3,false,true,510000,,,,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false
+1522,Var %,depth_change,mfp_hierarchy_level_view,percentage,false,false,false,4.3,false,true,98a1841d-ea50-4216-a87a-3efa5c795694,510001,,,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,150,false,false
+1522,New WP,new_choice_ty,mfp_hierarchy_level_view,str,false,false,false,3.2,false,true,3cd94691-376b-4fda-88e6-10b4fb188001,510000,,,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,150,false,false
+1522,New WP,new_depth_ty,mfp_hierarchy_level_view,str,false,false,false,4.2,false,true,4e91886b-2599-4c34-9db9-6a715aec4553,510001,,,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,150,false,false
+1522,Channel,channel,mfp_hierarchy_level_view,str,false,false,false,2,false,true,6af6672f-3cae-47fe-8321-d05c5dd8b4f9,,,,false,,true,"{ ""isHyphenDisplayedForEmpty"": true }",true,200,false,false

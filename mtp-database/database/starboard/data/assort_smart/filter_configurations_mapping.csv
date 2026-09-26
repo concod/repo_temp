@@ -1,0 +1,130 @@
+fc_code,label,column_name,type,display_type,level,dimension,is_mandatory,is_multiple_selection,range_min,range_max,default_value,is_disabled,is_clearable,display_order,is_required,extra,is_deleted
+138,Select # of Launch/ Delivery,assort_drop_value,non-cascaded,dropdown,,plan,true,false,"","","",false,true,13,false,"{}",false
+138,Season,assort_season_value,non-cascaded,dropdown,,create_plan,true,false,"","","",false,true,6,false,"{}",false
+138,Selling Period,assort_selling_period_value,non-cascaded,rangePicker,,plan,true,false,"","","",false,true,7,false,"{}",false
+138,Year,assort_year_value,non-cascaded,dropdown,,plan,true,false,"","","",false,true,5,false,"{}",false
+138,Channel,channel,non-cascaded,dropdown,,store,true,true,"","","",false,true,14,false,"{}",false
+138,Select Cluster Plan,cluster_plan_code,non-cascaded,dropdown,,create_plan,true,false,"","","",false,true,16,false,"{}",false
+138,Compare Season,compare_season_value,non-cascaded,dropdown,,create_plan,false,false,"","","",false,true,12,false,"{}",false
+138,Compare Year,compare_year_value,non-cascaded,dropdown,,plan,false,false,"","","",false,true,11,false,"{}",false
+138,Merch Business Category,l0_name,cascaded,dropdown,1,product,true,false,"","","",false,true,2,false,"{}",false
+138,Merch Department,l1_name,cascaded,dropdown,2,product,true,false,"","","",false,true,3,false,"{}",false
+138,Merch Class,l2_name,cascaded,dropdown,3,product,false,false,"","","",false,true,4,false,"{}",false
+138,Plan Name,plan_name,non-cascaded,TextField,,create_plan,true,false,"","","",false,true,1,false,"{}",false
+138,Reference Data ,reference_data,non-cascaded,toggle,,create_plan,false,false,"","","",false,true,8,false,"{}",false
+138,Reference Period,reference_period,non-cascaded,toggle,,create_plan,false,false,"","","",false,true,9,false,"{}",false
+138,Sub channel,sub_channel,non-cascaded,dropdown,,create_plan,true,true,"","","",false,true,15,false,"{}",false
+138,Compare year with,year_comparision_metric,non-cascaded,radioGroup,,create_plan,true,false,"","","",false,true,10,false,"{}",false
+139,Program,l3_name,cascaded,dropdown,2,product,true,true,"","","",false,true,3,false,"{}",false
+139,Channel,channel,non-cascaded,dropdown,,edit_plan,true,false,"","","",false,true,8,false,"{}",false
+139,Cluster Name,cluster_name,non-cascaded,TextField,,edit_plan,false,false,"","","",true,true,1,false,"{}",false
+139,Reference Period,assort_selling_period_value,non-cascaded,rangePicker,,edit_plan,false,false,"","","",true,true,6,false,"{}",false
+139,Budget Category,l1_name,cascaded,dropdown,1,product,true,false,"","","",false,true,2,false,"{}",false
+139,Area,l2_name,cascaded,dropdown,3,product,true,false,"","","",false,true,4,false,"{}",false
+139,Sub Channel,sub_channel,non-cascaded,dropdown,,edit_plan,false,false,"","","",false,true,9,false,"{}",false
+169,Channel,channel,cascaded,dropdown,,store,true,false,,,,false,true,8,false,"{}",false
+169,Budget Category,l1_name,cascaded,dropdown,1,product,true,false,,,,false,true,1,false,"{}",false
+169,Area,l2_name,cascaded,dropdown,2,product,true,false,,,,false,true,2,false,"{}",false
+169,Program,l3_name,cascaded,dropdown,3,product,false,false,,,,false,true,3,false,"{}",false
+2000,Store Format,center_format_type,cascaded,dropdown,,store,true,true,"","","",false,true,4,false,"{}",false
+2000,Store Grade,q_str_grade,cascaded,dropdown,,store,false,true,"","","",false,true,10,false,"{}",false
+2000,Center Type Detail,rtl_store_category_dsc,cascaded,dropdown,,store,false,true,"","","",false,true,7,false,"{}",false
+2000,Country,s0_name,cascaded,dropdown,,store,true,false,"","","",false,true,1,false,"{}",false
+2000,Season,season,non-cascaded,dropdown,,product,true,true,"","","",false,true,2,false,"{}",false
+2000,Sellable Sq. Ft.,sellable_sqft,cascaded,dropdown,,store,false,true,"","","",false,true,8,false,"{}",false
+2000,Store,store_code,cascaded,dropdown,,store,false,true,"","","",false,true,11,false,"{}",false
+2000,Store Format Detail,store_format_detail,cascaded,dropdown,,store,false,true,"","","",false,true,5,false,"{}",false
+2000,Store Format Rollup,store_format_rollup,cascaded,dropdown,,store,false,true,"","","",false,true,3,false,"{}",false
+2000,Center Type,store_type,cascaded,dropdown,,store,false,true,"","","",false,true,6,false,"{}",false
+2000,Store Volume,volume_cd,cascaded,dropdown,,store,false,true,"","","",false,true,9,false,"{}",false
+181,Cluster Name,cluster_name,non-cascaded,TextField,,create_plan,true,false,"","","",false,true,1,false,"{""dimension"": ""plan""}",false
+181,Channel,channel,non-cascaded,dropdown,,store,true,true,"","","",false,true,7,false,"{}",false
+181,Reference Year,assort_year_value,non-cascaded,dropdown,,plan,false,false,"","","",false,true,9,false,"{""dimension"": ""selling_period""}",false
+181,Reference Season,assort_season_value,non-cascaded,dropdown,,create_plan,false,false,"","","",false,true,10,false,"{""dimension"": ""selling_period""}",false
+181,Reference Selling Period,assort_selling_period_value,non-cascaded,rangePicker,,plan,true,false,"","","",false,true,11,false,"{""dimension"": ""selling_period""}",false
+181,Weightage,weightage,non-cascaded,IntegerField,,create_plan,true,true,"","","",true,true,12,false,"{""dimension"": ""selling_period""}",false
+301,Budget Category,l1_name,cascaded,dropdown,1,product,true,true,"","","",false,true,1,false,"{}",false
+301,Area,l2_name,cascaded,dropdown,2,product,false,true,"","","",false,true,2,false,"{}",false
+301,Program,l3_name,cascaded,dropdown,3,product,false,true,"","","",false,true,3,false,"{}",false
+301,Sub Program,l6_name,cascaded,dropdown,4,product,false,true,"","","",false,true,4,false,"{}",false
+301,Sub Class,l7_name,cascaded,dropdown,5,product,false,true,"","","",false,true,5,false,"{}",false
+301,Carryover,carryover,non-cascaded,dropdown,,hierarchy_filter,false,false,"","","",false,true,6,false,"{}",false
+301,Channel,channel,non-cascaded,dropdown,,store,false,true,"","","",false,true,7,false,"{}",false
+301,Clearance,clearance,non-cascaded,dropdown,,hierarchy_filter,false,false,"","","",false,true,8,false,"{}",false
+302,Tiles,graph_levels,cascaded,dropdown,1,graph_filter,true,false,"","","",false,true,1,false,"{}",false
+302,View tiles as a component of,view_tiles,cascaded,dropdown,2,graph_filter,true,false,"","","",false,true,2,false,"{}",false
+303,Size,size,non-cascaded,dropdown,1,graph_setting,true,false,"","","",false,true,1,false,"{}",false
+310,Threshold,axis_threshold,non-cascaded,IntegerField,,graph_filters,true,false,"","","",false,true,4,false,"{}",false
+310,X Axis,x_axis,non-cascaded,dropdown,,graph_filters,true,false,"","","",false,true,1,false,"{}",false
+311,Attributes,attribute,non-cascaded,dropdown,,graph_filters,true,false,"","","",false,true,1,false,"{}",false
+311,Compare with,compare_with,non-cascaded,dropdown,,graph_filters,true,false,"","","",false,true,3,false,"{}",false
+312,Compare with,compare_with,non-cascaded,dropdown,,graph_filters,true,false,"","","",false,true,3,false,"{}",false
+312,Geographical Attribute,geographical_attribute,non-cascaded,dropdown,,graph_filters,true,false,"","","",false,true,1,false,"{}",false
+313,Compare with,compare_with,non-cascaded,dropdown,,graph_filters,true,false,"","","",false,true,3,false,"{}",false
+313,X Axis,x_axis,non-cascaded,dropdown,,graph_filters,true,false,"","","",false,true,1,false,"{}",false
+314,Compare with,compare_with,non-cascaded,dropdown,,graph_filters,true,false,"","","",false,true,3,false,"{}",false
+314,X Axis,x_axis,non-cascaded,dropdown,,graph_filters,true,false,"","","",false,true,1,false,"{}",false
+315,X Axis,x_axis,non-cascaded,dropdown,,graph_filters,true,false,"","","",false,true,1,false,"{}",false
+316,Compare with,compare_with,non-cascaded,dropdown,,graph_filters,true,false,"","","",false,true,2,false,"{}",false
+317,Channel,channel,non-cascaded,dropdown,,store,false,true,"","","",false,true,6,false,"{}",false
+317,Budget Category,l1_name,cascaded,dropdown,1,product,true,true,"","","",false,true,1,false,"{}",false
+317,Area,l2_name,cascaded,dropdown,2,product,false,true,"","","",false,true,2,false,"{}",false
+317,Program,l3_name,cascaded,dropdown,3,product,false,true,"","","",false,true,3,false,"{}",false
+317,Sub Program,l6_name,cascaded,dropdown,4,product,false,true,"","","",false,true,4,false,"{}",false
+317,Sub Class,l7_name,cascaded,dropdown,5,product,false,true,"","","",false,true,5,false,"{}",false
+318,Primary Y Axis,y_axis,non-cascaded,dropdown,1,graph_setting,true,false,"","","",false,true,1,false,"{}",false
+319,Review Metric,review_metric,non-cascaded,dropdown,,graph_filters,true,false,"","","",false,true,1,false,"{}",false
+181,Area,l2_name,cascaded,dropdown,,product,true,false,"","","",false,true,3,false,"{}",false
+181,Budget Category,l1_name,cascaded,dropdown,,product,true,false,"","","",false,true,2,false,"{}",false
+320,Clearance/Carryover,cc_attribute,non-cascaded,dropdown,,graph_settings,true,false,"","","",false,true,4,false,"{}",false
+320,Primary Y Axis,y_axis,non-cascaded,dropdown,,graph_settings,true,false,"","","",false,true,1,false,"{}",false
+321,Y Axis,y_axis,non-cascaded,dropdown,,graph_filters,true,false,"","","",false,true,2,false,"{}",false
+321,Secondary Y Axis,y_axis_secondary,non-cascaded,dropdown,,graph_filters,true,false,"","","",false,true,3,false,"{}",false
+380,Bubble Color Group,bubble_color_grp,non-cascaded,dropdown,,graph_filter,true,false,"","","",false,true,2,false,"{}",false
+380,Bubble Points,bubble_points,non-cascaded,dropdown,,graph_filter,true,false,"","","",false,true,1,false,"{}",false
+380,X Axis Threshold,x_axis_threshold,non-cascaded,IntegerField,,graph_filter,true,false,"","","",false,true,3,false,"{}",false
+380,Y Axis Threshold,y_axis_threshold,non-cascaded,IntegerField,,graph_filter,true,false,"","","",false,true,4,false,"{}",false
+381,Bubble Size,bubble_size,non-cascaded,dropdown,,graph_settings,true,false,"","","",false,true,3,false,"{}",false
+381,X Axis,x_axis,non-cascaded,dropdown,,graph_settings,true,false,"","","",false,true,1,false,"{}",false
+381,Y Axis,y_axis,non-cascaded,dropdown,,graph_settings,true,false,"","","",false,true,2,false,"{}",false
+390,Carryover,carryover,non-cascaded,dropdown,,custom,false,false,"","","",false,true,9,false,"{""dimension"": ""store""}",false
+390,Channel,channel,non-cascaded,dropdown,,store,false,true,"","","",false,true,10,false,"{""dimension"": ""store""}",false
+390,Clearance,clearance,non-cascaded,dropdown,,custom,false,false,"","","",false,true,8,false,"{""dimension"": ""store""}",false
+390,Season,season,non-cascaded,dropdown,,custom,true,false,"","","",false,true,6,false,"{""dimension"": ""store""}",false
+390,Selling Period,selling_period,non-cascaded,rangePicker,,custom,true,false,"","","",true,true,7,false,"{""dimension"": ""store""}",false
+390,Product Type,l8_name,cascaded,dropdown,9,product,true,false,"","",F,false,true,4,false,"{""is_hidden"": true}",false
+304,Ship Group Name,store_group,cascaded,dropdown,2,store,false,true,"","","",false,true,8,false,"{}",false
+304,Region,region,cascaded,dropdown,3,store,false,true,"","","",false,true,9,false,"{}",false
+304,Channel,channel,cascaded,dropdown,1,store,true,true,"","","",false,true,,false,"{}",false
+333,Channel,channel,cascaded,dropdown,,store,true,false,"","","",false,true,8,false,"{}",false
+333,Budget Category,l1_name,cascaded,dropdown,1,product,true,false,"","","",false,true,1,false,"{}",false
+333,Area,l2_name,cascaded,dropdown,2,product,true,false,"","","",false,true,2,false,"{}",false
+333,Program,l3_name,cascaded,dropdown,3,product,false,false,"","","",false,true,3,false,"{}",false
+391,Budget Category,l1_name,cascaded,dropdown,1,product,true,true,"","","",false,true,1,true,"{}",false
+391,Area,l2_name,cascaded,dropdown,2,product,true,true,"","","",false,true,2,false,"{}",false
+391,Program,l3_name,cascaded,dropdown,3,product,true,true,"","","",false,true,3,false,"{}",false
+391,Sub Program,l6_name,cascaded,dropdown,4,product,false,true,"","","",false,true,4,false,"{}",false
+391,Sub Class,l7_name,cascaded,dropdown,5,product,false,true,"","","",false,true,5,false,"{}",false
+391,Channel,channel,non-cascaded,dropdown,6,store,false,true,"","","",false,true,6,false,"{}",false
+188,Plan Name,plan_name,non-cascaded,TextField,,create_plan,true,false,"","","",false,true,1,false,"{""dimension"": ""plan""}",false
+188,Budget Category,l1_name,cascaded,dropdown,1,product,true,false,"","","",false,true,1,false,"{}",false
+188,Area,l2_name,cascaded,dropdown,2,product,true,false,"","","",false,true,2,false,"{}",false
+188,Program,l3_name,cascaded,dropdown,3,product,true,false,"","","",false,true,3,false,"{}",false
+188,Product Type,l8_name,cascaded,dropdown,9,product,true,false,"","","",true,true,4,false,"{}",false
+188,Channel,channel,non-cascaded,dropdown,,store,true,true,"","","",false,true,3,false,"{}",false
+188,Cluster Plan,cluster_plan_code,non-cascaded,dropdown,,create_plan,true,false,"","","",false,true,7,false,"{}",false
+188,Year,assort_year_value,non-cascaded,dropdown,,plan,false,false,"","","",false,true,8,false,"{}",false
+188,Planning Season,assort_season_value,non-cascaded,dropdown,,create_plan,true,false,"","","",false,true,9,false,"{""dimension"": ""date_range""}",false
+188,Selling Period,assort_selling_period_value,non-cascaded,rangePicker,,plan,false,false,"","","",false,true,10,false,"{""dimension"": ""date_range""}",false
+188,Reference Data ,reference_data,non-cascaded,toggle,,create_plan,false,false,"","","",false,true,11,false,"{""dimension"": ""reference_data""}",false
+188,Reference Period,reference_period,non-cascaded,toggle,,create_plan,false,false,"","","",false,true,12,false,"{""dimension"": ""reference_data""}",false
+188,Compare year with,year_comparision_metric,non-cascaded,radioGroup,,create_plan,true,false,"","","",false,true,13,false,"{""dimension"": ""reference_data""}",false
+188,Compare Season,compare_season_value,non-cascaded,dropdown,,create_plan,false,false,"","","",false,true,14,false,"{""dimension"": ""reference_data""}",false
+188,Select # of Launch/ Delivery,assort_drop_value,non-cascaded,dropdown,,plan,true,false,"","","",false,true,15,false,"{}",false
+188,Sub channel,sub_channel,non-cascaded,dropdown,,create_plan,false,true,"","","",false,true,16,false,"{}",false
+181,Program,l3_name,cascaded,dropdown,,product,true,false,"","","",false,true,4,false,"{}",false
+181,Product Type,l8_name,cascaded,dropdown,9,product,true,false,"","","",true,true,8,false,"{""is_hidden"": true}",false
+390,Budget Category,l1_name,cascaded,dropdown,1,product,true,true,"","","",false,true,1,false,"{}",false
+390,Area,l2_name,cascaded,dropdown,2,product,true,true,"","","",false,true,2,false,"{}",false
+390,Year,year,non-cascaded,dropdown,,custom,true,false,"","","",false,true,5,,"{""dimension"": ""store""}",false
+390,Program,l3_name,cascaded,dropdown,3,product,true,true,"","","",false,true,3,false,"{}",false

@@ -1,0 +1,4157 @@
+"id","query_name","query_text","table_name","selected_columns","condition","is_parameterized","remarks","last_modified"
+1,query_1_select,"Select category_name, array_agg(jsonb_build_object('label', label, 'kpi', kpi)) as kpis from plan_smart.app_metrics_config group by category_name",,,,,,
+2,query_2_select,select * from plan_smart.plan_master,,,,,,
+3,query_3_select,"select json_agg(aa) as match_with_master_info from  (Select jsonb_build_object(category_name ,  ARRAY_agg(jsonb_build_object('label',label , 'kpi',kpi)) ) as aa from plan_smart.app_metrics_config where pre_match_with = True group by category_name)aa",,,,,,
+4,query_4_select,"SELECT id, name, label, parent_id, remarks, order_sequence, is_active, created_at, updated_at, created_by, updated_by FROM meta_schema.tb_master_attributes WHERE is_deleted = false",,,,,,
+5,query_5_select,"SELECT id, name, label, master_attribute_id, parent_id, remarks, order_sequence, is_active, created_at, updated_at, created_by, updated_by, calculation_req FROM meta_schema.tb_sub_master_attributes WHERE is_deleted = false",,,,,,
+6,query_6_update,"$$$ UPDATE meta_schema.tb_sub_master_attributes SET {p1} {p2} {p3} {p4} is_active = TRUE , updated_at = CURRENT_DATE WHERE id = {?id} $$$.format(p1 = ""label = {?label} ,"" if len(parameter:label) > 0 else """", p2 = ""remarks = {?remarks} ,"" if len(parameter:remarks) > 0 else """", p3 = ""order_sequence = {?order_sequence},"" if parameter:order_sequence != -1 else """", p4 = ""calculation_req = {?calculation_req},"" if len(parameter:calculation_req) > 0 else """")",,,,true,,
+7,query_7_insert,"$$$ INSERT INTO meta_schema.tb_sub_master_attributes (name, label, master_attribute_id, parent_id, remarks, order_sequence, calculation_req, created_at, updated_at) VALUES ({?name}, {p1} {?master_attribute_id}, {?parent_id}, {p2} {p3} {p5} CURRENT_DATE, CURRENT_DATE) RETURNING id $$$.format( p1 = ""{?label},"" if len(parameter:label) > 0 else ""null,"", p2 = ""{?remarks},"" if len(parameter:remarks) > 0 else ""null,"", p3 = ""{?order_sequence},"" if parameter:order_sequence != -1 else ""null,"", p5 = ""{?calculation_req},"" if len(parameter:calculation_req) > 0 else ""null,"",)",,,,true,,
+8,query_8_update,UPDATE meta_schema.tb_sub_master_attributes SET is_deleted = true WHERE name = {?name} and parent_id = {?parent_id} and master_attribute_id = {?master_attribute_id},,,,true,,
+9,query_9_select,"SELECT name, formula, function_name, remarks, Remarks FROM meta_schema.tb_formula_master WHERE is_deleted = false",,,,,,
+10,query_10_insert,"$$$ INSERT INTO meta_schema.tb_formula_master (name, formula, function_name, remarks) VALUES ({?name}, {p1} {?function_name}, {p2}) RETURNING id $$$.format( p1 = ""{?formula},"" if len(parameter:formula) > 0 else ""null,"", p2 = ""{?remarks}"" if len(parameter:remarks) > 0 else ""null,"",)",,,,true,,
+11,query_11_update,UPDATE meta_schema.tb_formula_master SET is_deleted = true WHERE id = {?id},,,,true,,
+12,query_12_update,"$$$ UPDATE meta_schema.tb_formula_master SET name = {?name} {p1} {p2} {p3} WHERE name = {?name} RETURNING id $$$.format(p1 = "",formula = {?formula} "" if len(parameter:formula) > 0 else """", p2 = "",function_name = {?function_name} "" if len(parameter:function_name) > 0 else """", p3 = "",remarks = {?remarks}"" if len(parameter:remarks) > 0 else """")",,,,true,,
+13,query_13_select,SELECT * FROM meta_schema.tb_kpi_config WHERE is_deleted = false,,,,,,
+14,query_14_insert,"$$$ INSERT INTO meta_schema.tb_kpi_config (attribute_id, kpi_id, category_id, order, ranking, kpi_type, extra, label, editable_flow_lock_id, formatter_id) VALUES ( {?attribute_id}, {?kpi_id}, {?category_id}, {?order}, {?ranking}, {?kpi_type}, '{}'::jsonb, {p1} {p2} {p3} ) RETURNING id $$$.format( p1 = ""{?label},"" if len(parameter:label) > 0 else ""null,"", p2 = ""{?editable_flow_lock_id},"" if parameter:editable_flow_lock_id != -1 else ""null,"", p3 = ""{?formatter_id}"" if parameter:formatter_id != -1 else ""null"" )",,,,true,,
+19,query_19_update,"UPDATE plan_smart.plan_master
+SET eoh_boh_sync = {?eoh_boh_sync}
+WHERE plan_code = {?plan_code}
+AND is_deleted = false
+RETURNING plan_code",,,,true,,
+36,query_insert_35,"$$$
+                INSERT INTO meta_schema.tb_lock_and_hold_def (display_label,kpi_id)
+                values ({?display_name},{?kpi_id}) RETURNING id
+                $$$",,,,true,,
+23,query_23_insert,"insert into meta_schema.tb_sub_master_attributes (name,label,master_attribute_id,parent_id)
+			values ({?name},{?label},{?master_attribute_id},{?parent_id})",,,,true,,
+24,query_24_select,"WITH RECURSIVE hierarchy_cte AS (
+			SELECT
+			    id,
+			    name,label,master_attribute_id,
+			    parent_id,
+			    1 AS level,
+			    is_active , is_deleted,remarks
+			FROM
+			    meta_schema.tb_sub_master_attributes
+			where  id = {?id}
+			UNION ALL
+			SELECT
+			    p.id,
+			    p.name,p.label,p.master_attribute_id,
+			    p.parent_id,
+			    c.level + 1,
+			    p.is_active , p.is_deleted,p.remarks
+			FROM
+			    meta_schema.tb_sub_master_attributes p
+			INNER JOIN hierarchy_cte c ON p.id = c.parent_id and p.is_active=True and p.is_deleted = False
+			)
+			select * from hierarchy_cte where is_active=True and is_deleted = False",,,,true,,
+26,query_26_insert,"$$$
+			INSERT INTO meta_schema.tb_master_attributes
+			( name,label,parent_id,remarks,order_sequence,created_at,updated_at)
+			VALUES (
+			    {?name},
+			    {p1}
+			    {?parent_id},
+			    {p2}
+			    {p3}
+			    CURRENT_DATE,
+			    CURRENT_DATE
+			)
+			RETURNING id
+			$$$.format(
+			p1 = ""{?label},"" if len(parameter:label) > 0 else ""null,"",
+			p2 = ""{?remarks},"" if len(parameter:remarks) > 0 else ""null,"",
+			p3 = ""{?order_sequence},"" if parameter:order_sequence != -1 else ""null,""
+			)",,,,true,,
+27,query_27_update,"$$$
+			UPDATE meta_schema.tb_master_attributes 
+			SET {p1} {p2} {p3} {p4} {p5}
+			is_active = TRUE , updated_at = CURRENT_DATE
+			WHERE id = {?id}
+			$$$.format(p1 = ""label = {?label} ,"" if len(parameter:label) > 0 else """",
+			           p2 = ""remarks = {?remarks} ,"" if len(parameter:remarks) > 0 else """",
+			           p3 = ""order_sequence = {?order_sequence},"" if parameter:order_sequence != -1 else """",
+			           p4 = ""parent_id = {?parent_id},"" if parameter:parent_id != -3 else """",
+			           p5 = ""is_deleted = True,"" if parameter:is_deleted == True else """"
+			           )",,,,true,,
+38,query_37_select,"SELECT *
+FROM global.filter_configurations_mapping
+WHERE fc_code = {?fc_code}
+ORDER BY display_order
+
+",,,,,For Arhaus,
+16,query_16_update,UPDATE meta_schema.tb_kpi_config SET is_deleted = true WHERE attribute_id = {?attribute} and kpi_id = {?kpi},,,,true,,
+44,query_42_select,"with attribute_master(attribute_value) as (select attribute_value from ""global"".tenant_attribute_master tam where name = 'plan_stage')
+select jsonb_array_elements_text(attribute_value->'in-season'->'value') as label, 'in-season' as value
+from attribute_master
+union
+select jsonb_array_elements_text(attribute_value->'pre-season'->'value') as label, 'pre-season' as value
+from attribute_master
+order by 2",,,,false,,
+69,query_63_update,UPDATE meta_schema.tb_sub_master_attributes set is_deleted = {?is_deleted} where id = {?id},,,,true,,
+30,query_30_insert,"$$$
+			INSERT INTO meta_schema.tb_conditional_formatting_master
+			( name,condition_formatting,remark)
+			VALUES (
+			    {?name},
+			    {?condition_formatting}
+			    {p1}
+			)
+			RETURNING id
+			$$$.format(
+			p1 = "", {?remark}"" if len(parameter:remark) > 0 else "", null"",
+			)",,,,true,,
+32,query_32_insert,"$$$
+                INSERT INTO meta_schema.tb_format_master
+                (formatter, name, remarks)
+                VALUES (
+                    {p2},
+                    {?name},
+                    {p1}
+                )
+                RETURNING id
+                $$$.format(
+                p1 = ""{?remarks}"" if len(parameter:remarks) > 0 else ""null"",
+                p2 = '''{?formatter} ''' if parameter:formatter != -1 else ""null""
+                )",,,,true,,
+33,query_33_update,"$$$
+                UPDATE meta_schema.tb_format_master 
+                SET {p1} {p2} {p3} id = {?id}
+                WHERE id = {?id}
+                $$$.format(p1 = ""name = {?name} ,"" if len(parameter:name) > 0 else """",
+                           p2 = '''formatter = {?formatter} ,''' if parameter:formatter != -1 else """",
+                           p3 = ""remarks = {?remarks} ,"" if len(parameter:remarks) > 0 else """",
+                       )",,,,true,,
+37,query_update_36,"$$$
+                UPDATE meta_schema.tb_lock_and_hold_def 
+                SET display_label = {?display_name}
+                where id = {?id}
+                $$$",,,,true,,
+22,query_22_update,"update meta_schema.tb_sub_master_attributes set
+			{p1} {p2} {p3} {p4}
+			where id = {?id}
+			$$$.format(p1 = "" name = {?name}"" if parameter:name is not None else """",
+			      p2 = "",label = {?label}"" if parameter:label is not None else """",
+			      p3 = "",master_attribute_id = {?master_attribute_id}"" if parameter:master_attribute_id is not None else """",
+			      p4 = "",parent_id = {?parent_id}"" if parameter:parent_id is not None else """" )",,,,true,,
+47,query_45_select,"$$$ select name as value, name as label from ""global"".season_master where season_type = 'Arhaus Season' {p1}
+$$$.format(p1 = ""and year in ({?plansmart_year_value})"" if parameter:plansmart_year_value != -1 and len(parameter:plansmart_year_value) else """" )",,,,true,,
+45,query_43_select,"select cast(jsonb_array_elements_text(attribute_value->'value') as integer )as value , cast(jsonb_array_elements_text(attribute_value->'value') as integer) as label from 
+""global"".tenant_attribute_master
+where (name = 'plansmart_year_value' and {?is_start_year}) or (name = 'plansmart_end_year_value' and not {?is_start_year})",,,,false,,
+25,query_25_delete,"$$$
+            delete from meta_schema.tb_editableflow_master 
+            where on_change_kpi_id = {?kpi} $$$","","",,true,,
+46,query_44_select,"$$$ select distinct
+case when {?type} = 'l0_name' then l0_name
+when {?type} = 'l1_name' then l1_name
+else  l2_name
+end as value,
+case when {?type} = 'l0_name' then l0_name
+when {?type} = 'l1_name' then l1_name
+else l2_name
+end as label
+{p3}
+            FROM plan_smart.product_hierarchies_filter
+            where (l1_name is not null and {?type} = 'l1_name' {p1}) or ({?type} = 'l2_name' and l2_name is not null {p2}) or ({?type} = 'l0_name' and l0_name is not null)
+            $$$.format(p1 = ""and l0_name in ({?l0_name}) "" if len(parameter:l0_name) > 0 else """",
+					   p2 = ""and l1_name in ({?l1_name})"" if len(parameter:l1_name) > 0 else """",
+					   p3 = "",l0_name as parent_value"" if parameter:type == 'l1_name' else """")",,,,true,,
+39,query_38_select,"SELECT * FROM global.table_configurations_mapping tcm inner join global.table_configurations tc 
+            on tc.tc_code = tcm.tc_code 
+            WHERE tc.name = 'plansmart_dashboard' ORDER BY order_of_display",,"",,false,,
+52,query_51_select,"SELECT case 
+          	when name = 'plansmart_generation_hierarchy' then jsonb_build_object('product_level',attribute_value->'value'->'display_level')
+          	when name = 'plansmart_channel_hierarchy' then jsonb_build_object('channel_level',attribute_value->'value')
+          end
+          as value
+		  FROM ""global"".tenant_attribute_master
+		  WHERE (name = 'plansmart_generation_hierarchy' or name = 'plansmart_channel_hierarchy') and application_code = 4",,,,false,,
+31,query_31_update,"$$$
+                UPDATE meta_schema.tb_conditional_formatting_master 
+                SET {p1} {p2} {p3} id = {?id}
+                WHERE id = {?id}
+                $$$.format(p1 = ""name = {?name} ,"" if len(parameter:name) > 0 else """",
+                           p2 = ""condition_formatting = {?value} ,"" if len(parameter:value) > 0 else """",
+                           p3 = ""remark = {?remark} ,"" if len(parameter:remark) > 0 else """",
+                       )",,,,true,,
+21,query_21_select,"SELECT A.formatter , B.category , C.conditional_formatting , D.lock_and_hold , E.formulas
+                  FROM
+                  (SELECT json_agg(jsonb_build_object( 'id', id, 'display_name', name , 'value',formatter)) formatter
+                  FROM meta_schema.tb_format_master ) A ,
+                  (SELECT json_agg(jsonb_build_object( 'id', sma.id, 'display_name', sma.label)) category
+                  FROM meta_schema.tb_sub_master_attributes sma join meta_schema.tb_master_attributes ma on sma.master_attribute_id = ma.id
+                   WHERE ma.name = 'kpi_category' and sma.is_deleted = FALSE and ma.is_deleted = FALSE ) B,
+                  (SELECT json_agg(jsonb_build_object( 'id', id, 'display_name', name , 'value', condition_formatting)) conditional_formatting
+                  FROM meta_schema.tb_conditional_formatting_master  ) C,
+                 (SELECT json_agg(jsonb_build_object( 'id', id, 'display_name', display_label, 'kpi_id',kpi_id)) lock_and_hold
+                  FROM meta_schema.tb_lock_and_hold_def
+                     ) D , 
+                  (SELECT json_agg(jsonb_build_object( 'id', id, 'display_name', name)) formulas
+                  FROM meta_schema.tb_formula_master
+                     ) E",,,,false,,
+15,query_15_update,"INSERT INTO meta_schema.tb_kpi_config (
+                    kpi_id,
+                    attribute_id,
+                    category_id,
+                    \""order\"",
+                    ranking,
+                    kpi_type,
+                    label,
+                    lock_and_hold_id,
+                    formatter_id,
+                    condition_formatting_id,
+                    is_deleted,
+                    editable,
+                    \""default\"",
+                    visible,
+                    is_default_visible,
+                    match_with_all,
+                    single_match_with,
+                    is_actualized,
+                    variance_visible,
+                    variance_editable,
+                    class_to_dept_visible,
+                    class_to_dept_editable,
+                    class_to_channel_visible,
+                    class_to_channel_editable,
+                    class_to_class_visible,
+                    class_to_class_editable,
+                    is_advance_lock,
+                    eligible,
+                    first_week_editable
+                ) VALUES (
+                    {?kpi},
+                    {?attribute},
+                    {?category},
+                    {?order},
+                    {?rank},
+                    {?type},
+                    {?label},
+                    {?lock_and_hold},
+                    {?formatter},
+                    {?conditional_formatting},
+                    False,
+                    {?editable},
+                    {?default},
+                    {?visible},
+                    {?is_default_visible},
+                    {?match_with_all},
+                    {?single_match_with},
+                    {?is_actualized},
+                    {?variance_visible},
+                    {?variance_editable},
+                    {?class_to_dept_visible},
+                    {?class_to_dept_editable},
+                    {?class_to_channel_visible},
+                    {?class_to_channel_editable},
+                    {?class_to_class_visible},
+                    {?class_to_class_editable},
+                    {?is_advance_lock},
+                    {?eligible},
+                    {?first_week_editable}
+                ) ON CONFLICT (kpi_id, attribute_id) DO UPDATE SET
+                    category_id = EXCLUDED.category_id,
+                    \""order\"" = EXCLUDED.order,
+                    ranking = EXCLUDED.ranking,
+                    kpi_type = EXCLUDED.kpi_type,
+                    label = EXCLUDED.label,
+                    lock_and_hold_id = EXCLUDED.lock_and_hold_id,
+                    formatter_id = EXCLUDED.formatter_id,
+                    condition_formatting_id = EXCLUDED.condition_formatting_id,
+                    is_deleted = False,
+                    editable = EXCLUDED.editable,
+                    \""default\"" = EXCLUDED.default,
+                   	visible = EXCLUDED.visible,
+                   	is_default_visible = EXCLUDED.is_default_visible,
+                    match_with_all = EXCLUDED.match_with_all,
+                    single_match_with = EXCLUDED.single_match_with,
+                    is_actualized = EXCLUDED.is_actualized,
+                    variance_visible = EXCLUDED.variance_visible,
+                    variance_editable = EXCLUDED.variance_editable,
+                    class_to_dept_visible = EXCLUDED.class_to_dept_visible,
+                    class_to_dept_editable = EXCLUDED.class_to_dept_editable,
+                    class_to_channel_visible = EXCLUDED.class_to_channel_visible,
+                    class_to_channel_editable = EXCLUDED.class_to_channel_editable,
+                    class_to_class_visible = EXCLUDED.class_to_class_visible,
+                    class_to_class_editable = EXCLUDED.class_to_class_editable,
+                    is_advance_lock = EXCLUDED.is_advance_lock,
+                    eligible = EXCLUDED.eligible,
+                    first_week_editable = EXCLUDED.first_week_editable
+                RETURNING id",,"",,true,,
+68,query_62_update,UPDATE meta_schema.tb_format_master set formatter = {?formatter_value} where id = {?formatter},,,,true,,
+73,query_67_update,update meta_schema.tb_kpi_master set is_active = {?enable} where id = {?kpi},,,,true,,
+48,query_48_select,"SELECT
+  jsonb_object_agg
+  (
+    km.name,
+    jsonb_build_object
+    (
+      'roundOff', fm.formatter->>'fixTo',
+      'type', fm.formatter->>'type',
+      'conditional_formatting', tcfm.condition_formatting,
+      'editable', jsonb_build_object('isEditable', tkc.editable, 'columns', 'all', 'contributionEditableVersion', tkc.contribution_editable_version),
+      'is_advance_lock', tkc.is_advance_lock
+    )
+  ) AS output
+FROM meta_schema.tb_kpi_master km
+JOIN meta_schema.tb_kpi_config tkc ON km.id = tkc.kpi_id
+JOIN meta_schema.tb_conditional_formatting_master tcfm ON tkc.condition_formatting_id = tcfm.id
+JOIN meta_schema.tb_format_master fm ON tkc.formatter_id = fm.id;",,,,,,
+42,query_41_select,"$$$
+            select distinct l1_name as label, l0_name as value
+            FROM plan_smart.product_hierarchies_filter
+            where l1_name is not null {p1}
+            $$$.format(p1 = ""and l0_name = {?l0_name} "" if len(parameter:l0_name) > 0 else """")",,,,true,,
+70,query_64_select,"WITH RECURSIVE sub_hierarchy AS (
+         SELECT tb_sub_master_attributes.id,
+            tb_sub_master_attributes.name,
+            tb_sub_master_attributes.label,
+            tb_sub_master_attributes.parent_id,
+            tb_sub_master_attributes.master_attribute_id,
+            tb_sub_master_attributes.remarks,
+            is_deleted,
+            1 AS level
+           FROM meta_schema.tb_sub_master_attributes
+          WHERE tb_sub_master_attributes.parent_id = '-1'::integer::numeric
+        UNION ALL
+         SELECT m.id,
+            m.name,
+            m.label,
+            m.parent_id,
+            m.master_attribute_id,
+            m.remarks,
+            m.is_deleted,
+            h_1.level + 1
+           FROM meta_schema.tb_sub_master_attributes m
+             JOIN sub_hierarchy h_1 ON m.parent_id = h_1.id::numeric 
+        )
+        select master_id,master_name,master_label,parent_id,level, array_agg(data)
+        from
+        (SELECT 
+            h.id AS master_id,
+            h.name AS master_name,
+            h.label AS master_label,
+            h.parent_id,
+            sh.level,
+            json_build_object('id',sh.id,
+            'name',sh.name,
+            'label',sh.label,
+            'parent_id',sh.parent_id,
+            'master_attribute_id',sh.master_attribute_id,
+            'master_attribute_type',h.name,
+            'is_deleted',sh.is_deleted,
+            'config',jsonb_build_object('name',tsmc.name,
+            'description',tsmc.description,
+            'product_l0_editable',tsmc.product_l0_editable,
+            'product_l1_editable',tsmc.product_l1_editable,
+            'product_l2_editable',tsmc.product_l2_editable,
+            'channel_l0_editable',tsmc.channel_l0_editable,
+            'channel_l1_editable',tsmc.channel_l1_editable)
+            ) as data
+        FROM sub_hierarchy sh join meta_schema.vw_hierarchy_level_data h on sh.master_attribute_id = h.id
+        left outer join meta_schema.tb_sub_master_config tsmc on tsmc.attribute_id = sh.id) foo
+        group by master_id,master_name,master_label,parent_id,level",,,,false,,
+41,query_40_select,"$$$
+            SELECT distinct fiscal_month_in_year as value , fiscal_month_name as label
+            FROM ""global"".fiscal_date_mapping
+            where ({?start_year}!={?end_year} )
+            or ({?start_year} = {?end_year} {p1} {p2})
+            order by fiscal_month_in_year
+            $$$.format(p1 = ""and fiscal_month_in_year >= {?start_month}"" if parameter:start_month != -1 else """",
+                        p2 = ""and fiscal_month_in_year <= {?end_month}"" if parameter:end_month != -1 else """")",,,,false,,
+50,query_50_select,"$$$with recursive hierarchy_cte as
+                (
+                    select id, parent_id, 1 as level
+                    from meta_schema.tb_sub_master_attributes
+                    where is_deleted = false and id = {?id}
+                    union all
+                    select p.id, p.parent_id, c.level - 1
+                    from meta_schema.tb_sub_master_attributes p
+                    inner join hierarchy_cte c on p.id = c.parent_id
+                    where is_deleted = false
+                ),
+                kpi_with_hierarchy as
+                (
+                    select h.id as hierarchy_id, h.level, k.*, false as default_kpi_settings
+                    from hierarchy_cte h
+                    join meta_schema.tb_kpi_config k on k.attribute_id = h.id
+                    where true {p1}
+                    union all
+                    select -1 as hierarchy_id, -100 as level, /* level as -100 as recursive cte can be called maximum 100 times by default */
+                    k.*, true as default_kpi_settings
+                    from meta_schema.tb_kpi_config k
+                    where k.attribute_id = -1 {p1}
+                ),
+                ranked_kpis as
+                (
+                    select k.*, row_number() over (partition by k.kpi_id order by k.level desc) as rn
+                    from kpi_with_hierarchy k 
+                ),
+                editableflowmaster as
+                (
+                    select A.kpi_id, json_agg(A.editable_flow) editable_flow
+                    from
+                        (
+                            select rk.kpi_id,
+                                jsonb_build_object
+                                (
+                                    'lock_and_hold' ,
+                                    efm.lock_and_hold_id ,
+                                     'name',
+                                     lhd.display_label,
+                                     'kpi',
+                                     rk.kpi_id,
+                                    'value' ,
+                                    json_agg
+                                    (
+                                        jsonb_build_object
+                                        (
+                                            'kpi_calculate_id',
+                                            efm.kpi_to_calculate,
+                                            'kpi_calculate_name',
+                                            km.name,
+                                            'formula',
+                                            (
+                                                        select
+                                                            replace
+                                                            (
+                                                                STRING_AGG
+                                                                (
+                                                                    coalesce
+                                                                    (
+                                                                        (
+                                                                            select
+                                                                                '''' || name || ''''
+                                                                            from
+                                                                                meta_schema.tb_kpi_master tkm
+                                                                            where
+                                                                                id = cast(SUBSTRING(t.val from 'kpi_([0-9]+)') as INTEGER)
+                                                                        ),
+                                                                        t.val
+                                                                    ),
+                                                                    ''
+                                                                order by
+                                                                    position
+                                                                ),
+                                                                ' ',
+                                                                ''
+                                                            ) as formatted_string
+                                                            from
+                                                            unnest
+                                                            (
+                                                                regexp_split_to_array
+                                                                (
+                                                                    regexp_replace(formula, '([/+\-*,\[\]()])', ' \\1 ', 'g'), ' '
+                                                                )
+                                                            ) with ordinality t(val, position)
+                                                    ),
+                                            'calculate_order' ,
+                                            efm.calculation_order,
+                                            'sequenceflow',
+                                             		efm.sequenceflow,
+                                            	   'allsequencetimelineupdate',
+                                                    efm.allsequencetimelineupdate,
+                                                    'sequencetimelinecount',
+                                                    efm.sequencetimelinecount   
+                                        ) order by efm.calculation_order
+                                    )
+                                ) editable_flow
+                            from
+                                ranked_kpis rk
+                            left outer join meta_schema.tb_editableflow_master efm on
+                                rk.kpi_id = efm.on_change_kpi_id
+                            join meta_schema.tb_kpi_master km on
+                                efm.kpi_to_calculate = km.id
+                            left outer join meta_schema.tb_lock_and_hold_def lhd 
+                            	on lhd.id = efm.lock_and_hold_id
+                            where
+                                rn = 1
+                            group by
+                                rk.kpi_id ,
+                                efm.lock_and_hold_id,
+                                lhd.display_label
+                        ) A
+                    group by
+                    A.kpi_id
+                ),
+                format_master as(
+                select '{{""int"":1,""dollar"":2,""percentage"":3}}'::jsonb as data
+                )
+                select
+                    A.data ,
+                    B.Config
+                from
+                    (
+                        select
+                            json_agg
+                            (
+                                jsonb_build_object
+                                (
+                                    'kpi',
+                                    rk.kpi_id,
+                                    'name',
+                                    km.name,
+                                    'attribute',
+                                    rk.attribute_id ,
+                                    'description',
+                                    rk.remarks,
+                                    'order',
+                                    rk.order,
+                                    'type',
+                                    rk.kpi_type,
+                                    'rank',
+                                    rk.ranking,
+                                    'label',
+                                    rk.label,
+                                    'is_deleted',
+                                    rk.is_deleted,
+                                    'enable',
+                                    km.is_active,
+                                    'formatter',
+                                    (select jsonb_build_object('id',(select (data->>(select tfm.formatter->>'type'))::integer from format_master) ,'label',tfm.formatter->>'type') ),
+                                    'decimals',
+                                    rk.roundOff,
+                                    'extra',
+                                    rk.extra,
+                                    'category',
+                                    (select jsonb_build_object('id',rk.category_id,'label',tsma.label) ),
+                                    'conditional_formatting' ,
+                                    (select jsonb_build_object('id', cfm.id, 'label', cfm.name , 'value', cfm.condition_formatting) ),
+                                    'lock_and_hold',
+                                    (select jsonb_build_object('id', lhd.id, 'label', lhd.display_label, 'kpi_id', lhd.kpi_id) ),
+                                    'editable_flow',
+                                    (select coalesce (editableflowmaster.editable_flow, '[]')) ,
+                                    'default_kpi_settings',
+                                    rk.default_kpi_settings,
+                                     'default_value',
+                                    km.default_value,
+                                    'editable',
+                                    rk.editable,
+                                    'default',
+                                    rk.default,
+                                    'options',
+                                    (select jsonb_build_object(
+                                    'match_with_all',
+                                    rk.match_with_all,
+                                    'single_match_with',
+                                    rk.single_match_with,
+                                    'is_actualized',
+                                    rk.is_actualized) ),
+                                    'is_advance_lock',
+                                    rk.is_advance_lock,
+                                    'variance_visible' ,
+                                    rk.variance_visible,
+                                    'variance_editable',
+                                    rk.variance_editable,
+                                    'class_to_dept_visible' ,
+                                    rk.class_to_dept_visible,
+                                    'class_to_dept_editable' ,
+                                    rk.class_to_dept_editable,
+                                    'class_to_channel_visible' ,
+                                    rk.class_to_channel_visible,
+                                    'class_to_channel_editable' ,
+                                    rk.class_to_channel_editable,
+                                    'class_to_class_visible' ,
+                                    rk.class_to_class_visible,
+                                    'class_to_class_editable' ,
+                                    rk.class_to_class_editable 
+                                )
+                                order by rk.kpi_id
+                            ) as data
+                        from
+                            ranked_kpis rk
+                        left outer join editableflowmaster on
+                            rk.kpi_id = editableflowmaster.kpi_id
+                        join meta_schema.tb_kpi_master km on
+                            km.id = rk.kpi_id
+                        left join meta_schema.tb_format_master tfm on 
+                        	tfm.id = rk.formatter_id
+                        left join meta_schema.tb_sub_master_attributes tsma on
+                        	tsma.id = rk.category_id
+                        left join meta_schema.tb_conditional_formatting_master cfm on
+                        	cfm.id = rk.category_id
+                        left join meta_schema.tb_lock_and_hold_def lhd on
+                        	lhd.id = rk.lock_and_hold_id
+                        
+                        
+                        where
+                            rn = 1
+                    ) A,
+                    (
+                        select
+                            json_agg
+                            (
+                                jsonb_build_object
+                                (
+                                    'name',
+                                    A.name ,
+                                    'label',
+                                    A.Label ,
+                                    'editable',
+                                    A.is_editable,
+                                    'active',
+                                    A.is_active,
+                                    'visible',
+                                    A.is_visible,
+                                    'contol',
+                                    B.contol_name,
+                                    'data_type',
+                                    C.data_type ,
+                                    'order',
+                                    A.order_sequence
+                                )
+                            ) as config
+                        from
+                            meta_schema.tb_configurator_config A ,
+                            meta_schema.tb_supported_controls B,
+                            meta_schema.tb_supported_datatypes C
+                        where
+                            A.data_type_id = C.id
+                            and A.control_type_id_on_edit = B.id
+                            and A.model_id = 17
+                        group by
+                            model_id
+                    )B$$$.format(p1 = ""and kpi_id = {?kpi}"" if parameter:kpi != -1 else """")
+",,,,,,
+72,query_66_select,"$$$
+                insert into meta_schema.tb_kpi_formula (kpi_id , attribute_id,rolldown_product,roll_down_timeline,rolldown_channel,update_spread_logic,is_deleted) 
+                values ({?kpi} , {?attribute},{p1}{p2}{p3}{p7} False)
+                        ON CONFLICT (kpi_id , attribute_id) DO UPDATE SET
+					is_deleted = False
+                    {p4}{p5}{p6}{p8}
+                    RETURNING id 
+                $$$.format(p1 = ""{?rolldown_product},"" if len(parameter:rolldown_product) > 0 else ""null,"",
+						   p2 = ""{?roll_down_timeline},"" if len(parameter:roll_down_timeline) > 0 else ""null,"",
+						   p3 = ""{?rolldown_channel},"" if len(parameter:rolldown_channel) > 0 else ""null,"",
+						   p4 = "",rolldown_product = EXCLUDED.rolldown_product"" if len(parameter:rolldown_product) > 0 else """",
+						   p5 = "",rolldown_channel = EXCLUDED.rolldown_channel"" if len(parameter:rolldown_channel) > 0 else """",
+						   p6 = "",roll_down_timeline = EXCLUDED.roll_down_timeline"" if len(parameter:roll_down_timeline) > 0 else """",
+						   p7 = ""{?update_spread_logic},"" if len(parameter:update_spread_logic) > 0 else ""null,"",
+						   p8 = "",update_spread_logic = EXCLUDED.update_spread_logic"" if len(parameter:update_spread_logic) > 0 else """",
+							)
+",,,,true,,
+20,query_20_select,"WITH RECURSIVE sub_hierarchy AS (
+         SELECT tb_sub_master_attributes.id,
+            tb_sub_master_attributes.name,
+            tb_sub_master_attributes.label,
+            tb_sub_master_attributes.parent_id,
+            tb_sub_master_attributes.master_attribute_id,
+            tb_sub_master_attributes.remarks,
+            1 AS level
+           FROM meta_schema.tb_sub_master_attributes
+          WHERE tb_sub_master_attributes.parent_id = '-1'::integer::numeric and is_deleted = false
+        UNION ALL
+         SELECT m.id,
+            m.name,
+            m.label,
+            m.parent_id,
+            m.master_attribute_id,
+            m.remarks,
+            h_1.level + 1
+           FROM meta_schema.tb_sub_master_attributes m
+             JOIN sub_hierarchy h_1 ON m.parent_id = h_1.id::numeric 
+             where is_deleted = false
+        )
+        select master_id,master_name,master_label,parent_id,level, array_agg(data)
+        from
+        (SELECT 
+            h.id AS master_id,
+            h.name AS master_name,
+            h.label AS master_label,
+            h.parent_id,
+            sh.level,
+            json_build_object('id',sh.id,
+            'name',sh.name,
+            'label',sh.label,
+            'parent_id',sh.parent_id,
+            'master_attribute_id',sh.master_attribute_id,
+                                    'master_attribute_type',h.name,
+            'config',jsonb_build_object('name',tsmc.name,
+            'description',tsmc.description,
+            'product_l0_editable',tsmc.product_l0_editable,
+            'product_l1_editable',tsmc.product_l1_editable,
+            'product_l2_editable',tsmc.product_l2_editable,
+            'channel_l0_editable',tsmc.channel_l0_editable,
+            'channel_l1_editable',tsmc.channel_l1_editable)
+            ) as data
+        FROM sub_hierarchy sh join meta_schema.vw_hierarchy_level_data h on sh.master_attribute_id = h.id
+        left outer join meta_schema.tb_sub_master_config tsmc on tsmc.attribute_id = sh.id) foo
+        group by master_id,master_name,master_label,parent_id,level",,,,true,,
+18,query_18_select,"WITH RECURSIVE hierarchy_cte AS (
+                        SELECT
+                            id,
+                            parent_id,
+                            1 AS level
+                        FROM
+                            meta_schema.tb_sub_master_attributes
+                        WHERE
+                        is_deleted = false and id = {?id}
+
+                        UNION ALL
+
+                        SELECT
+                            p.id,
+                            p.parent_id,
+                            c.level + 1
+                        FROM
+                            meta_schema.tb_sub_master_attributes p
+                        INNER JOIN hierarchy_cte c ON p.id = c.parent_id
+                        WHERE is_deleted = false
+                    ),
+                    kpi_with_hierarchy AS (
+                        SELECT
+                            h.id AS hierarchy_id,
+                            h.level,
+                            k.*,
+                            False as default_kpi_settings 
+                        FROM
+                            hierarchy_cte h
+                        JOIN meta_schema.tb_kpi_formula k ON k.attribute_id = h.id
+                        where is_deleted = false
+
+                        UNION ALL
+
+                        SELECT
+                            -1 AS hierarchy_id,
+                             (select max(level) + 1 from hierarchy_cte) as level,
+                            k.*,
+                            True as default_kpi_settings 
+                        FROM meta_schema.tb_kpi_formula k
+                        WHERE
+                            k.attribute_id = -1 and is_deleted = false
+                    ),
+                    ranked_kpis_formulas AS (
+                        SELECT
+                            k.*,
+                            ROW_NUMBER() OVER (PARTITION BY k.kpi_id ORDER BY k.level asc) as rn
+                        FROM
+                            kpi_with_hierarchy k
+                    )
+
+					Select A.data , B.Config from
+                    (SELECT
+                    json_agg(jsonb_build_object ('kpi', rk.kpi_id, 'attribute' , rk.attribute_id , 'label',km.name,
+                    'Hierarchy_aggrigation', ( SELECT REPLACE(
+                                           STRING_AGG(COALESCE((SELECT name FROM meta_schema.tb_kpi_master tkm WHERE id = CAST(SUBSTRING(t.val FROM 'kpi_([0-9]+)') AS INTEGER)),t.val),'' ORDER BY position),
+                                           ' ','') AS formatted_string
+                                           FROM unnest(regexp_split_to_array(regexp_replace(rk.prd_hcrchy_agg_formula, '([/+\-*(),])', ' \1 ', 'g'),' ')
+                                           ) WITH ORDINALITY t(val, position)),
+                    'total_formula',( SELECT REPLACE(
+                                           STRING_AGG(COALESCE((SELECT name FROM meta_schema.tb_kpi_master tkm WHERE id = CAST(SUBSTRING(t.val FROM 'kpi_([0-9]+)') AS INTEGER)),t.val),'' ORDER BY position),
+                                           ' ','') AS formatted_string
+                                           FROM unnest(regexp_split_to_array(regexp_replace(rk.total_formula, '([/+\-*(),])', ' \1 ', 'g'),' ')
+                                           ) WITH ORDINALITY t(val, position)),
+                    'update_formula',( SELECT REPLACE(
+                                           STRING_AGG(COALESCE((SELECT name FROM meta_schema.tb_kpi_master tkm WHERE id = CAST(SUBSTRING(t.val FROM 'kpi_([0-9]+)') AS INTEGER)),t.val),'' ORDER BY position),
+                                           ' ','') AS formatted_string
+                                           FROM unnest(regexp_split_to_array(regexp_replace(rk.update_formula, '([/+\-*(),])', ' \1 ', 'g'),' ')
+                                           ) WITH ORDINALITY t(val, position)),
+                    'update_spread_logic',rk.update_spread_logic ,
+                    'week_aggregation_formula' ,( SELECT REPLACE(
+                                           STRING_AGG(COALESCE((SELECT name FROM meta_schema.tb_kpi_master tkm WHERE id = CAST(SUBSTRING(t.val FROM 'kpi_([0-9]+)') AS INTEGER)),t.val),'' ORDER BY position),
+                                           ' ','') AS formatted_string
+                                           FROM unnest(regexp_split_to_array(regexp_replace(rk.week_aggregation_formula, '([/+\-*(),])', ' \1 ', 'g'),' ')
+                                           ) WITH ORDINALITY t(val, position)) , 
+                    'total_bucket_aggregation_formula', ( SELECT REPLACE(
+                                           STRING_AGG(COALESCE((SELECT name FROM meta_schema.tb_kpi_master tkm WHERE id = CAST(SUBSTRING(t.val FROM 'kpi_([0-9]+)') AS INTEGER)),t.val),'' ORDER BY position),
+                                           ' ','') AS formatted_string
+                                           FROM unnest(regexp_split_to_array(regexp_replace(rk.total_bucket_aggregation_formula, '([/+\-*(),])', ' \1 ', 'g'),' ')
+                                           ) WITH ORDINALITY t(val, position)),
+                    'download_week_aggregation_formula', ( SELECT REPLACE(
+                                           STRING_AGG(COALESCE((SELECT name FROM meta_schema.tb_kpi_master tkm WHERE id = CAST(SUBSTRING(t.val FROM 'kpi_([0-9]+)') AS INTEGER)),t.val),'' ORDER BY position),
+                                           ' ','') AS formatted_string
+                                           FROM unnest(regexp_split_to_array(regexp_replace(rk.download_week_aggregation_formula, '([/+\-*(),])', ' \1 ', 'g'),' ')
+                                           ) WITH ORDINALITY t(val, position)),
+                    'download_month_aggregation_formula', ( SELECT REPLACE(
+                                           STRING_AGG(COALESCE((SELECT name FROM meta_schema.tb_kpi_master tkm WHERE id = CAST(SUBSTRING(t.val FROM 'kpi_([0-9]+)') AS INTEGER)),t.val),'' ORDER BY position),
+                                           ' ','') AS formatted_string
+                                           FROM unnest(regexp_split_to_array(regexp_replace(rk.download_month_aggregation_formula, '([/+\-*(),])', ' \1 ', 'g'),' ')
+                                           ) WITH ORDINALITY t(val, position)),
+                    'product_roll_down', ( SELECT REPLACE(
+                                           STRING_AGG(COALESCE((SELECT name FROM meta_schema.tb_kpi_master tkm WHERE id = CAST(SUBSTRING(t.val FROM 'kpi_([0-9]+)') AS INTEGER)),t.val),'' ORDER BY position),
+                                           ' ','') AS formatted_string
+                                           FROM unnest(regexp_split_to_array(regexp_replace(rk.product_roll_down, '([/+\-*(),\[\]])', ' \1 ', 'g'),' ')
+                                           ) WITH ORDINALITY t(val, position)),
+                    'roll_down_channel' , ( SELECT REPLACE(
+                                           STRING_AGG(COALESCE((SELECT name FROM meta_schema.tb_kpi_master tkm WHERE id = CAST(SUBSTRING(t.val FROM 'kpi_([0-9]+)') AS INTEGER)),t.val),'' ORDER BY position),
+                                           ' ','') AS formatted_string
+                                           FROM unnest(regexp_split_to_array(regexp_replace(rk.roll_down_channel, '([/+\-*(),\[\]])', ' \1 ', 'g'),' ')
+                                           ) WITH ORDINALITY t(val, position)),
+                    'roll_up_product_hierarchy' , ( SELECT REPLACE(
+                                           STRING_AGG(COALESCE((SELECT name FROM meta_schema.tb_kpi_master tkm WHERE id = CAST(SUBSTRING(t.val FROM 'kpi_([0-9]+)') AS INTEGER)),t.val),'' ORDER BY position),
+                                           ' ','') AS formatted_string
+                                           FROM unnest(regexp_split_to_array(regexp_replace(rk.roll_up_product_hierarchy, '([/+\-*(),\[\]])', ' \1 ', 'g'),' ')
+                                           ) WITH ORDINALITY t(val, position)),
+                     'roll_up_channel' , ( SELECT REPLACE(
+                                           STRING_AGG(COALESCE((SELECT name FROM meta_schema.tb_kpi_master tkm WHERE id = CAST(SUBSTRING(t.val FROM 'kpi_([0-9]+)') AS INTEGER)),t.val),'' ORDER BY position),
+                                           ' ','') AS formatted_string
+                                           FROM unnest(regexp_split_to_array(regexp_replace(rk.roll_up_channel, '([/+\-*(),\[\]])', ' \1 ', 'g'),' ')
+                                           ) WITH ORDINALITY t(val, position)),
+                     'roll_up_timeline' , ( SELECT REPLACE(
+                                           STRING_AGG(COALESCE((SELECT name FROM meta_schema.tb_kpi_master tkm WHERE id = CAST(SUBSTRING(t.val FROM 'kpi_([0-9]+)') AS INTEGER)),t.val),'' ORDER BY position),
+                                           ' ','') AS formatted_string
+                                           FROM unnest(regexp_split_to_array(regexp_replace(rk.roll_up_timeline, '([/+\-*(),\[\]])', ' \1 ', 'g'),' ')
+                                           ) WITH ORDINALITY t(val, position)),
+                     'roll_down_timeline' , ( SELECT REPLACE(
+                                           STRING_AGG(COALESCE((SELECT name FROM meta_schema.tb_kpi_master tkm WHERE id = CAST(SUBSTRING(t.val FROM 'kpi_([0-9]+)') AS INTEGER)),t.val),'' ORDER BY position),
+                                           ' ','') AS formatted_string
+                                           FROM unnest(regexp_split_to_array(regexp_replace(rk.roll_down_timeline, '([/+\-*(),\[\]])', ' \1 ', 'g'),' ')
+                                           ) WITH ORDINALITY t(val, position)),
+                    'matchwith_formula',rk.matchwith_formula , 'default_kpi_settings' , rk.default_kpi_settings)) as data
+                    FROM
+                        ranked_kpis_formulas rk ,meta_schema.tb_kpi_master km
+                    where rn = 1 and km.id = rk.kpi_id) A,
+
+                    (select json_agg(jsonb_build_object('name', A.name ,'label', A.Label , 
+                                                                                    'editable', A.is_editable, 'active', A.is_active, 
+                                                                                    'visible', A.is_visible, 'contol', B.contol_name,
+                                                                                    'data_type', C.data_type , 'order', A.order_sequence)) as config
+                                            from meta_schema.tb_configurator_config A , meta_schema.tb_supported_controls B,
+                    meta_schema.tb_supported_datatypes C where A.data_type_id = C.id and A.control_type_id_on_edit = B.id and A.model_id = 18
+                    group by model_id)B",,,,true,,
+29,query_29_update,"$$$
+                with translated_names (total_formula,prd_hcrchy_agg_formula,week_aggregation_formula,total_bucket_aggregation_formula,download_week_aggregation_formula,download_month_aggregation_formula,product_roll_down,roll_down_channel,roll_up_product_hierarchy,roll_up_channel,roll_up_timeline,roll_down_timeline) as ( SELECT
+                ( SELECT REPLACE(
+                                           STRING_AGG(COALESCE((SELECT 'kpi_' || id FROM meta_schema.tb_kpi_master tkm WHERE name = SUBSTRING(t.val FROM '[A-Za-z_]+')),t.val),'' ORDER BY position),
+                                           ' ','')
+                                           FROM unnest(regexp_split_to_array(regexp_replace({?total_formula}, '([/+\-*(),])', ' \\1 ', 'g'),' ')
+                                           ) WITH ORDINALITY t(val, position)),
+                ( SELECT REPLACE(
+                                           STRING_AGG(COALESCE((SELECT 'kpi_' || id FROM meta_schema.tb_kpi_master tkm WHERE name = SUBSTRING(t.val FROM '[A-Za-z_]+')),t.val),'' ORDER BY position),
+                                           ' ','') AS formatted_string
+                                           FROM unnest(regexp_split_to_array(regexp_replace({?Hierarchy_aggrigation}, '([/+\-*(),])', ' \\1 ', 'g'),' ')
+                                           ) WITH ORDINALITY t(val, position)),
+                ( SELECT REPLACE(
+                                           STRING_AGG(COALESCE((SELECT 'kpi_' || id FROM meta_schema.tb_kpi_master tkm WHERE name = SUBSTRING(t.val FROM '[A-Za-z_]+')),t.val),'' ORDER BY position),
+                                           ' ','') AS formatted_string
+                                           FROM unnest(regexp_split_to_array(regexp_replace({?week_aggregation_formula}, '([/+\-*(),])', ' \\1 ', 'g'),' ')
+                                           ) WITH ORDINALITY t(val, position)),
+                ( SELECT REPLACE(
+                                           STRING_AGG(COALESCE((SELECT 'kpi_' || id FROM meta_schema.tb_kpi_master tkm WHERE name = SUBSTRING(t.val FROM '[A-Za-z_]+')),t.val),'' ORDER BY position),
+                                           ' ','') AS formatted_string
+                                           FROM unnest(regexp_split_to_array(regexp_replace({?total_bucket_aggregation_formula}, '([/+\-*(),])', ' \\1 ', 'g'),' ')
+                                           ) WITH ORDINALITY t(val, position)),
+                ( SELECT REPLACE(
+                                           STRING_AGG(COALESCE((SELECT 'kpi_' || id FROM meta_schema.tb_kpi_master tkm WHERE name = SUBSTRING(t.val FROM '[A-Za-z_]+')),t.val),'' ORDER BY position),
+                                           ' ','') AS formatted_string
+                                           FROM unnest(regexp_split_to_array(regexp_replace({?download_week_aggregation_formula}, '([/+\-*(),])', ' \\1 ', 'g'),' ')
+                                           ) WITH ORDINALITY t(val, position)),
+                ( SELECT REPLACE(
+                                           STRING_AGG(COALESCE((SELECT 'kpi_' || id FROM meta_schema.tb_kpi_master tkm WHERE name = SUBSTRING(t.val FROM '[A-Za-z_]+')),t.val),'' ORDER BY position),
+                                           ' ','') AS formatted_string
+                                           FROM unnest(regexp_split_to_array(regexp_replace({?download_month_aggregation_formula}, '([/+\-*(),])', ' \\1 ', 'g'),' ')
+                                           ) WITH ORDINALITY t(val, position)),
+                 ( SELECT REPLACE(
+                                           STRING_AGG(COALESCE((SELECT 'kpi_' || id FROM meta_schema.tb_kpi_master tkm WHERE name = SUBSTRING(t.val FROM '[A-Za-z_]+')),t.val),'' ORDER BY position),
+                                           ' ','')
+                                           FROM unnest(regexp_split_to_array(regexp_replace({?product_roll_down}, '([/+\-*(),\[\]])', ' \\1 ', 'g'),' ')
+                                           ) WITH ORDINALITY t(val, position)),
+                 ( SELECT REPLACE(
+                                           STRING_AGG(COALESCE((SELECT 'kpi_' || id FROM meta_schema.tb_kpi_master tkm WHERE name = SUBSTRING(t.val FROM '[A-Za-z_]+')),t.val),'' ORDER BY position),
+                                           ' ','')
+                                           FROM unnest(regexp_split_to_array(regexp_replace({?roll_down_channel}, '([/+\-*(),\[\]])', ' \\1 ', 'g'),' ')
+                                           ) WITH ORDINALITY t(val, position)),
+                 ( SELECT REPLACE(
+                                           STRING_AGG(COALESCE((SELECT 'kpi_' || id FROM meta_schema.tb_kpi_master tkm WHERE name = SUBSTRING(t.val FROM '[A-Za-z_]+')),t.val),'' ORDER BY position),
+                                           ' ','')
+                                           FROM unnest(regexp_split_to_array(regexp_replace({?roll_up_product_hierarchy}, '([/+\-*(),\[\]])', ' \\1 ', 'g'),' ')
+                                           ) WITH ORDINALITY t(val, position)),
+                 ( SELECT REPLACE(
+                                           STRING_AGG(COALESCE((SELECT 'kpi_' || id FROM meta_schema.tb_kpi_master tkm WHERE name = SUBSTRING(t.val FROM '[A-Za-z_]+')),t.val),'' ORDER BY position),
+                                           ' ','')
+                                           FROM unnest(regexp_split_to_array(regexp_replace({?roll_up_channel}, '([/+\-*(),\[\]])', ' \\1 ', 'g'),' ')
+                                           ) WITH ORDINALITY t(val, position)),
+                 ( SELECT REPLACE(
+                                           STRING_AGG(COALESCE((SELECT 'kpi_' || id FROM meta_schema.tb_kpi_master tkm WHERE name = SUBSTRING(t.val FROM '[A-Za-z_]+')),t.val),'' ORDER BY position),
+                                           ' ','')
+                                           FROM unnest(regexp_split_to_array(regexp_replace({?roll_up_timeline}, '([/+\-*(),\[\]])', ' \\1 ', 'g'),' ')
+                                           ) WITH ORDINALITY t(val, position)),
+                 ( SELECT REPLACE(
+                                           STRING_AGG(COALESCE((SELECT 'kpi_' || id FROM meta_schema.tb_kpi_master tkm WHERE name = SUBSTRING(t.val FROM '[A-Za-z_]+')),t.val),'' ORDER BY position),
+                                           ' ','')
+                                           FROM unnest(regexp_split_to_array(regexp_replace({?roll_down_timeline}, '([/+\-*(),\[\]])', ' \\1 ', 'g'),' ')
+                                           ) WITH ORDINALITY t(val, position))
+                )
+                insert into meta_schema.tb_kpi_formula (kpi_id , attribute_id, total_formula , update_formula , matchwith_formula ,update_spread_logic, prd_hcrchy_agg_formula , week_aggregation_formula ,
+                                total_bucket_aggregation_formula,download_week_aggregation_formula,download_month_aggregation_formula, product_roll_down,roll_down_channel,roll_up_product_hierarchy,roll_up_channel,roll_up_timeline,roll_down_timeline,is_deleted) values ({?kpi} , {?attribute}, 
+                                (select total_formula from translated_names),
+                                ( SELECT REPLACE(
+                                           STRING_AGG(COALESCE((SELECT 'kpi_' || id FROM meta_schema.tb_kpi_master tkm WHERE name = SUBSTRING(t.val FROM '[A-Za-z_]+')),t.val),'' ORDER BY position),
+                                           ' ','') AS formatted_string
+                                           FROM unnest(regexp_split_to_array(regexp_replace({?update_formula}, '([/+\-*(),{}])', ' \\1 ', 'g'),' ')
+                                           ) WITH ORDINALITY t(val, position)),
+                                {?matchwith_formula},{?update_spread_logic},
+                                (select prd_hcrchy_agg_formula from translated_names),
+                                (select week_aggregation_formula from translated_names),
+                                (select total_bucket_aggregation_formula from translated_names),
+                                (select download_week_aggregation_formula from translated_names),
+                                (select download_month_aggregation_formula from translated_names),
+                                (select product_roll_down from translated_names),
+                                (select roll_down_channel from translated_names),
+                                (select roll_up_product_hierarchy from translated_names),
+                                (select roll_up_channel from translated_names),
+                                (select roll_up_timeline from translated_names),
+                                (select roll_down_timeline from translated_names),
+                                False)
+                        ON CONFLICT (kpi_id , attribute_id) DO UPDATE 
+                    SET  total_formula = EXCLUDED.total_formula,
+                     update_formula = EXCLUDED.update_formula, 
+                    matchwith_formula = EXCLUDED.matchwith_formula,
+                    update_spread_logic = EXCLUDED.update_spread_logic,
+                    prd_hcrchy_agg_formula = EXCLUDED.prd_hcrchy_agg_formula,
+                    week_aggregation_formula = EXCLUDED.week_aggregation_formula , 
+                    total_bucket_aggregation_formula = EXCLUDED.total_bucket_aggregation_formula,
+                    download_week_aggregation_formula = EXCLUDED.download_week_aggregation_formula,
+                    download_month_aggregation_formula = EXCLUDED.download_month_aggregation_formula,
+                    product_roll_down = EXCLUDED.product_roll_down,
+                    roll_down_channel = EXCLUDED.roll_down_channel,
+                    roll_up_product_hierarchy = EXCLUDED.roll_up_product_hierarchy,
+                    roll_up_channel = EXCLUDED.roll_up_channel,
+                    roll_up_timeline = EXCLUDED.roll_up_timeline,
+                    roll_down_timeline = EXCLUDED.roll_down_timeline
+                    RETURNING id 
+                $$$",,,,true,,
+53,query_52_select,"$$$
+insert into meta_schema.tb_sub_master_config(attribute_id,name,description,product_l0_editable,product_l1_editable,product_l2_editable,channel_l0_editable,channel_l1_editable)
+values({?id},{?name},{p1},{p2},{p3},{p4},{p5},{p6})
+on conflict (attribute_id) do update set 
+name = EXCLUDED.name 
+{p7} {p8} {p9} {p10} {p11} {p12}
+$$$.format(p1 = ""{?description}"" if len(parameter:description) > 0 else ""null"" ,
+		   p2 = ""{?product_level_l0_name}"" if parameter:product_level_l0_name != -1 else ""false"",
+		   p3 = ""{?product_level_l1_name}"" if parameter:product_level_l1_name != -1 else ""false"",
+		   p4 = ""{?product_level_l2_name}"" if parameter:product_level_l2_name != -1 else ""false"",
+		   p5 = ""{?channel_level_l0_name}"" if parameter:channel_level_l0_name != -1 else ""false"",
+		   p6 = ""{?channel_level_l1_name}"" if parameter:channel_level_l1_name != -1 else ""false"",
+		   p7 = "",description = {?description}"" if len(parameter:description) > 0 else """",
+		   p8 = "",product_l0_editable = {?product_level_l0_name}"" if parameter:product_level_l0_name != -1 else """",
+		   p9 = "",product_l1_editable = {?product_level_l1_name}"" if parameter:product_level_l1_name != -1 else """",
+		   p10 = "",product_l2_editable = {?product_level_l2_name}"" if parameter:product_level_l2_name != -1 else """",
+		   p11 = "",channel_l0_editable = {?channel_level_l0_name}"" if parameter:channel_level_l0_name != -1 else """",
+		   p12 = "",channel_l1_editable = {?channel_level_l1_name}"" if parameter:channel_level_l1_name != -1 else """"
+		   )
+",,,,true,,
+57,query_56_select,"$$$
+                delete from meta_schema.tb_editableflow_master 
+            where on_change_kpi_id = {?kpi};
+                insert into meta_schema.tb_editableflow_master
+                {p1}
+                $$$.format(p1= "" values {?editable_flow}"" if len(parameter:editable_flow) > 0 else ""select 1 where false"")",,,,true,,
+58,query_57_select,"$$$
+            delete from meta_schema.tb_editableflow_master 
+            where on_change_kpi_id = {?kpi} {p1} {p2} 
+            $$$.format(p1 = ""and lock_and_hold_id = {?lock_and_hold}"" if parameter:lock_and_hold != -1 else """",
+            p2 = ""and kpi_to_calculate in ({?kpi_calculate_id})"" if parameter:kpi_calculate_id != -1 else """")","",,,true,,
+17,query_17_select,"with recursive hierarchy_cte as
+                (
+                    select id, parent_id, 1 as level
+                    from meta_schema.tb_sub_master_attributes
+                    where is_deleted = false and id = {?id}
+                    union all
+                    select p.id, p.parent_id, c.level - 1
+                    from meta_schema.tb_sub_master_attributes p
+                    inner join hierarchy_cte c on p.id = c.parent_id
+                    where is_deleted = false
+                ),
+                kpi_with_hierarchy as
+                (
+                    select h.id as hierarchy_id, h.level, k.*, false as default_kpi_settings
+                    from hierarchy_cte h
+                    join meta_schema.tb_kpi_config k on k.attribute_id = h.id
+                    where is_deleted = false
+                    union all
+                    select -1 as hierarchy_id, -100 as level, /* level as -100 as recursive cte can be called maximum 100 times by default */
+                    k.*, true as default_kpi_settings
+                    from meta_schema.tb_kpi_config k
+                    where is_deleted = false and k.attribute_id = -1
+                ),
+                ranked_kpis as
+                (
+                    select k.*, row_number() over (partition by k.kpi_id order by k.level desc) as rn
+                    from kpi_with_hierarchy k 
+                ),
+                editableflowmaster as
+                (
+                    select A.kpi_id, json_agg(A.editable_flow) editable_flow
+                    from
+                        (
+                            select rk.kpi_id,
+                                jsonb_build_object
+                                (
+                                    'formula_types',
+                                    (select array['formula']),
+                                    'lock_and_hold' ,
+                                    efm.lock_and_hold_id ,
+                                    'value' ,
+                                    json_agg
+                                    (
+                                        jsonb_build_object
+                                        (
+                                            'kpi_calculate_id',
+                                            efm.kpi_to_calculate,
+                                            'kpi_calculate_name',
+                                            km.name,
+                                            'formula',
+                                            (
+                                                select jsonb_build_object
+                                                (
+                                                    'formula',
+                                                    (
+                                                        select
+                                                            replace
+                                                            (
+                                                                STRING_AGG
+                                                                (
+                                                                    coalesce
+                                                                    (
+                                                                        (
+                                                                            select
+                                                                                '''' || name || ''''
+                                                                            from
+                                                                                meta_schema.tb_kpi_master tkm
+                                                                            where
+                                                                                id = cast(SUBSTRING(t.val from 'kpi_([0-9]+)') as INTEGER)
+                                                                        ),
+                                                                        t.val
+                                                                    ),
+                                                                    ''
+                                                                order by
+                                                                    position
+                                                                ),
+                                                                ' ',
+                                                                ''
+                                                            ) as formatted_string
+                                                            from
+                                                            unnest
+                                                            (
+                                                                regexp_split_to_array
+                                                                (
+                                                                    regexp_replace(formula, '([/+\-*,\[\]()])', ' \1 ', 'g'), ' '
+                                                                )
+                                                            ) with ordinality t(val, position)
+                                                    ),
+                                                    'sequenceflow',
+                                             		efm.sequenceflow,
+                                            	   'allsequencetimelineupdate',
+                                                    efm.allsequencetimelineupdate,
+                                                    'sequencetimelinecount',
+                                                    efm.sequencetimelinecount   
+                                                    
+                                                )
+                                            ),
+                                            'calculate_order' ,
+                                            efm.calculation_order
+                                        )
+                                    )
+                                ) editable_flow
+                            from
+                                ranked_kpis rk
+                            left outer join meta_schema.tb_editableflow_master efm on
+                                rk.kpi_id = efm.on_change_kpi_id
+                            join meta_schema.tb_kpi_master km on
+                                efm.kpi_to_calculate = km.id
+                            where
+                                rn = 1
+                            group by
+                                rk.kpi_id ,
+                                efm.lock_and_hold_id
+                        ) A
+                    group by
+                    A.kpi_id
+                )
+                select
+                    A.data ,
+                    B.Config
+                from
+                    (
+                        select
+                            json_agg
+                            (
+                                jsonb_build_object
+                                (
+                                    'kpi',
+                                    rk.kpi_id,
+                                    'name',
+                                    km.name,
+                                    'attribute',
+                                    rk.attribute_id ,
+                                    'order',
+                                    rk.order,
+                                    'type',
+                                    rk.kpi_type,
+                                    'rank',
+                                    rk.ranking,
+                                    'label',
+                                    rk.label,
+                                    'formatter',
+                                    rk.formatter_id ,
+                                    'extra',
+                                    rk.extra,
+                                    'category',
+                                    rk.category_id,
+                                    'conditional_formatting' ,
+                                    rk.condition_formatting_id,
+                                    'lock_and_hold',
+                                    rk.lock_and_hold_id,
+                                    'editable_flow',
+                                    (select coalesce (editableflowmaster.editable_flow, '[]')) ,
+                                    'default_kpi_settings',
+                                    rk.default_kpi_settings,
+                                    'editable',
+                                    rk.editable,
+                                    'default',
+                                    rk.default,
+                                    'visible',
+                                    rk.visible,
+                                    'is_default_visible',
+                                    is_default_visible,
+                                    'match_with_all',
+                                    rk.match_with_all,
+                                    'single_match_with',
+                                    rk.single_match_with,
+                                    'is_actualized',
+                                    rk.is_actualized,
+                                    'variance_visible' ,
+                                    rk.variance_visible,
+                                    'variance_editable',
+                                    rk.variance_editable,
+                                    'class_to_dept_visible' ,
+                                    rk.class_to_dept_visible,
+                                    'class_to_dept_editable' ,
+                                    rk.class_to_dept_editable,
+                                    'class_to_channel_visible' ,
+                                    rk.class_to_channel_visible,
+                                    'class_to_channel_editable' ,
+                                    rk.class_to_channel_editable,
+                                    'class_to_class_visible' ,
+                                    rk.class_to_class_visible,
+                                    'class_to_class_editable' ,
+                                    rk.class_to_class_editable,
+                                    'is_advance_lock',
+                                    rk.is_advance_lock,
+                                    'first_week_editable',
+                                    rk.first_week_editable,
+                                    'eligible',
+                                    rk.eligible
+                                )
+                                order by rk.kpi_id
+                            ) as data
+                        from
+                            ranked_kpis rk
+                        left outer join editableflowmaster on
+                            rk.kpi_id = editableflowmaster.kpi_id
+                        join meta_schema.tb_kpi_master km on
+                            km.id = rk.kpi_id
+                        where
+                            rn = 1
+                    ) A,
+                    (
+                        select
+                            json_agg
+                            (
+                                jsonb_build_object
+                                (
+                                    'name',
+                                    A.name ,
+                                    'label',
+                                    A.Label ,
+                                    'editable',
+                                    A.is_editable,
+                                    'active',
+                                    A.is_active,
+                                    'visible',
+                                    A.is_visible,
+                                    'contol',
+                                    B.contol_name,
+                                    'data_type',
+                                    C.data_type ,
+                                    'order',
+                                    A.order_sequence
+                                )
+                            ) as config
+                        from
+                            meta_schema.tb_configurator_config A ,
+                            meta_schema.tb_supported_controls B,
+                            meta_schema.tb_supported_datatypes C
+                        where
+                            A.data_type_id = C.id
+                            and A.control_type_id_on_edit = B.id
+                            and A.model_id = 17
+                        group by
+                            model_id
+                    )B",,,,true,,
+49,query_49_select,"with recursive season_attribute_ids as(
+select id , 1 as level,parent_id from meta_schema.tb_sub_master_attributes tsma 
+where name = {?module}
+
+union all
+
+select tsma.id, sai.level - 1,tsma.parent_id from meta_schema.tb_sub_master_attributes tsma join season_attribute_ids sai on tsma.id = sai.parent_id
+),
+kpi_config_with_hierarchy as
+(
+                    select h.id as hierarchy_id, h.level, k.*
+                    from season_attribute_ids h
+                    join meta_schema.tb_kpi_config k on k.attribute_id = h.id
+                    where is_deleted = false
+                    union all
+                    select -1 as hierarchy_id, (select min(level)-1 from season_attribute_ids) as level,k.*
+                    from meta_schema.tb_kpi_config k
+                    where is_deleted = false and k.attribute_id = -1
+),
+ranked_kpis_config as
+(
+                    select k.*, row_number() over (partition by k.kpi_id order by k.level desc) as rn
+                    from kpi_config_with_hierarchy k 
+),
+kpi_formula_with_hierarchy as
+(
+                    select h.id as hierarchy_id, h.level, k.*
+                    from season_attribute_ids h
+                    join meta_schema.tb_kpi_formula k on k.attribute_id = h.id
+                    where is_deleted = false
+                    union all
+                    select -1 as hierarchy_id, (select min(level)-1 from season_attribute_ids) as level,k.*
+                    from meta_schema.tb_kpi_formula k
+                    where is_deleted = false and k.attribute_id = -1
+),
+ranked_kpis_formula as
+(
+                    select * from (select k.*, row_number() over (partition by k.kpi_id order by k.level desc) as rn
+                    from kpi_formula_with_hierarchy k ) formulas
+                    where rn = 1
+)
+
+
+select
+	jsonb_object_agg(result1.name, result1.data) as data
+from
+	(
+	select
+		tkm1.""name"",
+		
+		jsonb_agg(jsonb_build_object('kpi',
+		tkm2.""name"" ,
+		'deliveryMetrics',
+		(select jsonb_build_object ('isDelivery' , tkm2.is_delivered , 'type', tkm2.type, 'parentKpi' , tkm3.name)),
+		'zeroHandling',
+		tkf.update_spread_logic ,
+		'formula',
+		( SELECT REPLACE( STRING_AGG(COALESCE((SELECT '''' || name || '''' FROM meta_schema.tb_kpi_master tkm WHERE id = CAST(SUBSTRING(t.val FROM 'kpi_([0-9]+)') AS INTEGER)),t.val),'' ORDER BY position),
+                                           ' ','') AS formatted_string
+                                           FROM unnest(regexp_split_to_array(regexp_replace(tem.formula, '([/+\-*(),\[\]])', ' \1 ', 'g'),' ')
+                                           ) WITH ORDINALITY t(val, position)),
+		'productRollDown',
+		( SELECT REPLACE( STRING_AGG(COALESCE((SELECT '''' || name || '''' FROM meta_schema.tb_kpi_master tkm WHERE id = CAST(SUBSTRING(t.val FROM 'kpi_([0-9]+)') AS INTEGER)),t.val),'' ORDER BY position),
+                                           ' ','') AS formatted_string
+                                           FROM unnest(regexp_split_to_array(regexp_replace(tkf.product_roll_down, '([/+\-*(),\[\]])', ' \1 ', 'g'),' ')
+                                           ) WITH ORDINALITY t(val, position)),
+		'rollDownChannel',
+		( SELECT REPLACE( STRING_AGG(COALESCE((SELECT '''' || name || '''' FROM meta_schema.tb_kpi_master tkm WHERE id = CAST(SUBSTRING(t.val FROM 'kpi_([0-9]+)') AS INTEGER)),t.val),'' ORDER BY position),
+                                           ' ','') AS formatted_string
+                                           FROM unnest(regexp_split_to_array(regexp_replace(tkf.roll_down_channel, '([/+\-*(),\[\]])', ' \1 ', 'g'),' ')
+                                           ) WITH ORDINALITY t(val, position)),
+		'rollUpChannel',
+		( SELECT REPLACE( STRING_AGG(COALESCE((SELECT '''' || name || '''' FROM meta_schema.tb_kpi_master tkm WHERE id = CAST(SUBSTRING(t.val FROM 'kpi_([0-9]+)') AS INTEGER)),t.val),'' ORDER BY position),
+                                           ' ','') AS formatted_string
+                                           FROM unnest(regexp_split_to_array(regexp_replace(tkf.roll_up_channel, '([/+\-*(),\[\]])', ' \1 ', 'g'),' ')
+                                           ) WITH ORDINALITY t(val, position)),
+		'rollUpProductHierarchy',
+		( SELECT REPLACE( STRING_AGG(COALESCE((SELECT '''' || name || '''' FROM meta_schema.tb_kpi_master tkm WHERE id = CAST(SUBSTRING(t.val FROM 'kpi_([0-9]+)') AS INTEGER)),t.val),'' ORDER BY position),
+                                           ' ','') AS formatted_string
+                                           FROM unnest(regexp_split_to_array(regexp_replace(tkf.roll_up_product_hierarchy, '([/+\-*(),\[\]])', ' \1 ', 'g'),' ')
+                                           ) WITH ORDINALITY t(val, position)),
+		'rollUpTimeline',
+		( SELECT REPLACE( STRING_AGG(COALESCE((SELECT '''' || name || '''' FROM meta_schema.tb_kpi_master tkm WHERE id = CAST(SUBSTRING(t.val FROM 'kpi_([0-9]+)') AS INTEGER)),t.val),'' ORDER BY position),
+                                           ' ','') AS formatted_string
+                                           FROM unnest(regexp_split_to_array(regexp_replace(tkf.roll_up_timeline, '([/+\-*(),\[\]])', ' \1 ', 'g'),' ')
+                                           ) WITH ORDINALITY t(val, position)),
+		'rollDownTimeline',
+		( SELECT REPLACE( STRING_AGG(COALESCE((SELECT '''' || name || '''' FROM meta_schema.tb_kpi_master tkm WHERE id = CAST(SUBSTRING(t.val FROM 'kpi_([0-9]+)') AS INTEGER)),t.val),'' ORDER BY position),
+                                           ' ','') AS formatted_string
+                                           FROM unnest(regexp_split_to_array(regexp_replace(tkf.roll_down_timeline, '([/+\-*(),\[\]])', ' \1 ', 'g'),' ')
+                                           ) WITH ORDINALITY t(val, position)),
+		'calculate_order',
+		tem.calculation_order,
+		 'sequenceflow',
+		 tem.sequenceflow,
+		 'allsequencetimelineupdate',
+		 tem.allsequencetimelineupdate,
+		 'sequencetimelinecount',
+		 tem.sequencetimelinecount
+		 )order by tem.calculation_order) as data
+	from
+		ranked_kpis_config tkc
+	join meta_schema.tb_kpi_master tkm1 on
+		tkm1.id = tkc.kpi_id
+	left join meta_schema.tb_editableflow_master tem on
+		tkc.lock_and_hold_id = tem.lock_and_hold_id
+		and tkc.kpi_id = tem.on_change_kpi_id
+	left join meta_schema.tb_kpi_master tkm2 on
+		tkm2.id = tem.kpi_to_calculate
+	left join meta_schema.tb_kpi_master tkm3 on
+		tkm3.id = tkm2.parent_kpi
+	left join ranked_kpis_formula tkf on
+		tkf.kpi_id = tem.kpi_to_calculate
+	where tkc.rn = 1
+	group by
+		tkm1.""name"") as result1",,,,false,,
+54,query_53_select,"$$$ SELECT A.formatter , B.category , C.conditional_formatting , D.lock_and_hold , E.formulas , F.kpis , G.value_types , H.versions
+                  FROM
+                  (SELECT json_agg(jsonb_build_object( 'id', id, 'label', name , 'value',formatter)) formatter
+                  FROM meta_schema.tb_format_master ) A ,
+                  (SELECT json_agg(jsonb_build_object( 'id', sma.id, 'label', sma.label)) category
+                  FROM meta_schema.tb_sub_master_attributes sma join meta_schema.tb_master_attributes ma on sma.master_attribute_id = ma.id
+                   WHERE ma.name = 'kpi_category' and sma.is_deleted = FALSE and ma.is_deleted = FALSE ) B,
+                  (SELECT json_agg(jsonb_build_object( 'id', id, 'label', name , 'value', condition_formatting)) conditional_formatting
+                  FROM meta_schema.tb_conditional_formatting_master  ) C,
+                 (SELECT json_agg(jsonb_build_object( 'id', id, 'label', display_label, 'kpi_id',kpi_id)) lock_and_hold
+                  FROM meta_schema.tb_lock_and_hold_def {p1}
+                     ) D , 
+                  (SELECT json_agg(jsonb_build_object( 'id', id, 'label', name)) formulas
+                  FROM meta_schema.tb_formula_master
+                     ) E ,
+                  (SELECT json_agg(jsonb_build_object( 'id', id, 'label', name)) kpis
+                  FROM meta_schema.tb_kpi_master
+                     ) F ,
+                  (SELECT array[jsonb_build_object('id',1,'label', 'int', 'value', 'int'), jsonb_build_object('id',2,'label', 'dollar', 'value', 'dollar'), jsonb_build_object('id',3,'label', 'percentage', 'value', 'percentage' )] as value_types
+                     ) G ,
+                   (SELECT json_agg(jsonb_build_object('id',id,'label',name)) versions
+                   from meta_schema.versions where is_active = true) H $$$.format
+                     (p1 = ""where kpi_id = {?kpi}"" if parameter:kpi != -1 else """")",,,,true,,
+55,query_54_select,"$$$ select * from meta_schema.create_module (ARRAY[{?modules}],ARRAY[{?channels}],ARRAY[{?versions}]) $$$",,,,true,,
+56,query_55_select,"$$$ {p3}
+   INSERT INTO meta_schema.tb_kpi_config (
+                    kpi_id,
+                    attribute_id,
+                    category_id,
+                    remarks,
+                    \""order\"",
+                    ranking,
+                    kpi_type,
+                    label,
+                    lock_and_hold_id,
+                    formatter_id,
+                    condition_formatting_id,
+                    is_deleted,
+                    editable,
+                    \""default\"",
+                    visible,
+                    roundOff,
+                    is_advance_lock,
+                    match_with_all,
+                    single_match_with,
+                    is_actualized,
+                    variance_visible,
+                    variance_editable,
+                    class_to_dept_visible,
+                    class_to_dept_editable,
+                    class_to_channel_visible,
+                    class_to_channel_editable,
+                    class_to_class_visible,
+                    class_to_class_editable
+                ) VALUES (
+                    {p4},
+                    {?attribute},
+                    {?category},
+                    {p2},
+                    {?order},
+                    {?rank},
+                    {?type},
+                    {?label},
+                    {?lock_and_hold_id},
+                    {?formatter},
+                    {?conditional_formatting},
+                    {?is_deleted},
+                    {?editable},
+                    {?default},
+                    {?visible},
+                    {?decimals},
+                    {?is_advance_lock},
+                    {?match_with_all},
+                    {?single_match_with},
+                    {?is_actualized},
+                    {?variance_visible},
+                    {?variance_editable},
+                    {?class_to_dept_visible},
+                    {?class_to_dept_editable},
+                    {?class_to_channel_visible},
+                    {?class_to_channel_editable},
+                    {?class_to_class_visible},
+                    {?class_to_class_editable}
+                ) ON CONFLICT (kpi_id, attribute_id,version) DO UPDATE SET
+                    category_id = EXCLUDED.category_id,
+                    {p1}
+                    \""order\"" = EXCLUDED.order, 
+                    ranking = EXCLUDED.ranking,
+                    kpi_type = EXCLUDED.kpi_type,
+                    label = EXCLUDED.label,
+                    lock_and_hold_id = EXCLUDED.lock_and_hold_id,
+                    formatter_id = EXCLUDED.formatter_id,
+                    condition_formatting_id = EXCLUDED.condition_formatting_id,
+                    is_deleted = EXCLUDED.is_deleted,
+                    editable = EXCLUDED.editable,
+                    \""default\"" = EXCLUDED.default,
+                   	visible = EXCLUDED.visible,
+                   	roundOff = EXCLUDED.roundOff,
+                   	is_advance_lock = EXCLUDED.is_advance_lock,
+                    match_with_all = EXCLUDED.match_with_all,
+                    single_match_with = EXCLUDED.single_match_with,
+                    is_actualized = EXCLUDED.is_actualized,
+                    variance_visible = EXCLUDED.variance_visible,
+                    variance_editable = EXCLUDED.variance_editable,
+                    class_to_dept_visible = EXCLUDED.class_to_dept_visible,
+                    class_to_dept_editable = EXCLUDED.class_to_dept_editable,
+                    class_to_channel_visible = EXCLUDED.class_to_channel_visible,
+                    class_to_channel_editable = EXCLUDED.class_to_channel_editable,
+                    class_to_class_visible = EXCLUDED.class_to_class_visible,
+                    class_to_class_editable = EXCLUDED.class_to_class_editable
+                RETURNING id $$$.format(
+                p1 = ""remarks = EXCLUDED.remarks,"" if parameter:description != -1 else """",
+                p2 = ""{?description}"" if parameter:description != -1 else ""''"",
+                p3 = ""with kpimaster as (insert into meta_schema.tb_kpi_master(\""name\"",is_active,application_id) 
+                      values ({?name},true,1) returning id )"" if parameter:kpi is None else """",
+                p4 = ""(select id from kpimaster)"" if parameter:kpi is None else ""{?kpi}""
+                )
+                
+                
+                
+                
+                
+                
+                ",,,,true,,
+67,query_61_insert,"$$$ INSERT into meta_schema.tb_kpi_config (kpi_id,attribute_id,version,category_id,""order"",visible)
+	values ({?kpi},{?attribute},{?version},{?category},{?order},{?visible}) 
+	ON CONFLICT(kpi_id,attribute_id,version) 
+	DO UPDATE SET 
+	visible = {?visible}
+	RETURNING id $$$",,,,true,,
+66,query_60_select,"$$$
+					WITH RECURSIVE hierarchy_cte AS (
+                        SELECT
+                            id,
+                            parent_id,
+                            1 AS level
+                        FROM
+                            meta_schema.tb_sub_master_attributes
+                        WHERE
+                        is_deleted = false and id = {?id}
+
+                        UNION ALL
+
+                        SELECT
+                            p.id,
+                            p.parent_id,
+                            c.level + 1
+                        FROM
+                            meta_schema.tb_sub_master_attributes p
+                        INNER JOIN hierarchy_cte c ON p.id = c.parent_id
+                        WHERE is_deleted = false
+                    ),
+                    kpi_formula_with_hierarchy AS (
+                        SELECT
+                            h.id AS hierarchy_id,
+                            h.level,
+                            k.*,
+                            False as default_kpi_settings 
+                        FROM
+                            hierarchy_cte h
+                        JOIN meta_schema.tb_kpi_formula k ON k.attribute_id = h.id
+                        where is_deleted = false
+
+                        UNION ALL
+
+                        SELECT
+                            -1 AS hierarchy_id,
+                             (select max(level) + 1 from hierarchy_cte) as level,
+                            k.*,
+                            True as default_kpi_settings 
+                        FROM meta_schema.tb_kpi_formula k
+                        WHERE
+                            k.attribute_id = -1 and is_deleted = false
+                    ),
+                    kpi_config_with_hierarchy AS (
+                        SELECT
+                            h.id AS hierarchy_id,
+                            h.level,
+                            k.*,
+                            False as default_kpi_settings 
+                        FROM
+                            hierarchy_cte h
+                        JOIN meta_schema.tb_kpi_config k ON k.attribute_id = h.id
+                        where is_deleted = false
+
+                        UNION ALL
+
+                        SELECT
+                            -1 AS hierarchy_id,
+                             (select max(level) + 1 from hierarchy_cte) as level,
+                            k.*,
+                            True as default_kpi_settings 
+                        FROM meta_schema.tb_kpi_config k
+                        WHERE
+                            k.attribute_id = -1 and is_deleted = false
+                    ),
+                    selected_kpis_formulas AS (
+                        select * FROM
+                    	(SELECT
+                            k.*,
+                            ROW_NUMBER() OVER (PARTITION BY k.kpi_id ORDER BY k.level asc) as rn
+                        FROM
+                            kpi_formula_with_hierarchy k) ranked_kpis_formulas
+                           where rn = 1
+                    ),
+                    selected_kpis_configs AS (
+                        select * FROM
+                    	(SELECT
+                            k.*,
+                            ROW_NUMBER() OVER (PARTITION BY k.kpi_id ORDER BY k.level asc) as rn
+                        FROM
+                            kpi_config_with_hierarchy k) ranked_kpis_configs
+                           where rn = 1
+                    )
+                    select  rkf.kpi_id,tkm.""name"",skc.label,rkf.update_spread_logic,
+                    rkf.product_roll_down, rkf.roll_down_timeline, rkf.roll_down_channel
+                    from selected_kpis_formulas rkf
+                    left join meta_schema.tb_kpi_master tkm on rkf.kpi_id = tkm.id
+                    left join selected_kpis_configs skc on skc.kpi_id = rkf.kpi_id
+            $$$",,,,true,,
+71,query_65_select,"$$$
+                insert into meta_schema.tb_kpi_formula (kpi_id , attribute_id,roll_up_product_hierarchy,roll_up_timeline,roll_up_channel,is_deleted) 
+                values ({?kpi} , {?attribute},{p1}{p2}{p3} False)
+                        ON CONFLICT (kpi_id, attribute_id) DO UPDATE SET
+					is_deleted = False
+                    {p4}{p5}{p6}
+                    RETURNING id 
+                $$$.format(p1 = ""{?roll_up_product_hierarchy},"" if len(parameter:roll_up_product_hierarchy) > 0 else ""null,"",
+						   p2 = ""{?roll_up_timeline},"" if len(parameter:roll_up_timeline) > 0 else ""null,"",
+						   p3 = ""{?rollup_channel},"" if len(parameter:rollup_channel) > 0 else ""null,"",
+						   p4 = "",roll_up_product_hierarchy = EXCLUDED.roll_up_product_hierarchy"" if len(parameter:roll_up_product_hierarchy) > 0 else """",
+						   p5 = "",roll_up_channel = EXCLUDED.roll_up_channel"" if len(parameter:rollup_channel) > 0 else """",
+						   p6 = "",roll_up_timeline = EXCLUDED.roll_up_timeline"" if len(parameter:roll_up_timeline) > 0 else """")",,,,true,,
+34,query_34_insert,"$$$
+                delete from meta_schema.tb_editableflow_master 
+                where on_change_kpi_id = {?kpi};
+                insert into meta_schema.tb_editableflow_master
+                {p1}
+                $$$.format(p1= "" values {?editable_flow}"" if len(parameter:editable_flow) > 0 else ""select 1 where false"")",,,,true,,
+63,ia_plansmart_export_op_wp_master,"with hierarchy_table as
+(select * from
+(select * from
+(select
+channel AS ""channel"",
+l1_name as ""Division"",
+l2_name as ""Department"",
+REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+l3_name,
+'__ia_char_01', ''''),
+'__ia_char_02', '""'),
+'__ia_char_03', '/'),
+'__ia_char_04', '\\'),
+'__ia_char_05', '`'),
+'__ia_char_06', '~'),
+'__ia_char_07', '!'),
+'__ia_char_08', '@'),
+'__ia_char_09', '#'),
+'__ia_char_10', '$'),
+'__ia_char_11', '%'),
+'__ia_char_12', '^'),
+'__ia_char_13', '&'),
+'__ia_char_14', '*'),
+'__ia_char_15', '('),
+'__ia_char_16', ')'),
+'__ia_char_19', '='),
+'__ia_char_20', '+'),
+'__ia_char_21', '{'),
+'__ia_char_22', '}'),
+'__ia_char_23', '['),
+'__ia_char_24', ']'),
+'__ia_char_25', '|'),
+'__ia_char_26', ':'),
+'__ia_char_27', ';'),
+'__ia_char_28', '<'),
+'__ia_char_29', '>'),
+'__ia_char_30', ','),
+'__ia_char_31', '.'),
+'__ia_char_32', '?'
+) AS ""Class"",
+current_week,
+fiscal_year,
+case 
+  when fiscal_month_in_year = 1 then 'JANUARY'
+  when fiscal_month_in_year = 2 then 'FEBRUARY'
+  when fiscal_month_in_year = 3 then 'MARCH'
+  when fiscal_month_in_year = 4 then 'APRIL'
+  when fiscal_month_in_year = 5 then 'MAY'
+  when fiscal_month_in_year = 6 then 'JUNE'
+  when fiscal_month_in_year = 7 then 'JULY'
+  when fiscal_month_in_year = 8 then 'AUGUST'
+  when fiscal_month_in_year = 9 then 'SEPTEMBER'
+  when fiscal_month_in_year = 10 then 'OCTOBER'
+  when fiscal_month_in_year = 11 then 'NOVEMBER'
+  when fiscal_month_in_year = 12 then 'DECEMBER'
+end as
+fiscal_month_name,
+'WP' as ""Refrences"",
+kpi32 as ""Written Sales $"",
+kpi56 as ""Written Sales $ Build Ratio"",
+kpi250 as ""Comp Spread"",
+kpi248 as ""Written Sales $ Comp"",
+kpi249 as ""Written Sales $ NonComp"",
+kpi33 as ""Written Sales Units"",
+kpi105 as ""Written Sales Unit Build Ratio"",
+kpi106 as ""Written AIR (Initial Ticket Price)"",
+kpi34 as ""Written Discount Rate %"",
+kpi1 as ""Written IMU% (Initial Markup)"",
+kpi35 as ""Written AUR"",
+kpi2 as ""Written AUC"",
+kpi36 as ""Written GM %"",
+kpi3 as ""Written GM $"",
+kpi4 as ""Written Sales Cost/COGS"",
+kpi38 as ""Written BackOrder Sales Units"",
+kpi37 as ""Written BackOrder Sales $"",
+kpi39 as ""Written Cancellations Retail"",
+kpi5 as ""Written Cancel Retail Rate %"",
+kpi40 as ""Written Cancellations Units"",
+kpi6 as ""Written Cancel Units Rate %"",
+kpi41 as ""Written Cancellations Cost"",
+kpi7 as ""Written Cancel Cost Rate %"",
+kpi8 as ""Non Delivered Retail $"",
+kpi9 as ""Weighted Age of Retail $ Non Delivered"",
+kpi10 as ""Retail $ Rate of Written to Delivered Conversion - Model"",
+kpi11 as ""Non Delivered Written Sls Units"",
+kpi12 as ""Weighted Age of Unit Non Delivered"",
+kpi13 as ""Unit Rate of Written to Delivered Conversion - Model"",
+kpi14 as ""Non Delivered Cost"",
+kpi15 as ""Weighted Age of Cost $ Non Delivered"",
+kpi16 as ""Cost $ Rate of Written to Delivered Conversion - Model"",
+kpi17 as ""Retail Conversion Adjustment"",
+kpi42 as ""Delivered Sales $"",
+kpi18 as ""Delivered Sales $ Build Ratio"",
+kpi43 as ""Delivered Sales Units"",
+kpi19 as ""Delivered Sales Unit Build Ratio"",
+kpi20 as ""Delivered AIR (Initial Ticket Price)"",
+kpi44 as ""Delivered Discount Rate %"",
+kpi45 as ""Delivered AUR"",
+kpi21 as ""Delivered Sales Cost/COGS"",
+kpi57 as ""Delivered AUC"",
+kpi58 as ""Delivered GM $"",
+kpi46 as ""Delivered GM %"",
+kpi59 as ""Delivered GMROI"",
+kpi47 as ""Delivered Retail $ Returns"",
+kpi60 as ""Delivered Retail $ Return Rate %"",
+kpi48 as ""Delivered Unit Returns"",
+kpi61 as ""Delivered Unit Return Rate %"",
+kpi49 as ""Delivered Cost Returns"",
+kpi62 as ""Deliverd Cost Return Rate %"",
+kpi31 as ""BOP Units"",
+kpi30 as ""BOP Cost"",
+kpi63 as ""BOP AUC"",
+kpi72 as ""EOP Units"",
+kpi73 as ""EOP Cost"",
+kpi74 as ""EOP AUC"",
+kpi80 as ""Average Inventory Cost"",
+kpi79 as ""Average Inventory"",
+kpi81 as ""Turn Units"",
+kpi82 as ""Turn Cost"",
+kpi50 as ""Total Rcpt Cost $"",
+kpi51 as ""Total Receipt Units"",
+kpi89 as ""Total Receipt AUC"",
+kpi92 as ""On Order Placed Total $"",
+kpi95 as ""On Order Unplaced Total $"",
+kpi99 as ""On Order Placed Total Unit"",
+kpi102 as ""On Order Unplaced Total Unit"",
+kpi23 as ""On Order Placed Total AUC"",
+kpi26 as ""On Order Unplaced Total AUC"",
+kpi54 as ""Adjustment Units"",
+kpi55 as ""Adjustment Units Rate"",
+kpi52 as ""Adjustment Cost"",
+kpi53 as ""Adjustment Cost Rate"",
+kpi29 as ""Adjustment AUC""
+from
+((select * from
+(select 
+      *
+    from plan_smart.wp_master_1 wm 
+    where current_week >= concat((extract(year from current_date))::text, '01')::int8
+    and channel in ('Ecom', 'Store', 'Warehouse', 'Loft')
+) a
+inner join 
+(select division_name as l1_name, dpt_name as l2_name, class_name as l3_name, hierarchy_code
+from
+(select * from
+(select l1_name, l2_name, l3_name, hierarchy_code  from plan_smart.product_hierarchies_filter phf 
+where ""level"" = 4
+group by 1,2,3,4) ph
+inner join 
+(select l1_name, l2_name, l3_name, division_name, dpt_name, class_name  
+from ""global"".product_attributes_filter paf 
+group by 1,2,3,4,5,6) pa
+using(l1_name,l2_name, l3_name)
+group by 1,2,3,4,5,6,7) m) as ip
+using (hierarchy_code))as op
+INNER JOIN 
+(
+SELECT
+fiscal_year,
+fiscal_month_in_year,
+fdm.fiscal_year_week
+FROM
+""global"".fiscal_date_mapping fdm
+GROUP by
+fiscal_year,
+fiscal_month_in_year,
+fdm.fiscal_year_week) s 
+ON op.current_week = s.fiscal_year_week)a) wp
+union all 
+(select
+channel AS ""channel"",
+l1_name as ""Division"",
+l2_name as ""Department"",
+REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+l3_name,
+'__ia_char_01', ''''),
+'__ia_char_02', '""'),
+'__ia_char_03', '/'),
+'__ia_char_04', '\\'),
+'__ia_char_05', '`'),
+'__ia_char_06', '~'),
+'__ia_char_07', '!'),
+'__ia_char_08', '@'),
+'__ia_char_09', '#'),
+'__ia_char_10', '$'),
+'__ia_char_11', '%'),
+'__ia_char_12', '^'),
+'__ia_char_13', '&'),
+'__ia_char_14', '*'),
+'__ia_char_15', '('),
+'__ia_char_16', ')'),
+'__ia_char_19', '='),
+'__ia_char_20', '+'),
+'__ia_char_21', '{'),
+'__ia_char_22', '}'),
+'__ia_char_23', '['),
+'__ia_char_24', ']'),
+'__ia_char_25', '|'),
+'__ia_char_26', ':'),
+'__ia_char_27', ';'),
+'__ia_char_28', '<'),
+'__ia_char_29', '>'),
+'__ia_char_30', ','),
+'__ia_char_31', '.'),
+'__ia_char_32', '?'
+) AS ""Class"",
+current_week,
+fiscal_year,
+case 
+  when fiscal_month_in_year = 1 then 'JANUARY'
+  when fiscal_month_in_year = 2 then 'FEBRUARY'
+  when fiscal_month_in_year = 3 then 'MARCH'
+  when fiscal_month_in_year = 4 then 'APRIL'
+  when fiscal_month_in_year = 5 then 'MAY'
+  when fiscal_month_in_year = 6 then 'JUNE'
+  when fiscal_month_in_year = 7 then 'JULY'
+  when fiscal_month_in_year = 8 then 'AUGUST'
+  when fiscal_month_in_year = 9 then 'SEPTEMBER'
+  when fiscal_month_in_year = 10 then 'OCTOBER'
+  when fiscal_month_in_year = 11 then 'NOVEMBER'
+  when fiscal_month_in_year = 12 then 'DECEMBER'
+end as
+fiscal_month_name,
+'OP' as ""Refrences"",
+kpi32 as ""Written Sales $"",
+kpi56 as ""Written Sales $ Build Ratio"",
+kpi250 as ""Comp Spread"",
+kpi248 as ""Written Sales $ Comp"",
+kpi249 as ""Written Sales $ NonComp"",
+kpi33 as ""Written Sales Units"",
+kpi105 as ""Written Sales Unit Build Ratio"",
+kpi106 as ""Written AIR (Initial Ticket Price)"",
+kpi34 as ""Written Discount Rate %"",
+kpi1 as ""Written IMU% (Initial Markup)"",
+kpi35 as ""Written AUR"",
+kpi2 as ""Written AUC"",
+kpi36 as ""Written GM %"",
+kpi3 as ""Written GM $"",
+kpi4 as ""Written Sales Cost/COGS"",
+kpi38 as ""Written BackOrder Sales Units"",
+kpi37 as ""Written BackOrder Sales $"",
+kpi39 as ""Written Cancellations Retail"",
+kpi5 as ""Written Cancel Retail Rate %"",
+kpi40 as ""Written Cancellations Units"",
+kpi6 as ""Written Cancel Units Rate %"",
+kpi41 as ""Written Cancellations Cost"",
+kpi7 as ""Written Cancel Cost Rate %"",
+kpi8 as ""Non Delivered Retail $"",
+kpi9 as ""Weighted Age of Retail $ Non Delivered"",
+kpi10 as ""Retail $ Rate of Written to Delivered Conversion - Model"",
+kpi11 as ""Non Delivered Written Sls Units"",
+kpi12 as ""Weighted Age of Unit Non Delivered"",
+kpi13 as ""Unit Rate of Written to Delivered Conversion - Model"",
+kpi14 as ""Non Delivered Cost"",
+kpi15 as ""Weighted Age of Cost $ Non Delivered"",
+kpi16 as ""Cost $ Rate of Written to Delivered Conversion - Model"",
+kpi17 as ""Retail Conversion Adjustment"",
+kpi42 as ""Delivered Sales $"",
+kpi18 as ""Delivered Sales $ Build Ratio"",
+kpi43 as ""Delivered Sales Units"",
+kpi19 as ""Delivered Sales Unit Build Ratio"",
+kpi20 as ""Delivered AIR (Initial Ticket Price)"",
+kpi44 as ""Delivered Discount Rate %"",
+kpi45 as ""Delivered AUR"",
+kpi21 as ""Delivered Sales Cost/COGS"",
+kpi57 as ""Delivered AUC"",
+kpi58 as ""Delivered GM $"",
+kpi46 as ""Delivered GM %"",
+kpi59 as ""Delivered GMROI"",
+kpi47 as ""Delivered Retail $ Returns"",
+kpi60 as ""Delivered Retail $ Return Rate %"",
+kpi48 as ""Delivered Unit Returns"",
+kpi61 as ""Delivered Unit Return Rate %"",
+kpi49 as ""Delivered Cost Returns"",
+kpi62 as ""Deliverd Cost Return Rate %"",
+kpi31 as ""BOP Units"",
+kpi30 as ""BOP Cost"",
+kpi63 as ""BOP AUC"",
+kpi72 as ""EOP Units"",
+kpi73 as ""EOP Cost"",
+kpi74 as ""EOP AUC"",
+kpi80 as ""Average Inventory Cost"",
+kpi79 as ""Average Inventory"",
+kpi81 as ""Turn Units"",
+kpi82 as ""Turn Cost"",
+kpi50 as ""Total Rcpt Cost $"",
+kpi51 as ""Total Receipt Units"",
+kpi89 as ""Total Receipt AUC"",
+kpi92 as ""On Order Placed Total $"",
+kpi95 as ""On Order Unplaced Total $"",
+kpi99 as ""On Order Placed Total Unit"",
+kpi102 as ""On Order Unplaced Total Unit"",
+kpi23 as ""On Order Placed Total AUC"",
+kpi26 as ""On Order Unplaced Total AUC"",
+kpi54 as ""Adjustment Units"",
+kpi55 as ""Adjustment Units Rate"",
+kpi52 as ""Adjustment Cost"",
+kpi53 as ""Adjustment Cost Rate"",
+kpi29 as ""Adjustment AUC""
+from
+((select * from
+(select 
+      *
+    from plan_smart.op_master_1 wm 
+    where current_week >= concat((extract(year from current_date))::text, '01')::int8
+    and channel in ('Ecom', 'Store', 'Warehouse', 'Loft')
+) a
+inner join 
+(select division_name as l1_name, dpt_name as l2_name, class_name as l3_name, hierarchy_code
+from
+(select * from
+(select l1_name, l2_name, l3_name, hierarchy_code  from plan_smart.product_hierarchies_filter phf 
+where ""level"" = 4
+group by 1,2,3,4) ph
+inner join 
+(select l1_name, l2_name, l3_name, division_name, dpt_name, class_name  
+from ""global"".product_attributes_filter paf 
+group by 1,2,3,4,5,6) pa
+using(l1_name,l2_name, l3_name)
+group by 1,2,3,4,5,6,7) m) as ip
+using (hierarchy_code))as op
+INNER JOIN 
+(
+SELECT
+fiscal_year,
+fiscal_month_in_year,
+fdm.fiscal_year_week
+FROM
+""global"".fiscal_date_mapping fdm
+GROUP by
+fiscal_year,
+fiscal_month_in_year,
+fdm.fiscal_year_week) s 
+ON op.current_week = s.fiscal_year_week)a))b
+union all
+(select * from
+(select
+'Omni' AS ""channel"",
+l1_name as ""Division"",
+l2_name as ""Department"",
+REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+l3_name,
+'__ia_char_01', ''''),
+'__ia_char_02', '""'),
+'__ia_char_03', '/'),
+'__ia_char_04', '\\'),
+'__ia_char_05', '`'),
+'__ia_char_06', '~'),
+'__ia_char_07', '!'),
+'__ia_char_08', '@'),
+'__ia_char_09', '#'),
+'__ia_char_10', '$'),
+'__ia_char_11', '%'),
+'__ia_char_12', '^'),
+'__ia_char_13', '&'),
+'__ia_char_14', '*'),
+'__ia_char_15', '('),
+'__ia_char_16', ')'),
+'__ia_char_19', '='),
+'__ia_char_20', '+'),
+'__ia_char_21', '{'),
+'__ia_char_22', '}'),
+'__ia_char_23', '['),
+'__ia_char_24', ']'),
+'__ia_char_25', '|'),
+'__ia_char_26', ':'),
+'__ia_char_27', ';'),
+'__ia_char_28', '<'),
+'__ia_char_29', '>'),
+'__ia_char_30', ','),
+'__ia_char_31', '.'),
+'__ia_char_32', '?'
+) AS ""Class"",
+current_week,
+fiscal_year,
+case 
+  when fiscal_month_in_year = 1 then 'JANUARY'
+  when fiscal_month_in_year = 2 then 'FEBRUARY'
+  when fiscal_month_in_year = 3 then 'MARCH'
+  when fiscal_month_in_year = 4 then 'APRIL'
+  when fiscal_month_in_year = 5 then 'MAY'
+  when fiscal_month_in_year = 6 then 'JUNE'
+  when fiscal_month_in_year = 7 then 'JULY'
+  when fiscal_month_in_year = 8 then 'AUGUST'
+  when fiscal_month_in_year = 9 then 'SEPTEMBER'
+  when fiscal_month_in_year = 10 then 'OCTOBER'
+  when fiscal_month_in_year = 11 then 'NOVEMBER'
+  when fiscal_month_in_year = 12 then 'DECEMBER'
+end as
+fiscal_month_name,
+'WP' as ""Refrences"",
+sum(kpi32) as ""Written Sales $"",
+sum(kpi56) as ""Written Sales $ Build Ratio"",
+coalesce((sum(kpi248)/nullif(sum(kpi32),0)),0) as ""Comp Spread"",
+sum(kpi248) as ""Written Sales $ Comp"",
+sum(kpi249) as ""Written Sales $ NonComp"",
+sum(kpi33) as ""Written Sales Units"",
+sum(kpi105) as ""Written Sales Unit Build Ratio"",
+coalesce((sum(prod_of_w_air)/nullif(sum(kpi33),0)),0) as ""Written AIR (Initial Ticket Price)"",
+coalesce(((1-((sum(kpi32)/nullif(sum(kpi33),0))/nullif((sum(prod_of_w_air)/nullif(sum(kpi33),0)),0)))*100),0) as ""Written Discount Rate %"",
+coalesce(((1-((sum(kpi4)/nullif(sum(kpi33),0))/nullif((sum(prod_of_w_air)/nullif(sum(kpi33),0)),0)))*100),0) as ""Written IMU% (Initial Markup)"",
+coalesce((sum(kpi32)/nullif(sum(kpi33),0)),0) as ""Written AUR"",
+coalesce((sum(kpi4)/nullif(sum(kpi33),0)),0) as ""Written AUC"",
+coalesce((sum(kpi3)/nullif(sum(kpi32),0)),0) as ""Written GM %"",
+sum(kpi3) as ""Written GM $"",
+sum(kpi4) as ""Written Sales Cost/COGS"",
+sum(kpi38) as ""Written BackOrder Sales Units"",
+sum(kpi37) as ""Written BackOrder Sales $"",
+sum(kpi39) as ""Written Cancellations Retail"",
+coalesce((sum(kpi39)/nullif(sum(kpi32+kpi39),0)),0) as ""Written Cancel Retail Rate %"",
+sum(kpi40) as ""Written Cancellations Units"",
+coalesce((sum(kpi40)/nullif(sum(kpi33+kpi40),0)),0) as ""Written Cancel Units Rate %"",
+sum(kpi41) as ""Written Cancellations Cost"",
+coalesce((sum(kpi41)/nullif(sum(kpi4+kpi41),0)),0) as ""Written Cancel Cost Rate %"",
+sum(kpi8) as ""Non Delivered Retail $"",
+sum(kpi9) as ""Weighted Age of Retail $ Non Delivered"",
+sum(kpi10) as ""Retail $ Rate of Written to Delivered Conversion - Model"",
+sum(kpi11) as ""Non Delivered Written Sls Units"",
+sum(kpi12) as ""Weighted Age of Unit Non Delivered"",
+sum(kpi13) as ""Unit Rate of Written to Delivered Conversion - Model"",
+sum(kpi14) as ""Non Delivered Cost"",
+sum(kpi15) as ""Weighted Age of Cost $ Non Delivered"",
+sum(kpi16) as ""Cost $ Rate of Written to Delivered Conversion - Model"",
+sum(kpi17) as ""Retail Conversion Adjustment"",
+sum(kpi42) as ""Delivered Sales $"",
+sum(kpi18) as ""Delivered Sales $ Build Ratio"",
+sum(kpi43) as ""Delivered Sales Units"",
+sum(kpi19) as ""Delivered Sales Unit Build Ratio"",
+coalesce((sum(prod_of_d_air)/nullif(sum(kpi43),0)),0) as ""Delivered AIR (Initial Ticket Price)"",
+coalesce(((1-((sum(kpi42)/nullif(sum(kpi43),0))/nullif((sum(prod_of_d_air)/nullif(sum(kpi43),0)),0)))*100),0) as ""Delivered Discount Rate %"",
+coalesce((sum(kpi42)/nullif(sum(kpi43),0)),0) as ""Delivered AUR"",
+sum(kpi21) as ""Delivered Sales Cost/COGS"",
+coalesce((sum(kpi21)/nullif(sum(kpi43),0)),0) as ""Delivered AUC"",
+sum(kpi58) as ""Delivered GM $"",
+coalesce((sum(kpi58)/nullif(sum(kpi42*100),0)),0) as ""Delivered GM %"",
+coalesce((sum(kpi58)/nullif(sum(kpi80),0)),0) as ""Delivered GMROI"",
+sum(kpi47) as ""Delivered Retail $ Returns"",
+coalesce((sum(kpi47)/nullif(sum(kpi42+kpi47),0)),0) as ""Delivered Retail $ Return Rate %"",
+sum(kpi48) as ""Delivered Unit Returns"",
+coalesce((sum(kpi48)/nullif(sum(kpi43+kpi48),0)),0) as ""Delivered Unit Return Rate %"",
+sum(kpi49) as ""Delivered Cost Returns"",
+coalesce((sum(kpi49)/nullif(sum(kpi21+kpi49),0)),0) as ""Deliverd Cost Return Rate %"",
+sum(kpi31) as ""BOP Units"",
+sum(kpi30) as ""BOP Cost"",
+coalesce((sum(kpi30)/nullif(sum(kpi31),0)),0) as ""BOP AUC"",
+sum(kpi72) as ""EOP Units"",
+sum(kpi73) as ""EOP Cost"",
+coalesce((sum(kpi73)/nullif(sum(kpi72),0)),0) as ""EOP AUC"",
+sum(kpi80) as ""Average Inventory Cost"",
+sum(kpi79) as ""Average Inventory"",
+sum(kpi81) as ""Turn Units"",
+sum(kpi82) as ""Turn Cost"",
+sum(kpi50) as ""Total Rcpt Cost $"",
+sum(kpi51) as ""Total Receipt Units"",
+coalesce((sum(kpi50)/nullif(sum(kpi51),0)),0) as ""Total Receipt AUC"",
+sum(kpi92) as ""On Order Placed Total $"",
+sum(kpi95) as ""On Order Unplaced Total $"",
+sum(kpi99) as ""On Order Placed Total Unit"",
+sum(kpi102) as ""On Order Unplaced Total Unit"",
+coalesce((sum(kpi92)/nullif(sum(kpi99),0)),0) as ""On Order Placed Total AUC"",
+coalesce((sum(kpi95)/nullif(sum(kpi102),0)),0) as ""On Order Unplaced Total AUC"",
+sum(kpi54) as ""Adjustment Units"",
+coalesce((sum(kpi54)/nullif(sum(kpi31),0)),0) as ""Adjustment Units Rate"",
+sum(kpi52) as ""Adjustment Cost"",
+coalesce((sum(kpi52)/nullif(sum(kpi30),0)),0) as ""Adjustment Cost Rate"",
+coalesce((sum(kpi52)/nullif(sum(kpi54),0)),0) as ""Adjustment AUC""
+from
+((select *, Kpi33*kpi106 as prod_of_w_air, kpi20*kpi43 as prod_of_d_air from
+(select 
+      *
+    from plan_smart.wp_master_1 wm 
+    where current_week >= concat((extract(year from current_date))::text, '01')::int8
+    and channel in ('Ecom', 'Store', 'Warehouse', 'Loft')
+) a
+inner join 
+(select division_name as l1_name, dpt_name as l2_name, class_name as l3_name, hierarchy_code
+from
+(select * from
+(select l1_name, l2_name, l3_name, hierarchy_code  from plan_smart.product_hierarchies_filter phf 
+where ""level"" = 4
+group by 1,2,3,4) ph
+inner join 
+(select l1_name, l2_name, l3_name, division_name, dpt_name, class_name  
+from ""global"".product_attributes_filter paf 
+group by 1,2,3,4,5,6) pa
+using(l1_name,l2_name, l3_name)
+group by 1,2,3,4,5,6,7) m) as ip
+using (hierarchy_code))as op
+INNER JOIN 
+(
+SELECT
+fiscal_year,
+fiscal_month_in_year,
+fdm.fiscal_year_week
+FROM
+""global"".fiscal_date_mapping fdm
+GROUP by
+fiscal_year,
+fiscal_month_in_year,
+fdm.fiscal_year_week) s 
+ON op.current_week = s.fiscal_year_week)a
+group by 1,2,3,4,5,6,7,8) wp
+union all 
+(select
+'Omni' AS ""channel"",
+l1_name as ""Division"",
+l2_name as ""Department"",
+REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+l3_name,
+'__ia_char_01', ''''),
+'__ia_char_02', '""'),
+'__ia_char_03', '/'),
+'__ia_char_04', '\\'),
+'__ia_char_05', '`'),
+'__ia_char_06', '~'),
+'__ia_char_07', '!'),
+'__ia_char_08', '@'),
+'__ia_char_09', '#'),
+'__ia_char_10', '$'),
+'__ia_char_11', '%'),
+'__ia_char_12', '^'),
+'__ia_char_13', '&'),
+'__ia_char_14', '*'),
+'__ia_char_15', '('),
+'__ia_char_16', ')'),
+'__ia_char_19', '='),
+'__ia_char_20', '+'),
+'__ia_char_21', '{'),
+'__ia_char_22', '}'),
+'__ia_char_23', '['),
+'__ia_char_24', ']'),
+'__ia_char_25', '|'),
+'__ia_char_26', ':'),
+'__ia_char_27', ';'),
+'__ia_char_28', '<'),
+'__ia_char_29', '>'),
+'__ia_char_30', ','),
+'__ia_char_31', '.'),
+'__ia_char_32', '?'
+) AS ""Class"",
+current_week,
+fiscal_year,
+case 
+  when fiscal_month_in_year = 1 then 'JANUARY'
+  when fiscal_month_in_year = 2 then 'FEBRUARY'
+  when fiscal_month_in_year = 3 then 'MARCH'
+  when fiscal_month_in_year = 4 then 'APRIL'
+  when fiscal_month_in_year = 5 then 'MAY'
+  when fiscal_month_in_year = 6 then 'JUNE'
+  when fiscal_month_in_year = 7 then 'JULY'
+  when fiscal_month_in_year = 8 then 'AUGUST'
+  when fiscal_month_in_year = 9 then 'SEPTEMBER'
+  when fiscal_month_in_year = 10 then 'OCTOBER'
+  when fiscal_month_in_year = 11 then 'NOVEMBER'
+  when fiscal_month_in_year = 12 then 'DECEMBER'
+end as
+fiscal_month_name,
+'OP' as ""Refrences"",
+sum(kpi32) as ""Written Sales $"",
+sum(kpi56) as ""Written Sales $ Build Ratio"",
+coalesce((sum(kpi248)/nullif(sum(kpi32),0)),0) as ""Comp Spread"",
+sum(kpi248) as ""Written Sales $ Comp"",
+sum(kpi249) as ""Written Sales $ NonComp"",
+sum(kpi33) as ""Written Sales Units"",
+sum(kpi105) as ""Written Sales Unit Build Ratio"",
+coalesce((sum(prod_of_w_air)/nullif(sum(kpi33),0)),0) as ""Written AIR (Initial Ticket Price)"",
+coalesce(((1-((sum(kpi32)/nullif(sum(kpi33),0))/nullif((sum(prod_of_w_air)/nullif(sum(kpi33),0)),0)))*100),0) as ""Written Discount Rate %"",
+coalesce(((1-((sum(kpi4)/nullif(sum(kpi33),0))/nullif((sum(prod_of_w_air)/nullif(sum(kpi33),0)),0)))*100),0) as ""Written IMU% (Initial Markup)"",
+coalesce((sum(kpi32)/nullif(sum(kpi33),0)),0) as ""Written AUR"",
+coalesce((sum(kpi4)/nullif(sum(kpi33),0)),0) as ""Written AUC"",
+coalesce((sum(kpi3)/nullif(sum(kpi32),0)),0) as ""Written GM %"",
+sum(kpi3) as ""Written GM $"",
+sum(kpi4) as ""Written Sales Cost/COGS"",
+sum(kpi38) as ""Written BackOrder Sales Units"",
+sum(kpi37) as ""Written BackOrder Sales $"",
+sum(kpi39) as ""Written Cancellations Retail"",
+coalesce((sum(kpi39)/nullif(sum(kpi32+kpi39),0)),0) as ""Written Cancel Retail Rate %"",
+sum(kpi40) as ""Written Cancellations Units"",
+coalesce((sum(kpi40)/nullif(sum(kpi33+kpi40),0)),0) as ""Written Cancel Units Rate %"",
+sum(kpi41) as ""Written Cancellations Cost"",
+coalesce((sum(kpi41)/nullif(sum(kpi4+kpi41),0)),0) as ""Written Cancel Cost Rate %"",
+sum(kpi8) as ""Non Delivered Retail $"",
+sum(kpi9) as ""Weighted Age of Retail $ Non Delivered"",
+sum(kpi10) as ""Retail $ Rate of Written to Delivered Conversion - Model"",
+sum(kpi11) as ""Non Delivered Written Sls Units"",
+sum(kpi12) as ""Weighted Age of Unit Non Delivered"",
+sum(kpi13) as ""Unit Rate of Written to Delivered Conversion - Model"",
+sum(kpi14) as ""Non Delivered Cost"",
+sum(kpi15) as ""Weighted Age of Cost $ Non Delivered"",
+sum(kpi16) as ""Cost $ Rate of Written to Delivered Conversion - Model"",
+sum(kpi17) as ""Retail Conversion Adjustment"",
+sum(kpi42) as ""Delivered Sales $"",
+sum(kpi18) as ""Delivered Sales $ Build Ratio"",
+sum(kpi43) as ""Delivered Sales Units"",
+sum(kpi19) as ""Delivered Sales Unit Build Ratio"",
+coalesce((sum(prod_of_d_air)/nullif(sum(kpi43),0)),0) as ""Delivered AIR (Initial Ticket Price)"",
+coalesce(((1-((sum(kpi42)/nullif(sum(kpi43),0))/nullif((sum(prod_of_d_air)/nullif(sum(kpi43),0)),0)))*100),0) as ""Delivered Discount Rate %"",
+coalesce((sum(kpi42)/nullif(sum(kpi43),0)),0) as ""Delivered AUR"",
+sum(kpi21) as ""Delivered Sales Cost/COGS"",
+coalesce((sum(kpi21)/nullif(sum(kpi43),0)),0) as ""Delivered AUC"",
+sum(kpi58) as ""Delivered GM $"",
+coalesce((sum(kpi58)/nullif(sum(kpi42*100),0)),0) as ""Delivered GM %"",
+coalesce((sum(kpi58)/nullif(sum(kpi80),0)),0) as ""Delivered GMROI"",
+sum(kpi47) as ""Delivered Retail $ Returns"",
+coalesce((sum(kpi47)/nullif(sum(kpi42+kpi47),0)),0) as ""Delivered Retail $ Return Rate %"",
+sum(kpi48) as ""Delivered Unit Returns"",
+coalesce((sum(kpi48)/nullif(sum(kpi43+kpi48),0)),0) as ""Delivered Unit Return Rate %"",
+sum(kpi49) as ""Delivered Cost Returns"",
+coalesce((sum(kpi49)/nullif(sum(kpi21+kpi49),0)),0) as ""Deliverd Cost Return Rate %"",
+sum(kpi31) as ""BOP Units"",
+sum(kpi30) as ""BOP Cost"",
+coalesce((sum(kpi30)/nullif(sum(kpi31),0)),0) as ""BOP AUC"",
+sum(kpi72) as ""EOP Units"",
+sum(kpi73) as ""EOP Cost"",
+coalesce((sum(kpi73)/nullif(sum(kpi72),0)),0) as ""EOP AUC"",
+sum(kpi80) as ""Average Inventory Cost"",
+sum(kpi79) as ""Average Inventory"",
+sum(kpi81) as ""Turn Units"",
+sum(kpi82) as ""Turn Cost"",
+sum(kpi50) as ""Total Rcpt Cost $"",
+sum(kpi51) as ""Total Receipt Units"",
+coalesce((sum(kpi50)/nullif(sum(kpi51),0)),0) as ""Total Receipt AUC"",
+sum(kpi92) as ""On Order Placed Total $"",
+sum(kpi95) as ""On Order Unplaced Total $"",
+sum(kpi99) as ""On Order Placed Total Unit"",
+sum(kpi102) as ""On Order Unplaced Total Unit"",
+coalesce((sum(kpi92)/nullif(sum(kpi99),0)),0) as ""On Order Placed Total AUC"",
+coalesce((sum(kpi95)/nullif(sum(kpi102),0)),0) as ""On Order Unplaced Total AUC"",
+sum(kpi54) as ""Adjustment Units"",
+coalesce((sum(kpi54)/nullif(sum(kpi31),0)),0) as ""Adjustment Units Rate"",
+sum(kpi52) as ""Adjustment Cost"",
+coalesce((sum(kpi52)/nullif(sum(kpi30),0)),0) as ""Adjustment Cost Rate"",
+coalesce((sum(kpi52)/nullif(sum(kpi54),0)),0) as ""Adjustment AUC""
+from
+((select *, Kpi33*kpi106 as prod_of_w_air, kpi20*kpi43 as prod_of_d_air from
+(select 
+      *
+    from plan_smart.op_master_1 wm 
+    where current_week >= concat((extract(year from current_date))::text, '01')::int8
+    and channel in ('Ecom', 'Store', 'Warehouse', 'Loft')
+) a
+inner join 
+(select division_name as l1_name, dpt_name as l2_name, class_name as l3_name, hierarchy_code
+from
+(select * from
+(select l1_name, l2_name, l3_name, hierarchy_code  from plan_smart.product_hierarchies_filter phf 
+where ""level"" = 4
+group by 1,2,3,4) ph
+inner join 
+(select l1_name, l2_name, l3_name, division_name, dpt_name, class_name  
+from ""global"".product_attributes_filter paf 
+group by 1,2,3,4,5,6) pa
+using(l1_name,l2_name, l3_name)
+group by 1,2,3,4,5,6,7) m) as ip
+using (hierarchy_code))as op
+INNER JOIN 
+(
+SELECT
+fiscal_year,
+fiscal_month_in_year,
+fdm.fiscal_year_week
+FROM
+""global"".fiscal_date_mapping fdm
+GROUP by
+fiscal_year,
+fiscal_month_in_year,
+fdm.fiscal_year_week) s 
+ON op.current_week = s.fiscal_year_week)a
+group by 1,2,3,4,5,6,7,8)))
+select * from hierarchy_table
+where channel <> 'Warehouse'",,,,false,,
+62,ia_plansmart_export_lf_wf_master,"with hierarchy_table as
+(select * from
+(select * from
+(select
+channel AS ""channel"",
+l1_name as ""Division"",
+l2_name as ""Department"",
+REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+l3_name,
+'__ia_char_01', ''''),
+'__ia_char_02', '""'),
+'__ia_char_03', '/'),
+'__ia_char_04', '\\'),
+'__ia_char_05', '`'),
+'__ia_char_06', '~'),
+'__ia_char_07', '!'),
+'__ia_char_08', '@'),
+'__ia_char_09', '#'),
+'__ia_char_10', '$'),
+'__ia_char_11', '%'),
+'__ia_char_12', '^'),
+'__ia_char_13', '&'),
+'__ia_char_14', '*'),
+'__ia_char_15', '('),
+'__ia_char_16', ')'),
+'__ia_char_19', '='),
+'__ia_char_20', '+'),
+'__ia_char_21', '{'),
+'__ia_char_22', '}'),
+'__ia_char_23', '['),
+'__ia_char_24', ']'),
+'__ia_char_25', '|'),
+'__ia_char_26', ':'),
+'__ia_char_27', ';'),
+'__ia_char_28', '<'),
+'__ia_char_29', '>'),
+'__ia_char_30', ','),
+'__ia_char_31', '.'),
+'__ia_char_32', '?'
+) AS ""Class"",
+current_week,
+fiscal_year,
+case 
+  when fiscal_month_in_year = 1 then 'JANUARY'
+  when fiscal_month_in_year = 2 then 'FEBRUARY'
+  when fiscal_month_in_year = 3 then 'MARCH'
+  when fiscal_month_in_year = 4 then 'APRIL'
+  when fiscal_month_in_year = 5 then 'MAY'
+  when fiscal_month_in_year = 6 then 'JUNE'
+  when fiscal_month_in_year = 7 then 'JULY'
+  when fiscal_month_in_year = 8 then 'AUGUST'
+  when fiscal_month_in_year = 9 then 'SEPTEMBER'
+  when fiscal_month_in_year = 10 then 'OCTOBER'
+  when fiscal_month_in_year = 11 then 'NOVEMBER'
+  when fiscal_month_in_year = 12 then 'DECEMBER'
+end as
+fiscal_month_name,
+'LF' as ""Refrences"",
+kpi32 as ""Written Sales $"",
+kpi56 as ""Written Sales $ Build Ratio"",
+kpi250 as ""Comp Spread"",
+kpi248 as ""Written Sales $ Comp"",
+kpi249 as ""Written Sales $ NonComp"",
+kpi33 as ""Written Sales Units"",
+kpi105 as ""Written Sales Unit Build Ratio"",
+kpi106 as ""Written AIR (Initial Ticket Price)"",
+kpi34 as ""Written Discount Rate %"",
+kpi1 as ""Written IMU% (Initial Markup)"",
+kpi35 as ""Written AUR"",
+kpi2 as ""Written AUC"",
+kpi36 as ""Written GM %"",
+kpi3 as ""Written GM $"",
+kpi4 as ""Written Sales Cost/COGS"",
+kpi38 as ""Written BackOrder Sales Units"",
+kpi37 as ""Written BackOrder Sales $"",
+kpi39 as ""Written Cancellations Retail"",
+kpi5 as ""Written Cancel Retail Rate %"",
+kpi40 as ""Written Cancellations Units"",
+kpi6 as ""Written Cancel Units Rate %"",
+kpi41 as ""Written Cancellations Cost"",
+kpi7 as ""Written Cancel Cost Rate %"",
+kpi8 as ""Non Delivered Retail $"",
+kpi9 as ""Weighted Age of Retail $ Non Delivered"",
+kpi10 as ""Retail $ Rate of Written to Delivered Conversion - Model"",
+kpi11 as ""Non Delivered Written Sls Units"",
+kpi12 as ""Weighted Age of Unit Non Delivered"",
+kpi13 as ""Unit Rate of Written to Delivered Conversion - Model"",
+kpi14 as ""Non Delivered Cost"",
+kpi15 as ""Weighted Age of Cost $ Non Delivered"",
+kpi16 as ""Cost $ Rate of Written to Delivered Conversion - Model"",
+kpi17 as ""Retail Conversion Adjustment"",
+kpi42 as ""Delivered Sales $"",
+kpi18 as ""Delivered Sales $ Build Ratio"",
+kpi43 as ""Delivered Sales Units"",
+kpi19 as ""Delivered Sales Unit Build Ratio"",
+kpi20 as ""Delivered AIR (Initial Ticket Price)"",
+kpi44 as ""Delivered Discount Rate %"",
+kpi45 as ""Delivered AUR"",
+kpi21 as ""Delivered Sales Cost/COGS"",
+kpi57 as ""Delivered AUC"",
+kpi58 as ""Delivered GM $"",
+kpi46 as ""Delivered GM %"",
+kpi59 as ""Delivered GMROI"",
+kpi47 as ""Delivered Retail $ Returns"",
+kpi60 as ""Delivered Retail $ Return Rate %"",
+kpi48 as ""Delivered Unit Returns"",
+kpi61 as ""Delivered Unit Return Rate %"",
+kpi49 as ""Delivered Cost Returns"",
+kpi62 as ""Deliverd Cost Return Rate %"",
+kpi31 as ""BOP Units"",
+kpi30 as ""BOP Cost"",
+kpi63 as ""BOP AUC"",
+kpi64 as ""Available Units OH BOP"",
+kpi65 as ""Available Cost OH BOP"",
+kpi66 as ""Forward Weeks of Supply AOH Units"",
+kpi67 as ""Forward Weeks of Supply AOH Cost $"",
+kpi68 as ""Available to Promise BOP Units"",
+kpi70 as ""Available to PromiseBOP Cost"",
+kpi69 as ""Forward Weeks of Supply ATP Units"",
+kpi71 as ""Forward Weeks of Supply ATP Cost $"",
+kpi72 as ""EOP Units"",
+kpi73 as ""EOP Cost"",
+kpi74 as ""EOP AUC"",
+kpi75 as ""EOP Cost OP"",
+kpi76 as ""EOP Cost LF"",
+kpi77 as ""OTB$ (WF vs OP)"",
+kpi78 as ""OTB$ (WF vs LF)"",
+kpi80 as ""Average Inventory Cost"",
+kpi79 as ""Average Inventory"",
+kpi81 as ""Turn Units"",
+kpi82 as ""Turn Cost"",
+kpi50 as ""Total Rcpt Cost $"",
+kpi51 as ""Total Receipt Units"",
+kpi89 as ""Total Receipt AUC"",
+kpi92 as ""On Order Placed Total $"",
+kpi95 as ""On Order Unplaced Total $"",
+kpi99 as ""On Order Placed Total Unit"",
+kpi102 as ""On Order Unplaced Total Unit"",
+kpi23 as ""On Order Placed Total AUC"",
+kpi26 as ""On Order Unplaced Total AUC"",
+kpi54 as ""Adjustment Units"",
+kpi55 as ""Adjustment Units Rate"",
+kpi52 as ""Adjustment Cost"",
+kpi53 as ""Adjustment Cost Rate"",
+kpi29 as ""Adjustment AUC""
+from
+((select * from
+(select 
+      *
+    from plan_smart.lf_master_1 wm 
+    where current_week >= concat((extract(year from current_date))::text, '01')::int8
+    and channel in ('Ecom', 'Store', 'Warehouse', 'Loft')
+) a
+inner join 
+(select division_name as l1_name, dpt_name as l2_name, class_name as l3_name, hierarchy_code
+from
+(select * from
+(select l1_name, l2_name, l3_name, hierarchy_code  from plan_smart.product_hierarchies_filter phf 
+where ""level"" = 4
+group by 1,2,3,4) ph
+inner join 
+(select l1_name, l2_name, l3_name, division_name, dpt_name, class_name  
+from ""global"".product_attributes_filter paf 
+group by 1,2,3,4,5,6) pa
+using(l1_name,l2_name, l3_name)
+group by 1,2,3,4,5,6,7) m) as ip
+using (hierarchy_code))as op
+INNER JOIN 
+(
+SELECT
+fiscal_year,
+fiscal_month_in_year,
+fdm.fiscal_year_week
+FROM
+""global"".fiscal_date_mapping fdm
+GROUP by
+fiscal_year,
+fiscal_month_in_year,
+fdm.fiscal_year_week) s 
+ON op.current_week = s.fiscal_year_week)a) wp
+union all 
+(select
+channel AS ""channel"",
+l1_name as ""Division"",
+l2_name as ""Department"",
+REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+l3_name,
+'__ia_char_01', ''''),
+'__ia_char_02', '""'),
+'__ia_char_03', '/'),
+'__ia_char_04', '\\'),
+'__ia_char_05', '`'),
+'__ia_char_06', '~'),
+'__ia_char_07', '!'),
+'__ia_char_08', '@'),
+'__ia_char_09', '#'),
+'__ia_char_10', '$'),
+'__ia_char_11', '%'),
+'__ia_char_12', '^'),
+'__ia_char_13', '&'),
+'__ia_char_14', '*'),
+'__ia_char_15', '('),
+'__ia_char_16', ')'),
+'__ia_char_19', '='),
+'__ia_char_20', '+'),
+'__ia_char_21', '{'),
+'__ia_char_22', '}'),
+'__ia_char_23', '['),
+'__ia_char_24', ']'),
+'__ia_char_25', '|'),
+'__ia_char_26', ':'),
+'__ia_char_27', ';'),
+'__ia_char_28', '<'),
+'__ia_char_29', '>'),
+'__ia_char_30', ','),
+'__ia_char_31', '.'),
+'__ia_char_32', '?'
+) AS ""Class"",
+current_week,
+fiscal_year,
+case 
+  when fiscal_month_in_year = 1 then 'JANUARY'
+  when fiscal_month_in_year = 2 then 'FEBRUARY'
+  when fiscal_month_in_year = 3 then 'MARCH'
+  when fiscal_month_in_year = 4 then 'APRIL'
+  when fiscal_month_in_year = 5 then 'MAY'
+  when fiscal_month_in_year = 6 then 'JUNE'
+  when fiscal_month_in_year = 7 then 'JULY'
+  when fiscal_month_in_year = 8 then 'AUGUST'
+  when fiscal_month_in_year = 9 then 'SEPTEMBER'
+  when fiscal_month_in_year = 10 then 'OCTOBER'
+  when fiscal_month_in_year = 11 then 'NOVEMBER'
+  when fiscal_month_in_year = 12 then 'DECEMBER'
+end as
+fiscal_month_name,
+'WF' as ""Refrences"",
+kpi32 as ""Written Sales $"",
+kpi56 as ""Written Sales $ Build Ratio"",
+kpi250 as ""Comp Spread"",
+kpi248 as ""Written Sales $ Comp"",
+kpi249 as ""Written Sales $ NonComp"",
+kpi33 as ""Written Sales Units"",
+kpi105 as ""Written Sales Unit Build Ratio"",
+kpi106 as ""Written AIR (Initial Ticket Price)"",
+kpi34 as ""Written Discount Rate %"",
+kpi1 as ""Written IMU% (Initial Markup)"",
+kpi35 as ""Written AUR"",
+kpi2 as ""Written AUC"",
+kpi36 as ""Written GM %"",
+kpi3 as ""Written GM $"",
+kpi4 as ""Written Sales Cost/COGS"",
+kpi38 as ""Written BackOrder Sales Units"",
+kpi37 as ""Written BackOrder Sales $"",
+kpi39 as ""Written Cancellations Retail"",
+kpi5 as ""Written Cancel Retail Rate %"",
+kpi40 as ""Written Cancellations Units"",
+kpi6 as ""Written Cancel Units Rate %"",
+kpi41 as ""Written Cancellations Cost"",
+kpi7 as ""Written Cancel Cost Rate %"",
+kpi8 as ""Non Delivered Retail $"",
+kpi9 as ""Weighted Age of Retail $ Non Delivered"",
+kpi10 as ""Retail $ Rate of Written to Delivered Conversion - Model"",
+kpi11 as ""Non Delivered Written Sls Units"",
+kpi12 as ""Weighted Age of Unit Non Delivered"",
+kpi13 as ""Unit Rate of Written to Delivered Conversion - Model"",
+kpi14 as ""Non Delivered Cost"",
+kpi15 as ""Weighted Age of Cost $ Non Delivered"",
+kpi16 as ""Cost $ Rate of Written to Delivered Conversion - Model"",
+kpi17 as ""Retail Conversion Adjustment"",
+kpi42 as ""Delivered Sales $"",
+kpi18 as ""Delivered Sales $ Build Ratio"",
+kpi43 as ""Delivered Sales Units"",
+kpi19 as ""Delivered Sales Unit Build Ratio"",
+kpi20 as ""Delivered AIR (Initial Ticket Price)"",
+kpi44 as ""Delivered Discount Rate %"",
+kpi45 as ""Delivered AUR"",
+kpi21 as ""Delivered Sales Cost/COGS"",
+kpi57 as ""Delivered AUC"",
+kpi58 as ""Delivered GM $"",
+kpi46 as ""Delivered GM %"",
+kpi59 as ""Delivered GMROI"",
+kpi47 as ""Delivered Retail $ Returns"",
+kpi60 as ""Delivered Retail $ Return Rate %"",
+kpi48 as ""Delivered Unit Returns"",
+kpi61 as ""Delivered Unit Return Rate %"",
+kpi49 as ""Delivered Cost Returns"",
+kpi62 as ""Deliverd Cost Return Rate %"",
+kpi31 as ""BOP Units"",
+kpi30 as ""BOP Cost"",
+kpi63 as ""BOP AUC"",
+kpi64 as ""Available Units OH BOP"",
+kpi65 as ""Available Cost OH BOP"",
+kpi66 as ""Forward Weeks of Supply AOH Units"",
+kpi67 as ""Forward Weeks of Supply AOH Cost $"",
+kpi68 as ""Available to Promise BOP Units"",
+kpi70 as ""Available to PromiseBOP Cost"",
+kpi69 as ""Forward Weeks of Supply ATP Units"",
+kpi71 as ""Forward Weeks of Supply ATP Cost $"",
+kpi72 as ""EOP Units"",
+kpi73 as ""EOP Cost"",
+kpi74 as ""EOP AUC"",
+kpi75 as ""EOP Cost OP"",
+kpi76 as ""EOP Cost LF"",
+kpi77 as ""OTB$ (WF vs OP)"",
+kpi78 as ""OTB$ (WF vs LF)"",
+kpi80 as ""Average Inventory Cost"",
+kpi79 as ""Average Inventory"",
+kpi81 as ""Turn Units"",
+kpi82 as ""Turn Cost"",
+kpi50 as ""Total Rcpt Cost $"",
+kpi51 as ""Total Receipt Units"",
+kpi89 as ""Total Receipt AUC"",
+kpi92 as ""On Order Placed Total $"",
+kpi95 as ""On Order Unplaced Total $"",
+kpi99 as ""On Order Placed Total Unit"",
+kpi102 as ""On Order Unplaced Total Unit"",
+kpi23 as ""On Order Placed Total AUC"",
+kpi26 as ""On Order Unplaced Total AUC"",
+kpi54 as ""Adjustment Units"",
+kpi55 as ""Adjustment Units Rate"",
+kpi52 as ""Adjustment Cost"",
+kpi53 as ""Adjustment Cost Rate"",
+kpi29 as ""Adjustment AUC""
+from
+((select * from
+(select 
+      *
+    from plan_smart.wf_master_1 wm 
+    where current_week >= concat((extract(year from current_date))::text, '01')::int8
+    and channel in ('Ecom', 'Store', 'Warehouse', 'Loft')
+) a
+inner join 
+(select division_name as l1_name, dpt_name as l2_name, class_name as l3_name, hierarchy_code
+from
+(select * from
+(select l1_name, l2_name, l3_name, hierarchy_code  from plan_smart.product_hierarchies_filter phf 
+where ""level"" = 4
+group by 1,2,3,4) ph
+inner join 
+(select l1_name, l2_name, l3_name, division_name, dpt_name, class_name 
+from ""global"".product_attributes_filter paf 
+group by 1,2,3,4,5,6) pa
+using(l1_name,l2_name, l3_name)
+group by 1,2,3,4,5,6,7) m) as ip
+using (hierarchy_code))as op
+INNER JOIN 
+(
+SELECT
+fiscal_year,
+fiscal_month_in_year,
+fdm.fiscal_year_week
+FROM
+""global"".fiscal_date_mapping fdm
+GROUP by
+fiscal_year,
+fiscal_month_in_year,
+fdm.fiscal_year_week) s 
+ON op.current_week = s.fiscal_year_week)a))b
+union all
+(select * from
+(select
+'Omni' AS ""channel"",
+l1_name as ""Division"",
+l2_name as ""Department"",
+REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+l3_name,
+'__ia_char_01', ''''),
+'__ia_char_02', '""'),
+'__ia_char_03', '/'),
+'__ia_char_04', '\\'),
+'__ia_char_05', '`'),
+'__ia_char_06', '~'),
+'__ia_char_07', '!'),
+'__ia_char_08', '@'),
+'__ia_char_09', '#'),
+'__ia_char_10', '$'),
+'__ia_char_11', '%'),
+'__ia_char_12', '^'),
+'__ia_char_13', '&'),
+'__ia_char_14', '*'),
+'__ia_char_15', '('),
+'__ia_char_16', ')'),
+'__ia_char_19', '='),
+'__ia_char_20', '+'),
+'__ia_char_21', '{'),
+'__ia_char_22', '}'),
+'__ia_char_23', '['),
+'__ia_char_24', ']'),
+'__ia_char_25', '|'),
+'__ia_char_26', ':'),
+'__ia_char_27', ';'),
+'__ia_char_28', '<'),
+'__ia_char_29', '>'),
+'__ia_char_30', ','),
+'__ia_char_31', '.'),
+'__ia_char_32', '?'
+) AS ""Class"",
+current_week,
+fiscal_year,
+case 
+  when fiscal_month_in_year = 1 then 'JANUARY'
+  when fiscal_month_in_year = 2 then 'FEBRUARY'
+  when fiscal_month_in_year = 3 then 'MARCH'
+  when fiscal_month_in_year = 4 then 'APRIL'
+  when fiscal_month_in_year = 5 then 'MAY'
+  when fiscal_month_in_year = 6 then 'JUNE'
+  when fiscal_month_in_year = 7 then 'JULY'
+  when fiscal_month_in_year = 8 then 'AUGUST'
+  when fiscal_month_in_year = 9 then 'SEPTEMBER'
+  when fiscal_month_in_year = 10 then 'OCTOBER'
+  when fiscal_month_in_year = 11 then 'NOVEMBER'
+  when fiscal_month_in_year = 12 then 'DECEMBER'
+end as
+fiscal_month_name,
+'LF' as ""Refrences"",
+sum(kpi32) as ""Written Sales $"",
+sum(kpi56) as ""Written Sales $ Build Ratio"",
+coalesce((sum(kpi248)/nullif(sum(kpi32),0)),0) as ""Comp Spread"",
+sum(kpi248) as ""Written Sales $ Comp"",
+sum(kpi249) as ""Written Sales $ NonComp"",
+sum(kpi33) as ""Written Sales Units"",
+sum(kpi105) as ""Written Sales Unit Build Ratio"",
+coalesce((sum(prod_of_w_air)/nullif(sum(kpi33),0)),0) as ""Written AIR (Initial Ticket Price)"",
+coalesce(((1-((sum(kpi32)/nullif(sum(kpi33),0))/nullif((sum(prod_of_w_air)/nullif(sum(kpi33),0)),0)))*100),0) as ""Written Discount Rate %"",
+coalesce(((1-((sum(kpi4)/nullif(sum(kpi33),0))/nullif((sum(prod_of_w_air)/nullif(sum(kpi33),0)),0)))*100),0) as ""Written IMU% (Initial Markup)"",
+coalesce((sum(kpi32)/nullif(sum(kpi33),0)),0) as ""Written AUR"",
+coalesce((sum(kpi4)/nullif(sum(kpi33),0)),0) as ""Written AUC"",
+coalesce((sum(kpi3)/nullif(sum(kpi32),0)),0) as ""Written GM %"",
+sum(kpi3) as ""Written GM $"",
+sum(kpi4) as ""Written Sales Cost/COGS"",
+sum(kpi38) as ""Written BackOrder Sales Units"",
+sum(kpi37) as ""Written BackOrder Sales $"",
+sum(kpi39) as ""Written Cancellations Retail"",
+coalesce((sum(kpi39)/nullif(sum(kpi32+kpi39),0)),0) as ""Written Cancel Retail Rate %"",
+sum(kpi40) as ""Written Cancellations Units"",
+coalesce((sum(kpi40)/nullif(sum(kpi33+kpi40),0)),0) as ""Written Cancel Units Rate %"",
+sum(kpi41) as ""Written Cancellations Cost"",
+coalesce((sum(kpi41)/nullif(sum(kpi4+kpi41),0)),0) as ""Written Cancel Cost Rate %"",
+sum(kpi8) as ""Non Delivered Retail $"",
+sum(kpi9) as ""Weighted Age of Retail $ Non Delivered"",
+sum(kpi10) as ""Retail $ Rate of Written to Delivered Conversion - Model"",
+sum(kpi11) as ""Non Delivered Written Sls Units"",
+sum(kpi12) as ""Weighted Age of Unit Non Delivered"",
+sum(kpi13) as ""Unit Rate of Written to Delivered Conversion - Model"",
+sum(kpi14) as ""Non Delivered Cost"",
+sum(kpi15) as ""Weighted Age of Cost $ Non Delivered"",
+sum(kpi16) as ""Cost $ Rate of Written to Delivered Conversion - Model"",
+sum(kpi17) as ""Retail Conversion Adjustment"",
+sum(kpi42) as ""Delivered Sales $"",
+sum(kpi18) as ""Delivered Sales $ Build Ratio"",
+sum(kpi43) as ""Delivered Sales Units"",
+sum(kpi19) as ""Delivered Sales Unit Build Ratio"",
+coalesce((sum(prod_of_d_air)/nullif(sum(kpi43),0)),0) as ""Delivered AIR (Initial Ticket Price)"",
+coalesce(((1-((sum(kpi42)/nullif(sum(kpi43),0))/nullif((sum(prod_of_d_air)/nullif(sum(kpi43),0)),0)))*100),0) as ""Delivered Discount Rate %"",
+coalesce((sum(kpi42)/nullif(sum(kpi43),0)),0) as ""Delivered AUR"",
+sum(kpi21) as ""Delivered Sales Cost/COGS"",
+coalesce((sum(kpi21)/nullif(sum(kpi43),0)),0) as ""Delivered AUC"",
+sum(kpi58) as ""Delivered GM $"",
+coalesce((sum(kpi58)/nullif(sum(kpi42*100),0)),0) as ""Delivered GM %"",
+coalesce((sum(kpi58)/nullif(sum(kpi80),0)),0) as ""Delivered GMROI"",
+sum(kpi47) as ""Delivered Retail $ Returns"",
+coalesce((sum(kpi47)/nullif(sum(kpi42+kpi47),0)),0) as ""Delivered Retail $ Return Rate %"",
+sum(kpi48) as ""Delivered Unit Returns"",
+coalesce((sum(kpi48)/nullif(sum(kpi43+kpi48),0)),0) as ""Delivered Unit Return Rate %"",
+sum(kpi49) as ""Delivered Cost Returns"",
+coalesce((sum(kpi49)/nullif(sum(kpi21+kpi49),0)),0) as ""Deliverd Cost Return Rate %"",
+sum(kpi31) as ""BOP Units"",
+sum(kpi30) as ""BOP Cost"",
+coalesce((sum(kpi30)/nullif(sum(kpi31),0)),0) as ""BOP AUC"",
+sum(kpi64) as ""Available Units OH BOP"",
+sum(kpi65) as ""Available Cost OH BOP"",
+sum(kpi66) as ""Forward Weeks of Supply AOH Units"",
+sum(kpi67) as ""Forward Weeks of Supply AOH Cost $"",
+sum(kpi68) as ""Available to Promise BOP Units"",
+sum(kpi70) as ""Available to PromiseBOP Cost"",
+sum(kpi69) as ""Forward Weeks of Supply ATP Units"",
+sum(kpi71) as ""Forward Weeks of Supply ATP Cost $"",
+sum(kpi72) as ""EOP Units"",
+sum(kpi73) as ""EOP Cost"",
+coalesce((sum(kpi73)/nullif(sum(kpi72),0)),0) as ""EOP AUC"",
+sum(kpi75) as ""EOP Cost OP"",
+sum(kpi76) as ""EOP Cost LF"",
+sum(kpi77) as ""OTB$ (WF vs OP)"",
+sum(kpi78) as ""OTB$ (WF vs LF)"",
+sum(kpi80) as ""Average Inventory Cost"",
+sum(kpi79) as ""Average Inventory"",
+sum(kpi81) as ""Turn Units"",
+sum(kpi82) as ""Turn Cost"",
+sum(kpi50) as ""Total Rcpt Cost $"",
+sum(kpi51) as ""Total Receipt Units"",
+coalesce((sum(kpi50)/nullif(sum(kpi51),0)),0) as ""Total Receipt AUC"",
+sum(kpi92) as ""On Order Placed Total $"",
+sum(kpi95) as ""On Order Unplaced Total $"",
+sum(kpi99) as ""On Order Placed Total Unit"",
+sum(kpi102) as ""On Order Unplaced Total Unit"",
+coalesce((sum(kpi92)/nullif(sum(kpi99),0)),0) as ""On Order Placed Total AUC"",
+coalesce((sum(kpi95)/nullif(sum(kpi102),0)),0) as ""On Order Unplaced Total AUC"",
+sum(kpi54) as ""Adjustment Units"",
+coalesce((sum(kpi54)/nullif(sum(kpi31),0)),0) as ""Adjustment Units Rate"",
+sum(kpi52) as ""Adjustment Cost"",
+coalesce((sum(kpi52)/nullif(sum(kpi30),0)),0) as ""Adjustment Cost Rate"",
+coalesce((sum(kpi52)/nullif(sum(kpi54),0)),0) as ""Adjustment AUC""
+from
+((select *, Kpi33*kpi106 as prod_of_w_air, kpi20*kpi43 as prod_of_d_air from
+(select 
+      *
+    from plan_smart.lf_master_1 wm 
+    where current_week >= concat((extract(year from current_date))::text, '01')::int8
+    and channel in ('Ecom', 'Store', 'Warehouse', 'Loft')
+) a
+inner join 
+(select division_name as l1_name, dpt_name as l2_name, class_name as l3_name, hierarchy_code
+from
+(select * from
+(select l1_name, l2_name, l3_name, hierarchy_code  from plan_smart.product_hierarchies_filter phf 
+where ""level"" = 4
+group by 1,2,3,4) ph
+inner join 
+(select l1_name, l2_name, l3_name, division_name, dpt_name, class_name  
+from ""global"".product_attributes_filter paf 
+group by 1,2,3,4,5,6) pa
+using(l1_name,l2_name, l3_name)
+group by 1,2,3,4,5,6,7) m) as ip
+using (hierarchy_code))as op
+INNER JOIN 
+(
+SELECT
+fiscal_year,
+fiscal_month_in_year,
+fdm.fiscal_year_week
+FROM
+""global"".fiscal_date_mapping fdm
+GROUP by
+fiscal_year,
+fiscal_month_in_year,
+fdm.fiscal_year_week) s 
+ON op.current_week = s.fiscal_year_week)a
+group by 1,2,3,4,5,6,7,8) wp
+union all 
+(select
+'Omni' AS ""channel"",
+l1_name as ""Division"",
+l2_name as ""Department"",
+REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+l3_name,
+'__ia_char_01', ''''),
+'__ia_char_02', '""'),
+'__ia_char_03', '/'),
+'__ia_char_04', '\\'),
+'__ia_char_05', '`'),
+'__ia_char_06', '~'),
+'__ia_char_07', '!'),
+'__ia_char_08', '@'),
+'__ia_char_09', '#'),
+'__ia_char_10', '$'),
+'__ia_char_11', '%'),
+'__ia_char_12', '^'),
+'__ia_char_13', '&'),
+'__ia_char_14', '*'),
+'__ia_char_15', '('),
+'__ia_char_16', ')'),
+'__ia_char_19', '='),
+'__ia_char_20', '+'),
+'__ia_char_21', '{'),
+'__ia_char_22', '}'),
+'__ia_char_23', '['),
+'__ia_char_24', ']'),
+'__ia_char_25', '|'),
+'__ia_char_26', ':'),
+'__ia_char_27', ';'),
+'__ia_char_28', '<'),
+'__ia_char_29', '>'),
+'__ia_char_30', ','),
+'__ia_char_31', '.'),
+'__ia_char_32', '?'
+) AS ""Class"",
+current_week,
+fiscal_year,
+case 
+  when fiscal_month_in_year = 1 then 'JANUARY'
+  when fiscal_month_in_year = 2 then 'FEBRUARY'
+  when fiscal_month_in_year = 3 then 'MARCH'
+  when fiscal_month_in_year = 4 then 'APRIL'
+  when fiscal_month_in_year = 5 then 'MAY'
+  when fiscal_month_in_year = 6 then 'JUNE'
+  when fiscal_month_in_year = 7 then 'JULY'
+  when fiscal_month_in_year = 8 then 'AUGUST'
+  when fiscal_month_in_year = 9 then 'SEPTEMBER'
+  when fiscal_month_in_year = 10 then 'OCTOBER'
+  when fiscal_month_in_year = 11 then 'NOVEMBER'
+  when fiscal_month_in_year = 12 then 'DECEMBER'
+end as
+fiscal_month_name,
+'WF' as ""Refrences"",
+sum(kpi32) as ""Written Sales $"",
+sum(kpi56) as ""Written Sales $ Build Ratio"",
+coalesce((sum(kpi248)/nullif(sum(kpi32),0)),0) as ""Comp Spread"",
+sum(kpi248) as ""Written Sales $ Comp"",
+sum(kpi249) as ""Written Sales $ NonComp"",
+sum(kpi33) as ""Written Sales Units"",
+sum(kpi105) as ""Written Sales Unit Build Ratio"",
+coalesce((sum(prod_of_w_air)/nullif(sum(kpi33),0)),0) as ""Written AIR (Initial Ticket Price)"",
+coalesce(((1-((sum(kpi32)/nullif(sum(kpi33),0))/nullif((sum(prod_of_w_air)/nullif(sum(kpi33),0)),0)))*100),0) as ""Written Discount Rate %"",
+coalesce(((1-((sum(kpi4)/nullif(sum(kpi33),0))/nullif((sum(prod_of_w_air)/nullif(sum(kpi33),0)),0)))*100),0) as ""Written IMU% (Initial Markup)"",
+coalesce((sum(kpi32)/nullif(sum(kpi33),0)),0) as ""Written AUR"",
+coalesce((sum(kpi4)/nullif(sum(kpi33),0)),0) as ""Written AUC"",
+coalesce((sum(kpi3)/nullif(sum(kpi32),0)),0) as ""Written GM %"",
+sum(kpi3) as ""Written GM $"",
+sum(kpi4) as ""Written Sales Cost/COGS"",
+sum(kpi38) as ""Written BackOrder Sales Units"",
+sum(kpi37) as ""Written BackOrder Sales $"",
+sum(kpi39) as ""Written Cancellations Retail"",
+coalesce((sum(kpi39)/nullif(sum(kpi32+kpi39),0)),0) as ""Written Cancel Retail Rate %"",
+sum(kpi40) as ""Written Cancellations Units"",
+coalesce((sum(kpi40)/nullif(sum(kpi33+kpi40),0)),0) as ""Written Cancel Units Rate %"",
+sum(kpi41) as ""Written Cancellations Cost"",
+coalesce((sum(kpi41)/nullif(sum(kpi4+kpi41),0)),0) as ""Written Cancel Cost Rate %"",
+sum(kpi8) as ""Non Delivered Retail $"",
+sum(kpi9) as ""Weighted Age of Retail $ Non Delivered"",
+sum(kpi10) as ""Retail $ Rate of Written to Delivered Conversion - Model"",
+sum(kpi11) as ""Non Delivered Written Sls Units"",
+sum(kpi12) as ""Weighted Age of Unit Non Delivered"",
+sum(kpi13) as ""Unit Rate of Written to Delivered Conversion - Model"",
+sum(kpi14) as ""Non Delivered Cost"",
+sum(kpi15) as ""Weighted Age of Cost $ Non Delivered"",
+sum(kpi16) as ""Cost $ Rate of Written to Delivered Conversion - Model"",
+sum(kpi17) as ""Retail Conversion Adjustment"",
+sum(kpi42) as ""Delivered Sales $"",
+sum(kpi18) as ""Delivered Sales $ Build Ratio"",
+sum(kpi43) as ""Delivered Sales Units"",
+sum(kpi19) as ""Delivered Sales Unit Build Ratio"",
+coalesce((sum(prod_of_d_air)/nullif(sum(kpi43),0)),0) as ""Delivered AIR (Initial Ticket Price)"",
+coalesce(((1-((sum(kpi42)/nullif(sum(kpi43),0))/nullif((sum(prod_of_d_air)/nullif(sum(kpi43),0)),0)))*100),0) as ""Delivered Discount Rate %"",
+coalesce((sum(kpi42)/nullif(sum(kpi43),0)),0) as ""Delivered AUR"",
+sum(kpi21) as ""Delivered Sales Cost/COGS"",
+coalesce((sum(kpi21)/nullif(sum(kpi43),0)),0) as ""Delivered AUC"",
+sum(kpi58) as ""Delivered GM $"",
+coalesce((sum(kpi58)/nullif(sum(kpi42*100),0)),0) as ""Delivered GM %"",
+coalesce((sum(kpi58)/nullif(sum(kpi80),0)),0) as ""Delivered GMROI"",
+sum(kpi47) as ""Delivered Retail $ Returns"",
+coalesce((sum(kpi47)/nullif(sum(kpi42+kpi47),0)),0) as ""Delivered Retail $ Return Rate %"",
+sum(kpi48) as ""Delivered Unit Returns"",
+coalesce((sum(kpi48)/nullif(sum(kpi43+kpi48),0)),0) as ""Delivered Unit Return Rate %"",
+sum(kpi49) as ""Delivered Cost Returns"",
+coalesce((sum(kpi49)/nullif(sum(kpi21+kpi49),0)),0) as ""Deliverd Cost Return Rate %"",
+sum(kpi31) as ""BOP Units"",
+sum(kpi30) as ""BOP Cost"",
+coalesce((sum(kpi30)/nullif(sum(kpi31),0)),0) as ""BOP AUC"",
+sum(kpi64) as ""Available Units OH BOP"",
+sum(kpi65) as ""Available Cost OH BOP"",
+sum(kpi66) as ""Forward Weeks of Supply AOH Units"",
+sum(kpi67) as ""Forward Weeks of Supply AOH Cost $"",
+sum(kpi68) as ""Available to Promise BOP Units"",
+sum(kpi70) as ""Available to PromiseBOP Cost"",
+sum(kpi69) as ""Forward Weeks of Supply ATP Units"",
+sum(kpi71) as ""Forward Weeks of Supply ATP Cost $"",
+sum(kpi72) as ""EOP Units"",
+sum(kpi73) as ""EOP Cost"",
+coalesce((sum(kpi73)/nullif(sum(kpi72),0)),0) as ""EOP AUC"",
+sum(kpi75) as ""EOP Cost OP"",
+sum(kpi76) as ""EOP Cost LF"",
+sum(kpi77) as ""OTB$ (WF vs OP)"",
+sum(kpi78) as ""OTB$ (WF vs LF)"",
+sum(kpi80) as ""Average Inventory Cost"",
+sum(kpi79) as ""Average Inventory"",
+sum(kpi81) as ""Turn Units"",
+sum(kpi82) as ""Turn Cost"",
+sum(kpi50) as ""Total Rcpt Cost $"",
+sum(kpi51) as ""Total Receipt Units"",
+coalesce((sum(kpi50)/nullif(sum(kpi51),0)),0) as ""Total Receipt AUC"",
+sum(kpi92) as ""On Order Placed Total $"",
+sum(kpi95) as ""On Order Unplaced Total $"",
+sum(kpi99) as ""On Order Placed Total Unit"",
+sum(kpi102) as ""On Order Unplaced Total Unit"",
+coalesce((sum(kpi92)/nullif(sum(kpi99),0)),0) as ""On Order Placed Total AUC"",
+coalesce((sum(kpi95)/nullif(sum(kpi102),0)),0) as ""On Order Unplaced Total AUC"",
+sum(kpi54) as ""Adjustment Units"",
+coalesce((sum(kpi54)/nullif(sum(kpi31),0)),0) as ""Adjustment Units Rate"",
+sum(kpi52) as ""Adjustment Cost"",
+coalesce((sum(kpi52)/nullif(sum(kpi30),0)),0) as ""Adjustment Cost Rate"",
+coalesce((sum(kpi52)/nullif(sum(kpi54),0)),0) as ""Adjustment AUC""
+from
+((select *, Kpi33*kpi106 as prod_of_w_air, kpi20*kpi43 as prod_of_d_air from
+(select 
+      *
+    from plan_smart.wf_master_1 wm 
+    where current_week >= concat((extract(year from current_date))::text, '01')::int8
+    and channel in ('Ecom', 'Store', 'Warehouse', 'Loft')
+) a
+inner join 
+(select division_name as l1_name, dpt_name as l2_name, class_name as l3_name, hierarchy_code
+from
+(select * from
+(select l1_name, l2_name, l3_name, hierarchy_code  from plan_smart.product_hierarchies_filter phf 
+where ""level"" = 4
+group by 1,2,3,4) ph
+inner join 
+(select l1_name, l2_name, l3_name, division_name, dpt_name, class_name 
+from ""global"".product_attributes_filter paf 
+group by 1,2,3,4,5,6) pa
+using(l1_name,l2_name, l3_name)
+group by 1,2,3,4,5,6,7) m) as ip
+using (hierarchy_code))as op
+INNER JOIN 
+(
+SELECT
+fiscal_year,
+fiscal_month_in_year,
+fdm.fiscal_year_week
+FROM
+""global"".fiscal_date_mapping fdm
+GROUP by
+fiscal_year,
+fiscal_month_in_year,
+fdm.fiscal_year_week) s 
+ON op.current_week = s.fiscal_year_week)a
+group by 1,2,3,4,5,6,7,8)))
+select * from hierarchy_table
+where channel <> 'Warehouse'",,,,false,,
+59,query_58_select,"$$$
+					with recursive hierarchy_cte as(
+		select id, ''::varchar as ""name"",tsma.name as attribute_name from meta_schema.tb_sub_master_attributes tsma where id = {?id}
+		
+		union all
+		
+		select tsma.id,tma.""name"",tsma.""name"" 
+		from meta_schema.tb_sub_master_attributes tsma join hierarchy_cte h on tsma.parent_id = h.id
+		join meta_schema.tb_master_attributes tma on tsma.master_attribute_id = tma.id 
+		where tma.id <= (select id from meta_schema.tb_master_attributes where name = 'version')
+		),
+		version_attributes as (
+		select id,attribute_name from hierarchy_cte
+		where ""name"" = 'version' )
+		
+		select kpi_id , tkm.name, json_agg(jsonb_build_object(va.attribute_name,tkc.visible)) as visibility
+		from meta_schema.tb_kpi_config tkc join version_attributes va on tkc.attribute_id = va.id
+		join meta_schema.tb_kpi_master tkm on tkm.id = tkc.kpi_id
+		group by kpi_id,tkm.name
+            $$$",,,,true,,
+65,query_59_select,"$$$
+					WITH RECURSIVE hierarchy_cte AS (
+                        SELECT
+                            id,
+                            parent_id,
+                            1 AS level
+                        FROM
+                            meta_schema.tb_sub_master_attributes
+                        WHERE
+                        is_deleted = false and id = {?id}
+
+                        UNION ALL
+
+                        SELECT
+                            p.id,
+                            p.parent_id,
+                            c.level + 1
+                        FROM
+                            meta_schema.tb_sub_master_attributes p
+                        INNER JOIN hierarchy_cte c ON p.id = c.parent_id
+                        WHERE is_deleted = false
+                    ),
+                    kpi_formula_with_hierarchy AS (
+                        SELECT
+                            h.id AS hierarchy_id,
+                            h.level,
+                            k.*,
+                            False as default_kpi_settings 
+                        FROM
+                            hierarchy_cte h
+                        JOIN meta_schema.tb_kpi_formula k ON k.attribute_id = h.id
+                        where is_deleted = false
+
+                        UNION ALL
+
+                        SELECT
+                            -1 AS hierarchy_id,
+                             (select max(level) + 1 from hierarchy_cte) as level,
+                            k.*,
+                            True as default_kpi_settings 
+                        FROM meta_schema.tb_kpi_formula k
+                        WHERE
+                            k.attribute_id = -1 and is_deleted = false
+                    ),
+                    kpi_config_with_hierarchy AS (
+                        SELECT
+                            h.id AS hierarchy_id,
+                            h.level,
+                            k.*,
+                            False as default_kpi_settings 
+                        FROM
+                            hierarchy_cte h
+                        JOIN meta_schema.tb_kpi_config k ON k.attribute_id = h.id
+                        where is_deleted = false
+
+                        UNION ALL
+
+                        SELECT
+                            -1 AS hierarchy_id,
+                             (select max(level) + 1 from hierarchy_cte) as level,
+                            k.*,
+                            True as default_kpi_settings 
+                        FROM meta_schema.tb_kpi_config k
+                        WHERE
+                            k.attribute_id = -1 and is_deleted = false
+                    ),
+                    selected_kpis_formulas AS (
+                        select * FROM
+                    	(SELECT
+                            k.*,
+                            ROW_NUMBER() OVER (PARTITION BY k.kpi_id ORDER BY k.level asc) as rn
+                        FROM
+                            kpi_formula_with_hierarchy k) ranked_kpis_formulas
+                           where rn = 1
+                    ),
+                    selected_kpis_configs AS (
+                        select * FROM
+                    	(SELECT
+                            k.*,
+                            ROW_NUMBER() OVER (PARTITION BY k.kpi_id ORDER BY k.level asc) as rn
+                        FROM
+                            kpi_config_with_hierarchy k) ranked_kpis_configs
+                           where rn = 1
+                    )
+                    select  rkf.kpi_id,tkm.""name"",skc.label,
+                    rkf.download_week_aggregation_formula, rkf.download_month_aggregation_formula,
+                    rkf.roll_up_product_hierarchy,rkf.roll_up_timeline,rkf.roll_up_channel
+                    from selected_kpis_formulas rkf
+                    left join meta_schema.tb_kpi_master tkm on rkf.kpi_id = tkm.id
+                    left join selected_kpis_configs skc on skc.kpi_id = rkf.kpi_id
+            $$$",,,,true,,
+40,query_39_select,"with plan_details as( select * from ( select main.plan_code, main.name, main.plan_display_name, main.description, main.scenario_name, to_char(main.plan_period_sdate, 'yyyy-mm-dd') as plan_period_sdate, to_char(main.plan_period_edate, 'yyyy-mm-dd') as plan_period_edate, main.channel, to_char(main.created_at, 'yyyy-mm-dd') as created_at, to_char(main.updated_at, 'yyyy-mm-dd') as updated_at, u.name as created_by, main.compare_year, main.plan_type, main.eoh_boh_sync, attributes.* from ( SELECT * FROM ""plan_smart"".plan_master WHERE (plan_code :: int4 = {?plan_code}) AND (is_deleted :: bool = 'false' :: bool) ) main join ( select pa1.plan_code, l0_name, l1_name, l2_name, l3_name, l4_name, l5_name, l6_name, l7_name, l8_name, l9_name, business_unit, planid, season, status, plan_stage, weeks, channels from ( select plan_code, attribute_value :: varchar [] as l0_name from ""plan_smart"".plan_attributes where attribute_name = 'l0_name' ) pa1 left join ( select plan_code, attribute_value :: varchar [] as l1_name from ""plan_smart"".plan_attributes where attribute_name = 'l1_name' ) pa2 on pa1.plan_code = pa2.plan_code left join ( select plan_code, attribute_value :: varchar [] as l2_name from ""plan_smart"".plan_attributes where attribute_name = 'l2_name' ) pa3 on pa1.plan_code = pa3.plan_code left join ( select plan_code, attribute_value :: varchar [] as l3_name from ""plan_smart"".plan_attributes where attribute_name = 'l3_name' ) pa4 on pa1.plan_code = pa4.plan_code left join ( select plan_code, attribute_value :: varchar [] as l4_name from ""plan_smart"".plan_attributes where attribute_name = 'l4_name' ) pa5 on pa1.plan_code = pa5.plan_code left join ( select plan_code, attribute_value :: varchar [] as l5_name from ""plan_smart"".plan_attributes where attribute_name = 'l5_name' ) pa6 on pa1.plan_code = pa6.plan_code left join ( select plan_code, attribute_value :: varchar [] as l6_name from ""plan_smart"".plan_attributes where attribute_name = 'l6_name' ) pa7 on pa1.plan_code = pa7.plan_code left join ( select plan_code, attribute_value :: varchar [] as l7_name from ""plan_smart"".plan_attributes where attribute_name = 'l7_name' ) pa8 on pa1.plan_code = pa8.plan_code left join ( select plan_code, attribute_value :: varchar [] as l8_name from ""plan_smart"".plan_attributes where attribute_name = 'l8_name' ) pa9 on pa1.plan_code = pa9.plan_code left join ( select plan_code, attribute_value :: varchar [] as l9_name from ""plan_smart"".plan_attributes where attribute_name = 'l9_name' ) pa10 on pa1.plan_code = pa10.plan_code left join ( select plan_code, attribute_value :: varchar as business_unit from ""plan_smart"".plan_attributes where attribute_name = 'business_unit' ) pa11 on pa1.plan_code = pa11.plan_code left join ( select plan_code, attribute_value :: varchar as planid from ""plan_smart"".plan_attributes where attribute_name = 'planid' ) pa12 on pa1.plan_code = pa12.plan_code left join ( select plan_code, attribute_value :: varchar [] as season from ""plan_smart"".plan_attributes where attribute_name = 'season' ) pa13 on pa1.plan_code = pa13.plan_code left join ( select plan_code, attribute_value :: int2 as status from ""plan_smart"".plan_attributes where attribute_name = 'status' ) pa14 on pa1.plan_code = pa14.plan_code left join ( select plan_code, attribute_value :: varchar as plan_stage from ""plan_smart"".plan_attributes where attribute_name = 'plan_stage' ) pa15 on pa1.plan_code = pa15.plan_code left join ( select plan_code, attribute_value :: integer [] as weeks from ""plan_smart"".plan_attributes where attribute_name = 'weeks' ) pa16 on pa1.plan_code = pa16.plan_code left join ( select plan_code, attribute_value :: varchar [] as channels from ""plan_smart"".plan_attributes where attribute_name = 'channels' ) pa17 on pa1.plan_code = pa17.plan_code left join ( select plan_code, attribute_value :: varchar [] as hierarchy_code from ""plan_smart"".plan_attributes where attribute_name = 'hierarchy_code' ) pa18 on pa1.plan_code = pa18.plan_code) attributes on main.plan_code = attributes.plan_code left join global.user_master u on main.created_by = u.user_code ) X ), locked_departments as( select count(*) from plan_smart.lock_info where season_type = ( SELECT CASE WHEN ( SELECT status FROM plan_details ) IN (0, 1, 2) THEN 'pre-season' WHEN ( SELECT status FROM plan_details ) IN (3, 4, 5) THEN 'in-season' END AS season_status ) and channel = ANY( array( select channels from plan_details ) ) and week = ANY( array( select weeks from plan_details ) ) and l0_name = ANY( array( select l0_name from plan_details ) ) and l1_name = ANY( array( select l1_name from plan_details ) ) and l2_name = ANY( array( select l2_name from plan_details ) ) and action_code = ( select action_code from global.action_master where action = 'lock' ) ) select *, case when ( select * from locked_departments ) = 0 then false else true end as is_locked from plan_details",,,,true,,
+64,ia_plansmart_export_tp_master,"with hierarchy_table as
+(select * from
+(select * from
+(select
+channel AS ""channel"",
+l1_name as ""Division"",
+l2_name as ""Department"",
+current_week,
+fiscal_year,
+case 
+  when fiscal_month_in_year = 1 then 'JANUARY'
+  when fiscal_month_in_year = 2 then 'FEBRUARY'
+  when fiscal_month_in_year = 3 then 'MARCH'
+  when fiscal_month_in_year = 4 then 'APRIL'
+  when fiscal_month_in_year = 5 then 'MAY'
+  when fiscal_month_in_year = 6 then 'JUNE'
+  when fiscal_month_in_year = 7 then 'JULY'
+  when fiscal_month_in_year = 8 then 'AUGUST'
+  when fiscal_month_in_year = 9 then 'SEPTEMBER'
+  when fiscal_month_in_year = 10 then 'OCTOBER'
+  when fiscal_month_in_year = 11 then 'NOVEMBER'
+  when fiscal_month_in_year = 12 then 'DECEMBER'
+end as
+fiscal_month_name,
+'TP' as ""Refrences"",
+sum(kpi32) as ""Written Sales $"",
+coalesce((sum(kpi248)/nullif(sum(kpi32),0)),0) as ""Comp Spread"",
+sum(kpi248) as ""Written Sales $ Comp"",
+sum(kpi249) as ""Written Sales $ NonComp"",
+coalesce((sum(kpi3)/nullif(sum(kpi32),0)),0) as ""Written GM %"",
+sum(kpi3) as ""Written GM $""
+from
+((select * from
+(select 
+      *
+    from plan_smart.tp_master_1 wm 
+    where current_week >= concat((extract(year from current_date))::text, '01')::int8
+    and channel in ('Ecom','Warehouse', 'Store', 'Loft')
+) a
+inner join 
+(select division_name as l1_name, dpt_name as l2_name, class_name as l3_name, hierarchy_code
+from
+(select * from
+(select l1_name, l2_name, l3_name, hierarchy_code  from plan_smart.product_hierarchies_filter phf 
+where ""level"" = 4
+group by 1,2,3,4) ph
+inner join 
+(select l1_name, l2_name, l3_name, division_name, dpt_name, class_name  
+from ""global"".product_attributes_filter paf 
+group by 1,2,3,4,5,6) pa
+using(l1_name,l2_name, l3_name)
+group by 1,2,3,4,5,6,7) m) as ip
+using (hierarchy_code))as op
+INNER JOIN 
+(
+SELECT
+fiscal_year,
+fiscal_month_in_year,
+fdm.fiscal_year_week
+FROM
+""global"".fiscal_date_mapping fdm
+GROUP by
+fiscal_year,
+fiscal_month_in_year,
+fdm.fiscal_year_week) s 
+ON op.current_week = s.fiscal_year_week)a
+group by 1,2,3,4,5,6,7)b)b
+union all
+(select * from
+(select
+'Omni' AS ""channel"",
+l1_name as ""Division"",
+l2_name as ""Department"",
+current_week,
+fiscal_year,
+case 
+  when fiscal_month_in_year = 1 then 'JANUARY'
+  when fiscal_month_in_year = 2 then 'FEBRUARY'
+  when fiscal_month_in_year = 3 then 'MARCH'
+  when fiscal_month_in_year = 4 then 'APRIL'
+  when fiscal_month_in_year = 5 then 'MAY'
+  when fiscal_month_in_year = 6 then 'JUNE'
+  when fiscal_month_in_year = 7 then 'JULY'
+  when fiscal_month_in_year = 8 then 'AUGUST'
+  when fiscal_month_in_year = 9 then 'SEPTEMBER'
+  when fiscal_month_in_year = 10 then 'OCTOBER'
+  when fiscal_month_in_year = 11 then 'NOVEMBER'
+  when fiscal_month_in_year = 12 then 'DECEMBER'
+end as
+fiscal_month_name,
+'TP' as ""Refrences"",
+sum(kpi32) as ""Written Sales $"",
+coalesce((sum(kpi248)/nullif(sum(kpi32),0)),0) as ""Comp Spread"",
+sum(kpi248) as ""Written Sales $ Comp"",
+sum(kpi249) as ""Written Sales $ NonComp"",
+coalesce((sum(kpi3)/nullif(sum(kpi32),0)),0) as ""Written GM %"",
+sum(kpi3) as ""Written GM $""
+from
+((select * from
+(select 
+      *
+    from plan_smart.tp_master_1 wm 
+    where current_week >= concat((extract(year from current_date))::text, '01')::int8
+    and channel in ('Ecom','Warehouse', 'Store', 'Loft')
+) a
+inner join 
+(select division_name as l1_name, dpt_name as l2_name, class_name as l3_name, hierarchy_code
+from
+(select * from
+(select l1_name, l2_name, l3_name, hierarchy_code  from plan_smart.product_hierarchies_filter phf 
+where ""level"" = 4
+group by 1,2,3,4) ph
+inner join 
+(select l1_name, l2_name, l3_name, division_name, dpt_name, class_name  
+from ""global"".product_attributes_filter paf 
+group by 1,2,3,4,5,6) pa
+using(l1_name,l2_name, l3_name)
+group by 1,2,3,4,5,6,7) m) as ip
+using (hierarchy_code))as op
+INNER JOIN 
+(
+SELECT
+fiscal_year,
+fiscal_month_in_year,
+fdm.fiscal_year_week
+FROM
+""global"".fiscal_date_mapping fdm
+GROUP by
+fiscal_year,
+fiscal_month_in_year,
+fdm.fiscal_year_week) s 
+ON op.current_week = s.fiscal_year_week)a
+group by 1,2,3,4,5,6,7)b))
+select * from hierarchy_table
+where channel <> 'Warehouse'
+
+",,,,false,,
+61,ia_plansmart_export_iaf_master,"with hierarchy_table as
+(select * from
+(select * from
+(select
+channel AS ""channel"",
+l1_name as ""Division"",
+l2_name as ""Department"",
+REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+l3_name,
+'__ia_char_01', ''''),
+'__ia_char_02', '""'),
+'__ia_char_03', '/'),
+'__ia_char_04', '\\'),
+'__ia_char_05', '`'),
+'__ia_char_06', '~'),
+'__ia_char_07', '!'),
+'__ia_char_08', '@'),
+'__ia_char_09', '#'),
+'__ia_char_10', '$'),
+'__ia_char_11', '%'),
+'__ia_char_12', '^'),
+'__ia_char_13', '&'),
+'__ia_char_14', '*'),
+'__ia_char_15', '('),
+'__ia_char_16', ')'),
+'__ia_char_19', '='),
+'__ia_char_20', '+'),
+'__ia_char_21', '{'),
+'__ia_char_22', '}'),
+'__ia_char_23', '['),
+'__ia_char_24', ']'),
+'__ia_char_25', '|'),
+'__ia_char_26', ':'),
+'__ia_char_27', ';'),
+'__ia_char_28', '<'),
+'__ia_char_29', '>'),
+'__ia_char_30', ','),
+'__ia_char_31', '.'),
+'__ia_char_32', '?'
+) AS ""Class"",
+current_week,
+fiscal_year,
+case 
+  when fiscal_month_in_year = 1 then 'JANUARY'
+  when fiscal_month_in_year = 2 then 'FEBRUARY'
+  when fiscal_month_in_year = 3 then 'MARCH'
+  when fiscal_month_in_year = 4 then 'APRIL'
+  when fiscal_month_in_year = 5 then 'MAY'
+  when fiscal_month_in_year = 6 then 'JUNE'
+  when fiscal_month_in_year = 7 then 'JULY'
+  when fiscal_month_in_year = 8 then 'AUGUST'
+  when fiscal_month_in_year = 9 then 'SEPTEMBER'
+  when fiscal_month_in_year = 10 then 'OCTOBER'
+  when fiscal_month_in_year = 11 then 'NOVEMBER'
+  when fiscal_month_in_year = 12 then 'DECEMBER'
+end as
+fiscal_month_name,
+'IAF' as ""Refrences"",
+kpi32 as ""Written Sales $"",
+kpi56 as ""Written Sales $ Build Ratio"",
+kpi33 as ""Written Sales Units"",
+kpi105 as ""Written Sales Unit Build Ratio"",
+kpi106 as ""Written AIR (Initial Ticket Price)"",
+kpi34 as ""Written Discount Rate %"",
+kpi35 as ""Written AUR"",
+kpi2 as ""Written AUC"",
+kpi36 as ""Written GM %"",
+kpi3 as ""Written GM $"",
+kpi4 as ""Written Sales Cost/COGS"",
+kpi42 as ""Delivered Sales $"",
+kpi18 as ""Delivered Sales $ Build Ratio"",
+kpi43 as ""Delivered Sales Units"",
+kpi19 as ""Delivered Sales Unit Build Ratio"",
+kpi20 as ""Delivered AIR (Initial Ticket Price)"",
+kpi44 as ""Delivered Discount Rate %"",
+kpi45 as ""Delivered AUR"",
+kpi21 as ""Delivered Sales Cost/COGS"",
+kpi57 as ""Delivered AUC"",
+kpi58 as ""Delivered GM $"",
+kpi46 as ""Delivered GM %""
+from
+((select * from
+(select 
+      *
+    from plan_smart.iaf_master_1 wm 
+    where current_week >= concat((extract(year from current_date))::text, '01')::int8
+    and channel in ('Ecom', 'Store', 'Warehouse', 'Loft')
+) a
+inner join 
+(select division_name as l1_name, dpt_name as l2_name, class_name as l3_name, hierarchy_code
+from
+(select * from
+(select l1_name, l2_name, l3_name, hierarchy_code  from plan_smart.product_hierarchies_filter phf 
+where ""level"" = 4
+group by 1,2,3,4) ph
+inner join 
+(select l1_name, l2_name, l3_name, division_name, dpt_name, class_name  
+from ""global"".product_attributes_filter paf 
+group by 1,2,3,4,5,6) pa
+using(l1_name,l2_name, l3_name)
+group by 1,2,3,4,5,6,7) m) as ip
+using (hierarchy_code))as op
+INNER JOIN 
+(
+SELECT
+fiscal_year,
+fiscal_month_in_year,
+fdm.fiscal_year_week
+FROM
+""global"".fiscal_date_mapping fdm
+GROUP by
+fiscal_year,
+fiscal_month_in_year,
+fdm.fiscal_year_week) s 
+ON op.current_week = s.fiscal_year_week)a)b)b
+union all
+(select * from
+(select
+'Omni' AS ""channel"",
+l1_name as ""Division"",
+l2_name as ""Department"",
+REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+l3_name,
+'__ia_char_01', ''''),
+'__ia_char_02', '""'),
+'__ia_char_03', '/'),
+'__ia_char_04', '\\'),
+'__ia_char_05', '`'),
+'__ia_char_06', '~'),
+'__ia_char_07', '!'),
+'__ia_char_08', '@'),
+'__ia_char_09', '#'),
+'__ia_char_10', '$'),
+'__ia_char_11', '%'),
+'__ia_char_12', '^'),
+'__ia_char_13', '&'),
+'__ia_char_14', '*'),
+'__ia_char_15', '('),
+'__ia_char_16', ')'),
+'__ia_char_19', '='),
+'__ia_char_20', '+'),
+'__ia_char_21', '{'),
+'__ia_char_22', '}'),
+'__ia_char_23', '['),
+'__ia_char_24', ']'),
+'__ia_char_25', '|'),
+'__ia_char_26', ':'),
+'__ia_char_27', ';'),
+'__ia_char_28', '<'),
+'__ia_char_29', '>'),
+'__ia_char_30', ','),
+'__ia_char_31', '.'),
+'__ia_char_32', '?'
+) AS ""Class"",
+current_week,
+fiscal_year,
+case 
+  when fiscal_month_in_year = 1 then 'JANUARY'
+  when fiscal_month_in_year = 2 then 'FEBRUARY'
+  when fiscal_month_in_year = 3 then 'MARCH'
+  when fiscal_month_in_year = 4 then 'APRIL'
+  when fiscal_month_in_year = 5 then 'MAY'
+  when fiscal_month_in_year = 6 then 'JUNE'
+  when fiscal_month_in_year = 7 then 'JULY'
+  when fiscal_month_in_year = 8 then 'AUGUST'
+  when fiscal_month_in_year = 9 then 'SEPTEMBER'
+  when fiscal_month_in_year = 10 then 'OCTOBER'
+  when fiscal_month_in_year = 11 then 'NOVEMBER'
+  when fiscal_month_in_year = 12 then 'DECEMBER'
+end as
+fiscal_month_name,
+'IAF' as ""Refrences"",
+sum(kpi32) as ""Written Sales $"",
+sum(kpi56) as ""Written Sales $ Build Ratio"",
+sum(kpi33) as ""Written Sales Units"",
+sum(kpi105) as ""Written Sales Unit Build Ratio"",
+coalesce((sum(prod_of_w_air)/nullif(sum(kpi33),0)),0) as ""Written AIR (Initial Ticket Price)"",
+coalesce(((1-((sum(kpi32)/nullif(sum(kpi33),0))/nullif((sum(prod_of_w_air)/nullif(sum(kpi33),0)),0)))*100),0) as ""Written Discount Rate %"",
+coalesce((sum(kpi32)/nullif(sum(kpi33),0)),0) as ""Written AUR"",
+coalesce((sum(kpi4)/nullif(sum(kpi33),0)),0) as ""Written AUC"",
+coalesce((sum(kpi3)/nullif(sum(kpi32),0)),0) as ""Written GM %"",
+sum(kpi3) as ""Written GM $"",
+sum(kpi4) as ""Written Sales Cost/COGS"",
+sum(kpi42) as ""Delivered Sales $"",
+sum(kpi18) as ""Delivered Sales $ Build Ratio"",
+sum(kpi43) as ""Delivered Sales Units"",
+sum(kpi19) as ""Delivered Sales Unit Build Ratio"",
+coalesce((sum(prod_of_d_air)/nullif(sum(kpi43),0)),0) as ""Delivered AIR (Initial Ticket Price)"",
+coalesce(((1-((sum(kpi42)/nullif(sum(kpi43),0))/nullif((sum(prod_of_d_air)/nullif(sum(kpi43),0)),0)))*100),0) as ""Delivered Discount Rate %"",
+coalesce((sum(kpi42)/nullif(sum(kpi43),0)),0) as ""Delivered AUR"",
+sum(kpi21) as ""Delivered Sales Cost/COGS"",
+coalesce((sum(kpi21)/nullif(sum(kpi43),0)),0) as ""Delivered AUC"",
+sum(kpi58) as ""Delivered GM $"",
+coalesce((sum(kpi58)/nullif(sum(kpi42*100),0)),0) as ""Delivered GM %""
+from
+((select *, Kpi33*kpi106 as prod_of_w_air, kpi20*kpi43 as prod_of_d_air from
+(select 
+      *
+    from plan_smart.iaf_master_1 wm 
+    where current_week >= concat((extract(year from current_date))::text, '01')::int8
+    and channel in ('Ecom', 'Store', 'Warehouse', 'Loft')
+) a
+inner join 
+(select division_name as l1_name, dpt_name as l2_name, class_name as l3_name, hierarchy_code
+from
+(select * from
+(select l1_name, l2_name, l3_name, hierarchy_code  from plan_smart.product_hierarchies_filter phf 
+where ""level"" = 4
+group by 1,2,3,4) ph
+inner join 
+(select l1_name, l2_name, l3_name, division_name, dpt_name, class_name  
+from ""global"".product_attributes_filter paf 
+group by 1,2,3,4,5,6) pa
+using(l1_name,l2_name, l3_name)
+group by 1,2,3,4,5,6,7) m) as ip
+using (hierarchy_code))as op
+INNER JOIN 
+(
+SELECT
+fiscal_year,
+fiscal_month_in_year,
+fdm.fiscal_year_week
+FROM
+""global"".fiscal_date_mapping fdm
+GROUP by
+fiscal_year,
+fiscal_month_in_year,
+fdm.fiscal_year_week) s 
+ON op.current_week = s.fiscal_year_week)a
+group by 1,2,3,4,5,6,7,8)b))
+select * from hierarchy_table
+where channel <> 'Warehouse'",,,,false,,
+74,ia_plansmart_export_ly_lly_master,"with hierarchy_table as
+(select * from
+(select * from
+(select
+channel AS ""channel"",
+l1_name as ""Division"",
+l2_name as ""Department"",
+REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+l3_name,
+'__ia_char_01', ''''),
+'__ia_char_02', '""'),
+'__ia_char_03', '/'),
+'__ia_char_04', '\\'),
+'__ia_char_05', '`'),
+'__ia_char_06', '~'),
+'__ia_char_07', '!'),
+'__ia_char_08', '@'),
+'__ia_char_09', '#'),
+'__ia_char_10', '$'),
+'__ia_char_11', '%'),
+'__ia_char_12', '^'),
+'__ia_char_13', '&'),
+'__ia_char_14', '*'),
+'__ia_char_15', '('),
+'__ia_char_16', ')'),
+'__ia_char_19', '='),
+'__ia_char_20', '+'),
+'__ia_char_21', '{'),
+'__ia_char_22', '}'),
+'__ia_char_23', '['),
+'__ia_char_24', ']'),
+'__ia_char_25', '|'),
+'__ia_char_26', ':'),
+'__ia_char_27', ';'),
+'__ia_char_28', '<'),
+'__ia_char_29', '>'),
+'__ia_char_30', ','),
+'__ia_char_31', '.'),
+'__ia_char_32', '?'
+) AS ""Class"",
+current_week,
+fiscal_year,
+case 
+  when fiscal_month_in_year = 1 then 'JANUARY'
+  when fiscal_month_in_year = 2 then 'FEBRUARY'
+  when fiscal_month_in_year = 3 then 'MARCH'
+  when fiscal_month_in_year = 4 then 'APRIL'
+  when fiscal_month_in_year = 5 then 'MAY'
+  when fiscal_month_in_year = 6 then 'JUNE'
+  when fiscal_month_in_year = 7 then 'JULY'
+  when fiscal_month_in_year = 8 then 'AUGUST'
+  when fiscal_month_in_year = 9 then 'SEPTEMBER'
+  when fiscal_month_in_year = 10 then 'OCTOBER'
+  when fiscal_month_in_year = 11 then 'NOVEMBER'
+  when fiscal_month_in_year = 12 then 'DECEMBER'
+end as
+fiscal_month_name,
+'LY' as ""Refrences"",
+kpi32 as ""Written Sales $"",
+kpi56 as ""Written Sales $ Build Ratio"",
+kpi250 as ""Comp Spread"",
+kpi248 as ""Written Sales $ Comp"",
+kpi249 as ""Written Sales $ NonComp"",
+kpi33 as ""Written Sales Units"",
+kpi105 as ""Written Sales Unit Build Ratio"",
+kpi106 as ""Written AIR (Initial Ticket Price)"",
+kpi34 as ""Written Discount Rate %"",
+kpi1 as ""Written IMU% (Initial Markup)"",
+kpi35 as ""Written AUR"",
+kpi2 as ""Written AUC"",
+kpi36 as ""Written GM %"",
+kpi3 as ""Written GM $"",
+kpi4 as ""Written Sales Cost/COGS"",
+kpi38 as ""Written BackOrder Sales Units"",
+kpi37 as ""Written BackOrder Sales $"",
+kpi39 as ""Written Cancellations Retail"",
+kpi5 as ""Written Cancel Retail Rate %"",
+kpi40 as ""Written Cancellations Units"",
+kpi6 as ""Written Cancel Units Rate %"",
+kpi41 as ""Written Cancellations Cost"",
+kpi7 as ""Written Cancel Cost Rate %"",
+kpi8 as ""Non Delivered Retail $"",
+kpi9 as ""Weighted Age of Retail $ Non Delivered"",
+kpi10 as ""Retail $ Rate of Written to Delivered Conversion - Model"",
+kpi11 as ""Non Delivered Written Sls Units"",
+kpi12 as ""Weighted Age of Unit Non Delivered"",
+kpi13 as ""Unit Rate of Written to Delivered Conversion - Model"",
+kpi14 as ""Non Delivered Cost"",
+kpi15 as ""Weighted Age of Cost $ Non Delivered"",
+kpi16 as ""Cost $ Rate of Written to Delivered Conversion - Model"",
+kpi17 as ""Retail Conversion Adjustment"",
+kpi42 as ""Delivered Sales $"",
+kpi18 as ""Delivered Sales $ Build Ratio"",
+kpi43 as ""Delivered Sales Units"",
+kpi19 as ""Delivered Sales Unit Build Ratio"",
+kpi20 as ""Delivered AIR (Initial Ticket Price)"",
+kpi44 as ""Delivered Discount Rate %"",
+kpi45 as ""Delivered AUR"",
+kpi21 as ""Delivered Sales Cost/COGS"",
+kpi57 as ""Delivered AUC"",
+kpi58 as ""Delivered GM $"",
+kpi46 as ""Delivered GM %"",
+kpi59 as ""Delivered GMROI"",
+kpi47 as ""Delivered Retail $ Returns"",
+kpi60 as ""Delivered Retail $ Return Rate %"",
+kpi48 as ""Delivered Unit Returns"",
+kpi61 as ""Delivered Unit Return Rate %"",
+kpi49 as ""Delivered Cost Returns"",
+kpi62 as ""Deliverd Cost Return Rate %"",
+kpi31 as ""BOP Units"",
+kpi30 as ""BOP Cost"",
+kpi63 as ""BOP AUC"",
+kpi64 as ""Available Units OH BOP"",
+kpi65 as ""Available Cost OH BOP"",
+kpi66 as ""Forward Weeks of Supply AOH Units"",
+kpi67 as ""Forward Weeks of Supply AOH Cost $"",
+kpi68 as ""Available to Promise BOP Units"",
+kpi70 as ""Available to PromiseBOP Cost"",
+kpi69 as ""Forward Weeks of Supply ATP Units"",
+kpi71 as ""Forward Weeks of Supply ATP Cost $"",
+kpi72 as ""EOP Units"",
+kpi73 as ""EOP Cost"",
+kpi74 as ""EOP AUC"",
+kpi75 as ""EOP Cost OP"",
+kpi76 as ""EOP Cost LF"",
+kpi77 as ""OTB$ (WF vs OP)"",
+kpi78 as ""OTB$ (WF vs LF)"",
+kpi80 as ""Average Inventory Cost"",
+kpi79 as ""Average Inventory"",
+kpi81 as ""Turn Units"",
+kpi82 as ""Turn Cost"",
+kpi50 as ""Total Rcpt Cost $"",
+kpi51 as ""Total Receipt Units"",
+kpi89 as ""Total Receipt AUC"",
+kpi92 as ""On Order Placed Total $"",
+kpi95 as ""On Order Unplaced Total $"",
+kpi99 as ""On Order Placed Total Unit"",
+kpi102 as ""On Order Unplaced Total Unit"",
+kpi23 as ""On Order Placed Total AUC"",
+kpi26 as ""On Order Unplaced Total AUC"",
+kpi54 as ""Adjustment Units"",
+kpi55 as ""Adjustment Units Rate"",
+kpi52 as ""Adjustment Cost"",
+kpi53 as ""Adjustment Cost Rate"",
+kpi29 as ""Adjustment AUC""
+from
+((select * from
+(select 
+      *
+    from plan_smart.ly_master_1 wm 
+    where current_week >= concat((extract(year from current_date))::text, '01')::int8
+    and channel in ('Ecom', 'Store', 'Warehouse', 'Loft')
+) a
+inner join 
+(select division_name as l1_name, dpt_name as l2_name, class_name as l3_name, hierarchy_code
+from
+(select * from
+(select l1_name, l2_name, l3_name, hierarchy_code  from plan_smart.product_hierarchies_filter phf 
+where ""level"" = 4
+group by 1,2,3,4) ph
+inner join 
+(select l1_name, l2_name, l3_name, division_name, dpt_name, class_name  
+from ""global"".product_attributes_filter paf 
+group by 1,2,3,4,5,6) pa
+using(l1_name,l2_name, l3_name)
+group by 1,2,3,4,5,6,7) m) as ip
+using (hierarchy_code))as op
+INNER JOIN 
+(
+SELECT
+fiscal_year,
+fiscal_month_in_year,
+fdm.fiscal_year_week
+FROM
+""global"".fiscal_date_mapping fdm
+GROUP by
+fiscal_year,
+fiscal_month_in_year,
+fdm.fiscal_year_week) s 
+ON op.current_week = s.fiscal_year_week)a) wp
+union all 
+(select
+channel AS ""channel"",
+l1_name as ""Division"",
+l2_name as ""Department"",
+REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+l3_name,
+'__ia_char_01', ''''),
+'__ia_char_02', '""'),
+'__ia_char_03', '/'),
+'__ia_char_04', '\\'),
+'__ia_char_05', '`'),
+'__ia_char_06', '~'),
+'__ia_char_07', '!'),
+'__ia_char_08', '@'),
+'__ia_char_09', '#'),
+'__ia_char_10', '$'),
+'__ia_char_11', '%'),
+'__ia_char_12', '^'),
+'__ia_char_13', '&'),
+'__ia_char_14', '*'),
+'__ia_char_15', '('),
+'__ia_char_16', ')'),
+'__ia_char_19', '='),
+'__ia_char_20', '+'),
+'__ia_char_21', '{'),
+'__ia_char_22', '}'),
+'__ia_char_23', '['),
+'__ia_char_24', ']'),
+'__ia_char_25', '|'),
+'__ia_char_26', ':'),
+'__ia_char_27', ';'),
+'__ia_char_28', '<'),
+'__ia_char_29', '>'),
+'__ia_char_30', ','),
+'__ia_char_31', '.'),
+'__ia_char_32', '?'
+) AS ""Class"",
+current_week,
+fiscal_year,
+case 
+  when fiscal_month_in_year = 1 then 'JANUARY'
+  when fiscal_month_in_year = 2 then 'FEBRUARY'
+  when fiscal_month_in_year = 3 then 'MARCH'
+  when fiscal_month_in_year = 4 then 'APRIL'
+  when fiscal_month_in_year = 5 then 'MAY'
+  when fiscal_month_in_year = 6 then 'JUNE'
+  when fiscal_month_in_year = 7 then 'JULY'
+  when fiscal_month_in_year = 8 then 'AUGUST'
+  when fiscal_month_in_year = 9 then 'SEPTEMBER'
+  when fiscal_month_in_year = 10 then 'OCTOBER'
+  when fiscal_month_in_year = 11 then 'NOVEMBER'
+  when fiscal_month_in_year = 12 then 'DECEMBER'
+end as
+fiscal_month_name,
+'LLY' as ""Refrences"",
+kpi32 as ""Written Sales $"",
+kpi56 as ""Written Sales $ Build Ratio"",
+kpi250 as ""Comp Spread"",
+kpi248 as ""Written Sales $ Comp"",
+kpi249 as ""Written Sales $ NonComp"",
+kpi33 as ""Written Sales Units"",
+kpi105 as ""Written Sales Unit Build Ratio"",
+kpi106 as ""Written AIR (Initial Ticket Price)"",
+kpi34 as ""Written Discount Rate %"",
+kpi1 as ""Written IMU% (Initial Markup)"",
+kpi35 as ""Written AUR"",
+kpi2 as ""Written AUC"",
+kpi36 as ""Written GM %"",
+kpi3 as ""Written GM $"",
+kpi4 as ""Written Sales Cost/COGS"",
+kpi38 as ""Written BackOrder Sales Units"",
+kpi37 as ""Written BackOrder Sales $"",
+kpi39 as ""Written Cancellations Retail"",
+kpi5 as ""Written Cancel Retail Rate %"",
+kpi40 as ""Written Cancellations Units"",
+kpi6 as ""Written Cancel Units Rate %"",
+kpi41 as ""Written Cancellations Cost"",
+kpi7 as ""Written Cancel Cost Rate %"",
+kpi8 as ""Non Delivered Retail $"",
+kpi9 as ""Weighted Age of Retail $ Non Delivered"",
+kpi10 as ""Retail $ Rate of Written to Delivered Conversion - Model"",
+kpi11 as ""Non Delivered Written Sls Units"",
+kpi12 as ""Weighted Age of Unit Non Delivered"",
+kpi13 as ""Unit Rate of Written to Delivered Conversion - Model"",
+kpi14 as ""Non Delivered Cost"",
+kpi15 as ""Weighted Age of Cost $ Non Delivered"",
+kpi16 as ""Cost $ Rate of Written to Delivered Conversion - Model"",
+kpi17 as ""Retail Conversion Adjustment"",
+kpi42 as ""Delivered Sales $"",
+kpi18 as ""Delivered Sales $ Build Ratio"",
+kpi43 as ""Delivered Sales Units"",
+kpi19 as ""Delivered Sales Unit Build Ratio"",
+kpi20 as ""Delivered AIR (Initial Ticket Price)"",
+kpi44 as ""Delivered Discount Rate %"",
+kpi45 as ""Delivered AUR"",
+kpi21 as ""Delivered Sales Cost/COGS"",
+kpi57 as ""Delivered AUC"",
+kpi58 as ""Delivered GM $"",
+kpi46 as ""Delivered GM %"",
+kpi59 as ""Delivered GMROI"",
+kpi47 as ""Delivered Retail $ Returns"",
+kpi60 as ""Delivered Retail $ Return Rate %"",
+kpi48 as ""Delivered Unit Returns"",
+kpi61 as ""Delivered Unit Return Rate %"",
+kpi49 as ""Delivered Cost Returns"",
+kpi62 as ""Deliverd Cost Return Rate %"",
+kpi31 as ""BOP Units"",
+kpi30 as ""BOP Cost"",
+kpi63 as ""BOP AUC"",
+kpi64 as ""Available Units OH BOP"",
+kpi65 as ""Available Cost OH BOP"",
+kpi66 as ""Forward Weeks of Supply AOH Units"",
+kpi67 as ""Forward Weeks of Supply AOH Cost $"",
+kpi68 as ""Available to Promise BOP Units"",
+kpi70 as ""Available to PromiseBOP Cost"",
+kpi69 as ""Forward Weeks of Supply ATP Units"",
+kpi71 as ""Forward Weeks of Supply ATP Cost $"",
+kpi72 as ""EOP Units"",
+kpi73 as ""EOP Cost"",
+kpi74 as ""EOP AUC"",
+kpi75 as ""EOP Cost OP"",
+kpi76 as ""EOP Cost LF"",
+kpi77 as ""OTB$ (WF vs OP)"",
+kpi78 as ""OTB$ (WF vs LF)"",
+kpi80 as ""Average Inventory Cost"",
+kpi79 as ""Average Inventory"",
+kpi81 as ""Turn Units"",
+kpi82 as ""Turn Cost"",
+kpi50 as ""Total Rcpt Cost $"",
+kpi51 as ""Total Receipt Units"",
+kpi89 as ""Total Receipt AUC"",
+kpi92 as ""On Order Placed Total $"",
+kpi95 as ""On Order Unplaced Total $"",
+kpi99 as ""On Order Placed Total Unit"",
+kpi102 as ""On Order Unplaced Total Unit"",
+kpi23 as ""On Order Placed Total AUC"",
+kpi26 as ""On Order Unplaced Total AUC"",
+kpi54 as ""Adjustment Units"",
+kpi55 as ""Adjustment Units Rate"",
+kpi52 as ""Adjustment Cost"",
+kpi53 as ""Adjustment Cost Rate"",
+kpi29 as ""Adjustment AUC""
+from
+((select * from
+(select 
+      *
+    from plan_smart.lly_master_1 wm 
+    where current_week >= concat((extract(year from current_date))::text, '01')::int8
+    and channel in ('Ecom', 'Store', 'Warehouse', 'Loft')
+) a
+inner join 
+(select division_name as l1_name, dpt_name as l2_name, class_name as l3_name, hierarchy_code
+from
+(select * from
+(select l1_name, l2_name, l3_name, hierarchy_code  from plan_smart.product_hierarchies_filter phf 
+where ""level"" = 4
+group by 1,2,3,4) ph
+inner join 
+(select l1_name, l2_name, l3_name, division_name, dpt_name, class_name 
+from ""global"".product_attributes_filter paf 
+group by 1,2,3,4,5,6) pa
+using(l1_name,l2_name, l3_name)
+group by 1,2,3,4,5,6,7) m) as ip
+using (hierarchy_code))as op
+INNER JOIN 
+(
+SELECT
+fiscal_year,
+fiscal_month_in_year,
+fdm.fiscal_year_week
+FROM
+""global"".fiscal_date_mapping fdm
+GROUP by
+fiscal_year,
+fiscal_month_in_year,
+fdm.fiscal_year_week) s 
+ON op.current_week = s.fiscal_year_week)a))b
+union all
+(select * from
+(select
+'Omni' AS ""channel"",
+l1_name as ""Division"",
+l2_name as ""Department"",
+REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+l3_name,
+'__ia_char_01', ''''),
+'__ia_char_02', '""'),
+'__ia_char_03', '/'),
+'__ia_char_04', '\\'),
+'__ia_char_05', '`'),
+'__ia_char_06', '~'),
+'__ia_char_07', '!'),
+'__ia_char_08', '@'),
+'__ia_char_09', '#'),
+'__ia_char_10', '$'),
+'__ia_char_11', '%'),
+'__ia_char_12', '^'),
+'__ia_char_13', '&'),
+'__ia_char_14', '*'),
+'__ia_char_15', '('),
+'__ia_char_16', ')'),
+'__ia_char_19', '='),
+'__ia_char_20', '+'),
+'__ia_char_21', '{'),
+'__ia_char_22', '}'),
+'__ia_char_23', '['),
+'__ia_char_24', ']'),
+'__ia_char_25', '|'),
+'__ia_char_26', ':'),
+'__ia_char_27', ';'),
+'__ia_char_28', '<'),
+'__ia_char_29', '>'),
+'__ia_char_30', ','),
+'__ia_char_31', '.'),
+'__ia_char_32', '?'
+) AS ""Class"",
+current_week,
+fiscal_year,
+case 
+  when fiscal_month_in_year = 1 then 'JANUARY'
+  when fiscal_month_in_year = 2 then 'FEBRUARY'
+  when fiscal_month_in_year = 3 then 'MARCH'
+  when fiscal_month_in_year = 4 then 'APRIL'
+  when fiscal_month_in_year = 5 then 'MAY'
+  when fiscal_month_in_year = 6 then 'JUNE'
+  when fiscal_month_in_year = 7 then 'JULY'
+  when fiscal_month_in_year = 8 then 'AUGUST'
+  when fiscal_month_in_year = 9 then 'SEPTEMBER'
+  when fiscal_month_in_year = 10 then 'OCTOBER'
+  when fiscal_month_in_year = 11 then 'NOVEMBER'
+  when fiscal_month_in_year = 12 then 'DECEMBER'
+end as
+fiscal_month_name,
+'LY' as ""Refrences"",
+sum(kpi32) as ""Written Sales $"",
+sum(kpi56) as ""Written Sales $ Build Ratio"",
+coalesce((sum(kpi248)/nullif(sum(kpi32),0)),0) as ""Comp Spread"",
+sum(kpi248) as ""Written Sales $ Comp"",
+sum(kpi249) as ""Written Sales $ NonComp"",
+sum(kpi33) as ""Written Sales Units"",
+sum(kpi105) as ""Written Sales Unit Build Ratio"",
+coalesce((sum(prod_of_w_air)/nullif(sum(kpi33),0)),0) as ""Written AIR (Initial Ticket Price)"",
+coalesce(((1-((sum(kpi32)/nullif(sum(kpi33),0))/nullif((sum(prod_of_w_air)/nullif(sum(kpi33),0)),0)))*100),0) as ""Written Discount Rate %"",
+coalesce(((1-((sum(kpi4)/nullif(sum(kpi33),0))/nullif((sum(prod_of_w_air)/nullif(sum(kpi33),0)),0)))*100),0) as ""Written IMU% (Initial Markup)"",
+coalesce((sum(kpi32)/nullif(sum(kpi33),0)),0) as ""Written AUR"",
+coalesce((sum(kpi4)/nullif(sum(kpi33),0)),0) as ""Written AUC"",
+coalesce((sum(kpi3)/nullif(sum(kpi32),0)),0) as ""Written GM %"",
+sum(kpi3) as ""Written GM $"",
+sum(kpi4) as ""Written Sales Cost/COGS"",
+sum(kpi38) as ""Written BackOrder Sales Units"",
+sum(kpi37) as ""Written BackOrder Sales $"",
+sum(kpi39) as ""Written Cancellations Retail"",
+coalesce((sum(kpi39)/nullif(sum(kpi32+kpi39),0)),0) as ""Written Cancel Retail Rate %"",
+sum(kpi40) as ""Written Cancellations Units"",
+coalesce((sum(kpi40)/nullif(sum(kpi33+kpi40),0)),0) as ""Written Cancel Units Rate %"",
+sum(kpi41) as ""Written Cancellations Cost"",
+coalesce((sum(kpi41)/nullif(sum(kpi4+kpi41),0)),0) as ""Written Cancel Cost Rate %"",
+sum(kpi8) as ""Non Delivered Retail $"",
+sum(kpi9) as ""Weighted Age of Retail $ Non Delivered"",
+sum(kpi10) as ""Retail $ Rate of Written to Delivered Conversion - Model"",
+sum(kpi11) as ""Non Delivered Written Sls Units"",
+sum(kpi12) as ""Weighted Age of Unit Non Delivered"",
+sum(kpi13) as ""Unit Rate of Written to Delivered Conversion - Model"",
+sum(kpi14) as ""Non Delivered Cost"",
+sum(kpi15) as ""Weighted Age of Cost $ Non Delivered"",
+sum(kpi16) as ""Cost $ Rate of Written to Delivered Conversion - Model"",
+sum(kpi17) as ""Retail Conversion Adjustment"",
+sum(kpi42) as ""Delivered Sales $"",
+sum(kpi18) as ""Delivered Sales $ Build Ratio"",
+sum(kpi43) as ""Delivered Sales Units"",
+sum(kpi19) as ""Delivered Sales Unit Build Ratio"",
+coalesce((sum(prod_of_d_air)/nullif(sum(kpi43),0)),0) as ""Delivered AIR (Initial Ticket Price)"",
+coalesce(((1-((sum(kpi42)/nullif(sum(kpi43),0))/nullif((sum(prod_of_d_air)/nullif(sum(kpi43),0)),0)))*100),0) as ""Delivered Discount Rate %"",
+coalesce((sum(kpi42)/nullif(sum(kpi43),0)),0) as ""Delivered AUR"",
+sum(kpi21) as ""Delivered Sales Cost/COGS"",
+coalesce((sum(kpi21)/nullif(sum(kpi43),0)),0) as ""Delivered AUC"",
+sum(kpi58) as ""Delivered GM $"",
+coalesce((sum(kpi58)/nullif(sum(kpi42*100),0)),0) as ""Delivered GM %"",
+coalesce((sum(kpi58)/nullif(sum(kpi80),0)),0) as ""Delivered GMROI"",
+sum(kpi47) as ""Delivered Retail $ Returns"",
+coalesce((sum(kpi47)/nullif(sum(kpi42+kpi47),0)),0) as ""Delivered Retail $ Return Rate %"",
+sum(kpi48) as ""Delivered Unit Returns"",
+coalesce((sum(kpi48)/nullif(sum(kpi43+kpi48),0)),0) as ""Delivered Unit Return Rate %"",
+sum(kpi49) as ""Delivered Cost Returns"",
+coalesce((sum(kpi49)/nullif(sum(kpi21+kpi49),0)),0) as ""Deliverd Cost Return Rate %"",
+sum(kpi31) as ""BOP Units"",
+sum(kpi30) as ""BOP Cost"",
+coalesce((sum(kpi30)/nullif(sum(kpi31),0)),0) as ""BOP AUC"",
+sum(kpi64) as ""Available Units OH BOP"",
+sum(kpi65) as ""Available Cost OH BOP"",
+sum(kpi66) as ""Forward Weeks of Supply AOH Units"",
+sum(kpi67) as ""Forward Weeks of Supply AOH Cost $"",
+sum(kpi68) as ""Available to Promise BOP Units"",
+sum(kpi70) as ""Available to PromiseBOP Cost"",
+sum(kpi69) as ""Forward Weeks of Supply ATP Units"",
+sum(kpi71) as ""Forward Weeks of Supply ATP Cost $"",
+sum(kpi72) as ""EOP Units"",
+sum(kpi73) as ""EOP Cost"",
+coalesce((sum(kpi73)/nullif(sum(kpi72),0)),0) as ""EOP AUC"",
+sum(kpi75) as ""EOP Cost OP"",
+sum(kpi76) as ""EOP Cost LF"",
+sum(kpi77) as ""OTB$ (WF vs OP)"",
+sum(kpi78) as ""OTB$ (WF vs LF)"",
+sum(kpi80) as ""Average Inventory Cost"",
+sum(kpi79) as ""Average Inventory"",
+sum(kpi81) as ""Turn Units"",
+sum(kpi82) as ""Turn Cost"",
+sum(kpi50) as ""Total Rcpt Cost $"",
+sum(kpi51) as ""Total Receipt Units"",
+coalesce((sum(kpi50)/nullif(sum(kpi51),0)),0) as ""Total Receipt AUC"",
+sum(kpi92) as ""On Order Placed Total $"",
+sum(kpi95) as ""On Order Unplaced Total $"",
+sum(kpi99) as ""On Order Placed Total Unit"",
+sum(kpi102) as ""On Order Unplaced Total Unit"",
+coalesce((sum(kpi92)/nullif(sum(kpi99),0)),0) as ""On Order Placed Total AUC"",
+coalesce((sum(kpi95)/nullif(sum(kpi102),0)),0) as ""On Order Unplaced Total AUC"",
+sum(kpi54) as ""Adjustment Units"",
+coalesce((sum(kpi54)/nullif(sum(kpi31),0)),0) as ""Adjustment Units Rate"",
+sum(kpi52) as ""Adjustment Cost"",
+coalesce((sum(kpi52)/nullif(sum(kpi30),0)),0) as ""Adjustment Cost Rate"",
+coalesce((sum(kpi52)/nullif(sum(kpi54),0)),0) as ""Adjustment AUC""
+from
+((select *, Kpi33*kpi106 as prod_of_w_air, kpi20*kpi43 as prod_of_d_air from
+(select 
+      *
+    from plan_smart.ly_master_1 wm 
+    where current_week >= concat((extract(year from current_date))::text, '01')::int8
+    and channel in ('Ecom', 'Store', 'Warehouse', 'Loft')
+) a
+inner join 
+(select division_name as l1_name, dpt_name as l2_name, class_name as l3_name, hierarchy_code
+from
+(select * from
+(select l1_name, l2_name, l3_name, hierarchy_code  from plan_smart.product_hierarchies_filter phf 
+where ""level"" = 4
+group by 1,2,3,4) ph
+inner join 
+(select l1_name, l2_name, l3_name, division_name, dpt_name, class_name  
+from ""global"".product_attributes_filter paf 
+group by 1,2,3,4,5,6) pa
+using(l1_name,l2_name, l3_name)
+group by 1,2,3,4,5,6,7) m) as ip
+using (hierarchy_code))as op
+INNER JOIN 
+(
+SELECT
+fiscal_year,
+fiscal_month_in_year,
+fdm.fiscal_year_week
+FROM
+""global"".fiscal_date_mapping fdm
+GROUP by
+fiscal_year,
+fiscal_month_in_year,
+fdm.fiscal_year_week) s 
+ON op.current_week = s.fiscal_year_week)a
+group by 1,2,3,4,5,6,7,8) wp
+union all 
+(select
+'Omni' AS ""channel"",
+l1_name as ""Division"",
+l2_name as ""Department"",
+REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(
+l3_name,
+'__ia_char_01', ''''),
+'__ia_char_02', '""'),
+'__ia_char_03', '/'),
+'__ia_char_04', '\\'),
+'__ia_char_05', '`'),
+'__ia_char_06', '~'),
+'__ia_char_07', '!'),
+'__ia_char_08', '@'),
+'__ia_char_09', '#'),
+'__ia_char_10', '$'),
+'__ia_char_11', '%'),
+'__ia_char_12', '^'),
+'__ia_char_13', '&'),
+'__ia_char_14', '*'),
+'__ia_char_15', '('),
+'__ia_char_16', ')'),
+'__ia_char_19', '='),
+'__ia_char_20', '+'),
+'__ia_char_21', '{'),
+'__ia_char_22', '}'),
+'__ia_char_23', '['),
+'__ia_char_24', ']'),
+'__ia_char_25', '|'),
+'__ia_char_26', ':'),
+'__ia_char_27', ';'),
+'__ia_char_28', '<'),
+'__ia_char_29', '>'),
+'__ia_char_30', ','),
+'__ia_char_31', '.'),
+'__ia_char_32', '?'
+) AS ""Class"",
+current_week,
+fiscal_year,
+case 
+  when fiscal_month_in_year = 1 then 'JANUARY'
+  when fiscal_month_in_year = 2 then 'FEBRUARY'
+  when fiscal_month_in_year = 3 then 'MARCH'
+  when fiscal_month_in_year = 4 then 'APRIL'
+  when fiscal_month_in_year = 5 then 'MAY'
+  when fiscal_month_in_year = 6 then 'JUNE'
+  when fiscal_month_in_year = 7 then 'JULY'
+  when fiscal_month_in_year = 8 then 'AUGUST'
+  when fiscal_month_in_year = 9 then 'SEPTEMBER'
+  when fiscal_month_in_year = 10 then 'OCTOBER'
+  when fiscal_month_in_year = 11 then 'NOVEMBER'
+  when fiscal_month_in_year = 12 then 'DECEMBER'
+end as
+fiscal_month_name,
+'LLY' as ""Refrences"",
+sum(kpi32) as ""Written Sales $"",
+sum(kpi56) as ""Written Sales $ Build Ratio"",
+coalesce((sum(kpi248)/nullif(sum(kpi32),0)),0) as ""Comp Spread"",
+sum(kpi248) as ""Written Sales $ Comp"",
+sum(kpi249) as ""Written Sales $ NonComp"",
+sum(kpi33) as ""Written Sales Units"",
+sum(kpi105) as ""Written Sales Unit Build Ratio"",
+coalesce((sum(prod_of_w_air)/nullif(sum(kpi33),0)),0) as ""Written AIR (Initial Ticket Price)"",
+coalesce(((1-((sum(kpi32)/nullif(sum(kpi33),0))/nullif((sum(prod_of_w_air)/nullif(sum(kpi33),0)),0)))*100),0) as ""Written Discount Rate %"",
+coalesce(((1-((sum(kpi4)/nullif(sum(kpi33),0))/nullif((sum(prod_of_w_air)/nullif(sum(kpi33),0)),0)))*100),0) as ""Written IMU% (Initial Markup)"",
+coalesce((sum(kpi32)/nullif(sum(kpi33),0)),0) as ""Written AUR"",
+coalesce((sum(kpi4)/nullif(sum(kpi33),0)),0) as ""Written AUC"",
+coalesce((sum(kpi3)/nullif(sum(kpi32),0)),0) as ""Written GM %"",
+sum(kpi3) as ""Written GM $"",
+sum(kpi4) as ""Written Sales Cost/COGS"",
+sum(kpi38) as ""Written BackOrder Sales Units"",
+sum(kpi37) as ""Written BackOrder Sales $"",
+sum(kpi39) as ""Written Cancellations Retail"",
+coalesce((sum(kpi39)/nullif(sum(kpi32+kpi39),0)),0) as ""Written Cancel Retail Rate %"",
+sum(kpi40) as ""Written Cancellations Units"",
+coalesce((sum(kpi40)/nullif(sum(kpi33+kpi40),0)),0) as ""Written Cancel Units Rate %"",
+sum(kpi41) as ""Written Cancellations Cost"",
+coalesce((sum(kpi41)/nullif(sum(kpi4+kpi41),0)),0) as ""Written Cancel Cost Rate %"",
+sum(kpi8) as ""Non Delivered Retail $"",
+sum(kpi9) as ""Weighted Age of Retail $ Non Delivered"",
+sum(kpi10) as ""Retail $ Rate of Written to Delivered Conversion - Model"",
+sum(kpi11) as ""Non Delivered Written Sls Units"",
+sum(kpi12) as ""Weighted Age of Unit Non Delivered"",
+sum(kpi13) as ""Unit Rate of Written to Delivered Conversion - Model"",
+sum(kpi14) as ""Non Delivered Cost"",
+sum(kpi15) as ""Weighted Age of Cost $ Non Delivered"",
+sum(kpi16) as ""Cost $ Rate of Written to Delivered Conversion - Model"",
+sum(kpi17) as ""Retail Conversion Adjustment"",
+sum(kpi42) as ""Delivered Sales $"",
+sum(kpi18) as ""Delivered Sales $ Build Ratio"",
+sum(kpi43) as ""Delivered Sales Units"",
+sum(kpi19) as ""Delivered Sales Unit Build Ratio"",
+coalesce((sum(prod_of_d_air)/nullif(sum(kpi43),0)),0) as ""Delivered AIR (Initial Ticket Price)"",
+coalesce(((1-((sum(kpi42)/nullif(sum(kpi43),0))/nullif((sum(prod_of_d_air)/nullif(sum(kpi43),0)),0)))*100),0) as ""Delivered Discount Rate %"",
+coalesce((sum(kpi42)/nullif(sum(kpi43),0)),0) as ""Delivered AUR"",
+sum(kpi21) as ""Delivered Sales Cost/COGS"",
+coalesce((sum(kpi21)/nullif(sum(kpi43),0)),0) as ""Delivered AUC"",
+sum(kpi58) as ""Delivered GM $"",
+coalesce((sum(kpi58)/nullif(sum(kpi42*100),0)),0) as ""Delivered GM %"",
+coalesce((sum(kpi58)/nullif(sum(kpi80),0)),0) as ""Delivered GMROI"",
+sum(kpi47) as ""Delivered Retail $ Returns"",
+coalesce((sum(kpi47)/nullif(sum(kpi42+kpi47),0)),0) as ""Delivered Retail $ Return Rate %"",
+sum(kpi48) as ""Delivered Unit Returns"",
+coalesce((sum(kpi48)/nullif(sum(kpi43+kpi48),0)),0) as ""Delivered Unit Return Rate %"",
+sum(kpi49) as ""Delivered Cost Returns"",
+coalesce((sum(kpi49)/nullif(sum(kpi21+kpi49),0)),0) as ""Deliverd Cost Return Rate %"",
+sum(kpi31) as ""BOP Units"",
+sum(kpi30) as ""BOP Cost"",
+coalesce((sum(kpi30)/nullif(sum(kpi31),0)),0) as ""BOP AUC"",
+sum(kpi64) as ""Available Units OH BOP"",
+sum(kpi65) as ""Available Cost OH BOP"",
+sum(kpi66) as ""Forward Weeks of Supply AOH Units"",
+sum(kpi67) as ""Forward Weeks of Supply AOH Cost $"",
+sum(kpi68) as ""Available to Promise BOP Units"",
+sum(kpi70) as ""Available to PromiseBOP Cost"",
+sum(kpi69) as ""Forward Weeks of Supply ATP Units"",
+sum(kpi71) as ""Forward Weeks of Supply ATP Cost $"",
+sum(kpi72) as ""EOP Units"",
+sum(kpi73) as ""EOP Cost"",
+coalesce((sum(kpi73)/nullif(sum(kpi72),0)),0) as ""EOP AUC"",
+sum(kpi75) as ""EOP Cost OP"",
+sum(kpi76) as ""EOP Cost LF"",
+sum(kpi77) as ""OTB$ (WF vs OP)"",
+sum(kpi78) as ""OTB$ (WF vs LF)"",
+sum(kpi80) as ""Average Inventory Cost"",
+sum(kpi79) as ""Average Inventory"",
+sum(kpi81) as ""Turn Units"",
+sum(kpi82) as ""Turn Cost"",
+sum(kpi50) as ""Total Rcpt Cost $"",
+sum(kpi51) as ""Total Receipt Units"",
+coalesce((sum(kpi50)/nullif(sum(kpi51),0)),0) as ""Total Receipt AUC"",
+sum(kpi92) as ""On Order Placed Total $"",
+sum(kpi95) as ""On Order Unplaced Total $"",
+sum(kpi99) as ""On Order Placed Total Unit"",
+sum(kpi102) as ""On Order Unplaced Total Unit"",
+coalesce((sum(kpi92)/nullif(sum(kpi99),0)),0) as ""On Order Placed Total AUC"",
+coalesce((sum(kpi95)/nullif(sum(kpi102),0)),0) as ""On Order Unplaced Total AUC"",
+sum(kpi54) as ""Adjustment Units"",
+coalesce((sum(kpi54)/nullif(sum(kpi31),0)),0) as ""Adjustment Units Rate"",
+sum(kpi52) as ""Adjustment Cost"",
+coalesce((sum(kpi52)/nullif(sum(kpi30),0)),0) as ""Adjustment Cost Rate"",
+coalesce((sum(kpi52)/nullif(sum(kpi54),0)),0) as ""Adjustment AUC""
+from
+((select *, Kpi33*kpi106 as prod_of_w_air, kpi20*kpi43 as prod_of_d_air from
+(select 
+      *
+    from plan_smart.lly_master_1 wm 
+    where current_week >= concat((extract(year from current_date))::text, '01')::int8
+    and channel in ('Ecom', 'Store', 'Warehouse', 'Loft')
+) a
+inner join 
+(select division_name as l1_name, dpt_name as l2_name, class_name as l3_name, hierarchy_code
+from
+(select * from
+(select l1_name, l2_name, l3_name, hierarchy_code  from plan_smart.product_hierarchies_filter phf 
+where ""level"" = 4
+group by 1,2,3,4) ph
+inner join 
+(select l1_name, l2_name, l3_name, division_name, dpt_name, class_name 
+from ""global"".product_attributes_filter paf 
+group by 1,2,3,4,5,6) pa
+using(l1_name,l2_name, l3_name)
+group by 1,2,3,4,5,6,7) m) as ip
+using (hierarchy_code))as op
+INNER JOIN 
+(
+SELECT
+fiscal_year,
+fiscal_month_in_year,
+fdm.fiscal_year_week
+FROM
+""global"".fiscal_date_mapping fdm
+GROUP by
+fiscal_year,
+fiscal_month_in_year,
+fdm.fiscal_year_week) s 
+ON op.current_week = s.fiscal_year_week)a
+group by 1,2,3,4,5,6,7,8)))
+select * from hierarchy_table
+where channel <> 'Warehouse'",,,,false,,

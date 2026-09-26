@@ -1,0 +1,8 @@
+"source_column_name","source_column_datatype","required_in_product","generic_column_name","is_pk","generic_column_datatype","formula","is_attribute","is_hierarchy","hierarchy_level","is_null_allowed","unique_by","display_name","is_partition_col","is_clustering_col"
+,,true,date,true,date,extract(date from SNAPSHOT_DATETIME),false,false,,false,true,,true,
+BACKORDERQTY,int8,true,backorderqty,false,int8,,false,false,,true,false,,false,
+BACKORDERSALES,float8,true,backordersales,false,float8,,false,false,,true,false,,false,
+SNAPSHOT_DATETIME,datetime,true,snapshot_datetime,false,datetime,,false,false,,false,false,,false,
+PRODUCTID,varchar,true,product_code,true,varchar,,false,false,,false,true,,false,
+QTYININVENTORY,int8,true,qtyininventory,false,int8,,false,false,,true,false,,false,
+QTYONORDER,int8,true,qtyonorder,false,int8,,false,false,,true,false,,false,

@@ -1,0 +1,295 @@
+{
+    "CASCADE": {
+        "exclusions": [
+            "database/lovisa/schemas/global/views/product_store_attributes_filter.sql",
+            "database/lovisa/schemas/inventory_smart/functions/article_selection_list.sql",
+            "database/lovisa/schemas/inventory_smart/functions/generate_rcl_constraint_data.sql",
+            "database/lovisa/schemas/inventory_smart/views/article_status_tag.sql",
+            "database/lovisa/schemas/inventory_smart/views/dc_pack_configuration.sql",
+            "database/lovisa/schemas/inventory_smart/views/dc_pack_inventory.sql",
+            "database/lovisa/schemas/inventory_smart/views/latest_inventory.sql",
+            "database/lovisa/schemas/pricesmart/views/tb_store_master.sql",
+            "database/lovisa/schemas/pricesmart/views/product_master.sql",
+            "database/lovisa/schemas/price_markdown_opt/views/tb_store_split_mkd.sql",
+            "database/lovisa/schemas/price_markdown_opt/views/tb_simulation_week_mkd.sql",
+            "database/lovisa/schemas/price_markdown_opt/views/tb_day_split_mkd.sql",
+            "database/lovisa/schemas/price_markdown/views/product_master.sql",
+            "database/lovisa/schemas/price_markdown/views/tb_applicable_mkd_price_points_base.sql",
+            "database/lovisa/schemas/price_markdown/views/tb_applicable_mkd_price_points.sql",
+            "database/lovisa/schemas/price_markdown/views/tb_product_store_price.sql",
+            "database/lovisa/schemas/price_markdown/views/tb_store_master.sql",
+            "database/lovisa/schemas/global/views/actual_forex_rate.sql",
+            "database/lovisa/schemas/global/views/tb_latest_inventory.sql",
+            "database/lovisa/schemas/global/views/tb_fiscal_date_mapping.sql",
+            "database/lovisa/schemas/global/views/tb_calendar_date_mapping.sql",
+            "database/lovisa/schemas/global/views/tb_vat_master.sql",
+            "database/lovisa/schemas/global/views/tb_country_master.sql",
+            "database/lovisa/schemas/global/views/tb_currency_master.sql",
+            "database/lovisa/schemas/global/views/tb_country_currency_mapping.sql",
+            "database/lovisa/schemas/global/views/planned_forex_rate.sql",
+            "database/lovisa/schemas/price_markdown_opt/views/tb_transaction_latest_mkd.sql"
+
+
+
+
+
+        ]
+    },
+    "DROP COLUMN": {
+        "exclusions": [
+            "database/lovisa/schemas/global/tables/product_attributes_filter.sql",
+            "database/lovisa/schemas/global/tables/product_store_attributes_filter_version.sql",
+            "database/lovisa/schemas/global/tables/store_attributes_filter.sql",
+            "database/lovisa/schemas/inventory_smart/tables/alerts_product_level_version.sql",
+            "database/lovisa/schemas/inventory_smart/tables/alerts_product_store_level_version.sql",
+            "database/lovisa/schemas/inventory_smart/tables/auto_allocation_input.sql",
+            "database/lovisa/schemas/oms/tables/oms_alerts.sql",
+            "database/lovisa/schemas/oms/tables/oms_constraints_order_policy.sql",
+            "database/lovisa/schemas/price_markdown/tables/tb_approval_metrics.sql",
+            "database/lovisa/schemas/price_markdown/tables/tb_custom_alerts_master.sql",
+            "database/lovisa/schemas/price_markdown/tables/tb_strategy_discounts_initial_approval_validation.sql",
+            "database/lovisa/schemas/price_markdown/tables/tb_strategy_master.sql"
+        ]
+    },
+    "DROP CONSTRAINT": {
+        "exclusions": [
+            "database/lovisa/schemas/data_platform/tables/data_ingestion_config.sql",
+            "database/lovisa/schemas/global/tables/product_store_attributes_filter_version.sql",
+            "database/lovisa/schemas/global/tables/rcl_versions_constraint.sql",
+            "database/lovisa/schemas/global/tables/tb_currency_priority.sql",
+            "database/lovisa/schemas/inventory_smart/tables/alerts_product_level_version.sql",
+            "database/lovisa/schemas/inventory_smart/tables/alerts_product_store_level_version.sql",
+            "database/lovisa/schemas/inventory_smart/tables/article_store_grade_version.sql",
+            "database/lovisa/schemas/inventory_smart/tables/auto_allocation_input.sql",
+            "database/lovisa/schemas/inventory_smart/tables/dc_reserve_quantity.sql",
+            "database/lovisa/schemas/inventory_smart/tables/dc_reserve_quantity_archive.sql",
+            "database/lovisa/schemas/oms/tables/oms_orders_approval_hist.sql",
+            "database/lovisa/schemas/oms/tables/oms_orders_approved.sql",
+            "database/lovisa/schemas/price_markdown/tables/tb_calendar_config.sql",
+            "database/lovisa/schemas/price_markdown_opt/tables/tb_transaction_latest_mkd.sql",
+            "database/lovisa/schemas/global/tables/tb_calendar_date_mapping.sql",
+            "database/lovisa/schemas/global/tables/tb_currency_master.sql"
+        ]
+    },
+    "DROP INDEX": {
+        "exclusions": [
+            "database/lovisa/schemas/global/tables/product_store_attributes_filter_version.sql",
+            "database/lovisa/schemas/price_markdown_opt/procedures/pc_insert_approval_metrics.sql",
+            "database/lovisa/schemas/price_markdown_opt/procedures/pc_opt_drop_index.sql",
+            "database/lovisa/schemas/public/procedures/generate_all_week_level_rcl_constraint_data.sql",
+            "database/lovisa/schemas/oms/tables/oms_orders_recommended.sql",
+            "database/lovisa/schemas/price_markdown_opt/tables/tb_transaction_latest_mkd.sql",
+            "database/lovisa/schemas/public/procedures/generate_rcl_week_level_constraint_data.sql"
+        ]
+    },
+    "DROP MATERIALIZED VIEW": {
+        "exclusions": [
+            "database/lovisa/schemas/price_markdown_opt/procedures/pc_create_materialized_view_day_split.sql",
+            "database/lovisa/schemas/price_markdown_opt/procedures/pc_create_materialized_view_sim.sql",
+            "database/lovisa/schemas/price_markdown_opt/procedures/pc_create_materialized_view_store_split.sql"
+        ]
+    },
+    "DROP SEQUENCE": {
+        "exclusions": []
+    },
+    "DROP TABLE": {
+        "exclusions": [
+            "database/lovisa/schemas/global/tables/calendar_date_mapping.sql",
+            "database/lovisa/schemas/global/tables/fiscal_date_mapping.sql",
+            "database/lovisa/schemas/global/tables/new_store_attributes.sql",
+            "database/lovisa/schemas/global/tables/new_store_mapping.sql",
+            "database/lovisa/schemas/global/views/new_store_data.sql",
+            "database/lovisa/schemas/global/views/product_store_attributes_filter.sql",
+            "database/lovisa/schemas/global/views/product_store_attributes_filter_store_code.sql",
+            "database/lovisa/schemas/global/views/product_store_hierarchy_mapping.sql",
+            "database/lovisa/schemas/inventory_smart/functions/generate_rcl_oms_constraint_data.sql",
+            "database/lovisa/schemas/inventory_smart/procedures/build_product_profile_attributes_filter.sql",
+            "database/lovisa/schemas/inventory_smart/views/alerts_product_level.sql",
+            "database/lovisa/schemas/inventory_smart/views/alerts_product_store_level.sql",
+            "database/lovisa/schemas/inventory_smart/views/article_inventory_dashboard.sql",
+            "database/lovisa/schemas/inventory_smart/views/article_status_tag.sql",
+            "database/lovisa/schemas/inventory_smart/views/article_store_grade.sql",
+            "database/lovisa/schemas/inventory_smart/views/dc_pack_configuration.sql",
+            "database/lovisa/schemas/inventory_smart/views/dc_pack_inventory.sql",
+            "database/lovisa/schemas/inventory_smart/views/fdos_sku_store_table.sql",
+            "database/lovisa/schemas/inventory_smart/views/latest_inventory.sql",
+            "database/lovisa/schemas/inventory_smart/views/psm_inventory.sql",
+            "database/lovisa/schemas/inventory_smart/views/store_unit_capacity.sql",
+            "database/lovisa/schemas/inventory_smart/views/uom.sql",
+            "database/lovisa/schemas/oms/views/dc_split_ratio.sql",
+            "database/lovisa/schemas/oms/views/oms_kpi.sql",
+            "database/lovisa/schemas/oms/views/oms_late_orders_report.sql",
+            "database/lovisa/schemas/oms/views/oms_po_master.sql",
+            "database/lovisa/schemas/oms/views/oms_product_hybrid_attributes.sql",
+            "database/lovisa/schemas/price_markdown/functions/fn_copy_discount_data_to_bl.sql",
+            "database/lovisa/schemas/price_markdown/functions/fn_copy_ia_data_to_bl.sql",
+            "database/lovisa/schemas/price_markdown/functions/fn_create_bulk_edit_intermediate_table.sql",
+            "database/lovisa/schemas/price_markdown/functions/fn_fetch_approval_dashboard_table_data.sql",
+            "database/lovisa/schemas/price_markdown/functions/fn_fetch_decisions_dashboard_bl_vs_ia_graph_data.sql",
+            "database/lovisa/schemas/price_markdown/functions/fn_fetch_decisions_dashboard_bl_vs_ia_trend_data.sql",
+            "database/lovisa/schemas/price_markdown/functions/fn_fetch_decisions_dashboard_table_data.sql",
+            "database/lovisa/schemas/price_markdown/functions/fn_fetch_decisions_dashboard_table_data_non_pcd_level.sql",
+            "database/lovisa/schemas/price_markdown/functions/fn_get_step4_other_level.sql",
+            "database/lovisa/schemas/price_markdown/functions/fn_load_simulate_input_table.sql",
+            "database/lovisa/schemas/price_markdown/functions/fn_populate_step4_data.sql",
+            "database/lovisa/schemas/price_markdown/functions/fn_update_fetch_time_estimate_table.sql",
+            "database/lovisa/schemas/price_markdown/functions/fn_update_strategy_simulation_derived_table_data.sql",
+            "database/lovisa/schemas/price_markdown/functions/fn_workbench_get_step4_summary_download.sql",
+            "database/lovisa/schemas/price_markdown/functions/fn_workbench_get_step_4_download.sql",
+            "database/lovisa/schemas/price_markdown/functions/fn_workbench_s4_get_current_view_ol.sql",
+            "database/lovisa/schemas/price_markdown/functions/fn_workbench_s4_get_current_view_original.sql",
+            "database/lovisa/schemas/price_markdown/functions/fn_workbench_s4_get_summary_download.sql",
+            "database/lovisa/schemas/price_markdown_opt/functions/fn_data_ingestion_qc.sql",
+            "database/lovisa/schemas/price_markdown_opt/functions/fn_opt_insert_disc_ia.sql",
+            "database/lovisa/schemas/price_markdown_opt/functions/fn_opt_ssd_insertion.sql",
+            "database/lovisa/schemas/price_markdown_opt/functions/fn_opt_temp_creation.sql",
+            "database/lovisa/schemas/price_markdown_opt/functions/fn_reporting_financial_validation.sql",
+            "database/lovisa/schemas/price_markdown_opt/functions/fn_reporting_graph_post_markdown_analysis.sql",
+            "database/lovisa/schemas/price_markdown_opt/functions/fn_reporting_location_rollup.sql",
+            "database/lovisa/schemas/price_markdown_opt/functions/fn_reporting_markdown_rollup.sql",
+            "database/lovisa/schemas/price_markdown_opt/functions/fn_reporting_post_markdown_analysis.sql",
+            "database/lovisa/schemas/price_markdown_opt/functions/fn_reporting_style_rollup.sql",
+            "database/lovisa/schemas/price_markdown_opt/functions/fn_stg_sync_opt_temp_creation.sql",
+            "database/lovisa/schemas/price_markdown_opt/functions/fn_stg_sync_ssd_insertion.sql",
+            "database/lovisa/schemas/price_markdown_opt/procedures/pc_act_create_tb_sku_store_mapping.sql",
+            "database/lovisa/schemas/price_markdown_opt/procedures/pc_act_refresh_strategy_cal.sql",
+            "database/lovisa/schemas/price_markdown_opt/procedures/pc_insert_approval_metrics.sql",
+            "database/lovisa/schemas/price_markdown_opt/procedures/pc_opt_drop_temp_tables.sql",
+            "database/lovisa/schemas/price_markdown_opt/procedures/pc_opt_replace_fin_temp_data.sql",
+            "database/lovisa/schemas/price_markdown_opt/procedures/pc_resim_drop_temp_tables.sql",
+            "database/lovisa/schemas/price_markdown_opt/procedures/pc_stg_sync_agg_temp.sql",
+            "database/lovisa/schemas/pricesmart/procedures/pc_create_pg_hierarchy_agg_table.sql",
+            "database/lovisa/schemas/pricesmart/procedures/pc_create_sg_hierarchy_agg_table.sql",
+            "database/lovisa/schemas/pricesmart/views/tb_store_master.sql",
+            "database/lovisa/schemas/pricesmart/views/product_master.sql",
+            "database/lovisa/schemas/price_markdown_opt/views/tb_store_split_mkd.sql",
+            "database/lovisa/schemas/price_markdown_opt/views/tb_simulation_week_mkd.sql",
+            "database/lovisa/schemas/price_markdown_opt/views/tb_day_split_mkd.sql",
+            "database/lovisa/schemas/price_markdown/views/product_master.sql",
+            "database/lovisa/schemas/price_markdown/views/tb_applicable_mkd_price_points_base.sql",
+            "database/lovisa/schemas/price_markdown/views/tb_applicable_mkd_price_points.sql",
+            "database/lovisa/schemas/price_markdown/views/tb_product_store_price.sql",
+            "database/lovisa/schemas/price_markdown/views/tb_store_master.sql",
+            "database/lovisa/schemas/global/views/actual_forex_rate.sql",
+            "database/lovisa/schemas/global/views/tb_latest_inventory.sql",
+            "database/lovisa/schemas/global/views/tb_fiscal_date_mapping.sql",
+            "database/lovisa/schemas/global/views/tb_calendar_date_mapping.sql",
+            "database/lovisa/schemas/global/views/tb_vat_master.sql",
+            "database/lovisa/schemas/global/views/tb_country_master.sql",
+            "database/lovisa/schemas/global/views/tb_currency_master.sql",
+            "database/lovisa/schemas/global/views/tb_country_currency_mapping.sql",
+            "database/lovisa/schemas/global/views/planned_forex_rate.sql",
+            "database/lovisa/schemas/price_markdown_opt/views/tb_transaction_latest_mkd.sql"
+        ]
+    },
+    "DROP TRIGGER": {
+        "exclusions": [
+            "database/lovisa/schemas/global/functions/prevent_visible_name_dupes_fuc.sql"
+        ]
+    },
+    "DROP TYPE": {
+        "exclusions": []
+    },
+    "DROP VIEW": {
+        "exclusions": [
+            "database/lovisa/schemas/global/views/new_store_data.sql",
+            "database/lovisa/schemas/global/views/new_store_projections.sql",
+            "database/lovisa/schemas/global/views/product_store_attributes_filter.sql",
+            "database/lovisa/schemas/global/views/product_store_attributes_filter_store_code.sql",
+            "database/lovisa/schemas/global/views/product_store_hierarchy_mapping.sql",
+            "database/lovisa/schemas/inventory_smart/views/alerts_product_level.sql",
+            "database/lovisa/schemas/inventory_smart/views/alerts_product_store_level.sql",
+            "database/lovisa/schemas/inventory_smart/views/article_inventory_dashboard.sql",
+            "database/lovisa/schemas/inventory_smart/views/article_status_tag.sql",
+            "database/lovisa/schemas/inventory_smart/views/article_store_grade.sql",
+            "database/lovisa/schemas/inventory_smart/views/dc_pack_configuration.sql",
+            "database/lovisa/schemas/inventory_smart/views/dc_pack_inventory.sql",
+            "database/lovisa/schemas/inventory_smart/views/fdos_sku_store_table.sql",
+            "database/lovisa/schemas/inventory_smart/views/latest_inventory.sql",
+            "database/lovisa/schemas/inventory_smart/views/psm_inventory.sql",
+            "database/lovisa/schemas/inventory_smart/views/store_unit_capacity.sql",
+            "database/lovisa/schemas/inventory_smart/views/uom.sql",
+            "database/lovisa/schemas/oms/views/dc_split_ratio.sql",
+            "database/lovisa/schemas/oms/views/oms_kpi.sql",
+            "database/lovisa/schemas/oms/views/oms_late_orders_report.sql",
+            "database/lovisa/schemas/oms/views/oms_po_master.sql",
+            "database/lovisa/schemas/pricesmart/views/tb_store_master.sql",
+            "database/lovisa/schemas/pricesmart/views/product_master.sql",
+            "database/lovisa/schemas/price_markdown_opt/views/tb_store_split_mkd.sql",
+            "database/lovisa/schemas/price_markdown_opt/views/tb_simulation_week_mkd.sql",
+            "database/lovisa/schemas/price_markdown_opt/views/tb_day_split_mkd.sql",
+            "database/lovisa/schemas/price_markdown/views/product_master.sql",
+            "database/lovisa/schemas/price_markdown/views/tb_applicable_mkd_price_points_base.sql",
+            "database/lovisa/schemas/price_markdown/views/tb_applicable_mkd_price_points.sql",
+            "database/lovisa/schemas/price_markdown/views/tb_product_store_price.sql",
+            "database/lovisa/schemas/price_markdown/views/tb_store_master.sql",
+            "database/lovisa/schemas/global/views/actual_forex_rate.sql",
+            "database/lovisa/schemas/global/views/tb_latest_inventory.sql",
+            "database/lovisa/schemas/global/views/tb_fiscal_date_mapping.sql",
+            "database/lovisa/schemas/global/views/tb_calendar_date_mapping.sql",
+            "database/lovisa/schemas/global/views/tb_vat_master.sql",
+            "database/lovisa/schemas/global/views/tb_country_master.sql",
+            "database/lovisa/schemas/global/views/tb_currency_master.sql",
+            "database/lovisa/schemas/global/views/tb_country_currency_mapping.sql",
+            "database/lovisa/schemas/global/views/planned_forex_rate.sql",
+            "database/lovisa/schemas/price_markdown_opt/views/tb_transaction_latest_mkd.sql"
+        ]
+    },
+    "INHERITS": {
+        "exclusions": []
+    },
+    "ONLY": {
+        "exclusions": [
+            "database/lovisa/schemas/public/procedures/sync_oms_recommended_orders.sql",
+            "database/lovisa/schemas/public/procedures/sync_oms_approved_orders.sql"
+        ]
+    },
+    "RENAME": {
+        "exclusions": [
+            "database/lovisa/schemas/global/tables/product_attributes_filter.sql",
+            "database/lovisa/schemas/global/tables/store_attributes_filter.sql",
+            "database/lovisa/schemas/inventory_smart/tables/alerts_product_level_version.sql",
+            "database/lovisa/schemas/inventory_smart/tables/article_inventory_dashboard_version.sql",
+            "database/lovisa/schemas/inventory_smart/tables/store_unit_capacity_version.sql",
+            "database/lovisa/schemas/price_markdown/functions/fn_copy_discount_data_to_bl.sql",
+            "database/lovisa/schemas/price_markdown/functions/fn_copy_ia_data_to_bl.sql",
+            "database/lovisa/schemas/price_markdown/tables/tb_product_store_price.sql",
+            "database/lovisa/schemas/inventory_smart/tables/dc_pack_reserve_qty_derived_table.sql",
+            "database/lovisa/schemas/global/tables/tb_calendar_date_mapping.sql",
+            "database/lovisa/schemas/global/tables/tb_currency_master.sql"
+        ]
+    },
+    "RESET": {
+        "exclusions": [
+            "database/lovisa/schemas/inventory_smart/functions/generate_rcl_constraint_data.sql"
+        ]
+    },
+    "STORAGE": {
+        "exclusions": []
+    },
+    "TEMPORARY": {
+        "exclusions": []
+    },
+    "TRUNCATE": {
+        "exclusions": [
+            "database/lovisa/schemas/global/procedures/pc_refresh_4_hierarchy_configs.sql",
+            "database/lovisa/schemas/price_markdown_opt/procedures/pc_act_insert_ssd_temp.sql",
+            "database/lovisa/schemas/price_markdown_opt/procedures/pc_opt_truncate_strategy_qc_record.sql",
+            "database/lovisa/schemas/price_markdown_opt/procedures/pc_stg_config_all_config_products_stores.sql",
+            "database/lovisa/schemas/price_markdown_opt/procedures/pc_stg_config_already_existing_stg_products.sql",
+            "database/lovisa/schemas/price_markdown_opt/procedures/pc_stg_config_eligible_products_stores.sql",
+            "database/lovisa/schemas/price_markdown_opt/procedures/pc_stg_config_final_eligible_products_stores.sql",
+            "database/lovisa/schemas/price_markdown_opt/procedures/pc_stg_config_strategy_start_end_date.sql",
+            "database/lovisa/schemas/public/procedures/generate_all_rcl_constraint_data.sql"
+        ]
+    },
+    "WITHOUT": {
+        "exclusions": [
+            "database/lovisa/schemas/global/functions/fn_insert_notification.sql",
+            "database/lovisa/schemas/inventory_smart/functions/capacity_breach.sql",
+            "database/lovisa/schemas/inventory_smart/functions/capacity_breach_store_list.sql",
+            "database/lovisa/schemas/inventory_smart/views/sku_dc_allocated_units.sql",
+            "database/lovisa/schemas/price_markdown/functions/fn_insert_auto_archive_logs.sql"
+        ]
+    }
+}

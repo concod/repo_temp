@@ -1,0 +1,34 @@
+.skus-badge-cell {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.skus-overflow-badge {
+  flex-shrink: 0;
+}
+
+.skus-side-panel-content {
+  padding: 16px 4px;
+}
+
+.skus-side-panel-title {
+  margin: 0 0 16px;
+}
+
+.skus-side-panel-grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.skus-tooltip-grid {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 8px 16px;
+}

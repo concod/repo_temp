@@ -1,0 +1,34 @@
+import React, { useEffect } from "react";
+import { getTenantId, verifyTokenStatus } from "../core/actions/authActions";
+import { connect } from "react-redux";
+import firebaseobj from "../auth/firebase";
+const MetaDataComponent = (props) => {
+  const checkUsrSession = () => {
+    props.checkUserSession();
+  };
+  const fetchDomainDetails = () => {
+    props.fetchTenantInfo(localStorage.getItem("baseUrl"));
+  };
+  useEffect(() => {
+    fetchDomainDetails();
+  }, []);
+  useEffect(() => {
+    if (props.isTenantInfoFetched) {
+      firebaseobj.auth().tenantId =
+        props.tenantDetails?.["google_tenant_identity"];
+      checkUsrSession();
+    }
+  }, [props.isTenantInfoFetched]);
+  return <>{props.children}</>;
+};
+
+const mapStateToProps = (state) => ({
+  isTenantInfoFetched: state.authReducer.isTenantInfoFetched,
+  tenantDetails: state.authReducer.tenantId,
+});
+const mapActionToProps = {
+  fetchTenantInfo: getTenantId,
+  checkUserSession: verifyTokenStatus,
+};
+
+export default connect(mapStateToProps, mapActionToProps)(MetaDataComponent);

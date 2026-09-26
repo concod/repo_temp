@@ -1,0 +1,1075 @@
+$dbrief-radius: 12px;
+$tone-success: #2e7d32;
+$tone-warning: #ed6c02;
+$tone-error: #d32f2f;
+$tone-info: #0b6fb8;
+
+/* ---------------------------------- Hero --------------------------------- */
+.dbrief-hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding: 18px 24px;
+  border-radius: $dbrief-radius;
+  background: linear-gradient(105deg, #1b1f3b 0%, #2a2b57 45%, #3c2f6e 100%);
+  color: #fff;
+  overflow: hidden;
+
+  &-greeting {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+  }
+
+  &-wave {
+    display: inline-block;
+    transform-origin: 70% 70%;
+    animation: dbrief-wave 2.4s ease-in-out infinite;
+  }
+
+  &-name {
+    background: linear-gradient(90deg, #a5b4ff, #e879c0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+@keyframes dbrief-wave {
+
+  0%,
+  60%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  10%,
+  30% {
+    transform: rotate(14deg);
+  }
+
+  20% {
+    transform: rotate(-8deg);
+  }
+}
+
+/* AI Daily Brief CTA - mirrors the platform "Ask Iris" gradient pill. */
+.dbrief-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 34px;
+  padding-inline: 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  background-color: #0f1937;
+  background: linear-gradient(-45deg, #2ac2aa, #6666ef, #f26922, #8863c0, #0f1937);
+  background-size: 400% 400%;
+  animation: dbrief-cta-gradient 5s ease infinite;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+  &-icon {
+    color: #ffffff;
+  }
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 14px rgba(102, 102, 239, 0.35);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  &:focus-visible {
+    outline: 2px solid #a5b4ff;
+    outline-offset: 2px;
+  }
+}
+
+@keyframes dbrief-cta-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* --------------------------------- Modal --------------------------------- */
+.dbrief-modal-body {
+  display: flex;
+  flex-direction: column;
+  min-height: 60vh;
+  height: 100%;
+}
+
+/* Header - gradient sparkle glyph + label on a soft lavender bar, with a
+   scroll-progress bar pinned to its bottom edge. */
+.dbrief-modal .ia_modalHeader {
+  position: relative;
+  z-index: 3;
+  /* keep header + progress bar above the absolutely-positioned body */
+  background: linear-gradient(100deg, #eceefd 0%, #efeafc 55%, #f4edfb 100%);
+  transition: box-shadow 0.2s ease;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 3px;
+    z-index: 4;
+    transform: scaleX(var(--dbrief-progress, 0));
+    transform-origin: left;
+    background: linear-gradient(90deg, #6962ef, #a87ac0);
+    will-change: transform;
+    transition: transform 0.12s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+}
+
+.dbrief-modal.is-scrolled .ia_modalHeader {
+  box-shadow: 0 10px 18px -14px rgba(15, 21, 44, 0.4);
+}
+
+/* No footer is rendered for this modal, so reclaim the reserved footer strip
+   (default `bottom: 56px`) - otherwise it shows as white space below content. */
+.dbrief-modal .ia_modalBody {
+  bottom: 0;
+}
+
+.dbrief-modal-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+
+  &-text {
+    font-size: 16px;
+    font-weight: 800;
+    color: #0d152c;
+    line-height: 16px;
+  }
+}
+
+/* --------------------------------- Loader -------------------------------- */
+.dbrief-loader {
+  position: relative;
+  flex: 1 1 auto;
+  margin: -24px -16px -16px;
+  min-height: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  &-aura {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(38% 48% at 8% 8%, rgba(96, 165, 250, 0.3), transparent 72%),
+      radial-gradient(36% 44% at 93% 10%, rgba(250, 204, 21, 0.24), transparent 72%),
+      radial-gradient(44% 50% at 10% 94%, rgba(52, 211, 153, 0.22), transparent 72%),
+      radial-gradient(48% 54% at 92% 94%, rgba(244, 114, 182, 0.24), transparent 72%),
+      radial-gradient(40% 42% at 50% 50%, rgba(255, 255, 255, 0.85), transparent 78%);
+    animation: dbrief-aura 6s ease-in-out infinite;
+  }
+
+  &-star {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    line-height: 0;
+    filter: drop-shadow(0 4px 10px rgba(66, 89, 238, 0.2));
+  }
+
+  &-star-spin {
+    display: inline-flex;
+    line-height: 0;
+    transform-origin: center;
+    animation: dbrief-spin 2.6s linear infinite;
+  }
+
+  &-caption {
+    position: absolute;
+    z-index: 1;
+    bottom: 22px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    color: #60697d;
+  }
+}
+
+@keyframes dbrief-aura {
+
+  0%,
+  100% {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes dbrief-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* --------------------------------- Error --------------------------------- */
+.dbrief-error {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 0;
+  text-align: center;
+
+  &-title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1f1f38;
+  }
+
+  &-desc {
+    margin: 0 0 8px;
+    font-size: 13.5px;
+    color: #70708c;
+  }
+}
+
+/* ========================================================================== */
+/*                                   Report                                   */
+/*  Ported from the Daily Briefing Agent reference design.                    */
+/* ========================================================================== */
+.dbrief-report {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 4px;
+}
+
+/* --------------------------------- Head ---------------------------------- */
+.dbrief-report-head {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 22px 24px;
+  border-radius: 18px;
+  border: 1px solid #e7e5f6;
+  background: linear-gradient(125deg, #eef0fe 0%, #ffffff 54%, #f1eefc 100%);
+}
+
+.dbrief-report-head-glow {
+  display: block;
+  position: absolute;
+  top: -45%;
+  right: -8%;
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(122, 92, 240, 0.2), transparent 70%);
+  pointer-events: none;
+  z-index: -1;
+  animation: dbrief-aurora 11s ease-in-out infinite;
+}
+
+.dbrief-report-head-glow-2 {
+  top: auto;
+  bottom: -55%;
+  right: auto;
+  left: -6%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(124, 92, 240, 0.16), transparent 70%);
+  animation: dbrief-aurora-2 13s ease-in-out infinite;
+}
+
+.dbrief-report-head::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.5) 45%,
+      rgba(255, 255, 255, 0.75) 50%,
+      rgba(255, 255, 255, 0.5) 55%,
+      transparent 100%);
+  transform: translateX(-120%);
+  animation: dbrief-sheen 1.5s ease-out 0.35s 1 both;
+  pointer-events: none;
+  z-index: 0;
+  mix-blend-mode: soft-light;
+}
+
+.dbrief-report-masthead,
+.dbrief-report-lede,
+.dbrief-report-kpis {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes dbrief-aurora {
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.9;
+  }
+
+  50% {
+    transform: translate(-26px, 18px) scale(1.14);
+    opacity: 1;
+  }
+}
+
+@keyframes dbrief-aurora-2 {
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1.05);
+    opacity: 0.8;
+  }
+
+  50% {
+    transform: translate(24px, -16px) scale(0.92);
+    opacity: 1;
+  }
+}
+
+@keyframes dbrief-sheen {
+  to {
+    transform: translateX(120%);
+  }
+}
+
+.dbrief-report-masthead {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.dbrief-report-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 13px;
+  color: #ffffff;
+  background: linear-gradient(135deg, #5250e6 0%, #7a5cf0 100%);
+  box-shadow: 0 10px 22px -10px rgba(82, 80, 230, 0.55);
+  flex-shrink: 0;
+}
+
+.dbrief-report-heading {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.dbrief-report-title {
+  margin: 0;
+  font-family: "Fraunces", "Georgia", "Times New Roman", serif;
+  font-size: 31px;
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  color: #0d152c;
+}
+
+.dbrief-report-date {
+  flex-shrink: 0;
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(214, 213, 245, 0.9);
+  background: rgba(255, 255, 255, 0.75);
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #4a5270;
+}
+
+.dbrief-report-live {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 7px;
+  border-radius: 50%;
+  background: #2fbf6b;
+  box-shadow: 0 0 0 0 rgba(47, 191, 107, 0.55);
+  animation: dbrief-live-pulse 1.8s ease-out infinite;
+  vertical-align: middle;
+}
+
+@keyframes dbrief-live-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(47, 191, 107, 0.5);
+  }
+
+  70% {
+    box-shadow: 0 0 0 7px rgba(47, 191, 107, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(47, 191, 107, 0);
+  }
+}
+
+.dbrief-report-lede {
+  margin: 14px 0 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #444d66;
+}
+
+.dbrief-report-kpis {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.dbrief-report-kpi {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid #e6e8f0;
+
+  &-num {
+    font-size: 26px;
+    font-weight: 800;
+    line-height: 1.05;
+    color: #0d152c;
+  }
+
+  &-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #6b7386;
+  }
+}
+
+/* --------------------------------- Body ---------------------------------- */
+.dbrief-body {
+  display: grid;
+  grid-template-columns: 178px minmax(0, 1fr);
+  gap: 30px;
+  align-items: start;
+}
+
+.dbrief-rail {
+  position: sticky;
+  top: 8px;
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-right: 6px;
+
+  &-item {
+    display: flex;
+    align-items: baseline;
+    gap: 9px;
+    padding: 7px 10px;
+    border: none;
+    border-left: 2px solid transparent;
+    border-radius: 0 8px 8px 0;
+    background: transparent;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+
+    &:hover {
+      background: rgba(105, 98, 239, 0.06);
+    }
+
+    &.is-active {
+      border-left-color: #6962ef;
+      background: rgba(105, 98, 239, 0.09);
+
+      .dbrief-rail-num {
+        color: #6962ef;
+      }
+
+      .dbrief-rail-label {
+        color: #1c2338;
+        font-weight: 700;
+      }
+    }
+  }
+
+  &-num {
+    flex-shrink: 0;
+    font-size: 10.5px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    color: #b0b5c9;
+    font-variant-numeric: tabular-nums;
+    transition: color 0.15s ease;
+  }
+
+  &-label {
+    font-size: 12.5px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: #6b7286;
+    transition: color 0.15s ease;
+  }
+}
+
+/* -------------------------------- Streams -------------------------------- */
+.dbrief-streams {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.dbrief-section {
+  position: relative;
+  scroll-margin-top: 12px;
+  background: linear-gradient(150deg, #eef0fb 0%, #f7f7fd 45%, #f1eefb 100%);
+  border: 1px solid #e7e7f5;
+  border-radius: 16px;
+  padding: 24px 26px;
+  box-shadow: 0 8px 22px -16px rgba(64, 55, 140, 0.2);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 32px -18px rgba(64, 55, 140, 0.3);
+  }
+
+  &--emphasis {
+    background: linear-gradient(150deg, #ffffff 0%, #f6f5ff 55%, #efecfd 100%);
+    border-color: #d8d4f5;
+    box-shadow: 0 12px 30px -18px rgba(82, 80, 230, 0.4);
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 16px;
+      bottom: 16px;
+      width: 4px;
+      border-radius: 0 4px 4px 0;
+      background: linear-gradient(180deg, #6962ef, #a87ac0);
+    }
+  }
+
+  &-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+    margin-bottom: 16px;
+  }
+
+  &-glyph {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    background: #eeecfb;
+    color: #6962ef;
+  }
+
+  &-headings {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  &-eyebrow {
+    font-size: 10.5px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #b3b9cc;
+  }
+
+  &-title {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 800;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    color: #0d152c;
+  }
+
+  &-subtitle {
+    margin: 2px 0 0;
+    font-size: 12.5px;
+    line-height: 1.45;
+    color: #7b839c;
+  }
+}
+
+/* Note callout */
+.dbrief-note {
+  margin: 0 0 16px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 12.5px;
+  font-weight: 600;
+  line-height: 1.45;
+  background: #f1effb;
+  color: #3a3a63;
+  border-left: 3px solid #b9b3ef;
+}
+
+/* --------------------------------- Groups -------------------------------- */
+.dbrief-group+.dbrief-group {
+  margin-top: 18px;
+}
+
+.dbrief-group-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 9px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #9199ad;
+}
+
+/* --------------------------------- KPIs ---------------------------------- */
+.dbrief-kpis {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+}
+
+.dbrief-kpi {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 13px 14px;
+  border-radius: 13px;
+  background: #ffffff;
+  border: 1px solid #ecebf6;
+
+  &-value {
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1.25;
+    color: #0d152c;
+    text-wrap: balance;
+  }
+
+  &-label {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #333c54;
+  }
+
+  &.dbrief-tone-warning .dbrief-kpi-value {
+    color: $tone-warning;
+  }
+
+  &.dbrief-tone-error .dbrief-kpi-value {
+    color: $tone-error;
+  }
+
+  &.dbrief-tone-success .dbrief-kpi-value {
+    color: $tone-success;
+  }
+}
+
+/* -------------------------------- Bullets -------------------------------- */
+.dbrief-bullets {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.dbrief-bullet {
+  display: flex;
+  flex-direction: column;
+
+  &-row {
+    position: relative;
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    border-radius: 12px;
+  }
+
+  &-dot {
+    flex-shrink: 0;
+    width: 7px;
+    height: 7px;
+    margin-top: 1px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6962ef 0%, #a87ac0 100%);
+    transform: translateY(2px);
+  }
+
+  &-text {
+    margin: 0;
+    font-size: 13.5px;
+    line-height: 1.62;
+    color: #566079;
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  &-lead {
+    font-weight: 700;
+    color: #1c2338;
+    white-space: nowrap;
+  }
+
+  &-tag {
+    display: inline-block;
+    margin: 0 1px 0 8px;
+    padding: 1px 9px;
+    border-radius: 999px;
+    background: #e8f3ec;
+    color: #2f8a54;
+    font-size: 10.5px;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    vertical-align: middle;
+  }
+
+  &-sep {
+    color: #b7bccb;
+  }
+
+  &-desc {
+    color: #566079;
+  }
+}
+
+/* Drillable rows: left accent bar + count chip bloom + Ask Iris gutter pill. */
+.dbrief-bullet--drill>.dbrief-bullet-row {
+  align-items: center;
+  margin: -8px -12px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background 0.18s ease, box-shadow 0.18s ease;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 2px;
+    top: 8px;
+    bottom: 8px;
+    width: 3px;
+    border-radius: 3px;
+    background: linear-gradient(180deg, #6962ef 0%, #f0803f 100%);
+    opacity: 0;
+    transform: scaleY(0.35);
+    transition: opacity 0.2s ease, transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  &:hover {
+    background: linear-gradient(90deg, rgba(107, 99, 230, 0.07) 0%, rgba(163, 91, 214, 0.05) 100%);
+
+    &::before {
+      opacity: 1;
+      transform: scaleY(1);
+    }
+
+    .dbrief-num::before {
+      transform: scale(1.06);
+      background: linear-gradient(120deg, #6962ef 0%, #8a5cd0 60%, #f0803f 155%);
+      box-shadow: 0 8px 18px -8px rgba(105, 98, 239, 0.95),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+    }
+
+    .dbrief-num:has(.dbrief-hl.is-urgent)::before {
+      background: linear-gradient(120deg, #6962ef 0%, #b5497e 62%, #f0803f 150%);
+      box-shadow: 0 8px 18px -8px rgba(181, 73, 126, 0.9),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.18);
+    }
+
+    .dbrief-num::after {
+      opacity: 1;
+      transform: scale(1) rotate(0deg);
+    }
+
+    .dbrief-num .dbrief-hl {
+      color: #ffffff;
+    }
+
+    .dbrief-ask-pill {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .dbrief-ask-chev {
+      transform: translateX(1px);
+    }
+
+    .dbrief-ask-lead {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+  }
+}
+
+/* Count chip token */
+.dbrief-num {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  margin: 0 6px;
+  padding: 1px 7px;
+  border-radius: 8px;
+  white-space: nowrap;
+  vertical-align: baseline;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 8px;
+    background: rgba(107, 99, 230, 0.07);
+    pointer-events: none;
+    transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1), background 0.24s ease,
+      box-shadow 0.28s ease;
+  }
+
+  &:has(.dbrief-hl.is-urgent)::before {
+    background: rgba(214, 74, 63, 0.07);
+  }
+
+  &::after {
+    content: "";
+      width: 9px;
+      height: 9px;
+      background: url("./assets/spark.svg?url") no-repeat center / contain;
+    position: absolute;
+    top: -7px;
+    right: -5px;
+    z-index: 2;
+    opacity: 0;
+    transform: scale(0.3) rotate(-25deg);
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .dbrief-hl {
+    position: relative;
+    z-index: 1;
+    background: none;
+    transition: color 0.22s ease;
+  }
+}
+
+.dbrief-hl {
+  font-weight: 800;
+  font-size: 1.04em;
+  color: #4b45c9;
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+
+  &.is-urgent {
+    color: #d64a3f;
+  }
+}
+
+/* Right-gutter Ask Iris control */
+.dbrief-ask {
+  position: relative;
+  z-index: 3;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  min-width: 124px;
+  margin-left: 12px;
+  pointer-events: none;
+
+  &-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 10px 5px 7px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    background: linear-gradient(120deg, #6962ef 0%, #8a5cd0 60%, #f0803f 150%);
+    box-shadow: 0 9px 22px -9px rgba(105, 98, 239, 0.75);
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+    font-family: inherit;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateX(12px);
+    pointer-events: auto;
+      cursor: pointer;
+    will-change: opacity, transform;
+    transition: opacity 0.26s ease, transform 0.34s cubic-bezier(0.22, 1, 0.36, 1);
+&:hover {
+    box-shadow: 0 12px 26px -9px rgba(105, 98, 239, 0.9);
+  }
+
+  &:focus-visible {
+    outline: 2px solid #6962ef;
+    outline-offset: 2px;
+  }
+  }
+
+  &-glyph {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  &-label {
+    display: inline-flex;
+    align-items: center;
+    margin: 0 1px 0 2px;
+  }
+
+  &-chev {
+    display: inline-flex;
+    align-items: center;
+    opacity: 0.95;
+    transition: transform 0.2s ease;
+  }
+
+  &-lead {
+    align-self: center;
+    flex-shrink: 0;
+    height: 2px;
+    width: 30px;
+    margin-right: 7px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, rgba(105, 98, 239, 0) 0%, #8a5cd0 55%, #f0803f 100%);
+    opacity: 0;
+    transform: scaleX(0);
+    transform-origin: right center;
+    transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.2s ease;
+  }
+}
+
+/* Iris cue chip (group labels) */
+.dbrief-iris-cue {
+  flex-shrink: 0;
+  align-self: center;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 9px 5px 6px;
+  border-radius: 999px;
+  background: #ffffff;
+  border: 1px solid rgba(107, 99, 230, 0.28);
+  box-shadow: 0 1px 2px rgba(28, 35, 56, 0.05);
+  color: #4b45c9;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+  white-space: nowrap;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease,
+    background 0.18s ease, color 0.18s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+    border-color: transparent;
+    background: linear-gradient(120deg, #6962ef 0%, #8a5cd0 60%, #f0803f 150%);
+    color: #ffffff;
+    box-shadow: 0 8px 20px -8px rgba(105, 98, 239, 0.7);
+
+    .dbrief-iris-cue-chev {
+      color: rgba(255, 255, 255, 0.9);
+    }
+  }
+
+  &-glyph {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  &-chev {
+    display: inline-flex;
+    align-items: center;
+    margin-left: -1px;
+    color: #a49fe6;
+    transition: transform 0.2s ease, color 0.18s ease;
+  }
+}
+
+/* ------------------------------ Responsive ------------------------------- */
+@media (max-width: 900px) {
+  .dbrief-body {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .dbrief-rail {
+    display: none;
+  }
+
+  .dbrief-report-kpis {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .dbrief-report-head-glow,
+  .dbrief-report-head-glow-2,
+  .dbrief-report-live {
+    animation: none;
+  }
+
+  .dbrief-report-head::after {
+    display: none;
+  }
+
+  .dbrief-section {
+    transition: none;
+
+    &:hover {
+      transform: none;
+    }
+  }
+}

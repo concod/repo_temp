@@ -1,0 +1,129 @@
+{
+    "CASCADE": {
+      "exclusions": [
+        "database/cna/schemas/inventory_smart/procedures/create_configurator_sample_tables.sql"
+      ]
+    },
+    "DROP COLUMN": {
+      "exclusions": [
+        "database/cna/schemas/meta_schema/tables/tb_applications.sql",
+        "database/cna/schemas/meta_schema/tables/tb_editableflow_master.sql",
+        "database/cna/schemas/meta_schema/tables/tb_formula_master.sql",
+        "database/cna/schemas/meta_schema/tables/tb_kpi_config.sql",
+        "database/cna/schemas/meta_schema/tables/tb_kpi_master.sql",
+        "database/cna/schemas/meta_schema/tables/tb_table_columns_mst.sql",
+        "database/cna/schemas/assort_smart/tables/launch_delivery_date.sql",
+        "database/cna/schemas/assort_smart/tables/line_plan_kpi_cards.sql",
+        "database/cna/schemas/assort_smart/tables/plan_cluster_aps_iap.sql",
+        "database/cna/schemas/assort_smart/tables/plan_cluster_aps_sp.sql",
+        "database/cna/schemas/assort_smart/tables/plan_cluster_aps_wp.sql",
+        "database/cna/schemas/assort_smart/tables/plan_cluster_depth_choice_iap.sql",
+        "database/cna/schemas/assort_smart/tables/plan_cluster_depth_choice_sp.sql",
+        "database/cna/schemas/assort_smart/tables/plan_cluster_depth_choice_wp.sql",
+        "database/cna/schemas/assort_smart/tables/plan_cluster_opt_master_iap.sql",
+        "database/cna/schemas/assort_smart/tables/plan_cluster_opt_master_sp.sql",
+        "database/cna/schemas/assort_smart/tables/plan_cluster_opt_master_wp.sql",
+        "database/cna/schemas/assort_smart/tables/plan_hierarchy_aps_iap.sql",
+        "database/cna/schemas/assort_smart/tables/plan_hierarchy_aps_sp.sql",
+        "database/cna/schemas/assort_smart/tables/plan_hierarchy_aps_wp.sql",
+        "database/cna/schemas/assort_smart/tables/plan_hierarchy_budget_opt_master_iap.sql",
+        "database/cna/schemas/assort_smart/tables/plan_hierarchy_budget_opt_master_sp.sql",
+        "database/cna/schemas/assort_smart/tables/plan_hierarchy_budget_opt_master_wp.sql",
+        "database/cna/schemas/global/tables/fiscal_date_mapping.sql",
+        "database/cna/schemas/global/tables/product_attributes_filter.sql",
+        "database/cna/schemas/global/tables/product_store_hierarchy_mapping.sql",
+        "database/cna/schemas/inventory_smart/tables/article_inventory_dashboard.sql",
+        "database/cna/schemas/inventory_smart/tables/auto_allocation_input.sql",
+        "database/cna/schemas/inventory_smart/tables/dc_reserve_quantity.sql",
+        "database/cna/schemas/inventory_smart/tables/dc_split_ratio.sql",
+        "database/cna/schemas/item_smart/tables/ly_master.sql",
+        "database/cna/schemas/oms/tables/oms_alerts.sql",
+        "database/cna/schemas/oms/tables/oms_alerts_store.sql",
+        "database/cna/schemas/oms/tables/oms_constraints_lead_time.sql",
+        "database/cna/schemas/oms/tables/oms_constraints_lead_time_store.sql",
+        "database/cna/schemas/oms/tables/oms_constraints_order_policy.sql",
+        "database/cna/schemas/oms/tables/oms_constraints_safety_stock_store.sql",
+        "database/cna/schemas/oms/tables/oms_deep_dive_base.sql",
+        "database/cna/schemas/oms/tables/oms_kpi_store.sql",
+        "database/cna/schemas/oms/tables/oms_orders_recommended.sql",
+        "database/cna/schemas/assort_smart/tables/line_plan_image_upload.sql",
+        "database/cna/schemas/assort_smart/tables/line_plan_choice_launch.sql"
+      ]
+    },
+    "DROP CONSTRAINT": {
+      "exclusions": [
+        "database/cna/schemas/meta_schema/tables/tb_applications.sql",
+        "database/cna/schemas/meta_schema/tables/tb_kpi_config.sql",
+        "database/cna/schemas/meta_schema/tables/tb_table_columns_mst.sql",
+  
+        "database/cna/schemas/assort_smart/tables/launch_delivery_date.sql",
+        "database/cna/schemas/assort_smart/tables/line_plan_image_upload.sql",
+        "database/cna/schemas/assort_smart/tables/line_plan_kpi_cards.sql",
+        "database/cna/schemas/assort_smart/tables/line_plan_review_target.sql",
+        "database/cna/schemas/global/tables/new_store_mapping.sql",
+        "database/cna/schemas/inventory_smart/tables/dc_split_ratio.sql",
+        "database/cna/schemas/inventory_smart/tables/dc_transit_time_mapping.sql",
+        "database/cna/schemas/item_smart/tables/ly_master.sql",
+        "database/cna/schemas/oms/tables/oms_alerts.sql",
+        "database/cna/schemas/oms/tables/oms_constraints_order_policy.sql",
+        "database/cna/schemas/cluster_smart/tables/plan_cluster_grade_attributes.sql"
+      ]
+    },
+  
+    "DROP INDEX": {
+      "exclusions": [
+        "database/cna/schemas/global/tables/product_attributes_filter.sql",
+        "database/cna/schemas/oms/tables/oms_orders_approved.sql",
+        "database/cna/schemas/oms/tables/oms_orders_recommended.sql"
+      ]
+    },
+  
+    "DROP TABLE": {
+      "exclusions": [
+        "database/cna/schemas/assort_smart/tables/depth_multiplier.sql",
+        "database/cna/schemas/inventory_smart/procedures/build_product_profile_attributes_filter.sql",
+        "database/cna/schemas/item_smart/procedures/create_alerts.sql",
+        "database/cna/schemas/item_smart/procedures/create_new_sku.sql",
+        "database/cna/schemas/oms/functions/generate_rcl_oms_constraint_data.sql",
+        "database/cna/schemas/public/procedures/sync_oms_rcl_constraints.sql",
+        "database/cna/schemas/public/procedures/sync_rcl_constraint.sql"
+      ]
+    },
+  
+    "ONLY": {
+      "exclusions": [
+        "database/cna/schemas/public/procedures/auto_approve_first_cycle_orders.sql"
+      ]
+    },
+  
+    "RENAME": {
+      "exclusions": [
+        "database/cna/schemas/assort_smart/tables/line_plan_image_upload.sql",
+        "database/cna/schemas/inventory_smart/tables/alerts_product_level.sql",
+        "database/cna/schemas/inventory_smart/tables/article_inventory_dashboard.sql",
+        "database/cna/schemas/inventory_smart/tables/forecast_alerts.sql",
+        "database/cna/schemas/item_smart/procedures/change_old_to_new_part.sql",
+        "database/cna/schemas/item_smart/procedures/change_old_to_new_part_itemfact.sql",
+        "database/cna/schemas/item_smart/tables/product_attribute_hierarchy_mapping.sql",
+        "database/cna/schemas/oms/tables/vendor_store_comments.sql",
+        "database/cna/schemas/space_smart/tables/store_metrics.sql"
+      ]
+    },
+  
+    "TRUNCATE": {
+      "exclusions": [
+        "database/cna/schemas/item_smart/procedures/populate_alerts.sql",
+        "database/cna/schemas/item_smart/procedures/update_itemfact_sku.sql",
+        "database/cna/schemas/item_smart/procedures/update_itemfact_sku_week.sql",
+        "database/cna/schemas/public/procedures/generate_all_rcl_constraint_data.sql",
+        "database/cna/schemas/public/procedures/generate_all_week_level_rcl_constraint_data.sql"
+      ]
+    },
+  
+    "WITHOUT": {
+      "exclusions": [
+        "database/cna/schemas/inventory_smart/functions/auto_allocation_input_articles.sql",
+        "database/cna/schemas/oms/functions/oms_order_details_set_all.sql"
+      ]
+    }
+  }

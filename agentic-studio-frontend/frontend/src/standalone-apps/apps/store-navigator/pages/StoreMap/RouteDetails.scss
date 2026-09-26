@@ -1,0 +1,91 @@
+.route-details-wrapper {
+    padding: 20px 10px;
+    position: relative;
+}
+
+.route-container {
+    display: flex;
+    position: relative;
+    margin-bottom: 40px;
+
+    // Vertical line connector
+    &:not(:last-child)::after {
+        content: "";
+        position: absolute;
+        left: 25px; // Half of icon width (50px / 2)
+        top: 55px; // Start below the icon
+        bottom: -35px; // Reach down to next icon
+        width: 2px;
+        background: linear-gradient(to bottom, #3b82f6 0%, #6aaafd 100%);
+        border-radius: 2px;
+    }
+
+    .icon {
+        width: 50px;
+        height: 50px;
+        background-color: #f8fafc;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        // box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        border: 1px solid rgb(219, 217, 217);
+        z-index: 1;
+
+        img {
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+        }
+    }
+
+    .detail {
+        flex: 1;
+        margin-left: 24px;
+        display: flex;
+        align-items: center;
+        font-size: 16px;
+        font-weight: 600;
+        color: #1e293b;
+
+        .destination-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px; // Space between cards
+            width: 100%;
+
+            .dest-card {
+                background: #ffffff;
+                border: 1px solid #e2e8f0;
+                // border-left: 4px solid #3b82f6; // Blue accent strip
+                padding: 12px 16px;
+                border-radius: 10px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+                // display: flex;
+                // align-items: center;
+                transition: transform 0.2s ease;
+
+                &:hover {
+                    background: #f8fafc;
+                    transform: translateX(4px);
+                }
+
+                h4 {
+                    margin: 0;
+                    font-size: 11px;
+                    text-transform: uppercase;
+                    letter-spacing: 0.1em;
+                    color: #64748b;
+                    font-weight: 700;
+                }
+
+                span {
+                    font-size: 15px;
+                    color: #0f172a;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+}

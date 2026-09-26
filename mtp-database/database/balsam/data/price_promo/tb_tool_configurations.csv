@@ -1,0 +1,293 @@
+"id","module","config_name","config_value","config_value_type","is_used_by_fe"
+1,promo,primary,offer,text,true
+2,event,allow_promo_finalize_after_event_lock,false,boolean,false
+3,event,allow_promo_approval_after_event_lock,false,boolean,false
+4,promo,expanded,offers,text,true
+5,event,allow_promo_delete_after_event_lock,false,boolean,false
+6,event,allow_promo_execution_after_event_lock,false,boolean,false
+7,product,hierarchy_filters,"{
+  ""l0_ids"": {
+    ""id_column"": ""l0_cid"",
+    ""value_column"": ""l0_cuq"",
+    ""id"": 0,
+    ""is_linked_to_event"": true,
+    ""is_linked_to_promo"": true,
+    ""is_linked_to_downloads"": true,
+    ""is_linked_to_product_group"": true,
+    ""is_hierarchy"": true,
+    ""label"": ""Brand"",
+    ""mvw_pg_column"": ""l0_ids"",
+    ""name_column"": ""l0_name""
+  },
+  ""l1_ids"": {
+    ""id_column"": ""l1_cid"",
+    ""value_column"": ""l1_cuq"",
+    ""id"": 1,
+    ""is_linked_to_event"": true,
+    ""is_linked_to_promo"": true,
+    ""is_linked_to_downloads"": true,
+    ""is_linked_to_product_group"": true,
+    ""is_hierarchy"": true,
+    ""label"": ""Department"",
+    ""mvw_pg_column"": ""l1_ids"",
+    ""name_column"": ""l1_name""
+  },
+  ""l2_ids"": {
+    ""id_column"": ""l2_cid"",
+    ""value_column"": ""l2_cuq"",
+    ""id"": 2,
+    ""is_linked_to_event"": true,
+    ""is_linked_to_promo"": true,
+    ""is_linked_to_downloads"": true,
+    ""is_linked_to_product_group"": true,
+    ""is_hierarchy"": true,
+    ""label"": ""Sub Department"",
+    ""mvw_pg_column"": ""l2_ids"",
+    ""name_column"": ""l2_name""
+  },
+  ""l3_ids"": {
+    ""id_column"": ""l3_cid"",
+    ""value_column"": ""l3_cuq"",
+    ""id"": 3,
+    ""is_linked_to_event"": true,
+    ""is_linked_to_promo"": true,
+    ""is_linked_to_downloads"": true,
+    ""is_linked_to_product_group"": true,
+    ""is_hierarchy"": true,
+    ""label"": ""Class"",
+    ""mvw_pg_column"": ""l3_ids"",
+    ""name_column"": ""l3_name""
+  },
+  ""l4_ids"": {
+    ""id_column"": ""l4_cid"",
+    ""value_column"": ""l4_cuq"",
+    ""id"": 4,
+    ""is_linked_to_event"": true,
+    ""is_linked_to_promo"": true,
+    ""is_linked_to_downloads"": true,
+    ""is_linked_to_product_group"": true,
+    ""is_hierarchy"": true,
+    ""label"": ""Family"",
+    ""mvw_pg_column"": ""l4_ids"",
+    ""name_column"": ""l4_name""
+  },
+  ""l5_ids"": {
+    ""id_column"": ""l5_cid"",
+    ""value_column"": ""l5_cuq"",
+    ""id"": 5,
+    ""is_linked_to_promo"": true,
+    ""is_linked_to_event"": true,
+    ""is_linked_to_downloads"": true,
+    ""is_linked_to_product_group"": true,
+    ""is_hierarchy"": true,
+    ""label"": ""Parent"",
+    ""mvw_pg_column"": ""l5_ids"",
+    ""name_column"": ""l5_name""
+  },
+  ""l6_ids"": {
+    ""id_column"": ""l6_cid"",
+    ""value_column"": ""l6_cuq"",
+    ""id"": 6,
+    ""is_linked_to_promo"": false,
+    ""is_linked_to_event"": false,
+    ""is_linked_to_downloads"": false,
+    ""is_linked_to_product_group"": false,
+    ""is_hierarchy"": true,
+    ""label"": ""SKU"",
+    ""mvw_pg_column"": null,
+    ""name_column"": ""l6_name""
+  },
+  ""l7_ids"": {
+    ""id_column"": ""product_id"",
+    ""value_column"": ""brandsku"",
+    ""id"": 7,
+    ""is_linked_to_event"": false,
+    ""is_linked_to_promo"": false,
+    ""is_linked_to_downloads"": true,
+    ""is_linked_to_product_group"": false,
+    ""is_hierarchy"": false,
+    ""label"": ""Product"",
+    ""mvw_pg_column"": null,
+    ""name_column"": ""brandsku""
+  },
+  ""realism_ids"": {
+    ""id_column"": ""realism_id"",
+    ""value_column"": ""realism"",
+    ""id"": -1,
+    ""is_linked_to_event"": true,
+    ""is_linked_to_promo"": true,
+    ""is_linked_to_downloads"": true,
+    ""is_linked_to_product_group"": true,
+    ""is_hierarchy"": false,
+    ""label"": ""Realism"",
+    ""mvw_pg_column"": ""realism_ids"",
+    ""name_column"": ""realism""
+  },
+  ""size_ids"": {
+    ""id_column"": ""size_id"",
+    ""value_column"": ""size"",
+    ""id"": -2,
+    ""is_linked_to_event"": true,
+    ""is_linked_to_promo"": true,
+    ""is_linked_to_downloads"": true,
+    ""is_linked_to_product_group"": true,
+    ""is_hierarchy"": false,
+    ""label"": ""Size"",
+    ""mvw_pg_column"": ""size_ids"",
+    ""name_column"": ""size""
+  },
+  ""light_type_ids"": {
+    ""id_column"": ""light_type_id"",
+    ""value_column"": ""light_type"",
+    ""id"": -3,
+    ""is_linked_to_event"": true,
+    ""is_linked_to_promo"": true,
+    ""is_linked_to_downloads"": true,
+    ""is_linked_to_product_group"": true,
+    ""is_hierarchy"": false,
+    ""label"": ""Light Type"",
+    ""mvw_pg_column"": ""light_type_ids"",
+    ""name_column"": ""light_type""
+  },
+  ""status_ids"": {
+    ""id_column"": ""derived_status_id"",
+    ""value_column"": ""derived_status"",
+    ""id"": -4,
+    ""is_linked_to_event"": true,
+    ""is_linked_to_promo"": true,
+    ""is_linked_to_downloads"": true,
+    ""is_linked_to_product_group"": true,
+    ""is_hierarchy"": false,
+    ""label"": ""Status"",
+    ""mvw_pg_column"": ""status_ids"",
+    ""name_column"": ""derived_status""
+  }
+}
+",json,false
+8,event,allow_event_delete_after_event_lock,false,boolean,false
+9,promo,standard,offer,text,true
+10,promo,plural,offers,text,true
+11,promo,standard_plural,offers,text,true
+12,event,primary,event,text,true
+13,event,expanded,event,text,true
+14,event,standard,event,text,true
+15,event,plural,events,text,true
+16,event,use_event,true,boolean,true
+17,event,alias,event,text,true
+18,event,identifier,Event,text,true
+19,promo,use_vendor_funding,true,boolean,true
+20,promo,alias_plural,offers,text,true
+21,event,alias_plural,events,text,true
+22,event,standard_plural,events,text,true
+23,product,client_product_id_key,brandsku,text,false
+24,promo,alias,offer,text,true
+25,promo,identifier,Promotion testt,text,true
+26,store,excel_uplod_configuration,{},json,false
+27,product,discount_level_sku_additional_columns,"[
+  {
+      ""key"": ""current_price"",
+      ""db_column"": ""msrp_with_vat"",
+      ""display_name"": ""List Price""
+  }
+]",json,false
+28,store,hierarchy_filters,{},json,false
+29,product,excel_uplod_configuration,"{
+  ""brandsku"": {
+    ""value_column"": ""brandsku"",
+    ""order"": 0
+  }
+}",json,false
+30,store,discount_level_store_additional_columns,[],json,false
+31,promo,showCurrencyDropdownStep3,true,boolean,true
+32,event,first_lock_buffer_days,"1",integer,false
+33,event,final_lock_buffer_days,"1",integer,false
+34,event,manual_unlocking_buffer_days,"1",integer,false
+35,event,show_events_buffer_days,"0",integer,false
+36,product,exclusion_upload_configuration,"{
+  ""brand"": {
+    ""id_column"": ""l0_id"",
+    ""cid_column"": ""l0_cid"",
+    ""value_column"": ""l0_cuq"",
+    ""order"": 0,
+    ""id"": 0
+  },
+  ""department"": {
+    ""id_column"": ""l1_id"",
+    ""cid_column"": ""l1_cid"",
+    ""value_column"": ""l1_cuq"",
+    ""order"": 1,
+    ""id"": 1
+  },
+  ""sub department"": {
+    ""id_column"": ""l2_id"",
+    ""cid_column"": ""l2_cid"",
+    ""value_column"": ""l2_cuq"",
+    ""order"": 2,
+    ""id"": 2
+  },
+  ""class"": {
+    ""id_column"": ""l3_id"",
+    ""cid_column"": ""l3_cid"",
+    ""value_column"": ""l3_cuq"",
+    ""order"": 3,
+    ""id"": 3
+  },
+  ""family"": {
+    ""id_column"": ""l4_id"",
+    ""cid_column"": ""l4_cid"",
+    ""value_column"": ""l4_cuq"",
+    ""order"": 4,
+    ""id"": 4
+  },
+  ""parent"": {
+    ""id_column"": ""l5_id"",
+    ""cid_column"": ""l5_cid"",
+    ""value_column"": ""l5_cuq"",
+    ""order"": 5,
+    ""id"": 5
+  },
+  ""sku"": {
+    ""id_column"": ""l6_id"",
+    ""cid_column"": ""l6_cid"",
+    ""value_column"": ""l6_cuq"",
+    ""order"": 6,
+    ""id"": 6
+  },
+  ""status"": {
+    ""id_column"": ""derived_status_id"",
+    ""cid_column"": ""derived_status_id"",
+    ""value_column"": ""derived_status"",
+    ""order"": 7,
+    ""id"": -4
+  },
+  ""brandsku"": {
+    ""id_column"": ""brandsku"",
+    ""cid_column"": ""product_id"",
+    ""value_column"": ""product_name"",
+    ""order"": 8,
+    ""id"": 7
+  }
+}",json,false
+37,store,store_downloads_select_columns,"distinct s0_id, s0_name, s1_id, s1_name",text,false
+38,reporting,product_filter,"{
+  ""0"": [{""display"": ""Brand"", ""column"": ""l0_name""}],
+  ""1"": [{""display"": ""Department"", ""column"": ""l1_name""}],
+  ""2"": [{""display"": ""Sub Department"", ""column"": ""l2_name""}],
+  ""3"": [{""display"": ""Class"", ""column"": ""l3_name""}],
+  ""4"": [{""display"": ""Family"", ""column"": ""l4_name""}],
+  ""5"": [{""display"": ""Parent"", ""column"": ""l5_name""}],
+  ""6"": [{""display"": ""SKU"", ""column"": ""l6_name""}],
+  ""7"": [
+    {""display"": ""Product Name"", ""column"": ""product_name""},
+    {""display"": ""Brand SKU"", ""column"": ""brandsku""}
+  ]
+}",json,true
+39,reporting,store_filter,{},json,true
+40,promo,execution_approve_promos_buffer_days,"0",integer,false
+41,product,uam_hierarchy_levels,"[""l0_cid"",""l1_cid""]",json,false
+42,promo,scenario_data_refresh_date_buffer_x,"30",integer,false
+43,promo,scenario_data_refresh_date_buffer_y,"150",integer,false
+44,promo,eligible_promo_status_for_promo_refresh,"[0,2,4]",json,false
+45,promo,should_simulate_after_scenario_discounts_refresh,true,boolean,false
+46,promo,should_optimise_after_scenario_discounts_refresh,true,boolean,false
+47,filter,global_filter_write_eligible_role_codes,"[6,23,43]",json,false

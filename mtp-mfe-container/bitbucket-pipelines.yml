@@ -1,0 +1,70 @@
+image: python:3.12.1 
+definitions:
+  services:
+    docker:
+      memory: 4096
+  caches:
+  steps:
+    - step: &security-scan
+        runs-on:
+          - self.hosted
+          - linux
+          - docker
+        name: Security Scan
+        script:
+          # Run a security scan for sensitive data.
+          # See more security tools at https://bitbucket.org/product/features/pipelines/integrations?&category=security
+          - pipe: atlassian/git-secrets-scan:0.4.3
+
+# Workflow Configuration
+
+pipelines:
+  branches:
+    develop/dev:
+      - step:
+          name: Run AWX job
+          runs-on:
+            - self.hosted
+            - linux
+            - docker
+          script:
+            - |
+              COMMIT_MSG=$(git log -1 --pretty=%B)
+              if echo "$COMMIT_MSG" | grep -q "\[deploy\]"; then
+                CLIENTS=$(echo "$COMMIT_MSG" | sed -n 's/.*\[clients:\([^]]*\)\].*/\1/p')
+                python3 -m pip install requests==2.28.1
+                if [ -n "$CLIENTS" ]; then
+                  python3 deploy-cloudrun.py $awx_username $awx_password mfe-iss-container-dev fe ver "$CLIENTS"
+                else
+                  python3 deploy-cloudrun.py $awx_username $awx_password mfe-iss-container-dev fe ver
+                fi
+              else
+                echo "Skipping deployment. Add [deploy] to commit message to trigger."
+              fi
+    develop/test:
+      - step:
+          name: Run AWX job
+          runs-on:
+            - self.hosted
+            - linux
+            - docker
+          script:
+             - |
+              COMMIT_MSG=$(git log -1 --pretty=%B)
+              if echo "$COMMIT_MSG" | grep -q "\[deploy\]"; then
+                CLIENTS=$(echo "$COMMIT_MSG" | sed -n 's/.*\[clients:\([^]]*\)\].*/\1/p')
+                python3 -m pip install requests==2.28.1
+                if [ -n "$CLIENTS" ]; then
+                  python3 deploy-cloudrun.py $awx_username $awx_password mfe-iss-container-test fe ver "$CLIENTS"
+                else
+                  python3 deploy-cloudrun.py $awx_username $awx_password mfe-iss-container-test fe ver
+                fi
+              else
+                echo "Skipping deployment. Add [deploy] to commit message to trigger."
+              fi
+  custom:
+    scan:
+
+  pull-requests:
+    main:
+    develop/dev:

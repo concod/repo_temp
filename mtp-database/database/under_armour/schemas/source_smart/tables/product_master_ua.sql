@@ -1,0 +1,42 @@
+--liquibase formatted sql
+--changeset liquibase:product_master_ua stripComments:false splitStatements:false context:Release_1_0 labels:liquibase_project_start
+--comment: initial changeset for product_master_ua
+
+CREATE TABLE source_smart.product_master_ua (
+	product_code int4 NULL,
+	product_name varchar(50) NULL,
+	style_color_id varchar(50) NULL,
+	l0_name varchar(50) NULL,
+	brand varchar(50) NULL,
+	l4_name varchar(50) NULL,
+	color varchar(200) NULL,
+	l2_name varchar(50) NULL,
+	l3_name varchar(50) NULL,
+	l1_name varchar(50) NULL,
+	l0_id varchar(50) NULL,
+	l1_id varchar(50) NULL,
+	l2_id varchar(50) NULL,
+	l3_id varchar(50) NULL,
+	l4_id varchar(50) NULL,
+	"style" int4 NULL,
+	"size" varchar(100) NULL,
+	upc varchar(50) NULL,
+	sku varchar(100) NULL,
+	active bool NULL,
+	launch_date varchar(50) NULL,
+	clearance_start_date varchar(50) NULL,
+	product_channel varchar(50) NULL,
+	construction_type_id varchar(50) NULL,
+	product_description varchar(50) NULL,
+	article varchar(50) NULL,
+	is_style varchar(50) NULL,
+	sourcing_class_id varchar(50) NULL,
+	product_developed_facility_id int4 NULL,
+	smv int4 NULL,
+	calendar varchar(50) NULL,
+	style_category varchar(50) NULL,
+	expected_toolset varchar(50) NULL,
+	department varchar(50) NULL,
+	"class" varchar(50) NULL,
+	subcategory varchar(50) NULL
+);

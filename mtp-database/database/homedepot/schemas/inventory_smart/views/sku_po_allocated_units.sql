@@ -1,0 +1,7 @@
+--liquibase formatted sql
+--changeset liquibase:sku_po_allocated_units runOnChange:true stripComments:false splitStatements:false context:Release_1_0 labels:liquibase_project_start
+--comment: initial changeset for sku_po_allocated_units
+--rollback: SELECT 1
+DROP VIEW IF EXISTS inventory_smart.sku_po_allocated_units;
+CREATE OR REPLACE VIEW inventory_smart.sku_po_allocated_units
+AS SELECT 1;

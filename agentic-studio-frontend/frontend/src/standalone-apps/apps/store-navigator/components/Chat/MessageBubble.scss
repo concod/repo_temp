@@ -1,0 +1,159 @@
+.message-bubble-wrapper {
+    display: flex;
+    width: 100%;
+    margin-bottom: 20px;
+    gap: 12px;
+    align-items: flex-end;
+
+    .message-content {
+        width: calc(100% - 50px);
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    // Global Bubble Styles
+    .bubble {
+        padding: 12px 16px;
+        border-radius: 18px;
+        font-size: 13px;
+        line-height: 1.5;
+        max-width: 95%;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        margin-bottom: 10px;
+    }
+
+    // User Specific Styles
+    &.user {
+        flex-direction: row-reverse;
+
+        .user-bubble {
+            background-color: var(--primary-color);
+            color: white;
+            border-bottom-right-radius: 4px;
+            // padding-right: 28px;
+        }
+    }
+
+    // AI Specific Styles
+    &.ai {
+        flex-direction: row;
+
+        .ai-avatar {
+            width: 36px;
+            height: 36px;
+            // background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            // border: 1px solid lightgray;
+            flex-shrink: 0;
+
+            img {
+                width: 36px;
+                height: 36px;
+            }
+        }
+
+        .ai-response-container {
+            width: 100%;
+        }
+
+        .ai-bubble {
+            background-color: white;
+            color: #1e293b;
+            border: 1px solid #f1f5f9;
+            border-bottom-left-radius: 4px;
+            position: relative;
+            padding: 5px;
+            width: max-content;
+        }
+
+        .recommendation-bubble,
+        .error {
+            padding: 12px 16px;
+        }
+
+        .recommendation-bubble {
+            .rec-header {
+                font-weight: 500;
+            }
+
+            .rec-container {
+                display: flex;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                gap: 20px;
+                padding: 10px 0 25px 0; // Extra bottom padding for box-shadows
+                scroll-behavior: smooth;
+                -webkit-overflow-scrolling: touch; // Smooth scrolling for iOS
+
+                // Snap scrolling
+                scroll-snap-type: x mandatory;
+
+                // Hide scrollbar for Chrome, Safari and Opera
+                &::-webkit-scrollbar {
+                    display: none;
+                }
+
+                // Hide scrollbar for IE, Edge and Firefox
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+
+                &__item {
+                    flex: 0 0 auto; // Prevents cards from shrinking
+                    scroll-snap-align: start;
+                }
+            }
+        }
+    }
+}
+
+// Typing Animation
+.typing-indicator {
+    display: flex;
+    gap: 4px;
+    margin-top: 8px;
+    padding-left: 2px;
+
+    span {
+        width: 6px;
+        height: 6px;
+        background-color: gray;
+        border-radius: 50%;
+        animation: bounce 1.4s infinite ease-in-out both;
+
+        &:nth-child(1) {
+            animation-delay: -0.32s;
+        }
+
+        &:nth-child(2) {
+            animation-delay: -0.16s;
+        }
+    }
+}
+
+@keyframes bounce {
+
+    0%,
+    80%,
+    100% {
+        transform: scale(0);
+    }
+
+    40% {
+        transform: scale(1.0);
+    }
+}
+
+/* =========================
+   Tablet (≥ 768px)
+========================= */
+
+@media (min-width: 768px) {
+    .message-bubble-wrapper {
+        .bubble {
+            font-size: 14px;
+        }
+    }
+}

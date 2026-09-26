@@ -1,0 +1,1042 @@
+"on_change_kpi_id","lock_and_hold_id","kpi_to_calculate","calculation_order","formula","sequenceflow","allsequencetimelineupdate","sequencetimelinecount","allsequencetimeline"
+1,7001,6,1,"division(kpi1, (1 - division(kpi4, 100)))",false,false,0,false
+1,7001,19,1,"division(kpi1, kpi7)",false,false,0,false
+1,7001,32,1,"product_of_two(division(kpi29, 100), kpi1)",false,false,0,false
+1,7001,2,2,"division(product_of_two(kpi2, kpi1), (kpi2 + kpi3))",false,false,0,false
+1,7001,5,3,kpi6 - kpi1,false,false,0,false
+1,7001,16,3,"division(kpi19, (1 - division(kpi18, 100)))",false,false,0,false
+1,7001,38,3,"product_of_two(kpi19, kpi41)",false,false,0,false
+1,7001,20,3,"division(kpi2, kpi10)",false,false,0,false
+1,7001,39,3,"product_of_two((division(kpi2, kpi10)), kpi42)",false,false,0,false
+1,7001,33,3,"product_of_two(kpi2, division(kpi30, 100))",false,false,0,false
+1,7001,21,3,"division(kpi3, kpi13)",false,false,0,false
+1,7001,40,3,"product_of_two((division(kpi3, kpi13)), kpi43)",false,false,0,false
+1,7001,34,3,"product_of_two(kpi3, division(kpi31, 100))",false,false,0,false
+1,7001,17,3,"(division(kpi19, (1 - division(kpi18, 100)))) - kpi19",false,false,0,false
+1,7001,35,3,"division((product_of_two(kpi19, kpi41)), (1 - division(kpi37, 100)))",false,false,0,false
+1,7001,36,3,"(division((product_of_two(kpi19, kpi41)), (1 - division(kpi37, 100)))) - (product_of_two(kpi19, kpi41))",false,false,0,false
+1,7001,69,3,"division(kpi1, (1 - division(kpi8, 100)))",false,false,0,false
+1,7001,70,3,"division(kpi2, (1 - division(kpi11, 100)))",false,false,0,false
+1,7001,71,3,"division(kpi3, (1 - division(kpi14, 100)))",false,false,0,false
+1,7001,72,3,"division((product_of_two((division(kpi1, (1 - division(kpi8, 100)))), kpi26) - (product_of_two(kpi19, kpi41))), product_of_two(kpi9, kpi26))",false,false,0,false
+1,7001,73,3,"division((product_of_two((division(kpi1, (1 - division(kpi8, 100)))), kpi28) - (product_of_two(kpi19, kpi41))), product_of_two(kpi9, kpi28))",false,false,0,false
+1,7001,59,4,kpi54 + kpi55 - kpi19 + kpi58,false,false,0,false
+1,7001,49,4,kpi44 - kpi38 + kpi45 + kpi48,false,false,0,false
+1,7001,65,4,"division((kpi44 - kpi38 + kpi45 + kpi48), (kpi54 + kpi55 - kpi19 + kpi58))",false,false,0,false
+1,7001,66,4,"division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2)",false,false,0,false
+1,7001,50,4,"division((kpi44 + (kpi44 - kpi38 + kpi45 + kpi48)), 2)",false,false,0,false
+1,7001,67,4,"division(kpi19, division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2))",false,false,0,false
+1,7001,51,4,"division(kpi38, division((kpi44 + (kpi44 - kpi38 + kpi45 + kpi48)), 2))",false,false,0,false
+1,7001,68,4,"product_of_two(division(kpi19, (kpi55 + kpi54)), 100)",false,false,0,false
+1,7001,52,4,"product_of_two(division(kpi38, (kpi45 + kpi44)), 100)",false,false,0,false
+1,7001,53,4,"division(kpi54, kpi19)",false,false,0,false
+18,7018,16,1,"division(kpi19, (1 - division(kpi18, 100)))",false,false,0,false
+18,7018,18,2,"product_of_two(division((kpi16 - kpi19), kpi16), 100)",false,false,0,false
+18,7018,17,3,kpi16 - kpi19,false,false,0,false
+37,7037,35,1,"division(kpi38, (1 - division(kpi37, 100)))",false,false,0,false
+37,7037,37,2,"product_of_two(division((kpi35 - kpi38), kpi35), 100)",false,false,0,false
+37,7037,36,3,kpi35 - kpi38,false,false,0,false
+4,7004,6,1,"division(kpi1, (1 - division(kpi4, 100)))",false,false,0,false
+4,7004,4,2,"product_of_two(division((kpi6 - kpi1), kpi6), 100)",false,false,0,false
+4,7004,5,3,kpi6 - kpi1,false,false,0,false
+7,7007,19,1,"division(kpi1, kpi7)",false,false,0,false
+7,7007,10,2,"division(product_of_two(division(kpi1, kpi19), kpi10), kpi7)",false,false,0,false
+7,7007,13,2,"division(product_of_two(division(kpi1, kpi19), kpi13), kpi7)",false,false,0,false
+7,7007,7,3,"division(kpi1, kpi19)",false,false,0,false
+7,7007,9,4,"division(kpi7, (1 - division(kpi8, 100)))",false,false,0,false
+7,7007,16,4,"division(kpi19, (1 - division(kpi18, 100)))",false,false,0,false
+7,7007,12,4,"division(kpi10, (1 - division(kpi11, 100)))",false,false,0,false
+7,7007,20,4,"division(kpi2, kpi10)",false,false,0,false
+7,7007,15,4,"division(kpi13, (1 - division(kpi14, 100)))",false,false,0,false
+7,7007,21,4,"division(kpi3, kpi13)",false,false,0,false
+7,7007,41,4,"division(kpi38, kpi19)",false,false,0,false
+7,7007,42,4,"division(kpi39, (division(kpi2, kpi10)))",false,false,0,false
+7,7007,43,4,"division(kpi40, (division(kpi3, kpi13)))",false,false,0,false
+7,7007,25,4,"product_of_two(division((product_of_two((division(kpi7, (1 - division(kpi8, 100)))), kpi26) - (division(kpi38, kpi19))), product_of_two((division(kpi7, (1 - division(kpi8, 100)))), kpi26)), 100)",false,false,0,false
+7,7007,27,4,"product_of_two(division((product_of_two((division(kpi7, (1 - division(kpi8, 100)))), kpi28) - (division(kpi38, kpi19))), product_of_two((division(kpi7, (1 - division(kpi8, 100)))), kpi28)), 100)",false,false,0,false
+7,7007,24,4,"product_of_two(division(((division(kpi13, (1 - division(kpi14, 100)))) - (division(kpi40, (division(kpi3, kpi13))))), (division(kpi13, (1 - division(kpi14, 100))))), 100)",false,false,0,false
+7,7007,23,4,"product_of_two(division(((division(kpi10, (1 - division(kpi11, 100)))) - (division(kpi39, (division(kpi2, kpi10))))), (division(kpi10, (1 - division(kpi11, 100))))), 100)",false,false,0,false
+7,7007,22,4,"product_of_two(division(((division(kpi7, (1 - division(kpi8, 100)))) - (division(kpi38, kpi19))), (division(kpi7, (1 - division(kpi8, 100))))), 100)",false,false,0,false
+7,7007,17,4,"(division(kpi19, (1 - division(kpi18, 100)))) - kpi19",false,false,0,false
+7,7007,59,5,kpi54 + kpi55 - kpi19 + kpi58,false,false,0,false
+7,7007,65,5,"division(kpi49, (kpi54 + kpi55 - kpi19 + kpi58))",false,false,0,false
+7,7007,66,5,"division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2)",false,false,0,false
+7,7007,67,5,"division(kpi19, division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2))",false,false,0,false
+7,7007,68,5,"product_of_two(division(kpi19, (kpi55 + kpi54)), 100)",false,false,0,false
+7,7007,53,5,"division(kpi54, kpi19)",false,false,0,false
+8,7008,69,1,"division(kpi1, (1 - division(kpi8, 100)))",false,false,0,false
+8,7008,11,2,"product_of_two(division(product_of_two(division(kpi11, 100), division((kpi69 - kpi1), kpi69)), division(kpi8, 100)), 100)",false,false,0,false
+8,7008,14,2,"product_of_two(division(product_of_two(division(kpi14, 100), division((kpi69 - kpi1), kpi69)), division(kpi8, 100)), 100)",false,false,0,false
+8,7008,8,3,"product_of_two(division((kpi69 - kpi1), kpi69), 100)",false,false,0,false
+8,7008,70,4,"division(kpi2, (1 - division(kpi11, 100)))",false,false,0,false
+8,7008,71,4,"division(kpi3, (1 - division(kpi14, 100)))",false,false,0,false
+8,7008,9,4,"division(kpi7, (1 - division(kpi8, 100)))",false,false,0,false
+8,7008,22,4,"product_of_two(division(((division(kpi7, (1 - division(kpi8, 100)))) - kpi41), (division(kpi7, (1 - division(kpi8, 100))))), 100)",false,false,0,false
+8,7008,25,4,"product_of_two(division((product_of_two((division(kpi7, (1 - division(kpi8, 100)))), kpi26) - kpi41), product_of_two((division(kpi7, (1 - division(kpi8, 100)))), kpi26)), 100)",false,false,0,false
+8,7008,27,4,"product_of_two(division((product_of_two((division(kpi7, (1 - division(kpi8, 100)))), kpi28) - kpi41), product_of_two((division(kpi7, (1 - division(kpi8, 100)))), kpi28)), 100)",false,false,0,false
+8,7008,72,4,"division((product_of_two(kpi69, kpi26) - kpi38), product_of_two((division(kpi7, (1 - division(kpi8, 100)))), kpi26))",false,false,0,false
+8,7008,73,4,"division((product_of_two(kpi69, kpi28) - kpi38), product_of_two((division(kpi7, (1 - division(kpi8, 100)))), kpi28))",false,false,0,false
+8,7008,12,4,"division(kpi10, (1 - division(kpi11, 100)))",false,false,0,false
+8,7008,15,4,"division(kpi13, (1 - division(kpi14, 100)))",false,false,0,false
+8,7008,23,4,"product_of_two(division(((division(kpi10, (1 - division(kpi11, 100)))) - kpi42), (division(kpi10, (1 - division(kpi11, 100))))), 100)",false,false,0,false
+8,7008,24,4,"product_of_two(division(((division(kpi13, (1 - division(kpi14, 100)))) - kpi43), (division(kpi13, (1 - division(kpi14, 100))))), 100)",false,false,0,false
+29,7029,32,1,"product_of_two(division(kpi29, 100), kpi1)",false,false,0,false
+29,7029,30,2,"product_of_two(division(product_of_two(division(kpi32, kpi1), division(kpi30, 100)), division(kpi29, 100)), 100)",false,false,0,false
+29,7029,31,2,"product_of_two(division(product_of_two(division(kpi32, kpi1), division(kpi31, 100)), division(kpi29, 100)), 100)",false,false,0,false
+29,7029,29,3,"product_of_two(division(kpi32, kpi1), 100)",false,false,0,false
+29,7029,38,4,kpi1 - kpi32,false,false,0,false
+29,7029,35,4,"division((kpi1 - kpi32), (1 - division(kpi37, 100)))",false,false,0,false
+29,7029,41,4,"division((kpi1 - kpi32), kpi19)",false,false,0,false
+29,7029,33,4,"product_of_two(kpi2, division(kpi30, 100))",false,false,0,false
+29,7029,34,4,"product_of_two(kpi3, division(kpi31, 100))",false,false,0,false
+29,7029,25,4,"product_of_two(division((product_of_two(kpi9, kpi26) - (division((kpi1 - kpi32), kpi19))), product_of_two(kpi9, kpi26)), 100)",false,false,0,false
+29,7029,27,4,"product_of_two(division((product_of_two(kpi9, kpi28) - (division((kpi1 - kpi32), kpi19))), product_of_two(kpi9, kpi28)), 100)",false,false,0,false
+29,7029,72,4,"product_of_two(division((product_of_two(division((product_of_two(kpi9, kpi26) - (division((kpi1 - kpi32), kpi19))), product_of_two(kpi9, kpi26)), 100)), 100), kpi19)",false,false,0,false
+29,7029,73,4,"product_of_two(division((product_of_two(division((product_of_two(kpi9, kpi28) - (division((kpi1 - kpi32), kpi19))), product_of_two(kpi9, kpi28)), 100)), 100), kpi19)",false,false,0,false
+29,7029,22,4,"product_of_two(division((kpi9 - (division((kpi1 - kpi32), kpi19))), kpi9), 100)",false,false,0,false
+29,7029,36,4,"(division((kpi1 - kpi32), (1 - division(kpi37, 100)))) - (kpi1 - kpi32)",false,false,0,false
+29,7029,39,4,"kpi2 - (product_of_two(kpi2, division(kpi30, 100)))",false,false,0,false
+29,7029,40,4,"kpi3 - (product_of_two(kpi3, division(kpi31, 100)))",false,false,0,false
+29,7029,42,4,"division((kpi2 - (product_of_two(kpi2, division(kpi30, 100)))), kpi20)",false,false,0,false
+29,7029,43,4,"division((kpi3 - (product_of_two(kpi3, division(kpi31, 100)))), kpi21)",false,false,0,false
+29,7029,23,4,"product_of_two(division((kpi12 - (division((kpi2 - (product_of_two(kpi2, division(kpi30, 100)))), kpi20))), kpi12), 100)",false,false,0,false
+29,7029,24,4,"product_of_two(division((kpi15 - (division((kpi3 - (product_of_two(kpi3, division(kpi31, 100)))), kpi21))), kpi15), 100)",false,false,0,false
+29,7029,49,5,kpi44 - kpi38 + kpi45 + kpi48,false,false,0,false
+29,7029,65,5,"division((kpi44 - kpi38 + kpi45 + kpi48), kpi59)",false,false,0,false
+29,7029,50,5,"division((kpi44 + (kpi44 - kpi38 + kpi45 + kpi48)), 2)",false,false,0,false
+29,7029,51,5,"division(kpi38, division((kpi44 + (kpi44 - kpi38 + kpi45 + kpi48)), 2))",false,false,0,false
+29,7029,52,5,"product_of_two(division(kpi38, (kpi45 + kpi44)), 100)",false,false,0,false
+2,7002,20,1,"division(kpi2, kpi10)",false,false,0,false
+2,7002,33,1,"product_of_two(kpi2, division(kpi30, 100))",false,false,0,false
+2,7002,39,1,"product_of_two((division(kpi2, kpi10)), kpi42)",false,false,0,false
+2,7002,19,2,kpi20 + kpi21,false,false,0,false
+2,7002,1,2,kpi2 + kpi3,false,false,0,false
+2,7002,38,2,kpi39 + kpi40,false,false,0,false
+2,7002,41,2,"division((kpi39 + kpi40), (kpi20 + kpi21))",false,false,0,false
+2,7002,7,2,"division((kpi2 + kpi3), (kpi20 + kpi21))",false,false,0,false
+2,7002,9,2,"division((division((kpi2 + kpi3), (kpi20 + kpi21))), (1 - division(kpi8, 100)))",false,false,0,false
+2,7002,32,2,kpi33 + kpi34,false,false,0,false
+2,7002,29,2,"product_of_two(division((kpi33 + kpi34), (kpi2 + kpi3)), 100)",false,false,0,false
+2,7002,22,2,"product_of_two(division(((division((division((kpi2 + kpi3), (kpi20 + kpi21))), (1 - division(kpi8, 100)))) - (division((kpi39 + kpi40), (kpi20 + kpi21)))), (division((division((kpi2 + kpi3), (kpi20 + kpi21))), (1 - division(kpi8, 100))))), 100)",false,false,0,false
+2,7002,6,3,"division(kpi1, (1 - division(kpi4, 100)))",false,false,0,false
+2,7002,16,3,"division(kpi19, (1 - division(kpi18, 100)))",false,false,0,false
+2,7002,35,3,"division(kpi38, (1 - division(kpi37, 100)))",false,false,0,false
+2,7002,5,3,"(division(kpi1, (1 - division(kpi4, 100)))) - kpi1",false,false,0,false
+2,7002,17,3,"(division(kpi19, (1 - division(kpi18, 100)))) - kpi19",false,false,0,false
+2,7002,36,3,"(division(kpi38, (1 - division(kpi37, 100)))) - kpi38",false,false,0,false
+2,7002,69,3,"division(kpi1, (1 - division(kpi8, 100)))",false,false,0,false
+2,7002,70,3,"division(kpi2, (1 - division(kpi11, 100)))",false,false,0,false
+2,7002,72,3,"division((product_of_two((division(kpi1, (1 - division(kpi8, 100)))), kpi26) - kpi38), product_of_two(kpi9, kpi26))",false,false,0,false
+2,7002,73,3,"division((product_of_two((division(kpi1, (1 - division(kpi8, 100)))), kpi28) - kpi38), product_of_two(kpi9, kpi28))",false,false,0,false
+2,7002,59,4,kpi54 + kpi55 - kpi19 + kpi58,false,false,0,false
+2,7002,49,4,kpi44 - kpi38 + kpi45 + kpi48,false,false,0,false
+2,7002,65,4,"division((kpi44 - kpi38 + kpi45 + kpi48), (kpi54 + kpi55 - kpi19 + kpi58))",false,false,0,false
+2,7002,66,4,"division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2)",false,false,0,false
+2,7002,50,4,"division((kpi44 + (kpi44 - kpi38 + kpi45 + kpi48)), 2)",false,false,0,false
+2,7002,67,4,"division(kpi19, division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2))",false,false,0,false
+2,7002,51,4,"division(kpi38, division((kpi44 + (kpi44 - kpi38 + kpi45 + kpi48)), 2))",false,false,0,false
+2,7002,68,4,"product_of_two(division(kpi19, (kpi55 + kpi54)), 100)",false,false,0,false
+2,7002,52,4,"product_of_two(division(kpi38, (kpi45 + kpi44)), 100)",false,false,0,false
+2,7002,53,4,"division(kpi54, kpi19)",false,false,0,false
+10,7010,20,1,"division(kpi2, kpi10)",false,false,0,false
+10,7010,10,2,"division(kpi2, kpi20)",false,false,0,false
+10,7010,19,3,kpi20 + kpi21,false,false,0,false
+10,7010,12,4,"division(kpi10, (1 - division(kpi11, 100)))",false,false,0,false
+10,7010,7,4,"division(kpi1, kpi19)",false,false,0,false
+10,7010,42,4,"division(kpi39, kpi20)",false,false,0,false
+10,7010,23,4,"product_of_two(division(((division(kpi10, (1 - division(kpi11, 100)))) - (division(kpi39, kpi20))), (division(kpi10, (1 - division(kpi11, 100))))), 100)",false,false,0,false
+10,7010,16,4,"division(kpi19, (1 - division(kpi18, 100)))",false,false,0,false
+10,7010,9,4,"division((division(kpi1, kpi19)), (1 - division(kpi8, 100)))",false,false,0,false
+10,7010,41,4,"division(kpi38, kpi19)",false,false,0,false
+10,7010,25,4,"product_of_two(division((product_of_two((division((division(kpi1, kpi19)), (1 - division(kpi8, 100)))), kpi26) - (division(kpi38, kpi19))), product_of_two((division((division(kpi1, kpi19)), (1 - division(kpi8, 100)))), kpi26)), 100)",false,false,0,false
+10,7010,27,4,"product_of_two(division((product_of_two((division((division(kpi1, kpi19)), (1 - division(kpi8, 100)))), kpi28) - (division(kpi38, kpi19))), product_of_two((division((division(kpi1, kpi19)), (1 - division(kpi8, 100)))), kpi28)), 100)",false,false,0,false
+10,7010,22,4,"product_of_two(division(((division((division(kpi1, kpi19)), (1 - division(kpi8, 100)))) - (division(kpi38, kpi19))), (division((division(kpi1, kpi19)), (1 - division(kpi8, 100))))), 100)",false,false,0,false
+10,7010,17,4,"(division(kpi19, (1 - division(kpi18, 100)))) - kpi19",false,false,0,false
+10,7010,59,5,kpi54 + kpi55 - kpi19 + kpi58,false,false,0,false
+10,7010,65,5,"division(kpi49, (kpi54 + kpi55 - kpi19 + kpi58))",false,false,0,false
+10,7010,66,5,"division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2)",false,false,0,false
+10,7010,67,5,"division(kpi19, division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2))",false,false,0,false
+10,7010,68,5,"product_of_two(division(kpi19, (kpi55 + kpi54)), 100)",false,false,0,false
+10,7010,53,5,"division(kpi54, kpi19)",false,false,0,false
+11,7011,70,1,"division(kpi2, (1 - division(kpi11, 100)))",false,false,0,false
+11,7011,69,2,"product_of_two(kpi15, kpi21) + kpi70",false,false,0,false
+11,7011,11,3,"product_of_two(division((kpi70 - kpi2), kpi70), 100)",false,false,0,false
+11,7011,8,4,"product_of_two(division((kpi69 - kpi1), kpi69), 100)",false,false,0,false
+11,7011,12,4,"division(kpi10, (1 - division(kpi11, 100)))",false,false,0,false
+11,7011,23,4,"product_of_two(division(((division(kpi10, (1 - division(kpi11, 100)))) - kpi42), (division(kpi10, (1 - division(kpi11, 100))))), 100)",false,false,0,false
+11,7011,9,4,"division(kpi7, (1 - division((product_of_two(division((kpi69 - kpi1), kpi69), 100)), 100)))",false,false,0,false
+11,7011,25,4,"product_of_two(division((product_of_two((division(kpi7, (1 - division((product_of_two(division((kpi69 - kpi1), kpi69), 100)), 100)))), kpi26) - kpi41), product_of_two((division(kpi7, (1 - division((product_of_two(division((kpi69 - kpi1), kpi69), 100)), 100)))), kpi26)), 100)",false,false,0,false
+11,7011,27,4,"product_of_two(division((product_of_two((division(kpi7, (1 - division((product_of_two(division((kpi69 - kpi1), kpi69), 100)), 100)))), kpi28) - kpi41), product_of_two((division(kpi7, (1 - division((product_of_two(division((kpi69 - kpi1), kpi69), 100)), 100)))), kpi28)), 100)",false,false,0,false
+11,7011,72,4,"division((product_of_two(kpi69, kpi26) - kpi38), product_of_two((division(kpi7, (1 - division((product_of_two(division((kpi69 - kpi1), kpi69), 100)), 100)))), kpi26))",false,false,0,false
+11,7011,73,4,"division((product_of_two(kpi69, kpi28) - kpi38), product_of_two((division(kpi7, (1 - division((product_of_two(division((kpi69 - kpi1), kpi69), 100)), 100)))), kpi28))",false,false,0,false
+13,7013,16,4,"division(kpi19, (1 - division(kpi18, 100)))",false,false,0,false
+13,7013,9,4,"division((division((kpi2 + kpi3), (kpi20 + kpi21))), (1 - division(kpi8, 100)))",false,false,0,false
+11,7011,22,4,"product_of_two(division(((division(kpi7, (1 - division((product_of_two(division((kpi69 - kpi1), kpi69), 100)), 100)))) - kpi41), (division(kpi7, (1 - division((product_of_two(division((kpi69 - kpi1), kpi69), 100)), 100))))), 100)",false,false,0,false
+30,7030,33,1,"product_of_two(kpi2, division(kpi30, 100))",false,false,0,false
+30,7030,30,2,"product_of_two(division(kpi33, kpi2), 100)",false,false,0,false
+30,7030,32,3,kpi33 + kpi34,false,false,0,false
+30,7030,29,3,"product_of_two(division((kpi33 + kpi34), kpi1), 100)",false,false,0,false
+30,7030,39,3,kpi2 - kpi33,false,false,0,false
+30,7030,38,3,kpi1 - (kpi33 + kpi34),false,false,0,false
+30,7030,42,3,"division((kpi2 - kpi33), kpi20)",false,false,0,false
+30,7030,41,3,"division((kpi1 - (kpi33 + kpi34)), kpi19)",false,false,0,false
+30,7030,23,3,"product_of_two(division((kpi12 - (division((kpi2 - kpi33), kpi20))), kpi12), 100)",false,false,0,false
+30,7030,35,3,"division((kpi1 - (kpi33 + kpi34)), (1 - division(kpi37, 100)))",false,false,0,false
+30,7030,25,3,"product_of_two(division((product_of_two(kpi9, kpi26) - (division((kpi1 - (kpi33 + kpi34)), kpi19))), product_of_two(kpi9, kpi26)), 100)",false,false,0,false
+30,7030,27,3,"product_of_two(division((product_of_two(kpi9, kpi28) - (division((kpi1 - (kpi33 + kpi34)), kpi19))), product_of_two(kpi9, kpi28)), 100)",false,false,0,false
+14,7014,15,4,"division(kpi13, (1 - division(kpi14, 100)))",false,false,0,false
+30,7030,72,3,"product_of_two(division((product_of_two(division((product_of_two(kpi9, kpi26) - (division((kpi1 - (kpi33 + kpi34)), kpi19))), product_of_two(kpi9, kpi26)), 100)), 100), kpi19)",false,false,0,false
+30,7030,73,3,"product_of_two(division((product_of_two(division((product_of_two(kpi9, kpi28) - (division((kpi1 - (kpi33 + kpi34)), kpi19))), product_of_two(kpi9, kpi28)), 100)), 100), kpi19)",false,false,0,false
+30,7030,22,3,"product_of_two(division((kpi9 - (division((kpi1 - (kpi33 + kpi34)), kpi19))), kpi9), 100)",false,false,0,false
+30,7030,36,3,"(division((kpi1 - (kpi33 + kpi34)), (1 - division(kpi37, 100)))) - (kpi1 - (kpi33 + kpi34))",false,false,0,false
+30,7030,49,4,kpi44 - kpi38 + kpi45 + kpi48,false,false,0,false
+30,7030,65,4,"division((kpi44 - kpi38 + kpi45 + kpi48), kpi59)",false,false,0,false
+30,7030,50,4,"division((kpi44 + (kpi44 - kpi38 + kpi45 + kpi48)), 2)",false,false,0,false
+30,7030,51,4,"division(kpi38, division((kpi44 + (kpi44 - kpi38 + kpi45 + kpi48)), 2))",false,false,0,false
+30,7030,52,4,"product_of_two(division(kpi38, (kpi45 + kpi44)), 100)",false,false,0,false
+3,7003,21,1,"division(kpi3, kpi13)",false,false,0,false
+3,7003,34,1,"product_of_two(kpi3, division(kpi31, 100))",false,false,0,false
+3,7003,40,1,"product_of_two((division(kpi3, kpi13)), kpi43)",false,false,0,false
+3,7003,19,2,kpi20 + kpi21,false,false,0,false
+3,7003,1,2,kpi2 + kpi3,false,false,0,false
+3,7003,38,2,kpi39 + kpi40,false,false,0,false
+3,7003,41,2,"division((kpi39 + kpi40), (kpi20 + kpi21))",false,false,0,false
+3,7003,7,2,"division((kpi2 + kpi3), (kpi20 + kpi21))",false,false,0,false
+3,7003,9,2,"division((division((kpi2 + kpi3), (kpi20 + kpi21))), (1 - division(kpi8, 100)))",false,false,0,false
+3,7003,32,2,kpi33 + kpi34,false,false,0,false
+3,7003,29,2,"product_of_two(division((kpi33 + kpi34), (kpi2 + kpi3)), 100)",false,false,0,false
+3,7003,22,2,"product_of_two(division(((division((division((kpi2 + kpi3), (kpi20 + kpi21))), (1 - division(kpi8, 100)))) - (division((kpi39 + kpi40), (kpi20 + kpi21)))), (division((division((kpi2 + kpi3), (kpi20 + kpi21))), (1 - division(kpi8, 100))))), 100)",false,false,0,false
+3,7003,6,3,"division(kpi1, (1 - division(kpi4, 100)))",false,false,0,false
+3,7003,16,3,"division(kpi19, (1 - division(kpi18, 100)))",false,false,0,false
+3,7003,35,3,"division(kpi38, (1 - division(kpi37, 100)))",false,false,0,false
+3,7003,5,3,"(division(kpi1, (1 - division(kpi4, 100)))) - kpi1",false,false,0,false
+3,7003,17,3,"(division(kpi19, (1 - division(kpi18, 100)))) - kpi19",false,false,0,false
+3,7003,36,3,"(division(kpi38, (1 - division(kpi37, 100)))) - kpi38",false,false,0,false
+3,7003,69,3,"division(kpi1, (1 - division(kpi8, 100)))",false,false,0,false
+3,7003,71,3,"division(kpi3, (1 - division(kpi14, 100)))",false,false,0,false
+3,7003,72,3,"division((product_of_two((division(kpi1, (1 - division(kpi8, 100)))), kpi26) - kpi38), product_of_two(kpi9, kpi26))",false,false,0,false
+3,7003,73,3,"division((product_of_two((division(kpi1, (1 - division(kpi8, 100)))), kpi28) - kpi38), product_of_two(kpi9, kpi28))",false,false,0,false
+3,7003,59,4,kpi54 + kpi55 - kpi19 + kpi58,false,false,0,false
+3,7003,49,4,kpi44 - kpi38 + kpi45 + kpi48,false,false,0,false
+3,7003,65,4,"division((kpi44 - kpi38 + kpi45 + kpi48), (kpi54 + kpi55 - kpi19 + kpi58))",false,false,0,false
+3,7003,66,4,"division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2)",false,false,0,false
+3,7003,50,4,"division((kpi44 + (kpi44 - kpi38 + kpi45 + kpi48)), 2)",false,false,0,false
+3,7003,67,4,"division(kpi19, division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2))",false,false,0,false
+3,7003,51,4,"division(kpi38, division((kpi44 + (kpi44 - kpi38 + kpi45 + kpi48)), 2))",false,false,0,false
+3,7003,68,4,"product_of_two(division(kpi19, (kpi55 + kpi54)), 100)",false,false,0,false
+3,7003,52,4,"product_of_two(division(kpi38, (kpi45 + kpi44)), 100)",false,false,0,false
+3,7003,53,4,"division(kpi54, kpi19)",false,false,0,false
+13,7013,21,1,"division(kpi3, kpi13)",false,false,0,false
+13,7013,13,2,"division(kpi3, kpi21)",false,false,0,false
+13,7013,19,3,kpi20 + kpi21,false,false,0,false
+13,7013,15,4,"division(kpi13, (1 - division(kpi14, 100)))",false,false,0,false
+13,7013,7,4,"division((kpi2 + kpi3), (kpi20 + kpi21))",false,false,0,false
+13,7013,43,4,"division(kpi40, kpi21)",false,false,0,false
+13,7013,24,4,"product_of_two(division(((division(kpi13, (1 - division(kpi14, 100)))) - (division(kpi40, kpi21))), (division(kpi13, (1 - division(kpi14, 100))))), 100)",false,false,0,false
+13,7013,41,4,"division(kpi38, kpi19)",false,false,0,false
+13,7013,25,4,"product_of_two(division((product_of_two((division((division((kpi2 + kpi3), (kpi20 + kpi21))), (1 - division(kpi8, 100)))), kpi26) - (division(kpi38, kpi19))), product_of_two((division((division((kpi2 + kpi3), (kpi20 + kpi21))), (1 - division(kpi8, 100)))), kpi26)), 100)",false,false,0,false
+13,7013,27,4,"product_of_two(division((product_of_two((division((division((kpi2 + kpi3), (kpi20 + kpi21))), (1 - division(kpi8, 100)))), kpi28) - (division(kpi38, kpi19))), product_of_two((division((division((kpi2 + kpi3), (kpi20 + kpi21))), (1 - division(kpi8, 100)))), kpi28)), 100)",false,false,0,false
+13,7013,22,4,"product_of_two(division(((division((division((kpi2 + kpi3), (kpi20 + kpi21))), (1 - division(kpi8, 100)))) - (division(kpi38, kpi19))), (division((division((kpi2 + kpi3), (kpi20 + kpi21))), (1 - division(kpi8, 100))))), 100)",false,false,0,false
+13,7013,17,4,"(division(kpi19, (1 - division(kpi18, 100)))) - kpi19",false,false,0,false
+13,7013,59,5,kpi54 + kpi55 - kpi19 + kpi58,false,false,0,false
+13,7013,65,5,"division(kpi49, (kpi54 + kpi55 - kpi19 + kpi58))",false,false,0,false
+13,7013,66,5,"division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2)",false,false,0,false
+13,7013,67,5,"division(kpi19, division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2))",false,false,0,false
+13,7013,68,5,"product_of_two(division(kpi19, (kpi55 + kpi54)), 100)",false,false,0,false
+13,7013,53,5,"division(kpi54, kpi19)",false,false,0,false
+14,7014,71,1,"division(kpi3, (1 - division(kpi14, 100)))",false,false,0,false
+14,7014,69,2,"product_of_two(kpi12, kpi20) + kpi71",false,false,0,false
+14,7014,14,3,"product_of_two(division((kpi71 - kpi3), kpi71), 100)",false,false,0,false
+14,7014,8,4,"product_of_two(division((kpi69 - kpi1), kpi69), 100)",false,false,0,false
+14,7014,9,4,"division(kpi7, (1 - division((product_of_two(division((kpi69 - kpi1), kpi69), 100)), 100)))",false,false,0,false
+14,7014,24,4,"product_of_two(division(((division(kpi13, (1 - division(kpi14, 100)))) - kpi43), (division(kpi13, (1 - division(kpi14, 100))))), 100)",false,false,0,false
+14,7014,25,4,"product_of_two(division((product_of_two((division(kpi7, (1 - division((product_of_two(division((kpi69 - kpi1), kpi69), 100)), 100)))), kpi26) - kpi41), product_of_two((division(kpi7, (1 - division((product_of_two(division((kpi69 - kpi1), kpi69), 100)), 100)))), kpi26)), 100)",false,false,0,false
+14,7014,27,4,"product_of_two(division((product_of_two((division(kpi7, (1 - division((product_of_two(division((kpi69 - kpi1), kpi69), 100)), 100)))), kpi28) - kpi41), product_of_two((division(kpi7, (1 - division((product_of_two(division((kpi69 - kpi1), kpi69), 100)), 100)))), kpi28)), 100)",false,false,0,false
+14,7014,72,4,"division((product_of_two(kpi69, kpi26) - kpi38), product_of_two((division(kpi7, (1 - division((product_of_two(division((kpi69 - kpi1), kpi69), 100)), 100)))), kpi26))",false,false,0,false
+14,7014,73,4,"division((product_of_two(kpi69, kpi28) - kpi38), product_of_two((division(kpi7, (1 - division((product_of_two(division((kpi69 - kpi1), kpi69), 100)), 100)))), kpi28))",false,false,0,false
+14,7014,22,4,"product_of_two(division(((division(kpi7, (1 - division((product_of_two(division((kpi69 - kpi1), kpi69), 100)), 100)))) - kpi41), (division(kpi7, (1 - division((product_of_two(division((kpi69 - kpi1), kpi69), 100)), 100))))), 100)",false,false,0,false
+31,7031,34,1,"product_of_two(kpi3, division(kpi31, 100))",false,false,0,false
+31,7031,31,2,"product_of_two(division(kpi34, kpi3), 100)",false,false,0,false
+31,7031,40,3,kpi3 - kpi34,false,false,0,false
+31,7031,32,3,kpi33 + kpi34,false,false,0,false
+31,7031,29,3,"product_of_two(division((kpi33 + kpi34), kpi1), 100)",false,false,0,false
+31,7031,43,3,"division((kpi3 - kpi34), kpi21)",false,false,0,false
+31,7031,38,3,kpi1 - (kpi33 + kpi34),false,false,0,false
+31,7031,41,3,"division((kpi1 - (kpi33 + kpi34)), kpi19)",false,false,0,false
+31,7031,24,3,"product_of_two(division((kpi15 - (division((kpi3 - kpi34), kpi21))), kpi15), 100)",false,false,0,false
+31,7031,35,3,"division((kpi1 - (kpi33 + kpi34)), (1 - division(kpi37, 100)))",false,false,0,false
+31,7031,25,3,"product_of_two(division((product_of_two(kpi9, kpi26) - (division((kpi1 - (kpi33 + kpi34)), kpi19))), product_of_two(kpi9, kpi26)), 100)",false,false,0,false
+31,7031,27,3,"product_of_two(division((product_of_two(kpi9, kpi28) - (division((kpi1 - (kpi33 + kpi34)), kpi19))), product_of_two(kpi9, kpi28)), 100)",false,false,0,false
+31,7031,72,3,"product_of_two(division((product_of_two(division((product_of_two(kpi9, kpi26) - (division((kpi1 - (kpi33 + kpi34)), kpi19))), product_of_two(kpi9, kpi26)), 100)), 100), kpi19)",false,false,0,false
+31,7031,73,3,"product_of_two(division((product_of_two(division((product_of_two(kpi9, kpi28) - (division((kpi1 - (kpi33 + kpi34)), kpi19))), product_of_two(kpi9, kpi28)), 100)), 100), kpi19)",false,false,0,false
+31,7031,22,3,"product_of_two(division((kpi9 - (division((kpi1 - (kpi33 + kpi34)), kpi19))), kpi9), 100)",false,false,0,false
+31,7031,36,3,"(division((kpi1 - (kpi33 + kpi34)), (1 - division(kpi37, 100)))) - (kpi1 - (kpi33 + kpi34))",false,false,0,false
+31,7031,49,4,kpi44 - kpi38 + kpi45 + kpi48,false,false,0,false
+31,7031,65,4,"division((kpi44 - kpi38 + kpi45 + kpi48), kpi59)",false,false,0,false
+31,7031,50,4,"division((kpi44 + (kpi44 - kpi38 + kpi45 + kpi48)), 2)",false,false,0,false
+31,7031,51,4,"division(kpi38, division((kpi44 + (kpi44 - kpi38 + kpi45 + kpi48)), 2))",false,false,0,false
+31,7031,52,4,"product_of_two(division(kpi38, (kpi45 + kpi44)), 100)",false,false,0,false
+47,7047,57,1,"division(kpi47, kpi63)",false,false,0,false
+47,7047,45,2,kpi47 + kpi46,false,false,0,false
+47,7047,55,2,kpi57 + kpi56,false,false,0,false
+47,7047,61,2,"division((product_of_two(kpi63, kpi57) + product_of_two(kpi62, kpi56)), (kpi57 + kpi56))",false,false,0,false
+47,7047,49,2,kpi44 - kpi38 + (kpi47 + kpi46) + kpi48,false,false,0,false
+47,7047,59,2,kpi54 + (kpi57 + kpi56) - kpi19 + kpi58,false,false,0,false
+1,1,20,3,"division(kpi2, kpi10)",false,false,0,false
+47,7047,65,2,"division((kpi44 - kpi38 + (kpi47 + kpi46) + kpi48), (kpi54 + (kpi57 + kpi56) - kpi19 + kpi58))",false,false,0,false
+47,7047,66,2,"division((kpi54 + (kpi54 + (kpi57 + kpi56) - kpi19 + kpi58)), 2)",false,false,0,false
+47,7047,50,2,"division((kpi44 + (kpi44 - kpi38 + (kpi47 + kpi46) + kpi48)), 2)",false,false,0,false
+47,7047,67,2,"division(kpi19, division((kpi54 + (kpi54 + (kpi57 + kpi56) - kpi19 + kpi58)), 2))",false,false,0,false
+47,7047,51,2,"division(kpi38, division((kpi44 + (kpi44 - kpi38 + (kpi47 + kpi46) + kpi48)), 2))",false,false,0,false
+47,7047,68,2,"product_of_two(division(kpi19, ((kpi57 + kpi56) + kpi54)), 100)",false,false,0,false
+47,7047,52,2,"product_of_two(division(kpi38, ((kpi47 + kpi46) + kpi44)), 100)",false,false,0,false
+47,7047,53,2,"division(kpi54, kpi19)",false,false,0,false
+63,7063,57,1,"division(kpi47, kpi63)",false,false,0,false
+63,7063,55,2,kpi57 + kpi56,false,false,0,false
+63,7063,63,3,"division(kpi47, kpi57)",false,false,0,false
+63,7063,61,4,"division((product_of_two(kpi63, kpi57) + product_of_two(kpi62, kpi56)), kpi55)",false,false,0,false
+63,7063,59,4,kpi54 + kpi55 - kpi19 + kpi58,false,false,0,false
+63,7063,65,4,"division(kpi49, (kpi54 + kpi55 - kpi19 + kpi58))",false,false,0,false
+63,7063,66,4,"division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2)",false,false,0,false
+63,7063,67,4,"division(kpi19, division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2))",false,false,0,false
+63,7063,68,4,"product_of_two(division(kpi19, (kpi55 + kpi54)), 100)",false,false,0,false
+63,7063,53,4,"division(kpi54, kpi19)",false,false,0,false
+48,7048,58,1,"division(kpi48, kpi64)",false,false,0,false
+48,7048,49,2,kpi44 - kpi38 + kpi45 + kpi48,false,false,0,false
+48,7048,59,2,kpi54 + kpi55 - kpi19 + kpi58,false,false,0,false
+48,7048,65,2,"division((kpi44 - kpi38 + kpi45 + kpi48), (kpi54 + kpi55 - kpi19 + kpi58))",false,false,0,false
+48,7048,66,2,"division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2)",false,false,0,false
+48,7048,50,2,"division((kpi44 + (kpi44 - kpi38 + kpi45 + kpi48)), 2)",false,false,0,false
+48,7048,67,2,"division(kpi19, division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2))",false,false,0,false
+63,63,59,4,kpi54 + kpi55 - kpi19 + kpi58,false,false,0,false
+48,7048,51,2,"division(kpi38, division((kpi44 + (kpi44 - kpi38 + kpi45 + kpi48)), 2))",false,false,0,false
+48,7048,68,2,"product_of_two(division(kpi19, (kpi55 + kpi54)), 100)",false,false,0,false
+48,7048,52,2,"product_of_two(division(kpi38, (kpi45 + kpi44)), 100)",false,false,0,false
+48,7048,53,2,"division(kpi54, kpi19)",false,false,0,false
+64,7064,58,1,"division(kpi48, kpi64)",false,false,0,false
+64,7064,64,2,"division(kpi48, kpi58)",false,false,0,false
+64,7064,59,3,kpi54 + kpi55 - kpi19 + kpi58,false,false,0,false
+64,7064,65,3,"division(kpi49, (kpi54 + kpi55 - kpi19 + kpi58))",false,false,0,false
+64,7064,66,3,"division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2)",false,false,0,false
+64,7064,67,3,"division(kpi19, division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2))",false,false,0,false
+64,7064,68,3,"product_of_two(division(kpi19, (kpi55 + kpi54)), 100)",false,false,0,false
+64,7064,53,3,"division(kpi54, kpi19)",false,false,0,false
+26,7026,72,1,"division((product_of_two(product_of_two(kpi9, kpi19), kpi26) - kpi38), product_of_two(kpi9, kpi26))",false,false,0,false
+26,7026,26,2,"division(kpi38, product_of_two((kpi19 - kpi72), kpi9))",false,false,0,false
+26,7026,25,3,"product_of_two(division((product_of_two(kpi9, kpi26) - kpi41), product_of_two(kpi9, kpi26)), 100)",false,false,0,false
+28,7028,73,1,"division((product_of_two(product_of_two(kpi9, kpi19), kpi28) - kpi38), product_of_two(kpi9, kpi28))",false,false,0,false
+28,7028,28,2,"division(kpi38, product_of_two((kpi19 - kpi73), kpi9))",false,false,0,false
+28,7028,27,3,"product_of_two(division((product_of_two(kpi9, kpi28) - kpi41), product_of_two(kpi9, kpi28)), 100)",false,false,0,false
+1,1,6,1,"division(kpi1, (1 - division(kpi4, 100)))",false,false,0,false
+1,1,19,1,"division(kpi1, kpi7)",false,false,0,false
+1,1,32,1,"product_of_two(division(kpi29, 100), kpi1)",false,false,0,false
+1,1,2,2,"division(product_of_two(kpi2, kpi1), (kpi2 + kpi3))",false,false,0,false
+1,1,5,3,kpi6 - kpi1,false,false,0,false
+1,1,16,3,"division(kpi19, (1 - division(kpi18, 100)))",false,false,0,false
+1,1,38,3,"product_of_two(kpi19, kpi41)",false,false,0,false
+1,1,39,3,"product_of_two((division(kpi2, kpi10)), kpi42)",false,false,0,false
+1,1,33,3,"product_of_two(kpi2, division(kpi30, 100))",false,false,0,false
+1,1,21,3,"division(kpi3, kpi13)",false,false,0,false
+1,1,40,3,"product_of_two((division(kpi3, kpi13)), kpi43)",false,false,0,false
+1,1,34,3,"product_of_two(kpi3, division(kpi31, 100))",false,false,0,false
+1,1,17,3,"(division(kpi19, (1 - division(kpi18, 100)))) - kpi19",false,false,0,false
+1,1,35,3,"division((product_of_two(kpi19, kpi41)), (1 - division(kpi37, 100)))",false,false,0,false
+1,1,36,3,"(division((product_of_two(kpi19, kpi41)), (1 - division(kpi37, 100)))) - (product_of_two(kpi19, kpi41))",false,false,0,false
+1,1,69,3,"division(kpi1, (1 - division(kpi8, 100)))",false,false,0,false
+1,1,70,3,"division(kpi2, (1 - division(kpi11, 100)))",false,false,0,false
+1,1,71,3,"division(kpi3, (1 - division(kpi14, 100)))",false,false,0,false
+1,1,59,4,kpi54 + kpi55 - kpi19 + kpi58,false,false,0,false
+1,1,49,4,kpi44 - kpi38 + kpi45 + kpi48,false,false,0,false
+1,1,65,4,"division((kpi44 - kpi38 + kpi45 + kpi48), (kpi54 + kpi55 - kpi19 + kpi58))",false,false,0,false
+1,1,66,4,"division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2)",false,false,0,false
+1,1,50,4,"division((kpi44 + (kpi44 - kpi38 + kpi45 + kpi48)), 2)",false,false,0,false
+1,1,67,4,"division(kpi19, division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2))",false,false,0,false
+1,1,51,4,"division(kpi38, division((kpi44 + (kpi44 - kpi38 + kpi45 + kpi48)), 2))",false,false,0,false
+1,1,68,4,"product_of_two(division(kpi19, (kpi55 + kpi54)), 100)",false,false,0,false
+1,1,52,4,"product_of_two(division(kpi38, (kpi45 + kpi44)), 100)",false,false,0,false
+1,1,53,4,"division(kpi54, kpi19)",false,false,0,false
+18,18,16,1,"division(kpi19, (1 - division(kpi18, 100)))",false,false,0,false
+18,18,18,2,"product_of_two(division((kpi16 - kpi19), kpi16), 100)",false,false,0,false
+18,18,17,3,kpi16 - kpi19,false,false,0,false
+37,37,35,1,"division(kpi38, (1 - division(kpi37, 100)))",false,false,0,false
+37,37,37,2,"product_of_two(division((kpi35 - kpi38), kpi35), 100)",false,false,0,false
+37,37,36,3,kpi35 - kpi38,false,false,0,false
+4,4,6,1,"division(kpi1, (1 - division(kpi4, 100)))",false,false,0,false
+4,4,4,2,"product_of_two(division((kpi6 - kpi1), kpi6), 100)",false,false,0,false
+4,4,5,3,kpi6 - kpi1,false,false,0,false
+7,7,19,1,"division(kpi1, kpi7)",false,false,0,false
+7,7,10,2,"division(product_of_two(division(kpi1, kpi19), kpi10), kpi7)",false,false,0,false
+7,7,13,2,"division(product_of_two(division(kpi1, kpi19), kpi13), kpi7)",false,false,0,false
+7,7,7,3,"division(kpi1, kpi19)",false,false,0,false
+7,7,9,4,"division(kpi7, (1 - division(kpi8, 100)))",false,false,0,false
+7,7,16,4,"division(kpi19, (1 - division(kpi18, 100)))",false,false,0,false
+7,7,12,4,"division(kpi10, (1 - division(kpi11, 100)))",false,false,0,false
+7,7,20,4,"division(kpi2, kpi10)",false,false,0,false
+7,7,15,4,"division(kpi13, (1 - division(kpi14, 100)))",false,false,0,false
+7,7,21,4,"division(kpi3, kpi13)",false,false,0,false
+7,7,41,4,"division(kpi38, kpi19)",false,false,0,false
+7,7,42,4,"division(kpi39, (division(kpi2, kpi10)))",false,false,0,false
+7,7,43,4,"division(kpi40, (division(kpi3, kpi13)))",false,false,0,false
+7,7,24,4,"product_of_two(division(((division(kpi13, (1 - division(kpi14, 100)))) - (division(kpi40, (division(kpi3, kpi13))))), (division(kpi13, (1 - division(kpi14, 100))))), 100)",false,false,0,false
+7,7,23,4,"product_of_two(division(((division(kpi10, (1 - division(kpi11, 100)))) - (division(kpi39, (division(kpi2, kpi10))))), (division(kpi10, (1 - division(kpi11, 100))))), 100)",false,false,0,false
+7,7,22,4,"product_of_two(division(((division(kpi7, (1 - division(kpi8, 100)))) - (division(kpi38, kpi19))), (division(kpi7, (1 - division(kpi8, 100))))), 100)",false,false,0,false
+30,4030,42,3,"division((kpi2 - kpi33), kpi20)",false,false,0,false
+7,7,17,4,"(division(kpi19, (1 - division(kpi18, 100)))) - kpi19",false,false,0,false
+7,7,59,5,kpi54 + kpi55 - kpi19 + kpi58,false,false,0,false
+7,7,65,5,"division(kpi49, (kpi54 + kpi55 - kpi19 + kpi58))",false,false,0,false
+7,7,66,5,"division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2)",false,false,0,false
+7,7,67,5,"division(kpi19, division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2))",false,false,0,false
+7,7,68,5,"product_of_two(division(kpi19, (kpi55 + kpi54)), 100)",false,false,0,false
+7,7,53,5,"division(kpi54, kpi19)",false,false,0,false
+8,8,69,1,"division(kpi1, (1 - division(kpi8, 100)))",false,false,0,false
+8,8,11,2,"product_of_two(division(product_of_two(division(kpi11, 100), division((kpi69 - kpi1), kpi69)), division(kpi8, 100)), 100)",false,false,0,false
+8,8,14,2,"product_of_two(division(product_of_two(division(kpi14, 100), division((kpi69 - kpi1), kpi69)), division(kpi8, 100)), 100)",false,false,0,false
+8,8,8,3,"product_of_two(division((kpi69 - kpi1), kpi69), 100)",false,false,0,false
+8,8,70,4,"division(kpi2, (1 - division(kpi11, 100)))",false,false,0,false
+8,8,71,4,"division(kpi3, (1 - division(kpi14, 100)))",false,false,0,false
+8,8,9,4,"division(kpi7, (1 - division(kpi8, 100)))",false,false,0,false
+8,8,22,4,"product_of_two(division(((division(kpi7, (1 - division(kpi8, 100)))) - kpi41), (division(kpi7, (1 - division(kpi8, 100))))), 100)",false,false,0,false
+8,8,12,4,"division(kpi10, (1 - division(kpi11, 100)))",false,false,0,false
+8,8,15,4,"division(kpi13, (1 - division(kpi14, 100)))",false,false,0,false
+8,8,23,4,"product_of_two(division(((division(kpi10, (1 - division(kpi11, 100)))) - kpi42), (division(kpi10, (1 - division(kpi11, 100))))), 100)",false,false,0,false
+10,10,17,4,"(division(kpi19, (1 - division(kpi18, 100)))) - kpi19",false,false,0,false
+8,8,24,4,"product_of_two(division(((division(kpi13, (1 - division(kpi14, 100)))) - kpi43), (division(kpi13, (1 - division(kpi14, 100))))), 100)",false,false,0,false
+29,29,32,1,"product_of_two(division(kpi29, 100), kpi1)",false,false,0,false
+29,29,30,2,"product_of_two(division(product_of_two(division(kpi32, kpi1), division(kpi30, 100)), division(kpi29, 100)), 100)",false,false,0,false
+29,29,31,2,"product_of_two(division(product_of_two(division(kpi32, kpi1), division(kpi31, 100)), division(kpi29, 100)), 100)",false,false,0,false
+29,29,29,3,"product_of_two(division(kpi32, kpi1), 100)",false,false,0,false
+29,29,38,4,kpi1 - kpi32,false,false,0,false
+29,29,35,4,"division((kpi1 - kpi32), (1 - division(kpi37, 100)))",false,false,0,false
+29,29,41,4,"division((kpi1 - kpi32), kpi19)",false,false,0,false
+29,29,33,4,"product_of_two(kpi2, division(kpi30, 100))",false,false,0,false
+29,29,34,4,"product_of_two(kpi3, division(kpi31, 100))",false,false,0,false
+29,29,22,4,"product_of_two(division((kpi9 - (division((kpi1 - kpi32), kpi19))), kpi9), 100)",false,false,0,false
+29,29,36,4,"(division((kpi1 - kpi32), (1 - division(kpi37, 100)))) - (kpi1 - kpi32)",false,false,0,false
+29,29,39,4,"kpi2 - (product_of_two(kpi2, division(kpi30, 100)))",false,false,0,false
+29,29,40,4,"kpi3 - (product_of_two(kpi3, division(kpi31, 100)))",false,false,0,false
+29,29,42,4,"division((kpi2 - (product_of_two(kpi2, division(kpi30, 100)))), kpi20)",false,false,0,false
+29,29,43,4,"division((kpi3 - (product_of_two(kpi3, division(kpi31, 100)))), kpi21)",false,false,0,false
+29,29,23,4,"product_of_two(division((kpi12 - (division((kpi2 - (product_of_two(kpi2, division(kpi30, 100)))), kpi20))), kpi12), 100)",false,false,0,false
+29,29,24,4,"product_of_two(division((kpi15 - (division((kpi3 - (product_of_two(kpi3, division(kpi31, 100)))), kpi21))), kpi15), 100)",false,false,0,false
+29,29,49,5,kpi44 - kpi38 + kpi45 + kpi48,false,false,0,false
+29,29,65,5,"division((kpi44 - kpi38 + kpi45 + kpi48), kpi59)",false,false,0,false
+29,29,50,5,"division((kpi44 + (kpi44 - kpi38 + kpi45 + kpi48)), 2)",false,false,0,false
+29,29,51,5,"division(kpi38, division((kpi44 + (kpi44 - kpi38 + kpi45 + kpi48)), 2))",false,false,0,false
+29,29,52,5,"product_of_two(division(kpi38, (kpi45 + kpi44)), 100)",false,false,0,false
+2,2,20,1,"division(kpi2, kpi10)",false,false,0,false
+2,2,33,1,"product_of_two(kpi2, division(kpi30, 100))",false,false,0,false
+2,2,39,1,"product_of_two((division(kpi2, kpi10)), kpi42)",false,false,0,false
+2,2,19,2,kpi20 + kpi21,false,false,0,false
+2,2,1,2,kpi2 + kpi3,false,false,0,false
+2,2,38,2,kpi39 + kpi40,false,false,0,false
+2,2,41,2,"division((kpi39 + kpi40), (kpi20 + kpi21))",false,false,0,false
+2,2,7,2,"division((kpi2 + kpi3), (kpi20 + kpi21))",false,false,0,false
+2,2,9,2,"division((division((kpi2 + kpi3), (kpi20 + kpi21))), (1 - division(kpi8, 100)))",false,false,0,false
+2,2,32,2,kpi33 + kpi34,false,false,0,false
+2,2,29,2,"product_of_two(division((kpi33 + kpi34), (kpi2 + kpi3)), 100)",false,false,0,false
+2,2,22,2,"product_of_two(division(((division((division((kpi2 + kpi3), (kpi20 + kpi21))), (1 - division(kpi8, 100)))) - (division((kpi39 + kpi40), (kpi20 + kpi21)))), (division((division((kpi2 + kpi3), (kpi20 + kpi21))), (1 - division(kpi8, 100))))), 100)",false,false,0,false
+2,2,6,3,"division(kpi1, (1 - division(kpi4, 100)))",false,false,0,false
+2,2,16,3,"division(kpi19, (1 - division(kpi18, 100)))",false,false,0,false
+2,2,35,3,"division(kpi38, (1 - division(kpi37, 100)))",false,false,0,false
+2,2,5,3,"(division(kpi1, (1 - division(kpi4, 100)))) - kpi1",false,false,0,false
+2,2,17,3,"(division(kpi19, (1 - division(kpi18, 100)))) - kpi19",false,false,0,false
+2,2,36,3,"(division(kpi38, (1 - division(kpi37, 100)))) - kpi38",false,false,0,false
+2,2,69,3,"division(kpi1, (1 - division(kpi8, 100)))",false,false,0,false
+2,2,70,3,"division(kpi2, (1 - division(kpi11, 100)))",false,false,0,false
+2,2,59,4,kpi54 + kpi55 - kpi19 + kpi58,false,false,0,false
+2,2,49,4,kpi44 - kpi38 + kpi45 + kpi48,false,false,0,false
+2,2,65,4,"division((kpi44 - kpi38 + kpi45 + kpi48), (kpi54 + kpi55 - kpi19 + kpi58))",false,false,0,false
+2,2,66,4,"division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2)",false,false,0,false
+2,2,50,4,"division((kpi44 + (kpi44 - kpi38 + kpi45 + kpi48)), 2)",false,false,0,false
+2,2,67,4,"division(kpi19, division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2))",false,false,0,false
+2,2,51,4,"division(kpi38, division((kpi44 + (kpi44 - kpi38 + kpi45 + kpi48)), 2))",false,false,0,false
+2,2,68,4,"product_of_two(division(kpi19, (kpi55 + kpi54)), 100)",false,false,0,false
+2,2,52,4,"product_of_two(division(kpi38, (kpi45 + kpi44)), 100)",false,false,0,false
+2,2,53,4,"division(kpi54, kpi19)",false,false,0,false
+10,10,20,1,"division(kpi2, kpi10)",false,false,0,false
+10,10,10,2,"division(kpi2, kpi20)",false,false,0,false
+10,10,19,3,kpi20 + kpi21,false,false,0,false
+10,10,12,4,"division(kpi10, (1 - division(kpi11, 100)))",false,false,0,false
+10,10,7,4,"division(kpi1, kpi19)",false,false,0,false
+10,10,42,4,"division(kpi39, kpi20)",false,false,0,false
+10,10,23,4,"product_of_two(division(((division(kpi10, (1 - division(kpi11, 100)))) - (division(kpi39, kpi20))), (division(kpi10, (1 - division(kpi11, 100))))), 100)",false,false,0,false
+10,10,16,4,"division(kpi19, (1 - division(kpi18, 100)))",false,false,0,false
+10,10,9,4,"division((division(kpi1, kpi19)), (1 - division(kpi8, 100)))",false,false,0,false
+10,10,41,4,"division(kpi38, kpi19)",false,false,0,false
+10,10,22,4,"product_of_two(division(((division((division(kpi1, kpi19)), (1 - division(kpi8, 100)))) - (division(kpi38, kpi19))), (division((division(kpi1, kpi19)), (1 - division(kpi8, 100))))), 100)",false,false,0,false
+10,10,59,5,kpi54 + kpi55 - kpi19 + kpi58,false,false,0,false
+10,10,65,5,"division(kpi49, (kpi54 + kpi55 - kpi19 + kpi58))",false,false,0,false
+10,10,66,5,"division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2)",false,false,0,false
+10,10,67,5,"division(kpi19, division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2))",false,false,0,false
+10,10,68,5,"product_of_two(division(kpi19, (kpi55 + kpi54)), 100)",false,false,0,false
+10,10,53,5,"division(kpi54, kpi19)",false,false,0,false
+11,11,70,1,"division(kpi2, (1 - division(kpi11, 100)))",false,false,0,false
+11,11,69,2,"product_of_two(kpi15, kpi21) + kpi70",false,false,0,false
+11,11,11,3,"product_of_two(division((kpi70 - kpi2), kpi70), 100)",false,false,0,false
+11,11,8,4,"product_of_two(division((kpi69 - kpi1), kpi69), 100)",false,false,0,false
+11,11,12,4,"division(kpi10, (1 - division(kpi11, 100)))",false,false,0,false
+11,11,23,4,"product_of_two(division(((division(kpi10, (1 - division(kpi11, 100)))) - kpi42), (division(kpi10, (1 - division(kpi11, 100))))), 100)",false,false,0,false
+11,11,9,4,"division(kpi7, (1 - division((product_of_two(division((kpi69 - kpi1), kpi69), 100)), 100)))",false,false,0,false
+11,11,22,4,"product_of_two(division(((division(kpi7, (1 - division((product_of_two(division((kpi69 - kpi1), kpi69), 100)), 100)))) - kpi41), (division(kpi7, (1 - division((product_of_two(division((kpi69 - kpi1), kpi69), 100)), 100))))), 100)",false,false,0,false
+30,30,33,1,"product_of_two(kpi2, division(kpi30, 100))",false,false,0,false
+30,30,30,2,"product_of_two(division(kpi33, kpi2), 100)",false,false,0,false
+30,30,32,3,kpi33 + kpi34,false,false,0,false
+30,30,29,3,"product_of_two(division((kpi33 + kpi34), kpi1), 100)",false,false,0,false
+30,30,39,3,kpi2 - kpi33,false,false,0,false
+30,30,38,3,kpi1 - (kpi33 + kpi34),false,false,0,false
+30,30,42,3,"division((kpi2 - kpi33), kpi20)",false,false,0,false
+30,30,41,3,"division((kpi1 - (kpi33 + kpi34)), kpi19)",false,false,0,false
+30,30,23,3,"product_of_two(division((kpi12 - (division((kpi2 - kpi33), kpi20))), kpi12), 100)",false,false,0,false
+30,30,35,3,"division((kpi1 - (kpi33 + kpi34)), (1 - division(kpi37, 100)))",false,false,0,false
+30,30,22,3,"product_of_two(division((kpi9 - (division((kpi1 - (kpi33 + kpi34)), kpi19))), kpi9), 100)",false,false,0,false
+30,30,36,3,"(division((kpi1 - (kpi33 + kpi34)), (1 - division(kpi37, 100)))) - (kpi1 - (kpi33 + kpi34))",false,false,,false
+30,30,49,4,kpi44 - kpi38 + kpi45 + kpi48,false,false,0,false
+30,30,65,4,"division((kpi44 - kpi38 + kpi45 + kpi48), kpi59)",false,false,0,false
+30,30,50,4,"division((kpi44 + (kpi44 - kpi38 + kpi45 + kpi48)), 2)",false,false,0,false
+30,30,51,4,"division(kpi38, division((kpi44 + (kpi44 - kpi38 + kpi45 + kpi48)), 2))",false,false,0,false
+30,30,52,4,"product_of_two(division(kpi38, (kpi45 + kpi44)), 100)",false,false,0,false
+3,3,21,1,"division(kpi3, kpi13)",false,false,0,false
+3,3,34,1,"product_of_two(kpi3, division(kpi31, 100))",false,false,0,false
+3,3,40,1,"product_of_two((division(kpi3, kpi13)), kpi43)",false,false,0,false
+3,3,19,2,kpi20 + kpi21,false,false,0,false
+3,3,1,2,kpi2 + kpi3,false,false,0,false
+3,3,38,2,kpi39 + kpi40,false,false,0,false
+3,3,41,2,"division((kpi39 + kpi40), (kpi20 + kpi21))",false,false,0,false
+3,3,7,2,"division((kpi2 + kpi3), (kpi20 + kpi21))",false,false,0,false
+3,3,9,2,"division((division((kpi2 + kpi3), (kpi20 + kpi21))), (1 - division(kpi8, 100)))",false,false,0,false
+3,3,32,2,kpi33 + kpi34,false,false,0,false
+3,3,29,2,"product_of_two(division((kpi33 + kpi34), (kpi2 + kpi3)), 100)",false,false,0,false
+3,3,22,2,"product_of_two(division(((division((division((kpi2 + kpi3), (kpi20 + kpi21))), (1 - division(kpi8, 100)))) - (division((kpi39 + kpi40), (kpi20 + kpi21)))), (division((division((kpi2 + kpi3), (kpi20 + kpi21))), (1 - division(kpi8, 100))))), 100)",false,false,0,false
+3,3,6,3,"division(kpi1, (1 - division(kpi4, 100)))",false,false,0,false
+3,3,16,3,"division(kpi19, (1 - division(kpi18, 100)))",false,false,0,false
+3,3,35,3,"division(kpi38, (1 - division(kpi37, 100)))",false,false,0,false
+3,3,5,3,"(division(kpi1, (1 - division(kpi4, 100)))) - kpi1",false,false,0,false
+3,3,17,3,"(division(kpi19, (1 - division(kpi18, 100)))) - kpi19",false,false,0,false
+3,3,36,3,"(division(kpi38, (1 - division(kpi37, 100)))) - kpi38",false,false,0,false
+3,3,69,3,"division(kpi1, (1 - division(kpi8, 100)))",false,false,0,false
+3,3,71,3,"division(kpi3, (1 - division(kpi14, 100)))",false,false,0,false
+3,3,59,4,kpi54 + kpi55 - kpi19 + kpi58,false,false,0,false
+3,3,49,4,kpi44 - kpi38 + kpi45 + kpi48,false,false,0,false
+30,4030,41,3,"division((kpi1 - (kpi33 + kpi34)), kpi19)",false,false,0,false
+3,3,65,4,"division((kpi44 - kpi38 + kpi45 + kpi48), (kpi54 + kpi55 - kpi19 + kpi58))",false,false,0,false
+3,3,66,4,"division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2)",false,false,0,false
+3,3,50,4,"division((kpi44 + (kpi44 - kpi38 + kpi45 + kpi48)), 2)",false,false,0,false
+3,3,67,4,"division(kpi19, division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2))",false,false,0,false
+3,3,51,4,"division(kpi38, division((kpi44 + (kpi44 - kpi38 + kpi45 + kpi48)), 2))",false,false,0,false
+3,3,68,4,"product_of_two(division(kpi19, (kpi55 + kpi54)), 100)",false,false,0,false
+3,3,52,4,"product_of_two(division(kpi38, (kpi45 + kpi44)), 100)",false,false,0,false
+3,3,53,4,"division(kpi54, kpi19)",false,false,0,false
+13,13,21,1,"division(kpi3, kpi13)",false,false,0,false
+13,13,13,2,"division(kpi3, kpi21)",false,false,0,false
+13,13,19,3,kpi20 + kpi21,false,false,0,false
+13,13,15,4,"division(kpi13, (1 - division(kpi14, 100)))",false,false,0,false
+13,13,7,4,"division((kpi2 + kpi3), (kpi20 + kpi21))",false,false,0,false
+13,13,43,4,"division(kpi40, kpi21)",false,false,0,false
+13,13,24,4,"product_of_two(division(((division(kpi13, (1 - division(kpi14, 100)))) - (division(kpi40, kpi21))), (division(kpi13, (1 - division(kpi14, 100))))), 100)",false,false,0,false
+13,13,16,4,"division(kpi19, (1 - division(kpi18, 100)))",false,false,0,false
+13,13,9,4,"division((division((kpi2 + kpi3), (kpi20 + kpi21))), (1 - division(kpi8, 100)))",false,false,0,false
+13,13,41,4,"division(kpi38, kpi19)",false,false,0,false
+13,13,22,4,"product_of_two(division(((division((division((kpi2 + kpi3), (kpi20 + kpi21))), (1 - division(kpi8, 100)))) - (division(kpi38, kpi19))), (division((division((kpi2 + kpi3), (kpi20 + kpi21))), (1 - division(kpi8, 100))))), 100)",false,false,0,false
+13,13,17,4,"(division(kpi19, (1 - division(kpi18, 100)))) - kpi19",false,false,0,false
+13,13,59,5,kpi54 + kpi55 - kpi19 + kpi58,false,false,0,false
+13,13,65,5,"division(kpi49, (kpi54 + kpi55 - kpi19 + kpi58))",false,false,0,false
+13,13,66,5,"division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2)",false,false,0,false
+13,13,67,5,"division(kpi19, division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2))",false,false,0,false
+13,13,68,5,"product_of_two(division(kpi19, (kpi55 + kpi54)), 100)",false,false,0,false
+13,13,53,5,"division(kpi54, kpi19)",false,false,0,false
+14,14,71,1,"division(kpi3, (1 - division(kpi14, 100)))",false,false,0,false
+14,14,69,2,"product_of_two(kpi12, kpi20) + kpi71",false,false,0,false
+14,14,14,3,"product_of_two(division((kpi71 - kpi3), kpi71), 100)",false,false,0,false
+14,14,8,4,"product_of_two(division((kpi69 - kpi1), kpi69), 100)",false,false,0,false
+14,14,15,4,"division(kpi13, (1 - division(kpi14, 100)))",false,false,0,false
+14,14,9,4,"division(kpi7, (1 - division((product_of_two(division((kpi69 - kpi1), kpi69), 100)), 100)))",false,false,0,false
+14,14,24,4,"product_of_two(division(((division(kpi13, (1 - division(kpi14, 100)))) - kpi43), (division(kpi13, (1 - division(kpi14, 100))))), 100)",false,false,0,false
+14,14,22,4,"product_of_two(division(((division(kpi7, (1 - division((product_of_two(division((kpi69 - kpi1), kpi69), 100)), 100)))) - kpi41), (division(kpi7, (1 - division((product_of_two(division((kpi69 - kpi1), kpi69), 100)), 100))))), 100)",false,false,0,false
+31,31,34,1,"product_of_two(kpi3, division(kpi31, 100))",false,false,0,false
+31,31,31,2,"product_of_two(division(kpi34, kpi3), 100)",false,false,0,false
+31,31,40,3,kpi3 - kpi34,false,false,0,false
+31,31,32,3,kpi33 + kpi34,false,false,0,false
+31,31,29,3,"product_of_two(division((kpi33 + kpi34), kpi1), 100)",false,false,0,false
+31,31,43,3,"division((kpi3 - kpi34), kpi21)",false,false,0,false
+31,31,38,3,kpi1 - (kpi33 + kpi34),false,false,0,false
+31,31,41,3,"division((kpi1 - (kpi33 + kpi34)), kpi19)",false,false,0,false
+31,31,24,3,"product_of_two(division((kpi15 - (division((kpi3 - kpi34), kpi21))), kpi15), 100)",false,false,0,false
+31,31,35,3,"division((kpi1 - (kpi33 + kpi34)), (1 - division(kpi37, 100)))",false,false,0,false
+31,31,22,3,"product_of_two(division((kpi9 - (division((kpi1 - (kpi33 + kpi34)), kpi19))), kpi9), 100)",false,false,0,false
+31,31,36,3,"(division((kpi1 - (kpi33 + kpi34)), (1 - division(kpi37, 100)))) - (kpi1 - (kpi33 + kpi34))",false,false,0,false
+31,31,49,4,kpi44 - kpi38 + kpi45 + kpi48,false,false,0,false
+31,31,65,4,"division((kpi44 - kpi38 + kpi45 + kpi48), kpi59)",false,false,0,false
+31,31,50,4,"division((kpi44 + (kpi44 - kpi38 + kpi45 + kpi48)), 2)",false,false,0,false
+31,31,51,4,"division(kpi38, division((kpi44 + (kpi44 - kpi38 + kpi45 + kpi48)), 2))",false,false,0,false
+31,31,52,4,"product_of_two(division(kpi38, (kpi45 + kpi44)), 100)",false,false,0,false
+47,47,57,1,"division(kpi47, kpi63)",false,false,0,false
+47,47,45,2,kpi47 + kpi46,false,false,0,false
+47,47,55,2,kpi57 + kpi56,false,false,0,false
+47,47,61,2,"division((product_of_two(kpi63, kpi57) + product_of_two(kpi62, kpi56)), (kpi57 + kpi56))",false,false,0,false
+47,47,49,2,kpi44 - kpi38 + (kpi47 + kpi46) + kpi48,false,false,0,false
+47,47,59,2,kpi54 + (kpi57 + kpi56) - kpi19 + kpi58,false,false,0,false
+47,47,65,2,"division((kpi44 - kpi38 + (kpi47 + kpi46) + kpi48), (kpi54 + (kpi57 + kpi56) - kpi19 + kpi58))",false,false,0,false
+47,47,66,2,"division((kpi54 + (kpi54 + (kpi57 + kpi56) - kpi19 + kpi58)), 2)",false,false,0,false
+47,47,50,2,"division((kpi44 + (kpi44 - kpi38 + (kpi47 + kpi46) + kpi48)), 2)",false,false,0,false
+47,47,67,2,"division(kpi19, division((kpi54 + (kpi54 + (kpi57 + kpi56) - kpi19 + kpi58)), 2))",false,false,0,false
+47,47,51,2,"division(kpi38, division((kpi44 + (kpi44 - kpi38 + (kpi47 + kpi46) + kpi48)), 2))",false,false,0,false
+47,47,68,2,"product_of_two(division(kpi19, ((kpi57 + kpi56) + kpi54)), 100)",false,false,0,false
+47,47,52,2,"product_of_two(division(kpi38, ((kpi47 + kpi46) + kpi44)), 100)",false,false,0,false
+47,47,53,2,"division(kpi54, kpi19)",false,false,0,false
+63,63,57,1,"division(kpi47, kpi63)",false,false,0,false
+63,63,55,2,kpi57 + kpi56,false,false,0,false
+63,63,63,3,"division(kpi47, kpi57)",false,false,0,false
+63,63,61,4,"division((product_of_two(kpi63, kpi57) + product_of_two(kpi62, kpi56)), kpi55)",false,false,0,false
+63,63,65,4,"division(kpi49, (kpi54 + kpi55 - kpi19 + kpi58))",false,false,0,false
+63,63,66,4,"division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2)",false,false,0,false
+63,63,67,4,"division(kpi19, division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2))",false,false,0,false
+63,63,68,4,"product_of_two(division(kpi19, (kpi55 + kpi54)), 100)",false,false,0,false
+63,63,53,4,"division(kpi54, kpi19)",false,false,0,false
+48,48,58,1,"division(kpi48, kpi64)",false,false,0,false
+48,48,49,2,kpi44 - kpi38 + kpi45 + kpi48,false,false,0,false
+48,48,59,2,kpi54 + kpi55 - kpi19 + kpi58,false,false,0,false
+48,48,65,2,"division((kpi44 - kpi38 + kpi45 + kpi48), (kpi54 + kpi55 - kpi19 + kpi58))",false,false,0,false
+48,48,66,2,"division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2)",false,false,0,false
+48,48,50,2,"division((kpi44 + (kpi44 - kpi38 + kpi45 + kpi48)), 2)",false,false,0,false
+48,48,67,2,"division(kpi19, division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2))",false,false,0,false
+48,48,51,2,"division(kpi38, division((kpi44 + (kpi44 - kpi38 + kpi45 + kpi48)), 2))",false,false,0,false
+48,48,68,2,"product_of_two(division(kpi19, (kpi55 + kpi54)), 100)",false,false,0,false
+48,48,52,2,"product_of_two(division(kpi38, (kpi45 + kpi44)), 100)",false,false,0,false
+48,48,53,2,"division(kpi54, kpi19)",false,false,0,false
+64,64,58,1,"division(kpi48, kpi64)",false,false,0,false
+64,64,64,2,"division(kpi48, kpi58)",false,false,0,false
+64,64,59,3,kpi54 + kpi55 - kpi19 + kpi58,false,false,0,false
+64,64,65,3,"division(kpi49, (kpi54 + kpi55 - kpi19 + kpi58))",false,false,0,false
+64,64,66,3,"division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2)",false,false,0,false
+64,64,67,3,"division(kpi19, division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2))",false,false,0,false
+64,64,68,3,"product_of_two(division(kpi19, (kpi55 + kpi54)), 100)",false,false,0,false
+64,64,53,3,"division(kpi54, kpi19)",false,false,0,false
+44,44,49,1,kpi44 - kpi38 + kpi45 + kpi48,false,false,0,false
+44,44,54,1,"division(kpi44, kpi60)",false,false,0,false
+44,44,59,1,"(division(kpi44, kpi60)) + kpi55 - kpi19 + kpi58",false,false,0,false
+44,44,65,1,"division((kpi44 - kpi38 + kpi45 + kpi48), ((division(kpi44, kpi60)) + kpi55 - kpi19 + kpi58))",false,false,0,false
+44,44,66,1,"division(((division(kpi44, kpi60)) + ((division(kpi44, kpi60)) + kpi55 - kpi19 + kpi58)), 2)",false,false,0,false
+44,44,50,1,"division((kpi44 + (kpi44 - kpi38 + kpi45 + kpi48)), 2)",false,false,0,false
+44,44,52,1,"product_of_two(division(kpi38, (kpi45 + kpi44)), 100)",false,false,0,false
+44,44,68,1,"product_of_two(division(kpi19, (kpi55 + (division(kpi44, kpi60)))), 100)",false,false,0,false
+44,44,67,1,"division(kpi19, division(((division(kpi44, kpi60)) + ((division(kpi44, kpi60)) + kpi55 - kpi19 + kpi58)), 2))",false,false,0,false
+44,44,51,1,"division(kpi38, division((kpi44 + (kpi44 - kpi38 + kpi45 + kpi48)), 2))",false,false,0,false
+54,54,59,1,kpi54 + kpi55 - kpi19 + kpi58,false,false,0,false
+54,54,44,1,"product_of_two(kpi60, kpi54)",false,false,0,false
+54,54,49,1,"(product_of_two(kpi60, kpi54)) - kpi38 + kpi45 + kpi48",false,false,0,false
+54,54,65,1,"division(((product_of_two(kpi60, kpi54)) - kpi38 + kpi45 + kpi48), (kpi54 + kpi55 - kpi19 + kpi58))",false,false,0,false
+54,54,50,1,"division(((product_of_two(kpi60, kpi54)) + ((product_of_two(kpi60, kpi54)) - kpi38 + kpi45 + kpi48)), 2)",false,false,0,false
+54,54,66,1,"division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2)",false,false,0,false
+54,54,68,1,"product_of_two(division(kpi19, (kpi55 + kpi54)), 100)",false,false,0,false
+54,54,52,1,"product_of_two(division(kpi38, (kpi45 + (product_of_two(kpi60, kpi54)))), 100)",false,false,0,false
+54,54,51,1,"division(kpi38, division(((product_of_two(kpi60, kpi54)) + ((product_of_two(kpi60, kpi54)) - kpi38 + kpi45 + kpi48)), 2))",false,false,0,false
+54,54,67,1,"division(kpi19, division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2))",false,false,0,false
+60,60,44,1,"product_of_two(kpi60, kpi54)",false,false,0,false
+60,60,60,2,"division(kpi44, kpi54)",false,false,0,false
+60,60,49,3,kpi44 - kpi38 + kpi45 + kpi48,false,false,0,false
+60,60,65,3,"division((kpi44 - kpi38 + kpi45 + kpi48), kpi59)",false,false,0,false
+60,60,50,3,"division((kpi44 + (kpi44 - kpi38 + kpi45 + kpi48)), 2)",false,false,0,false
+60,60,52,3,"product_of_two(division(kpi38, (kpi45 + kpi44)), 100)",false,false,0,false
+60,60,51,3,"division(kpi38, division((kpi44 + (kpi44 - kpi38 + kpi45 + kpi48)), 2))",false,false,0,false
+1,4001,6,1,"division(kpi1, (1 - division(kpi4, 100)))",false,false,0,false
+1,4001,19,1,"division(kpi1, kpi7)",false,false,0,false
+1,4001,32,1,"product_of_two(division(kpi29, 100), kpi1)",false,false,0,false
+1,4001,2,2,"division(product_of_two(kpi2, kpi1), (kpi2 + kpi3))",false,false,0,false
+1,4001,5,3,kpi6 - kpi1,false,false,0,false
+1,4001,16,3,"division(kpi19, (1 - division(kpi18, 100)))",false,false,0,false
+1,4001,38,3,"product_of_two(kpi19, kpi41)",false,false,0,false
+1,4001,20,3,"division(kpi2, kpi10)",false,false,0,false
+1,4001,39,3,"product_of_two((division(kpi2, kpi10)), kpi42)",false,false,0,false
+1,4001,33,3,"product_of_two(kpi2, division(kpi30, 100))",false,false,0,false
+1,4001,21,3,"division(kpi3, kpi13)",false,false,0,false
+1,4001,40,3,"product_of_two((division(kpi3, kpi13)), kpi43)",false,false,0,false
+1,4001,34,3,"product_of_two(kpi3, division(kpi31, 100))",false,false,0,false
+1,4001,17,3,"(division(kpi19, (1 - division(kpi18, 100)))) - kpi19",false,false,0,false
+1,4001,35,3,"division((product_of_two(kpi19, kpi41)), (1 - division(kpi37, 100)))",false,false,0,false
+1,4001,36,3,"(division((product_of_two(kpi19, kpi41)), (1 - division(kpi37, 100)))) - (product_of_two(kpi19, kpi41))",false,false,0,false
+1,4001,69,3,"division(kpi1, (1 - division(kpi8, 100)))",false,false,0,false
+1,4001,70,3,"division(kpi2, (1 - division(kpi11, 100)))",false,false,0,false
+1,4001,71,3,"division(kpi3, (1 - division(kpi14, 100)))",false,false,0,false
+1,4001,59,4,kpi54 + kpi55 - kpi19 + kpi58,false,false,0,false
+1,4001,49,4,kpi44 - kpi38 + kpi45 + kpi48,false,false,0,false
+1,4001,65,4,"division((kpi44 - kpi38 + kpi45 + kpi48), (kpi54 + kpi55 - kpi19 + kpi58))",false,false,0,false
+1,4001,66,4,"division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2)",false,false,0,false
+1,4001,50,4,"division((kpi44 + (kpi44 - kpi38 + kpi45 + kpi48)), 2)",false,false,0,false
+1,4001,67,4,"division(kpi19, division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2))",false,false,0,false
+1,4001,51,4,"division(kpi38, division((kpi44 + (kpi44 - kpi38 + kpi45 + kpi48)), 2))",false,false,0,false
+1,4001,68,4,"product_of_two(division(kpi19, (kpi55 + kpi54)), 100)",false,false,0,false
+1,4001,52,4,"product_of_two(division(kpi38, (kpi45 + kpi44)), 100)",false,false,0,false
+1,4001,53,4,"division(kpi54, kpi19)",false,false,0,false
+18,4018,16,1,"division(kpi19, (1 - division(kpi18, 100)))",false,false,0,false
+18,4018,18,2,"product_of_two(division((kpi16 - kpi19), kpi16), 100)",false,false,0,false
+18,4018,17,3,kpi16 - kpi19,false,false,0,false
+37,4037,35,1,"division(kpi38, (1 - division(kpi37, 100)))",false,false,0,false
+37,4037,37,2,"product_of_two(division((kpi35 - kpi38), kpi35), 100)",false,false,0,false
+37,4037,36,3,kpi35 - kpi38,false,false,0,false
+4,4004,6,1,"division(kpi1, (1 - division(kpi4, 100)))",false,false,0,false
+4,4004,4,2,"product_of_two(division((kpi6 - kpi1), kpi6), 100)",false,false,0,false
+4,4004,5,3,kpi6 - kpi1,false,false,0,false
+7,4007,19,1,"division(kpi1, kpi7)",false,false,0,false
+7,4007,10,2,"division(product_of_two(division(kpi1, kpi19), kpi10), kpi7)",false,false,0,false
+7,4007,13,2,"division(product_of_two(division(kpi1, kpi19), kpi13), kpi7)",false,false,0,false
+7,4007,7,3,"division(kpi1, kpi19)",false,false,0,false
+7,4007,9,4,"division(kpi7, (1 - division(kpi8, 100)))",false,false,0,false
+7,4007,16,4,"division(kpi19, (1 - division(kpi18, 100)))",false,false,0,false
+7,4007,12,4,"division(kpi10, (1 - division(kpi11, 100)))",false,false,0,false
+7,4007,20,4,"division(kpi2, kpi10)",false,false,0,false
+7,4007,15,4,"division(kpi13, (1 - division(kpi14, 100)))",false,false,0,false
+7,4007,21,4,"division(kpi3, kpi13)",false,false,0,false
+7,4007,41,4,"division(kpi38, kpi19)",false,false,0,false
+7,4007,42,4,"division(kpi39, (division(kpi2, kpi10)))",false,false,0,false
+7,4007,43,4,"division(kpi40, (division(kpi3, kpi13)))",false,false,0,false
+7,4007,24,4,"product_of_two(division(((division(kpi13, (1 - division(kpi14, 100)))) - (division(kpi40, (division(kpi3, kpi13))))), (division(kpi13, (1 - division(kpi14, 100))))), 100)",false,false,0,false
+7,4007,23,4,"product_of_two(division(((division(kpi10, (1 - division(kpi11, 100)))) - (division(kpi39, (division(kpi2, kpi10))))), (division(kpi10, (1 - division(kpi11, 100))))), 100)",false,false,0,false
+7,4007,22,4,"product_of_two(division(((division(kpi7, (1 - division(kpi8, 100)))) - (division(kpi38, kpi19))), (division(kpi7, (1 - division(kpi8, 100))))), 100)",false,false,0,false
+7,4007,17,4,"(division(kpi19, (1 - division(kpi18, 100)))) - kpi19",false,false,0,false
+7,4007,59,5,kpi54 + kpi55 - kpi19 + kpi58,false,false,0,false
+7,4007,65,5,"division(kpi49, (kpi54 + kpi55 - kpi19 + kpi58))",false,false,0,false
+7,4007,66,5,"division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2)",false,false,0,false
+7,4007,67,5,"division(kpi19, division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2))",false,false,0,false
+7,4007,68,5,"product_of_two(division(kpi19, (kpi55 + kpi54)), 100)",false,false,0,false
+7,4007,53,5,"division(kpi54, kpi19)",false,false,0,false
+8,4008,69,1,"division(kpi1, (1 - division(kpi8, 100)))",false,false,0,false
+8,4008,11,2,"product_of_two(division(product_of_two(division(kpi11, 100), division((kpi69 - kpi1), kpi69)), division(kpi8, 100)), 100)",false,false,0,false
+8,4008,14,2,"product_of_two(division(product_of_two(division(kpi14, 100), division((kpi69 - kpi1), kpi69)), division(kpi8, 100)), 100)",false,false,0,false
+8,4008,8,3,"product_of_two(division((kpi69 - kpi1), kpi69), 100)",false,false,0,false
+8,4008,70,4,"division(kpi2, (1 - division(kpi11, 100)))",false,false,0,false
+8,4008,71,4,"division(kpi3, (1 - division(kpi14, 100)))",false,false,0,false
+8,4008,9,4,"division(kpi7, (1 - division(kpi8, 100)))",false,false,0,false
+8,4008,22,4,"product_of_two(division(((division(kpi7, (1 - division(kpi8, 100)))) - kpi41), (division(kpi7, (1 - division(kpi8, 100))))), 100)",false,false,0,false
+8,4008,12,4,"division(kpi10, (1 - division(kpi11, 100)))",false,false,0,false
+8,4008,15,4,"division(kpi13, (1 - division(kpi14, 100)))",false,false,0,false
+8,4008,23,4,"product_of_two(division(((division(kpi10, (1 - division(kpi11, 100)))) - kpi42), (division(kpi10, (1 - division(kpi11, 100))))), 100)",false,false,0,false
+8,4008,24,4,"product_of_two(division(((division(kpi13, (1 - division(kpi14, 100)))) - kpi43), (division(kpi13, (1 - division(kpi14, 100))))), 100)",false,false,0,false
+29,4029,32,1,"product_of_two(division(kpi29, 100), kpi1)",false,false,0,false
+29,4029,30,2,"product_of_two(division(product_of_two(division(kpi32, kpi1), division(kpi30, 100)), division(kpi29, 100)), 100)",false,false,0,false
+29,4029,31,2,"product_of_two(division(product_of_two(division(kpi32, kpi1), division(kpi31, 100)), division(kpi29, 100)), 100)",false,false,0,false
+29,4029,29,3,"product_of_two(division(kpi32, kpi1), 100)",false,false,0,false
+29,4029,38,4,kpi1 - kpi32,false,false,0,false
+29,4029,35,4,"division((kpi1 - kpi32), (1 - division(kpi37, 100)))",false,false,0,false
+29,4029,41,4,"division((kpi1 - kpi32), kpi19)",false,false,0,false
+29,4029,33,4,"product_of_two(kpi2, division(kpi30, 100))",false,false,0,false
+29,4029,34,4,"product_of_two(kpi3, division(kpi31, 100))",false,false,0,false
+29,4029,22,4,"product_of_two(division((kpi9 - (division((kpi1 - kpi32), kpi19))), kpi9), 100)",false,false,0,false
+29,4029,36,4,"(division((kpi1 - kpi32), (1 - division(kpi37, 100)))) - (kpi1 - kpi32)",false,false,0,false
+29,4029,39,4,"kpi2 - (product_of_two(kpi2, division(kpi30, 100)))",false,false,0,false
+29,4029,40,4,"kpi3 - (product_of_two(kpi3, division(kpi31, 100)))",false,false,0,false
+29,4029,42,4,"division((kpi2 - (product_of_two(kpi2, division(kpi30, 100)))), kpi20)",false,false,0,false
+29,4029,43,4,"division((kpi3 - (product_of_two(kpi3, division(kpi31, 100)))), kpi21)",false,false,0,false
+29,4029,23,4,"product_of_two(division((kpi12 - (division((kpi2 - (product_of_two(kpi2, division(kpi30, 100)))), kpi20))), kpi12), 100)",false,false,0,false
+29,4029,24,4,"product_of_two(division((kpi15 - (division((kpi3 - (product_of_two(kpi3, division(kpi31, 100)))), kpi21))), kpi15), 100)",false,false,0,false
+29,4029,49,5,kpi44 - kpi38 + kpi45 + kpi48,false,false,0,false
+29,4029,65,5,"division((kpi44 - kpi38 + kpi45 + kpi48), kpi59)",false,false,0,false
+29,4029,50,5,"division((kpi44 + (kpi44 - kpi38 + kpi45 + kpi48)), 2)",false,false,0,false
+29,4029,51,5,"division(kpi38, division((kpi44 + (kpi44 - kpi38 + kpi45 + kpi48)), 2))",false,false,0,false
+29,4029,52,5,"product_of_two(division(kpi38, (kpi45 + kpi44)), 100)",false,false,0,false
+2,4002,20,1,"division(kpi2, kpi10)",false,false,0,false
+2,4002,33,1,"product_of_two(kpi2, division(kpi30, 100))",false,false,0,false
+2,4002,39,1,"product_of_two((division(kpi2, kpi10)), kpi42)",false,false,0,false
+2,4002,19,2,kpi20 + kpi21,false,false,0,false
+2,4002,1,2,kpi2 + kpi3,false,false,0,false
+2,4002,38,2,kpi39 + kpi40,false,false,0,false
+2,4002,41,2,"division((kpi39 + kpi40), (kpi20 + kpi21))",false,false,0,false
+2,4002,7,2,"division((kpi2 + kpi3), (kpi20 + kpi21))",false,false,0,false
+2,4002,9,2,"division((division((kpi2 + kpi3), (kpi20 + kpi21))), (1 - division(kpi8, 100)))",false,false,0,false
+2,4002,32,2,kpi33 + kpi34,false,false,0,false
+2,4002,29,2,"product_of_two(division((kpi33 + kpi34), (kpi2 + kpi3)), 100)",false,false,0,false
+2,4002,22,2,"product_of_two(division(((division((division((kpi2 + kpi3), (kpi20 + kpi21))), (1 - division(kpi8, 100)))) - (division((kpi39 + kpi40), (kpi20 + kpi21)))), (division((division((kpi2 + kpi3), (kpi20 + kpi21))), (1 - division(kpi8, 100))))), 100)",false,false,0,false
+2,4002,6,3,"division(kpi1, (1 - division(kpi4, 100)))",false,false,0,false
+2,4002,16,3,"division(kpi19, (1 - division(kpi18, 100)))",false,false,0,false
+2,4002,35,3,"division(kpi38, (1 - division(kpi37, 100)))",false,false,0,false
+2,4002,5,3,"(division(kpi1, (1 - division(kpi4, 100)))) - kpi1",false,false,0,false
+2,4002,17,3,"(division(kpi19, (1 - division(kpi18, 100)))) - kpi19",false,false,0,false
+2,4002,36,3,"(division(kpi38, (1 - division(kpi37, 100)))) - kpi38",false,false,0,false
+2,4002,69,3,"division(kpi1, (1 - division(kpi8, 100)))",false,false,0,false
+2,4002,70,3,"division(kpi2, (1 - division(kpi11, 100)))",false,false,0,false
+2,4002,59,4,kpi54 + kpi55 - kpi19 + kpi58,false,false,0,false
+2,4002,49,4,kpi44 - kpi38 + kpi45 + kpi48,false,false,0,false
+2,4002,65,4,"division((kpi44 - kpi38 + kpi45 + kpi48), (kpi54 + kpi55 - kpi19 + kpi58))",false,false,0,false
+2,4002,66,4,"division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2)",false,false,0,false
+2,4002,50,4,"division((kpi44 + (kpi44 - kpi38 + kpi45 + kpi48)), 2)",false,false,0,false
+2,4002,67,4,"division(kpi19, division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2))",false,false,0,false
+2,4002,51,4,"division(kpi38, division((kpi44 + (kpi44 - kpi38 + kpi45 + kpi48)), 2))",false,false,0,false
+2,4002,68,4,"product_of_two(division(kpi19, (kpi55 + kpi54)), 100)",false,false,0,false
+2,4002,52,4,"product_of_two(division(kpi38, (kpi45 + kpi44)), 100)",false,false,0,false
+2,4002,53,4,"division(kpi54, kpi19)",false,false,0,false
+10,4010,20,1,"division(kpi2, kpi10)",false,false,0,false
+10,4010,10,2,"division(kpi2, kpi20)",false,false,0,false
+10,4010,19,3,kpi20 + kpi21,false,false,0,false
+10,4010,12,4,"division(kpi10, (1 - division(kpi11, 100)))",false,false,0,false
+10,4010,7,4,"division(kpi1, kpi19)",false,false,0,false
+10,4010,42,4,"division(kpi39, kpi20)",false,false,0,false
+10,4010,23,4,"product_of_two(division(((division(kpi10, (1 - division(kpi11, 100)))) - (division(kpi39, kpi20))), (division(kpi10, (1 - division(kpi11, 100))))), 100)",false,false,0,false
+10,4010,16,4,"division(kpi19, (1 - division(kpi18, 100)))",false,false,0,false
+10,4010,9,4,"division((division(kpi1, kpi19)), (1 - division(kpi8, 100)))",false,false,0,false
+10,4010,41,4,"division(kpi38, kpi19)",false,false,0,false
+10,4010,22,4,"product_of_two(division(((division((division(kpi1, kpi19)), (1 - division(kpi8, 100)))) - (division(kpi38, kpi19))), (division((division(kpi1, kpi19)), (1 - division(kpi8, 100))))), 100)",false,false,0,false
+10,4010,17,4,"(division(kpi19, (1 - division(kpi18, 100)))) - kpi19",false,false,0,false
+10,4010,59,5,kpi54 + kpi55 - kpi19 + kpi58,false,false,0,false
+10,4010,65,5,"division(kpi49, (kpi54 + kpi55 - kpi19 + kpi58))",false,false,0,false
+10,4010,66,5,"division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2)",false,false,0,false
+10,4010,67,5,"division(kpi19, division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2))",false,false,0,false
+10,4010,68,5,"product_of_two(division(kpi19, (kpi55 + kpi54)), 100)",false,false,0,false
+10,4010,53,5,"division(kpi54, kpi19)",false,false,0,false
+11,4011,70,1,"division(kpi2, (1 - division(kpi11, 100)))",false,false,0,false
+11,4011,69,2,"product_of_two(kpi15, kpi21) + kpi70",false,false,0,false
+11,4011,11,3,"product_of_two(division((kpi70 - kpi2), kpi70), 100)",false,false,0,false
+11,4011,8,4,"product_of_two(division((kpi69 - kpi1), kpi69), 100)",false,false,0,false
+11,4011,12,4,"division(kpi10, (1 - division(kpi11, 100)))",false,false,0,false
+11,4011,23,4,"product_of_two(division(((division(kpi10, (1 - division(kpi11, 100)))) - kpi42), (division(kpi10, (1 - division(kpi11, 100))))), 100)",false,false,0,false
+11,4011,9,4,"division(kpi7, (1 - division((product_of_two(division((kpi69 - kpi1), kpi69), 100)), 100)))",false,false,0,false
+11,4011,22,4,"product_of_two(division(((division(kpi7, (1 - division((product_of_two(division((kpi69 - kpi1), kpi69), 100)), 100)))) - kpi41), (division(kpi7, (1 - division((product_of_two(division((kpi69 - kpi1), kpi69), 100)), 100))))), 100)",false,false,0,false
+30,4030,33,1,"product_of_two(kpi2, division(kpi30, 100))",false,false,0,false
+30,4030,30,2,"product_of_two(division(kpi33, kpi2), 100)",false,false,0,false
+30,4030,32,3,kpi33 + kpi34,false,false,0,false
+30,4030,29,3,"product_of_two(division((kpi33 + kpi34), kpi1), 100)",false,false,0,false
+30,4030,39,3,kpi2 - kpi33,false,false,0,false
+30,4030,38,3,kpi1 - (kpi33 + kpi34),false,false,0,false
+30,4030,23,3,"product_of_two(division((kpi12 - (division((kpi2 - kpi33), kpi20))), kpi12), 100)",false,false,0,false
+30,4030,35,3,"division((kpi1 - (kpi33 + kpi34)), (1 - division(kpi37, 100)))",false,false,0,false
+30,4030,22,3,"product_of_two(division((kpi9 - (division((kpi1 - (kpi33 + kpi34)), kpi19))), kpi9), 100)",false,false,0,false
+30,4030,36,3,"(division((kpi1 - (kpi33 + kpi34)), (1 - division(kpi37, 100)))) - (kpi1 - (kpi33 + kpi34))",false,false,0,false
+30,4030,49,4,kpi44 - kpi38 + kpi45 + kpi48,false,false,0,false
+30,4030,65,4,"division((kpi44 - kpi38 + kpi45 + kpi48), kpi59)",false,false,0,false
+30,4030,50,4,"division((kpi44 + (kpi44 - kpi38 + kpi45 + kpi48)), 2)",false,false,0,false
+30,4030,51,4,"division(kpi38, division((kpi44 + (kpi44 - kpi38 + kpi45 + kpi48)), 2))",false,false,0,false
+30,4030,52,4,"product_of_two(division(kpi38, (kpi45 + kpi44)), 100)",false,false,0,false
+3,4003,21,1,"division(kpi3, kpi13)",false,false,0,false
+3,4003,34,1,"product_of_two(kpi3, division(kpi31, 100))",false,false,0,false
+3,4003,40,1,"product_of_two((division(kpi3, kpi13)), kpi43)",false,false,0,false
+3,4003,19,2,kpi20 + kpi21,false,false,0,false
+3,4003,1,2,kpi2 + kpi3,false,false,0,false
+3,4003,38,2,kpi39 + kpi40,false,false,0,false
+3,4003,41,2,"division((kpi39 + kpi40), (kpi20 + kpi21))",false,false,0,false
+3,4003,7,2,"division((kpi2 + kpi3), (kpi20 + kpi21))",false,false,0,false
+3,4003,9,2,"division((division((kpi2 + kpi3), (kpi20 + kpi21))), (1 - division(kpi8, 100)))",false,false,0,false
+3,4003,32,2,kpi33 + kpi34,false,false,0,false
+3,4003,29,2,"product_of_two(division((kpi33 + kpi34), (kpi2 + kpi3)), 100)",false,false,0,false
+3,4003,22,2,"product_of_two(division(((division((division((kpi2 + kpi3), (kpi20 + kpi21))), (1 - division(kpi8, 100)))) - (division((kpi39 + kpi40), (kpi20 + kpi21)))), (division((division((kpi2 + kpi3), (kpi20 + kpi21))), (1 - division(kpi8, 100))))), 100)",false,false,0,false
+3,4003,6,3,"division(kpi1, (1 - division(kpi4, 100)))",false,false,0,false
+3,4003,16,3,"division(kpi19, (1 - division(kpi18, 100)))",false,false,0,false
+3,4003,35,3,"division(kpi38, (1 - division(kpi37, 100)))",false,false,0,false
+3,4003,5,3,"(division(kpi1, (1 - division(kpi4, 100)))) - kpi1",false,false,0,false
+3,4003,17,3,"(division(kpi19, (1 - division(kpi18, 100)))) - kpi19",false,false,0,false
+3,4003,36,3,"(division(kpi38, (1 - division(kpi37, 100)))) - kpi38",false,false,0,false
+3,4003,69,3,"division(kpi1, (1 - division(kpi8, 100)))",false,false,0,false
+3,4003,71,3,"division(kpi3, (1 - division(kpi14, 100)))",false,false,0,false
+3,4003,59,4,kpi54 + kpi55 - kpi19 + kpi58,false,false,0,false
+3,4003,49,4,kpi44 - kpi38 + kpi45 + kpi48,false,false,0,false
+3,4003,65,4,"division((kpi44 - kpi38 + kpi45 + kpi48), (kpi54 + kpi55 - kpi19 + kpi58))",false,false,0,false
+3,4003,66,4,"division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2)",false,false,0,false
+3,4003,50,4,"division((kpi44 + (kpi44 - kpi38 + kpi45 + kpi48)), 2)",false,false,0,false
+3,4003,67,4,"division(kpi19, division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2))",false,false,0,false
+3,4003,51,4,"division(kpi38, division((kpi44 + (kpi44 - kpi38 + kpi45 + kpi48)), 2))",false,false,0,false
+3,4003,68,4,"product_of_two(division(kpi19, (kpi55 + kpi54)), 100)",false,false,0,false
+3,4003,52,4,"product_of_two(division(kpi38, (kpi45 + kpi44)), 100)",false,false,0,false
+3,4003,53,4,"division(kpi54, kpi19)",false,false,0,false
+13,4013,21,1,"division(kpi3, kpi13)",false,false,0,false
+13,4013,13,2,"division(kpi3, kpi21)",false,false,0,false
+13,4013,19,3,kpi20 + kpi21,false,false,0,false
+13,4013,15,4,"division(kpi13, (1 - division(kpi14, 100)))",false,false,0,false
+13,4013,7,4,"division((kpi2 + kpi3), (kpi20 + kpi21))",false,false,0,false
+13,4013,43,4,"division(kpi40, kpi21)",false,false,0,false
+13,4013,24,4,"product_of_two(division(((division(kpi13, (1 - division(kpi14, 100)))) - (division(kpi40, kpi21))), (division(kpi13, (1 - division(kpi14, 100))))), 100)",false,false,0,false
+13,4013,16,4,"division(kpi19, (1 - division(kpi18, 100)))",false,false,0,false
+13,4013,9,4,"division((division((kpi2 + kpi3), (kpi20 + kpi21))), (1 - division(kpi8, 100)))",false,false,0,false
+13,4013,41,4,"division(kpi38, kpi19)",false,false,0,false
+13,4013,22,4,"product_of_two(division(((division((division((kpi2 + kpi3), (kpi20 + kpi21))), (1 - division(kpi8, 100)))) - (division(kpi38, kpi19))), (division((division((kpi2 + kpi3), (kpi20 + kpi21))), (1 - division(kpi8, 100))))), 100)",false,false,0,false
+13,4013,17,4,"(division(kpi19, (1 - division(kpi18, 100)))) - kpi19",false,false,0,false
+13,4013,59,5,kpi54 + kpi55 - kpi19 + kpi58,false,false,0,false
+13,4013,65,5,"division(kpi49, (kpi54 + kpi55 - kpi19 + kpi58))",false,false,0,false
+13,4013,66,5,"division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2)",false,false,0,false
+13,4013,67,5,"division(kpi19, division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2))",false,false,0,false
+13,4013,68,5,"product_of_two(division(kpi19, (kpi55 + kpi54)), 100)",false,false,0,false
+13,4013,53,5,"division(kpi54, kpi19)",false,false,0,false
+14,4014,71,1,"division(kpi3, (1 - division(kpi14, 100)))",false,false,0,false
+14,4014,69,2,"product_of_two(kpi12, kpi20) + kpi71",false,false,0,false
+14,4014,14,3,"product_of_two(division((kpi71 - kpi3), kpi71), 100)",false,false,0,false
+14,4014,8,4,"product_of_two(division((kpi69 - kpi1), kpi69), 100)",false,false,0,false
+14,4014,15,4,"division(kpi13, (1 - division(kpi14, 100)))",false,false,0,false
+14,4014,9,4,"division(kpi7, (1 - division((product_of_two(division((kpi69 - kpi1), kpi69), 100)), 100)))",false,false,0,false
+14,4014,24,4,"product_of_two(division(((division(kpi13, (1 - division(kpi14, 100)))) - kpi43), (division(kpi13, (1 - division(kpi14, 100))))), 100)",false,false,0,false
+14,4014,22,4,"product_of_two(division(((division(kpi7, (1 - division((product_of_two(division((kpi69 - kpi1), kpi69), 100)), 100)))) - kpi41), (division(kpi7, (1 - division((product_of_two(division((kpi69 - kpi1), kpi69), 100)), 100))))), 100)",false,false,0,false
+31,4031,34,1,"product_of_two(kpi3, division(kpi31, 100))",false,false,0,false
+31,4031,31,2,"product_of_two(division(kpi34, kpi3), 100)",false,false,0,false
+31,4031,40,3,kpi3 - kpi34,false,false,0,false
+31,4031,32,3,kpi33 + kpi34,false,false,0,false
+31,4031,29,3,"product_of_two(division((kpi33 + kpi34), kpi1), 100)",false,false,0,false
+31,4031,43,3,"division((kpi3 - kpi34), kpi21)",false,false,0,false
+31,4031,38,3,kpi1 - (kpi33 + kpi34),false,false,0,false
+31,4031,41,3,"division((kpi1 - (kpi33 + kpi34)), kpi19)",false,false,0,false
+31,4031,24,3,"product_of_two(division((kpi15 - (division((kpi3 - kpi34), kpi21))), kpi15), 100)",false,false,0,false
+31,4031,35,3,"division((kpi1 - (kpi33 + kpi34)), (1 - division(kpi37, 100)))",false,false,0,false
+31,4031,22,3,"product_of_two(division((kpi9 - (division((kpi1 - (kpi33 + kpi34)), kpi19))), kpi9), 100)",false,false,0,false
+31,4031,36,3,"(division((kpi1 - (kpi33 + kpi34)), (1 - division(kpi37, 100)))) - (kpi1 - (kpi33 + kpi34))",false,false,0,false
+31,4031,49,4,kpi44 - kpi38 + kpi45 + kpi48,false,false,0,false
+31,4031,65,4,"division((kpi44 - kpi38 + kpi45 + kpi48), kpi59)",false,false,0,false
+31,4031,50,4,"division((kpi44 + (kpi44 - kpi38 + kpi45 + kpi48)), 2)",false,false,0,false
+31,4031,51,4,"division(kpi38, division((kpi44 + (kpi44 - kpi38 + kpi45 + kpi48)), 2))",false,false,0,false
+31,4031,52,4,"product_of_two(division(kpi38, (kpi45 + kpi44)), 100)",false,false,0,false
+47,4047,57,1,"division(kpi47, kpi63)",false,false,0,false
+47,4047,45,2,kpi47 + kpi46,false,false,0,false
+47,4047,55,2,kpi57 + kpi56,false,false,0,false
+47,4047,61,2,"division((product_of_two(kpi63, kpi57) + product_of_two(kpi62, kpi56)), (kpi57 + kpi56))",false,false,0,false
+47,4047,49,2,kpi44 - kpi38 + (kpi47 + kpi46) + kpi48,false,false,0,false
+47,4047,59,2,kpi54 + (kpi57 + kpi56) - kpi19 + kpi58,false,false,0,false
+47,4047,65,2,"division((kpi44 - kpi38 + (kpi47 + kpi46) + kpi48), (kpi54 + (kpi57 + kpi56) - kpi19 + kpi58))",false,false,0,false
+47,4047,66,2,"division((kpi54 + (kpi54 + (kpi57 + kpi56) - kpi19 + kpi58)), 2)",false,false,0,false
+47,4047,50,2,"division((kpi44 + (kpi44 - kpi38 + (kpi47 + kpi46) + kpi48)), 2)",false,false,0,false
+47,4047,67,2,"division(kpi19, division((kpi54 + (kpi54 + (kpi57 + kpi56) - kpi19 + kpi58)), 2))",false,false,0,false
+47,4047,51,2,"division(kpi38, division((kpi44 + (kpi44 - kpi38 + (kpi47 + kpi46) + kpi48)), 2))",false,false,0,false
+47,4047,68,2,"product_of_two(division(kpi19, ((kpi57 + kpi56) + kpi54)), 100)",false,false,0,false
+47,4047,52,2,"product_of_two(division(kpi38, ((kpi47 + kpi46) + kpi44)), 100)",false,false,0,false
+47,4047,53,2,"division(kpi54, kpi19)",false,false,0,false
+63,4063,57,1,"division(kpi47, kpi63)",false,false,0,false
+63,4063,55,2,kpi57 + kpi56,false,false,0,false
+63,4063,63,3,"division(kpi47, kpi57)",false,false,0,false
+63,4063,61,4,"division((product_of_two(kpi63, kpi57) + product_of_two(kpi62, kpi56)), kpi55)",false,false,0,false
+63,4063,59,4,kpi54 + kpi55 - kpi19 + kpi58,false,false,0,false
+49,1001,65,2,"division(kpi49, kpi59)",true,true,0,true
+63,4063,65,4,"division(kpi49, (kpi54 + kpi55 - kpi19 + kpi58))",false,false,0,false
+63,4063,66,4,"division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2)",false,false,0,false
+63,4063,67,4,"division(kpi19, division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2))",false,false,0,false
+63,4063,68,4,"product_of_two(division(kpi19, (kpi55 + kpi54)), 100)",false,false,0,false
+63,4063,53,4,"division(kpi54, kpi19)",false,false,0,false
+48,4048,58,1,"division(kpi48, kpi64)",false,false,0,false
+48,4048,49,2,kpi44 - kpi38 + kpi45 + kpi48,false,false,0,false
+48,4048,59,2,kpi54 + kpi55 - kpi19 + kpi58,false,false,0,false
+48,4048,65,2,"division((kpi44 - kpi38 + kpi45 + kpi48), (kpi54 + kpi55 - kpi19 + kpi58))",false,false,0,false
+48,4048,66,2,"division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2)",false,false,0,false
+48,4048,50,2,"division((kpi44 + (kpi44 - kpi38 + kpi45 + kpi48)), 2)",false,false,0,false
+48,4048,67,2,"division(kpi19, division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2))",false,false,0,false
+48,4048,51,2,"division(kpi38, division((kpi44 + (kpi44 - kpi38 + kpi45 + kpi48)), 2))",false,false,0,false
+48,4048,68,2,"product_of_two(division(kpi19, (kpi55 + kpi54)), 100)",false,false,0,false
+48,4048,52,2,"product_of_two(division(kpi38, (kpi45 + kpi44)), 100)",false,false,0,false
+48,4048,53,2,"division(kpi54, kpi19)",false,false,0,false
+64,4064,58,1,"division(kpi48, kpi64)",false,false,0,false
+64,4064,64,2,"division(kpi48, kpi58)",false,false,0,false
+64,4064,59,3,kpi54 + kpi55 - kpi19 + kpi58,false,false,0,false
+64,4064,65,3,"division(kpi49, (kpi54 + kpi55 - kpi19 + kpi58))",false,false,0,false
+64,4064,66,3,"division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2)",false,false,0,false
+64,4064,67,3,"division(kpi19, division((kpi54 + (kpi54 + kpi55 - kpi19 + kpi58)), 2))",false,false,0,false
+64,4064,68,3,"product_of_two(division(kpi19, (kpi55 + kpi54)), 100)",false,false,0,false
+64,4064,53,3,"division(kpi54, kpi19)",false,false,0,false
+1,7001,3,2,"product_of_two(kpi3, division(kpi1, (kpi2 + kpi3)))",false,false,0,false
+1,1,3,2,"product_of_two(kpi3, division(kpi1, (kpi2 + kpi3)))",false,false,0,false
+1,4001,3,2,"product_of_two(kpi3, division(kpi1, (kpi2 + kpi3)))",false,false,0,false
+49,500,65,1,"division(((kpi49, previous_timeline) - kpi38 + kpi45 + kpi48),((kpi59, previous_timeline) + kpi55 - kpi19 + kpi58))",true,true,0,true
+49,500,50,1,"division(((kpi49, previous_timeline)+((kpi49, previous_timeline) - kpi38 + kpi45 + kpi48)),2)",true,true,0,true
+49,500,66,1,"division(((kpi59, previous_timeline)+((kpi59, previous_timeline) + kpi55 - kpi19 + kpi58)),2)",true,true,0,true
+49,500,52,1,"product_of_two(division(kpi38, (kpi45 + (kpi49, previous_timeline))),100)",true,true,0,true
+49,500,68,1,"product_of_two(division(kpi19, (kpi55 + (kpi59, previous_timeline))),100)",true,true,0,true
+49,500,44,1,"(kpi49, previous_timeline)",true,true,0,true
+49,500,54,1,"(kpi59, previous_timeline)",true,true,0,true
+49,500,51,1,"division(kpi38, division(((kpi49, previous_timeline) + ((kpi49, previous_timeline) - kpi38 + kpi45 + kpi48)), 2))",true,true,0,true
+49,500,67,1,"division(kpi19, division(((kpi59, previous_timeline) + ((kpi59, previous_timeline) + kpi55 - kpi19 + kpi58)), 2))",true,true,0,true
+49,500,60,1,"division((kpi49, previous_timeline),(kpi59, previous_timeline))",true,true,0,true
+49,500,49,1,"(kpi49, previous_timeline) - kpi38 + kpi45 + kpi48",true,true,0,true
+49,500,59,1,"(kpi59, previous_timeline) + kpi55 - kpi19 + kpi58",true,true,0,true
+49,500,53,1,"division((kpi59, previous_timeline), kpi19)",true,true,0,true
+49,501,65,1,"division(((kpi49, previous_timeline) - kpi38 + kpi45 + kpi48),((kpi59, previous_timeline) + kpi55 - kpi19 + kpi58))",true,true,0,true
+49,501,50,1,"division(((kpi49, previous_timeline)+((kpi49, previous_timeline) - kpi38 + kpi45 + kpi48)),2)",true,true,0,true
+49,501,66,1,"division(((kpi59, previous_timeline)+((kpi59, previous_timeline) + kpi55 - kpi19 + kpi58)),2)",true,true,0,true
+49,501,52,1,"product_of_two(division(kpi38, (kpi45 + (kpi49, previous_timeline))),100)",true,true,0,true
+49,501,68,1,"product_of_two(division(kpi19, (kpi55 + (kpi59, previous_timeline))),100)",true,true,0,true
+49,501,53,1,"division((kpi59, previous_timeline), kpi19)",true,true,0,true
+49,501,44,1,"(kpi49, previous_timeline)",true,true,0,true
+49,501,54,1,"(kpi59, previous_timeline)",true,true,0,true
+49,501,51,1,"division(kpi38, division(((kpi49, previous_timeline) + ((kpi49, previous_timeline) - kpi38 + kpi45 + kpi48)), 2))",true,true,0,true
+49,1001,60,2,"division(kpi44, kpi54)",true,true,0,true
+49,501,67,1,"division(kpi19, division(((kpi59, previous_timeline) + ((kpi59, previous_timeline) + kpi55 - kpi19 + kpi58)), 2))",true,true,0,true
+49,501,60,1,"division((kpi49, previous_timeline),(kpi59, previous_timeline))",true,true,0,true
+49,501,49,1,"(kpi49, previous_timeline) - kpi38 + kpi45 + kpi48",true,true,0,true
+49,501,59,1,"(kpi59, previous_timeline) + kpi55 - kpi19 + kpi58",true,true,0,true
+49,502,52,1,"product_of_two(division(kpi38, (kpi45 + (kpi49, previous_timeline))),100)",true,true,0,true
+49,502,60,1,"division((kpi49, previous_timeline),(kpi59, previous_timeline))",true,true,0,true
+49,502,51,1,"division(kpi38, division(((kpi49, previous_timeline) + ((kpi49, previous_timeline) - kpi38 + kpi45 + kpi48)), 2))",true,true,0,true
+49,502,50,1,"division(((kpi49, previous_timeline)+((kpi49, previous_timeline) - kpi38 + kpi45 + kpi48)),2)",true,true,0,true
+49,502,65,1,"division(((kpi49, previous_timeline) - kpi38 + kpi45 + kpi48),((kpi59, previous_timeline) + kpi55 - kpi19 + kpi58))",true,true,0,true
+49,502,66,1,"division(((kpi59, previous_timeline)+((kpi59, previous_timeline) + kpi55 - kpi19 + kpi58)),2)",true,true,0,true
+49,502,68,1,"product_of_two(division(kpi19, (kpi55 + (kpi59, previous_timeline))),100)",true,true,0,true
+49,502,53,1,"division((kpi59, previous_timeline), kpi19)",true,true,0,true
+49,502,44,1,"(kpi49, previous_timeline)",true,true,0,true
+49,502,54,1,"(kpi59, previous_timeline)",true,true,0,true
+49,502,67,1,"division(kpi19, division(((kpi59, previous_timeline) + ((kpi59, previous_timeline) + kpi55 - kpi19 + kpi58)), 2))",true,true,0,true
+49,502,49,1,"(kpi49, previous_timeline) - kpi38 + kpi45 + kpi48",true,true,0,true
+49,502,59,1,"(kpi59, previous_timeline) + kpi55 - kpi19 + kpi58",true,true,0,true
+49,600,44,1,"(kpi49, previous_timeline)",true,true,0,true
+49,600,49,2,kpi44 - kpi38 + kpi45 + kpi48,true,true,0,true
+49,600,54,3,"(kpi59, previous_timeline)",true,true,0,true
+49,600,59,4,kpi54 + kpi55 - kpi19 + kpi58,true,true,0,true
+49,600,60,5,"division(kpi44, kpi54)",true,true,0,true
+49,600,65,6,"division(kpi49, kpi59)",true,true,0,true
+49,600,50,7,"division((kpi44 + kpi49), 2)",true,true,0,true
+49,600,52,8,"product_of_two(division(kpi38, (kpi45 + kpi44)),100)",true,true,0,true
+49,600,66,9,"division((kpi54 + kpi59), 2)",true,true,0,true
+49,600,68,10,"product_of_two(division(kpi19, (kpi55 + kpi54)),100)",true,true,0,true
+49,600,51,11,"division(kpi38,(division((kpi44 + kpi49), 2)))",true,true,0,true
+49,600,67,12,"division(kpi19,(division((kpi54 + kpi59), 2)))",true,true,0,true
+49,600,53,13,"division(kpi54, kpi19)",true,true,0,true
+49,601,44,1,"(kpi49, previous_timeline)",true,true,0,true
+49,601,49,2,kpi44 - kpi38 + kpi45 + kpi48,true,true,0,true
+49,601,54,3,"(kpi59, previous_timeline)",true,true,0,true
+49,601,59,4,kpi54 + kpi55 - kpi19 + kpi58,true,true,0,true
+49,601,60,5,"division(kpi44, kpi54)",true,true,0,true
+49,601,65,6,"division(kpi49, kpi59)",true,true,0,true
+49,601,50,7,"division((kpi44 + kpi49), 2)",true,true,0,true
+49,601,52,8,"product_of_two(division(kpi38, (kpi45 + kpi44)),100)",true,true,0,true
+49,601,66,9,"division((kpi54 + kpi59), 2)",true,true,0,true
+49,601,68,10,"product_of_two(division(kpi19, (kpi55 + kpi54)),100)",true,true,0,true
+49,601,51,11,"division(kpi38,(division((kpi44 + kpi49), 2)))",true,true,0,true
+49,601,67,12,"division(kpi19,(division((kpi54 + kpi59), 2)))",true,true,0,true
+49,601,53,13,"division(kpi54, kpi19)",true,true,0,true
+49,602,44,1,"(kpi49, previous_timeline)",true,true,0,true
+49,602,49,2,kpi44 - kpi38 + kpi45 + kpi48,true,true,0,true
+49,602,54,3,"(kpi59, previous_timeline)",true,true,0,true
+49,602,59,4,kpi54 + kpi55 - kpi19 + kpi58,true,true,0,true
+49,602,60,5,"division(kpi44, kpi54)",true,true,0,true
+49,602,65,6,"division(kpi49, kpi59)",true,true,0,true
+49,602,50,7,"division((kpi44 + kpi49), 2)",true,true,0,true
+49,602,52,8,"product_of_two(division(kpi38, (kpi45 + kpi44)),100)",true,true,0,true
+49,602,66,9,"division((kpi54 + kpi59), 2)",true,true,0,true
+49,602,68,10,"product_of_two(division(kpi19, (kpi55 + kpi54)),100)",true,true,0,true
+49,602,51,11,"division(kpi38,(division((kpi44 + kpi49), 2)))",true,true,0,true
+49,602,67,12,"division(kpi19,(division((kpi54 + kpi59), 2)))",true,true,0,true
+49,602,53,13,"division(kpi54, kpi19)",true,true,0,true
+49,1000,49,1,cum_delta(kpi49)+kpi49,true,true,0,true
+49,1000,51,2,"division(kpi38, division((kpi44 + kpi49), 2))",true,true,0,true
+49,1000,67,2,"division(kpi19, division(kpi54 + kpi59, 2))",true,true,0,true
+49,1000,54,1,cum_delta(kpi59)+kpi54,true,true,0,true
+49,1000,59,1,cum_delta(kpi59)+kpi59,true,true,0,true
+49,1000,60,2,"division(kpi44, kpi54)",true,true,0,true
+49,1000,65,2,"division(kpi49, kpi59)",true,true,0,true
+49,1000,50,2,"division((kpi44 + kpi49), 2)",true,true,0,true
+49,1000,52,2,"product_of_two(division(kpi38, (kpi45 + kpi44)),100)",true,true,0,true
+49,1000,66,2,"division((kpi54 + kpi59), 2)",true,true,0,true
+49,1000,68,2,"product_of_two(division(kpi19, (kpi55 + kpi54)),100)",true,true,0,true
+49,1000,44,1,cum_delta(kpi49)+kpi44,true,true,0,true
+49,1000,53,2,"division(kpi54, kpi19)",true,true,0,true
+49,1001,59,1,cum_delta(kpi59)+kpi59,true,true,0,true
+49,1001,54,1,cum_delta(kpi59)+kpi54,true,true,0,true
+49,1001,49,1,cum_delta(kpi49)+kpi49,true,true,0,true
+49,1001,53,2,"division(kpi54, kpi19)",true,true,0,true
+49,1001,66,2,"division((kpi54 + kpi59), 2)",true,true,0,true
+49,1001,52,2,"product_of_two(division(kpi38, (kpi45 + kpi44)),100)",true,true,0,true
+49,1001,50,2,"division((kpi44 + kpi49), 2)",true,true,0,true
+49,1001,68,2,"product_of_two(division(kpi19, (kpi55 + kpi54)),100)",true,true,0,true
+49,1001,44,1,cum_delta(kpi49)+kpi44,true,true,0,true
+49,1001,51,2,"division(kpi38, division((kpi44 + kpi49), 2))",true,true,0,true
+49,1001,67,2,"division(kpi19, division(kpi54 + kpi59, 2))",true,true,0,true
+49,1002,59,1,cum_delta(kpi59)+kpi59,true,true,0,true
+49,1002,54,1,cum_delta(kpi59)+kpi54,true,true,0,true
+49,1002,49,1,cum_delta(kpi49)+kpi49,true,true,0,true
+49,1002,53,2,"division(kpi54, kpi19)",true,true,0,true
+49,1002,66,2,"division((kpi54 + kpi59), 2)",true,true,0,true
+49,1002,52,2,"product_of_two(division(kpi38, (kpi45 + kpi44)),100)",true,true,0,true
+49,1002,50,2,"division((kpi44 + kpi49), 2)",true,true,0,true
+49,1002,65,2,"division(kpi49, kpi59)",true,true,0,true
+49,1002,60,2,"division(kpi44, kpi54)",true,true,0,true
+49,1002,68,2,"product_of_two(division(kpi19, (kpi55 + kpi54)),100)",true,true,0,true
+49,1002,44,1,cum_delta(kpi49)+kpi44,true,true,0,true
+49,1002,51,2,"division(kpi38, division((kpi44 + kpi49), 2))",true,true,0,true
+49,1002,67,2,"division(kpi19, division(kpi54 + kpi59, 2))",true,true,0,true

@@ -1,0 +1,862 @@
+{
+  "client": "Partycity",
+  "fields": {
+    "plansmart_year_value": {
+      "maxLimit": 2,
+      "showPlaceholderWithRatio": true,
+      "is_selectall_button_hidden": true,
+      "itHaspayloadDependency": [
+        "season"
+      ],
+      "application_code": 4,
+      "dependentOn": [],
+      "payloadDependentOn": [],
+      "itHasDependency": [
+        "season",
+        "plansmart_selling_period_value"
+      ],
+      "reportFilterDependency": [
+        "season",
+        "plansmart_selling_period_value"
+      ],
+      "filterpayloadDependentOn": [],
+      "dataType": "array",
+      "validation_rules": {
+        "*": {
+          "season": {
+            "by_defult_all_select_": true
+          }
+        }
+      },
+      "field_validation": {
+        "maxLengthLimitValidation": 2,
+        "sequentialSelectionValidation": true
+      },
+      "group_field_validation": [],
+      "apiCall": false,
+      "options": [
+        {
+          "value": 2023,
+          "label": 2023
+        },
+        {
+          "value": 2024,
+          "label": 2024
+        },
+        {
+          "value": 2025,
+          "label": 2025
+        },
+        {
+          "value": 2026,
+          "label": 2026
+        },
+        {
+          "value": 2027,
+          "label": 2027
+        }
+      ],
+      "apiCallMethod": "POST",
+      "apiCallType": "PLANSMART",
+      "dimension": null,
+      "hierarchy": [],
+      "apiEndPoint": "/plan-smart/tenant-config",
+      "defults": {
+        "fc_code": 161,
+        "label": "Year",
+        "column_name": "plansmart_year_value",
+        "type": "non-cascaded",
+        "display_type": "dropdown",
+        "level": null,
+        "dimension": "plan",
+        "is_mandatory": true,
+        "is_multiple_selection": true,
+        "range_min": null,
+        "range_max": null,
+        "default_value": null,
+        "is_disabled": false,
+        "is_clearable": true,
+        "display_order": 1,
+        "is_required": false,
+        "extra": {
+          "maxLimit": 2,
+          "showPlaceholderWithRatio": true,
+          "is_selectall_button_hidden": true
+        },
+        "is_deleted": false,
+        "accessor": "plansmart_year_value",
+        "attribute_type": "create_plan",
+        "field_type": "dropdown",
+        "filter_type": "non-cascaded",
+        "isDisabled": false,
+        "required": true,
+        "isMulti": true,
+        "isClearable": true,
+        "disablePast": true,
+        "isSelectAllButtonHidden": true
+      }
+    },
+    "season": {
+      "maxLimit": null,
+      "showPlaceholderWithRatio": true,
+      "is_selectall_button_hidden": null,
+      "reportFilterDependency": [
+        "plansmart_selling_period_value"
+      ],
+      "dependentOn": [
+        "plansmart_year_value"
+      ],
+      "payloadDependentOn": [
+        "plansmart_year_value"
+      ],
+      "itHasDependency": [
+        "plansmart_selling_period_value"
+      ],
+      "itHaspayloadDependency": [],
+      "filterpayloadDependentOn": [],
+      "application_code": 4,
+      "dataType": "array",
+      "validation_rules": {},
+      "field_validation": {
+        "sequentialSelectionValidation": true
+      },
+      "group_field_validation": [],
+      "apiCall": true,
+      "apiCallMethod": "POST",
+      "apiCallType": "PLANSMART",
+      "apiEndPoint": "/plan-smart/season/get-season-details",
+      "dimension": "store",
+      "defults": {
+        "fc_code": 161,
+        "label": "Quarters",
+        "column_name": "season",
+        "type": "non-cascaded",
+        "display_type": "dropdown",
+        "level": null,
+        "dimension": "create_plan",
+        "is_mandatory": true,
+        "is_multiple_selection": true,
+        "range_min": null,
+        "range_max": null,
+        "default_value": null,
+        "is_disabled": false,
+        "is_clearable": true,
+        "display_order": 2,
+        "is_required": false,
+        "extra": {
+          "showPlaceholderWithRatio": true
+        },
+        "is_deleted": false,
+        "accessor": "season",
+        "attribute_type": "create_plan",
+        "field_type": "dropdown",
+        "filter_type": "non-cascaded",
+        "isDisabled": false,
+        "required": true,
+        "isMulti": true,
+        "isClearable": true,
+        "disablePast": true
+      }
+    },
+    "plansmart_selling_period_value": {
+      "showPlaceholderWithRatio": true,
+      "dependentOn": [
+        "season"
+      ],
+      "reportFilterDependency": [],
+      "payloadDependentOn": [],
+      "filterpayloadDependentOn": [],
+      "itHaspayloadDependency": [],
+      "api_end_point": null,
+      "application_code": 4,
+      "itHasDependency": [],
+      "dataType": "moment",
+      "validation_rules": {},
+      "field_validation": {},
+      "group_field_validation": [],
+      "apiCall": false,
+      "apiCallMethod": "",
+      "apiCallType": "",
+      "apiEndPoint": "",
+      "dimension": null,
+      "defults": {
+        "fc_code": 161,
+        "label": "Selling Period",
+        "column_name": "plansmart_selling_period_value",
+        "type": "non-cascaded",
+        "display_type": "rangePicker",
+        "level": null,
+        "dimension": "create_plan",
+        "is_mandatory": true,
+        "is_multiple_selection": false,
+        "range_min": null,
+        "range_max": null,
+        "default_value": null,
+        "is_disabled": true,
+        "is_clearable": true,
+        "display_order": 3,
+        "is_required": false,
+        "extra": {
+          "showPlaceholderWithRatio": true
+        },
+        "is_deleted": false,
+        "accessor": "plansmart_selling_period_value",
+        "attribute_type": "create_plan",
+        "field_type": "rangePicker",
+        "filter_type": "non-cascaded",
+        "isDisabled": true,
+        "required": true,
+        "isMulti": false,
+        "isClearable": true,
+        "disablePast": true
+      }
+    },
+    "business_unit": {
+      "showPlaceholderWithRatio": true,
+      "dependentOn": [],
+      "payloadDependentOn": [],
+      "itHaspayloadDependency": [
+        "group_id",
+        "channel",
+        "l1_name",
+        "l2_name",
+        "l3_name"
+      ],
+      "application_code": 4,
+      "itHasDependency": [
+        "group_id",
+        "channel",
+        "l1_name",
+        "l2_name",
+        "l3_name"
+      ],
+      "reportFilterDependency": [
+        "group_id",
+        "channel"
+      ],
+      "filterpayloadDependentOn": [],
+      "dataType": "string",
+      "api_end_point": null,
+      "apiCall": true,
+      "apiCallMethod": "POST",
+      "apiCallType": "PLANSMART",
+      "apiEndPoint": "/plan-smart/plan/store-attributes",
+      "dimension": "store",
+      "validation_rules": {
+        "Wholesale": {
+          "l1_name": {
+            "isMulti": true,
+            "is_multiple_selection": true,
+            "by_defult_all_select_": true
+          },
+          "l2_name": {
+            "is_multiple_selection": true,
+            "by_defult_all_select_": true
+          },
+          "l3_name": {
+            "is_disabled": true,
+            "isDisabled": true
+          }
+        }
+      },
+      "field_validation": {},
+      "group_field_validation": [],
+      "defults": {
+        "fc_code": 161,
+        "label": "Business Unit",
+        "column_name": "business_unit",
+        "type": "cascaded",
+        "display_type": "dropdown",
+        "level": null,
+        "dimension": "store",
+        "is_mandatory": true,
+        "is_multiple_selection": false,
+        "range_min": null,
+        "range_max": null,
+        "default_value": null,
+        "is_disabled": false,
+        "is_clearable": true,
+        "display_order": 4,
+        "is_required": false,
+        "extra": {
+          "showPlaceholderWithRatio": true
+        },
+        "is_deleted": false,
+        "accessor": "business_unit",
+        "attribute_type": "create_plan",
+        "field_type": "dropdown",
+        "filter_type": "cascaded",
+        "isDisabled": false,
+        "required": true,
+        "isMulti": false,
+        "isClearable": true,
+        "disablePast": true
+      }
+    },
+    "group_id": {
+      "showPlaceholderWithRatio": true,
+      "dependentOn": [
+        "business_unit"
+      ],
+      "payloadDependentOn": [
+        "business_unit"
+      ],
+      "itHaspayloadDependency": [
+        "channel"
+      ],
+      "itHasDependency": [
+        "customer"
+      ],
+      "reportFilterDependency": [
+        "channel"
+      ],
+      "application_code": 4,
+      "filterpayloadDependentOn": [],
+      "dataType": "string",
+      "validation_rules": {},
+      "field_validation": {},
+      "group_field_validation": [],
+      "apiCall": true,
+      "apiCallMethod": "POST",
+      "apiCallType": "PLANSMART",
+      "apiEndPoint": "/core/attribute-filter/store",
+      "dimension": "store",
+      "defults": {
+        "fc_code": 161,
+        "label": "Group",
+        "column_name": "group_id",
+        "type": "cascaded",
+        "display_type": "dropdown",
+        "level": null,
+        "dimension": "store",
+        "is_mandatory": true,
+        "is_multiple_selection": false,
+        "range_min": null,
+        "range_max": null,
+        "default_value": null,
+        "is_disabled": false,
+        "is_clearable": true,
+        "display_order": 5,
+        "is_required": false,
+        "extra": {
+          "showPlaceholderWithRatio": true
+        },
+        "is_deleted": false,
+        "accessor": "group_id",
+        "attribute_type": "create_plan",
+        "field_type": "dropdown",
+        "filter_type": "cascaded",
+        "isDisabled": false,
+        "required": true,
+        "isMulti": false,
+        "isClearable": true,
+        "disablePast": true
+      }
+    },
+    "channel": {
+      "showPlaceholderWithRatio": true,
+      "dependentOn": [
+        "business_unit",
+        "group_id"
+      ],
+      "payloadDependentOn": [
+        "business_unit",
+        "group_id"
+      ],
+      "reportFilterDependency": [],
+      "itHaspayloadDependency": [],
+      "filterpayloadDependentOn": [],
+      "itHasDependency": [],
+      "application_code": 4,
+      "dataType": "string",
+      "api_end_point": null,
+      "validation_rules": {},
+      "field_validation": {},
+      "group_field_validation": [],
+      "apiCall": true,
+      "apiCallMethod": "POST",
+      "apiCallType": "PLANSMART",
+      "apiEndPoint": "/core/attribute-filter/store",
+      "dimension": "store",
+      "defults": {
+        "fc_code": 161,
+        "label": "Customer",
+        "column_name": "channel",
+        "type": "cascaded",
+        "display_type": "dropdown",
+        "level": null,
+        "dimension": "store",
+        "is_mandatory": true,
+        "is_multiple_selection": false,
+        "range_min": null,
+        "range_max": null,
+        "default_value": null,
+        "is_disabled": false,
+        "is_clearable": true,
+        "display_order": 6,
+        "is_required": false,
+        "extra": {
+          "showPlaceholderWithRatio": true
+        },
+        "is_deleted": false,
+        "accessor": "channel",
+        "attribute_type": "create_plan",
+        "field_type": "dropdown",
+        "filter_type": "cascaded",
+        "isDisabled": false,
+        "required": true,
+        "isMulti": false,
+        "isClearable": true,
+        "disablePast": true
+      }
+    },
+    "l1_name": {
+      "showPlaceholderWithRatio": true,
+      "dependentOn": [
+        "business_unit"
+      ],
+      "payloadDependentOn": [
+        "business_unit"
+      ],
+      "itHasDependency": [
+        "l2_name",
+        "l3_name"
+      ],
+      "itHaspayloadDependency": [
+        "l2_name",
+        "l3_name"
+      ],
+      "reportFilterDependency": [
+        "l2_name",
+        "l3_name"
+      ],
+      "filterpayloadDependentOn": [],
+      "application_code": 4,
+      "dataType": "array",
+      "validation_rules": {},
+      "field_validation": {},
+      "group_field_validation": [],
+      "apiCall": true,
+      "apiCallMethod": "POST",
+      "apiCallType": "PLANSMART",
+      "apiEndPoint": "/core/attribute-filter/product",
+      "dimension": "Product",
+      "options": [],
+      "defults": {
+        "fc_code": 161,
+        "label": "Department",
+        "column_name": "l1_name",
+        "type": "cascaded",
+        "display_type": "dropdown",
+        "level": 2,
+        "dimension": "product",
+        "is_mandatory": true,
+        "is_multiple_selection": false,
+        "range_min": null,
+        "range_max": null,
+        "default_value": null,
+        "is_disabled": false,
+        "is_clearable": true,
+        "display_order": 7,
+        "is_required": false,
+        "extra": {
+          "showPlaceholderWithRatio": true
+        },
+        "is_deleted": false,
+        "accessor": "l1_name",
+        "attribute_type": "create_plan",
+        "field_type": "dropdown",
+        "filter_type": "cascaded",
+        "isDisabled": false,
+        "required": true,
+        "isMulti": false,
+        "isClearable": true,
+        "disablePast": true
+      }
+    },
+    "l2_name": {
+      "showPlaceholderWithRatio": true,
+      "dependentOn": [
+        "l1_name"
+      ],
+      "payloadDependentOn": [
+        "business_unit",
+        "l1_name"
+      ],
+      "itHaspayloadDependency": [
+        "l3_name"
+      ],
+      "reportFilterDependency": [
+        "l3_name"
+      ],
+      "itHasDependency": [
+        "l3_name"
+      ],
+      "filterpayloadDependentOn": [
+        "l1_name"
+      ],
+      "application_code": 4,
+      "dataType": "array",
+      "validation_rules": {
+        "*[2]": {
+          "l3_name": {}
+        }
+      },
+      "field_validation": {},
+      "group_field_validation": [],
+      "apiCall": true,
+      "apiCallMethod": "POST",
+      "apiCallType": "PLANSMART",
+      "apiEndPoint": "/core/attribute-filter/product",
+      "dimension": "Product",
+      "options": [],
+      "defults": {
+        "fc_code": 161,
+        "label": "Class",
+        "column_name": "l2_name",
+        "type": "cascaded",
+        "display_type": "dropdown",
+        "level": 3,
+        "dimension": "product",
+        "is_mandatory": true,
+        "is_multiple_selection": true,
+        "range_min": null,
+        "range_max": null,
+        "default_value": null,
+        "is_disabled": false,
+        "is_clearable": true,
+        "display_order": 8,
+        "is_required": false,
+        "extra": {
+          "showPlaceholderWithRatio": true
+        },
+        "is_deleted": false,
+        "accessor": "l2_name",
+        "attribute_type": "create_plan",
+        "field_type": "dropdown",
+        "filter_type": "cascaded",
+        "isDisabled": false,
+        "required": true,
+        "isMulti": true,
+        "isClearable": true,
+        "disablePast": true
+      }
+    },
+    "l3_name": {
+      "showPlaceholderWithRatio": true,
+      "dependentOn": [
+        "l2_name"
+      ],
+      "payloadDependentOn": [
+        "business_unit",
+        "l1_name",
+        "l2_name"
+      ],
+      "reportFilterDependency": [],
+      "filterpayloadDependentOn": [
+        "l1_name",
+        "l2_name"
+      ],
+      "itHaspayloadDependency": [],
+      "itHasDependency": [],
+      "application_code": 4,
+      "dataType": "array",
+      "validation_rules": {},
+      "field_validation": {},
+      "group_field_validation": [],
+      "apiCall": true,
+      "apiCallMethod": "POST",
+      "apiCallType": "PLANSMART",
+      "apiEndPoint": "/core/attribute-filter/product",
+      "dimension": "Product",
+      "options": [],
+      "defults": {
+        "fc_code": 161,
+        "label": "Line",
+        "column_name": "l3_name",
+        "type": "cascaded",
+        "display_type": "dropdown",
+        "level": 2,
+        "dimension": "product",
+        "is_mandatory": false,
+        "is_multiple_selection": true,
+        "range_min": null,
+        "range_max": null,
+        "default_value": null,
+        "is_disabled": false,
+        "is_clearable": true,
+        "display_order": 9,
+        "is_required": false,
+        "extra": {
+          "showPlaceholderWithRatio": true
+        },
+        "is_deleted": false,
+        "accessor": "l3_name",
+        "attribute_type": "create_plan",
+        "field_type": "dropdown",
+        "filter_type": "cascaded",
+        "isDisabled": false,
+        "required": false,
+        "isMulti": true,
+        "isClearable": true,
+        "disablePast": true
+      }
+    },
+    "plan_stage": {
+      "showPlaceholderWithRatio": true,
+      "validation_rules": {},
+      "field_validation": {},
+      "group_field_validation": [],
+      "filterpayloadDependentOn": [],
+      "itHaspayloadDependency": [],
+      "reportFilterDependency": [],
+      "apiCall": true,
+      "application_code": 4,
+      "apiCallMethod": "POST",
+      "apiCallType": "PLANSMART",
+      "payloadDependentOn": [],
+      "dataType": "number",
+      "apiEndPoint": "/plan-smart/tenant-config",
+      "dimension": "store",
+      "options": [],
+      "defults": {
+        "fc_code": 161,
+        "label": "Plan Stage",
+        "column_name": "plan_stage",
+        "type": "cascaded",
+        "display_type": "dropdown",
+        "level": null,
+        "dimension": "plan",
+        "is_mandatory": true,
+        "is_multiple_selection": false,
+        "range_min": null,
+        "range_max": null,
+        "default_value": null,
+        "is_disabled": false,
+        "is_clearable": true,
+        "display_order": 10,
+        "is_required": false,
+        "extra": {
+          "showPlaceholderWithRatio": true
+        },
+        "is_deleted": false,
+        "accessor": "plan_stage",
+        "attribute_type": "create_plan",
+        "field_type": "dropdown",
+        "filter_type": "cascaded",
+        "isDisabled": false,
+        "required": true,
+        "isMulti": false,
+        "isClearable": true,
+        "disablePast": true
+      }
+    },
+    "plan_display_name": {
+      "maxLengthLimit": 64,
+      "dataType": "string",
+      "validation_rules": {},
+      "field_validation": {},
+      "reportFilterDependency": [],
+      "itHaspayloadDependency": [],
+      "payloadDependentOn": [],
+      "application_code": 4,
+      "group_field_validation": [],
+      "filterpayloadDependentOn": [],
+      "defults": {
+        "fc_code": 161,
+        "label": "Plan Stage",
+        "column_name": "plan_stage",
+        "type": "cascaded",
+        "display_type": "dropdown",
+        "level": null,
+        "dimension": "plan",
+        "is_mandatory": true,
+        "is_multiple_selection": false,
+        "range_min": null,
+        "range_max": null,
+        "default_value": null,
+        "is_disabled": false,
+        "is_clearable": true,
+        "display_order": 10,
+        "is_required": false,
+        "extra": {
+          "showPlaceholderWithRatio": true
+        },
+        "is_deleted": false,
+        "accessor": "plan_stage",
+        "attribute_type": "create_plan",
+        "field_type": "dropdown",
+        "filter_type": "cascaded",
+        "isDisabled": false,
+        "required": true,
+        "isMulti": false,
+        "isClearable": true,
+        "disablePast": true
+      }
+    },
+    "plansmart_reports_buckets": {
+      "showPlaceholderWithRatio": true,
+      "dependentOn": [],
+      "payloadDependentOn": [],
+      "itHasDependency": [],
+      "reportFilterDependency": [],
+      "itHaspayloadDependency": [],
+      "filterpayloadDependentOn": [],
+      "application_code": 4,
+      "dataType": "array",
+      "validation_rules": {},
+      "field_validation": {},
+      "group_field_validation": [],
+      "apiCall": false,
+      "apiCallMethod": "GET",
+      "apiCallType": "PLANSMART",
+      "apiEndPoint": "/core/tenant-config/4?attribute_name=plansmart_reports_buckets",
+      "dimension": "Product",
+      "options": [
+        {
+          "value": "comp",
+          "label": "Comp"
+        },
+        {
+          "value": "non_comp",
+          "label": "NComp"
+        }
+      ],
+      "defults": {
+        "fc_code": 751,
+        "label": "Bucket",
+        "column_name": "plansmart_reports_buckets",
+        "type": "cascaded",
+        "display_type": "dropdown",
+        "level": null,
+        "dimension": "plan",
+        "is_mandatory": false,
+        "is_multiple_selection": true,
+        "range_min": null,
+        "range_max": null,
+        "default_value": null,
+        "is_disabled": false,
+        "is_clearable": true,
+        "display_order": 9,
+        "is_required": false,
+        "extra": {},
+        "update_on": null,
+        "update_by": null,
+        "is_deleted": false,
+        "accessor": "plansmart_reports_buckets",
+        "attribute_type": "create_plan",
+        "field_type": "dropdown",
+        "filter_type": "cascaded",
+        "isDisabled": false,
+        "required": false,
+        "isMulti": true,
+        "isClearable": true,
+        "disablePast": true
+      }
+    },
+    "version": {
+      "showPlaceholderWithRatio": true,
+      "dependentOn": [],
+      "payloadDependentOn": [],
+      "itHasDependency": [],
+      "reportFilterDependency": [],
+      "itHaspayloadDependency": [],
+      "filterpayloadDependentOn": [],
+      "application_code": 4,
+      "dataType": "array",
+      "validation_rules": {},
+      "field_validation": {},
+      "group_field_validation": [],
+      "apiCall": false,
+      "apiCallMethod": "GET",
+      "apiCallType": "PLANSMART",
+      "apiEndPoint": "/core/tenant-config/4?attribute_name=plansmart_reports_buckets",
+      "dimension": "Product",
+      "options": [
+        {
+          "value": "OP",
+          "label": "OP"
+        },
+        {
+          "value": "WF",
+          "label": "WF"
+        },
+        {
+          "value": "WP",
+          "label": "WP"
+        },
+        {
+          "value": "LF",
+          "label": "LF"
+        }
+      ],
+      "defults": {
+        "fc_code": 752,
+        "label": "Version",
+        "column_name": "version",
+        "type": "cascaded",
+        "display_type": "dropdown",
+        "level": null,
+        "dimension": "report",
+        "is_mandatory": true,
+        "is_multiple_selection": false,
+        "range_min": null,
+        "range_max": null,
+        "default_value": null,
+        "is_disabled": false,
+        "is_clearable": true,
+        "display_order": 8,
+        "is_required": false,
+        "extra": {},
+        "is_deleted": false
+      }
+    },
+    "l0_name": {
+      "showPlaceholderWithRatio": true,
+      "dependentOn": [],
+      "payloadDependentOn": [],
+      "itHasDependency": [
+        "l2_name",
+        "l3_name",
+        "l1_name"
+      ],
+      "itHaspayloadDependency": [
+        "l2_name",
+        "l3_name",
+        "l1_name"
+      ],
+      "reportFilterDependency": [
+        "l2_name",
+        "l3_name",
+        "l1_name"
+      ],
+      "filterpayloadDependentOn": [],
+      "application_code": 4,
+      "dataType": "array",
+      "validation_rules": {},
+      "field_validation": {},
+      "group_field_validation": [],
+      "apiCall": true,
+      "apiCallMethod": "POST",
+      "apiCallType": "PLANSMART",
+      "apiEndPoint": "/core/attribute-filter/product",
+      "dimension": "Product",
+      "options": [],
+      "defults": {}
+    }
+  },
+  "report_options": [
+    {
+      "label": "Corporate/ OTB",
+      "value": "otb_report"
+    },
+    {
+      "label": "Executive Reports",
+      "value": "executive_report"
+    },
+    {
+      "label": "Rollup Reports",
+      "value": "rollup_report"
+    }
+  ]
+}

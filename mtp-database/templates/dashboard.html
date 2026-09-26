@@ -1,0 +1,109 @@
+{% include "header.html" %}
+
+<div class="pagetitle">
+	<h1>Home</h1>
+</div>
+
+<section class="section">
+      <div class="row">
+		<div class="col-lg-6">
+			<b>Existing One</b>
+			<form action="" method="post" onsubmit='add_loader();'>
+				<table width='100%'>
+					<tr><td><b>Stored Procedures Changelogs</b></td></tr>
+					{% for filename in glob.iglob("liquibase/{}/changelog_sps_*.xml".format(client), recursive=True) %}
+						<tr>
+							<td>
+								<input {{ 'checked' if inputs['release_file'] == filename else '' }} onclick='document.getElementById("review_box").value = this.getAttribute("data-content");' name='release_file' type='radio' value='{{filename}}' data-content='{{Path(filename).read_text()}}' id="{{filename}}" class="form-check-input" required />
+								<label class="form-check-label" for="{{filename}}">{{ "|".join(filename.split("/")) | replace("|", " → ") }}</label>
+							</td>
+						</tr>
+					{% endfor %}
+					<tr><td><b>Tables Changelogs</b></td></tr>
+					{% for filename in glob.iglob("liquibase/{}/changelog_tables_*.xml".format(client), recursive=True) %}
+						<tr>
+							<td>
+								<input {{ 'checked' if inputs['release_file'] == filename else '' }} onclick='document.getElementById("review_box").value = this.getAttribute("data-content");' name='release_file' type='radio' value='{{filename}}' data-content='{{Path(filename).read_text()}}' id="{{filename}}" class="form-check-input" required />
+								<label class="form-check-label" for="{{filename}}">{{ "|".join(filename.split("/")) | replace("|", " → ") }}</label>
+							</td>
+						</tr>
+					{% endfor %}
+					<tr><td><b>Master Changelogs</b></td></tr>
+					{% for filename in glob.iglob("liquibase/{}/master_*.xml".format(client), recursive=True) %}
+						<tr>
+							<td>
+								<input {{ 'checked' if inputs['release_file'] == filename else '' }} onclick='document.getElementById("review_box").value = this.getAttribute("data-content");' name='release_file' type='radio' value='{{filename}}' data-content='{{Path(filename).read_text()}}' id="{{filename}}" class="form-check-input" required />
+								<label class="form-check-label" for="{{filename}}">{{ "|".join(filename.split("/")) | replace("|", " → ") }}</label>
+							</td>
+						</tr>
+					{% endfor %}
+					<tr><td><b>Custom Releases</b></td></tr>
+					{% for filename in glob.iglob("releases/{}/**/*.xml".format(client), recursive=True) %}
+						<tr>
+							<td>
+								<input {{ 'checked' if inputs['release_file'] == filename else '' }} onclick='document.getElementById("review_box").value = this.getAttribute("data-content");' name='release_file' type='radio' value='{{filename}}' data-content='{{Path(filename).read_text()}}' id="{{filename}}" required />
+								<label for="{{filename}}">{{" --> ".join(filename.split("/"))}}</label>
+							</td>
+						</tr>
+					{% endfor %}
+						<!--tr>
+							<td>
+								<input name='release_file' type='radio' value='' data-content='' id="xxxxx" required />
+								<label for="xxxxx"><input onclick='document.getElementById("xxxxx").click();' onfocusout='document.getElementById("xxxxx").value = this.value;' type='text' style='width:80%;' /></label>
+							</td>
+						</tr-->
+					<tr>
+						<td>
+							<span style="float:left;"><br/><b>Review:</b></span>
+							<textarea id='review_box' class="form-control" style='width:100%; height: 300px;'></textarea>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<br/>
+							<button type='submit' name='action' value='changelog-sync' class="btn btn-primary">Changelog Sync</button>
+							<button type='submit' name='action' value='update' class="btn btn-primary">Update</button>
+							<button type='submit' name='action' value='validate' class="btn btn-primary">Validate</button>
+							<button type='submit' name='action' value='updateSQL' class="btn btn-primary">Update Sql</button>
+							<br/>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+		<div class="col-lg-6">
+			<b>Create New</b>
+			<form action="" method="post" onsubmit='add_loader();'>
+				<table width='100%'>
+					<tr>
+						<td>
+							<input type='text' placeholder='Release Number' name='release_no' class="form-control" value="{{inputs['release_no']}}" required />
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<textarea rows="10" cols="50" placeholder='input files paths...' name='files' class="form-control" style='width:100%; height: 300px;' required >{{inputs['files']}}</textarea>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<button type="submit" name='action' value='generate_release_file' class="btn btn-primary">Generate new release files</button>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-12">
+			<b><br/>
+				<span style="float:left;">Output: </span>
+				{% if file_name %}
+					&nbsp;&nbsp;<a href="/download/{{file_name.replace('/','___')}}">Download</a>
+				{% endif %}
+			</b>
+			<textarea style='width:100%; height: 300px;' class="form-control">{{output if output else ""}}</textarea>
+		</div>
+	</div>
+</section>
+{% include "footer.html" %}

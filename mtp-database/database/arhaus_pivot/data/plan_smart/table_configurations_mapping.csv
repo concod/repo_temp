@@ -1,0 +1,57 @@
+"tc_code","label","column_name","dimension","type","is_frozen","is_editable","is_aggregated","order_of_display","is_hidden","is_required","tc_mapping_code","child_tc_mapping_code","aggregate_type","formatter","is_row_span","footer","is_searchable","extra","is_sortable","width","is_deleted","is_master_group"
+700,Division,l1_name,plan,str,false,false,false,1.0,false,true,"2944",,"","",true,"",false,"{}",false,200,false,false
+700,Department,l2_name,plan,list,false,false,false,2.0,false,true,"2945",,"","",true,"",false,"{}",false,200,false,false
+700,Class,l3_name,plan,str,false,false,false,3.0,false,true,"2946",,"","",true,"",false,"{}",false,200,false,false
+700,Season,season,plan,str,false,false,false,4.0,false,true,d76b58d1-abc3-4cb2-9529-a54d3cb33128,,"","",true,"",false,"{}",false,200,false,false
+700,User,user,plan,str,false,false,false,5.0,false,true,"2948",,"","",true,"",false,"{}",false,200,false,false
+700,Status,status,plan,str,false,false,false,6.0,false,true,"2947",,"","",true,"",false,"{}",false,200,false,false
+700,Date,date,plan,date,false,false,false,7.0,false,true,"2949",,"","",true,"",false,"{}",false,200,false,false
+700,Time,time,plan,datetime,false,false,false,8.0,false,true,"2950",,"","",true,"",false,"{""useUnformattedDateTime"":true}",false,200,false,false
+710,Class,l3_name,Product,list,false,false,false,10.0,,false,"2800014",,,,false,,true,"{}",true,200,false,false
+710,Created By,created_by,Plan,str,false,false,false,3.0,,false,"2800007",,,,false,,false,"{}",true,200,false,false
+710,Created On,created_at,Plan,str,false,false,false,4.0,,false,"2800008",,,,false,,false,"{}",true,200,false,false
+710,Department,l2_name,Product,str,false,false,false,9.0,,false,"2800013",,,,false,,true,"{}",true,200,false,false
+710,End Month,end_month,Plan,str,false,false,false,8.0,,false,"2800012",,,,false,,true,"{}",true,200,false,false
+710,End Year,end_year,Plan,number,false,false,false,7.0,,false,"2800011",,,,false,,true,"{}",true,140,false,false
+710,Last Updated At,updated_at,Plan,str,false,false,false,11.0,,false,"2800015",,,,false,,false,"{}",true,200,false,false
+710,Last Updated By,updated_by,Plan,str,false,false,false,12.0,,false,"2800016",,,,false,,false,"{}",true,200,false,false
+710,Plan Display Name,plan_display_name,Plan,str,false,false,false,2.0,,false,"2800006",,,,false,,true,"{}",true,200,false,false
+710,Start Month,start_month,Plan,str,false,false,false,6.0,,false,"2800010",,,,false,,true,"{}",true,200,false,false
+710,Start Year,start_year,Plan,number,false,false,false,5.0,,false,"2800009",,,,false,,true,"{}",true,140,false,false
+711,attribute_cluster_name,attribute_cluster_name,str,str,false,false,false,15.0,true,true,"377",,"","",false,"",false,"{}",true,200,false,false
+711,AUR,AUR,Other,dollar,false,false,true,5.0,false,false,"376",,sum,roundOff,false,"",false,"{}",true,200,false,false
+711,G Cluster,g_cluster,Other,str,false,false,false,1.0,false,false,"378",,"","",false,"",false,"{}",true,200,false,false
+711,Gross Margin ($),gross_margin,Other,dollar,false,false,true,9.0,false,false,"383",,sum,roundOff,false,"",false,"{}",true,200,false,false
+711,KPI/Metrics,metric,Plan,list,true,false,false,1.0,false,true,"359",,"","",false,"",false,"{}",true,200,false,false
+711,Lost Sales,lost_sales,Other,float,false,false,true,8.0,false,false,"382",,sum,roundOff,false,"",false,"{}",true,200,false,false
+711,Reference,reference,Plan,list,false,false,false,2.0,false,true,"360",,"","",false,"",false,"{}",true,200,false,false
+711,Store Code,store_code,str,str,false,false,true,13.0,true,true,"379",,"","",false,"",false,"{}",true,200,false,false
+711,Store Name,store_name,store,str,true,false,true,2.0,false,false,"2817",,"","",false,"",true,"{}",true,200,false,false
+711,Unit Receipt,unit_receipts,Other,float,false,false,true,12.0,false,false,"380",,sum,roundOff,false,"",false,"{}",true,200,false,false
+711,Unit Sales,unit_sales,Other,float,false,false,true,7.0,false,false,"381",,sum,roundOff,false,"",false,"{}",true,200,false,false
+712,Created By,created_by,Plan,str,false,false,false,3.0,,false,"60_created_by_Created by_Plan",,,,false,,false,"{}",true,200,false,false
+712,Created On,created_at,Plan,str,false,false,false,4.0,,false,"60_created_at_Created On_Plan",,,,false,,false,"{}",true,200,false,false
+712,End Month,end_month,Plan,str,false,false,false,8.0,,false,"60_end_month_End Month_Plan",,,,false,,true,"{}",true,200,false,false
+712,End Year,end_year,Plan,number,false,false,false,7.0,,false,"60_end_year_End Year_Plan",,,,false,,true,"{}",true,140,false,false
+712,Last Updated At,updated_at,Plan,str,false,false,false,11.0,,false,"60_updated_at_Last Updated At_Plan",,,,false,,false,"{}",true,200,false,false
+712,Last Updated By,updated_by,Plan,str,false,false,false,12.0,,false,"60_updated_by_Last Updated By_Plan",,,,false,,false,"{}",true,200,false,false
+712,Plan Display Name,plan_display_name,Plan,str,false,false,false,2.0,,false,"60_plan_display_name_User-Plan Name_Plan",,,,false,,true,"{}",true,200,false,false
+712,Start Month,start_month,Plan,str,false,false,false,6.0,,false,"60_start_month_Start Month_Plan",,,,false,,true,"{}",true,200,false,false
+712,Start Year,start_year,Plan,number,false,false,false,5.0,,false,"60_start_year_Start Year_Plan",,,,false,,true,"{}",true,140,false,false
+713,KPI/Metrics,metric,masterplan,list,true,false,false,1.0,false,true,"576",,"","",true,"",false,"{}",true,200,false,false
+713,Reference,reference,masterplan,list,true,false,false,2.0,false,true,"577",,"","",false,"",false,"{}",true,200,false,false
+714,KPI/Metrics,metric,Plan,list,true,false,false,1.0,false,true,"1799",,"","",true,"",false,"{""ignoreValueGetter"":true}",false,200,false,false
+714,Reference,reference,Plan,list,false,false,false,2.0,false,true,"1808",,"","",false,"",false,"{""ignoreValueGetter"":true,""hideToolTip"" : true}",false,400,false,false
+715,Created On,created_at,CreatedComparePlan,DateTimeField,false,false,false,4.0,false,false,"1831",,"","",false,"",false,"{}",true,200,false,false
+715,Plan Display Name,plan_display_name,CreatedComparePlan,str,false,false,false,2.0,false,false,"2725",,"","",false,"",false,"{}",true,200,false,false
+715,Plan Name,name,CreatedComparePlan,str,true,false,false,1.0,false,false,"1829",,"","",false,"",false,"{}",true,200,false,false
+715,Plan Version,plan_type,CreatedComparePlan,str,false,false,false,5.0,false,false,"1832",,"","",false,"",false,"{}",true,200,false,false
+715,Status,status,CreatedComparePlan,str,false,false,false,10.0,false,false,a2258751-14d0-48a8-a3b5-810388b8d992,,,,false,,false,"{}",true,200,false,false
+715,Year,fiscal_year,CreatedComparePlan,str,false,false,false,3.0,false,false,"373bcefc-7ce4-4695-9714-35c341390384",,,,false,,false,"{}",true,200,false,false
+716,kpiGroup,kpiGroup,Plan,list,true,false,false,1.0,false,true,"6000",,,,true,,false,"{}",false,200,false,false
+716,KPIs,KPIs,Plan,list,false,false,false,2.0,false,true,"6007",,,,true,,false,"{}",false,200,false,false
+716,Reference,reference,Plan,list,false,false,false,3.0,false,true,"6011",,,,false,,false,"{""hideToolTip"" : true}",false,200,false,false
+820,Parameters,parameters,plan,,false,false,false,1.0,false,false,"2800001",,,,false,,false,"{}",false,135,false,false
+820,Priority,priority,plan,,false,false,false,2.0,false,false,"2800002",,,,false,,false,"{}",false,135,false,false
+820,Target Value,targetValue,plan,percentage,false,true,false,3.0,,false,"2800003",,,,false,,false,"{}",false,135,false,false
+820,Threshold % Value,thresholdPercValue,plan,percentage,false,true,false,4.0,,false,"2800004",,,,false,,false,"{}",false,135,false,false

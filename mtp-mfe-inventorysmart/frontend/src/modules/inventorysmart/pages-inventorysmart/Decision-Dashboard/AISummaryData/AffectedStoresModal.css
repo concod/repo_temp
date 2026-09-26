@@ -1,0 +1,309 @@
+/* Wraps the inline (non-modal) drill-down rendered inside the "Store
+   Capacity & Total Store Velocity" accordion card's own expanded content,
+   once "View Affected Stores" is toggled open - matches the dashed
+   separator used by every other insight's inline directorySlot. */
+.affected-stores-inlineSection {
+  margin-top: 4px;
+  padding-top: 12px;
+  border-top: 1px dashed #e5e7eb;
+}
+
+.affected-stores-titleRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.affected-stores-title {
+  font-family: Manrope;
+  font-size: 16px;
+  font-weight: 800;
+  color: #1f2b4d;
+}
+
+.affected-stores-badge {
+  display: inline-flex;
+  height: 20px;
+  padding: 2px 8px;
+  align-items: center;
+  border-radius: var(--Sizes-S-1000, 1000px);
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.affected-stores-macroImpact {
+  display: flex;
+  padding: 8px;
+  border-radius: var(--Radius-R06, 6px);
+  border: 1px solid var(--Colors-Greys-200, #f5f6fa);
+  background: var(--Colors-Greys-100, #f8f9fb);
+  margin-bottom: 16px;
+}
+
+.affected-stores-macroImpact-label {
+  color: #31416e;
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.affected-stores-macroImpact-text {
+  color: #31416e;
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.affected-stores-tabsWrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.affected-stores-summaryRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 16px;
+}
+
+.affected-stores-summaryChip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-family: Manrope;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.affected-stores-summaryChip-value {
+  font-weight: 800;
+}
+
+.affected-stores-metaText {
+  color: #7a8294;
+  font-family: Manrope;
+  font-size: 13px;
+  font-weight: 500;
+  margin-left: auto;
+}
+
+.affected-stores-exportBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid #d9dde7;
+  background: #fff;
+  color: #1f2b4d;
+  font-family: Manrope;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.affected-stores-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.affected-store-card {
+  border: 1px solid #edeff5;
+  border-radius: 10px;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.affected-store-headerRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.affected-store-code {
+  font-family: Manrope;
+  font-size: 14px;
+  font-weight: 700;
+  color: #1f2b4d;
+}
+
+.affected-store-fwos {
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.affected-store-statusBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 1000px;
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.affected-store-subtitle {
+  color: #7a8294;
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 2px;
+}
+
+.affected-store-body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.affected-store-statsRow {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.affected-store-stat-labelRow {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #7a8294;
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.affected-store-stat-value {
+  font-family: Manrope;
+  font-size: 15px;
+  font-weight: 700;
+  color: #1f2b4d;
+  margin-top: 2px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.affected-store-stat-delta {
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.affected-store-stat-delta--pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 2px 8px;
+  border-radius: 1000px;
+}
+
+.affected-store-barSection {
+  flex: 1 1 320px;
+  min-width: 260px;
+}
+
+.affected-store-bar {
+  display: flex;
+  width: 100%;
+  height: 8px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.affected-store-barSegment {
+  height: 100%;
+}
+
+.affected-store-legend {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.affected-store-legendItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: 500;
+  color: #4b5563;
+  white-space: nowrap;
+}
+
+.affected-store-legendDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.affected-store-legendValue {
+  font-weight: 700;
+  color: #1f2b4d;
+}
+
+.affected-store-fwosBox {
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #f5f6fa;
+  background: #f8f9fb;
+}
+
+.affected-store-fwosBox-value {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.affected-store-fwosBox-number {
+  font-family: Manrope;
+  font-size: 22px;
+  font-weight: 800;
+  color: #e5484d;
+  line-height: 1;
+}
+
+.affected-store-fwosBox-label {
+  font-family: Manrope;
+  font-size: 13px;
+  font-weight: 600;
+  color: #1f2b4d;
+}
+
+.affected-store-fwosBox-desc {
+  margin-top: 6px;
+  font-family: Manrope;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: #6b7280;
+  line-height: 18px;
+}
+
+.affected-stores-placeholder {
+  padding: 40px 16px;
+  text-align: center;
+  color: #7a8294;
+  font-family: Manrope;
+  font-size: 13px;
+  font-weight: 500;
+}

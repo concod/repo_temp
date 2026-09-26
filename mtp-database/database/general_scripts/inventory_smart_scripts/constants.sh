@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+# ==============================================
+# Constants Configuration for Inventory Smart Scripts
+# ==============================================
+# This file contains all hardcoded values used across the inventory smart scripts
+# to make them easily configurable and maintainable.
+
+# --------- BITBUCKET CONFIGURATION ---------
+# Default Bitbucket authentication email
+DEFAULT_BITBUCKET_EMAIL="mithun.rangaswamy@impactanalytics.co"
+
+# Default Bitbucket workspace and repository
+DEFAULT_BITBUCKET_WORKSPACE="insideinsight"
+DEFAULT_BITBUCKET_REPO="mtp-database"
+
+# --------- TEAM LEAD REVIEWER CONFIGURATION ---------
+# Team lead reviewer UUIDs (fetched using bitbucket_get_default_reviewers.sh)
+# Update these UUIDs by running: ./bitbucket_get_default_reviewers.sh --output leads
+# Team leads: 
+# Pradeep J Nayak :: {8b2a6a6a-de9d-4e4f-a74a-8be8be28af70}
+# Surendra Babu :: {affe7981-af0c-429d-ad1f-3bfa29bd4eb5}
+#Raj Mohan :: {b0406b51-e79a-4415-b1f8-5d0d97059d46}
+# Arjun P P :: {f48da9bb-669a-4865-b286-d16d0ff77da2}
+DEFAULT_TEAM_LEAD_REVIEWER_UUIDS="{f48da9bb-669a-4865-b286-d16d0ff77da2},{b0406b51-e79a-4415-b1f8-5d0d97059d46},{affe7981-af0c-429d-ad1f-3bfa29bd4eb5},{8b2a6a6a-de9d-4e4f-a74a-8be8be28af70}"
+# DEFAULT_TEAM_LEAD_REVIEWER_UUIDS="{affe7981-af0c-429d-ad1f-3bfa29bd4eb5}"
+
+# Team lead names for reference (not used in scripts, just for documentation)
+TEAM_LEAD_NAMES="Arjun P P, Raj Mohan B, Surendra Babu, Pradeep Nayak"
+
+# --------- HELPER FUNCTIONS ---------
+# Load constants into environment variables with fallback defaults
+load_bitbucket_constants() {
+  # Set defaults if not already set via environment
+  BITBUCKET_USERNAME="${BITBUCKET_USERNAME:-$DEFAULT_BITBUCKET_EMAIL}"
+  BITBUCKET_WORKSPACE="${BITBUCKET_WORKSPACE:-$DEFAULT_BITBUCKET_WORKSPACE}"
+  BITBUCKET_REPO="${BITBUCKET_REPO:-$DEFAULT_BITBUCKET_REPO}"
+  TEAM_LEAD_REVIEWER_UUIDS="${TEAM_LEAD_REVIEWER_UUIDS:-$DEFAULT_TEAM_LEAD_REVIEWER_UUIDS}"
+}
+
+# Display current configuration (useful for debugging)
+show_bitbucket_config() {
+  echo "=== Bitbucket Configuration ==="
+  echo "Email: ${BITBUCKET_USERNAME:-$DEFAULT_BITBUCKET_EMAIL}"
+  echo "Workspace: ${BITBUCKET_WORKSPACE:-$DEFAULT_BITBUCKET_WORKSPACE}"
+  echo "Repository: ${BITBUCKET_REPO:-$DEFAULT_BITBUCKET_REPO}"
+  echo "Team Leads: ${TEAM_LEAD_NAMES}"
+  echo "Team Lead UUIDs: ${TEAM_LEAD_REVIEWER_UUIDS:-$DEFAULT_TEAM_LEAD_REVIEWER_UUIDS}"
+  echo "=============================="
+}

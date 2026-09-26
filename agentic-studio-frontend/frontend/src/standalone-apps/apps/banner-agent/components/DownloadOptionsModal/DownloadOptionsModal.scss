@@ -1,0 +1,148 @@
+.ba-download-modal {
+    align-items: center;
+    display: flex;
+    inset: 0;
+    justify-content: center;
+    padding: 16px;
+    position: fixed;
+    z-index: 1250;
+}
+
+.ba-download-modal__backdrop {
+    backdrop-filter: blur(2px);
+    background: rgba(4, 8, 16, 0.58);
+    inset: 0;
+    position: absolute;
+}
+
+.ba-download-modal__content {
+    background: #fff;
+    border: 1px solid #d8dee8;
+    border-radius: 20px;
+    box-shadow: 0 30px 60px rgba(16, 23, 37, 0.24);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 460px;
+    padding: 18px;
+    position: relative;
+    width: min(100%, 460px);
+}
+
+.ba-download-modal__header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.ba-download-modal__header h3 {
+    color: #0c1524;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.ba-download-modal__header button {
+    align-items: center;
+    background: #f1f4f8;
+    border: 1px solid #d8dee8;
+    border-radius: 10px;
+    color: #46506a;
+    cursor: pointer;
+    display: inline-flex;
+    height: 32px;
+    justify-content: center;
+    width: 32px;
+}
+
+.ba-download-modal__header button svg {
+    height: 14px;
+    width: 14px;
+}
+
+.ba-download-modal__error,
+.ba-download-modal__progress {
+    border-radius: 10px;
+    font-size: 13px;
+    margin: 0;
+    padding: 10px;
+}
+
+.ba-download-modal__error {
+    background: #fff0f1;
+    border: 1px solid #f4c8ce;
+    color: #ae2f3d;
+}
+
+.ba-download-modal__progress {
+    background: #eff6ff;
+    border: 1px solid #caddff;
+    color: #274879;
+}
+
+.ba-download-modal__preview {
+    background: #f7fafc;
+    border: 1px solid #d8dee8;
+    border-radius: 14px;
+    display: flex;
+    justify-content: center;
+    min-height: 220px;
+    overflow: hidden;
+}
+
+.ba-download-modal__preview img {
+    display: block;
+    height: 220px;
+    object-fit: contain;
+    width: 100%;
+}
+
+.ba-download-modal__preview-empty {
+    width: 100%;
+}
+
+.ba-download-modal__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.ba-download-modal__actions button {
+    align-items: center;
+    background: #1f63ff;
+    border: 0;
+    border-radius: 12px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    font: inherit;
+    font-weight: 600;
+    gap: 8px;
+    justify-content: center;
+    min-height: 44px;
+    padding: 10px 14px;
+}
+
+.ba-download-modal__actions button svg {
+    height: 16px;
+    width: 16px;
+}
+
+.ba-download-modal__actions button.enhanced {
+    background: linear-gradient(120deg, #1f7a52, #22a66c);
+}
+
+.ba-download-modal__actions button em {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 999px;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    padding: 3px 7px;
+}
+
+.ba-download-modal__actions button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}

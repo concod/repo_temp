@@ -1,0 +1,45 @@
+.v3-custom-button-wrapper {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.v3-custom-button-wrapper:hover {
+  background-color: #ebf3fe;
+}
+
+.v3-button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-action-button > span {
+  width: 24px;
+  height: 24px;
+}
+
+.custom-action-button > span > svg {
+  width: 24px;
+  height: 24px;
+}
+
+.custom-action-button path {
+  fill: #394960 !important;
+}
+
+.custom-action-button:hover path {
+  fill: #0055af !important;
+}
+
+.custom-action-button-icon {
+  margin-bottom: 0 !important;
+}
+
+.disabled-button {
+  opacity: 0.4 !important;
+  pointer-events: none !important;
+}

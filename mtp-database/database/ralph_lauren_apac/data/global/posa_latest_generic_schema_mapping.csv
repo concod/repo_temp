@@ -1,0 +1,13 @@
+source_column_name,source_column_datatype,required_in_product,generic_column_name,is_pk,generic_column_datatype,formula,is_attribute,is_hierarchy,hierarchy_level,is_null_allowed,unique_by,display_name,is_partition_col,is_clustering_col
+allocated_qty,INTEGER,true,allocated_qty,false,int4,,false,false,,true,false,,false,
+channel,STRING,true,channel,false,varchar,,false,false,,false,false,,false,
+not_after_date,DATE,true,not_after_date,false,date,,false,false,,false,false,,false,
+not_before_date,DATE,true,not_before_date,false,date,,false,false,,false,false,,false,
+dc_code,STRING,true,dc_code,false,varchar,,false,false,,false,false,,false,
+available_qty,INTEGER,true,available_qty,false,int4,,false,false,,false,false,,false,
+syncstartdatetime,DATE,true,syncstartdatetime,false,date,,false,false,,false,false,,false,
+inventtransid,STRING,true,inventtransid,false,varchar,,false,false,,false,false,,false,
+inventtransid_channel,STRING,true,inventtransid_channel,false,varchar,,false,false,,false,true,,false,
+po_code,STRING,true,po_code,false,varchar,,false,false,,false,true,,false,
+product_code,STRING,true,product_code,false,varchar,,false,false,,false,true,,false,
+requirement_date,DATE,true,requirement_date,false,date,,false,false,,false,true,,false,

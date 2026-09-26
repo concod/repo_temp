@@ -1,0 +1,507 @@
+--liquibase formatted sql
+--changeset anoop.madamsetty@impactanalytics.co:fn_fetch_decisions_dashboard_bl_vs_ia_graph_data-3 runOnChange:true stripComments:false splitStatements:false context:Release_1_0 labels:approval
+--comment: changed store hierarchy filter logic
+
+
+DROP FUNCTION if exists price_markdown.fn_fetch_decisions_dashboard_bl_vs_ia_graph_data;
+
+CREATE OR REPLACE FUNCTION price_markdown.fn_fetch_decisions_dashboard_bl_vs_ia_graph_data(
+    _strategy_id integer[],
+    currency_ids integer[],
+    product_h1 integer[],
+    product_h2 integer[],
+    product_h3 integer[],
+    product_h4 integer[],
+    product_h5 integer[],
+    _s0_ids integer[],
+    _s1_ids integer[],
+    _s2_ids integer[],
+    _s3_ids integer[],
+    _s4_ids integer[],
+	strategy_status integer[],
+    _view_by text,
+    _start_date date,
+    _end_date date,
+    in_user_id integer
+)
+ RETURNS TABLE(decisiondashboardchartdata jsonb)
+ LANGUAGE plpgsql
+ SECURITY DEFINER
+AS $function$
+DECLARE
+    query_ text :=  '';
+   	dummy_data_query text:=    'select null::jsonb';
+	filtered_strategy_ids integer[];
+	product_hierarchy_level integer;
+	product_hierarchy_values integer[];
+	strategy_where_arr text[];
+	q1 text;
+	start_time TIMESTAMP;
+    end_time TIMESTAMP;
+	vl_test_query text;
+	_aggregate_key text := '';
+	target_currency_multiplier float;
+begin
+	if array_length(_strategy_id, 1) > 0 then
+		filtered_strategy_ids := _strategy_id;
+	else
+		if array_length(product_h5, 1) > 0 then
+			product_hierarchy_level := 4;
+			product_hierarchy_values := product_h5;
+		elsif array_length(product_h4, 1) > 0 then
+			product_hierarchy_level := 3;
+			product_hierarchy_values := product_h4;
+		elsif array_length(product_h3, 1) > 0 then
+			product_hierarchy_level := 2;
+			product_hierarchy_values := product_h3;
+		elsif array_length(product_h2, 1) > 0 then
+			product_hierarchy_level := 1;
+			product_hierarchy_values := product_h2;
+		elsif array_length(product_h1, 1) > 0 then
+			product_hierarchy_level := 0;
+			product_hierarchy_values := product_h1;
+		else
+			product_hierarchy_level := -1;
+		end if;
+
+
+		if product_hierarchy_level <> -1 then
+			strategy_where_arr := array_append(strategy_where_arr, format('and sm.strategy_id IN (
+				    SELECT
+			            strategy_id
+			        FROM
+			            price_markdown.tb_strategy_hierarchy
+			        WHERE is_product_hierarchy = 1
+				    AND hierarchy_level = %1$s::integer
+				    AND hierarchy_value = ANY(array[%2$s])
+		    	)', product_hierarchy_level, array_to_string(product_hierarchy_values, ','))) ;
+				RAISE NOTICE 'strategy_where_arr 1 statement: %', strategy_where_arr;
+		end if;
+
+
+	    strategy_where_arr := array_append(strategy_where_arr, format('and sm.strategy_id IN (
+            select
+                strategy_id
+            from price_markdown.tb_strategy_store_hierarchies tsh
+            where
+                s0_ids && array[%1$s]::bigint[]
+                and (
+                    array_length(array[%2$s]::bigint[],1) is null
+                    or s1_ids && array[%2$s]::bigint[]
+                )
+                and (
+                    array_length(array[%3$s]::bigint[],1) is null
+                    or s2_ids && array[%3$s]::bigint[]
+                )
+                and (
+                    array_length(array[%4$s]::bigint[],1) is null
+                    or s3_ids && array[%4$s]::bigint[]
+                )
+                and (
+                    array_length(array[%5$s]::bigint[],1) is null
+                    or s4_ids && array[%5$s]::bigint[]
+                )
+        )',
+        array_to_string(_s0_ids,','),
+        array_to_string(_s1_ids,','),
+        array_to_string(_s2_ids,','),
+        array_to_string(_s3_ids,','),
+        array_to_string(_s4_ids,',')
+        )
+    );
+
+		if array_length(strategy_status, 1) > 0 then
+			strategy_where_arr := array_append(strategy_where_arr, format('and sm.status = ANY(array[%s])', array_to_string(strategy_status, ',')));
+		else
+			strategy_where_arr := array_append(strategy_where_arr, format('and sm.status in (1,2,3,4,6)'));
+		end if;
+		vl_test_query := format('select
+							array_agg(sm.strategy_id)
+						  from
+							price_markdown.tb_strategy_master sm
+						  where
+							sm.start_date <= ''%2$s''::date
+							and sm.end_date >= ''%1$s''::date
+							%3$s', _start_date, _end_date, array_to_string(strategy_where_arr, ' '));
+		--raise notice ' strategy filter query ----- %', query_;
+		RAISE NOTICE 'vl_test_query 4 statement: %', vl_test_query;
+		start_time := clock_timestamp();
+		execute vl_test_query into filtered_strategy_ids;
+		end_time := clock_timestamp();
+	    RAISE NOTICE 'Time taken SQL 4 statement: %', end_time - start_time;
+	end if;
+
+	if array_length(filtered_strategy_ids, 1) > 0 then
+	RAISE NOTICE 'filtered_strategy_ids : %', filtered_strategy_ids;
+	RAISE NOTICE 'Input ids  : %', _strategy_id;
+
+	if _view_by = 'weekly' then
+		_aggregate_key = 'format(''FW%s %s'',fdm.fiscal_week,fdm.fiscal_year)';
+	elseif _view_by = 'monthly' then
+		_aggregate_key = 'format(''FM%s %s'',fdm.fiscal_month,fdm.fiscal_year)';
+	else
+		_aggregate_key = 'format(''Q%s %s'',extract(quarter from metrics.recommendation_date),fdm.fiscal_year)';
+	end if;
+
+	select * from price_markdown.fn_v3_fetch_currency_forex_multiplier(currency_ids) into target_currency_multiplier;
+	RAISE NOTICE 'Target currency multiplier  : %', target_currency_multiplier;
+
+	BEGIN
+	    vl_test_query :=  'drop table if exists tb_temp_1_strategy_metrics;';
+		execute vl_test_query;
+
+		vl_test_query :=  ('create temp table tb_temp_1_strategy_metrics as
+							select *
+    	from price_markdown.tb_strategy_date_metrics_fin' || Format(' where strategy_id = ANY(%L)', filtered_strategy_ids) || Format(' and recommendation_date between %L and %L', _start_date, _end_date) || ' and is_approved = 1'
+							);
+		RAISE NOTICE 'tb_temp_1_strategy_metrics 1 statement: %', vl_test_query;
+
+		start_time := clock_timestamp();
+		execute vl_test_query using filtered_strategy_ids;
+		end_time := clock_timestamp();
+		RAISE NOTICE 'Time taken SQL tb_temp_1_strategy_metrics 1 statement: %', end_time - start_time;
+
+
+		vl_test_query :=  'drop table if exists tb_temp_1_strategy_ia_reco;';
+		execute vl_test_query;
+
+		vl_test_query :=  ( 'create temp table tb_temp_1_strategy_ia_reco as
+							 select *
+    	from price_markdown.tb_strategy_date_metrics_ia' || Format(' where strategy_id = ANY(%L)', filtered_strategy_ids) || Format(' and recommendation_date between %L::date and %L::date', _start_date, _end_date) || ' and is_approved = 1'
+							 );
+		RAISE NOTICE 'vl_test_query tb_temp_1_strategy_ia_reco statement: %', vl_test_query;
+
+		start_time := clock_timestamp();
+		execute vl_test_query using filtered_strategy_ids;
+		end_time := clock_timestamp();
+		RAISE NOTICE 'Time taken SQL tb_temp_1_strategy_ia_reco statement: %', end_time - start_time;
+
+
+      vl_test_query :=  'drop table if exists tb_temp_1_bl_inventory_at_end;';
+	  execute vl_test_query;
+	  vl_test_query :=  format('create temp table tb_temp_1_bl_inventory_at_end as
+				select aggregate_key,sum(remaining_inv) as remaining_inv,
+						sum(inventory_cost * %1$s) as inventory_cost,
+						sum(inventory_retail * %1$s) as inventory_retail
+				from (
+					select
+					row_number() over (
+						partition by metrics.strategy_id, %2$s
+						order by metrics.strategy_id,recommendation_date asc
+					) as rank_,
+					inventory as remaining_inv,
+					inventory_cost,
+					inventory_retail,
+					metrics.strategy_id,
+					%2$s as aggregate_key
+					from tb_temp_1_strategy_metrics metrics
+					inner join global.tb_fiscal_date_mapping fdm on fdm.date = metrics.recommendation_date
+					) inventory_subquery
+				where rank_ = 1
+				group by 1', target_currency_multiplier, _aggregate_key);
+
+		RAISE NOTICE 'vl_test_query tb_temp_1_bl_inventory_at_end statement: %', vl_test_query;
+		start_time := clock_timestamp();
+		execute vl_test_query;
+		end_time := clock_timestamp();
+		RAISE NOTICE 'Time taken SQL tb_temp_1_bl_inventory_at_end statement: %', end_time - start_time;
+
+
+      vl_test_query :=  'drop table if exists tb_temp_1_ia_reco_inventory_at_end;';
+	  execute vl_test_query;
+			vl_test_query :=  format('create temp table tb_temp_1_ia_reco_inventory_at_end as
+				select aggregate_key,sum(remaining_inv) as remaining_inv,
+						sum(inventory_cost * %1$s) as inventory_cost,
+						sum(inventory_retail * %1$s) as inventory_retail
+				from (
+					select
+					row_number() over (
+						partition by metrics.strategy_id, %2$s
+						order by metrics.strategy_id,recommendation_date asc
+					) as rank_,
+					inventory as remaining_inv,
+					inventory_cost,
+					inventory_retail,
+					metrics.strategy_id,
+					%2$s as aggregate_key
+					from tb_temp_1_strategy_ia_reco metrics
+					inner join global.tb_fiscal_date_mapping fdm on fdm.date = metrics.recommendation_date
+					) inventory_subquery
+				where rank_ = 1
+				group by 1 ', target_currency_multiplier, _aggregate_key);
+
+		RAISE NOTICE 'vl_test_query tb_temp_1_ia_reco_inventory_at_end statement: %', vl_test_query;
+		start_time := clock_timestamp();
+		execute vl_test_query;
+		end_time := clock_timestamp();
+		RAISE NOTICE 'Time taken SQL tb_temp_1_ia_reco_inventory_at_end statement: %', end_time - start_time;
+
+
+      vl_test_query :=  'drop table if exists tb_temp_1_aggregate_data_finalized;';
+	  execute vl_test_query;
+			vl_test_query :=  format('create temp table tb_temp_1_aggregate_data_finalized as (
+				select
+				%2$s as aggregate_key_fn,
+				max(fdm.date) as date_fn,
+				round((sum(metrics.margin * %1$s)/ NULLIF(sum(metrics.revenue * %1$s),0))::numeric,2)*100 as bl_gm_percent,
+				round((sum(metrics.revenue * %1$s)/ NULLIF(sum(metrics.sales_units),0))::numeric,2) as bl_aur_$,
+				round((sum(metrics.margin * %1$s) / NULLIF(sum(metrics.sales_units),0))::numeric,2) as bl_aum_$,
+				round((sum(metrics.revenue * %1$s))::numeric,2) as bl_revenue_$,
+				round((sum(metrics.margin * %1$s))::numeric,2) as bl_gm_$,
+				round(sum(metrics.spend * %1$s)::numeric, 2) as bl_markdown_$,
+				--round(sum(metrics.inventory_cost * %1$s)::numeric, 2) as bl_inventory_cost,
+				--round(sum(metrics.inventory_retail * %1$s)::numeric, 2) as bl_inventory_retail,
+				round(sum(metrics.sales_units)::numeric) as bl_sales_units,
+				round(1-(sum(metrics.revenue * %1$s)/ NULLIF(sum(metrics.inventory_retail_with_vat * %1$s * metrics.sales_units),0))::numeric,2) as bl_avg_discount
+				from tb_temp_1_strategy_metrics metrics
+				inner join global.tb_fiscal_date_mapping fdm on fdm.date = metrics.recommendation_date
+				group by aggregate_key_fn
+			)', target_currency_multiplier, _aggregate_key);
+		RAISE NOTICE 'vl_test_query tb_temp_1_aggregate_data_finalized statement: %', vl_test_query;
+		start_time := clock_timestamp();
+		execute vl_test_query;
+		end_time := clock_timestamp();
+		RAISE NOTICE 'Time taken SQL tb_temp_1_aggregate_data_finalized statement: %', end_time - start_time;
+
+      vl_test_query :=  'drop table if exists tb_temp_1_aggregate_data_ia;';
+	  execute vl_test_query;
+			vl_test_query :=  format('create temp table tb_temp_1_aggregate_data_ia as (
+				select
+				%2$s as aggregate_key,
+				max(fdm.date) as date,
+				round((sum(metrics.margin * %1$s)/ NULLIF(sum(metrics.revenue * %1$s),0))::numeric,2)*100 as ia_reco_gm_percent,
+				round((sum(metrics.revenue * %1$s)/ NULLIF(sum(metrics.sales_units),0))::numeric,2) as ia_reco_aur_$,
+				round((sum(metrics.margin * %1$s) / NULLIF(sum(metrics.sales_units),0))::numeric,2) as ia_reco_aum_$,
+				round((sum(metrics.revenue * %1$s))::numeric,2) as ia_reco_revenue_$,
+				round((sum(metrics.margin * %1$s))::numeric,2) as ia_reco_gm_$,
+				round(sum(metrics.spend * %1$s)::numeric, 2) as ia_reco_markdown_$,
+				--round(sum(metrics.inventory_cost * %1$s)::numeric, 2) as ia_reco_inventory_cost,
+				--round(sum(metrics.inventory_retail * %1$s)::numeric, 2) as ia_reco_inventory_retail,
+				round(sum(metrics.sales_units)::numeric) as ia_reco_sales_units,
+				round(1-(sum(metrics.revenue * %1$s)/ NULLIF(sum(metrics.inventory_retail_with_vat * %1$s * metrics.sales_units),0))::numeric,2) as ia_reco_avg_discount
+				from
+				tb_temp_1_strategy_ia_reco metrics
+				inner join global.tb_fiscal_date_mapping fdm on fdm.date = metrics.recommendation_date
+				group by aggregate_key
+			)', target_currency_multiplier, _aggregate_key);
+		RAISE NOTICE 'vl_test_query tb_temp_1_aggregate_data_ia statement: %', vl_test_query;
+		start_time := clock_timestamp();
+		execute vl_test_query;
+		end_time := clock_timestamp();
+		RAISE NOTICE 'Time taken SQL tb_temp_1_aggregate_data_ia statement: %', end_time - start_time;
+		    vl_test_query :=  'drop table if exists tb_temp_1_aggregate_data_final;';
+			execute vl_test_query;
+			vl_test_query :=  ('create unlogged table tb_temp_1_aggregate_data_final as
+				select
+				adf.aggregate_key_fn as key,
+				adf.date_fn as order_key,
+				adf.*,
+				adia.*,
+				round((bl_inv.remaining_inv)::numeric) as bl_inventory,
+				round(bl_inv.inventory_cost::numeric) as bl_inventory_cost,
+				round(bl_inv.inventory_retail::numeric) as bl_inventory_retail,
+				round((ia_inv.remaining_inv)::numeric) as ia_reco_inventory,
+				round(ia_inv.inventory_cost::numeric) as ia_reco_inventory_cost,
+				round(ia_inv.inventory_retail::numeric) as ia_reco_inventory_retail
+				from
+				tb_temp_1_aggregate_data_finalized adf
+				left join
+				tb_temp_1_aggregate_data_ia adia on adf.aggregate_key_fn = adia.aggregate_key
+				left join tb_temp_1_bl_inventory_at_end bl_inv on bl_inv.aggregate_key = adf.aggregate_key_fn
+				left join tb_temp_1_ia_reco_inventory_at_end ia_inv on ia_inv.aggregate_key = adia.aggregate_key');
+
+		RAISE NOTICE 'vl_test_query tb_temp_1_aggregate_data_final statement: %', vl_test_query;
+		start_time := clock_timestamp();
+		execute vl_test_query;
+		end_time := clock_timestamp();
+		RAISE NOTICE 'Time taken SQL tb_temp_1_aggregate_data_final statement: %', end_time - start_time;
+
+
+		vl_test_query :=format('drop table if exists public.tb_dashboard_bl_vs_ia_graph_data_%1$s;', in_user_id);
+	  	execute vl_test_query;
+	 	vl_test_query := format('create unlogged table public.tb_dashboard_bl_vs_ia_graph_data_%1$s as  select jsonb_build_object(
+								''gm_dollar'',
+								jsonb_build_object(
+								''bl_override'',
+								array_agg( json_build_object(
+								''timeline'',key,
+								''value'',bl_gm_$ ) )
+								,
+								''ia_recommended'',
+								array_agg(json_build_object(
+								''timeline'',key,
+								''value'',ia_reco_gm_$))
+								),
+								''sales_dollar'',
+								jsonb_build_object(
+								''bl_override'',
+								array_agg( json_build_object(
+								''timeline'',key,
+								''value'',bl_revenue_$ ) )
+								,
+								''ia_recommended'',
+								array_agg( json_build_object(
+								''timeline'',key,
+								''value'',ia_reco_revenue_$ ) )
+
+								),
+								''sales_unit'',
+								jsonb_build_object(
+								''bl_override'',
+								array_agg(
+								json_build_object(
+								''timeline'',key,
+								''value'',bl_sales_units ))
+								,
+								''ia_recommended'',
+								array_agg(
+								json_build_object(
+								''timeline'',key,
+								''value'',ia_reco_sales_units ))
+								),
+								''gm_percent'',
+								jsonb_build_object(
+								''bl_override'',
+								array_agg( json_build_object(
+								''timeline'',key,
+								''value'',bl_gm_percent ) )
+								,
+								''ia_recommended'',
+								array_agg(
+								json_build_object(
+								''timeline'',key,
+								''value'',ia_reco_gm_percent ))
+								),
+								''aur'',
+								jsonb_build_object(
+								''bl_override'',
+								array_agg(
+								json_build_object(
+								''timeline'',key,
+								''value'',bl_aur_$ ) )
+								,
+								''ia_recommended'',
+								array_agg(
+								json_build_object(
+								''timeline'',key,
+								''value'',ia_reco_aur_$ ))
+								),
+								''aum'',
+								jsonb_build_object(
+								''bl_override'',
+								array_agg( json_build_object(
+								''timeline'',key,
+								''value'',bl_aum_$ ) )
+								,
+								''ia_recommended'',
+								array_agg(
+								json_build_object(
+								''timeline'',key,
+								''value'',ia_reco_aum_$ ))
+								),
+								''markdown_dollar'',
+								jsonb_build_object(
+								''bl_override'',
+								array_agg( json_build_object(
+								''timeline'',key,
+								''value'',bl_markdown_$ ) )
+								,
+								''ia_recommended'',
+								array_agg( json_build_object(
+								''timeline'',key,
+								''value'',ia_reco_markdown_$))
+
+								),
+								''average_discount'',
+								jsonb_build_object(
+								''bl_override'',
+								array_agg( json_build_object(
+								''timeline'',key,
+								''value'',bl_avg_discount ) )
+								,
+								''ia_recommended'',
+								array_agg( json_build_object(
+								''timeline'',key,
+								''value'',ia_reco_avg_discount))
+
+								),
+								''inventory_cost'',
+								jsonb_build_object(
+								''bl_override'',
+								array_agg( json_build_object(
+								''timeline'',key,
+								''value'',bl_inventory_cost ) )
+								,
+								''ia_recommended'',
+								array_agg( json_build_object(
+								''timeline'',key,
+								''value'',ia_reco_inventory_cost))
+
+								),
+								''inventory_retail'',
+								jsonb_build_object(
+								''bl_override'',
+								array_agg( json_build_object(
+								''timeline'',key,
+								''value'',bl_inventory_retail ) )
+								,
+								''ia_recommended'',
+								array_agg( json_build_object(
+								''timeline'',key,
+								''value'',ia_reco_inventory_retail))
+
+								),
+								''inventory'',
+								jsonb_build_object(
+								''bl_override'',
+								array_agg(
+								json_build_object(
+								''timeline'',key,
+								''value'',bl_inventory)
+								),
+								''ia_recommended'',
+								array_agg(
+								json_build_object(
+								''timeline'',key,
+								''value'',ia_reco_inventory))
+
+								)
+								) as final_response,
+								%2$L as  _strategy_id,
+								%3$L  as product_h1,
+								%4$L  as product_h2,
+								%5$L  as product_h3,
+								%6$L  as product_h4,
+								%7$L  as product_h5,
+								%8$L  as store_h1,
+								%9$L  as store_h2,
+								%10$L as store_h3,
+								%11$L as store_h4,
+								%12$L as store_h5,
+								%13$L as _start_date,
+								%14$L as _end_date,
+								false as is_data_change
+								from   (select * from tb_temp_1_aggregate_data_final
+								order by order_key) foo ;',in_user_id,_strategy_id, product_h1, product_h2, product_h3, product_h4,
+								product_h5, _s0_ids, _s1_ids, _s2_ids, _s3_ids, _s4_ids, _start_date, _end_date);
+
+		RAISE NOTICE 'SQL 5 statement: %', vl_test_query		;
+		start_time := clock_timestamp();
+		execute vl_test_query;
+		end_time := clock_timestamp();
+
+		vl_test_query := format('select final_response from public.tb_dashboard_bl_vs_ia_graph_data_%1$s',in_user_id);
+		RAISE NOTICE 'SQL 5 statement: %', vl_test_query		;
+		start_time := clock_timestamp();
+		return query execute vl_test_query;
+		end_time := clock_timestamp();
+
+		end;
+	else
+		return query execute dummy_data_query;
+	end if;
+	--raise notice 'query: %', q1;
+	--return query execute dummy_data_query;
+END;
+$function$
+;

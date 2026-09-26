@@ -1,0 +1,27 @@
+"source_column_name","source_column_datatype","required_in_product","generic_column_name","is_pk","generic_column_datatype","formula","is_attribute","is_hierarchy","hierarchy_level","is_null_allowed","unique_by","display_name","is_partition_col","is_clustering_col"
+INVOICEDATE,date,true,date,false,date,extract (date from safe_cast(INVOICEDATE as timestamp)),false,false,,false,true,"",true,1
+store,varchar,true,store_code,false,varchar,,false,false,,false,true,"",false,4
+,,true,line_item,false,varchar,"CONCAT(DATAAREAID,'-',SALESID,'-', INVOICEID, '-', LINENUM, '-', LINECREATIONSEQUENCENUMBER)",false,false,,false,true,"",false,
+,,true,discount_percentage,false,float8,"safe_divide(((RETAIL_PRICE_AT_TRANSACTION*QTY)-LINEAMOUNT),(RETAIL_PRICE_AT_TRANSACTION*QTY))",false,false,,true,false,"",false,
+,,true,promo_type,false,float8,'percent_off',false,false,,true,false,"",false,
+,,true,discount_amount,false,float8,(RETAIL_PRICE_AT_TRANSACTION*QTY)-LINEAMOUNT,false,false,,true,false,"",false,
+CUSTACCOUNT,varchar,true,customer_code,false,varchar,,false,false,,true,false,"",false,
+CUSTOMERNAME,varchar,true,customer_name,false,varchar,,false,false,,true,false,"",false,
+INVENTTRANSIDRETURN,varchar,true,return_code,false,varchar,,false,false,,true,false,"",false,
+WHOLESALE_PRICE_AT_TRANSACTION,float8,true,wholesale_price,false,float8,,false,false,,true,false,"",false,
+INVOICEID,varchar,true,transaction_code,false,varchar,,false,false,,true,false,"",false,
+Txn_type,varchar,true,transaction_type,false,varchar,,false,false,,true,false,"",false,
+QTY,int8,true,qty,false,int8,,false,false,,true,false,"",false,
+BARCODE,varchar,true,product_code,false,varchar,,false,false,,false,true,"",false,3
+Price,float8,true,price,false,float8,,false,false,,false,false,"",false,
+LINEAMOUNT,float8,true,revenue,false,float8,,false,false,,false,false,"",false,
+Order_Date,date,true,order_date,false,date,,false,false,,false,false,"",false,
+sub_channel,varchar,true,sub_channel,false,varchar,,false,false,,true,false,"",false,
+DATAAREAID,varchar,true,company_code,false,varchar,,false,false,,false,true,"",false,2
+CUSTGROUP,varchar,false,customer_group,false,varchar,,false,false,,true,false,"",false,
+season,varchar,true,season,false,varchar,,false,false,,false,true,"",false,
+Cost,float8,true,cost,false,float8,,false,false,,true,false,"",false,
+channel,varchar,true,super_channel,false,varchar,,false,false,,true,false,"",false,
+sub_channel,varchar,true,channel,false,varchar,,false,false,,true,false,"",false,
+,,true,msrp,false,float8,case when channel = 'Indirect' then WHOLESALE_PRICE_AT_TRANSACTION else RETAIL_PRICE_AT_TRANSACTION end,false,false,,true,false,"",false,
+SALESORIGINID,varchar,false,salesoriginid,false,varchar,,false,false,,true,false,"",false,

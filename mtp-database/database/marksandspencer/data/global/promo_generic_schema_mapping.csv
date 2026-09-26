@@ -1,0 +1,15 @@
+source_column_name,source_column_datatype,required_in_product,generic_column_name,is_pk,generic_column_datatype,formula,is_attribute,is_hierarchy,hierarchy_level,is_null_allowed,unique_by,display_name,is_partition_col,is_clustering_col
+store_id,varchar,TRUE,store_code,TRUE,varchar,,FALSE,FALSE,,FALSE,TRUE,,FALSE,1
+Unique_id,varchar,TRUE,promo_code,TRUE,varchar,,FALSE,FALSE,,FALSE,TRUE,,FALSE,
+article_number,varchar,TRUE,article,TRUE,varchar,,FALSE,FALSE,,FALSE,TRUE,,FALSE,
+Promotion_Start_Date,date,TRUE,start_date,TRUE,date,,FALSE,FALSE,,FALSE,TRUE,,FALSE,
+Promotion_End_Date,date,TRUE,end_date,FALSE,date,,FALSE,FALSE,,FALSE,FALSE,,FALSE,
+country,varchar,TRUE,country,TRUE,varchar,,FALSE,FALSE,,FALSE,TRUE,,FALSE,
+product_code,varchar,TRUE,product_code,TRUE,varchar,,FALSE,FALSE,,FALSE,TRUE,,FALSE,
+Promo_Description,varchar,TRUE,discount_type_desc,FALSE,varchar,,FALSE,FALSE,,TRUE,FALSE,,FALSE,
+promo_type,varchar,TRUE,promo_type,FALSE,varchar,,FALSE,FALSE,,FALSE,FALSE,,FALSE,
+Promo_Name,varchar,TRUE,promo_name,FALSE,varchar,,FALSE,FALSE,,FALSE,FALSE,,FALSE,
+Retail_Price,float8,TRUE,msrp,FALSE,float8,,FALSE,FALSE,,FALSE,FALSE,,FALSE,
+Discounted_Price,float8,TRUE,net_selling_price,FALSE,float8,,FALSE,FALSE,,FALSE,FALSE,,FALSE,
+market,varchar,TRUE,market,FALSE,varchar,,FALSE,FALSE,,FALSE,FALSE,,FALSE,
+fulfilment_store_code,varchar,TRUE,fulfilment_store_code,FALSE,varchar,,FALSE,FALSE,,FALSE,FALSE,,FALSE,

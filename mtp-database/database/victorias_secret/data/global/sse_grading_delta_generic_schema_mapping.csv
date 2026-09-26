@@ -1,0 +1,13 @@
+source_column_name,source_column_datatype,required_in_product,generic_column_name,is_pk,generic_column_datatype,formula,is_attribute,is_hierarchy,hierarchy_level,is_null_allowed,unique_by,display_name,is_partition_col,is_clustering_col
+sku_id,int8,TRUE,product_code,TRUE,varchar,,FALSE,FALSE,,FALSE,TRUE,,FALSE,
+eff_startdate,date,TRUE,start_date,TRUE,date,,FALSE,FALSE,,FALSE,TRUE,,FALSE,
+eff_enddate,date,TRUE,end_date,TRUE,date,,FALSE,FALSE,,FALSE,TRUE,,FALSE,
+style,int8,TRUE,style,FALSE,int8,,FALSE,FALSE,,TRUE,FALSE,,FALSE,
+period,varchar,TRUE,period,FALSE,varchar,,FALSE,FALSE,,TRUE,FALSE,,FALSE,
+U_STARTDATE,date,TRUE,u_startdate,TRUE,date,,FALSE,FALSE,,FALSE,TRUE,,FALSE,
+U_ENDDATE,date,TRUE,u_enddate,TRUE,date,,FALSE,FALSE,,FALSE,TRUE,,FALSE,
+loc_num,varchar,TRUE,store_code,TRUE,varchar,,FALSE,FALSE,,FALSE,TRUE,,FALSE,
+MPQ,int8,TRUE,mpq,FALSE,int8,,FALSE,FALSE,,TRUE,FALSE,,FALSE,
+tier,varchar,TRUE,tier,FALSE,varchar,,FALSE,FALSE,,TRUE,FALSE,,FALSE,
+tier_group,varchar,TRUE,tier_group,FALSE,varchar,,FALSE,FALSE,,FALSE,FALSE,,FALSE,
+supersession_flag,int8,TRUE,supersession_flag,FALSE,int8,,FALSE,FALSE,,TRUE,FALSE,,FALSE,

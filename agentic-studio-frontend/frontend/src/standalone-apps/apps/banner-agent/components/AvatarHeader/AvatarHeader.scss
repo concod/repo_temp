@@ -1,0 +1,30 @@
+$primary-text: #0B1118;
+$secondary-text: #67768C;
+$border: #D1D8E3;
+
+.avatar-header {
+    display: flex;
+    justify-content: center;
+
+    &__ring {
+        width: 130px;
+        height: 130px;
+        border-radius: 50%;
+        background: linear-gradient(158deg, #a6f0c2 18%, #99d1ff 86%);
+        display: grid;
+        place-items: center;
+        box-shadow: 0 14px 28px rgba(30, 59, 88, 0.14);
+    }
+
+    &__image {
+        width: 96px;
+        height: 96px;
+        border-radius: 50%;
+    }
+}
+
+@media (max-width: 560px) {
+    .avatar-header {
+        display: none;
+    }
+}

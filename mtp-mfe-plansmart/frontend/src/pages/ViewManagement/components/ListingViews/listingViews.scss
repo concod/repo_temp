@@ -1,0 +1,153 @@
+// Pixel to Rem
+@function pxToRem($value) {
+  @return #{$value / 16}rem;
+}
+
+
+.listing_views {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  width: 274px;
+  max-width: 274px;
+
+  .view_label {
+    font-size: 12px;
+    font-weight: 400;
+    color: #758490;
+    min-width: 80px;
+  }
+  .current_view {
+    background-color: #e5edf7;
+    cursor: pointer;
+    border-radius: 8px;
+    display: flex;
+    padding: 4px 12px 4px 12px;
+    gap: 8px;
+    width: 152px; /* Fixed width */
+    max-width: 152px; /* Restrict the maximum width */
+    overflow: hidden; /* Hide overflowing text */
+    white-space: nowrap; /* Prevent text wrapping */
+    text-overflow: ellipsis; /* Add ellipsis for overflowing text */
+  }
+
+  .truncated-view-name {
+    flex-grow: 1; /* Ensure the text takes available space */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #0055af;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  
+  .current_view_icon {
+    flex-shrink: 0; /* Prevent the icon from shrinking or moving */
+    color: #394960;
+  }
+}
+
+.listing_views_container {
+  max-height: pxToRem(339); /* Initial height of the popover */
+  overflow-y: hidden; /* Hides scrollbar when in the initial view */
+  transition: max-height 0.3s ease; /* Smooth height transition */
+
+  &.expanded {
+    overflow-y: auto;
+    max-height: pxToRem(544); /* Expanded height */
+  }
+
+  .listing_views_preference {
+    padding-bottom: 20px;
+    padding-left: 15px;
+    
+  }
+  ul li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 16px;
+    padding-right: 16px;
+    font-size: 12px;
+    font-weight: 400;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    color: #394960;
+    &:hover {
+      cursor: pointer;
+      background-color: #f3f9ff;
+    }
+  }
+  ul li  span.default-view-label{
+    color: #FF832B;
+    font-style: italic;
+  }
+  ul li  span.active-view-label{
+    color: #0055AF;
+    font-style: italic;
+  }
+  .divider {
+    content: "";
+    display: block;
+    width: 100%;
+    border-top: 1px solid #EBECF0; /* Adjust color as needed */
+   
+  }
+  
+  .recently-used-label {
+    color: #535B63;
+    font-weight: 500;
+    pointer-events: none;
+  }
+
+  ul li .view-actions {
+    display: none;
+  }
+
+  ul li .disable-actions {
+    display: none;
+  }
+
+  ul li:hover .view-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  
+  ul li .view-save-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-left: 15px;
+  }
+  
+  // Overriding the MUI input box specified minWidth for our own use case
+  .impact_inputbox_container .MuiInputBase-root input.MuiInputBase-input {
+    min-width: 0px;
+  }
+
+  
+
+  .toggle-lists-cta {
+    padding-left: 15px;
+    padding-top: 15px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #0055af;
+    font-weight: 500;
+  }
+}
+
+.truncated-view-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 160px;  /* Adjust based on your layout */
+  display: inline-block;
+}
+
+.custom-action-button.filled path {
+  fill: #FF832B !important;
+}
+

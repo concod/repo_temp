@@ -1,0 +1,11 @@
+"source_column_name","source_column_datatype","required_in_product","generic_column_name","is_pk","generic_column_datatype","formula","is_attribute","is_hierarchy","hierarchy_level","is_null_allowed","unique_by","display_name","is_partition_col","is_clustering_col"
+,,true,pack_config_key,true,varchar,"concat(country , '-',channel ,'-' ,  omnia_style_number,'-',omnia_style_dim,'-' , omnia_style_size )",false,false,,false,true,"",false,
+country,string,true,country,false,varchar,,false,false,,true,false,"",false,
+channel,string,true,channel,false,varchar,,false,false,,true,false,"",false,
+omnia_style_number,string,true,omnia_style_number,false,varchar,,false,false,,true,false,"",false,
+omnia_style_dim,string,true,omnia_style_dim,false,varchar,,false,false,,true,false,"",false,
+omnia_style_size,string,true,omnia_style_size,false,varchar,,false,false,,true,false,"",false,
+pack_id,string,true,pack_id,false,varchar,,false,false,,true,false,"",false,
+qty,integer,true,qty,false,int8,,false,false,,true,false,"",false,
+is_pack,string,true,is_pack,false,varchar,,false,false,,true,false,"",false,
+sku,string,true,sku,false,varchar,,false,false,,false,false,"",false,

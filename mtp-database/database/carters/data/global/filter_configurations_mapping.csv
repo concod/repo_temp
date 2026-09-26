@@ -1,0 +1,587 @@
+fc_code,label,column_name,type,display_type,level,dimension,is_mandatory,is_multiple_selection,range_min,range_max,default_value,is_disabled,is_clearable,display_order,is_required,extra,is_deleted
+74,Country,country,cascaded,dropdown,1,store,TRUE,FALSE,,,,FALSE,TRUE,,FALSE,{},FALSE
+74,Channel,channel,cascaded,dropdown,2,store,TRUE,FALSE,,,,FALSE,TRUE,,FALSE,{},FALSE
+74,Store Comp Flag,store_comp_flag,cascaded,dropdown,3,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+74,Store Grade,q_str_grade,cascaded,dropdown,4,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+74,Store Format,center_format_type,cascaded,dropdown,5,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+74,Store Concept,store_concept,cascaded,dropdown,6,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+74,Climate,climate,cascaded,dropdown,7,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+74,Region,s1_name,cascaded,dropdown,9,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+74,District,district,cascaded,dropdown,10,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+74,State,state,cascaded,dropdown,11,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+74,Store Number,store_code,cascaded,dropdown,12,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+74,Store Name,store_name,cascaded,dropdown,13,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+74,Store Group,store_group,cascaded,dropdown,14,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+172,Country,l0_name,cascaded,dropdown,1,product,TRUE,FALSE,,,,FALSE,TRUE,,FALSE,{},FALSE
+
+172,Channel,l1_name,cascaded,dropdown,2,product,TRUE,FALSE,,,,FALSE,TRUE,,FALSE,{},FALSE
+172,Brand,l2_name,cascaded,dropdown,3,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+172,SBU,l3_name,cascaded,dropdown,4,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+172,Department,l4_name,cascaded,dropdown,5,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+172,Season,season,cascaded,dropdown,6,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+172,Gender,gender,cascaded,dropdown,7,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+172,Collection Total,l5_name,cascaded,dropdown,8,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+172,Collection,collection,cascaded,dropdown,9,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+172,Class,class,cascaded,dropdown,10,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+172,Subclass,subclass,cascaded,dropdown,11,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+172,Primary Occassion,sty_primary_occsn_end_use_dsc,cascaded,dropdown,12,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+172,Item Group,item_group_desc,cascaded,dropdown,14,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+172,Product Lifecycle,product_life_cycle,cascaded,dropdown,15,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+172,Clearance Flag,clearance_flag,cascaded,dropdown,16,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+172,Launch Date,launch_date,cascaded,dropdown,17,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+172,Planned Clearance Date,planned_clearance_date,cascaded,dropdown,18,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+172,Style Number,style,cascaded,dropdown,19,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+172,Product Group,product_group,non-cascaded,dropdown,20,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+172,Active,active,cascaded,dropdown,21,product,false,true,,,,false,true,,false,"{""initialData"": [true, false]}",false
+168,Country,country,cascaded,dropdown,1,store,TRUE,TRUE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+168,Dc Name,dc_name,cascaded,dropdown,3,store,TRUE,TRUE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+168,Special Classification,special_classification,non-cascaded,dropdown,4,store,FALSE,TRUE,,,,TRUE,FALSE,4,FALSE,"{""initialData"": [""WHS""]}",FALSE
+168,Active,active,cascaded,dropdown,5,store,FALSE,TRUE,,,,FALSE,TRUE,5,FALSE,"{""initialData"": [true, false]}",FALSE
+42,Channel,l1_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+42,Color,l5_name,cascaded,dropdown,2,product,FALSE,TRUE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+46,Country,l0_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+46,Channel,l1_name,cascaded,dropdown,2,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+46,Brand,l2_name,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+46,Product Classification,l4_name,cascaded,dropdown,5,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+46,Size,size,cascaded,dropdown,9,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+46,Style Description,style_description,cascaded,dropdown,6,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+68,Channel,l1_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+68,Brand,l2_name,cascaded,dropdown,2,product,FALSE,TRUE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+76,Country,l0_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+76,Channel,l1_name,cascaded,dropdown,2,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+76,Brand,l2_name,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+76,Style Description,style_description,cascaded,dropdown,6,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+77,District,district,cascaded,dropdown,2,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+77,special_classification,special_classification,cascaded,dropdown,3,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+78,Channel,channel,cascaded,dropdown,2,store,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+78,District,district,cascaded,dropdown,1,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+79,Style Description,style_description,cascaded,dropdown,1,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+81,Merch Business Category,l0_name,cascaded,radio,1,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+81,Merch Department,l1_name,cascaded,dropdown,2,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+81,Merch Class,l2_name,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+81,MerchPyramid,l3_name,cascaded,dropdown,4,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+81,l4_name,l4_name,cascaded,dropdown,5,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+81,Style Description,style_description,cascaded,dropdown,6,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+82,location_type,location_type,non-cascaded,radio,1,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+83,Country,l0_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+83,Channel,l1_name,cascaded,dropdown,2,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+84,Country,l0_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+85,Country,l0_name,cascaded,dropdown,2,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+85,Channel,l1_name,cascaded,dropdown,3,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+85,Brand,l2_name,cascaded,dropdown,4,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+85,MerchPyramid,l3_name,cascaded,dropdown,5,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+85,price,price,cascaded,dropdown,1,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+86,Country,country,cascaded,dropdown,1,store,TRUE,FALSE,,,,FALSE,TRUE,,FALSE,{},FALSE
+86,Channel,channel,cascaded,dropdown,2,store,TRUE,FALSE,,,,FALSE,TRUE,,FALSE,{},FALSE
+86,Store Comp Flag,store_comp_flag,cascaded,dropdown,3,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+86,Store Grade,q_str_grade,cascaded,dropdown,4,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+86,Store Format,center_format_type,cascaded,dropdown,5,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+86,Store Concept,store_concept,cascaded,dropdown,6,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+86,Climate,climate,cascaded,dropdown,7,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+86,Store Group,store_group,cascaded,dropdown,8,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+86,Region,s1_name,cascaded,dropdown,9,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+86,District,district,cascaded,dropdown,10,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+86,State,state,cascaded,dropdown,11,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+86,Store Number,store_code,cascaded,dropdown,12,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+86,Store Name,store_name,cascaded,dropdown,13,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+87,Country,l0_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+87,Channel,l1_name,cascaded,dropdown,2,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+87,MerchPyramid,l3_name,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+89,Country,l0_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+89,Channel,l1_name,cascaded,dropdown,2,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+89,size,size,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+92,dc_name,dc_name,cascaded,dropdown,3,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+92,District,district,cascaded,dropdown,2,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+92,fc_name,fc_name,cascaded,dropdown,4,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+93,District,district,cascaded,dropdown,2,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+93,master_special_classification,master_special_classification,cascaded,dropdown,3,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+93,master_store_name,master_store_name,cascaded,dropdown,4,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+94,District,district,cascaded,dropdown,2,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+94,fc_name,fc_name,cascaded,dropdown,3,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+95,Country,l0_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+95,Channel,l1_name,cascaded,dropdown,2,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+96,Plan Period,plan_period,non-cascaded,rangePicker,2,plan,FALSE,FALSE,,,,FALSE,TRUE,,FALSE,{},FALSE
+96,Season,season,non-cascaded,dropdown,1,plan,FALSE,FALSE,,,,FALSE,TRUE,,FALSE,{},FALSE
+97,L0 Name,L0 Name,cascaded,dropdown,1,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+97,L1 Name,L1 Name,cascaded,dropdown,2,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+97,L2 Name,L2 Name,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+97,L3 Name,L3 Name,cascaded,dropdown,4,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+97,L4 Name,L4 Name,cascaded,dropdown,5,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+98,Country,l0_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+98,Channel,l1_name,cascaded,dropdown,2,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+98,Brand,l2_name,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+98,MerchPyramid,l3_name,cascaded,dropdown,4,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+98,l4_name,l4_name,cascaded,dropdown,5,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+99,Country,l0_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+99,Channel,l1_name,cascaded,dropdown,2,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+99,Brand,l2_name,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+99,MerchPyramid,l3_name,cascaded,dropdown,4,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+99,L4 Name,l4_name,cascaded,dropdown,5,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+100,Country,l0_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+100,Channel,l1_name,cascaded,dropdown,2,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+100,Brand,l2_name,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+100,MerchPyramid,l3_name,cascaded,dropdown,4,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+100,L4 Name,l4_name,cascaded,dropdown,5,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+102,Country,l0_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+102,Channel,l1_name,cascaded,dropdown,2,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+102,Brand,l2_name,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+102,Style Group,l4_name,cascaded,dropdown,1,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+104,Channel,channel,cascaded,dropdown,2,store,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+104,District,district,cascaded,dropdown,1,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+105,Channel,l1_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+105,Brand,l2_name,cascaded,dropdown,2,product,FALSE,TRUE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+106,Channel,channel,cascaded,dropdown,2,store,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+106,District,district,cascaded,dropdown,1,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+107,Style,article,cascaded,dropdown,1,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+107,Color Description,color,cascaded,dropdown,2,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+108,Erpcolordesc,color,non-cascaded,checkbox,3,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+108,Erpcolorcd,color_code,non-cascaded,checkbox,2,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+108,Productdivision,l0_id,non-cascaded,dropdown,1,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+109,Color Description,color,cascaded,dropdown,2,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+109,color_code,color_code,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+109,fabrication,fabrication,cascaded,dropdown,1,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+110,Erpcolordesc,color,cascaded,dropdown,1,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+110,Erpcolorcd,color_code,cascaded,dropdown,2,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+111,Erpcolordesc,color,cascaded,dropdown,2,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+111,Erpcolorcd,color_code,cascaded,dropdown,1,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+112,Country,l0_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+112,Channel,l1_name,cascaded,dropdown,3,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+112,Brand,l2_name,cascaded,dropdown,2,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+113,l2_id,l2_id,cascaded,radio,3,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+113,l3_id,l3_id,cascaded,radio,2,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+113,retirement_date,retirement_date,cascaded,radio,1,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+114,Channel,channel,cascaded,dropdown,2,store,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+114,District,district,cascaded,dropdown,1,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+115,Channel,channel,cascaded,dropdown,2,store,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+115,District,district,cascaded,dropdown,1,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+116,Channel,channel,cascaded,dropdown,2,store,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+116,District,district,cascaded,dropdown,1,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+117,Channel,channel,cascaded,dropdown,2,store,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+117,District,district,cascaded,dropdown,1,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+118,Backroom Square Feet,backroom_square_feet,non-cascaded,dropdown,7,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+118,Channel,channel,cascaded,dropdown,2,store,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+118,Climate,climate,non-cascaded,dropdown,5,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+118,District,district,cascaded,dropdown,1,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+118,Retail Store sqft,selling_square_feet,non-cascaded,dropdown,10,store,FALSE,TRUE,,,,FALSE,TRUE,,TRUE,{},FALSE
+118,Standard Fixture Count,standard_fixture_count,non-cascaded,dropdown,8,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+118,State,state,non-cascaded,dropdown,4,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+118,Store Size,store_size,non-cascaded,dropdown,6,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+118,Transit Days,transit_days,non-cascaded,dropdown,9,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+119,Country,l0_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+119,Channel,l1_name,cascaded,dropdown,2,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+119,Brand,l2_name,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+120,Country,l0_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+120,Channel,l1_name,cascaded,dropdown,2,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+120,Brand,l2_name,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+121,Country,l0_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+121,Channel,l1_name,cascaded,dropdown,2,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+121,Brand,l2_name,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+122,Country,l0_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+122,Channel,l1_name,cascaded,dropdown,2,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+122,Brand,l2_name,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+123,Country,l0_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+123,Channel,l1_name,cascaded,dropdown,2,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+123,Brand,l2_name,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+124,Country,l0_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+124,Channel,l1_name,cascaded,dropdown,2,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+124,Brand,l2_name,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+125,Country,l0_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+125,Channel,l1_name,cascaded,dropdown,2,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+125,Brand,l2_name,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+1030,Country,l0_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+1030,Channel,l1_name,cascaded,dropdown,2,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+1030,Brand,l2_name,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+127,Country,l0_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+127,Channel,l1_name,cascaded,dropdown,2,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+127,Brand,l2_name,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+128,Country,l0_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+129,Country,l0_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+129,Channel,l1_name,cascaded,dropdown,2,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+129,Brand,l2_name,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+129,Stylenum,style,cascaded,dropdown,4,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+130,Style,article,cascaded,dropdown,1,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+131,Channel,channel,cascaded,dropdown,1,store,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+131,Erpcolordesc,color,cascaded,dropdown,1,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+131,Erpcolorcd,color_code,cascaded,dropdown,2,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+131,Avg Daily Traffic Fall 2019,daily_traffic,cascaded,dropdown,4,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+131,District,district,cascaded,dropdown,5,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+131,Address Latitude,latitude,cascaded,dropdown,2,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+131,Master Store Code,master_store_code,cascaded,dropdown,6,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+131,Store Square Footage,size,cascaded,dropdown,3,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+132,Country,l0_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+132,Channel,l1_name,cascaded,dropdown,2,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+132,Brand,l2_name,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+132,MerchPyramid,l3_name,cascaded,dropdown,4,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+133,Channel,l1_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+133,Style,l4_name,cascaded,dropdown,3,product,TRUE,TRUE,,,,FALSE,FALSE,2,FALSE,{},FALSE
+133,Channel,super_channel,cascaded,dropdown,2,store,FALSE,TRUE,,,,FALSE,FALSE,3,FALSE,{},FALSE
+134,Fabrication,fabrication,cascaded,dropdown,,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+134,Country,l0_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+134,Channel,l1_name,cascaded,dropdown,2,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+134,Brand,l2_name,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+134,MerchPyramid,l3_name,cascaded,dropdown,4,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+134,Selling Collection,selling_collection,cascaded,dropdown,8,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+135,Country,l0_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+135,Channel,l1_name,cascaded,dropdown,3,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+135,Stylenum,style,cascaded,dropdown,2,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+136,Channel,channel,cascaded,dropdown,2,store,FALSE,TRUE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+136,Plan Stage,master_plan_stage,cascaded,dropdown,2,plan,TRUE,FALSE,,,,FALSE,TRUE,2,TRUE,{},FALSE
+136,Year,plansmart_year_value,non-cascaded,dropdown,2,plan,TRUE,FALSE,,,,FALSE,TRUE,1,TRUE,{},FALSE
+136,Season,season,non-cascaded,dropdown,2,masterplan,FALSE,TRUE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+137,Channel,channel,cascaded,dropdown,2,store,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+137,District,district,cascaded,dropdown,1,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+140,Country,l0_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+140,Channel,l1_name,cascaded,dropdown,2,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+140,Brand,l2_name,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+141,Channel,channel,cascaded,dropdown,,store,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+141,Color Description,color,cascaded,dropdown,,product,FALSE,TRUE,,,,FALSE,TRUE,9,FALSE,{},FALSE
+141,Fabrication,fabrication,cascaded,dropdown,,product,FALSE,TRUE,,,,FALSE,TRUE,7,FALSE,{},FALSE
+141,Country,l0_name,cascaded,dropdown,,product,TRUE,TRUE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+141,Channel,l1_name,cascaded,dropdown,,product,TRUE,TRUE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+141,Brand,l2_name,cascaded,dropdown,,product,FALSE,TRUE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+141,MerchPyramid,l3_name,cascaded,dropdown,,product,FALSE,TRUE,,,,FALSE,TRUE,5,FALSE,{},FALSE
+141,Style Description,style_description,cascaded,dropdown,,product,FALSE,TRUE,,,,FALSE,TRUE,8,FALSE,{},FALSE
+142,Channel,channel,cascaded,dropdown,2,store,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+142,District,district,cascaded,dropdown,1,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+143,Country,country,cascaded,dropdown,1,store,TRUE,FALSE,,,,FALSE,TRUE,,FALSE,{},FALSE
+143,Channel,channel,cascaded,dropdown,2,store,TRUE,FALSE,,,,FALSE,TRUE,,FALSE,{},FALSE
+143,Store Comp Flag,store_comp_flag,cascaded,dropdown,3,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+143,Store Grade,q_str_grade,cascaded,dropdown,4,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+143,Store Format,center_format_type,cascaded,dropdown,5,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+143,Store Concept,store_concept,cascaded,dropdown,6,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+143,Climate,climate,cascaded,dropdown,7,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+143,Store Group,store_group,cascaded,dropdown,8,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+143,Region,s1_name,cascaded,dropdown,9,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+143,District,district,cascaded,dropdown,10,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+143,State,state,cascaded,dropdown,11,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+143,Store Number,store_code,cascaded,dropdown,12,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+143,Store Name,store_name,cascaded,dropdown,13,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+145,Channel,channel,cascaded,dropdown,1,store,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+145,District,district,cascaded,dropdown,4,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+145,Country,l0_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+145,Channel,l1_name,cascaded,dropdown,2,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+145,Brand,l2_name,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+145,MerchPyramid,l3_name,non-cascaded,checkbox,4,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+146,Country,l0_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+146,Channel,l1_name,cascaded,dropdown,2,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+146,Brand,l2_name,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+149,Class,class,cascaded,dropdown,10,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+149,Clearance Flag,clearance_flag,cascaded,dropdown,16,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+149,Collection,collection,cascaded,dropdown,9,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+149,Gender,gender,non-cascaded,dropdown,7,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+149,Item Group,item_group_desc,cascaded,dropdown,14,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+149,Country,l0_name,cascaded,dropdown,1,product,TRUE,FALSE,,,,FALSE,TRUE,,FALSE,{},FALSE
+149,Channel,l1_name,cascaded,dropdown,2,product,TRUE,FALSE,,,,FALSE,TRUE,,FALSE,{},FALSE
+149,Brand,l2_name,cascaded,dropdown,3,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+149,SBU,l3_name,cascaded,dropdown,4,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+149,Department,l4_name,cascaded,dropdown,5,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+149,Collection Total,l5_name,cascaded,dropdown,8,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+149,Launch Date,launch_date,cascaded,dropdown,17,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+149,Planned Clearance Date,planned_clearance_date,cascaded,dropdown,18,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+149,Product Group,product_group,cascaded,dropdown,13,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+149,Product Lifecycle,product_life_cycle,cascaded,dropdown,15,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+149,Season,season,cascaded,dropdown,6,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+149,Style Number,style,cascaded,dropdown,19,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+149,Primary Occassion,sty_primary_occsn_end_use_dsc,cascaded,dropdown,12,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+149,Subclass,subclass,cascaded,dropdown,11,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+151,Country,l0_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+151,Channel,l1_name,cascaded,dropdown,2,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+151,Brand,l2_name,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+152,Country,l0_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+153,Country,l0_name,cascaded,dropdown,1,product,TRUE,FALSE,,,,FALSE,TRUE,,FALSE,{},FALSE
+153,Channel,l1_name,cascaded,dropdown,2,product,TRUE,FALSE,,,,FALSE,TRUE,,FALSE,{},FALSE
+153,Brand,l2_name,cascaded,dropdown,3,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+153,SBU,l3_name,cascaded,dropdown,4,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+153,Department,l4_name,cascaded,dropdown,5,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+153,Season,season,cascaded,dropdown,6,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+153,Gender,gender,non-cascaded,dropdown,7,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+153,Collection Total,l5_name,cascaded,dropdown,8,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+153,Collection,collection,cascaded,dropdown,9,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+153,Class,class,cascaded,dropdown,10,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+153,Subclass,subclass,cascaded,dropdown,11,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+153,Primary Occassion,sty_primary_occsn_end_use_dsc,cascaded,dropdown,12,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+153,Product Group,product_group,cascaded,dropdown,13,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+153,Item Group,item_group_desc,cascaded,dropdown,14,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+153,Product Lifecycle,product_life_cycle,cascaded,dropdown,15,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+153,Clearance Flag,clearance_flag,cascaded,dropdown,16,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+153,Launch Date,launch_date,cascaded,dropdown,17,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+153,Planned Clearance Date,planned_clearance_date,cascaded,dropdown,18,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+153,Style Number,style,cascaded,dropdown,19,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+154,District,district,cascaded,dropdown,1,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+154,Fc Name,fc_name,cascaded,dropdown,2,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+156,Channel,channel,cascaded,dropdown,1,store,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+156,District,district,cascaded,dropdown,3,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+156,Country,l0_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+156,Channel,l1_name,cascaded,dropdown,2,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+156,Brand,l2_name,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+158,Style Color ID,article,cascaded,dropdown,5,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+158,Backroom Square Feet,backroom_square_feet,cascaded,dropdown,7,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+158,Channel,channel,cascaded,dropdown,1,store,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+158,Climate,climate,cascaded,dropdown,5,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+158,Color Description,color,cascaded,dropdown,4,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+158,District,district,cascaded,dropdown,3,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+158,Primary Fabrication,fabrication,cascaded,dropdown,9,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+158,Country,l0_name,cascaded,dropdown,1,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+158,Channel,l1_name,cascaded,dropdown,2,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+158,Brand,l2_name,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+158,Retail Store sqft,selling_square_feet,cascaded,dropdown,10,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+158,Standard Fixture Count,standard_fixture_count,cascaded,dropdown,8,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+158,State,state,cascaded,dropdown,2,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+158,Store Size,store_size,cascaded,dropdown,6,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+158,Style Description,style_description,cascaded,dropdown,6,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+158,Transit Days,transit_days,cascaded,dropdown,9,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+159,Country,l0_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+159,Channel,l1_name,cascaded,dropdown,3,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+159,Brand,l2_name,cascaded,dropdown,2,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+160,Country,l0_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+160,Channel,l1_name,cascaded,dropdown,2,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+161,Channel,channel,cascaded,dropdown,,store,TRUE,FALSE,,,,FALSE,TRUE,7,FALSE,{},FALSE
+161,Country,l0_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+161,Channel,l1_name,cascaded,dropdown,2,product,TRUE,TRUE,,,,FALSE,TRUE,5,FALSE,{},FALSE
+161,Brand,l2_name,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,6,FALSE,{},FALSE
+161,Selling Period,plansmart_selling_period_value,non-cascaded,rangePicker,,create_plan,TRUE,FALSE,,,,TRUE,TRUE,3,FALSE,{},FALSE
+161,Year,plansmart_year_value,non-cascaded,dropdown,,plan,TRUE,TRUE,,,,FALSE,TRUE,1,FALSE,"{""maxLimit"": 2, ""is_selectall_button_hidden"": true}",FALSE
+161,Plan Stage,plan_stage,cascaded,dropdown,,plan,TRUE,FALSE,,,,FALSE,TRUE,8,FALSE,{},FALSE
+161,Season,season,non-cascaded,dropdown,,create_plan,TRUE,TRUE,,,,FALSE,TRUE,2,FALSE,"{""maxLimit"": 2}",FALSE
+162,Style Color Size,color_code,cascaded,dropdown,9,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+162,Country,l0_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+162,Channel,l1_name,cascaded,dropdown,2,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+162,Brand,l2_name,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+162,Preferred Status,preferred_status,cascaded,dropdown,3,vendor,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+162,Vendor Status,status,cascaded,dropdown,2,vendor,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+162,Style Description,style_description,cascaded,dropdown,8,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+162,Vendor Name,vendor_name,cascaded,dropdown,1,vendor,FALSE,TRUE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+260,Grade Nomenclature,grade_nomenclature,non-cascaded,list,,create_grade,FALSE,FALSE,,,,FALSE,TRUE,,FALSE,{},FALSE
+260,Grading Name,grading_name,non-cascaded,TextField,,create_grade,TRUE,FALSE,,,,FALSE,TRUE,,TRUE,{},FALSE
+260,Number of grades,number_of_grades,non-cascaded,TextField,,create_grade,FALSE,FALSE,3,7,,FALSE,TRUE,,FALSE,{},FALSE
+260,Valid Time Period,time_period,non-cascaded,range_picker,,create_grade,FALSE,FALSE,,,,FALSE,TRUE,,FALSE,{},FALSE
+261,Product Hierarchy,product,non-cascaded,dropdown,,create_grade,FALSE,FALSE,,,,FALSE,TRUE,,FALSE,{},FALSE
+261,Store Hierarchy,store,non-cascaded,dropdown,,store,FALSE,FALSE,,,,FALSE,TRUE,,FALSE,{},FALSE
+262,Channel,channel,cascaded,dropdown,1,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+262,Country,l0_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+262,Channel,l1_name,cascaded,dropdown,2,product,TRUE,TRUE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+262,Brand,l2_name,cascaded,dropdown,3,product,FALSE,FALSE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+265,Style Color,article,cascaded,dropdown,7,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+265,Channel,channel,cascaded,dropdown,1,store,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+265,Color Description,color,cascaded,dropdown,6,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+265,Primary Fabrication,fabrication,cascaded,dropdown,5,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+265,Country,l0_name,cascaded,dropdown,1,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+265,Channel,l1_name,cascaded,dropdown,2,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+265,Brand,l2_name,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+265,Product Group,product_group,cascaded,dropdown,9,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+265,Selling Collection,selling_collection,cascaded,dropdown,10,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+265,Like Store,store_code,cascaded,dropdown,2,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+265,Style Description,style_description,cascaded,dropdown,8,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+271,Country,country,cascaded,dropdown,3,store,FALSE,FALSE,,,,TRUE,TRUE,,FALSE,{},FALSE
+271,Latitude,latitude,cascaded,dropdown,8,store,FALSE,FALSE,,,,TRUE,TRUE,,FALSE,{},FALSE
+271,Longitude,longitude,cascaded,dropdown,7,store,FALSE,FALSE,,,,TRUE,TRUE,,FALSE,{},FALSE
+271,State,s1_name,cascaded,dropdown,5,store,FALSE,FALSE,,,,TRUE,TRUE,,FALSE,{},FALSE
+271,Region,s2_name,cascaded,dropdown,4,store,FALSE,FALSE,,,,TRUE,TRUE,,FALSE,{},FALSE
+271,District,s3_name,cascaded,dropdown,6,store,FALSE,FALSE,,,,TRUE,TRUE,,FALSE,{},FALSE
+271,Store Number,store_code,cascaded,dropdown,1,store,TRUE,FALSE,,,,FALSE,TRUE,,FALSE,{},FALSE
+271,Store Name,store_name,cascaded,dropdown,2,store,FALSE,FALSE,,,,TRUE,TRUE,,FALSE,{},FALSE
+280,Add User Id,email,non-cascaded,TextField,,product,TRUE,FALSE,,,,FALSE,FALSE,2,TRUE,"{""helperText"": ""Enter a valid email id""}",FALSE
+280,Add User Name,user_name,non-cascaded,TextField,,product,TRUE,FALSE,,,,FALSE,FALSE,1,TRUE,"{""helperText"": ""Enter a valid user name""}",FALSE
+501,Ticket ID,id,non-cascaded,dropdown,,others,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+501,Issue Type,issue_type,non-cascaded,dropdown,,others,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+501,Module,module_type,non-cascaded,dropdown,,others,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+501,Priority,priority,non-cascaded,dropdown,,others,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+501,Status,status,non-cascaded,dropdown,,others,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+501,Requestor name,user_id,non-cascaded,dropdown,,others,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+750,Channel,channel,non-cascaded,dropdown,,store,TRUE,TRUE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+750,Country,l0_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+750,Channel,l1_name,cascaded,dropdown,2,product,FALSE,TRUE,,,,FALSE,TRUE,5,FALSE,{},FALSE
+750,Year,plansmart_year_value,cascaded,dropdown,,plan,TRUE,TRUE,,,,FALSE,TRUE,1,FALSE,"{""maxLimit"": 2}",FALSE
+750,Season,season,cascaded,dropdown,,report,TRUE,TRUE,,,,FALSE,TRUE,2,FALSE,"{""maxLimit"": 2}",FALSE
+750,Version,version,non-cascaded,dropdown,,report,TRUE,TRUE,,,,FALSE,TRUE,6,FALSE,{},FALSE
+1300,Channel,l1_name,cascaded,dropdown,1,product,FALSE,TRUE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+1300,Brand,l2_name,cascaded,dropdown,2,product,FALSE,TRUE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+1301,Channel,channel,cascaded,dropdown,1,Channel,FALSE,TRUE,,,,FALSE,TRUE,1,FALSE,"{""dimension"": ""store""}",FALSE
+1301,City,city,cascaded,dropdown,4,store,FALSE,TRUE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+1301,District,district,cascaded,dropdown,3,store,FALSE,TRUE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+1301,Brand,l2_name,cascaded,dropdown,1,Brand,FALSE,TRUE,,,,FALSE,TRUE,1,FALSE,"{""dimension"": ""product""}",FALSE
+1301,SBU,l3_name,cascaded,dropdown,1,product,FALSE,TRUE,,,,FALSE,TRUE,2,FALSE,"{""dimension"": ""product""}",FALSE
+1301,Department,l4_name,cascaded,dropdown,2,product,FALSE,TRUE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+1301,Total Collection,l5_name,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+1301,Region,s1_name,cascaded,dropdown,1,store,FALSE,TRUE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+1301,State,state,cascaded,dropdown,2,store,FALSE,TRUE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+1301,Store,store_code,cascaded,dropdown,5,store,FALSE,TRUE,,,,FALSE,TRUE,5,FALSE,{},FALSE
+1301,Style,style,cascaded,dropdown,4,product,FALSE,TRUE,,,,FALSE,TRUE,5,FALSE,{},FALSE
+1302,Channel,channel,cascaded,dropdown,1,Channel,FALSE,TRUE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+1302,City,city,cascaded,dropdown,4,store,FALSE,TRUE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+1302,District,district,cascaded,dropdown,3,store,FALSE,TRUE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+1302,Brand,l2_name,cascaded,dropdown,1,product,FALSE,TRUE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+1302,SBU,l3_name,cascaded,dropdown,2,product,FALSE,TRUE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+1302,Department,l4_name,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+1302,Total Collection,l5_name,cascaded,dropdown,4,product,FALSE,TRUE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+1302,Region,s1_name,cascaded,dropdown,1,store,FALSE,TRUE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+1302,State,state,cascaded,dropdown,2,store,FALSE,TRUE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+1302,Store,store_code,cascaded,dropdown,5,store,FALSE,TRUE,,,,FALSE,TRUE,5,FALSE,{},FALSE
+1302,Style,style,cascaded,dropdown,5,product,FALSE,TRUE,,,,FALSE,TRUE,5,FALSE,{},FALSE
+1303,Country,l0_name,cascaded,dropdown,1,product,FALSE,TRUE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+1303,Channel,l1_name,cascaded,dropdown,2,product,FALSE,TRUE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+1303,Brand,l2_name,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+1303,SBU,l3_name,cascaded,dropdown,4,product,FALSE,TRUE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+1303,Department,l4_name,cascaded,dropdown,5,product,FALSE,TRUE,,,,FALSE,TRUE,5,FALSE,{},FALSE
+1303,Product Season Collection,season,cascaded,dropdown,6,product,FALSE,TRUE,,,,FALSE,TRUE,6,FALSE,{},FALSE
+1304,Channel,channel,cascaded,dropdown,1,Channel,FALSE,TRUE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+1304,City,city,cascaded,dropdown,4,store,FALSE,TRUE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+1304,District,district,cascaded,dropdown,3,store,FALSE,TRUE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+1304,Brand,l2_name,cascaded,dropdown,1,product,FALSE,TRUE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+1304,SBU,l3_name,cascaded,dropdown,2,product,FALSE,TRUE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+1304,Department,l4_name,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+1304,Total Collection,l5_name,cascaded,dropdown,4,product,FALSE,TRUE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+1304,Region,s1_name,cascaded,dropdown,1,store,FALSE,TRUE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+1304,State,state,cascaded,dropdown,2,store,FALSE,TRUE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+1304,Store,store_code,cascaded,dropdown,5,store,FALSE,TRUE,,,,FALSE,TRUE,5,FALSE,{},FALSE
+1304,Style,style,cascaded,dropdown,5,product,FALSE,TRUE,,,,FALSE,TRUE,5,FALSE,{},FALSE
+10003,Store Name,store_name,cascaded,dropdown,1,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10004,Channel,channel,cascaded,dropdown,1,store,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10004,Climate,climate,cascaded,dropdown,4,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10004,District,district,cascaded,dropdown,2,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10004,Standard Fixture Count,standard_fixture_count,cascaded,dropdown,5,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10004,State,state,cascaded,dropdown,3,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10004,store group,store_group,non-cascaded,dropdown,7,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10004,Transit Days,transit_days,cascaded,dropdown,6,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10005,Country Region Id,country,cascaded,dropdown,4,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10005,Dc Code,dc_code,cascaded,dropdown,2,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10005,Fc Name,fc_name,cascaded,dropdown,3,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10005,Region,region,cascaded,dropdown,1,store,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10006,Store Close Date,close_date,cascaded,dropdown,2,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10006,Address Longitude,longitude,cascaded,dropdown,3,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10006,Store Open Date,open_date,cascaded,dropdown,1,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10007,Address Longitude,longitude,cascaded,dropdown,4,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10007,Vraretailstoresqfootage,selling_square_feet,cascaded,dropdown,3,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10007,Store Number,store_code,cascaded,dropdown,1,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10007,Store Description,store_description,cascaded,dropdown,2,store,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10008,Active,active,cascaded,dropdown,4,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10008,Store Description,store_description,cascaded,dropdown,1,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10008,Store Name,store_name,cascaded,dropdown,2,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10008,Updated At,updated_at,cascaded,dropdown,3,store,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10009,Store Open Date,open_date,cascaded,dropdown,1,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10009,Store Square Footage,size,cascaded,dropdown,4,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10009,State,state,cascaded,dropdown,2,store,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10009,Storearea,store_size,cascaded,dropdown,3,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10010,Store Close Date,close_date,cascaded,dropdown,2,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10010,Store Open Date,open_date,cascaded,dropdown,1,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10011,Active,active,cascaded,dropdown,4,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10011,Pillar,pillar,cascaded,dropdown,3,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10011,Style,style,cascaded,dropdown,1,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10011,Sub Class,sub_class,cascaded,dropdown,2,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10012,Active,active,cascaded,dropdown,4,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10012,Clearance,clearance_flag,cascaded,dropdown,3,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10012,Clearance End Date,clearance_end_date,cascaded,dropdown,1,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10012,Cost,cost,cascaded,dropdown,2,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10012,Region,region,cascaded,dropdown,3,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10012,Size Id,size,cascaded,dropdown,4,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10012,Store Name,store_name,cascaded,dropdown,2,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10012,Transit Days,transit_days,cascaded,dropdown,1,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10013,Development Type,development_type,cascaded,dropdown,2,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10014,Region,region,cascaded,dropdown,4,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10014,Vraretailstoresqfootage,selling_square_feet,cascaded,dropdown,2,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10014,Store Square Footage,size,cascaded,dropdown,3,store,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10014,Transit Days,transit_days,cascaded,dropdown,1,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10015,Store Close Date,close_date,cascaded,dropdown,4,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10015,Created At,created_at,cascaded,dropdown,1,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10015,Dropship Flag,dropship_flag,cascaded,dropdown,4,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10015,Primary Fabrication,fabrication,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10015,Fc Code,fc_code,cascaded,dropdown,2,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10015,Channel,l1_name,cascaded,dropdown,1,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10015,Address Longitude,longitude,cascaded,dropdown,3,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10015,Receipt Date,receipt_date,cascaded,dropdown,2,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10016,Pillar,pillar,cascaded,dropdown,1,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10025,Vrabackroomsqfootage,backroom_square_feet,cascaded,dropdown,1,store,FALSE,TRUE,,,,FALSE,FALSE,,FALSE,{},FALSE
+10025,Longitude,longitude,cascaded,dropdown,3,store,FALSE,TRUE,,,,FALSE,FALSE,,FALSE,{},FALSE
+10025,Vraretailstoresqfootage,selling_square_feet,cascaded,dropdown,2,store,FALSE,TRUE,,,,FALSE,FALSE,,FALSE,{},FALSE
+10026,Style,article,cascaded,dropdown,1,product,FALSE,TRUE,,,,FALSE,FALSE,,FALSE,{},FALSE
+10027,Clearance,clearance_flag,cascaded,dropdown,1,product,FALSE,TRUE,,,,FALSE,FALSE,,FALSE,{},FALSE
+10027,Store id,store_id,cascaded,dropdown,2,store,FALSE,TRUE,,,,FALSE,FALSE,,FALSE,{},FALSE
+10028,Merch pyramid,l3_name,cascaded,dropdown,1,product,FALSE,TRUE,,,,FALSE,FALSE,1,FALSE,{},FALSE
+10029,Special classification,special_classification,cascaded,dropdown,1,store,TRUE,TRUE,,,,FALSE,FALSE,1,FALSE,{},FALSE
+10030,District,district,cascaded,dropdown,2,store,TRUE,TRUE,,,,FALSE,FALSE,2,FALSE,{},FALSE
+10030,Channel,super_channel,cascaded,dropdown,1,store,TRUE,TRUE,,,,FALSE,FALSE,1,FALSE,{},FALSE
+10031,Color,l5_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,FALSE,1,FALSE,{},FALSE
+10032,Sub channel,sub_channel,cascaded,dropdown,1,store,TRUE,TRUE,,,,FALSE,FALSE,1,FALSE,{},FALSE
+10033,Sub channel,sub_channel,cascaded,dropdown,1,store,TRUE,TRUE,,,,FALSE,FALSE,1,FALSE,{},FALSE
+10034,Product Group,product_group,non-cascaded,dropdown,13,product,FALSE,TRUE,,,,FALSE,TRUE,13,FALSE,{},FALSE
+10034,Class,class,cascaded,dropdown,10,product,FALSE,TRUE,,,,FALSE,TRUE,10,FALSE,{},FALSE
+10034,Clearance Flag,clearance_flag,cascaded,dropdown,15,product,FALSE,TRUE,,,,FALSE,TRUE,15,FALSE,{},FALSE
+10034,Collection,collection,cascaded,dropdown,9,product,FALSE,TRUE,,,,FALSE,TRUE,9,FALSE,{},FALSE
+10034,Gender,gender,cascaded,dropdown,7,product,FALSE,TRUE,,,,FALSE,TRUE,7,FALSE,{},FALSE
+10034,Item Group,item_group_desc,cascaded,dropdown,14,product,FALSE,TRUE,,,,FALSE,TRUE,14,FALSE,{},FALSE
+10034,Country,l0_name,cascaded,dropdown,1,product,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+10034,Channel,l1_name,cascaded,dropdown,2,product,TRUE,FALSE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+10034,Brand,l2_name,cascaded,dropdown,3,product,TRUE,TRUE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+10034,SBU,l3_name,cascaded,dropdown,4,product,TRUE,TRUE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+10034,Department,l4_name,cascaded,dropdown,5,product,FALSE,TRUE,,,,FALSE,TRUE,5,FALSE,{},FALSE
+10034,Collection Total,l5_name,cascaded,dropdown,8,product,FALSE,TRUE,,,,FALSE,TRUE,8,FALSE,{},FALSE
+10034,Launch Date,launch_date,cascaded,dropdown,16,product,FALSE,TRUE,,,,FALSE,TRUE,16,FALSE,{},FALSE
+10034,Planned Clearance Date,planned_clearance_date,cascaded,dropdown,17,product,FALSE,TRUE,,,,FALSE,TRUE,17,FALSE,{},FALSE
+10034,Season,season,cascaded,dropdown,6,product,FALSE,TRUE,,,,FALSE,TRUE,6,FALSE,{},FALSE
+10034,Style Number,style,cascaded,dropdown,18,product,FALSE,TRUE,,,,FALSE,TRUE,18,FALSE,{},FALSE
+10034,Primary Occassion,sty_primary_occsn_end_use_dsc,cascaded,dropdown,12,product,FALSE,TRUE,,,,FALSE,TRUE,12,FALSE,{},FALSE
+10034,Subclass,subclass,cascaded,dropdown,11,product,FALSE,TRUE,,,,FALSE,TRUE,11,FALSE,{},FALSE
+211,Country,l0_name,cascaded,dropdown,6,product,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,"{""dimension"": ""product_store""}",FALSE
+211,Channel,l1_name,cascaded,dropdown,7,product,TRUE,FALSE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+211,Brand,l2_name,cascaded,dropdown,4,product,TRUE,TRUE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+211,SBU,l3_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,5,FALSE,{},FALSE
+211,Department,l4_name,cascaded,dropdown,1,product,FALSE,TRUE,,,,FALSE,TRUE,5,FALSE,{},FALSE
+211,Collection Total,l5_name,cascaded,dropdown,1,product,FALSE,TRUE,,,,FALSE,TRUE,5,FALSE,{},FALSE
+212,Channel,channel,cascaded,dropdown,5,store,TRUE,TRUE,,,,FALSE,TRUE,12,FALSE,{},FALSE
+212,Region,region,cascaded,dropdown,6,store,FALSE,TRUE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+213,Country,l0_name,cascaded,dropdown,6,product,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+213,Channel,l1_name,cascaded,dropdown,7,product,TRUE,TRUE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+213,Brand,l2_name,cascaded,dropdown,4,product,FALSE,TRUE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+213,SBU,l3_name,cascaded,dropdown,1,product,FALSE,TRUE,,,,FALSE,TRUE,5,FALSE,{},FALSE
+214,Country,l0_name,cascaded,dropdown,6,product,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+214,Channel,l1_name,cascaded,dropdown,7,product,TRUE,TRUE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+214,Brand,l2_name,cascaded,dropdown,4,product,TRUE,TRUE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+214,SBU,l3_name,cascaded,dropdown,1,product,FALSE,TRUE,,,,FALSE,TRUE,5,FALSE,{},FALSE
+214,Store Band,psa_name,cascaded,dropdown,8,store,FALSE,TRUE,,,,FALSE,TRUE,6,FALSE,"{""dimension"": ""product_store""}",FALSE
+215,Store Format,center_format_type,cascaded,dropdown,7,store,FALSE,TRUE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+215,District,district,cascaded,dropdown,7,store,FALSE,TRUE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+215,Country,l0_name,cascaded,dropdown,6,store,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,"{""dimension"": ""product_store""}",FALSE
+215,Channel,channel,cascaded,dropdown,7,store,TRUE,FALSE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+215,Store Grade,q_str_grade,cascaded,dropdown,7,store,FALSE,TRUE,,,,FALSE,TRUE,5,FALSE,{},FALSE
+215,Region,s1_name,cascaded,dropdown,7,store,FALSE,TRUE,,,,FALSE,TRUE,6,FALSE,{},FALSE
+215,State / Province,state,cascaded,dropdown,7,store,FALSE,TRUE,,,,FALSE,TRUE,7,FALSE,{},FALSE
+215,Store Number,store_code,cascaded,dropdown,7,store,FALSE,TRUE,,,,FALSE,TRUE,8,FALSE,{},FALSE
+215,Store Comp Flag,store_comp_flag,cascaded,dropdown,7,store,FALSE,TRUE,,,,FALSE,TRUE,9,FALSE,{},FALSE
+215,Store Concept,store_concept,cascaded,dropdown,7,store,FALSE,TRUE,,,,FALSE,TRUE,10,FALSE,{},FALSE
+215,Store Group,store_group,non-cascaded,dropdown,7,store,FALSE,TRUE,,,,FALSE,TRUE,10,FALSE,{},FALSE
+215,Climate,climate,cascaded,dropdown,8,store,FALSE,TRUE,,,,FALSE,TRUE,10,FALSE,{},FALSE
+215,Store Name,store_name,cascaded,dropdown,9,store,FALSE,TRUE,,,,FALSE,TRUE,10,FALSE,{},FALSE
+216,Store Format,center_format_type,cascaded,dropdown,7,store,FALSE,TRUE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+216,Channel,channel,cascaded,dropdown,7,store,TRUE,FALSE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+216,District,district,cascaded,dropdown,7,store,FALSE,TRUE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+216,Country,l0_name,cascaded,dropdown,6,store,TRUE,FALSE,,,,FALSE,FALSE,1,FALSE,"{""dimension"": ""product_store""}",FALSE
+216,Store Grade,q_str_grade,cascaded,dropdown,7,store,FALSE,TRUE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+216,Region,s1_name,cascaded,dropdown,7,store,FALSE,TRUE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+216,State / Province,state,cascaded,dropdown,7,store,FALSE,TRUE,,,,FALSE,TRUE,7,FALSE,{},FALSE
+216,Store Number,store_code,cascaded,dropdown,7,store,FALSE,TRUE,,,,FALSE,TRUE,8,FALSE,{},FALSE
+216,Store Comp Flag,store_comp_flag,cascaded,dropdown,7,store,FALSE,TRUE,,,,FALSE,TRUE,9,FALSE,{},FALSE
+216,Store Concept,store_concept,cascaded,dropdown,7,store,FALSE,TRUE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+217,Country,l0_name,cascaded,dropdown,6,product,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+217,Channel,l1_name,cascaded,dropdown,7,product,TRUE,FALSE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+217,Brand,l2_name,cascaded,dropdown,4,product,TRUE,TRUE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+217,SBU,l3_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,5,FALSE,{},FALSE
+217,Department,l4_name,cascaded,dropdown,1,product,FALSE,TRUE,,,,FALSE,TRUE,5,FALSE,{},FALSE
+217,Collection Total,l5_name,cascaded,dropdown,1,product,FALSE,TRUE,,,,FALSE,TRUE,5,FALSE,{},FALSE
+219,Store Format,center_format_type,cascaded,dropdown,7,store,FALSE,TRUE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+219,Climate,climate,cascaded,dropdown,7,store,FALSE,TRUE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+219,District,district,cascaded,dropdown,7,store,FALSE,TRUE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+219,Country,l0_name,cascaded,dropdown,7,product,TRUE,FALSE,,,,FALSE,TRUE,2,FALSE,"{""attributes"": [{""dimension"": ""product"", ""attribute_name"": ""l0_name""}, {""dimension"": ""store"", ""attribute_name"": ""country""}]}",FALSE
+219,Channel,l1_name,cascaded,dropdown,7,product,TRUE,FALSE,,,,FALSE,TRUE,2,FALSE,"{""attributes"": [{""dimension"": ""product"", ""attribute_name"": ""l1_name""}, {""dimension"": ""store"", ""attribute_name"": ""channel""}]}",FALSE
+219,Brand,l2_name,cascaded,dropdown,7,product,TRUE,FALSE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+219,SBU,l3_name,cascaded,dropdown,4,product,TRUE,FALSE,,,,FALSE,TRUE,,FALSE,{},FALSE
+219,Department,l4_name,cascaded,dropdown,4,product,TRUE,FALSE,,,,FALSE,TRUE,,FALSE,{},FALSE
+219,Collection Total,l5_name,cascaded,dropdown,4,product,TRUE,FALSE,,,,FALSE,TRUE,,FALSE,{},FALSE
+219,Store Grade,q_str_grade,cascaded,dropdown,7,store,FALSE,TRUE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+219,Region,s1_name,cascaded,dropdown,7,store,FALSE,TRUE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+219,State / Province,state,cascaded,dropdown,7,store,FALSE,TRUE,,,,FALSE,TRUE,7,FALSE,{},FALSE
+219,Store Number,store_code,cascaded,dropdown,7,store,FALSE,TRUE,,,,FALSE,TRUE,8,FALSE,{},FALSE
+219,Store Comp Flag,store_comp_flag,cascaded,dropdown,7,store,FALSE,TRUE,,,,FALSE,TRUE,9,FALSE,{},FALSE
+219,Store Concept,store_concept,cascaded,dropdown,7,store,FALSE,TRUE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+219,Store Group,store_group,non-cascaded,dropdown,7,store,FALSE,TRUE,,,,FALSE,TRUE,10,FALSE,{},FALSE
+219,Store Name,store_name,cascaded,dropdown,7,store,FALSE,TRUE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+219,Style,article,cascaded,dropdown,4,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE

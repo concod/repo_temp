@@ -1,0 +1,78 @@
+{% include "header.html" %}
+<div class="pagetitle">
+	<h1>Locks</h1>
+</div>
+
+<section class="section">
+      <!-- <div class="row">
+		  <a href='/create_default_roles' style='float:right; display: block; padding: 10px; margin: 20px; text-decoration:none;'>Create Default Roles</a>
+		<div class="col-lg-12"> -->
+			
+		
+			<div class="card">
+				<div class="card-body">
+					<!--h5 class="card-title">DataBases</h5>
+					<p>Choose a database from list to manage.</p-->
+
+					<!-- Table with stripped rows -->
+					<table class="table datatable table-hover">
+						<thead>
+							<tr>
+								<th>Blocked Query ID</th>
+								<th>Blocker ID</th>
+								<th>Blocker User</th>
+								<th>Blocker Start</th>
+								<th>Blocker Query</th>
+								<!-- <th>Member Of</th> -->
+								<th>Blocked Query start</th>
+								<th>Blocked Query</th>
+								<th>Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for row in locks %}
+								<tr>
+									<td>{{row['pid']}}</td>
+									<td>{{row['blocker_id']}}</td>
+									<td>{{row['blocker_user']}}</td>
+									<td>{{row['blocker_start']}}</td>
+									<td>{{row['blocker_query']}}</td>
+									<td>{{row['trans_start']}}</td>
+									<td>{{row['trans_query']}}</td>
+									<!-- <td>{{", ".join(row['memberof'])}}</td> -->
+									<td><a href="/table-op/{{ row['blocker_id'] }}/kill_lock">Kill Blocker</a></td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+					<!-- End Table with stripped rows -->
+
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</section>
+
+		<!-- <div class="container" style='width: 100%;'>
+			{% if prevs %}
+			<h1>Error 1:</h1>
+			<table border='1' width='100%'>
+				<tr>
+					<th>Table</th>
+					<th>Grantor</th>
+					<th>Grantee</th>
+					<th>Type</th>
+				</tr>
+				{% for row in prevs %}
+				<tr>
+					<td>{{row['tbl']}}</td>
+					<td>{{row['grantor']}}</td>
+					<td>{{row['grantee']}}</td>
+					<td>{{row['privilege_type']}}</td>
+				</tr>
+				{% endfor %}
+			</table>
+			{% endif %}
+		</div> -->
+{% include "footer.html" %}

@@ -1,0 +1,36 @@
+{% include "header.html" %}
+<div class="pagetitle">
+	<h1>Compile - {{ msg }}</h1>
+</div>
+
+<section class="section">
+      <div class="row">
+		<div class="col-lg-6">
+			{% if res|length == 0 %}
+				<table width='100%'>
+					{% for filename in glob.iglob("liquibase/{}/*.xml".format(client), recursive=True) %}
+						<tr>
+							<td>
+								<a href="/download/{{filename.replace('/','___')}}">{{filename}}</a>
+							</td>
+						</tr>
+					{% endfor %}
+				</table>
+			{% else %}
+				<table width='100%'>
+					{% for r in res %}
+						<tr>
+							<td>
+								{{r.replace('block_start', '').replace('block_end', '')}}
+							</td>
+						</tr>
+					{% endfor %}
+						<tr>
+							<td style='color: red;'>Can download <a href='/download/sync_error.txt'>Error Logs</a> to understand error in details.</td>
+						</tr>
+				</table>
+			{% endif %}
+		</div>
+	</div>
+</section>
+{% include "footer.html" %}

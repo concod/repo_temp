@@ -1,0 +1,241 @@
+// ============================================================================
+// IB Agent — Typography Design Tokens
+// ============================================================================
+//
+// Single source of truth for every font-size, weight, color, and line-height
+// used across the IB BI Agent interface.
+//
+// USAGE
+//   @use "typography" as t;          — in other SCSS modules
+//   or simply import into ib-agent.scss which sets the custom properties on :root
+//
+// HIERARCHY (largest → smallest)
+//   Page Title  →  Section Title  →  Subsection Title  →  Body  →  Body SM
+//   →  Description  →  Label  →  Caption
+//
+// ============================================================================
+
+// ---------------------------------------------------------------------------
+// 1. COLOR TOKENS
+// ---------------------------------------------------------------------------
+$ib-text-primary: #0D152C; // Headings, key values, primary content
+$ib-text-body: #1C2434; // Paragraph / message body text
+$ib-text-secondary: #31416E; // Table cells, supporting content
+$ib-text-muted: #6B7280; // Descriptions, helper text, labels
+$ib-text-faint: #7A8294; // Timestamps, meta info, captions
+$ib-text-placeholder: #9CA3AF; // Input placeholders
+
+$ib-text-white: #FFFFFF; // Text on dark / colored backgrounds
+$ib-accent: #00AE41; // Links, interactive highlights
+$ib-accent-dark: #117737; // Pressed / hover accent
+$ib-error: #C0392B; // Error / destructive text
+
+// ---------------------------------------------------------------------------
+// 2. FONT FAMILY
+// ---------------------------------------------------------------------------
+$ib-font-family: "Open Sans", "Manrope", system-ui, -apple-system, sans-serif;
+
+// ---------------------------------------------------------------------------
+// 3. TYPE SCALE  (px-based for pixel-perfect control)
+//    Each level defines size · weight · line-height · color
+// ---------------------------------------------------------------------------
+
+// ---- Page Title  (hero greeting, top-level headings) ----------------------
+$ib-page-title-size: 28px;
+$ib-page-title-weight: 700;
+$ib-page-title-lh: 1.3;
+$ib-page-title-color: $ib-text-primary;
+
+// ---- Section Title  (report sections, card group headers) -----------------
+$ib-section-title-size: 18px;
+$ib-section-title-weight: 700;
+$ib-section-title-lh: 1.4;
+$ib-section-title-color: $ib-text-primary;
+
+// ---- Subsection Title  (table titles, chart titles, modal headers) --------
+$ib-subsection-title-size: 16px;
+$ib-subsection-title-weight: 600;
+$ib-subsection-title-lh: 1.4;
+$ib-subsection-title-color: $ib-text-primary;
+
+// ---- Body  (message bubbles, primary reading text) ------------------------
+$ib-body-size: 15px;
+$ib-body-weight: 400;
+$ib-body-lh: 1.6;
+$ib-body-color: $ib-text-body;
+
+// ---- Body Small  (drawer items, form inputs, secondary content) -----------
+$ib-body-sm-size: 14px;
+$ib-body-sm-weight: 400;
+$ib-body-sm-lh: 1.5;
+$ib-body-sm-color: $ib-text-secondary;
+
+// ---- Description / Helper  (descriptions below titles, tooltips) ----------
+$ib-description-size: 13px;
+$ib-description-weight: 400;
+$ib-description-lh: 1.5;
+$ib-description-color: $ib-text-body;
+
+// ---- Label  (section labels, action buttons, drawer tabs) -----------------
+$ib-label-size: 13px;
+$ib-label-weight: 600;
+$ib-label-lh: 1.4;
+$ib-label-color: $ib-text-muted;
+
+// ---- Caption  (timestamps, meta badges, footer) --------------------------
+$ib-caption-size: 12px;
+$ib-caption-weight: 500;
+$ib-caption-lh: 1.4;
+$ib-caption-color: $ib-text-faint;
+
+// ---- Caption XS  (status text, copy confirmations) -----------------------
+$ib-caption-xs-size: 11px;
+$ib-caption-xs-weight: 600;
+$ib-caption-xs-lh: 1.3;
+$ib-caption-xs-color: $ib-text-faint;
+
+// ---------------------------------------------------------------------------
+// 4. COMPONENT-SPECIFIC TOKENS
+// ---------------------------------------------------------------------------
+
+// Metric cards
+$ib-metric-value-size: 20px;
+$ib-metric-value-weight: 700;
+$ib-metric-value-lh: 1.3;
+$ib-metric-value-color: $ib-text-primary;
+
+$ib-metric-label-size: $ib-description-size; // 13px
+$ib-metric-label-weight: 400;
+$ib-metric-label-lh: 1.4;
+$ib-metric-label-color: $ib-text-muted;
+
+// Table
+$ib-table-header-size: 13px;
+$ib-table-header-weight: 700;
+$ib-table-header-lh: 1.4;
+$ib-table-header-color: $ib-text-secondary;
+
+$ib-table-cell-size: 14px;
+$ib-table-cell-weight: 400;
+$ib-table-cell-lh: 1.5;
+$ib-table-cell-color: $ib-text-secondary;
+
+$ib-table-cell-primary-weight: 500;
+$ib-table-cell-primary-color: $ib-text-primary;
+
+// Chart (Highcharts inline overrides)
+$ib-chart-title-size: 16px;
+$ib-chart-title-weight: 600;
+$ib-chart-datalabel-size: 12px;
+$ib-chart-datalabel-weight: 700;
+$ib-chart-datalabel-color: $ib-text-primary;
+$ib-chart-axis-label-color: $ib-text-secondary;
+
+// Buttons
+$ib-btn-size: 14px;
+$ib-btn-weight: 600;
+$ib-btn-lh: 1.4;
+
+// Example question cards
+$ib-example-size: 15px;
+$ib-example-weight: 500;
+
+// ---------------------------------------------------------------------------
+// 5. MIXIN HELPERS  — apply a complete type style in one line
+// ---------------------------------------------------------------------------
+@mixin ib-type-page-title {
+    font-size: $ib-page-title-size;
+    font-weight: $ib-page-title-weight;
+    line-height: $ib-page-title-lh;
+    color: $ib-page-title-color;
+}
+
+@mixin ib-type-section-title {
+    font-size: $ib-section-title-size;
+    font-weight: $ib-section-title-weight;
+    line-height: $ib-section-title-lh;
+    color: $ib-section-title-color;
+}
+
+@mixin ib-type-subsection-title {
+    font-size: $ib-subsection-title-size;
+    font-weight: $ib-subsection-title-weight;
+    line-height: $ib-subsection-title-lh;
+    color: $ib-subsection-title-color;
+}
+
+@mixin ib-type-body {
+    font-size: $ib-body-size;
+    font-weight: $ib-body-weight;
+    line-height: $ib-body-lh;
+    color: $ib-body-color;
+}
+
+@mixin ib-type-body-sm {
+    font-size: $ib-body-sm-size;
+    font-weight: $ib-body-sm-weight;
+    line-height: $ib-body-sm-lh;
+    color: $ib-body-sm-color;
+}
+
+@mixin ib-type-description {
+    font-size: $ib-description-size;
+    font-weight: $ib-description-weight;
+    line-height: $ib-description-lh;
+    color: $ib-description-color;
+}
+
+@mixin ib-type-label {
+    font-size: $ib-label-size;
+    font-weight: $ib-label-weight;
+    line-height: $ib-label-lh;
+    color: $ib-label-color;
+}
+
+@mixin ib-type-caption {
+    font-size: $ib-caption-size;
+    font-weight: $ib-caption-weight;
+    line-height: $ib-caption-lh;
+    color: $ib-caption-color;
+}
+
+@mixin ib-type-caption-xs {
+    font-size: $ib-caption-xs-size;
+    font-weight: $ib-caption-xs-weight;
+    line-height: $ib-caption-xs-lh;
+    color: $ib-caption-xs-color;
+}
+
+@mixin ib-type-metric-value {
+    font-size: $ib-metric-value-size;
+    font-weight: $ib-metric-value-weight;
+    line-height: $ib-metric-value-lh;
+    color: $ib-metric-value-color;
+}
+
+@mixin ib-type-metric-label {
+    font-size: $ib-metric-label-size;
+    font-weight: $ib-metric-label-weight;
+    line-height: $ib-metric-label-lh;
+    color: $ib-metric-label-color;
+}
+
+@mixin ib-type-table-header {
+    font-size: $ib-table-header-size;
+    font-weight: $ib-table-header-weight;
+    line-height: $ib-table-header-lh;
+    color: $ib-table-header-color;
+}
+
+@mixin ib-type-table-cell {
+    font-size: $ib-table-cell-size;
+    font-weight: $ib-table-cell-weight;
+    line-height: $ib-table-cell-lh;
+    color: $ib-table-cell-color;
+}
+
+@mixin ib-type-btn {
+    font-size: $ib-btn-size;
+    font-weight: $ib-btn-weight;
+    line-height: $ib-btn-lh;
+}

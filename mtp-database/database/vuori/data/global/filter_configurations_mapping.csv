@@ -1,0 +1,26 @@
+fc_code,label,column_name,type,display_type,level,dimension,is_mandatory,is_multiple_selection,range_min,range_max,default_value,is_disabled,is_clearable,display_order,is_required,extra,is_deleted
+280,Add User Name,user_name,non-cascaded,TextField,,product,True,False,,,,False,False,1,True,{},False
+280,Add User Id,email,non-cascaded,TextField,,product,True,False,,,,False,False,2,True,{},False
+501,Module,module_type,non-cascaded,dropdown,,others,False,True,,,,False,True,,False,{},False
+501,Priority,priority,non-cascaded,dropdown,,others,False,True,,,,False,True,,False,{},False
+501,Ticket ID,id,non-cascaded,dropdown,,others,False,True,,,,False,True,,False,{},False
+501,Status,status,non-cascaded,dropdown,,others,False,True,,,,False,True,,False,{},False
+501,Issue Type,issue_type,non-cascaded,dropdown,,others,False,True,,,,False,True,,False,{},False
+501,Requestor name,user_id,non-cascaded,dropdown,,others,False,True,,,,False,True,,False,{},False
+134,Department,l0_name,cascaded,dropdown,,product,True,False,,,,False,True,1,False,{},False
+134,Subdepartment,l1_name,cascaded,dropdown,,product,True,True,,,,False,True,2,False,{},False
+134,Class,l2_name,cascaded,dropdown,,product,False,True,,,,False,True,3,False,{},False
+134,Subclass,l3_name,cascaded,dropdown,,product,False,True,,,,False,True,4,False,{},False
+134,Style,style,cascaded,dropdown,,product,False,True,,,,False,True,5,False,{},False
+134,Style Color,article,cascaded,dropdown,,product,False,True,,,,False,True,6,False,{},False
+134,Brand,brand,cascaded,dropdown,,product,False,True,,,,False,True,7,False,{},False
+134,Vendor,vendor,cascaded,dropdown,,product,False,True,,,,False,True,8,False,{},False
+134,Price Status,price_status,cascaded,dropdown,,product,False,True,,,,False,True,9,False,{},False
+179,Channel,channel_id_name,cascaded,dropdown,,store,True,False,,,,False,True,1,False,{},False
+179,Region,region_id_name,cascaded,dropdown,,store,False,True,,,,False,True,2,False,{},False
+179,District,district_id_name,cascaded,dropdown,,store,False,True,,,,False,True,3,False,{},False
+179,Location ,location_id_name,cascaded,dropdown,,store,False,True,,,,False,True,4,False,{},False
+179,City,city_code,cascaded,dropdown,,store,False,True,,,,False,True,5,False,{},False
+179,Location Type,store_type,cascaded,dropdown,,store,False,True,,,,False,True,6,False,{},False
+179,Location Status,store_status,cascaded,dropdown,,store,False,True,,,,False,True,7,False,{},False
+179,State,state_code,cascaded,dropdown,,store,False,True,,,,False,True,8,False,{},False

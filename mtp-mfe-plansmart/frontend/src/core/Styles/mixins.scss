@@ -1,0 +1,43 @@
+// Pixel to Rem
+@function pxToRem($value: 16) {
+    @return (($value / 16) + rem);
+}
+
+@mixin includeFont($weight: normal, $fontSize: 16, $lineHeight: 20, $letterSpcaing: 0) {
+    font-size: pxToRem($fontSize);
+    line-height: ($lineHeight / $fontSize);
+    font-weight: $weight;
+    letter-spacing: $letterSpcaing;
+}
+
+@mixin  font-size-h1 {
+    @include includeFont(600, 28, 42, 0);
+}
+@mixin  font-size-h2 {
+    @include includeFont(600, 24, 36, 0);
+}
+@mixin  font-size-h3 {
+    @include includeFont(600, 20, 30, 0);
+}
+@mixin  font-size-h4 {
+    @include includeFont(500, 16, 24, 0);
+}
+@mixin  font-size-h5 {
+    @include includeFont(500, 15, 23, 0);
+}
+@mixin  font-size-h6 {
+    @include includeFont(500, 14, 21, 0);
+}
+@mixin  font-size-subtitle1 {
+    @include includeFont(400, 13, 20, 0);
+}
+@mixin  font-size-body1 {
+    @include includeFont(400, 14, 21, 0);
+}
+@mixin  font-size-body2 {
+    @include includeFont(500, 13, 20, 0);
+}
+@mixin  font-size-button {
+    @include includeFont(500, 14, 22, 0);
+
+}

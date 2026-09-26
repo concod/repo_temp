@@ -1,0 +1,293 @@
+--liquibase formatted sql
+--changeset liquibase:rcl_dc_store_policy_list runOnChange:true stripComments:false splitStatements:false context:MTP-62931 labels:MTP-62931
+--comment: MTP-62931 Used to list all rcl dc store policy rules - added filter for auto_allocation_schedular_name
+--rollback: SELECT 1
+DROP FUNCTION IF EXISTS inventory_smart.rcl_dc_store_policy_list(refcursor, jsonb, jsonb);
+DROP FUNCTION IF EXISTS inventory_smart.rcl_dc_store_policy_list(refcursor, jsonb, jsonb, boolean);
+CREATE OR REPLACE FUNCTION inventory_smart.rcl_dc_store_policy_list(
+    input refcursor, 
+    jsonb, 
+    jsonb,
+    _is_rule_store_level_configuration boolean default false
+)
+ RETURNS refcursor
+ LANGUAGE plpgsql
+AS $function$
+declare
+_query_part text:='';
+_query_combine text:='';
+_where text := '';
+_query_meta_filters text:='';
+_hash_cols text;
+_rcl_codes integer[];
+_pa_query text := '';
+_default_auto_allocation_rule_code int4;
+_default_auto_allocation_rule_name text;
+_default_dc_store_rule_rule_code int4;
+_default_dc_store_rule_rule_name text;
+_default_auto_allocation_scheduler_code int4;
+_default_auto_allocation_scheduler_name text;
+_default_product_profile_code int4;
+_default_product_profile_name text;
+_store_group_ids text;
+_default_store_groups_mapped text;
+_l0_name text[];
+_l1_name text[];
+json_fields TEXT[] := ARRAY['auto_allocation_schedular_name']; -- Add other JSON field filters here
+json_field TEXT;
+matches TEXT[];
+pattern TEXT;
+v_gen_random_uuid text  := gen_random_uuid()::varchar;
+begin   
+    raise notice 'Starting function with gen_random_uuid: %', v_gen_random_uuid;
+    raise notice 'json_fields: %', json_fields;
+    
+    _pa_query := global.form_main_table_filters('product_attributes_filter', $2);
+    raise notice '_pa_query: %', _pa_query;
+    
+    select
+        array_agg(rcl_code),
+        'array[' || string_agg('rcl_hash->>' || quote_literal(rcl_code), ', ') || ']::text[] as rcl_hashes' into _rcl_codes, _hash_cols 
+    from global.rcl_master 
+    where not is_deleted
+    and module_code = '10003'
+    group by is_deleted;
+    
+    raise notice '_rcl_codes: %', _rcl_codes;
+    raise notice '_hash_cols: %', _hash_cols;
+   
+    -- taking all the store groups into account regardless of any filters
+    raise notice 'Starting store groups aggregation';
+	WITH store_group_counts AS (
+	    SELECT
+	        COUNT(DISTINCT sgm.store_code) AS store_codes_count,
+	        array_agg(DISTINCT sgm.sg_code) AS store_group_ids,
+	        COUNT(DISTINCT sgm.sg_code) AS store_group_count
+	    FROM global.store_groups_mapping sgm
+	    JOIN global.tenant_attribute_master tam ON tam.attribute_code = 1501
+	    JOIN LATERAL (SELECT (tam.attribute_value->'default_store_group'->>'default')::int) jt(value)
+	    ON sgm.sg_code = jt.value
+	)
+	
+	SELECT 
+	    coalesce(store_codes_count || '/' || store_group_count),
+	    COALESCE(store_group_ids, '{}') AS _store_group_ids
+	INTO _default_store_groups_mapped, _store_group_ids
+	FROM store_group_counts;
+   
+    raise notice 'hello _default_store_groups_mapped: %', _default_store_groups_mapped;
+    raise notice '_store_group_ids: %', _store_group_ids;
+   
+    _where := ' join (
+        with paf as materialized (
+            select rcl_hash from (
+                select unnest(rcl_hashes) as rcl_hash from (
+                    select ' || _hash_cols || ' 
+                    from global.product_attributes_filter ' || _pa_query || ' 
+                    and active
+                ) x
+            ) y 
+            where rcl_hash is not null 
+            group by 1
+        )
+        select rcl_code, rule_code, rule_name, md5(rcl_dimension::text) rcl_hash, rcl_dimension 
+        from inventory_smart.rcl_dc_store_policy_rule 
+        where rcl_code = any(' || quote_literal(_rcl_codes::text) || '::int[]) 
+          and md5(rcl_dimension::text) in (select rcl_hash from paf)
+        group by 1, 2, 3, 4, 5
+    ) r on r.rule_code = c.rule_code and r.rcl_code = c.rcl_code ';
+
+    raise notice '_where: %', _where;
+
+    _query_meta_filters := inventory_smart.form_rcl_table_query($3);
+    raise notice 'before _query_meta_filters: %', _query_meta_filters;
+    -- sample output: 
+    -- WHERE (c_rule_code::text ILIKE '%28832%') AND (auto_allocation_scheduler_name::text ILIKE '%daily%') LIMIT 100 OFFSET 0
+	-- Loop through each JSON field to check for its presence in _query_meta_filters
+    raise notice 'Starting JSON field loop with json_fields: %', json_fields;
+    FOREACH json_field IN ARRAY json_fields LOOP
+        raise notice 'Processing JSON field: %', json_field;
+        -- Find and capture the pattern in the ILIKE clause for the JSON field
+		-- Case 1: Single ILIKE clause
+        matches := regexp_matches(_query_meta_filters, '\(' || json_field || '::text ILIKE ''%([^'']*)%''\)', 'g');
+        raise notice 'matches for %: %', json_field, matches;
+        
+        -- If there's a match, use the captured pattern for replacement
+        IF array_length(matches, 1) IS NOT NULL THEN
+            pattern := matches[1]; -- Extract the pattern from the match array
+            raise notice 'pattern: %', pattern;
+
+            -- Replace the matched pattern with the EXISTS clause
+            _query_meta_filters := regexp_replace(
+                _query_meta_filters,
+                '\(' || json_field || '::text ILIKE ''%([^'']*)%''\)',
+                'EXISTS (
+                    SELECT 1 FROM jsonb_array_elements(store_details) AS details
+                    WHERE details->>' || quote_literal(json_field) || ' ILIKE ''%' || pattern || '%''
+                )',
+                'g' -- Global replacement flag
+            );
+            raise notice 'modified _query_meta_filters: %', _query_meta_filters;
+		ELSE 
+	        -- Case 2: ILIKE ANY clause
+	        matches := regexp_matches(_query_meta_filters, '\(' || json_field || '::text ILIKE any\(''(\{[^}]*\})''\)\)', 'g');
+	        raise notice 'ANY matches for %: %', json_field, matches;
+	        
+	        -- If `ILIKE ANY` clause is found, handle it
+	        IF array_length(matches, 1) IS NOT NULL THEN
+	            RAISE NOTICE 'found a match for ILIKE ANY';
+	            pattern := matches[1]; -- Extract the ANY patterns as a string, e.g., '{%hello%,%rule%}'
+	            RAISE NOTICE 'Pattern: %', pattern;
+	            
+	            -- Replace the matched `ILIKE ANY` clause with an EXISTS clause
+	            _query_meta_filters := regexp_replace(
+	                _query_meta_filters,
+	                '\(' || json_field || '::text ILIKE any\(''(\{[^}]*\})''\)\)',
+	                'EXISTS (
+	                    SELECT 1 FROM jsonb_array_elements(store_details) AS details
+	                    WHERE details->>' || quote_literal(json_field) || ' ILIKE any(''' || pattern || ''')
+	                )',
+	                'g' -- Global replacement flag
+	            );
+	            raise notice 'modified _query_meta_filters for ANY: %', _query_meta_filters;
+	        END IF;
+        END IF;
+    END LOOP;
+	raise notice 'after _query_meta_filters: %', _query_meta_filters;
+    -- sample output: 
+    -- WHERE (c_rule_code::text ILIKE '%28832%') AND EXISTS (
+    --     SELECT 1 FROM jsonb_array_elements(store_details) AS details
+    --     WHERE details->>'auto_allocation_schedular_name' ILIKE '%daily%'
+    -- ) LIMIT 100 OFFSET 0
+
+    raise notice 'Building _query_part...';
+    _query_part := '
+        SELECT 
+            c.rule_code as c_rule_code,
+            c.rcl_code as c_rcl_code,
+            r.rule_name as rule_name,
+            r.rcl_dimension,
+            null as _default_auto_allocation_rule_code,
+            ' || quote_literal('No Rule') || ' as _default_auto_allocation_rule_name,
+            null as _default_dc_store_rule_rule_code,
+            ' || quote_literal('Default Rule') || ' as _default_dc_store_rule_rule_name,
+            null as _default_auto_allocation_scheduler_code,
+            ' || quote_literal('No Rule') || ' as _default_auto_allocation_scheduler_name,
+            ' || quote_literal('No Rule') || ' as _default_auto_allocation_scheduler_store_level_name,
+            ' || quote_literal(_store_group_ids::text) || '::integer[] as _store_group_ids,
+            ' || quote_literal(_default_store_groups_mapped) || ' as _default_store_groups_mapped,
+            null as _default_product_profile_code,
+            ' || quote_literal('ia-recommended') || ' as _default_product_profile_name,
+            jsonb_agg(jsonb_build_object(
+                ''start_date'', lower(c.validity),
+                ''end_date'', (upper(c.validity)-1),
+                ''created_at'', c.created_at,
+                ''updated_at'', c.updated_at,
+                ''updated_by'', c.updated_by,
+                ''created_by'', c.created_by,
+                ''user_code'', u.user_code,
+                ''user'', u.email,
+		        ''store_store_groups_mapped'', 
+		            CASE 
+		                WHEN COALESCE(sg.store_codes_count || ''/'' || array_length(c.default_store_groups, 1), ''0/0'') = ''0/0'' 
+		                THEN ' || quote_literal(_default_store_groups_mapped) || '
+		                ELSE sg.store_codes_count || ''/'' || array_length(c.default_store_groups, 1)
+		            END,
+		        ''default_store_groups'', 
+		            CASE 
+		                WHEN COALESCE(sg.store_codes_count || ''/'' || array_length(c.default_store_groups, 1), ''0/0'') = ''0/0''
+		                THEN ' || quote_literal(_store_group_ids) || '::integer[] 
+		                ELSE c.default_store_groups
+		        	END,
+                ''product_profile'', 
+                    CASE 
+                        WHEN c.default_product_profile IS NULL 
+                            THEN ''ia-recommended'' 
+                        WHEN pp.special_classification = ''user-defined'' 
+                            THEN pp.name 
+                        ELSE ''ia-recommended'' 
+                    END,
+                ''default_product_profile'', pp.pp_code,
+                ''auto_allocation_rule_name'', CASE 
+                    WHEN dspaa.rule_name IS NOT NULL AND NOT dspaa.is_deleted 
+                    THEN dspaa.rule_name 
+                    ELSE ''No Rule'' 
+                END,
+                ''auto_allocation_rule'', dspaa.rule_code,
+                ''dc_store_rule_name'', CASE 
+                    WHEN dspsr.rule_name IS NOT NULL AND NOT dspsr.is_deleted 
+                    THEN dspsr.rule_name 
+                    ELSE ''Default Rule'' 
+                END,
+                ''dc_store_rule'', dspsr.rule_code,
+                ''auto_allocation_schedular_name'', CASE 
+                    WHEN aas.sh_code IS NOT NULL AND NOT aas.is_deleted 
+                    THEN aas.sh_name 
+                    ELSE ''No Rule'' 
+                END,
+                ''auto_allocation_schedular'', aas.sh_code' || 
+                CASE 
+                    WHEN _is_rule_store_level_configuration 
+                    THEN '
+                ,''auto_allocation_schedular_store_level_name'', (
+                    SELECT COALESCE(STRING_AGG(DISTINCT aas.sh_name, '',''), ''No Rule'')
+                    FROM inventory_smart.rcl_dc_store_policy_store_level c2
+                    LEFT JOIN inventory_smart.auto_allocation_scheduler aas 
+                    ON aas.sh_code = c2.auto_allocation_schedular
+                    WHERE c2.rule_code = c.rule_code
+                    AND c2.validity = c.validity
+                    AND c2.auto_allocation_schedular IS NOT NULL
+                )' 
+                    ELSE '' 
+                END || '
+            )) as store_details 
+        FROM 
+            inventory_smart.rcl_dc_store_policy c
+            LEFT JOIN global.user_master u on u.user_code = coalesce(c.updated_by, c.created_by)
+            LEFT JOIN inventory_smart.product_profile_master pp ON pp.pp_code = c.default_product_profile
+            LEFT JOIN inventory_smart.dc_store_policy_user_rule dspaa ON dspaa.rule_code = c.auto_allocation_rule
+            LEFT JOIN inventory_smart.dc_store_policy_user_rule dspsr ON dspsr.rule_code = c.dc_store_rule
+            LEFT JOIN inventory_smart.auto_allocation_scheduler aas ON aas.sh_code = c.auto_allocation_schedular
+            LEFT JOIN LATERAL (
+                SELECT
+                    COUNT(DISTINCT store_code) AS store_codes_count
+                FROM
+                    global.store_groups_mapping
+                WHERE
+                    sg_code = ANY (c.default_store_groups)
+            ) sg ON true
+
+            ' || _where || ' 
+
+		WHERE current_date <= upper(c.validity) and not c.is_deleted
+        GROUP BY c.rule_code, c.rcl_code, r.rcl_dimension, r.rule_name';
+    raise notice '_query_part: %', _query_part;
+
+    raise notice '_query_part length: %', length(_query_part);
+    
+    raise notice 'Building _query_combine...';
+    _query_combine := '
+    select A.*
+    from         
+    (
+        SELECT 
+            p.*, rm.is_default
+        FROM
+            (' || _query_part || ') p
+            JOIN global.rcl_master rm ON p.c_rcl_code = rm.rcl_code
+        WHERE NOT rm.is_deleted ORDER BY rm.is_default desc) as A ' || _query_meta_filters ;
+    
+    raise notice '_query_combine length: %', length(_query_combine);
+    raise notice 'query_combine: %', _query_combine;
+    raise notice 'Opening cursor: %', $1;
+    open $1 for execute _query_combine;
+    raise notice 'Cursor opened successfully';
+    raise notice 'Before global.sp_log with v_gen_random_uuid: %', v_gen_random_uuid;
+    perform global.sp_log(v_gen_random_uuid,'inventory_smart.rcl_dc_store_policy_list', 'Before Return',_query_combine,jsonb_build_object('$2', $2,'$3' , $3));
+    raise notice 'global.sp_log completed';
+    raise notice 'Returning cursor: %', $1;
+    return $1;
+
+END;
+$function$
+;

@@ -1,0 +1,54 @@
+body.modalOpen {
+  overflow: hidden;
+}
+
+body.modalOpen .layout {
+  position: relative;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  flex: 1;
+  width: 75%;
+}
+
+.main-content {
+  flex: 1;
+  background: #EFF2FA;;
+}
+
+.cluster-icon svg * {
+  fill: #fff !important;
+}
+
+.noti-stack-toast-core {
+  .ia-snackbar {
+    width: max-content;
+  }
+  .MuiSnackbar-root.MuiSnackbar-anchorOriginTopRight {
+    position: static;
+  }
+  .MuiSnackbar-root.MuiSnackbar-anchorOriginBottomRight {
+    position: static;
+  }
+}
+
+.SnackbarContainer-top{
+  top: 64px!important;
+}
+
+.core-v3-notification {
+  .impact-notification-separator {
+    display: none;
+  }
+  .ia-btn-with-icon{
+    display: none!important;
+  }
+}

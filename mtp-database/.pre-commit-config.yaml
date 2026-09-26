@@ -1,0 +1,9 @@
+repos:
+  - repo: local
+    hooks:
+      - id: validate-changeset
+        name: Validate Changeset Formatting
+        entry: python3 .precommit_scripts/validate_changeset.py
+        language: system
+        types: [sql]
+        files: ^database/.*\.sql$

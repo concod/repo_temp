@@ -1,0 +1,126 @@
+screen_code,screen_name,is_active,description,dimensions,application,label
+2,Filter Configurations,TRUE,,{},{3},
+3,All,TRUE,,{},{},
+4,Product Mapping,TRUE,,{product},{3},
+5,Product Status,TRUE,,{product},{3},
+6,Store Mapping,TRUE,,{store},{3},
+7,Store Status,TRUE,,{store},{3},
+8,Product Grouping,TRUE,,{},{3},
+9,Store Grouping,TRUE,,"{store,product}",{3},
+10,Product Unit Definition,TRUE,,{},{3},
+11,Inventory,TRUE,,"{product,store}",{3},
+12,DC Status,TRUE,,{store},{3},
+13,DC Mapping,TRUE,,{store},{3},
+14,AssortDashboard,TRUE,,{},{2},
+15,Cluster Input,TRUE,,{},{2},
+16,Finalize Cluster,TRUE,,{},{2},
+17,Dc Store,TRUE,,{store},{3},
+18,DC FC,TRUE,,{store},{3},
+19,Finalize Plan,TRUE,,{},{2},
+20,DC to Product,TRUE,,{product},{3},
+21,DC/FC  to Store mapping,TRUE,,{},{3},
+22,DC Status,TRUE,,"{""""}",{3},
+23,Product to ASN,TRUE,,{},{3},
+24,Product to DC/FC mapping,TRUE,,{},{3},
+25,Product to PO,TRUE,,{},{3},
+26,Product to Store mapping,TRUE,,{},{3},
+27,Store to DC/FC mapping,TRUE,,{},{3},
+28,Store to Product mapping,TRUE,,{},{3},
+29,Plan,TRUE,,{},{2},
+30,Depth & Choice,TRUE,,{},{2},
+31,Wedge,TRUE,,{},{2},
+32,marksmart-file-view,TRUE,Files view table ,{},{10},
+33,assort create plan,TRUE,,{},{2},
+34,assort edit plan,TRUE,,{},{2},
+35,assort create plan - hindsight,TRUE,,{},{2},
+36,assort edit plan - hindsight,TRUE,,{},{2},
+37,Plansmart Dashboard,TRUE,,{},{4},
+38,Plansmart MasterPlan,TRUE,,{},{4},
+39,assort create plan - omnichannel,TRUE,,{},{2},
+40,assort omni mapping,TRUE,,{},{2},
+41,assort drop feature,TRUE,,{},{2},
+42,FC Status,TRUE,,{store},{3},
+43,plansmart create plan,TRUE,,{},{4},
+44,VendorConfigurations,TRUE,vendor configurations,"{product,others}",{3},
+45,AssortCoreChoiceDashboard,TRUE,assort core choice dashboard,{},{2},
+46,Assort create core choice,TRUE,assort create core choice,{},{2},
+47,Planning,TRUE,Budget planning screen,{},{4},
+49,Product Profile,TRUE,,"{product,store}",{1},Material Profile
+50,Create Product Profile,TRUE,,"{product,store}",{1},Create Material Profile
+51,InventoryDashboard,TRUE,inventory smart dashboard,"{product,dc}",{1},Dashboard
+54,Inventorysmart Product Rules,TRUE,,{},{1},Material Rules
+55,Allocation,TRUE,,"{product,store}",{1},Create New Allocation
+56,Inventorysmart Constraints,TRUE,,{},{1},Constraints
+57,Proposed Investment,TRUE,,{},{2},
+58,assort omni dashboard filter,TRUE,,{},{2},
+59,assort core choice dashboard filter,TRUE,,{},{2},
+60,assort dashboard filter,TRUE,,{},{2},
+62,Inventorysmart Reportings,TRUE,inventory report,"{product,store}",{1},Reports
+63,Inventorysmart View Past Allocations,TRUE,Inventory smart View past allocations screen,"{product,store}",{1},View Past Allocations
+70,Omni Wedge,TRUE,,{},{2},
+71,Inventorysmart Daily Allocation Reports,TRUE,daily allocation summary reports,"{product,store}",{1},Daily Allocation Summary
+72,Inventorysmart Store Eligibility Group,TRUE,,"{product,store}",{1},Store Group
+73,Inventorysmart Configurations,TRUE,,"{product,store}",{1},Configuration
+77,Inventorysmart Configurations New Store,TRUE,,{product},{1},New Store Setup
+78,Inventorysmart Configurations New Store Review Allocation,true,,"{product,store}",{1},New Store Review Allocation
+81,New Store Sister Store,TRUE,,"{product,store}",{1},Sister Store
+82,New Store Demand And Constraint,TRUE,,"{product,store}",{1},Demand And Constraint
+83,inventorysmart_store_stock_drill_down,TRUE,Store stock drill down,"{product,store}",{1},Consolidated Report
+84,Inventorysmart Configurations Product Supersession,TRUE,,"{product,store}",{1},Product Supersession
+85,Inventorysmart Configuration Product Inventory Source Mapping,TRUE,,"{product,store}",{1},Product Inventory Source Mapping
+86,Inventorysmart Constraints User Reserve,true,"","{product}",{1},User Reserve
+90,inventorysmart_dc_availability,true,DC Availability,"{product,store}",{1},DC Availability
+91,inventorysmart_variance_to_forecast,true,Variance to Forecast,"{product,store}",{1},Variance to Forecast
+100,Grade Basic Details,TRUE,,"{""""}",{3},
+101,Grade levels,TRUE,,"{""""}",{3},
+102,Grade Metrics,TRUE,,"{""""}",{3},
+108,Product,TRUE,parent of all product module in core,{},{3},
+109,Store,TRUE,parent of all store module in core,{},{3},
+110,DC,TRUE,Parent for all the dc modules,{},{3},
+180,Inventorysmart Product Eligibility Group,TRUE,,"{product,store}",{1},Product Group
+181,Inventorysmart Product Status,TRUE,,{product},{1},Material Status
+182,Inventorysmart Product Mapping,TRUE,,{product},{1},Material Mapping
+183,Inventorysmart Store Status,TRUE,,{store},{1},Store Status
+184,Inventorysmart Store Mapping,TRUE,,{store},{1},Store Mapping
+185,Inventorysmart DC Status,TRUE,,{store},{1},DC Status
+186,Inventorysmart DC Store Mapping,TRUE,,{store},{1},DC Mapping
+300,UAM screen,TRUE,plansmart tenant config,"{""""}",{3},
+301,Organization View,true,ticket filter config,"{""""}",{3},
+315,Individual View,true,ticket filter config,"{""""}",{3},
+400,Plansmart Tenant Config,TRUE,plansmart tenant config,"{""""}",{4},
+401,Store Mapping Modify Screen,TRUE,Modify screen in Store mapping,"{""""}",{3},
+1200,cluster plan create,TRUE,,{},{12},
+1201,ClusterDashboard,TRUE,,{},{12},
+1202,Grading create,TRUE,,{},{3},
+1304,store_capacity_configuration,TRUE,store capacity,"{product,store}",{1},Store capacity
+1305,Inventorysmart Configurations Product Supersession New,TRUE,,"{product,store}",{1},Create New Mapping
+1306,Product Life Cycle,TRUE,,"{product,store}",{1},UserMaintained Dates
+88,Inventorysmart Configurations New Store,true,,"{product,store}",{1},New Store Setup
+89,New Store Demand And Constraint Add Products,true,,"{product,store}",{1},Demand And Constraint
+92,inventorysmart_allocation_estimate,true,Allocation Estimate,"{product,store}",{1},Forward Looking Est. Report
+1307,priority_code_configuration,true,"","{product,store}",{1},Priority Code Setup
+370,Raise a ticket,true,Raise a ticket,"{""""}",{3},
+371,View Ticket Reports,true,View Ticket Reports,"{""""}",{3},
+330,File Upload Validation,true,File upload validation,{},{1},
+1313,Insights,true,Insights related information,{},{8},
+1312,Performanceanalyzer,true,Inventory related information,"{product,store}",{8},
+1311,Chatbot,true,Inventory related information,{},{8},
+1310,Assortmentanalysis,true,Inventory related information,{},{8},
+1302,Inventory,false,Inventory related information,"{product,store}",{8},
+1301,Deepdive,true,deepdive screen with filters,"{product,store}",{8},
+1300,Overview,true,overview home page,{},{8},
+1400,Chatbot,true,Chatbot screen,{},{1},
+1308,auto_allocation_rules,true,"","{product,store}",{1},Auto Allocation Scheduler
+1309,create_auto_allocation_rules,true,"","{product,store}",{1},Create Auto Allocation Rules
+1314,auto_allocation_rule_store_mapping,true,"","{product,store}",{1},Store Scheduler Mapping
+10016,Product Rules,true,,{product},{3},
+10051,Store Inventory Alert,true,inventory smart dashboard,"{product,store}",{3},
+10071,Report Excess Inventory,true,,"{product,store}",{3},
+10083,Store Stock Drill Down,true,Store stock drill down,"{product,store}",{3},
+10084,Lost Sales,true,Lost sales,"{product,store}",{3},
+10149,IA Recommended Product Profile,true,,"{""Product Profile""}",{3},
+303,Release Notes,TRUE,Release Notes,"{""""}",{3},
+402,dc transfer configuration,TRUE,,"{product,store}",{3},
+405,store transfer configuration,TRUE,,"{product,store}",{3},
+406,store transfer select store,TRUE,,"{product}",{3},
+

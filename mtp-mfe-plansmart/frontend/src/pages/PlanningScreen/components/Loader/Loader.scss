@@ -1,0 +1,45 @@
+/* Loader.scss */
+.loader-container {
+  position: relative;
+  height: 100vh; /* Full height to ensure it covers the viewport */
+  overflow: scroll; /* Ensure the container can scroll */
+}
+
+.loader-overlay {
+  position: fixed;
+  background-color: #21212180; /* Semi-transparent background */
+  color: white;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  height: 4.5rem;
+  width: 11.5rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  line-height: 1.5;
+  z-index: 1000; /* Ensure it sits on top of other elements */
+}
+
+.loading-spinner {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+span {
+  font-weight: 500;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

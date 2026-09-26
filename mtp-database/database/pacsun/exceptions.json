@@ -1,0 +1,94 @@
+{
+    "CASCADE": {
+        "exclusions": [
+            "database/pacsun/schemas/inventory_smart/functions/po_article_selection_list.sql"
+        ]
+    },
+    "DROP COLUMN": {
+        "exclusions": [
+            "database/pacsun/schemas/global/tables/new_store_mapping.sql",
+            "database/pacsun/schemas/global/tables/new_store_projections.sql",
+            "database/pacsun/schemas/global/tables/product_store_attributes_filter.sql",
+            "database/pacsun/schemas/global/tables/product_store_attributes_filter_store_code.sql",
+            "database/pacsun/schemas/inventory_smart/tables/alerts_product_zone_level.sql",
+            "database/pacsun/schemas/inventory_smart/tables/article_inventory_dashboard.sql",
+            "database/pacsun/schemas/inventory_smart/tables/asn_to_allocate_alert.sql",
+            "database/pacsun/schemas/inventory_smart/tables/intermediate_cyclic_asn.sql",
+            "database/pacsun/schemas/inventory_smart/tables/intermediate_cyclic_dc_inventory.sql",
+            "database/pacsun/schemas/meta_schema/tables/tb_kpi_config.sql",
+            "database/pacsun/schemas/meta_schema/tables/tb_kpi_master.sql",
+            "database/pacsun/schemas/meta_schema/tables/tb_table_columns_mst.sql"
+        ]
+    },
+    "DROP CONSTRAINT": {
+        "exclusions": [
+            "database/pacsun/schemas/global/tables/new_store_mapping.sql",
+            "database/pacsun/schemas/global/tables/new_store_projections.sql",
+            "database/pacsun/schemas/inventory_smart/tables/auto_allocation_input.sql",
+            "database/pacsun/schemas/meta_schema/tables/tb_kpi_config.sql",
+            "database/pacsun/schemas/meta_schema/tables/tb_table_columns_mst.sql"
+
+        ]
+    },
+    "DROP INDEX": {
+        "exclusions": [
+            "database/pacsun/schemas/inventory_smart/tables/excess_units.sql"
+        ]
+    },
+    "DROP MATERIALIZED VIEW": {
+        "exclusions": []
+    },
+    "DROP SEQUENCE": {
+        "exclusions": []
+    },
+    "DROP TABLE": {
+        "exclusions": [
+            "database/pacsun/schemas/inventory_smart/tables/latest_asn_delta.sql",
+            "database/pacsun/schemas/inventory_smart/procedures/build_product_profile_attributes_filter.sql"
+        ]
+    },
+    "DROP TRIGGER": {
+        "exclusions": []
+    },
+    "DROP TYPE": {
+        "exclusions": []
+    },
+    "DROP VIEW": {
+        "exclusions": []
+    },
+    "INHERITS": {
+        "exclusions": []
+    },
+    "ONLY": {
+        "exclusions": []
+    },
+    "RENAME": {
+        "exclusions": [
+            "database/pacsun/schemas/inventory_smart/tables/alerts_product_store_level.sql",
+            "database/pacsun/schemas/inventory_smart/tables/article_inventory_dashboard.sql",
+            "database/pacsun/schemas/inventory_smart/tables/auto_allocation_input.sql"
+        ]
+    },
+    "RESET": {
+        "exclusions": []
+    },
+    "STORAGE": {
+        "exclusions": []
+    },
+    "TEMPORARY": {
+        "exclusions": []
+    },
+    "TRUNCATE": {
+        "exclusions": [
+            "database/pacsun/schemas/public/procedures/generate_all_rcl_constraint_data.sql"
+        ]
+    },
+    "WITHOUT": {
+        "exclusions": [
+            "database/pacsun/schemas/inventory_smart/functions/auto_allocation_input_articles.sql",
+            "database/pacsun/schemas/inventory_smart/functions/sku_asn_allocated_units.sql",
+            "database/pacsun/schemas/inventory_smart/functions/sku_dc_allocated_units.sql",
+            "database/pacsun/schemas/inventory_smart/views/sku_asn_allocated_units.sql"
+        ]
+    }
+}

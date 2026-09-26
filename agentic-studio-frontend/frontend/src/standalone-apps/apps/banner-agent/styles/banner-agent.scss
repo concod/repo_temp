@@ -1,0 +1,12 @@
+@use "./typography" as t;
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+.banner-agent-app {
+    min-height: 100vh;
+    font-family: t.$ba-font-family;
+    color: t.$ba-text-primary;
+
+    * {
+        font-family: inherit;
+    }
+}

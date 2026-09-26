@@ -1,0 +1,36 @@
+.date-containers {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    overflow-x: auto;
+    height: 100%;
+}
+
+.date-containers__single {
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.date-containers__button--delete {
+    display: flex;
+    align-items: center;
+
+    svg {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+    }
+}
+
+.date-containers__button--add {
+    display: flex;
+    align-items: center;
+
+    svg {
+        width: 16px;
+        height: 16px;
+        cursor: pointer;
+    }
+}

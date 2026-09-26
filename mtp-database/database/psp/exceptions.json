@@ -1,0 +1,181 @@
+{
+    "CASCADE": {
+        "exclusions": [
+            "database/psp/schemas/price_promo_opt/procedures/pc_drop_all_temp_tables.sql",
+            "database/psp/schemas/price_promo/functions/fn_fetch_decision_dashboard_table_data.sql"
+        ]
+    },
+    "DROP COLUMN": {
+        "exclusions": [
+            "database/psp/schemas/price_markdown/tables/tb_approval_metrics.sql",
+            "database/psp/schemas/price_markdown/tables/tb_custom_alerts_master.sql",
+            "database/psp/schemas/price_markdown/tables/tb_strategy_discounts_initial_approval_validation.sql",
+            "database/psp/schemas/price_markdown/tables/tb_strategy_master.sql",
+            "database/psp/schemas/price_promo/tables/custom_filters.sql",
+            "database/psp/schemas/price_promo/tables/product_master_promo_version.sql",
+            "database/psp/schemas/price_promo/tables/tb_priority_number.sql",
+            "database/psp/schemas/price_promo/tables/tb_product_hierarchy_combination_version.sql",
+            "database/psp/schemas/price_promo_opt/tables/tb_backsync_reporting_post_event_date.sql",
+            "database/psp/schemas/price_promo_opt/tables/tb_cannibalization_coefficient_opt.sql",
+            "database/psp/schemas/price_promo_opt/tables/tb_cannibalization_coefficient_opt_version.sql",
+            "database/psp/schemas/price_promo_opt/tables/tb_halo_effect_department_factor_opt.sql",
+            "database/psp/schemas/price_promo_opt/tables/tb_halo_effect_department_factor_opt_version.sql",
+            "database/psp/schemas/price_promo_opt/tables/tb_pullforward_coefficient_opt.sql",
+            "database/psp/schemas/price_promo_opt/tables/tb_pullforward_coefficient_opt_version.sql",
+            "database/psp/schemas/price_promo/tables/ps_reporting_post_event_date.sql"
+        ]
+    },
+    "DROP CONSTRAINT": {
+        "exclusions": [
+            "database/psp/schemas/global/tables/user_access_hierarchy_mapping.sql",
+            "database/psp/schemas/price_markdown/tables/tb_calendar_config.sql",
+            "database/psp/schemas/price_promo/tables/ps_recommended_finalized_stack.sql",
+            "database/psp/schemas/price_promo/tables/ps_recommended_finalized_stack_override.sql",
+            "database/psp/schemas/price_promo/tables/tb_data_sync_audit_trail.sql",
+            "database/psp/schemas/price_promo/tables/tb_priority_number.sql",
+            "database/psp/schemas/data_platform/tables/data_ingestion_config.sql",
+            "database/psp/schemas/price_promo/tables/ps_reporting_post_event_date.sql"
+        ]
+    },
+    "DROP INDEX": {
+        "exclusions": [
+            "database/psp/schemas/price_promo/tables/custom_filters.sql",
+            "database/psp/schemas/price_promo/tables/promo_master.sql",
+            "database/psp/schemas/price_promo/tables/table_views.sql"
+        ]
+    },
+    "DROP MATERIALIZED VIEW": {
+        "exclusions": []
+    },
+    "DROP SEQUENCE": {
+        "exclusions": []
+    },
+    "DROP TABLE": {
+        "exclusions": [
+            "database/psp/schemas/global/tables/calendar_date_mapping.sql",
+            "database/psp/schemas/global/tables/product_attributes_filter.sql",
+            "database/psp/schemas/global/tables/product_store_hierarchy_mapping.sql",
+            "database/psp/schemas/global/tables/store_attributes_filter.sql",
+            "database/psp/schemas/global/tables/tb_hierarchy_cid_mapping_version.sql",
+            "database/psp/schemas/global/tables/tb_store_master_version.sql",
+            "database/psp/schemas/price_markdown/functions/fn_copy_ia_data_to_bl.sql",
+            "database/psp/schemas/price_markdown/functions/fn_get_step4_other_level.sql",
+            "database/psp/schemas/price_markdown/functions/fn_populate_step4_data.sql",
+            "database/psp/schemas/price_promo/tables/product_master_promo_version.sql",
+            "database/psp/schemas/price_promo/tables/ps_recommended_actuals_agg.sql",
+            "database/psp/schemas/price_promo/tables/tb_placeholder_pricing.sql",
+            "database/psp/schemas/price_promo/tables/tb_placeholder_pricing_version.sql",
+            "database/psp/schemas/price_promo/tables/tb_product_store_price.sql",
+            "database/psp/schemas/price_promo/views/product_master.sql",
+            "database/psp/schemas/price_promo_opt/functions/fn_scenario_override_stack_3_2.sql",
+            "database/psp/schemas/price_promo_opt/procedures/pc_add_actuals_data.sql",
+            "database/psp/schemas/price_promo_opt/procedures/pc_add_actuals_stack_agg_data.sql",
+            "database/psp/schemas/price_promo_opt/procedures/pc_add_promo_reporting_data.sql",
+            "database/psp/schemas/price_promo_opt/procedures/pc_create_overlapping_fin_stack_2.sql",
+            "database/psp/schemas/price_promo_opt/procedures/pc_fetch_products_for_finalized_promos.sql",
+            "database/psp/schemas/price_promo_opt/procedures/pc_opt_pre_simulation_create_gurobi_data.sql",
+            "database/psp/schemas/price_promo_opt/procedures/pc_opt_simulation_create_discount_filter.sql",
+            "database/psp/schemas/price_promo_opt/procedures/pc_opt_simulation_create_discount_filter_stack.sql",
+            "database/psp/schemas/price_promo_opt/procedures/pc_opt_simulation_drop_intermediate_tables.sql",
+            "database/psp/schemas/price_promo_opt/procedures/pc_opt_simulation_drop_intermediate_tables_stack.sql",
+            "database/psp/schemas/price_promo_opt/procedures/pc_simulation_bulk_resimulate.sql",
+            "database/psp/schemas/price_promo_opt/procedures/pc_simulation_cannibalization_coefficient.sql",
+            "database/psp/schemas/price_promo_opt/procedures/pc_simulation_create_discount_filter_date_stack.sql",
+            "database/psp/schemas/price_promo_opt/procedures/pc_simulation_create_ps_recommended_finalized_backup.sql",
+            "database/psp/schemas/price_promo_opt/procedures/pc_simulation_drop_intermediate_tables.sql",
+            "database/psp/schemas/price_promo_opt/procedures/pc_simulation_drop_intermediate_tables_stack.sql",
+            "database/psp/schemas/price_promo_opt/procedures/pc_simulation_fetch_store_level_data.sql",
+            "database/psp/schemas/price_promo_opt/procedures/pc_simulation_fetch_store_level_data_1.sql",
+            "database/psp/schemas/price_promo_opt/procedures/pc_simulation_halo_coefficient.sql",
+            "database/psp/schemas/price_promo_opt/procedures/pc_simulation_offer_attractiveness_factor.sql",
+            "database/psp/schemas/price_promo_opt/procedures/pc_simulation_pf_coefficient.sql",
+            "database/psp/schemas/price_promo_opt/procedures/temp_procedure.sql",
+            "database/psp/schemas/price_promo_opt/tables/promo_txn_agg.sql",
+            "database/psp/schemas/price_promo_opt/tables/promo_txn_master_version.sql",
+            "database/psp/schemas/price_promo_opt/tables/tb_backsync_finalized_stack_table.sql",
+            "database/psp/schemas/price_promo_opt/tables/tb_backsync_finalized_table.sql",
+            "database/psp/schemas/price_promo_opt/tables/tb_backsync_metrics_table.sql",
+            "database/psp/schemas/price_promo_opt/tables/tb_backsync_promo_master.sql",
+            "database/psp/schemas/price_promo_opt/tables/tb_backsync_reporting_post_event_date.sql",
+            "database/psp/schemas/price_promo_opt/tables/tb_backsync_reporting_post_hierarchy_date.sql",
+            "database/psp/schemas/price_promo_opt/tables/tb_backsync_reporting_post_promo_date.sql",
+            "database/psp/schemas/price_promo_opt/tables/tb_backsync_usage_metrics_summary.sql",
+            "database/psp/schemas/price_promo_opt/tables/tb_backsync_vendor_portal_usage_metrics_summary.sql",
+            "database/psp/schemas/price_promo_opt/tables/tb_budget_master_baseline_agg.sql",
+            "database/psp/schemas/price_promo_opt/tables/tb_budget_master_baseline_agg_version.sql",
+            "database/psp/schemas/price_promo_opt/tables/tb_budget_master_ty_agg.sql",
+            "database/psp/schemas/price_promo_opt/tables/tb_budget_master_ty_agg_version.sql",
+            "database/psp/schemas/price_promo_opt/tables/tb_end_cap_details.sql",
+            "database/psp/schemas/price_promo_opt/tables/tb_offer_type_penetration_version.sql",
+            "database/psp/schemas/price_promo_opt/tables/tb_simulation_day_opt.sql",
+            "database/psp/schemas/price_promo_opt/tables/tb_simulation_day_opt_version.sql"
+        ]
+    },
+    "DROP TRIGGER": {
+        "exclusions": []
+    },
+    "DROP TYPE": {
+        "exclusions": [
+            "database/psp/schemas/price_promo/types/discount_level_value_enum.sql",
+            "database/psp/schemas/price_promo/types/offer_distributor_channel_enum.sql"
+        ]
+    },
+    "DROP VIEW": {
+        "exclusions": [
+            "database/psp/schemas/price_promo/tables/product_master_promo_version.sql",
+            "database/psp/schemas/price_promo/views/product_master.sql"
+        ]
+    },
+    "INHERITS": {
+        "exclusions": []
+    },
+    "ONLY": {
+        "exclusions": [
+            "database/psp/schemas/price_promo/functions/fn_split_ready_for_submission_promos.sql",
+            "database/psp/schemas/price_promo/types/offer_distributor_channel_enum.sql",
+            "database/psp/schemas/price_promo/types/priority_offer_type_enum.sql",
+            "database/psp/schemas/price_promo_opt/functions/fn_download_all_items.sql",
+            "database/psp/schemas/price_promo_opt/functions/fn_download_layout_file.sql"
+        ]
+    },
+    "RENAME": {
+        "exclusions": [
+            "database/psp/schemas/price_markdown/functions/fn_copy_ia_data_to_bl.sql",
+            "database/psp/schemas/price_promo/tables/store_master.sql",
+            "database/psp/schemas/price_promo/types/promo_sync_direction_enum.sql",
+            "database/psp/schemas/price_promo_opt/functions/rename_budget_ty_partitions.sql",
+            "database/psp/schemas/price_promo_opt/procedures/pc_simulation_create_ps_recommended_finalized_backup.sql"
+        ]
+    },
+    "RESET": {
+        "exclusions": []
+    },
+    "STORAGE": {
+        "exclusions": []
+    },
+    "TEMPORARY": {
+        "exclusions": []
+    },
+    "TRUNCATE": {
+        "exclusions": [
+            "database/psp/schemas/global/procedures/pc_refresh_4_hierarchy_configs.sql",
+            "database/psp/schemas/price_promo_opt/procedures/backsync_endcap_details.sql",
+            "database/psp/schemas/price_promo_opt/procedures/backsync_forecast_finalized_stack_table.sql",
+            "database/psp/schemas/price_promo_opt/procedures/backsync_forecast_finalized_table.sql",
+            "database/psp/schemas/price_promo_opt/procedures/backsync_forecast_metrics_table.sql",
+            "database/psp/schemas/price_promo_opt/procedures/backsync_forecast_promo_master.sql",
+            "database/psp/schemas/price_promo_opt/procedures/backsync_forecast_reporting_post_event_date.sql",
+            "database/psp/schemas/price_promo_opt/procedures/backsync_forecast_reporting_post_hierarchy_date.sql",
+            "database/psp/schemas/price_promo_opt/procedures/backsync_forecast_reporting_post_promo_date.sql",
+            "database/psp/schemas/price_promo_opt/procedures/backsync_vendor_portal_usage_metrics.sql",
+            "database/psp/schemas/price_promo_opt/procedures/pc_fetch_products_for_finalized_promos.sql",
+            "database/psp/schemas/price_promo_opt/procedures/pc_fetch_products_for_finished_promos.sql"
+        ]
+    },
+    "WITHOUT": {
+        "exclusions": [
+            "database/psp/schemas/global/functions/fn_insert_notification.sql",
+            "database/psp/schemas/price_promo_opt/functions/fn_get_rules_data.sql"
+        ]
+    }
+}

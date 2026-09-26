@@ -1,0 +1,69 @@
+{
+    "CASCADE": {
+        "exclusions": []
+    },
+    "DROP COLUMN": {
+        "exclusions": [
+            "database/lululemon/schemas/global/tables/product_attributes_filter.sql",
+            "database/lululemon/schemas/inventory_smart/tables/article_inventory_dashboard.sql",
+            "database/lululemon/schemas/inventory_smart/tables/auto_allocation_input.sql"
+        ]
+    },
+    "DROP CONSTRAINT": {
+        "exclusions": [
+            "database/lululemon/schemas/global/tables/store_attributes_filter.sql"
+        ]
+    },
+    "DROP INDEX": {
+        "exclusions": []
+    },
+    "DROP MATERIALIZED VIEW": {
+        "exclusions": []
+    },
+    "DROP SEQUENCE": {
+        "exclusions": []
+    },
+    "DROP TABLE": {
+        "exclusions": []
+    },
+    "DROP TRIGGER": {
+        "exclusions": []
+    },
+    "DROP TYPE": {
+        "exclusions": []
+    },
+    "DROP VIEW": {
+        "exclusions": []
+    },
+    "INHERITS": {
+        "exclusions": []
+    },
+    "ONLY": {
+        "exclusions": []
+    },
+    "RENAME": {
+        "exclusions": [
+            "database/lululemon/schemas/inventory_smart/tables/fwos_sku_store_table.sql"
+        ]
+    },
+    "RESET": {
+        "exclusions": []
+    },
+    "STORAGE": {
+        "exclusions": []
+    },
+    "TEMPORARY": {
+        "exclusions": []
+    },
+    "TRUNCATE": {
+        "exclusions": [
+            "database/lululemon/schemas/public/procedures/generate_all_rcl_constraint_data.sql",
+            "database/lululemon/schemas/public/procedures/generate_rcl_whole_constraint_data.sql"
+        ]
+    },
+    "WITHOUT": {
+        "exclusions": [
+            "database/lululemon/schemas/inventory_smart/views/sku_po_allocated_units.sql"
+        ]
+    }
+}

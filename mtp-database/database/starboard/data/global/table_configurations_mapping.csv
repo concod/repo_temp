@@ -1,0 +1,85 @@
+tc_code,label,column_name,dimension,type,is_frozen,is_editable,is_aggregated,order_of_display,is_hidden,is_required,tc_mapping_code,child_tc_mapping_code,aggregate_type,formatter,is_row_span,footer,is_searchable,extra,is_sortable,width,is_deleted,is_master_group
+145,File Name,name,file,str,True,False,True,1.0,False,False,71271,,,,False,,True,{},True,200,False,False
+145,Created at,timeCreated,file,str,False,False,True,3.0,False,False,71291,,,,False,,True,{},True,200,False,False
+145,View,url,file,str,False,False,True,4.0,False,False,71301,,,,False,,True,{},True,200,False,False
+198,Dimension,dimension,Others,str,False,False,False,1.0,False,False,71279,,,,False,,False,{},True,200,False,False
+198,Filter,column_name,Others,list,False,True,False,2.0,False,False,71268,,,,False,,False,{},True,200,False,False
+198,Label,label,Others,str,False,True,True,3.0,False,False,71280,,,,False,,False,{},True,200,False,False
+198,Multi Select,is_multiple_selection,Others,ToogleField,False,True,False,4.0,False,False,727227,,,,False,,False,{},True,200,False,False
+198,Functionality,display_type,Others,list,False,True,False,5.0,False,False,7270,,,,False,,False,{},True,200,False,False
+198,Filter Type,filter_type,Others,list,False,True,False,6.0,False,False,7271,,,,False,,False,{},True,200,False,False
+198,Mandatory,is_mandatory,Others,ToogleField,False,True,False,7.0,False,False,7272,,,,False,,False,{},True,200,False,False
+198,Display Order,display_order,Others,list,False,True,False,8.0,False,True,71274,,,,False,,False,{},True,200,False,False
+198,Clearable,is_clearable,Others,ToogleField,False,True,False,10.0,False,False,71277,,,,False,,False,{},True,200,False,False
+501,User id,user_id,Product,link,False,True,False,1.0,False,False,200005,,,,False,,True,{},True,200,False,False
+501,Requestor name,user_name,Product,str,False,False,False,2.0,False,False,200006,,,,False,,True,{},True,200,False,False
+501,Total tickets,total,Product,link,False,True,False,3.0,False,False,200007,,,,False,,True,{},True,200,False,False
+501,Open tickets,open,Product,link,False,True,False,4.0,False,False,200008,,,,False,,True,{},True,200,False,False
+501,Closed tickets,closed,Product,link,False,True,False,5.0,False,False,200009,,,,False,,True,{},True,200,False,False
+502,Ticket id,id,Product,int,False,False,False,1.0,False,False,200010,,,,False,,True,{},True,200,False,False
+502,Status,status,Product,str,False,False,False,2.0,False,False,200011,,,,False,,True,{},True,200,False,False
+502,Priority,priority,Product,str,False,False,False,3.0,False,False,200012,,,,False,,True,{},True,200,False,False
+502,Created on,created_on,Product,str,False,False,False,4.0,False,False,200013,,,,False,,True,{},True,200,False,False
+502,Updated on,updated_on,Product,str,False,False,False,5.0,False,False,200014,,,,False,,True,{},True,200,False,False
+502,Closed on,closed_on,Product,str,False,False,False,6.0,False,False,200015,,,,False,,True,{},True,200,False,False
+502,User Id,user_id,Product,int,False,False,False,7.0,False,False,200016,,,,False,,True,{},True,200,False,False
+502,User Name,user_name,Product,str,False,False,False,8.0,False,False,200017,,,,False,,True,{},True,200,False,False
+502,Issue Type,issue_type,Product,str,False,False,False,9.0,False,False,200018,,,,False,,True,{},True,200,False,False
+502,Title,title,Product,str,False,False,False,11.0,False,False,200020,,,,False,,True,{},True,200,False,False
+502,Module,module_type,Product,str,False,False,False,12.0,False,False,200021,,,,False,,True,{},True,200,False,False
+503,Ticket id,id,Product,int,False,False,False,1.0,False,False,200022,,,,False,,True,{},True,200,False,False
+503,Priority,priority,Product,str,False,False,False,2.0,False,False,200023,,,,False,,True,{},True,200,False,False
+503,Module,module_type,Product,str,False,False,False,3.0,False,False,200024,,,,False,,True,{},True,200,False,False
+503,Updated on,updated_on,Product,str,False,False,False,4.0,False,False,200025,,,,False,,True,{},True,200,False,False
+503,User Name,user_name,Product,str,False,False,False,5.0,False,False,200026,,,,False,,True,{},True,200,False,False
+503,User Id,user_id,Product,int,False,False,False,6.0,False,False,200027,,,,False,,True,{},True,200,False,False
+503,Title,title,Product,str,False,False,False,7.0,False,False,200028,,,,False,,True,{},True,200,False,False
+503,Issue Type,issue_type,Product,str,False,False,False,8.0,False,False,200029,,,,False,,True,{},True,200,False,False
+503,Recent Activity,update_details,Product,str,False,False,False,9.0,False,False,200039,,,,False,,True,{},True,200,False,False
+504,Ticket id,id,Product,link,True,True,False,1.0,False,False,200030,,,,False,,True,{},True,200,False,False
+504,Status,status,Product,chip,True,False,False,2.0,False,False,200031,,,,False,,True,{},True,200,False,False
+504,Subject,title,Product,str,True,False,False,3.0,False,False,200032,,,,False,,True,{},True,200,False,False
+504,Priority,priority,Product,chip,True,False,False,4.0,False,False,200033,,,,False,,True,{},True,200,False,False
+504,Requestor Name,user_name,Product,str,False,False,False,5.0,False,False,200034,,,,False,,True,{},True,200,False,False
+504,Product,module_type,Product,str,False,False,False,6.0,False,False,200035,,,,False,,True,{},True,200,False,False
+504,Created Date,created_on,Product,date,False,False,False,8.0,False,False,200037,,,"MM-DD-YYYY, HH:mm:ss",False,,True,{},True,200,False,False
+504,Last modified date,updated_on,Product,date,False,False,False,9.0,False,False,200038,,,"MM-DD-YYYY, HH:mm:ss",False,,True,{},True,200,False,False
+5000,Product name,module_type,Product,link,False,True,False,1.0,False,False,200000,,,,False,,True,{},False,200,False,False
+5000,Total tickets,total,Product,link,False,True,False,3.0,False,False,200002,,,,False,,True,{},True,200,False,False
+5000,Open tickets,open,Product,link,False,True,False,4.0,False,False,200003,,,,False,,True,{},True,200,False,False
+5000,Closed tickets,closed,Product,link,False,True,False,5.0,False,False,200004,,,,False,,True,{},True,200,False,False
+1305,Style-Color ID,article,Product,str,False,False,False,1.0,False,False,200040,,,,False,,True,{},True,180,False,False
+1305,Style-Color Description,style_color_description,Product,str,False,False,False,2.0,False,False,200041,,,,False,,True,{},True,220,False,False
+1305,Budget Category,l1_name,Product,str,False,False,False,3.0,False,False,200042,,,,False,,True,{},True,180,False,False
+1305,Area,l2_name,Product,str,False,False,False,4.0,False,False,200043,,,,False,,True,{},True,160,False,False
+1305,Program,l3_name,Product,str,False,False,False,5.0,False,False,200044,,,,False,,True,{},True,160,False,False
+1305,Location ID,store_code,Store,str,False,False,False,6.0,False,False,200045,,,,False,,True,{},True,140,False,False
+1305,Location Name,store_name,Store,str,False,False,False,7.0,False,False,200046,,,,False,,True,{},True,220,False,False
+1305,Port Code,port_code,Product,str,False,False,False,8.0,False,False,200047,,,,False,,True,{},True,140,False,False
+1305,Port Name,port_description,Product,str,False,False,False,9.0,False,False,200048,,,,False,,True,{},True,220,False,False
+1305,Status From Date,status_from_date,Product,date,False,True,False,10.0,False,False,200049,,,,False,,False,{},False,160,False,False
+1305,Status To Date,status_to_date,Product,date,False,True,False,11.0,False,False,200050,,,,False,,False,{},False,160,False,False
+1305,Eligible,is_eligible,product,bool,false,true,false,12.0,false,false,"12121212",,,,false,,false,"{}",false,200,false,false
+1305,Subprogram,l6_name,Product,str,false,false,false,13.0,false,false,"200051",,,,false,,true,"{}",true,180,false,false
+20,Area,l2_name,product,str,false,false,false,4.0,,false,"20_l2_name_Area_product",,,"",false,,true,"{}",true,200,false,
+20,Budget Category,l1_name,product,str,false,false,false,3.0,,false,"20_l1_name_Budget Category_product",,,"",false,,true,"{}",true,200,false,
+20,Eligible,is_eligible,product,bool,false,true,false,10.0,,false,e12wer,,,,false,,true,"{}",true,200,false,
+20,Port Code,port_code,product,str,false,false,false,7.0,,false,"20_port_code_Port Code_product",,,"",false,,true,"{}",true,200,false,
+20,Port Name,port_description,product,str,false,false,false,8.0,false,false,"20_port_description_Port Name_product",,,"",false,,false,"{}",true,200,false,false
+20,Program,l3_name,product,str,false,false,false,6.0,,false,"20_l3_name_Program_product",,,"",false,,true,"{}",true,200,false,
+20,Shipment Mode,shippingmethod,product,str,false,false,false,9.0,,false,"20_shipmentmethod_Shipment Mode_product",,,"",false,,true,"{}",true,200,false,
+20,Style Color Description,style_name,product,str,false,false,false,2.0,false,false,"20_style_name_Style Color Description_product",,,"",false,,true,"{}",true,200,false,false
+20,Style Color ID,article,product,str,false,false,false,1.0,false,false,"20_article_Style Color ID_product",,,"",false,,true,"{""is_grouping_key"": true}",true,200,false,false
+20,Subprogram,l6_name,product,str,false,false,false,5.0,false,false,"20_l6_name_Subprogram_product",,,,false,,true,"{}",true,200,false,false
+21,Ship Code,ship_code,ship,str,false,false,false,1.0,,false,"20_shjp_code_Area_product",,,"",false,,false,"{}",false,200,false,
+21,Ship Name,ship_name,ship,str,false,false,false,2.0,,false,"20_ship_name_Budget Category_product",,,"",false,,false,"{}",false,200,false,
+21,Cruiseline,cruise_line,ship,bool,false,true,false,3.0,,false,e12wercruiseline,,,,false,,false,"{}",false,200,false,
+21,Port ID,port_id,ship,str,false,false,false,4.0,,false,"20_port_id_Port Code_product",,,"",false,,false,"{}",false,200,false,
+21,Port Description,port_description,ship,str,false,false,false,5.0,false,false,"21_port_description_Port Name_product",,,"",false,,false,"{}",false,200,false,false
+21,Drop Date,drop_date,ship,str,false,false,false,6.0,,false,"21_l3_name_Program_product",,,"",false,,false,"{}",false,200,false,
+21,Shipment Date,shipment_date,ship,str,false,false,false,7.0,false,false,"21_article_Style Color ID_product",,,"",false,,false,"{""is_grouping_key"": true}",false,200,false,false
+21,Delivery Date,delivery_date,ship,str,false,false,false,8.0,false,false,"21_l6_name_Subprogram_product",,,,false,,false,"{}",false,200,false,false
+21,Mode of Shipment ,mode_of_shipment,ship,str,false,false,false,9.0,,false,"21_shipmentmethod_Shipment Mode_product",,,"",false,,false,"{}",false,200,false,
+21,Voyage code ,voyage_code,ship,str,false,false,false,10.0,false,false,"21_style_name_Style Color Description_product",,,"",false,,false,"{}",false,200,false,false
+21,Voyage Type,voyage_type,ship,str,false,false,false,11.0,false,false,"21_voyage_type_Voyage",,,,false,,false,"{}",false,200,false,false
+21,Itinerary ,Itinerary ,ship,str,false,false,false,12.0,false,false,"21_itinerary_Itinerary",,,,false,,false,"{}",false,200,false,false

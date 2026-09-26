@@ -1,0 +1,12 @@
+"source_column_name","source_column_datatype","required_in_product","generic_column_name","is_pk","generic_column_datatype","formula","is_attribute","is_hierarchy","hierarchy_level","is_null_allowed","unique_by","display_name","is_partition_col","is_clustering_col"
+product_hierarchy,varchar,true,product_hierarchy,false,varchar,,false,false,,false,true,,false,
+store_code,varchar,true,store_code,false,varchar,,false,false,,false,true,,false,
+fiscal_year,int2,true,fiscal_year,false,int2,,false,false,,false,true,,false,
+fiscal_week,int2,true,fiscal_week,false,int2,,false,false,,false,true,,false,
+date,date,true,date,false,date,,false,false,,false,true,,false,
+opening_inventory,int4,true,opening_inventory,false,int4,,false,false,,true,false,,false,
+quantity,int4,true,quantity,false,int4,,false,false,,true,false,,false,
+cluster_avg_sales,int4,true,cluster_avg_sales,false,int4,,false,false,,true,false,,false,
+lost_units,int4,true,lost_units,false,int4,,false,false,,true,false,,false,
+line_amount,float4,true,line_amount,false,float4,,false,false,,true,false,,false,
+lost_sales,float4,true,lost_sales,false,float4,,false,false,,true,false,,false,

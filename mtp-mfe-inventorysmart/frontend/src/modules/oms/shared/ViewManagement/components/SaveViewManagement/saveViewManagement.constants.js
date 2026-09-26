@@ -1,0 +1,17 @@
+export const MODAL_TITLE = "Save View";
+export const SAVE_BUTTON = "Save and apply";
+export const REPLACE_VIEW_BUTTON = "Replace view";
+export const CANCEL_BUTTON = "Cancel";
+export const MODAL_SIZE = "small";
+export const VIEW_INPUT_LABEL = "New view name";
+export const VIEW_INPUT_TYPE = "text";
+export const VIEW_INPUT_PLACEHOLDER = "Enter here..";
+export const DEFAULT_VIEW_CHECKBOX_LABEL = "Make it default view";
+export const CHECKBOX_VARIANT = "default";
+export const REPLACE_VIEW_DIVIDER_LABEL = "Or replace with saved view";
+export const REPLACE_VIEW_SELECT_LABEL = "Replace with existing view";
+export const REPLACE_VIEW_INPUT_PLACEHOLDER_POSITION = "top";
+export const REPLACE_VIEW_INPUT_PLACEHOLDER = "Select";
+export const VIEW_NAME_CHARACTER_LIMIT = 50;
+export const VIEW_NAME_HELPER_TEXT = "Maximum 50 characters allowed";
+export const VIEWS_TYPE_OPTIONS = { Personal: "personal", Global: "global" };

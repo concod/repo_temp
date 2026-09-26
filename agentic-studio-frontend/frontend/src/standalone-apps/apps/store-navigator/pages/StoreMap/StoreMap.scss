@@ -1,0 +1,244 @@
+.loading_container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.store-page-error {
+    // Fill the entire screen height minus any potential headers
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; // Vertical centering
+    align-items: center; // Horizontal centering
+    text-align: center;
+    padding: 20px;
+
+    h2 {
+        font-size: 2rem;
+        color: #333;
+        margin-bottom: 12px;
+    }
+
+    p {
+        color: #666;
+        margin-bottom: 24px;
+        max-width: 400px;
+        line-height: 1.5;
+    }
+
+    // Styling the Link component from react-router-dom
+    a {
+        display: inline-block;
+        padding: 12px 24px;
+        background-color: var(--primary-color);
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: background-color 0.2s ease, transform 0.1s ease;
+
+        &:active {
+            transform: scale(0.98);
+        }
+    }
+}
+
+.map-page-wrapper {
+    display: flex;
+    width: 100vw;
+    // Fallback for older browsers
+    height: 100vh;
+    // Modern fix for mobile browser bars
+    height: 100dvh;
+    overflow: hidden;
+    position: relative;
+}
+
+.map-section {
+    position: relative;
+    flex: 1; // Takes full width on mobile/tablet
+    height: 100%;
+}
+
+.map-canvas {
+    width: 100%;
+    height: 100%;
+    background-color: #e5e3df; // Classic map background color
+    position: relative;
+
+    .floors {
+        position: absolute;
+        right: 16px;
+        // Add safe area inset to ensure it's above system bars
+        bottom: calc(16px + env(safe-area-inset-bottom));
+        z-index: 5;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .floor-button {
+            // Layout & Sizing (w-12 h-12)
+            width: 3rem; // 48px
+            height: 3rem; // 48px
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            // Styling (rounded-2xl font-black text-sm transition-all border shadow-2xl)
+            border-radius: 12px; // 16px
+            font-weight: 900;
+            font-size: 0.875rem;
+            transition: all 0.2s ease-in-out;
+            cursor: pointer;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+            // Inactive State (bg-white/95 text-slate-400 border-slate-100)
+            background-color: white;
+            margin-top: 10px;
+            flex-shrink: 0;
+
+            // Active State (bg-blue-600 text-white border-blue-400)
+            &.is-active {
+                background-color: var(--primary-color); // blue-600
+                color: #ffffff;
+            }
+
+            .location-info {
+                width: 32px;
+            }
+        }
+    }
+}
+
+/* Floating UI Controls */
+.map-controls {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    right: 16px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    pointer-events: none; // Allows clicks to pass through to map if needed
+
+    .back-btn,
+    .search-bar {
+        pointer-events: auto; // Re-enable clicks for actual elements
+        background: white;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        border-radius: 12px;
+        height: 48px;
+    }
+
+    .back-btn {
+        width: 48px;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 1.2rem;
+        color: #333;
+        transition: background 0.2s;
+
+        &:hover {
+            background: #f5f5f5;
+        }
+    }
+
+    .search-bar {
+        flex: 1; // Extends to the right
+        background-color: transparent;
+        box-shadow: none;
+
+        .search-bar-input {
+            width: 100%;
+            background-color: var(--card-bg-color);
+            border-radius: 12px;
+            box-shadow: var(--message-shadow);
+            transition: var(--transition);
+            border: 1px solid lightgray;
+            height: 48px; // Increased height slightly for better touch target
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 0px 12px;
+            color: gray;
+            cursor: pointer;
+            font-size: 16px;
+
+            &:hover {
+                filter: brightness(1.1);
+                transform: translateY(-2px);
+            }
+
+            img {
+                width: 24px;
+                height: 24px;
+                margin-right: 10px;
+            }
+
+            &.hidden {
+                display: none;
+            }
+        }
+    }
+}
+
+/* Desktop Sidebar Logic */
+.map-sidebar {
+    display: none; // Hidden on mobile and tablet
+    width: 400px;
+    height: 100%;
+    background: white;
+    border-left: 1px solid #eee;
+    padding: 24px;
+    box-shadow: -4px 0 15px rgba(0, 0, 0, 0.05);
+
+    .sidebar-content {
+        margin-top: 20px;
+        flex: 1;
+        overflow-y: auto;
+    }
+}
+
+.location-info-dialog {
+    border-radius: 12px;
+    padding: 16px;
+    height: max-content;
+    max-height: 700px;
+    overflow-y: auto;
+    width: 80vw;
+
+    &--header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &--overlay {
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+}
+
+/* --- Responsive Breakpoints --- */
+
+@media (min-width: 1024px) {
+    .map-sidebar {
+        display: flex; // Show only on Desktop
+        flex-direction: column;
+    }
+
+    .map-controls {
+        // Optional: make controls slightly more compact on desktop
+        max-width: 600px;
+    }
+
+    .location-info-button {
+        display: none !important;
+    }
+}

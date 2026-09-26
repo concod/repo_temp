@@ -1,0 +1,6 @@
+"source_column_name","source_column_datatype","required_in_product","generic_column_name","is_pk","generic_column_datatype","formula","is_attribute","is_hierarchy","hierarchy_level","is_null_allowed","unique_by","display_name","is_partition_col","is_clustering_col"
+mapping_code,INTEGER,true,mapping_code,false,int4,,false,false,,true,false,,false,
+store_code,STRING,true,store_code,false,varchar,,false,false,,false,true,,false,
+dc_code,INTEGER,true,dc_code,false,varchar,,false,false,,false,true,,false,
+is_active,BOOLEAN,true,is_active,false,bool,,false,false,,false,false,,false,
+mapping_type,STRING,true,mapping_type,false,varchar,'store_dc',false,false,,false,false,,false,

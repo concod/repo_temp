@@ -1,0 +1,56 @@
+// Banner Agent typography tokens and reusable type mixins.
+$ba-font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+$ba-text-primary: #0d152c;
+$ba-text-body: #475569;
+$ba-text-label: #6b7280;
+$ba-text-accent: #198D3C;
+$ba-text-link: #198D3C;
+
+@mixin ba-type-page-title {
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: $ba-text-primary;
+}
+
+@mixin ba-type-section-title {
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 1;
+    color: $ba-text-primary;
+}
+
+@mixin ba-type-label {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    color: $ba-text-label;
+}
+
+@mixin ba-type-input {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 16px;
+    color: $ba-text-primary;
+}
+
+@mixin ba-type-body {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: $ba-text-body;
+}
+
+@mixin ba-type-button {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+}
+
+@mixin ba-type-caption {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    color: $ba-text-body;
+}

@@ -1,0 +1,109 @@
+{
+    "CASCADE": {
+        "exclusions": []
+    },
+    "DROP COLUMN": {
+        "exclusions": [
+            "database/ralph_lauren_na/schemas/global/tables/new_store_reserve.sql",
+            "database/ralph_lauren_na/schemas/inventory_smart/tables/alerts_product_store_level.sql",
+            "database/ralph_lauren_na/schemas/inventory_smart/tables/dc_reserve_quantity.sql",
+            "database/ralph_lauren_na/schemas/inventory_smart/tables/store_stock_drilldown.sql"
+        ]
+    },
+    "DROP CONSTRAINT": {
+        "exclusions": [
+            "database/ralph_lauren_na/schemas/global/functions/create_drop_index_list_ingestion.sql",
+            "database/ralph_lauren_na/schemas/global/tables/new_store_reserve.sql",
+            "database/ralph_lauren_na/schemas/inventory_smart/tables/alerts_product_store_level.sql",
+            "database/ralph_lauren_na/schemas/inventory_smart/tables/article_allocation_tracker.sql",
+            "database/ralph_lauren_na/schemas/inventory_smart/tables/auto_allocation_store_status.sql",
+            "database/ralph_lauren_na/schemas/inventory_smart/tables/dc_reserve_quantity.sql",
+            "database/ralph_lauren_na/schemas/inventory_smart/tables/excess_units.sql",
+            "database/ralph_lauren_na/schemas/inventory_smart/tables/intermediate_delta_inventory.sql",
+            "database/ralph_lauren_na/schemas/inventory_smart/tables/loss_units.sql",
+            "database/ralph_lauren_na/schemas/inventory_smart/tables/product_profile_master.sql",
+            "database/ralph_lauren_na/schemas/inventory_smart/tables/dc_transfer_rule_pairs.sql",
+            "database/ralph_lauren_na/schemas/inventory_smart/tables/store_transfer_rule_pairs.sql"
+        ]
+    },
+    "DROP INDEX": {
+        "exclusions": [
+            "database/ralph_lauren_na/schemas/global/functions/create_drop_index_list_ingestion.sql",
+            "database/ralph_lauren_na/schemas/global/tables/new_store_reserve.sql",
+            "database/ralph_lauren_na/schemas/inventory_smart/tables/excess_units.sql"
+        ]
+    },
+    "DROP MATERIALIZED VIEW": {
+        "exclusions": []
+    },
+    "DROP SEQUENCE": {
+        "exclusions": []
+    },
+    "DROP TABLE": {
+        "exclusions": [
+            "database/ralph_lauren_na/schemas/inventory_smart/tables/excess_units.sql",
+            "database/ralph_lauren_na/schemas/inventory_smart/tables/excess_units_sku_store_level.sql",
+            "database/ralph_lauren_na/schemas/inventory_smart/tables/loss_units.sql",
+            "database/ralph_lauren_na/schemas/inventory_smart/tables/loss_units_sku_store_level.sql",
+            "database/ralph_lauren_na/schemas/public/procedures/sync_engagement_dashboard.sql",
+            "database/ralph_lauren_na/schemas/inventory_smart/tables/dc_availability_report_flattened.sql",
+            "database/ralph_lauren_na/schemas/inventory_smart/procedures/build_product_profile_attributes_filter.sql",
+            "database/ralph_lauren_na/schemas/inventory_smart/tables/dc_transfer_material_rule_mapping.sql",
+            "database/ralph_lauren_na/schemas/inventory_smart/tables/dc_transfer_rule.sql"
+        ]
+    },
+    "DROP TRIGGER": {
+        "exclusions": []
+    },
+    "DROP TYPE": {
+        "exclusions": []
+    },
+    "DROP VIEW": {
+        "exclusions": []
+    },
+    "INHERITS": {
+        "exclusions": []
+    },
+    "ONLY": {
+        "exclusions": [
+            "database/ralph_lauren_na/schemas/global/functions/create_drop_index_list_ingestion.sql",
+            "database/ralph_lauren_na/schemas/inventory_smart/functions/article_selection_list.sql",
+            "database/ralph_lauren_na/schemas/inventory_smart/functions/article_selection_list_count.sql",
+            "database/ralph_lauren_na/schemas/inventory_smart/functions/details_metric.sql",
+            "database/ralph_lauren_na/schemas/public/procedures/sync_ph_auto_alloc_rule_mapping.sql",
+            "database/ralph_lauren_na/schemas/public/procedures/sync_ph_scheduler_mapping.sql"
+        ]
+    },
+    "RENAME": {
+        "exclusions": [
+            "database/ralph_lauren_na/schemas/global/tables/new_store_reserve.sql",
+            "database/ralph_lauren_na/schemas/inventory_smart/tables/alerts_product_store_level.sql",
+            "database/ralph_lauren_na/schemas/inventory_smart/tables/bulk_release_po_master.sql",
+            "database/ralph_lauren_na/schemas/inventory_smart/tables/intermediate_oms_cyclic_inventory.sql",
+            "database/ralph_lauren_na/schemas/inventory_smart/tables/intermediate_supersession_upload.sql",
+            "database/ralph_lauren_na/schemas/inventory_smart/tables/material_channel_alert_table.sql",
+            "database/ralph_lauren_na/schemas/inventory_smart/tables/po_alerts.sql",
+            "database/ralph_lauren_na/schemas/inventory_smart/tables/style_mapping_table.sql",
+            "database/ralph_lauren_na/schemas/inventory_smart/tables/dc_transfer_rule_pairs.sql",
+            "database/ralph_lauren_na/schemas/inventory_smart/tables/dc_availability_report_flattened.sql"
+        ]
+    },
+    "RESET": {
+        "exclusions": []
+    },
+    "STORAGE": {
+        "exclusions": []
+    },
+    "TEMPORARY": {
+        "exclusions": []
+    },
+    "TRUNCATE": {
+        "exclusions": []
+    },
+    "WITHOUT": {
+        "exclusions": [
+            "database/ralph_lauren_na/schemas/inventory_smart/views/sku_dc_allocated_units.sql",
+            "database/ralph_lauren_na/schemas/inventory_smart/views/article_inventory_details_view.sql"
+        ]
+    }
+}

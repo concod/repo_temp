@@ -1,0 +1,92 @@
+.toggle-wrapper {
+  display: inline-flex;
+  align-items: center;
+  
+  &.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+.toggle-input {
+  // Hide the actual input but keep it accessible
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 8px;
+  padding: 2px;
+  
+  &:focus {
+    outline: 2px solid var(--maincolor-100, #A93BFF);
+    outline-offset: 2px;
+  }
+  
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+  
+  &.disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  &:hover:not(.disabled) {
+    .toggle-track {
+      transform: scale(1.05);
+    }
+  }
+
+  &:active:not(.disabled) {
+    .toggle-track {
+      transform: scale(0.98);
+    }
+  }
+}
+
+.toggle-track {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  svg {
+    display: block;
+    width: 28px;
+    height: 16px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+
+// Focus states for accessibility
+.toggle-input:focus-visible + .toggle {
+  outline: 2px solid var(--maincolor-100, #A93BFF);
+  outline-offset: 2px;
+}
+
+// High contrast mode support
+@media (prefers-contrast: high) {
+  .toggle-track svg {
+    filter: contrast(1.5);
+  }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  .toggle,
+  .toggle-track,
+  .toggle-track svg {
+    transition: none;
+  }
+}
+

@@ -1,0 +1,13 @@
+"source_column_name","source_column_datatype","required_in_product","generic_column_name","is_pk","generic_column_datatype","formula","is_attribute","is_hierarchy","hierarchy_level","is_null_allowed","unique_by","display_name","is_partition_col","is_clustering_col"
+Po_Id,varchar,true,po_id,true,varchar,,false,false,,false,true,"",false,
+Primary_Sku,varchar,true,article,true,varchar,,false,false,,false,true,"",false,
+Quantity,int8,true,quantity_ordered,false,int8,,false,false,,false,false,"",false,
+fiscal_year_num,int8,true,fiscal_year,false,int4,,false,false,,false,false,"",false,
+fiscal_week_num,int8,true,fiscal_week,false,int4,,false,false,,false,false,"",false,
+Syncstartdatetime,datetime,false,syncstartdatetime,false,datetime,,false,false,,false,false,"",false,
+Line_No,varchar,true,line_no,true,varchar,,false,false,,false,true,,false,
+Vendor_Id,varchar,true,vendor_code,false,varchar,,false,false,,false,false,"",false,
+Po_Creation_date,date,true,po_creation_date,false,date,,false,false,,false,false,"",false,
+Dc_Id,varchar,true,dc_code,true,varchar,,false,false,,false,true,"",false,
+Inventory_Date,date,true,inventory_date,false,date,,false,false,,false,false,"",false,
+Primary_Sku,varchar,true,primary_sku,false,varchar,,false,false,,false,false,"",false,

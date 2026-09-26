@@ -1,0 +1,98 @@
+{
+    "CASCADE": {
+        "exclusions": [
+            "database/spanx/schemas/item_smart/views/product_hierarchies_filter.sql"
+        ]
+    },
+    "DROP COLUMN": {
+        "exclusions": [
+            "database/spanx/schemas/item_smart/tables/itemfact_sku.sql",
+            "database/spanx/schemas/item_smart/tables/lly_master.sql",
+            "database/spanx/schemas/item_smart/tables/new_skus.sql",
+            "database/spanx/schemas/oms/tables/oms_cno_off_cycle_draft.sql"
+        ]
+    },
+    "DROP CONSTRAINT": {
+        "exclusions": [
+            "database/spanx/schemas/item_smart/tables/iaf_master.sql",
+            "database/spanx/schemas/item_smart/tables/itemfact_sku.sql",
+            "database/spanx/schemas/item_smart/tables/lf_master.sql",
+            "database/spanx/schemas/item_smart/tables/lly_master.sql",
+            "database/spanx/schemas/item_smart/tables/ly_master.sql",
+            "database/spanx/schemas/item_smart/tables/op_master.sql",
+            "database/spanx/schemas/item_smart/tables/ty_master.sql",
+            "database/spanx/schemas/item_smart/tables/wp_master.sql",
+            "database/spanx/schemas/oms/tables/oms_orders_approval_hist.sql"
+        ]
+    },
+    "DROP INDEX": {
+        "exclusions": []
+    },
+    "DROP MATERIALIZED VIEW": {
+        "exclusions": []
+    },
+    "DROP SEQUENCE": {
+        "exclusions": []
+    },
+    "DROP TABLE": {
+        "exclusions": [
+            "database/spanx/schemas/inventory_smart/procedures/build_product_profile_attributes_filter.sql",
+            "database/spanx/schemas/item_smart/procedures/create_alerts.sql",
+            "database/spanx/schemas/item_smart/procedures/create_new_sku.sql",
+            "database/spanx/schemas/item_smart/tables/itemfact_sku.sql",
+            "database/spanx/schemas/oms/functions/generate_rcl_oms_constraint_data.sql"
+        ]
+    },
+    "DROP TRIGGER": {
+        "exclusions": []
+    },
+    "DROP TYPE": {
+        "exclusions": []
+    },
+    "DROP VIEW": {
+        "exclusions": []
+    },
+    "INHERITS": {
+        "exclusions": []
+    },
+    "ONLY": {
+        "exclusions": [
+            "database/spanx/schemas/item_smart/functions/insert_into_lf.sql",
+            "database/spanx/schemas/item_smart/functions/insert_into_op_v2.sql"
+        ]
+    },
+    "RENAME": {
+        "exclusions": [
+            "database/spanx/schemas/item_smart/tables/iaf_master.sql",
+            "database/spanx/schemas/item_smart/tables/lf_master.sql",
+            "database/spanx/schemas/item_smart/tables/lly_master.sql",
+            "database/spanx/schemas/item_smart/tables/ly_master.sql",
+            "database/spanx/schemas/item_smart/tables/op_master.sql",
+            "database/spanx/schemas/item_smart/tables/ty_master.sql",
+            "database/spanx/schemas/item_smart/tables/wp_master.sql"
+        ]
+    },
+    "RESET": {
+        "exclusions": []
+    },
+    "STORAGE": {
+        "exclusions": []
+    },
+    "TEMPORARY": {
+        "exclusions": []
+    },
+    "TRUNCATE": {
+        "exclusions": [
+            "database/spanx/schemas/item_smart/procedures/populate_alerts.sql",
+            "database/spanx/schemas/item_smart/procedures/update_itemfact_sku.sql",
+            "database/spanx/schemas/item_smart/procedures/update_itemfact_sku_week.sql"
+        ]
+    },
+    "WITHOUT": {
+        "exclusions": [
+            "database/spanx/schemas/item_smart/functions/get_new_skus.sql",
+            "database/spanx/schemas/item_smart/functions/master_plan_dashboard_view.sql",
+            "database/spanx/schemas/oms/functions/set_offcycle_all.sql"
+        ]
+    }
+}

@@ -1,0 +1,92 @@
+{
+    "CASCADE": {
+        "exclusions": []
+    },
+    "DROP COLUMN": {
+        "exclusions": [
+            "database/starboard/schemas/assort_smart/tables/launch_delivery_date.sql",
+            "database/starboard/schemas/assort_smart/tables/line_plan_kpi_cards.sql",
+            "database/starboard/schemas/assort_smart/tables/plan_cluster_aps_iap.sql",
+            "database/starboard/schemas/assort_smart/tables/plan_cluster_aps_sp.sql",
+            "database/starboard/schemas/assort_smart/tables/plan_cluster_aps_wp.sql",
+            "database/starboard/schemas/assort_smart/tables/plan_hierarchy_aps_iap.sql",
+            "database/starboard/schemas/assort_smart/tables/plan_hierarchy_aps_sp.sql",
+            "database/starboard/schemas/assort_smart/tables/plan_hierarchy_aps_wp.sql",
+            "database/starboard/schemas/global/tables/product_attributes_filter.sql",
+            "database/starboard/schemas/meta_schema/tables/tb_applications.sql",
+            "database/starboard/schemas/meta_schema/tables/tb_editableflow_master.sql",
+            "database/starboard/schemas/meta_schema/tables/tb_formula_master.sql",
+            "database/starboard/schemas/meta_schema/tables/tb_kpi_config.sql",
+            "database/starboard/schemas/meta_schema/tables/tb_kpi_master.sql",
+            "database/starboard/schemas/meta_schema/tables/tb_table_columns_mst.sql"
+        ]
+    },
+    "DROP CONSTRAINT": {
+        "exclusions": [
+            "database/starboard/schemas/assort_smart/tables/launch_delivery_date.sql",
+            "database/starboard/schemas/meta_schema/tables/tb_applications.sql",
+            "database/starboard/schemas/meta_schema/tables/tb_kpi_config.sql",
+            "database/starboard/schemas/meta_schema/tables/tb_table_columns_mst.sql",
+            "database/starboard/schemas/global/tables/rcl_product_mapping_product_store.sql",
+            "database/starboard/global/tables/rcl_product_mapping_product_store_exceptions.sql",
+            "database/starboard/schemas/inventory_smart/tables/dc_reserve_quantity.sql"
+        ]
+    },
+    "DROP INDEX": {
+        "exclusions": []
+    },
+    "DROP MATERIALIZED VIEW": {
+        "exclusions": []
+    },
+    "DROP SEQUENCE": {
+        "exclusions": []
+    },
+    "DROP TABLE": {
+        "exclusions": [
+            "database/starboard/schemas/global/tables/product_attributes_filter.sql",
+            "database/starboard/schemas/global/tables/product_port_of_call_time_attributes.sql",
+            "database/starboard/global/functions/persist_rcl_pmps_exceptions_main_table.sql",
+            "database/starboard/schemas/oms/functions/generate_rcl_oms_constraint_data.sql"
+        ]
+    },
+    "DROP TRIGGER": {
+        "exclusions": []
+    },
+    "DROP TYPE": {
+        "exclusions": []
+    },
+    "DROP VIEW": {
+        "exclusions": []
+    },
+    "INHERITS": {
+        "exclusions": []
+    },
+    "ONLY": {
+        "exclusions": [
+            "database/starboard/schemas/oms/functions/oms_update_rcl_create_constraints.sql",
+            "database/starboard/schemas/oms/functions/oms_update_rcl_create_constraints_pack.sql",
+            "database/starboard/schemas/oms/functions/oms_update_rcl_constraints_pack.sql",
+            "database/starboard/schemas/oms/functions/get_oms_matrix_summary_orders.sql"
+        ]
+    },
+    "RENAME": {
+        "exclusions": [
+            "database/starboard/schemas/plan_smart/tables/view_management.sql"
+        ]
+    },
+    "RESET": {
+        "exclusions": []
+    },
+    "STORAGE": {
+        "exclusions": []
+    },
+    "TEMPORARY": {
+        "exclusions": []
+    },
+    "TRUNCATE": {
+        "exclusions": []
+    },
+    "WITHOUT": {
+        "exclusions": []
+    }
+}

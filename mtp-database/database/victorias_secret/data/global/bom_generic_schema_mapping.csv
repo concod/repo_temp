@@ -1,0 +1,12 @@
+source_column_name,source_column_datatype,required_in_product,is_pk,generic_column_name,generic_column_datatype,formula,is_attribute,is_hierarchy,hierarchy_level,is_null_allowed,unique_by,display_name,is_partition_col,is_clustering_col
+BOMVERSIONNAME,varchar,TRUE,FALSE,bom_version,varchar,,FALSE,FALSE,,FALSE,TRUE,,FALSE,FALSE
+LINENUM,float8,TRUE,FALSE,line_num,float8,,FALSE,FALSE,,FALSE,FALSE,,FALSE,FALSE
+LINECREATIONSEQUENCENUMBER,int8,TRUE,FALSE,line_seq,int8,,FALSE,FALSE,,FALSE,FALSE,,FALSE,FALSE
+PARENTBARCODE,varchar,TRUE,FALSE,parent_product_code,varchar,,FALSE,FALSE,,FALSE,TRUE,,FALSE,FALSE
+CHILDBARCODE,varchar,TRUE,FALSE,child_product_code,varchar,,FALSE,FALSE,,FALSE,TRUE,,FALSE,FALSE
+BOMQTY,float8,TRUE,FALSE,bom_quantity,float8,,FALSE,FALSE,,FALSE,FALSE,,FALSE,FALSE
+CHILDUOM,varchar,TRUE,FALSE,child_uom,varchar,,FALSE,FALSE,,FALSE,FALSE,,FALSE,FALSE
+ACTIVE,int8,TRUE,FALSE,is_active,int8,,FALSE,FALSE,,FALSE,FALSE,,FALSE,FALSE
+APPROVED,int8,TRUE,FALSE,is_approved,int8,,FALSE,FALSE,,FALSE,FALSE,,FALSE,FALSE
+SYNCSTARTDATETIME,date,TRUE,FALSE,date,date,,FALSE,FALSE,,FALSE,FALSE,,FALSE,FALSE
+DATAAREAID,varchar,TRUE,FALSE,DATAAREAID,varchar,,FALSE,FALSE,,FALSE,TRUE,,FALSE,FALSE

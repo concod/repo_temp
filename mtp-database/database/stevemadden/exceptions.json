@@ -1,0 +1,70 @@
+{
+    "CASCADE": {
+        "exclusions": []
+    },
+    "DROP COLUMN": {
+        "exclusions": []
+    },
+    "DROP CONSTRAINT": {
+        "exclusions": [
+            "database/stevemadden/schemas/global/tables/new_store_reserve.sql",
+            "database/stevemadden/schemas/global/tables/product_time_attributes.sql",
+            "database/stevemadden/schemas/inventory_smart/tables/article_allocation_tracker.sql",
+            "database/stevemadden/schemas/inventory_smart/tables/po_master.sql",
+            "database/stevemadden/schemas/inventory_smart/tables/product_profile_mapping.sql"
+        ]
+    },
+    "DROP INDEX": {
+        "exclusions": [
+            "database/stevemadden/schemas/inventory_smart/tables/constraint_master.sql",
+            "database/stevemadden/schemas/inventory_smart/tables/excess_units.sql"
+        ]
+    },
+    "DROP MATERIALIZED VIEW": {
+        "exclusions": []
+    },
+    "DROP SEQUENCE": {
+        "exclusions": []
+    },
+    "DROP TABLE": {
+        "exclusions": [
+            "database/stevemadden/schemas/inventory_smart/procedures/build_product_profile_attributes_filter.sql"
+        ]
+    },
+    "DROP TRIGGER": {
+        "exclusions": []
+    },
+    "DROP TYPE": {
+        "exclusions": []
+    },
+    "DROP VIEW": {
+        "exclusions": []
+    },
+    "INHERITS": {
+        "exclusions": []
+    },
+    "ONLY": {
+        "exclusions": [
+            "database/stevemadden/schemas/inventory_smart/functions/article_selection_list.sql",
+            "database/stevemadden/schemas/inventory_smart/functions/details_metric.sql"
+        ]
+    },
+    "RENAME": {
+        "exclusions": []
+    },
+    "RESET": {
+        "exclusions": []
+    },
+    "STORAGE": {
+        "exclusions": []
+    },
+    "TEMPORARY": {
+        "exclusions": []
+    },
+    "TRUNCATE": {
+        "exclusions": []
+    },
+    "WITHOUT": {
+        "exclusions": []
+    }
+}

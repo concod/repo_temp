@@ -1,0 +1,174 @@
+fc_code,label,column_name,type,display_type,level,dimension,is_mandatory,is_multiple_selection,range_min,range_max,default_value,is_disabled,is_clearable,display_order,is_required,extra,is_deleted
+301,Country,l0_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+301,Sbu,l3_name,cascaded,dropdown,2,product,FALSE,TRUE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+301,Age,age,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+301,Gender,gender,cascaded,dropdown,4,product,FALSE,TRUE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+301,Collection Total,l5_name,cascaded,dropdown,5,product,FALSE,TRUE,,,,FALSE,TRUE,5,FALSE,{},FALSE
+301,Carryover,carryover,non-cascaded,dropdown,,hierarchy_filter,FALSE,FALSE,,,,FALSE,TRUE,6,FALSE,{},FALSE
+301,Channel,channel,non-cascaded,dropdown,,store,FALSE,TRUE,,,,FALSE,TRUE,6,FALSE,{},FALSE
+301,Clearance,clearance,non-cascaded,dropdown,,hierarchy_filter,FALSE,FALSE,,,,FALSE,TRUE,5,FALSE,{},FALSE
+302,Tiles,graph_levels,cascaded,dropdown,1,graph_filter,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+302,View tiles as a component of,view_tiles,cascaded,dropdown,2,graph_filter,TRUE,FALSE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+303,Size,size,non-cascaded,dropdown,1,graph_setting,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+304,Select # of Launch/ Delivery,assort_drop_value,non-cascaded,dropdown,,plan,TRUE,FALSE,,,,FALSE,TRUE,13,FALSE,{},FALSE
+304,Season,assort_season_value,non-cascaded,dropdown,,create_plan,TRUE,FALSE,,,,FALSE,TRUE,6,FALSE,{},FALSE
+304,Selling Period,assort_selling_period_value,non-cascaded,rangePicker,,plan,TRUE,FALSE,,,,FALSE,TRUE,7,FALSE,{},FALSE
+304,Year,assort_year_value,non-cascaded,dropdown,,plan,TRUE,FALSE,,,,FALSE,TRUE,5,FALSE,{},FALSE
+304,Channel,channel,non-cascaded,dropdown,,store,TRUE,TRUE,,,,FALSE,TRUE,14,FALSE,{},FALSE
+304,Select Cluster Plan,cluster_plan_code,non-cascaded,dropdown,,create_plan,TRUE,FALSE,,,,FALSE,TRUE,16,FALSE,{},FALSE
+304,Compare Season,compare_season_value,non-cascaded,dropdown,,create_plan,FALSE,FALSE,,,,FALSE,TRUE,12,FALSE,{},FALSE
+304,Compare Year,compare_year_value,non-cascaded,dropdown,,plan,FALSE,FALSE,,,,FALSE,TRUE,11,FALSE,{},FALSE
+304,Merch Business Category,l0_name,cascaded,dropdown,1,product,TRUE,FALSE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+304,Merch Department,l1_name,cascaded,dropdown,2,product,TRUE,FALSE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+304,Merch Class,l2_name,cascaded,dropdown,3,product,FALSE,FALSE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+304,Plan Name,plan_name,non-cascaded,TextField,,create_plan,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+304,Reference Data ,reference_data,non-cascaded,toggle,,create_plan,FALSE,FALSE,,,,FALSE,TRUE,8,FALSE,{},FALSE
+304,Reference Period,reference_period,non-cascaded,toggle,,create_plan,FALSE,FALSE,,,,FALSE,TRUE,9,FALSE,{},FALSE
+304,Sub channel,sub_channel,non-cascaded,dropdown,,create_plan,TRUE,TRUE,,,,FALSE,TRUE,15,FALSE,{},FALSE
+304,Compare year with,year_comparision_metric,non-cascaded,radioGroup,,create_plan,TRUE,FALSE,,,,FALSE,TRUE,10,FALSE,{},FALSE
+305,Selling Period,assort_selling_period_value,non-cascaded,rangePicker,,edit_plan,FALSE,FALSE,,,,TRUE,TRUE,8,FALSE,{},FALSE
+305,Channel,channel,non-cascaded,dropdown,,edit_plan,TRUE,TRUE,,,,FALSE,TRUE,7,FALSE,{},FALSE
+305,Cluster Name,cluster_name,non-cascaded,TextField,,edit_plan,FALSE,FALSE,,,,TRUE,TRUE,1,FALSE,{},FALSE
+305,Gender,gender,cascaded,dropdown,5,product,TRUE,TRUE,,,,FALSE,TRUE,6,FALSE,{},FALSE
+305,Country,l0_name,cascaded,dropdown,1,product,TRUE,FALSE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+305,SBU,l3_name,cascaded,dropdown,2,product,TRUE,TRUE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+305,Age/Dept,l4_name,cascaded,dropdown,3,product,TRUE,TRUE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+305,Collection Total,l5_name,cascaded,dropdown,4,product,TRUE,TRUE,,,,FALSE,TRUE,5,FALSE,{},FALSE
+305,Weightage,weightage,non-cascaded,IntegerField,,edit_plan,TRUE,FALSE,,,,FALSE,TRUE,9,FALSE,{},FALSE
+306,Age,age,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+306,Channel,channel,non-cascaded,dropdown,,store,TRUE,TRUE,,,,FALSE,TRUE,8,FALSE,{},FALSE
+306,Country,l0_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+306,SBU,l3_name,cascaded,dropdown,2,product,FALSE,TRUE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+306,Collection Total,l5_name,cascaded,dropdown,5,product,FALSE,TRUE,,,,FALSE,TRUE,5,FALSE,{},FALSE
+307,Age,age,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+307,Season,assort_season_value,non-cascaded,dropdown,,create_plan,FALSE,FALSE,,,,FALSE,TRUE,12,FALSE,"{""dimension"": ""selling_period""}",FALSE
+307,Selling Period,assort_selling_period_value,non-cascaded,rangePicker,,plan,TRUE,FALSE,,,,FALSE,TRUE,13,FALSE,"{""dimension"": ""selling_period""}",FALSE
+307,Year,assort_year_value,non-cascaded,dropdown,,plan,FALSE,FALSE,,,,FALSE,TRUE,11,FALSE,"{""dimension"": ""selling_period""}",FALSE
+307,Channel,channel,non-cascaded,dropdown,,store,TRUE,TRUE,,,,FALSE,TRUE,10,FALSE,{},FALSE
+307,Class,class,cascaded,dropdown,6,product,FALSE,TRUE,,,,FALSE,TRUE,7,FALSE,{},FALSE
+307,Plan name,cluster_name,non-cascaded,TextField,,create_plan,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,"{""dimension"": ""plan""}",FALSE
+307,Gender,gender,cascaded,dropdown,4,product,FALSE,TRUE,,,,FALSE,TRUE,5,FALSE,{},FALSE
+307,country,l0_name,cascaded,dropdown,1,product,TRUE,FALSE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+307,SBU,l3_name,cascaded,dropdown,2,product,FALSE,TRUE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+307,Collection Total,l5_name,cascaded,dropdown,5,product,FALSE,TRUE,,,,FALSE,TRUE,6,FALSE,{},FALSE
+307,Planning Level Description,planning_level_dsc,cascaded,dropdown,8,product,FALSE,TRUE,,,,FALSE,TRUE,9,FALSE,{},FALSE
+307,Sub Class,subclass,cascaded,dropdown,7,product,FALSE,TRUE,,,,FALSE,TRUE,8,FALSE,{},FALSE
+307,Weightage,weightage,non-cascaded,IntegerField,,create_plan,TRUE,FALSE,,,,TRUE,TRUE,14,FALSE,"{""dimension"": ""selling_period""}",FALSE
+308,Country,s0_name,cascaded,dropdown,,store,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+308,Season,season,non-cascaded,dropdown,,product,TRUE,TRUE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+308,Store Initiative,store_initiative,cascaded,dropdown,,store,FALSE,TRUE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+309,Plan Name,plan_name,non-cascaded,TextField,,create_plan,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+309,Merch Business Category,l0_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+309,Merch Department,l1_name,cascaded,dropdown,2,product,TRUE,TRUE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+309,Merch Class,l2_name,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+309,Compare year with,year_comparision_metric,non-cascaded,radioGroup,,create_plan,TRUE,FALSE,,,,FALSE,TRUE,5,FALSE,{},FALSE
+309,Year,assort_year_value,non-cascaded,dropdown,,plan,TRUE,FALSE,,,,FALSE,TRUE,6,FALSE,{},FALSE
+309,Season,assort_season_value,non-cascaded,dropdown,,create_plan,TRUE,FALSE,,,,FALSE,TRUE,7,FALSE,{},FALSE
+309,Selling Period,assort_selling_period_value,non-cascaded,rangePicker,,plan,TRUE,FALSE,,,,FALSE,TRUE,8,FALSE,{},FALSE
+310,Threshold,axis_threshold,non-cascaded,IntegerField,,graph_filters,TRUE,FALSE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+310,X Axis,x_axis,non-cascaded,dropdown,,graph_filters,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+311,Attributes,attribute,non-cascaded,dropdown,,graph_filters,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+311,Compare with,compare_with,non-cascaded,dropdown,,graph_filters,TRUE,FALSE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+312,Compare with,compare_with,non-cascaded,dropdown,,graph_filters,TRUE,FALSE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+312,Geographical Attribute,geographical_attribute,non-cascaded,dropdown,,graph_filters,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+313,Compare with,compare_with,non-cascaded,dropdown,,graph_filters,TRUE,FALSE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+313,X Axis,x_axis,non-cascaded,dropdown,,graph_filters,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+314,Compare with,compare_with,non-cascaded,dropdown,,graph_filters,TRUE,FALSE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+314,X Axis,x_axis,non-cascaded,dropdown,,graph_filters,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+315,X Axis,x_axis,non-cascaded,dropdown,,graph_filters,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+316,Compare with,compare_with,non-cascaded,dropdown,,graph_filters,TRUE,FALSE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+317,Channel,channel,non-cascaded,dropdown,,store,FALSE,TRUE,,,,FALSE,TRUE,6,FALSE,{},FALSE
+317,Country,l0_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+317,Sbu,l3_name,cascaded,dropdown,2,product,FALSE,TRUE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+317,Age,age,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+317,Gender,gender,cascaded,dropdown,4,product,FALSE,TRUE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+317,Collection Total,l5_name,cascaded,dropdown,5,product,FALSE,TRUE,,,,FALSE,TRUE,5,FALSE,{},FALSE
+318,Primary Y Axis,y_axis,non-cascaded,dropdown,1,graph_setting,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+319,Review Metric,review_metric,non-cascaded,dropdown,,graph_filters,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+320,Clearance/Carryover,cc_attribute,non-cascaded,dropdown,,graph_settings,TRUE,FALSE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+320,Primary Y Axis,y_axis,non-cascaded,dropdown,,graph_settings,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+321,Y Axis,y_axis,non-cascaded,dropdown,,graph_filters,TRUE,FALSE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+321,Secondary Y Axis,y_axis_secondary,non-cascaded,dropdown,,graph_filters,TRUE,FALSE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+322,Plan Name,plan_name,non-cascaded,TextField,,edit_plan,FALSE,FALSE,,,,TRUE,TRUE,1,FALSE,{},FALSE
+322,Merch Business Category,l0_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+322,Merch Department,l1_name,cascaded,dropdown,2,product,TRUE,TRUE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+322,Merch Class,l2_name,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+322,Compare year with,year_comparision_metric,non-cascaded,radioGroup,,edit_plan,FALSE,FALSE,,,,FALSE,TRUE,5,FALSE,{},FALSE
+322,Selling Period,assort_selling_period_value,non-cascaded,rangePicker,,edit_plan,FALSE,FALSE,,,,TRUE,TRUE,6,FALSE,{},FALSE
+323,Plan Name,plan_name,non-cascaded,TextField,,create_plan,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+323,Merch Business Category,l0_name,cascaded,dropdown,1,product,TRUE,FALSE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+323,Merch Department,l1_name,cascaded,dropdown,2,product,TRUE,FALSE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+323,Merch Class,l2_name,cascaded,dropdown,3,product,FALSE,FALSE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+323,Year,assort_year_value,non-cascaded,dropdown,,plan,TRUE,FALSE,,,,FALSE,TRUE,6,FALSE,{},FALSE
+323,Season,assort_season_value,non-cascaded,dropdown,,create_plan,TRUE,FALSE,,,,FALSE,TRUE,7,FALSE,{},FALSE
+323,Selling Period,assort_selling_period_value,non-cascaded,rangePicker,,plan,TRUE,FALSE,,,,FALSE,TRUE,8,FALSE,{},FALSE
+324,Merch Business Category,l0_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+324,All Door Style Count,all_door_cc,non-cascaded,TextField,,create_plan,TRUE,FALSE,,,,FALSE,TRUE,11,FALSE,{},FALSE
+324,Merch Department,l1_name,cascaded,dropdown,2,product,TRUE,TRUE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+324,Merch Class,l2_name,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+324,MerchPyramid,l3_name,cascaded,dropdown,4,product,TRUE,TRUE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+324,Year,assort_year_value,non-cascaded,dropdown,,plan,TRUE,FALSE,,,,FALSE,TRUE,5,FALSE,{},FALSE
+324,Season,assort_season_value,non-cascaded,dropdown,,create_plan,TRUE,FALSE,,,,FALSE,TRUE,6,FALSE,{},FALSE
+324,Channel,channel,non-cascaded,dropdown,,store,TRUE,FALSE,,,,FALSE,TRUE,8,FALSE,{},FALSE
+324,Sub Channel,sub_channel,non-cascaded,dropdown,,create_plan,TRUE,FALSE,,,,FALSE,TRUE,9,FALSE,{},FALSE
+324,Selling Period,assort_selling_period_value,non-cascaded,rangePicker,,plan,TRUE,FALSE,,,,TRUE,TRUE,10,FALSE,{},FALSE
+325,Merch Business Category,l0_name,cascaded,dropdown,1,product,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+325,Merch Department,l1_name,cascaded,dropdown,2,product,TRUE,FALSE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+325,Merch Class,l2_name,cascaded,dropdown,3,product,FALSE,FALSE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+326,Merch Business Category,l0_name,cascaded,dropdown,1,product,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+326,Merch Department,l1_name,cascaded,dropdown,2,product,TRUE,FALSE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+326,Merch Class,l2_name,cascaded,dropdown,3,product,FALSE,FALSE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+326,MerchPyramid,l3_name,cascaded,dropdown,4,product,TRUE,FALSE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+326,Year,year,non-cascaded,dropdown,,custom,FALSE,FALSE,,,,FALSE,TRUE,5,FALSE,{},FALSE
+326,Season,season,non-cascaded,dropdown,,custom,FALSE,FALSE,,,,FALSE,TRUE,6,FALSE,{},FALSE
+326,Channel,channel,non-cascaded,dropdown,,store,FALSE,FALSE,,,,FALSE,TRUE,7,FALSE,{},FALSE
+327,Season,assort_season_value,non-cascaded,dropdown,,create_plan,True,FALSE,,,,FALSE,TRUE,11,FALSE,"{""dimension"": ""date_range""}",FALSE
+327,Selling Period,assort_selling_period_value,non-cascaded,rangePicker,,create_plan,True,FALSE,,,,FALSE,TRUE,12,FALSE,"{""dimension"": ""date_range""}",FALSE
+327,Channel,channel,non-cascaded,dropdown,,store,TRUE,TRUE,,,,FALSE,TRUE,6,FALSE,{},FALSE
+327,Select Cluster Plan,cluster_plan_code,non-cascaded,dropdown,,create_plan,TRUE,FALSE,,,,FALSE,TRUE,22,FALSE,{},FALSE
+327,Compare Season,compare_season_value,non-cascaded,dropdown,,create_plan,FALSE,FALSE,,,,FALSE,TRUE,14,FALSE,"{""dimension"": ""reference_data""}",FALSE
+327,Date Selector,data_selector,non-cascaded,radioGroup,,create_plan,FALSE,FALSE,,,,FALSE,TRUE,9,FALSE,"{""dimension"": ""date_range""}",FALSE
+327,Use Working Plan as Reference,is_working_plan,non-cascaded,toggle,,create_plan,FALSE,FALSE,,,,FALSE,TRUE,18,FALSE,{},FALSE
+327,Country,l0_name,cascaded,dropdown,1,product,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+327,Sbu,l3_name,cascaded,dropdown,3,product,TRUE,FALSE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+327,Age,age,cascaded,dropdown,4,product,FALSE,FALSE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+327,Plan Name,plan_name,non-cascaded,TextField,,create_plan,TRUE,FALSE,,,,FALSE,TRUE,13,FALSE,"{""dimension"": ""plan""}",FALSE
+327,Reference Data ,reference_data,non-cascaded,radioGroup,,create_plan,FALSE,FALSE,,,,FALSE,TRUE,10,FALSE,"{""dimension"": ""reference_data""}",FALSE
+327,Reference Period,reference_period,non-cascaded,toggle,,create_plan,FALSE,FALSE,,,,FALSE,TRUE,15,FALSE,"{""dimension"": ""reference_data""}",FALSE
+327,Scenario Plan,scenario_plan,non-cascaded,dropdown,,create_plan,FALSE,FALSE,,,,FALSE,TRUE,19,FALSE,{},FALSE
+327,Compare year with,year_comparision_metric,non-cascaded,radioGroup,,create_plan,TRUE,FALSE,,,,FALSE,TRUE,16,FALSE,"{""dimension"": ""reference_data""}",FALSE
+328,Merch Business Category,l0_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+328,Merch Department,l1_name,cascaded,dropdown,2,product,FALSE,TRUE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+328,Merch Class,l2_name,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+328,Channel,channel,non-cascaded,dropdown,,store,TRUE,TRUE,,,,FALSE,TRUE,8,FALSE,{},FALSE
+329,Channel,channel,cascaded,dropdown,1,store,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+329,Country,country,cascaded,dropdown,1,store,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,"{""attributes"": [{""dimension"": ""product"", ""attribute_name"": ""l0_name""}, {""dimension"": ""store"", ""attribute_name"": ""country""}]}",FALSE
+329,Store Comp flag,store_comp_flag,cascaded,dropdown,3,store,FALSE,TRUE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+329,Climate,climate,cascaded,dropdown,4,store,FALSE,TRUE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+329,Store Grade,q_str_grade,cascaded,dropdown,5,store,FALSE,TRUE,,,,FALSE,TRUE,5,FALSE,{},FALSE
+329,Store Format,center_format_type,cascaded,dropdown,6,store,FALSE,TRUE,,,,FALSE,TRUE,6,FALSE,{},FALSE
+329,Store Concept,store_concept,cascaded,dropdown,7,store,FALSE,TRUE,,,,FALSE,TRUE,7,FALSE,{},FALSE
+329,Store Group Name,store_group,cascaded,dropdown,8,store,FALSE,TRUE,,,,FALSE,TRUE,8,FALSE,{},FALSE
+329,Region,s1_name,cascaded,dropdown,9,store,FALSE,TRUE,,,,FALSE,TRUE,9,FALSE,{},FALSE
+329,District,district,cascaded,dropdown,10,store,FALSE,TRUE,,,,FALSE,TRUE,10,FALSE,{},FALSE
+329,State / Province,state,cascaded,dropdown,11,store,FALSE,TRUE,,,,FALSE,TRUE,11,FALSE,{},FALSE
+329,Store Initiative,store_initiative,cascaded,dropdown,12,store,FALSE,TRUE,,,,FALSE,TRUE,12,FALSE,{},FALSE
+330,Bubble Color Group,bubble_color_grp,non-cascaded,dropdown,,graph_filter,TRUE,FALSE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+330,Bubble Points,bubble_points,non-cascaded,dropdown,,graph_filter,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+330,X Axis Threshold,x_axis_threshold,non-cascaded,IntegerField,,graph_filter,TRUE,FALSE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+330,Y Axis Threshold,y_axis_threshold,non-cascaded,IntegerField,,graph_filter,TRUE,FALSE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+331,Bubble Size,bubble_size,non-cascaded,dropdown,,graph_settings,TRUE,FALSE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+331,X Axis,x_axis,non-cascaded,dropdown,,graph_settings,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+331,Y Axis,y_axis,non-cascaded,dropdown,,graph_settings,TRUE,FALSE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+333,Age,age,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+333,Channel,channel,non-cascaded,dropdown,,store,TRUE,TRUE,,,,FALSE,TRUE,8,FALSE,{},FALSE
+333,Gender,gender,cascaded,dropdown,4,product,FALSE,TRUE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+333,Country,l0_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+333,SBU,l3_name,cascaded,dropdown,2,product,FALSE,TRUE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+333,Collection Total,l5_name,cascaded,dropdown,5,product,FALSE,TRUE,,,,FALSE,TRUE,5,FALSE,{},FALSE
+345,Country,s0_name,cascaded,dropdown,,store,true,FALSE,,,,FALSE,TRUE,1,FALSE,"{}",FALSE
+345,Master Store Size,master_size,cascaded,dropdown,,store,FALSE,TRUE,,,,FALSE,TRUE,2,FALSE,"{}",FALSE
+345,Store Format,store_format_new,cascaded,dropdown,,store,FALSE,TRUE,,,,FALSE,TRUE,3,FALSE,"{}",FALSE
+345,Store Initiative,store_initiative,cascaded,dropdown,,store,FALSE,TRUE,,,,FALSE,TRUE,4,FALSE,"{}",FALSE
+345,Sellable Sq. Ft.,sellable_sqft,cascaded,dropdown,,store,FALSE,TRUE,,,,FALSE,TRUE,5,FALSE,"{}",FALSE
+345,Store,store_code,cascaded,dropdown,,store,FALSE,TRUE,,,,FALSE,TRUE,6,FALSE,"{}",FALSE

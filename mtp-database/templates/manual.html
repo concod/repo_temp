@@ -1,0 +1,54 @@
+{% include "header.html" %}
+<div class="container" style='width: 100%;'>
+	<h1>Manual Tasks</h1>
+	<table border='1' width='100%'>
+		<tr>
+			<td>
+				<form action="" method="post" onsubmit='add_loader();'>
+					<table width='100%'>
+						<tr>
+							<td width='50%'>
+								<b>1. Info (Choose if want to calculate dependency + row count table)</b>
+								<textarea style='width:100%; height: 250px; resize:none;' name='info_tables' id='info_tables' placeholder='Put a single table name with schema like global.product_master'>{{info_msg}}</textarea>
+							</td>
+							<td width='50%'>
+								<b>2. Backup + Cleanup (Choose if need to backup existing table)</b>
+								<textarea style='width:100%; height: 250px; resize:none;' name='backup_tables' id='backup_tables' placeholder='Put list of tables with schema like global.product_master'>{{backup_msg}}</textarea>
+							</td>
+						</tr>
+						<tr>
+							<td width='50%'>
+								<button type='submit' name='action' value='info' onclick="return !!(document.getElementById('info_tables').value)">Info</button>
+							</td>
+							<td width='50%'>
+								<button type='submit' name='action' value='backup' onclick="return !!(document.getElementById('backup_tables').value)">Backup</button>
+							</td>
+						</tr>
+						<tr><td>&nbsp;</td></tr>
+						<tr>
+							<td width='50%'>
+								<b>3. Cleanup (Choose if want to delete changelogs)</b>
+								<textarea style='width:100%; height: 250px; resize:none;' name='cleanup_tables' id='cleanup_tables' placeholder='Put list of patterns to cleanup from LB like tables/product_master.sql'>{{cleanup_msg}}</textarea>
+							</td>
+							<td width='50%'>
+								<b>4. Restore (Choose if already has backup and after fresh deployment want to restore table)</b>
+								<textarea style='width:100%; height: 250px; resize:none;' name='restore_tables' id='restore_tables' placeholder='Put list of tables with schema like global.product_master'>{{restore_msg}}</textarea>
+							</td>
+						</tr>
+						<tr>
+							<td width='50%'>
+								<button type='submit' name='action' value='cleanup' onclick="return !!(document.getElementById('cleanup_tables').value)">Cleanup</button>
+							</td>
+							<td width='50%'>
+								<button type='submit' name='action' value='restore' onclick="return !!(document.getElementById('restore_tables').value)">Restore</button>
+							</td>
+						</tr>
+
+
+					</table>
+				</form>
+			</td>
+		</tr>
+	</table>
+</div>
+{% include "footer.html" %}

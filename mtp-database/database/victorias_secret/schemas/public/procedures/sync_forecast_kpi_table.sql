@@ -1,0 +1,86 @@
+--liquibase formatted sql
+--changeset vivek_subramanya:sync_forecast_kpi_table_new_columns_added runOnChange:true stripComments:false splitStatements:false context:VS_InventorySmart labels:MTP-18913
+--comment: sync_forecast_kpi_table new columns added
+--rollback: SELECT 1
+DROP procedure IF EXISTS public.sync_forecast_kpi_table();
+create or replace
+procedure public.sync_forecast_kpi_table()
+	language plpgsql
+as $procedure$
+declare
+	_log_code varchar := gen_random_uuid();
+	_sp_name varchar := 'public.sync_forecast_kpi_table';
+	_log_step varchar;
+	_st TIMESTAMP := clock_timestamp();
+begin
+	call global.data_ingestion_logs(_log_code, _sp_name, 'start', null, (clock_timestamp() - _st)::text, null);
+	perform set_config('local.log_code', _log_code, true);
+	perform set_config('local.sp_name', _sp_name, true);
+	begin
+		delete from inventory_smart.forecast_kpi_table
+		where true;
+insert
+	into
+	inventory_smart.forecast_kpi_table
+	(
+  l0_name,
+l1_name,
+l2_name,
+l3_name,
+l4_name,
+dtc_year,
+dtc_season,
+pfs_season,
+pfs_year,
+brand,
+channel,
+climate,
+city,
+region,
+district,
+state,
+country,
+qty_lw,
+qty_l4w,
+qty_l8w,
+fwos,
+size_instock_percentage,
+sell_thru_rate,
+stock_to_sales_ratio,s1_name,s2_id,s3_name,s4_name,store_group,product_group)
+select
+ l0_name,
+l1_name,
+l2_name,
+l3_name,
+l4_name,
+dtc_year,
+dtc_season,
+pfs_season,
+pfs_year,
+brand,
+channel,
+climate,
+city,
+region,
+district,
+state,
+country,
+qty_lw,
+qty_l4w,
+qty_l8w,
+fwos,
+size_instock_percentage,
+sell_thru_rate,
+stock_to_sales_ratio,s1_name,s2_id,s3_name,s4_name,store_group,product_group
+from
+	public.forecast_kpi_table;
+		call global.data_ingestion_logs(_log_code, _sp_name, 'end', null, (clock_timestamp() - _st)::text, null);
+	exception
+		when others then
+	        -- Log the error if an exception occurs during any part of the procedure
+	        call global.data_ingestion_logs(_log_code, _sp_name, _log_step, SQLERRM, (clock_timestamp() - _st)::text, null);
+            raise exception 'Error occurred in the procedure: %', SQLERRM;
+	end;
+end
+$procedure$
+;

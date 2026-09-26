@@ -1,0 +1,492 @@
+import { addSnack, closeSnack } from "core/actions/snackbarActions";
+import { getTenantTimeZoneDetails } from "core/commonComponents/coreComponentScreen/utils";
+import { Button, Modal, TextArea } from "impact-ui-v3";
+import globalStyles from "core/Styles/globalStyles";
+import moment from "moment";
+import { cloneDeep, isEmpty } from "lodash";
+import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
+import { validateDateForStore, validateDateRangePicker } from "../utils";
+import { setOmsCreateNewOrderApproveRequestDataStore } from "modules/oms/services-oms/Create-New-Order/create-new-order-service";
+import {
+  APPROVAL_LIST,
+  ERROR_MESSAGE,
+  FAILED_ALL_TEXT,
+  FAILED_TEXT,
+  EXPECTED_RECEIPT_DATE_COLUMN_STORE,
+  NOT_BEFORE_AFTER_DATE_COLUMN,
+  NOT_BEFORE_AFTER_DATE_ERROR_MESSAGE,
+  SUCCESS_ALL_TEXT,
+  SUCCESS_TEXT,
+  TENANT_DATE_FORMAT,
+  OMS_CREATE_NEW_ORDER_SCREENNAME_KEY,
+} from "modules/oms/constants-oms/stringConstants";
+
+const VendorStoreSendApprovalButton = (props) => {
+  const [showApprovalDialog, setShowApprovalDialog] = useState(false);
+  const [isApproval, setIsApproval] = useState(false);
+  const [comment, setComment] = useState("");
+  const [isSendForApprovalButton, setIsSendForApprovalButton] = useState(false);
+  const [isApprovalButton, setIsApprovalButton] = useState(false);
+  const [buttonDisabled, setButtonDisabled] = useState(false);
+
+  const isCreateNewOrderTableGrouping =
+    props?.vendorToStoreScreenConfig?.isCreateNewOrderTableGrouping;
+
+  const globalClasses = globalStyles();
+  const enabledCommentDialog =
+    props?.vendorToStoreScreenConfig?.enabledCommentDialog;
+
+  const { tenantDateFormat } = getTenantTimeZoneDetails();
+  const DATE_FORMAT = tenantDateFormat || TENANT_DATE_FORMAT;
+
+  const displaySnackMessages = (
+    message,
+    variance,
+    hideAllSnackMessages = true
+  ) => {
+    if (hideAllSnackMessages) props.closeSnack();
+    props.addSnack({
+      message: message,
+      options: {
+        variant: variance,
+      },
+    });
+  };
+
+  const transformDateForApproval = (orderData) => {
+    let order = cloneDeep(orderData);
+    if (order[EXPECTED_RECEIPT_DATE_COLUMN_STORE]) {
+      order[EXPECTED_RECEIPT_DATE_COLUMN_STORE] = moment(
+        order[EXPECTED_RECEIPT_DATE_COLUMN_STORE],
+        DATE_FORMAT,
+        true
+      ).format(TENANT_DATE_FORMAT);
+    }
+    order.status_obj.forEach((subRow) => {
+      if (subRow[EXPECTED_RECEIPT_DATE_COLUMN_STORE]) {
+        subRow[EXPECTED_RECEIPT_DATE_COLUMN_STORE] = moment(
+          subRow[EXPECTED_RECEIPT_DATE_COLUMN_STORE],
+          DATE_FORMAT,
+          true
+        ).format(TENANT_DATE_FORMAT);
+      }
+    });
+    return {
+      ...order,
+    };
+  };
+
+  const onCancel = () => {
+    setShowApprovalDialog(false);
+  };
+
+  const handleCommentInputChange = (e) => {
+    setComment(e.target.value);
+  };
+
+  const transformStatusObjForPackEnabled = (orderData) => {
+    if (!props?.isPackOrderingEnabled || !orderData.status_obj) {
+      return orderData;
+    }
+
+    const transformedStatusObj = [];
+
+    orderData.status_obj.forEach((statusItem) => {
+      const sizeArray = statusItem.sizes || statusItem.size;
+
+      if (
+        statusItem.product_codes &&
+        sizeArray &&
+        Array.isArray(statusItem.product_codes) &&
+        Array.isArray(sizeArray)
+      ) {
+        // create separate objects for each product_code and corresponding size
+        statusItem.product_codes.forEach((productCode, index) => {
+          const size = sizeArray[index] || sizeArray[0];
+
+          const {
+            product_codes,
+            sizes,
+            size: originalSize,
+            ...restOfItem
+          } = statusItem;
+
+          const transformedItem = {
+            ...restOfItem,
+            product_code: productCode,
+            size: size,
+          };
+
+          // Handle units_in_pack for order_quantity_eaches calculation
+          if (
+            statusItem.units_in_pack &&
+            statusItem.units_in_pack.length > 0 &&
+            statusItem.units_in_pack[index] !== null
+          ) {
+            const unitsInPack =
+              statusItem.units_in_pack[index] ||
+              statusItem.units_in_pack[0] ||
+              1;
+            transformedItem.order_quantity_eaches =
+              transformedItem?.order_quantity * unitsInPack;
+            transformedItem.pack_config = unitsInPack;
+          } else {
+            transformedItem.order_quantity_eaches =
+              transformedItem?.pack_config * transformedItem?.order_quantity;
+          }
+          transformedStatusObj.push(transformedItem);
+        });
+      } else {
+        transformedStatusObj.push(statusItem);
+      }
+    });
+
+    return {
+      ...orderData,
+      status_obj: transformedStatusObj,
+    };
+  };
+
+  const confirmApproval = async (actionType) => {
+    try {
+      setButtonDisabled(true);
+      let ordersValid = true;
+      let errorText = "";
+      let selectedEditData = [];
+
+      let selectedData = cloneDeep(props.agGridInstance.api.getSelectedNodes());
+
+      let selections = selectedData?.filter((val) => val.displayed);
+      selections =
+        selections?.filter(
+          (row) => !props?.uncheckedRowIds?.has(row?.data?.[props?.uniqueRowId])
+        ) || [];
+
+      if (isCreateNewOrderTableGrouping) {
+        selections.forEach((row) => {
+          if (row.data.status_obj) {
+            if (row.data[EXPECTED_RECEIPT_DATE_COLUMN_STORE]) {
+              row.data[EXPECTED_RECEIPT_DATE_COLUMN_STORE] = moment(
+                row.data[EXPECTED_RECEIPT_DATE_COLUMN_STORE],
+                DATE_FORMAT
+              ).format(props?.DATE_FORMAT);
+            }
+            selectedEditData.push(row.data);
+          }
+        });
+      } else {
+        selections.forEach((row) => {
+          selectedEditData.push(row.data);
+        });
+      }
+
+      // Transform status_obj for pack enabled items
+      selectedEditData = selectedEditData.map(transformStatusObjForPackEnabled);
+
+      if (isCreateNewOrderTableGrouping) {
+        selectedEditData.forEach((item) => {
+          if (!item.order_quantity) {
+            ordersValid = false;
+            errorText = "Please provide Order Qty for the selected orders";
+          }
+          if (item.order_quantity) {
+            if (item.hasOwnProperty(NOT_BEFORE_AFTER_DATE_COLUMN)) {
+              if (!item[NOT_BEFORE_AFTER_DATE_COLUMN]) {
+                ordersValid = false;
+                errorText = NOT_BEFORE_AFTER_DATE_ERROR_MESSAGE;
+              } else {
+                ordersValid = validateDateRangePicker(item);
+                if (!ordersValid)
+                  errorText = NOT_BEFORE_AFTER_DATE_ERROR_MESSAGE;
+              }
+            }
+            if (item.hasOwnProperty(EXPECTED_RECEIPT_DATE_COLUMN_STORE)) {
+              if (!item[EXPECTED_RECEIPT_DATE_COLUMN_STORE]) {
+                ordersValid = false;
+                errorText = "Please provide a valid Date";
+              } else {
+                ordersValid = validateDateForStore(item);
+                if (!ordersValid)
+                  errorText = `Please enter a date after "Order Placement Date"`;
+              }
+            }
+          }
+        });
+      } else {
+        selectedEditData.forEach((order) => {
+          if (
+            !order.hasOwnProperty(NOT_BEFORE_AFTER_DATE_COLUMN) ||
+            order[NOT_BEFORE_AFTER_DATE_COLUMN] === null
+          ) {
+            ordersValid = false;
+            errorText = NOT_BEFORE_AFTER_DATE_ERROR_MESSAGE;
+          }
+          if (order.hasOwnProperty(NOT_BEFORE_AFTER_DATE_COLUMN)) {
+            ordersValid = validateDateRangePicker(order);
+            if (!ordersValid) errorText = NOT_BEFORE_AFTER_DATE_ERROR_MESSAGE;
+          }
+          if (order.hasOwnProperty(EXPECTED_RECEIPT_DATE_COLUMN_STORE)) {
+            ordersValid = validateDateForStore(order);
+            if (!ordersValid)
+              errorText = `Please enter a date after "Order Placement Date"`;
+          }
+          if (
+            !order.hasOwnProperty("order_quantity") ||
+            order["order_quantity"] === ""
+          ) {
+            ordersValid = false;
+            errorText = "Please provide Order Qty for the selected orders";
+          }
+        });
+      }
+
+      if (ordersValid) {
+        try {
+          selectedEditData = selectedEditData.map(transformDateForApproval);
+
+          let body = {
+            action: actionType,
+            comment: comment !== "" ? comment : "-",
+            new_orders: [...selectedEditData],
+          };
+          let response = await props.setOmsCreateNewOrderApproveRequestDataStore(
+            body
+          );
+
+          if (response.data.status) {
+            setButtonDisabled(false);
+            if (response?.data?.data?.failed?.length === 0) {
+              displaySnackMessages(SUCCESS_ALL_TEXT, "success");
+            } else if (response?.data?.data?.success?.length === 0) {
+              displaySnackMessages(FAILED_ALL_TEXT, "error");
+            } else {
+              if (response?.data?.data?.failed.length > 0) {
+                let orders = [];
+                response.data.data?.failed?.forEach((order) => {
+                  orders.push(order.uniqueRowId);
+                });
+                let errorText = FAILED_TEXT + orders.join(" , ");
+                displaySnackMessages(errorText, "error", false);
+              }
+
+              if (response?.data?.data?.success?.length > 0) {
+                let orders = [];
+                response?.data?.data?.success?.forEach((order) => {
+                  orders.push(order.uniqueRowId);
+                });
+                let successText = SUCCESS_TEXT + orders.join(" , ");
+                displaySnackMessages(successText, "success", false);
+              }
+            }
+            setShowApprovalDialog(false);
+          } else {
+            setShowApprovalDialog(false);
+            displaySnackMessages(ERROR_MESSAGE, "error");
+          }
+        } catch (e) {
+          setShowApprovalDialog(false);
+          displaySnackMessages(ERROR_MESSAGE, "error");
+        }
+        props.refreshTableData();
+      } else {
+        setButtonDisabled(false);
+        setShowApprovalDialog(false);
+        displaySnackMessages(errorText, "error");
+      }
+    } catch (error) {
+      console.log("Error in confirmApproval", error);
+    }
+  };
+
+  const approvalRequest = () => {
+    setIsApproval(false);
+    if (enabledCommentDialog) {
+      setShowApprovalDialog(true);
+    } else {
+      confirmApproval(APPROVAL_LIST[0]);
+    }
+  };
+
+  const approveRequest = () => {
+    setIsApproval(true);
+    if (enabledCommentDialog) {
+      setShowApprovalDialog(true);
+    } else {
+      confirmApproval(APPROVAL_LIST[1]);
+    }
+  };
+
+  useEffect(() => {
+    if (!isEmpty(props?.userAccess)) {
+      // Use new userAccess flags passed from parent
+      const createNewOrderVendorStoreAccess = props.userAccess?.find(
+        (item) => item.screen === OMS_CREATE_NEW_ORDER_SCREENNAME_KEY
+      );
+
+      if (
+        createNewOrderVendorStoreAccess?.hasOwnProperty(
+          "isSendForApprovalButton"
+        )
+      ) {
+        setIsSendForApprovalButton(
+          createNewOrderVendorStoreAccess.isSendForApprovalButton
+        );
+      } else {
+        setIsSendForApprovalButton(props.screenConfig?.isSendForApprovalButton);
+      }
+
+      if (createNewOrderVendorStoreAccess?.hasOwnProperty("isApprovalButton")) {
+        setIsApprovalButton(createNewOrderVendorStoreAccess?.isApprovalButton);
+      } else {
+        setIsApprovalButton(props.screenConfig?.isApprovalButton);
+      }
+    } else {
+      // Fall back to old access control
+      // Check vendor store specific access control
+      if (
+        props.orderingAccessControl.hasOwnProperty("isSendForApprovalButton")
+      ) {
+        setIsSendForApprovalButton(
+          props.orderingAccessControl.isSendForApprovalButton
+        );
+      } else if (props.vendorToStoreScreenConfig?.isSendForApprovalButton) {
+        setIsSendForApprovalButton(
+          props.vendorToStoreScreenConfig.isSendForApprovalButton
+        );
+      } else {
+        setIsSendForApprovalButton(props.screenConfig?.isSendForApprovalButton);
+      }
+
+      if (props.orderingAccessControl.hasOwnProperty("isApprovalButton")) {
+        setIsApprovalButton(props.orderingAccessControl.isApprovalButton);
+      } else if (props.vendorToStoreScreenConfig?.isApprovalButton) {
+        setIsApprovalButton(props.vendorToStoreScreenConfig.isApprovalButton);
+      } else {
+        setIsApprovalButton(props.screenConfig?.isApprovalButton);
+      }
+    }
+  }, [
+    props.userAccess,
+    props.screenConfig,
+    props.orderingAccessControl,
+    props.vendorToStoreScreenConfig,
+  ]);
+
+  const getButtonLabelForCommentsPopup = () => {
+    return isApproval
+      ? isApprovalButton?.label || isApprovalButton?.name || "Approve"
+      : isSendForApprovalButton?.label ||
+          isSendForApprovalButton?.name ||
+          "Send for Approval";
+  };
+
+  return (
+    <>
+      {props.renderAgGrid && (
+        <>
+          {isSendForApprovalButton?.isVisible && (
+            <Button
+              variant="primary"
+              color="primary"
+              id="vendorStoreSendForApprovalBtn"
+              onClick={() => approvalRequest()}
+              disabled={
+                buttonDisabled || (props.selectedSkuCount === 0 ? true : false)
+              }
+            >
+              {isSendForApprovalButton?.label ||
+                isSendForApprovalButton?.name ||
+                "Send for Approval"}
+            </Button>
+          )}
+
+          {isSendForApprovalButton?.isVisible &&
+            isApprovalButton?.isVisible && (
+              <div style={{ marginRight: "25px" }}></div>
+            )}
+
+          {isApprovalButton?.isVisible && (
+            <Button
+              variant="primary"
+              color="primary"
+              id="vendorStoreApprovalBtn"
+              onClick={() => approveRequest()}
+              disabled={
+                buttonDisabled || (props.selectedSkuCount === 0 ? true : false)
+              }
+            >
+              {isApprovalButton?.label || isApprovalButton?.name || "Approve"}
+            </Button>
+          )}
+        </>
+      )}
+
+      {enabledCommentDialog && showApprovalDialog && (
+        <Modal
+          onClose={() => onCancel()}
+          title="Please add PO comment (Optional)"
+          size="small"
+          aria-labelledby="approval-comment-modal"
+          open={true}
+          primaryButtonLabel={getButtonLabelForCommentsPopup()}
+          onPrimaryButtonClick={() => {
+            isApproval
+              ? confirmApproval(APPROVAL_LIST[1])
+              : confirmApproval(APPROVAL_LIST[0]);
+          }}
+          primaryButtonProps={{
+            disabled: buttonDisabled,
+          }}
+          secondaryButtonLabel="Cancel"
+          onSecondaryButtonClick={() => {
+            onCancel();
+          }}
+        >
+          <div className={`${globalClasses.centerAlign}`}>
+            <TextArea
+              placeholder="Write comment..."
+              characterLimit={240}
+              height="80px"
+              width="480px"
+              defaultValue=""
+              value={comment}
+              onChange={(e) => handleCommentInputChange(e)}
+            />
+          </div>
+        </Modal>
+      )}
+    </>
+  );
+};
+
+const mapStateToProps = (store) => {
+  return {
+    screenConfig:
+      store.omsReducer.orderingCommonService.orderingScreensConfig
+        ?.create_new_order,
+    moduleConfig: store.omsReducer.orderingCommonService.orderingModuleConfig,
+    orderingAccessControl:
+      store.omsReducer.orderingCommonService.orderingAccessControl,
+    isPackOrderingEnabled:
+      store.omsReducer.orderingCommonService.orderingPackOrderConfig
+        ?.pack_ordering,
+    userAccess:
+      store.omsReducer.orderingCommonService.orderingUserAccess?.vendor_store,
+    vendorToStoreScreenConfig:
+      store.omsReducer.orderingCommonService.orderingVendorToStoreConfig
+        ?.create_new_order,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  setOmsCreateNewOrderApproveRequestDataStore: (payload) =>
+    dispatch(setOmsCreateNewOrderApproveRequestDataStore(payload)),
+  addSnack: (payload) => dispatch(addSnack(payload)),
+  closeSnack: (payload) => dispatch(closeSnack(payload)),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(VendorStoreSendApprovalButton);

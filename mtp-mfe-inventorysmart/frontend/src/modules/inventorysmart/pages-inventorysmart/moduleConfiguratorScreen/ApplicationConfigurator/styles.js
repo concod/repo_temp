@@ -1,0 +1,200 @@
+import makeStyles from "@mui/styles/makeStyles";
+
+export const useStyles = makeStyles((theme) => ({
+  pageContainer: {
+    background: "#F4F6FC",
+    minHeight: "calc(100vh - 3.5rem)",
+  },
+  cardsGrid: {
+    display: "grid",
+    gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+    gap: "24px",
+    width: "100%",
+  },
+  /* ── Outer card shell ── */
+  card: {
+    display: "flex",
+    flexDirection: "column",
+    borderRadius: "16px",
+    padding: "20px",
+    gap: "24px",
+    overflow: "hidden",
+    position: "relative",
+    transition: "box-shadow 0.2s ease, border-color 0.2s ease",
+  },
+  cardEnabled: {
+    background: "linear-gradient(180deg, #E9F7FC 0%, #FFFFFF 94.68%)",
+    border: "1px solid #A2E1F1",
+    cursor: "pointer",
+    "&:hover": {
+      background: "linear-gradient(180deg, #DCF2FA 0%, #F0FAFE 94.68%)",
+      border: "1px solid #7DD3E8",
+      boxShadow: "0 0 0 4px rgba(162, 225, 241, 0.35), 0 4px 16px rgba(162, 225, 241, 0.25)",
+    },
+  },
+  cardDisabled: {
+    background: "#F8F9FB",
+    border: "1px solid transparent",
+    "& $cardTitle": {
+      color: "#60697D",
+    },
+    "& $configLabel": {
+      color: "#B4BAC7",
+    },
+    "& $tag": {
+      color: "#B4BAC7",
+    },
+    "& $cardIcon": {
+      filter: "grayscale(100%) opacity(0.7)",
+    },
+  },
+  /* ── Inner white content area ── */
+  cardInner: {
+    background: "#FFFFFF",
+    borderRadius: "12px",
+    padding: "12px",
+    display: "flex",
+    flexDirection: "column",
+    width: "100%",
+  },
+  /* ── Card header: icon + text ── */
+  cardHeader: {
+    display: "flex",
+    alignItems: "center",
+    gap: "16px",
+  },
+  cardIconWrapper: {
+    width: "34px",
+    height: "32px",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    flexShrink: 0,
+    position: "relative",
+  },
+  cardIconShadow: {
+    position: "absolute",
+    bottom: "-10px",
+    left: "50%",
+    transform: "translateX(-50%)",
+    width: "36px",
+    height: "12px",
+  },
+  cardIcon: {
+    width: "34px",
+    height: "32px",
+    objectFit: "contain",
+    position: "relative",
+    zIndex: 1,
+  },
+  cardTitleGroup: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "4px",
+  },
+  cardTitle: {
+    color: "#1F2B4D",
+    fontFamily: "'Manrope', sans-serif",
+    fontSize: "16px",
+    fontWeight: 800,
+    lineHeight: "24px",
+    textTransform: "capitalize",
+    margin: 0,
+  },
+  cardSubtitle: {
+    color: "#7A8294",
+    fontFamily: "'Manrope', sans-serif",
+    fontSize: "12px",
+    fontWeight: 500,
+    lineHeight: "16px",
+    margin: 0,
+  },
+  /* ── Divider between header and config section ── */
+  divider: {
+    width: "100%",
+    height: 0,
+    borderTop: "1px solid #E8EAF0",
+    margin: "16px 0 0 0",
+  },
+  /* ── "What you'll configure" section ── */
+  configSection: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "12px",
+    marginTop: "20px",
+  },
+  configLabel: {
+    color: "#404B62",
+    fontFamily: "'Manrope', sans-serif",
+    fontSize: "12px",
+    fontWeight: 700,
+    lineHeight: "20px",
+    margin: 0,
+  },
+  tagsContainer: {
+    display: "flex",
+    flexWrap: "wrap",
+    gap: "12px",
+    alignItems: "center",
+  },
+  tagList: {
+    display: "flex",
+    flexWrap: "wrap",
+    gap: "12px",
+    alignItems: "center",
+    padding: 0,
+    margin: 0,
+    listStyle: "none",
+  },
+  tag: {
+    fontFamily: "'Manrope', sans-serif",
+    fontSize: "12px",
+    fontWeight: 500,
+    lineHeight: "16px",
+    color: "#7A8294",
+    display: "list-item",
+    listStyleType: "disc",
+    marginLeft: "18px",
+  },
+  /* ── Footer: button or info message ── */
+  cardFooter: {
+    marginTop: "auto",
+  },
+  actionButton: {
+    fontFamily: "'Manrope', sans-serif",
+    fontSize: "14px",
+    fontWeight: 500,
+    lineHeight: "20px",
+    color: "#4259EE",
+    border: "1px solid #4259EE",
+    borderRadius: "8px",
+    padding: "4px 12px",
+    maxHeight: "28px",
+    minWidth: "56px",
+    background: "white",
+    cursor: "pointer",
+    textTransform: "none",
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "center",
+    transition: "background 0.15s ease",
+    "&:hover": {
+      background: "#F1F3FE",
+    },
+  },
+  disabledMessage: {
+    display: "flex",
+    alignItems: "center",
+    gap: "8px",
+    fontFamily: "'Manrope', sans-serif",
+    fontSize: "12px",
+    fontWeight: 700,
+    lineHeight: "20px",
+    color: "#404B62",
+  },
+  infoIcon: {
+    width: "16px",
+    height: "16px",
+    flexShrink: 0,
+  },
+}));

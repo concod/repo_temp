@@ -1,0 +1,13 @@
+﻿source_column_name,source_column_datatype,required_in_product,generic_column_name,is_pk,generic_column_datatype,formula,is_attribute,is_hierarchy,hierarchy_level,is_null_allowed,unique_by
+product_id,int4,TRUE,product_id,TRUE,int4,,FALSE,FALSE,,FALSE,TRUE
+simulation_week_start_date,date,TRUE,simulation_week_start_date,FALSE,date,,FALSE,FALSE,,TRUE,FALSE
+date,date,TRUE,date,TRUE,date,,FALSE,FALSE,,FALSE,TRUE
+base_percentage,int4,TRUE,base_percentage,TRUE,int4,,FALSE,FALSE,,FALSE,TRUE
+sales_units,float8,TRUE,sales_units,FALSE,float8,,FALSE,FALSE,,TRUE,FALSE
+store_split_level,varchar,TRUE,store_split_level,FALSE,varchar,,FALSE,FALSE,,TRUE,FALSE
+day_split_ratio,float8,TRUE,day_split_ratio,FALSE,float8,,FALSE,FALSE,,TRUE,FALSE
+elasticity,float8,TRUE,elasticity,FALSE,float8,,FALSE,FALSE,,TRUE,FALSE
+end_cap_hierarchy_level,varchar,TRUE,end_cap_hierarchy_level,FALSE,varchar,,FALSE,FALSE,,TRUE,FALSE
+end_cap_multiplier,float8,TRUE,end_cap_multiplier,FALSE,float8,,FALSE,FALSE,,TRUE,FALSE
+baseline_sales_units,float8,TRUE,baseline_sales_units,FALSE,float8,,FALSE,FALSE,,TRUE,FALSE
+reg_price_multiplier,float8,TRUE,reg_price_multiplier,FALSE,float8,,FALSE,FALSE,,TRUE,FALSE

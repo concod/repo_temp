@@ -1,0 +1,40 @@
+.no-data {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  gap: 8px;
+
+  img {
+    width: auto;
+    height: auto;
+    max-width: 200px;
+    max-height: 200px;
+  }
+
+  &__title {
+    color: #1F2B4D;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 16px;
+    margin: 0;
+    text-align: center;
+  }
+
+  &__description {
+    color: #7A8294;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 16px;
+    margin: 0;
+    text-align: center;
+  }
+}
+

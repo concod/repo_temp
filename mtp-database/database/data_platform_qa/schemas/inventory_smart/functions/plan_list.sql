@@ -1,0 +1,100 @@
+--liquibase formatted sql
+--changeset liquibase:plan_list runOnChange:true stripComments:false splitStatements:false context:Release_1_0 labels:liquibase_project_start
+--comment: initial changeset for plan_list
+--rollback: SELECT 1
+DROP FUNCTION IF EXISTS inventory_smart.plan_list(input refcursor, jsonb, jsonb, jsonb, character varying, character varying);
+CREATE OR REPLACE FUNCTION inventory_smart.plan_list(input refcursor, jsonb, jsonb, jsonb, character varying, character varying)
+ RETURNS refcursor
+ LANGUAGE plpgsql
+AS $function$
+/*
+ * Function/Procedure name: global.plan_list
+ * Created by: Ashish Gupta
+ * Created at: 01-Jun-2023
+ * No of input parameter: 4
+ * Parameter Description : $1 = Application name
+ *                         $2 = Plan_filter
+ * 						   $3 = plan_attributes
+ * 						   $4 = Filter meta search
+ * 						   $5 = start_date
+ *  					   $6 = end_date
+ * Purpose: This function been created to insert given attribute value in attribute_master if not found,
+ *  if same attribute found in attribute_master then update the and update the same attribute_code in applicatiom_master
+ * Calling Statement:
+ *  select * from global.plan_list
+    ('my_cur',
+    '{}',
+    '{}',
+    '{}')
+ *
+ * if any modification done in same function/procedure please record the changes in below format
+ *
+ * Updated_by       Updated_on      Purpose
+ * ----------       -----------     --------
+ * Kailash Yadav    25-Jun-2022:    added row_count SP from cache
+ */
+declare
+	_query_pm text := '';
+	_query_pa text := '';
+	_date_range text:= '';
+	_query_ph text:= '';
+	_jsonb_ph text;
+--	_pa_input jsonb;
+	_query_table_filters text := '';
+	_query_combine text;
+
+	_cache_payload jsonb := jsonb_build_object('plan_attributes', $2, 'plan_code', $3);
+	_cache_table_id text;
+	_cache_schema text := 'inventory_smart';
+	_cache_sp text := '.plan_list';
+	_cache_key_pattern text := '{schema_name}:{sp_name}:{request}';
+	_cache_dependencies text[] := '{inventory_smart.plan_master,inventory_smart.plan_attributes}';
+	begin
+		select jsonb_object_agg(key, value) into $2 from (select * from jsonb_each_text($2) where key != 'is_deleted' union select 'is_deleted', '[{"type":"custom","operator":"=","values":"false"}]') x;
+		_query_pm := 'SELECT * FROM "inventory_smart".plan_master' || ("inventory_smart".form_main_table_filters('plan_master', $2));
+--		_pa_input := "inventory_smart".form_attributes_list($3, 'plan_attributes');
+--		raise notice '_pa_input: %', _pa_input;
+		_query_ph := 'select jsonb '''||$3::text||''' - ''group''' ;
+		execute _query_ph into _jsonb_ph;
+		raise notice '%', _query_ph;
+ 		_query_pa := "inventory_smart".form_attribute_table_filters('plan_attributes', 'plan_code', _jsonb_ph);
+		_query_table_filters := "inventory_smart".form_table_query($4);
+		
+		if $5 then
+			_date_range := 'DATE(created_at at TIME ZONE ''EST'') between DATE($5) and DATE($6) ';
+			_query_pm := concat(_query_pm, _date_range);
+		end if;
+		_query_combine := 'select
+				*
+			from
+				(
+				select
+						main.name,
+						main.status,
+						main.description,
+						to_char(main.created_at,''yyyy-mm-dd'') as created_at,
+						to_char(main.updated_at,''yyyy-mm-dd'') as updated_at,
+						u.name as created_by,
+						attributes.*
+					from
+						(' || _query_pm || ') main
+					join (' || _query_pa || ') attributes on
+						main.plan_code = attributes.plan_code
+					left join global.user_master u on main.created_by = u.user_code
+				) X ' || _query_table_filters;
+		raise notice '%',  _query_combine;
+		select * from cache.wrap_sp(
+			_cache_schema,
+			_cache_sp,
+			_cache_payload,
+			_query_combine,
+			_cache_dependencies,
+			_cache_key_pattern) into _cache_table_id;
+		_query_table_filters := global.form_table_query($4);
+		perform set_config('myvars.cache_table_id', _cache_table_id, true);
+		-- raise notice '%', 'select * from "cache"."' || _cache_table_id || '" X ' || _query_table_filters;
+		open $1 for execute 'select * from "cache"."' || _cache_table_id || '" X ' || _query_table_filters;
+		RETURN $1;
+ 	end
+   $function$
+;

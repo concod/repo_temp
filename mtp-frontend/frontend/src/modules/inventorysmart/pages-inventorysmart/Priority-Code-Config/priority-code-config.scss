@@ -1,0 +1,26 @@
+@import "Styles/mixins.scss";
+
+.priority-code-config {
+    margin-top: 24px;
+}
+
+.priority-code-config__header {
+    font-family: Poppins;
+    font-size: pxToRem(14);
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-bottom: 24px;
+}
+
+.toggle-parent-wrapper {
+    display: flex;
+    gap: 8px;
+    justify-content: right;
+    margin-bottom: 8px;
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.6;
+  }

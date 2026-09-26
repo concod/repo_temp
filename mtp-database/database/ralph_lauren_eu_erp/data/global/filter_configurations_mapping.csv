@@ -1,0 +1,29 @@
+fc_code,label,column_name,type,display_type,level,dimension,is_mandatory,is_multiple_selection,range_min,range_max,default_value,is_disabled,is_clearable,display_order,is_required,extra,is_deleted
+280,Add User Name,user_name,non-cascaded,TextField,,product,TRUE,FALSE,,,,FALSE,FALSE,1,TRUE,{},FALSE
+280,Add User Id,email,non-cascaded,TextField,,product,TRUE,FALSE,,,,FALSE,FALSE,2,TRUE,{},FALSE
+501,Module,module_type,non-cascaded,dropdown,,others,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+501,Priority,priority,non-cascaded,dropdown,,others,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+501,Ticket ID,id,non-cascaded,dropdown,,others,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+501,Status,status,non-cascaded,dropdown,,others,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+501,Issue Type,issue_type,non-cascaded,dropdown,,others,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+501,Requestor name,user_id,non-cascaded,dropdown,,others,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+134,Markdown Type,markdown_type,cascaded,dropdown,,product,TRUE,FALSE,,,,FALSE,FALSE,1,TRUE,{},FALSE
+134,Gender,l0_name,cascaded,dropdown,,product,TRUE,FALSE,,,,FALSE,FALSE,2,TRUE,{},FALSE
+134,Product Line,l1_name,cascaded,dropdown,,product,FALSE,TRUE,,,,FALSE,FALSE,3,FALSE,{},FALSE
+134,Product Class,l2_name,cascaded,dropdown,,product,FALSE,TRUE,,,,FALSE,FALSE,4,FALSE,{},FALSE
+134,Product Subclass,l3_name,cascaded,dropdown,,product,FALSE,TRUE,,,,FALSE,FALSE,5,FALSE,{},FALSE
+134,Style Name,l4_name,cascaded,dropdown,,product,FALSE,TRUE,,,,FALSE,FALSE,6,FALSE,{},FALSE
+134,End Use,end_use,cascaded,dropdown,,product,FALSE,TRUE,,,,FALSE,FALSE,7,FALSE,{},FALSE
+134,Seasonality Type,seasonality_type,cascaded,dropdown,,product,FALSE,TRUE,,,,FALSE,FALSE,8,FALSE,{},FALSE
+134,Markdown Bucket,markdown_bucket,cascaded,dropdown,,product,FALSE,TRUE,,,,FALSE,FALSE,9,FALSE,{},FALSE
+134,Color Choice,l5_id,cascaded,dropdown,,product,FALSE,TRUE,,,,FALSE,FALSE,10,FALSE,{},FALSE
+179,Market,s0_id,cascaded,dropdown,,store,FALSE,TRUE,,,,FALSE,FALSE,1,FALSE,{},FALSE
+179,Country,s2_id,cascaded,dropdown,,store,FALSE,TRUE,,,,FALSE,FALSE,2,FALSE,{},FALSE
+179,Channel,channel,cascaded,dropdown,,store,FALSE,TRUE,,,,FALSE,FALSE,3,FALSE,{},FALSE
+179,Market Sub Code,s1_id,cascaded,dropdown,,store,FALSE,TRUE,,,,FALSE,FALSE,4,FALSE,{},FALSE
+179,State,s3_name,cascaded,dropdown,,store,FALSE,TRUE,,,,FALSE,FALSE,5,FALSE,{},FALSE
+179,District,s4_name,cascaded,dropdown,,store,FALSE,TRUE,,,,FALSE,FALSE,6,FALSE,{},FALSE
+179,City,s5_name,cascaded,dropdown,,store,FALSE,TRUE,,,,FALSE,FALSE,7,FALSE,{},FALSE
+179,Speciality Group,speciality_group,cascaded,dropdown,,store,FALSE,TRUE,,,,FALSE,FALSE,8,FALSE,{},FALSE
+179,Store ID,store_code,cascaded,dropdown,,store,FALSE,TRUE,,,,FALSE,FALSE,9,FALSE,{},FALSE
+179,Store Name,store_name,cascaded,dropdown,,store,FALSE,TRUE,,,,FALSE,FALSE,10,FALSE,{},FALSE

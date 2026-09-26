@@ -1,0 +1,7 @@
+"source_column_name","source_column_datatype","required_in_product","generic_column_name","is_pk","generic_column_datatype","formula","is_attribute","is_hierarchy","hierarchy_level","is_null_allowed","unique_by","display_name","is_partition_col","is_clustering_col"
+po_nbr,varchar,TRUE,po_nbr,TRUE,varchar,,TRUE,FALSE,,FALSE,TRUE,,FALSE,
+upc,varchar,TRUE,upc,TRUE,varchar,,TRUE,FALSE,,FALSE,TRUE,,FALSE,
+source_whse,varchar,TRUE,source_whse,TRUE,varchar,,TRUE,FALSE,,FALSE,TRUE,,FALSE,
+regional_product_key,int64,TRUE,product_code,FALSE,varchar,,TRUE,FALSE,,TRUE,FALSE,,FALSE,
+po_qty,int64,TRUE,po_qty,FALSE,bigint,,TRUE,FALSE,,TRUE,FALSE,,FALSE,
+create_date,timestamp,true,create_date,false,timestamp,,true,false,,true,false,,false,

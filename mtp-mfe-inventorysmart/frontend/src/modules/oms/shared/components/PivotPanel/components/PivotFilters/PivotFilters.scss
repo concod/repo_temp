@@ -1,0 +1,142 @@
+/* Do not consume space in planningScreenMainRow / masterPlanMain flex layout */
+.pivotFiltersRoot {
+  display: contents;
+}
+
+.accordionIcon {
+  background-image: url(~assets/downChevron.svg);
+  width: 12px;
+  height: 6px;
+  top: 5px;
+  left: 2px;
+  gap: 0px;
+  opacity: 0px;
+}
+
+.accordionHeading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.accordionHeading:hover {
+  cursor: pointer;
+}
+
+.accordionLabel {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+
+.noteIcon {
+  height: 16px;
+  width: 16px;
+  font-size: 16px;
+  margin-left: 10px;
+}
+
+.attributeLabel {
+  text-transform: capitalize;
+  font-family: Manrope;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px; 
+}
+
+
+.accordionContainer {
+  position: relative;
+}
+
+.menu-popup-container {
+  left: -50px !important;
+  top: 30px !important;
+}
+.menu-popup-container::before {
+  display: none;
+}
+
+.showAndHideFields {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.dimensionLabel {
+  color: var(--Text-Shark-Black, #1d1d1d);
+  display: flex;
+  justify-content: space-between;
+  text-transform: capitalize;
+  font-family: Manrope;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 21px;
+
+}
+
+.dimensionContainer {
+  display: grid;
+  row-gap: 16px;
+  column-gap: 32px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.dimensionValue {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  label {
+    display: flex;
+    justify-content: space-between;
+    color: var(--Text-Light-Slate, #758490);
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+}
+
+.removeIcon {
+  display: block;
+  background-image: url(~assets/closeIcon.svg);
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.removeIcon:hover {
+  cursor: pointer;
+}
+
+.horizontalDivider {
+  border: none;
+  border-top: solid #D9DDE7;
+  margin: 15px 0;
+}
+
+.impact_drawer_container .impact_drawer_header .impact_drawer_heading {
+  font-weight: 800;
+}
+
+.view-alert-container {
+.ia-styles.ia-alert.MuiAlert-standardInfo {
+  width: 608px !important;
+  height: 58px !important;
+  display: flex !important;
+  min-width: 370px !important;
+  padding: 8px 16px !important;
+  justify-content: space-between !important;
+  align-items: flex-start !important;
+}
+
+.ia-styles.ia-alert.MuiAlert-standardInfo .MuiAlert-icon {
+  padding-top: 10px !important;
+}
+}

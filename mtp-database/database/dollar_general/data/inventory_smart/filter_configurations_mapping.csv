@@ -1,0 +1,114 @@
+fc_code,label,column_name,type,display_type,level,dimension,is_mandatory,is_multiple_selection,range_min,range_max,default_value,is_disabled,is_clearable,display_order,is_required,extra,is_deleted
+157,Band,psa_name,cascaded,dropdown,1,store,false,true,,,,false,true,1,false,"{""dimension"": ""product_store""}",false
+157,Plan ID,l0_name,cascaded,dropdown,2,product,TRUE,FALSE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+157,Department,l1_name,cascaded,dropdown,3,product,TRUE,TRUE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+157,Class,l3_name,cascaded,dropdown,4,product,TRUE,TRUE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+157,Subclass,l4_name,cascaded,dropdown,5,product,FALSE,TRUE,,,,FALSE,TRUE,6,FALSE,{},FALSE
+157,SKU,primary_sku,cascaded,dropdown,6,product,FALSE,TRUE,,,,FALSE,TRUE,7,FALSE,{},FALSE
+157,Plan status,l0_status,non-cascaded,dropdown,5,product,FALSE,TRUE,,,,TRUE,FALSE,1,FALSE,"{""initialData"": [""active"", ""upcoming""], ""dimension"": ""product_store""}",FALSE
+166,Plan,l0_name,cascaded,dropdown,1,product,TRUE,FALSE,,,,FALSE,TRUE,,FALSE,"{""dimension"": ""product_store""}",FALSE
+166,Department,l1_name,cascaded,dropdown,2,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,"{""dimension"": ""product_store""}",FALSE
+166,Class,l3_name,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,"{""dimension"": ""product_store""}",FALSE
+166,Sub Class,l4_name,cascaded,dropdown,4,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,"{""dimension"": ""product_store""}",FALSE
+166,Plan status,l0_status,non-cascaded,dropdown,5,product,FALSE,TRUE,,,,TRUE,FALSE,1,FALSE,"{""dimension"": ""product_store"",""initialData"": [""active""]}",FALSE
+167,Department,l1_name,cascaded,dropdown,2,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+167,Class,l3_name,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+167,Sub Class,l4_name,cascaded,dropdown,4,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+200,Department,l1_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+200,Class,l2_name,cascaded,dropdown,2,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+200,Sub Class,l3_name,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+280,Add User Name,user_name,non-cascaded,TextField,,product,TRUE,FALSE,,,,FALSE,TRUE,1,TRUE,{},FALSE
+280,Add User Id,email,non-cascaded,TextField,,product,TRUE,FALSE,,,,FALSE,TRUE,2,TRUE,{},FALSE
+10150,State,state,cascaded,dropdown,1,store,true,true,,,,false,true,1,false,"{}",false
+10150,Region,region,cascaded,dropdown,2,store,false,true,,,,false,true,2,false,"{}",false
+10150,City,city,cascaded,dropdown,2,store,false,true,,,,false,true,3,false,"{}",false
+10150,Store Name,store_name,cascaded,dropdown,1,store,false,true,,,,false,true,4,false,"{}",false
+10150,Store ID,store_code,cascaded,dropdown,2,store,false,true,,,,false,true,5,false,"{}",false
+10150,Store Group,store_group_description,cascaded,dropdown,3,store,false,true,,,,false,true,6,false,"{""dimension"": ""product_store""}",false
+10150,Store Attribute,store_attribute,cascaded,dropdown,3,store,false,true,,,,false,true,7,false,"{}",false
+10151,Plan ID,l0_name,cascaded,dropdown,1,product,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+10151,Department,l1_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+10151,Class,l3_name,cascaded,dropdown,2,product,TRUE,TRUE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+10151,Sub Class,l4_name,cascaded,dropdown,3,product,TRUE,TRUE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+10151,SKU,primary_sku,cascaded,dropdown,4,product,FALSE,TRUE,,,,FALSE,TRUE,6,FALSE,{},FALSE
+10017,Plan,l0_name,cascaded,dropdown,1,product,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,"{""dimension"": ""product_store""}",FALSE
+10017,Department,l1_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,2,FALSE,"{""dimension"": ""product_store""}",FALSE
+10017,Class,l3_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,3,FALSE,"{""dimension"": ""product_store""}",FALSE
+10017,Subclass,l4_name,cascaded,dropdown,1,product,FALSE,TRUE,,,,FALSE,TRUE,4,FALSE,"{""dimension"": ""product_store""}",FALSE
+10017,SKU,primary_sku,cascaded,dropdown,1,product,FALSE,TRUE,,,,FALSE,TRUE,5,FALSE,{},FALSE
+10017,Band,psa_name,cascaded,dropdown,1,store,TRUE,TRUE,,,,FALSE,TRUE,1,FALSE,"{""dimension"": ""product_store""}",FALSE
+10017,Plan status,l0_status,non-cascaded,dropdown,5,product,FALSE,TRUE,,,,TRUE,FALSE,1,FALSE,"{""initialData"": [""active"", ""expired""]}",FALSE
+10017,Store Group,store_group_description,cascaded,dropdown,1,store,FALSE,TRUE,,,,FALSE,TRUE,3,FALSE,"{""dimension"": ""product_store""}",FALSE
+10018,Plan,l0_name,cascaded,dropdown,1,product,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,"{""dimension"": ""product_store""}",FALSE
+10018,Department,l1_name,cascaded,dropdown,1,product,TRUE,FALSE,,,,FALSE,TRUE,2,FALSE,"{""dimension"": ""product_store""}",FALSE
+10018,Class,l3_name,cascaded,dropdown,1,product,TRUE,FALSE,,,,FALSE,TRUE,3,FALSE,"{""dimension"": ""product_store""}",FALSE
+10018,Subclass,l4_name,cascaded,dropdown,1,product,FALSE,TRUE,,,,FALSE,TRUE,4,FALSE,"{""dimension"": ""product_store""}",FALSE
+10018,SKU,primary_sku,cascaded,dropdown,1,product,FALSE,TRUE,,,,FALSE,TRUE,5,FALSE,{},FALSE
+10018,Band,psa_name,cascaded,dropdown,1,store,TRUE,TRUE,,,,FALSE,TRUE,1,FALSE,"{""dimension"": ""product_store""}",FALSE
+10018,Store ID,store_code,cascaded,dropdown,1,store,FALSE,TRUE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+10018,Store Group,store_group_description,cascaded,dropdown,1,store,false,true,,,,false,true,3,false,"{""dimension"": ""product_store""}",false
+10152,Band,psa_name,cascaded,dropdown,5,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,"{""dimension"": ""product_store""}",FALSE
+10152,Sub Class,l4_name,cascaded,dropdown,4,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,"{""dimension"": ""product_store""}",FALSE
+10152,Class,l3_name,cascaded,dropdown,3,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,"{""dimension"": ""product_store""}",FALSE
+10152,Department,l1_name,cascaded,dropdown,2,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,"{""dimension"": ""product_store""}",FALSE
+10152,Plan status,l0_status,non-cascaded,dropdown,5,product,FALSE,TRUE,,,,TRUE,FALSE,1,FALSE,"{""initialData"": [""active"", ""expired""]}",FALSE
+10152,Plan ID,l0_name,cascaded,dropdown,1,product,TRUE,FALSE,,,,FALSE,TRUE,,FALSE,"{""dimension"": ""product_store""}",FALSE
+10070,Plan ID,l0_name,cascaded,dropdown,1,product,TRUE,FALSE,,,,FALSE,TRUE,,FALSE,"{""dimension"": ""product_store""}",FALSE
+10070,Department,l1_name,cascaded,dropdown,2,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,"{""dimension"": ""product_store""}",FALSE
+10070,Class,l3_name,cascaded,dropdown,3,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,"{""dimension"": ""product_store""}",FALSE
+10070,Sub Class,l4_name,cascaded,dropdown,4,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,"{""dimension"": ""product_store""}",FALSE
+10070,Band,psa_name,cascaded,dropdown,5,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,"{""dimension"": ""product_store""}",FALSE
+10070,Plan status,l0_status,non-cascaded,dropdown,5,product,FALSE,TRUE,,,,TRUE,FALSE,1,FALSE,"{""initialData"": [""active"", ""expired""]}",FALSE
+164,Plan ID,l0_name,cascaded,dropdown,1,product,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,"{""dimension"": ""product_store""}",FALSE
+164,Department,l1_name,cascaded,dropdown,2,product,TRUE,TRUE,,,,FALSE,TRUE,2,FALSE,"{""dimension"": ""product_store""}",FALSE
+164,Class,l3_name,cascaded,dropdown,3,product,TRUE,TRUE,,,,FALSE,TRUE,3,FALSE,"{""dimension"": ""product_store""}",FALSE
+164,Subclass,l4_name,cascaded,dropdown,5,product,FALSE,TRUE,,,,FALSE,TRUE,5,FALSE,"{""dimension"": ""product_store""}",FALSE
+164,Band,psa_name,cascaded,dropdown,4,store,TRUE,TRUE,,,,FALSE,TRUE,4,FALSE,"{""dimension"": ""product_store""}",FALSE
+164,Allocation status,allocation_status_flag,non-cascaded,dropdown,5,product,FALSE,TRUE,,,,TRUE,FALSE,1,FALSE,"{""initialData"": [true]}",FALSE
+165,Plan ID,l0_name,cascaded,dropdown,1,product,TRUE,FALSE,,,,FALSE,TRUE,,FALSE,{},FALSE
+165,Department,l1_name,cascaded,dropdown,2,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+165,Class,l3_name,cascaded,dropdown,3,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+165,Sub Class,l4_name,cascaded,dropdown,4,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+165,Plan status,l0_status,non-cascaded,dropdown,5,product,FALSE,TRUE,,,,TRUE,FALSE,1,FALSE,"{""initialData"": [""active""]}",FALSE
+165,Allocation status,allocation_status_flag,non-cascaded,dropdown,5,product,FALSE,TRUE,,,,TRUE,FALSE,1,FALSE,"{""initialData"": [true]}",FALSE
+177,Plan Id,l0_name,cascaded,dropdown,6,product,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+177,Department,l1_name,cascaded,dropdown,7,product,TRUE,TRUE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+177,Class,l3_name,cascaded,dropdown,4,product,TRUE,TRUE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+177,Sub Class,l4_name,cascaded,dropdown,1,product,FALSE,TRUE,,,,FALSE,TRUE,5,FALSE,{},FALSE
+10019,Plan ID,l0_name,cascaded,dropdown,1,product,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+10019,Department,l1_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+10019,Class,l3_name,cascaded,dropdown,2,product,TRUE,TRUE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+10019,Sub Class,l4_name,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+10019,SKU,primary_sku,cascaded,dropdown,4,product,FALSE,TRUE,,,,FALSE,TRUE,5,FALSE,{},FALSE
+10019,Plan status,l0_status,non-cascaded,dropdown,5,product,FALSE,TRUE,,,,TRUE,FALSE,1,FALSE,"{""initialData"": [""active"", ""upcoming""]}",FALSE
+10020,Store band,psa_name,cascaded,dropdown,1,product_store,FALSE,TRUE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+10020,Store Group,store_group_description,cascaded,dropdown,1,store,FALSE,TRUE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+10020,Store Attribute,store_attribute,cascaded,dropdown,1,store,FALSE,TRUE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+10020,Sub Class,l4_name,cascaded,dropdown,4,product,FALSE,TRUE,,,,FALSE,TRUE,4,FALSE,"{""dimension"": ""product_store""}",FALSE
+10020,Class,l3_name,cascaded,dropdown,3,product,TRUE,TRUE,,,,FALSE,TRUE,3,FALSE,"{""dimension"": ""product_store""}",FALSE
+10020,Department,l1_name,cascaded,dropdown,2,product,TRUE,TRUE,,,,FALSE,TRUE,2,FALSE,"{""dimension"": ""product_store""}",FALSE
+10020,Plan ID,l0_name,cascaded,dropdown,1,product,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,"{""dimension"": ""product_store""}",FALSE
+10020,SKU,primary_sku,cascaded,dropdown,4,product,FALSE,TRUE,,,,FALSE,TRUE,6,FALSE,{},FALSE
+10148,Plan Id,l0_name,cascaded,dropdown,8,new_sku,false,false,,,,false,true,1,false,"{""dimension"": ""product""}",false
+10148,Plan Id,l0_name,cascaded,dropdown,8,old_sku,false,false,,,,false,true,1,false,"{""dimension"": ""product""}",false
+10148,Plan status,l0_status,non-cascaded,dropdown,8,new_sku,false,true,,,,true,false,8,false,"{""dimension"": ""product"", ""initialData"": [""active"", ""upcoming""]}",false
+10148,Plan status,l0_status,non-cascaded,dropdown,8,old_sku,false,true,,,,true,false,8,false,"{""dimension"": ""product"", ""initialData"": [""expired""]}",false
+10148,Allocation Flag,allocation_status_flag,non-cascaded,dropdown,8,old_sku,false,true,,,,true,false,8,false,"{""dimension"": ""product"", ""initialData"": [false]}",false
+10148,Department,l1_name,cascaded,dropdown,8,new_sku,false,true,,,,false,true,2,false,"{""dimension"": ""product""}",false
+10148,Department,l1_name,cascaded,dropdown,8,old_sku,false,true,,,,false,true,2,false,"{""dimension"": ""product""}",false
+10148,Class,l3_name,cascaded,dropdown,8,new_sku,false,true,,,,false,true,3,false,"{""dimension"": ""product""}",false
+10148,Class,l3_name,cascaded,dropdown,8,old_sku,false,true,,,,false,true,3,false,"{""dimension"": ""product""}",false
+10148,Sub Class,l4_name,cascaded,dropdown,8,new_sku,false,true,,,,false,true,4,false,"{""dimension"": ""product""}",false
+10148,Sub Class,l4_name,cascaded,dropdown,8,old_sku,false,true,,,,false,true,4,false,"{""dimension"": ""product""}",false
+10149,Plan Id,l0_name,cascaded,dropdown,8,new_sku,true,false,,,,false,true,1,false,"{""dimension"": ""product""}",false
+10149,Plan Id,l0_name,cascaded,dropdown,8,old_sku,true,false,,,,false,true,1,false,"{""dimension"": ""product""}",false
+10149,Plan status,l0_status,non-cascaded,dropdown,8,new_sku,false,true,,,,true,false,8,false,"{""dimension"": ""product"", ""initialData"": [""active"", ""upcoming""]}",false
+10149,Plan status,l0_status,non-cascaded,dropdown,8,old_sku,false,true,,,,true,false,8,false,"{""dimension"": ""product"", ""initialData"": [""expired""]}",false
+10149,Department,l1_name,cascaded,dropdown,8,new_sku,true,true,,,,false,true,2,false,"{""dimension"": ""product""}",false
+10149,Department,l1_name,cascaded,dropdown,8,old_sku,true,true,,,,false,true,2,false,"{""dimension"": ""product""}",false
+10149,Class,l3_name,cascaded,dropdown,8,new_sku,true,true,,,,false,true,3,false,"{""dimension"": ""product""}",false
+10149,Class,l3_name,cascaded,dropdown,8,old_sku,true,true,,,,false,true,3,false,"{""dimension"": ""product""}",false
+10149,Sub Class,l4_name,cascaded,dropdown,8,new_sku,false,true,,,,false,true,4,false,"{""dimension"": ""product""}",false
+10149,Sub Class,l4_name,cascaded,dropdown,8,old_sku,false,true,,,,false,true,4,false,"{""dimension"": ""product""}",false
+199,SKU,primary_sku,cascaded,dropdown,1,product,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+199,Store Band,psa_name,cascaded,dropdown,2,product_store,FALSE,TRUE,,,,FALSE,TRUE,2,FALSE,{},FALSE

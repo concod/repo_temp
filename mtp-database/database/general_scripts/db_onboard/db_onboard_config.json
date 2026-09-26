@@ -1,0 +1,9 @@
+{
+  "environments": {
+    "PROD": { "branch": "main", "src_branch": "develop/uat", "priority": 1 },
+    "UAT": { "branch": "develop/uat", "src_branch": "develop/test", "priority": 2 },
+    "TEST": { "branch": "develop/test", "src_branch": "develop/dev", "priority": 3 },
+    "DEV": { "branch": "develop/dev", "src_branch": "", "priority": 4 }
+  },
+  "excluded_folders": ["utils", "schemas", "data", "general_scripts", "ada-visual"]
+} 

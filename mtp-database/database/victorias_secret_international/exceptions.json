@@ -1,0 +1,77 @@
+{
+    "CASCADE": {
+        "exclusions": [
+            "database/victorias_secret_international/schemas/inventory_smart/functions/article_selection_list.sql",
+            "database/victorias_secret_international/schemas/inventory_smart/functions/generate_rcl_constraint_data.sql",
+            "database/victorias_secret_international/schemas/public/procedures/sync_product_supersession.sql"
+        ]
+    },
+    "DROP COLUMN": {
+        "exclusions": [
+            "database/victorias_secret_international/schemas/global/tables/product_attributes_filter.sql",
+            "database/victorias_secret_international/schemas/inventory_smart/tables/article_inventory_dashboard.sql"
+        ]
+    },
+    "DROP CONSTRAINT": {
+        "exclusions": [
+            "database/victorias_secret_international/schemas/data_platform/tables/data_ingestion_config.sql"
+        ]
+    },
+    "DROP INDEX": {
+        "exclusions": []
+    },
+    "DROP MATERIALIZED VIEW": {
+        "exclusions": []
+    },
+    "DROP SEQUENCE": {
+        "exclusions": []
+    },
+    "DROP TABLE": {
+        "exclusions": [
+            "database/victorias_secret_international/schemas/inventory_smart/procedures/build_product_profile_attributes_filter.sql",
+            "database/victorias_secret_international/schemas/inventory_smart/tables/alerts_product_channel_level.sql",
+            "database/victorias_secret_international/schemas/inventory_smart/tables/instock_kpi_table.sql",
+            "database/victorias_secret_international/schemas/inventory_smart/tables/latest_inventory.sql"
+        ]
+    },
+    "DROP TRIGGER": {
+        "exclusions": []
+    },
+    "DROP TYPE": {
+        "exclusions": []
+    },
+    "DROP VIEW": {
+        "exclusions": []
+    },
+    "INHERITS": {
+        "exclusions": []
+    },
+    "ONLY": {
+        "exclusions": []
+    },
+    "RENAME": {
+        "exclusions": [
+            "database/victorias_secret_international/schemas/global/tables/product_attributes_filter.sql",
+            "database/victorias_secret_international/schemas/inventory_smart/tables/alerts_config_table.sql"
+        ]
+    },
+    "RESET": {
+        "exclusions": [
+            "database/victorias_secret_international/schemas/inventory_smart/functions/generate_rcl_constraint_data.sql"
+        ]
+    },
+    "STORAGE": {
+        "exclusions": []
+    },
+    "TEMPORARY": {
+        "exclusions": []
+    },
+    "TRUNCATE": {
+        "exclusions": []
+    },
+    "WITHOUT": {
+        "exclusions": [
+            "database/victorias_secret_international/schemas/inventory_smart/functions/sku_dc_allocated_units.sql"
+        ]
+    }
+}

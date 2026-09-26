@@ -1,0 +1,106 @@
+// Issue with v3 select component. Quick fix to render the dropdown options on top of page
+.modal-top {
+  z-index: 1300;
+}
+
+.view-management-select__option--is-selected {
+  background-color: #edf0ff !important;
+  color: #1f2b4d !important;
+  border-radius: 8px;
+  margin-bottom: 2px;
+  height: 35px;
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+}
+
+.replace-view-select {
+  .ia-select-button-text {
+    font-weight: 400;
+    line-height: 21px;
+  }
+}
+
+.plan-css-13cymwt-control {
+  display: none !important;
+}
+
+.view-count {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e4f8fc;
+  color: #04a2be;
+  font-weight: 500;
+  font-size: 12px;
+  width: 358px;
+  height: 36px;
+  padding: var(--Padding-Pd4, 16px) var(--Padding-Pd6, 32px);
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: 4px;
+  background: var(--Colors-Warning-Border-Lighter, #f6ebbf);
+  color: var(--Colors-Warning-Text-Icon-Text, #9d831c);
+  text-align: center;
+  font-family: Manrope;
+  font-size: 14px;
+  font-style: normal;
+  line-height: normal;
+}
+
+.view-type {
+  font-family: "Manrope", sans-serif;
+  color: #60697d;
+  font-size: 12px;
+  line-height: 18px;
+  margin-bottom: 6px;
+  font-weight: 500;
+
+  .MuiFormGroup-root.orientation-row {
+    gap: 8px;
+    flex-direction: row;
+    padding-left: 10px;
+  }
+}
+
+.modal-body-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+  gap: 24px;
+}
+
+.divider-text {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  position: relative;
+}
+
+.divider-text::before,
+.divider-text::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #d9dde7;
+  position: relative;
+  margin: 0 -16px;
+}
+
+.divider-text span {
+  margin: 0 14px;
+  padding: 0 10px; /* Add padding around text */
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: #c7c7c7;
+}
+
+.replace-view-select {
+  .ia-select-styled-dropdown-main-button {
+    max-width: 400px !important;
+  }
+  .ia-select-label-v3 {
+    padding-bottom: 6px;
+  }
+}

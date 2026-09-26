@@ -1,0 +1,167 @@
+import { createSlice } from "@reduxjs/toolkit";
+import {
+  ORDERS_VENDOR_LEVEL_PROJECTIONS_TABLE_CONFIG,
+  ORDERS_VENDOR_LEVEL_PROJECTIONS_TABLE_DATA,
+  ORDERS_TOTAL_PROJECTIONS_GRAPH,
+  ORDERS_SKU_VENDOR_LEVEL_PROJECTIONS_TABLE_CONFIG,
+  ORDERS_SKU_VENDOR_LEVEL_PROJECTIONS_TABLE_DATA,
+} from "modules/inventorysmart/constants-inventorysmart/apiConstants";
+import axiosInstance from "core/Utils/axios";
+
+export const reportsVendorProjectionsOrdersService = createSlice({
+  name: "reportsVendorProjectionsOrdersService",
+  initialState: {
+    ordersScreenLoader: false,
+    ordersDataLoader: false,
+    ordersFiscalWeekGraph: [],
+    ordersFilterConfig: [],
+    ordersVendorTableConfigLoader: false,
+    ordersVendorTableDataLoader: false,
+    ordersVendorTableData: [],
+    ordersVendorSkuTableConfigLoader: false,
+    ordersVendorSkuTableDataLoader: false,
+    ordersVendorSkuTableData: [],
+    isFiltersValid: false,
+    selectedFilters: null,
+    ordersFilterElements: [],
+    ordersFilterDependency: [],
+    ordersFilterLoader: false,
+  },
+  reducers: {
+    setOrdersFilterElements: (state, action) => {
+      state.ordersFilterElements = action.payload;
+    },
+    setOrdersFilterDependency: (state, action) => {
+      state.ordersFilterDependency = action.payload;
+    },
+    setOrdersFilterLoader: (state, action) => {
+      state.ordersFilterLoader = action.payload;
+    },
+
+    setOrdersScreenLoader: (state, action) => {
+      state.ordersScreenLoader = action.payload;
+    },
+    setOrdersDataLoader: (state, action) => {
+      state.ordersDataLoader = action.payload;
+    },
+    setOrdersFiscalGraphData: (state, action) => {
+      state.ordersFiscalWeekGraph = action.payload;
+    },
+
+    setOrdersVendorTableConfigLoader: (state, action) => {
+      state.ordersVendorTableConfigLoader = action.payload;
+    },
+    setOrdersVendorTableDataLoader: (state, action) => {
+      state.ordersVendorTableDataLoader = action.payload;
+    },
+    setOrdersVendorTableData: (state, action) => {
+      state.ordersVendorTableData = action.payload;
+    },
+
+    setOrdersVendorSkuTableConfigLoader: (state, action) => {
+      state.ordersVendorSkuTableConfigLoader = action.payload;
+    },
+    setOrdersVendorSkuTableDataLoader: (state, action) => {
+      state.ordersVendorSkuTableDataLoader = action.payload;
+    },
+    setOrdersVendorSkuTableData: (state, action) => {
+      state.ordersVendorSkuTableData = action.payload;
+    },
+
+    setOrdersFilterConfig: (state, action) => {
+      state.ordersFilterConfig = action.payload;
+    },
+    setSelectedFilters: (state, action) => {
+      state.selectedFilters = action.payload;
+    },
+    setIsFiltersValid: (state, action) => {
+      state.isFiltersValid = action.payload;
+    },
+    clearOrdersStates: (state) => {
+      state.ordersFilterElements = [];
+      state.ordersFilterDependency = [];
+      state.ordersFilterLoader = false;
+      state.ordersScreenLoader = false;
+      state.ordersDataLoader = false;
+      state.ordersFiscalWeekGraph = [];
+      state.ordersFilterConfig = [];
+      state.isFiltersValid = false;
+      state.selectedFilters = null;
+      state.ordersVendorTableData = [];
+      state.ordersVendorTableDataLoader = false;
+      state.ordersVendorTableConfigLoader = false;
+      state.ordersVendorSkuTableData = [];
+      state.ordersVendorSkuTableDataLoader = false;
+      state.ordersVendorSkuTableConfigLoader = false;
+    },
+  },
+});
+
+export const {
+  setOrdersScreenLoader,
+  setOrdersDataLoader,
+  setOrdersFiscalGraphData,
+  setOrdersVendorTableConfigLoader,
+  setOrdersVendorTableDataLoader,
+  setOrdersVendorTableData,
+  setOrdersVendorSkuTableConfigLoader,
+  setOrdersVendorSkuTableDataLoader,
+  setOrdersVendorSkuTableData,
+  setOrdersFilterConfig,
+  setSelectedFilters,
+  setIsFiltersValid,
+  setOrdersFilterElements,
+  setOrdersFilterDependency,
+  setOrdersFilterLoader,
+  clearOrdersStates,
+} = reportsVendorProjectionsOrdersService.actions;
+
+export const getOrdersFiscalWeekGraph = (postbody) => () => {
+  return axiosInstance({
+    url: ORDERS_TOTAL_PROJECTIONS_GRAPH,
+    method: "POST",
+    data: postbody,
+  });
+};
+
+export const getOrdersVendorLevelTableConfig = (postbody) => () => {
+  return axiosInstance({
+    url: ORDERS_VENDOR_LEVEL_PROJECTIONS_TABLE_CONFIG,
+    method: "POST",
+    data: postbody,
+  });
+};
+
+export const getOrdersVendorLevelTableData = (postbody) => () => {
+  return axiosInstance({
+    url: ORDERS_VENDOR_LEVEL_PROJECTIONS_TABLE_DATA,
+    method: "POST",
+    data: postbody,
+  });
+};
+
+export const getOrdersVendorSkuLevelTableConfig = (postbody) => () => {
+  return axiosInstance({
+    url: ORDERS_SKU_VENDOR_LEVEL_PROJECTIONS_TABLE_CONFIG,
+    method: "POST",
+    data: postbody,
+  });
+};
+
+export const getOrdersVendorSkuLevelTableData = (postbody) => () => {
+  return axiosInstance({
+    url: ORDERS_SKU_VENDOR_LEVEL_PROJECTIONS_TABLE_DATA,
+    method: "POST",
+    data: postbody,
+  });
+};
+
+export const reportDownloadRequest = (screenName, postbody) => () => {
+  // return axiosInstance({
+  //   url: `${GET_REPORT_DOWNLOAD_REQUEST}?report_type=${screenName}`,
+  //   method: "POST",
+  //   data: postbody,
+  // });
+};
+
+export default reportsVendorProjectionsOrdersService.reducer;

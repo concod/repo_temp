@@ -1,0 +1,103 @@
+.starred-events {
+  border-right: 1px solid #d9dde7;
+  width: 332px;
+  flex-shrink: 0;
+  header {
+    padding: 13px 14px 10px 13px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #d9dde7;
+    width: 100%;
+    height: 56px;
+    .event-heading {
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 24px;
+      color: #000000;
+      font-family: "Manrope";
+    }
+    .ia-styles.ia-btn {
+      .ia-btn-outlined {
+        border-color: #60697d;
+        color: #60697d;
+      }
+      svg {
+        width: 14px;
+        height: 18px;
+        path {
+          fill: #60697d !important;
+        }
+      }
+    }
+  }
+  .select {
+    padding: 8px 8px 9px 8px;
+    .ia-select-container-v3 {
+      width: 168px;
+      .ia-select-styled-dropdown-main-button {
+        min-width: 168px;
+      }
+    }
+  }
+
+  .event-name-res {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .starred-card {
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 58px;
+    cursor: pointer;
+    position: relative;
+    &.active {
+      background-color: #eceefd;
+    }
+    .impact-form-checkbox-container {
+      position: absolute;
+      top: 50%;
+      left: 8px;
+      transform: translateY(-50%);
+    }
+    .starred-card-clickable {
+      width: 100%;
+      padding: 7.5px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      &.channel {
+        margin-left: 24px;
+        padding: 7.5px 8px;
+      }
+    }
+    .starred {
+      display: flex;
+      align-items: center;
+      .PrivateSwitchBase-input {
+        height: 16px;
+        width: 16px;
+      }
+    }
+    .event-details {
+      padding-left: 10px;
+    }
+    &.active {
+      background-color: #eceefd;
+    }
+  }
+
+  .events {
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+    max-height: calc(100vh - 100px);
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}

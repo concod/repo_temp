@@ -1,0 +1,152 @@
+--liquibase formatted sql
+--changeset chitrakumari.singh@impactanalytics.co liquibase:fix_msrp_issue  runOnChange:true stripComments:false splitStatements:false context:fix_msrp_issue labels:liquibase_project_start
+--comment: Add add_carryforward_copy
+--rollback: SELECT 1
+
+DROP FUNCTION IF EXISTS assort_smart.copy_plan_hierarchy_budget_opt_master(new_plan_code integer, existing_plan_code integer, source_plan_type text, dest_plan_type text);
+
+CREATE OR REPLACE FUNCTION assort_smart.copy_plan_hierarchy_budget_opt_master(new_plan_code integer, existing_plan_code integer, source_plan_type text, dest_plan_type text)
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$
+declare 
+    _source_table_name text;
+    _dest_table_name text;
+begin
+    _source_table_name := 'assort_smart.plan_hierarchy_budget_opt_master_' || source_plan_type;
+    _dest_table_name := 'assort_smart.plan_hierarchy_budget_opt_master_' || dest_plan_type;
+
+raise notice 'table name is %',
+_source_table_name;
+
+execute 'INSERT INTO ' || _dest_table_name || 
+       '
+        (plan_code,
+season_code,
+channel,
+sub_channel, 
+hierarchy_code,
+optimization_level,
+    air_ly,
+    air_ty,
+    aur_ly,
+    aur_ty,
+    imu_ly,
+    imu_ty,
+    cogs_ly,
+    cogs_ty,
+    msrp_ly,
+    msrp_ty,
+    existing,
+    budget_ly,
+    budget_ty,
+    margin_ly,
+    revenue_ly,
+    revenue_ty,
+    txn_aur_ty,
+    txn_aur_ly,
+    budget_diff,
+    new_l3_flag,
+    sell_through,
+    sell_through_ly,
+    penetration_ly,
+    penetration_ty,
+    cost_budget_diff,
+    penetration_diff,
+    l2_launch_budget_ly,
+    l2_launch_budget_ty,
+    margin_percentage,
+    receipts_quantity_ly,
+    receipts_price_per_unit,
+    receipts_quantity_ty,
+    total_receipts_cost_ly,
+    total_receipts_cost_ty,
+    total_available_cost_ly,
+    total_receipts_price_ty,
+    store_eligibility_groups,
+    total_available_quantity_ly,
+    compare_type,
+    carryover_flag,
+    receipts_price_per_unit_ly,
+    gross_margin_ty,
+    gross_margin_ly,
+    sales_units_ty,
+    sales_units_ly,
+    default_budget_ty,
+    default_receipts_quantity_ty,
+    default_sales_ty,
+    default_sales_units_ty,
+    default_gross_margin_ty,
+    default_cogs_ty,
+    margin_percentage_ty,
+    sales_ly,
+    sales_ty,
+    is_active)
+                    SELECT $1,
+        season_code,
+channel,
+sub_channel, 
+hierarchy_code,
+optimization_level,
+    air_ly,
+    air_ty,
+    aur_ly,
+    aur_ty,
+    imu_ly,
+    imu_ty,
+    cogs_ly,
+    cogs_ty,
+    msrp_ly,
+    msrp_ty,
+    existing,
+    budget_ly,
+    budget_ty,
+    margin_ly,
+    revenue_ly,
+    revenue_ty,
+    txn_aur_ty,
+    txn_aur_ly,
+    budget_diff,
+    new_l3_flag,
+    sell_through,
+    sell_through_ly,
+    penetration_ly,
+    penetration_ty,
+    cost_budget_diff,
+    penetration_diff,
+    l2_launch_budget_ly,
+    l2_launch_budget_ty,
+    margin_percentage,
+    receipts_quantity_ly,
+    receipts_price_per_unit,
+    receipts_quantity_ty,
+    total_receipts_cost_ly,
+    total_receipts_cost_ty,
+    total_available_cost_ly,
+    total_receipts_price_ty,
+    store_eligibility_groups,
+    total_available_quantity_ly,
+    compare_type,
+    carryover_flag,
+    receipts_price_per_unit_ly,
+    gross_margin_ty,
+    gross_margin_ly,
+    sales_units_ty,
+    sales_units_ly,
+    default_budget_ty,
+    default_receipts_quantity_ty,
+    default_sales_ty,
+    default_sales_units_ty,
+    default_gross_margin_ty,
+    default_cogs_ty,
+    margin_percentage_ty,
+    sales_ly,
+    sales_ty,
+    is_active
+                    FROM ' || _source_table_name || ' WHERE plan_code = $2'
+    using new_plan_code,
+existing_plan_code;
+end;
+
+$function$
+;

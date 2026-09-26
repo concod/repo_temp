@@ -1,0 +1,19 @@
+"id","static_id","name","parent_static_id","type","placeholders","placeholder_types","logic_operator","is_range_check","is_absolute_value","is_active"
+1,hl_1,Basic Comparison,,high_level_comparison,"[]",,,false,false,true
+2,hl_2,Percentage-Based Comparison,,high_level_comparison,"[]",,,false,false,true
+3,hl_3,Dollar-Based Comparison,,high_level_comparison,"[]",,,false,false,true
+4,sc_1,Greater than,hl_1,specific_conditions,"[]",,>=,false,false,true
+5,sc_2,Less than,hl_1,specific_conditions,"[]",,<=,false,false,true
+6,sc_3,Equal to,hl_1,specific_conditions,"[]",,<= and >=,false,false,true
+7,sc_4,Greater than or equal to,hl_1,specific_conditions,"[]",,>=,false,false,true
+8,sc_5,Less than or equal to,hl_1,specific_conditions,"[]",,<=,false,false,true
+9,sc_6,At least x% greater than,hl_2,specific_conditions,"[""x""]",percentage,>=,false,false,true
+10,sc_7,At least x% less than,hl_2,specific_conditions,"[""x""]",percentage,<=,false,false,true
+11,sc_8,Between x% and y% greater than,hl_2,specific_conditions,"[""x"", ""y""]",percentage,>= and <=,true,false,true
+12,sc_9,Between x% and y% less than,hl_2,specific_conditions,"[""x"", ""y""]",percentage,<= and >=,true,false,true
+13,sc_10,Remain within x% of,hl_2,specific_conditions,"[""x""]",percentage,<= and >=,true,false,true
+14,sc_11,At least x$ greater than,hl_3,specific_conditions,"[""x""]",fixed_amount,>=,false,false,true
+15,sc_12,At least x$ less than,hl_3,specific_conditions,"[""x""]",fixed_amount,<=,false,false,true
+16,sc_13,Between x$ and y$ greater than,hl_3,specific_conditions,"[""x"", ""y""]",fixed_amount,>= and <=,false,true,true
+17,sc_14,Between x$ and y$ less than,hl_3,specific_conditions,"[""x"", ""y""]",fixed_amount,<= and >=,false,true,true
+18,sc_15,Remain within x$ of,hl_3,specific_conditions,"[""x""]",fixed_amount,<= and >=,false,true,true

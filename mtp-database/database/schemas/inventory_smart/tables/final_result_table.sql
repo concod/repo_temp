@@ -1,0 +1,32 @@
+--liquibase formatted sql
+--changeset ashish:final_result_table stripComments:false splitStatements:false context:Release_1_0 labels:liquibase_project_start
+--comment: initial changeset for final_result_table
+CREATE TABLE IF NOT EXISTS inventory_smart.final_result_table (
+	product_code text NOT NULL,
+	store_code text NOT NULL,
+	rcl_code int4 NOT NULL,
+	wos float4 NULL,
+	transit_time float4 NULL,
+	safety_stock float4 NULL,
+	min_stock float4 NULL,
+	max_stock float4 NULL,
+	aps float4 NULL,
+	ros float4 NULL,
+	st float4 NULL
+);
+
+--changeset linu_nazil:final_result_table stripComments:false splitStatements:false context:Release_1_0 labels:liquibase_project_start
+--comment: adding dos column in final_result_table
+alter table inventory_smart.final_result_table add column dos float null;
+
+--changeset srinivasgowda.sg@impactanalytics.co:final_result_table stripComments:false splitStatements:false context:Release_1_0 labels:liquibase_project_start
+--comment: adding min_distribution column in final_result_table
+alter table inventory_smart.final_result_table add column min_distribution varchar NULL;
+
+--changeset srinivasgowda.sg@impactanalytics.co:final_result_table_article stripComments:false splitStatements:false context:Release_1_0 labels:liquibase_project_start
+--comment: adding article column in final_result_table
+alter table inventory_smart.final_result_table add column article varchar NULL;
+
+--changeset linu.nazil:final_result_table_index stripComments:false splitStatements:false context:Release_1_0 labels:liquibase_project_start
+--comment: adding index on product_code and store_code in final_result_table
+CREATE INDEX IF NOT EXISTS final_result_table_product_code_idx ON inventory_smart.final_result_table USING btree (product_code, store_code);

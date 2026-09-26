@@ -1,0 +1,119 @@
+.profile-page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+  }
+
+  &__account-info {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    &-title {
+      color: var(--greys-100);
+      font-size: 18px;
+      font-weight: 600;
+      margin: 0;
+    }
+  }
+
+  &__boxes {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    width: 100%;
+  }
+
+  &__box {
+    display: flex;
+    gap: 24px;
+    padding: 24px;
+    border-radius: 8px;
+    background: linear-gradient(109deg, #F1F6FF 9.27%, #FAF4FF 95.79%);
+    overflow-x: auto;
+    width: 100%; // Ensure single box takes full width
+
+    // Responsive behavior for smaller screens
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    &-item {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-height: 70px; // Consistent height for all items
+      min-width: 200px;
+      flex: 1;
+      justify-content: space-between;
+      padding-right: 24px; // Add padding for better spacing
+
+      &:not(:last-child){
+        border-right : 1px solid #E5E7E9;
+      }
+
+      &-title {
+        color: #04112B;
+        font-size: 14px;
+        font-weight: 600;
+        margin: 0;
+        line-height: 1.4;
+        min-height: 20px; // Consistent title height
+      }
+
+      &-value {
+        color: var(--greys-300);
+        font-size: 13px;
+        font-weight: 400;
+        margin: 0;
+        line-height: 1.5;
+        flex: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        min-height: 40px; // Consistent value area height
+        display: flex;
+        align-items: flex-start; // Align text to top
+
+        .plan-highlight {
+          font-weight: 600;
+          color: var(--greys-300);
+        }
+
+        .theme-highlight {
+          font-weight: 600;
+          color: var(--greys-300);
+        }
+      }
+
+      &-action {
+        background: none;
+        border: none;
+        color: #8B5CF6;
+        font-size: 12px;
+        font-weight: 500;
+        cursor: pointer;
+        padding: 0;
+        text-align: left;
+        text-decoration: none;
+        transition: color 0.2s ease;
+        min-height: 18px; // Consistent action button height
+        display: flex;
+        align-items: center; // Center the button text
+
+        &:hover {
+          color: #7C3AED;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

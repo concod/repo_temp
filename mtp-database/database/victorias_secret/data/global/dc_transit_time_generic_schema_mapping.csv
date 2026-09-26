@@ -1,0 +1,9 @@
+source_column_name,source_column_datatype,required_in_product,generic_column_name,is_pk,generic_column_datatype,formula,is_attribute,is_hierarchy,hierarchy_level,is_null_allowed,unique_by,display_name,is_partition_col,is_clustering_col
+UNewLaneFlag,int8,TRUE,UNewLaneFlag,FALSE,int8,,FALSE,FALSE,,TRUE,FALSE,,FALSE,
+SOURCE,varchar,TRUE,source,TRUE,varchar,,FALSE,FALSE,,FALSE,TRUE,,FALSE,
+DEST,varchar,TRUE,dest,TRUE,varchar,,FALSE,FALSE,,FALSE,TRUE,,FALSE,
+TRANSMODE,varchar,TRUE,transmode,TRUE,varchar,,FALSE,FALSE,,FALSE,TRUE,,FALSE,
+TRANSLEADTIME,int8,TRUE,transleadtime,FALSE,int8,,FALSE,FALSE,,FALSE,FALSE,,FALSE,
+LOADTIME,int8,TRUE,loadtime,FALSE,int8,,FALSE,FALSE,,FALSE,FALSE,,FALSE,
+ULaneStatus,varchar,TRUE,ULaneStatus,FALSE,varchar,,FALSE,FALSE,,TRUE,FALSE,,FALSE,
+flagged_rows,int8,TRUE,flagged_rows,FALSE,int8,,FALSE,FALSE,,TRUE,FALSE,,FALSE,

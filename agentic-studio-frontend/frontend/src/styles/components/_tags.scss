@@ -1,0 +1,134 @@
+// ================================
+// Tag Component Styles
+// ================================
+
+.tag {
+  display: flex;
+  height: 32px;
+  padding: 8px 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+
+  // ================================
+  // VARIANTS
+  // ================================
+  
+  &--outline {
+    border-radius: 20px;
+    border: 1px solid #D989FF;
+    
+    .tag__clear {
+      color: var(--color-primary, #A93BFF);
+    }
+  }
+  
+  &--fill {
+    border-radius: 20px;
+    border: 1px solid #D989FF;
+    background: #FAF4FF;
+    
+    .tag__clear {
+      color: white;
+    }
+  }
+  
+  &--none {
+    background: transparent;
+    border: none;
+    color: var(--greys-200);
+    padding: 0;
+    padding-left: 6px;
+    
+    .tag__clear {
+      color: var(--greys-200);
+    }
+  }
+
+  // ================================
+  // ELEMENT SIZES (FIXED)
+  // ================================
+  
+  .tag__icon {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .tag__avatar {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .tag__clear {
+    width: 20px;
+    height: 20px;
+    margin-left: 4px;
+    
+    svg {
+      width: 10px;
+      height: 10px;
+    }
+  }
+
+  // ================================
+  // ELEMENTS
+  // ================================
+  
+  &__text {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    color: var(--greys-200);
+  }
+  
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  
+  &__avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 50%;
+    overflow: hidden;
+    background: var(--greys-200, #E5E7EB);
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  
+  &__clear {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  // ================================
+  // HIGH CONTRAST MODE
+  // ================================
+  
+  @media (prefers-contrast: high) {
+    border-width: 2px;
+    
+    &--outline {
+      border-color: var(--color-primary, #A93BFF);
+    }
+    
+    &--fill {
+      border-color: var(--color-primary-dark, #7A2FE6);
+    }
+  }
+}

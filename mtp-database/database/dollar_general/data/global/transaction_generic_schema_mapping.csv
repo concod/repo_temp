@@ -1,0 +1,16 @@
+"source_column_name","source_column_datatype","required_in_product","generic_column_name","is_pk","generic_column_datatype","formula","is_attribute","is_hierarchy","hierarchy_level","is_null_allowed","unique_by","display_name","is_partition_col","is_clustering_col"
+Quantity_Sold,int8,true,qty,false,int8,,false,false,,false,false,,false,
+Sales_Price,float8,true,sales_price,false,float8,,false,false,,true,false,,false,
+Launch_Price,float8,true,launch_price,false,float8,,false,false,,true,false,,false,
+Retail_Unit_Price,float8,true,retail_unit_price,false,float8,,false,false,,true,false,,false,
+Net_Sales_Price,float8,true,revenue,false,float8,,false,false,,true,false,,false,
+Discount_Amt,float8,true,discount_amount,false,float8,,false,false,,true,false,,false,
+Cost_Price,float8,true,cost,false,float8,,false,false,,true,false,,false,
+fiscal_week_num,float8,true,fiscal_week,false,int8,,false,false,,false,false,,false,
+fiscal_year_num,float8,true,fiscal_year,false,int8,,false,false,,false,false,,false,
+fiscal_year_week,float8,true,fiscal_year_week,false,int8,,false,false,,false,false,,false,
+Primary_Sku,varchar,true,primary_sku,false,varchar,,false,false,,false,true,,false,
+Transaction_Date,date,true,date,true,date,,false,false,,false,true,,true,
+Syncstartdatetime,datetime,false,syncstartdatetime,false,datetime,,false,false,,false,false,,false,
+Primary_Sku,varchar,true,article,true,varchar,,false,false,,false,true,,false,1
+Store_Code,varchar,true,store_code,true,varchar,,false,false,,false,true,,false,1

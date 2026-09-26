@@ -1,0 +1,15 @@
+ --liquibase formatted sql
+    --changeset rohankumar.sinha:marksmart_currency_master_version_v2 stripComments:false splitStatements:false context:marksmart_currency_master_version
+    --comment: initial changeset for marksmart_currency_master_version_v2
+
+
+CREATE TABLE IF NOT EXISTS "global".marksmart_currency_master_version (
+	version_code int4 NOT NULL,
+	currency_id int4 NOT NULL,
+	currency_name text NOT NULL,
+	currency_symbol text NOT NULL,
+	CONSTRAINT tb_currency_master_pk_4 PRIMARY KEY (version_code, currency_id)
+)
+PARTITION BY LIST (version_code);
+CREATE INDEX mkd_currency_s1_id_idx_4 ON global.marksmart_currency_master_version USING btree (version_code, currency_id);
+

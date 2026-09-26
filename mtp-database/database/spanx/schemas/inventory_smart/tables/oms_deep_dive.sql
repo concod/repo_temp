@@ -1,0 +1,35 @@
+--liquibase formatted sql
+--changeset liquibase:oms_deep_dive stripComments:false splitStatements:false context:initial_release labels:liquibase_project_start
+--comment: initial changeset for oms_deep_dive
+CREATE TABLE inventory_smart.oms_deep_dive (
+	id int8 NULL,
+	product_code varchar NULL,
+	"style" varchar NULL,
+	article varchar NULL,
+	"size" varchar NULL,
+	channel varchar NULL,
+	vendor_code varchar NULL,
+	vendor_name varchar NULL,
+	loc_code varchar NULL,
+	fiscal_year_week int4 NULL,
+	week date NULL,
+	"month" varchar NULL,
+	predicted_qty float4 NULL,
+	eff_lead_time int4 NULL,
+	rolling_std_dev float4 NULL,
+	rolling_forecast float4 NULL,
+	variance float4 NULL,
+	safety_stock float4 NULL,
+	receipt1 float4 NULL,
+	receipt1_qc float4 NULL,
+	total_dc_forecast float4 NULL,
+	dc_inv int4 NULL,
+	total_mins float4 NULL,
+	additional_forecast float4 NULL,
+	additional_inventory float4 NULL,
+	approved_receipt float4 NULL,
+	lost_sales float4 NULL,
+	inventory_deficit float4 NULL,
+	ecom_forecast float4 NULL,
+	ecom_reserve float4 NULL
+);

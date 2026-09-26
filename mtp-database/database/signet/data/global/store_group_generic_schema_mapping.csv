@@ -1,0 +1,8 @@
+"source_column_name","source_column_datatype","required_in_product","generic_column_name","is_pk","generic_column_datatype","formula","is_attribute","is_hierarchy","hierarchy_level","is_null_allowed","unique_by","display_name","is_partition_col","is_clustering_col"
+store_code,STRING,true,store_code,false,varchar,,false,false,,false,false,,,
+name,STRING,true,name,false,varchar,,false,false,,false,false,,,
+ref_sg_code,INTEGER,true,ref_sg_code,false,int4,,false,false,,true,false,,,
+channel,STRING,true,channel,false,varchar,,false,false,,false,false,,,
+application_code,INTEGER,true,application_code,false,int4,"1",false,false,,false,false,,,
+special_classification,STRING,true,special_classification,false,varchar,'manual',false,false,,false,false,,,
+sg_code,INTEGER,true,sg_code,false,int4,,false,false,,true,false,,,

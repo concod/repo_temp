@@ -1,0 +1,11 @@
+"source_column_name","source_column_datatype","required_in_product","generic_column_name","is_pk","generic_column_datatype","formula","is_attribute","is_hierarchy","hierarchy_level","is_null_allowed","unique_by","display_name","is_partition_col","is_clustering_col"
+mapping_code,INTEGER,true,mapping_code,false,INTEGER,"",false,false,,true,false,"",false,
+mapping_type,STRING,true,mapping_type,false,STRING,"",false,false,,true,false,"",false,
+product_code,STRING,true,product_code,false,STRING,"",false,false,,false,true,"",false,
+store_code,STRING,true,store_code,false,STRING,"",false,false,,false,true,"",false,
+is_active,BOOLEAN,true,is_active,false,BOOLEAN,"",false,false,,false,true,"",false,
+validity_start_date,DATE,true,validity_start_date,false,DATE,"",false,false,,true,true,"",false,
+validity_end_date,DATE,true,validity_end_date,false,DATE,"",false,false,,true,true,"",false,
+updated_at,STRING,true,updated_at,false,STRING,"",false,false,,true,false,"",false,
+l0_name,STRING,true,l0_name,false,STRING,"",false,true,1,false,false,"",false,
+change_type,INTEGER,true,change_type,false,INTEGER,"",false,false,,true,false,"",false,

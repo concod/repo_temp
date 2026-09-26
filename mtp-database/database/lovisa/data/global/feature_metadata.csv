@@ -1,0 +1,401 @@
+column_name,entity,data_type,source,is_feature,feature_type,feature_encoding,unique_by,aggregation_func,gbq_formula,feature_metadata_code
+channel_i,master_table,string,inventory_master,FALSE,,,FALSE,max,max(subchannel) as channel_i,1
+oh,master_table,int64,inventory_master,FALSE,,,FALSE,sum,sum(oh) as oh,2
+it,master_table,int64,inventory_master,FALSE,,,FALSE,sum,sum(it) as it,3
+oo,master_table,int64,inventory_master,FALSE,,,FALSE,sum,sum(oo) as oo,4
+rfid_inv,master_table,int64,inventory_master,FALSE,,,FALSE,sum,sum(rfid_inv) as rfid_inv,5
+total_units,master_table,int64,inventory_master,FALSE,,,FALSE,sum,sum(total_units) as total_units,6
+channel_s,master_table,string,store_master,FALSE,,,FALSE,max,max(channel) as channel_s,7
+district,master_table,string,store_master,FALSE,,,FALSE,max,max(district) as district,8
+country,master_table,string,store_master,FALSE,,,FALSE,max,max(country) as country,9
+region,master_table,string,store_master,FALSE,,,FALSE,max,max(region) as region,10
+special_classification,master_table,string,store_master,FALSE,,,FALSE,max,max(special_classification) as special_classification,11
+l1_name,master_table,string,product_master,FALSE,,,FALSE,max,max(l1_name) as l1_name,12
+l0_name,master_table,string,product_master,FALSE,,,FALSE,max,max(l0_name) as l0_name,13
+l2_name,master_table,string,product_master,FALSE,,,FALSE,max,max(l2_name) as l2_name,14
+l3_name,master_table,string,product_master,FALSE,,,FALSE,max,max(l3_name) as l3_name,15
+l4_name,master_table,string,product_master,FALSE,,,FALSE,max,max(l4_name) as l4_name,16
+style,master_table,string,product_master,FALSE,,,FALSE,max,max(style) as style,17
+size,master_table,string,product_master,FALSE,,,FALSE,max,max(size) as size,18
+size_name,master_table,string,product_master,FALSE,,,FALSE,max,max(size_name) as size_name,19
+l1_id,master_table,string,product_master,FALSE,,,FALSE,max,max(l1_id) as l1_id,20
+l0_id,master_table,string,product_master,FALSE,,,FALSE,max,max(l0_id) as l0_id,21
+l2_id,master_table,string,product_master,FALSE,,,FALSE,max,max(l2_id) as l2_id,22
+l3_id,master_table,string,product_master,FALSE,,,FALSE,max,max(l3_id) as l3_id,23
+l4_id,master_table,string,product_master,FALSE,,,FALSE,max,max(l4_id) as l4_id,24
+color,master_table,string,product_master,FALSE,,,FALSE,max,max(color) as color,25
+article,master_table,string,product_master,FALSE,,,FALSE,max,max(article) as article,26
+season,master_table,string,product_master,FALSE,,,FALSE,max,max(season) as season,27
+vendor,master_table,string,product_master,FALSE,,,FALSE,max,max(vendor) as vendor,28
+product_life_cycle,master_table,string,product_master,FALSE,,,FALSE,max,max(product_life_cycle) as product_life_cycle,29
+style_color_id,master_table,string,product_master,FALSE,,,FALSE,max,max(style_color_id) as style_color_id,30
+product_name,master_table,string,product_master,FALSE,,,FALSE,max,max(product_name) as product_name,31
+product_description,master_table,string,product_master,FALSE,,,FALSE,max,max(product_description) as product_description,32
+fiscal_month,master_table,int64,fiscal_date_mapping,FALSE,,,FALSE,max,max(fiscal_month) as fiscal_month,33
+fiscal_quarter,master_table,int64,fiscal_date_mapping,FALSE,,,FALSE,max,max(fiscal_quarter) as fiscal_quarter,34
+fiscal_week,master_table,int64,fiscal_date_mapping,FALSE,,,FALSE,max,max(fiscal_week) as fiscal_week,35
+fiscal_year_week,master_table,int64,fiscal_date_mapping,FALSE,,,FALSE,max,max(fiscal_year_week) as fiscal_year_week,36
+fiscal_year,master_table,int64,fiscal_date_mapping,FALSE,,,FALSE,max,max(fiscal_year) as fiscal_year,37
+channel_p,master_table,string,product_master,FALSE,,,FALSE,max,max(product_channel) as channel_p,38
+discount_amount,master_table,float64,transaction_master,FALSE,,,FALSE,sum,sum(case when qty<0 then 0 else discount_amount end) as discount_amount,39
+channel_t,master_table,float64,transaction_master,FALSE,,,FALSE,max,max(channel) as channel_t,40
+revenue,master_table,float64,transaction_master,FALSE,,,FALSE,sum,sum(case when qty<0 then 0 else revenue end) as revenue,41
+qty_returns,master_table,int64,transaction_master,FALSE,,,FALSE,sum,SUM(case when qty<0 then (-1)*qty else 0 end) as qty_returns,42
+qty_without_returns,master_table,int64,transaction_master,FALSE,,,FALSE,sum,SUM(case when qty<0 then 0 else qty end) as qty_without_returns,43
+quantity_sold,master_table,int64,transaction_master,FALSE,,,FALSE,sum,sum(qty) as quantity_sold,44
+percent_off,master_table,float64,transaction_master,FALSE,,,FALSE,avg,"safe_divide(sum(case when qty<0 then 0 else discount_amount end ),sum(msrp *case when qty<0 then 0 else qty end )) as percent_off",45
+price,master_table,float64,transaction_master,FALSE,,,FALSE,avg,"safe_divide(sum(price*case when qty>0 then qty else 0 end),sum(case when qty>0 then qty else 0 end)) as price",46
+discount_percent_without_returns,master_table,float64,transaction_master,FALSE,,,FALSE,avg,"safe_divide(sum(discount_percentage*case when qty>0 then qty else 0 end),sum(case when qty>0 then qty else 0 end)) AS discount_percent_without_returns",47
+s0_name,master_table,string,store_master,FALSE,,,FALSE,max,max(s0_name) as s0_name,48
+s4_name,master_table,string,store_master,FALSE,,,FALSE,max,max(s4_name) as s4_name,49
+zipcode,master_table,string,store_master,FALSE,,,FALSE,max,max(zipcode) as zipcode,50
+dc_flag,master_table,int64,store_master,FALSE,,,FALSE,max,max(dc_flag) as dc_flag,51
+active,master_table,int64,store_master,FALSE,,,FALSE,max,max(active) as active,52
+retail_facility_code,master_table,string,store_master,FALSE,,,FALSE,max,max(retail_facility_code) as retail_facility_code,53
+climate,master_table,string,store_master,FALSE,,,FALSE,max,max(climate) as climate,54
+latitude,master_table,float64,store_master,FALSE,,,FALSE,max,max(latitude) as latitude,55
+channel,agg__master_aggregate__l0_name,string,master_table,FALSE,,,TRUE,,,56
+fiscal_month,agg__master_aggregate__l0_name,int64,master_table,FALSE,,,TRUE,,,57
+fiscal_quarter,agg__master_aggregate__l0_name,int64,master_table,FALSE,,,TRUE,,,58
+fiscal_year,agg__master_aggregate__l0_name,int64,master_table,FALSE,,,TRUE,,,59
+fiscal_week,agg__master_aggregate__l0_name,int64,master_table,FALSE,,,TRUE,,,60
+fiscal_year_week,agg__master_aggregate__l0_name,int64,master_table,FALSE,,,TRUE,,,61
+mlk_day,master_table,int64,event_master,FALSE,,,FALSE,max,max(mlk_day) as mlk_day,62
+christmas,master_table,int64,event_master,FALSE,,,FALSE,max,max(christmas) as christmas,63
+columbus_day,master_table,int64,event_master,FALSE,,,FALSE,max,max(columbus_day) as columbus_day,64
+easter,master_table,int64,event_master,FALSE,,,FALSE,max,max(easter) as easter,65
+fathers_day,master_table,int64,event_master,FALSE,,,FALSE,max,max(fathers_day) as fathers_day,66
+good_friday,master_table,int64,event_master,FALSE,,,FALSE,max,max(good_friday) as good_friday,67
+independence_day,master_table,int64,event_master,FALSE,,,FALSE,max,max(independence_day) as independence_day,68
+labor_day,master_table,int64,event_master,FALSE,,,FALSE,max,max(labor_day) as labor_day,69
+memorial_day,master_table,int64,event_master,FALSE,,,FALSE,max,max(memorial_day) as memorial_day,70
+mothers_day,master_table,int64,event_master,FALSE,,,FALSE,max,max(mothers_day) as mothers_day,71
+new_year,master_table,int64,event_master,FALSE,,,FALSE,max,max(new_year) as new_year,72
+st_patricks_day,master_table,int64,event_master,FALSE,,,FALSE,max,max(st_patricks_day) as st_patricks_day,73
+thanks_giving,master_table,int64,event_master,FALSE,,,FALSE,max,max(thanks_giving) as thanks_giving,74
+valentines_day,master_table,int64,event_master,FALSE,,,FALSE,max,max(valentines_day) as valentines_day,75
+winter_warm_up,master_table,int64,event_master,FALSE,,,FALSE,max,max(winter_warm_up) as winter_warm_up,76
+rev_sc_ly,master_table,float64,master_table,FALSE,,,FALSE,sum,sum(case when fiscal_year=2022 then revenue else 0 end) over() as rev_sc_ly,77
+rev_sc_ty,master_table,float64,master_table,FALSE,,,FALSE,sum,sum(case when fiscal_year=2023 then revenue else 0 end) over() as rev_sc_ty,78
+product_min_date,master_table,date,master_table,FALSE,,,FALSE,min,"min(date) over(partition by coalesce(channel_t,channel_i,channel_s,channel_p), product_code) as product_min_date",79
+channel,master_table,string,master_table,FALSE,,,FALSE,coalesce,"coalesce(channel_t,channel_i,channel_s,channel_p) as channel",80
+qty_sc,master_table,int64,master_table,FALSE,,,FALSE,sum,sum(case when fiscal_year = 2023 then qty_without_returns else 0 end ) over() as qty_sc,81
+fiscal_year_month,agg__master_aggregate__l0_name,int64,master_table,FALSE,,,TRUE,,,82
+fiscal_bi_week,agg__master_aggregate__l0_name,int64,master_table,FALSE,,,TRUE,,,83
+msrp,impute_features,float64,master_table,FALSE,price,,FALSE,,,84
+cost_price_per_unit,impute_features,float64,master_table,FALSE,price,,FALSE,,,85
+price,impute_features,float64,master_table,FALSE,price,,FALSE,,,86
+oh,impute_features,int64,master_table,FALSE,inventory,,FALSE,,,87
+qty_without_returns,impute_features,float64,master_table,FALSE,qty,,FALSE,,,88
+discount_amount,impute_features,float64,master_table,FALSE,discount,,FALSE,,,89
+percent_off,impute_features,float64,master_table,FALSE,discount,,FALSE,,,90
+discount_percent,agg__master_aggregate__l0_name,float64,master_table,TRUE,,,FALSE,avg,"ifnull(safe_divide(sum(msrp_imputed*qty_without_returns)-sum(revenue),sum(msrp_imputed*qty_without_returns)),avg(percent_off)) as discount_percent",91
+msrp,agg__master_aggregate__l0_name,float64,master_table,TRUE,,,FALSE,avg,"case when sum(oh) = 0 then avg(msrp_imputed) else safe_divide(sum(msrp_imputed*oh),sum(oh)) end as msrp",92
+cost,agg__master_aggregate__l0_name,float64,master_table,TRUE,,,FALSE,avg,"case when sum(oh) = 0 then avg(cost_price_per_unit_imputed) else safe_divide(sum(cost_price_per_unit_imputed*oh),sum(oh)) end as cost",93
+qty,agg__master_aggregate__l0_name,int64,master_table,TRUE,,,FALSE,sum,sum(qty_without_returns) as qty,94
+percent_off,agg__master_aggregate__l0_name,float64,master_table,TRUE,,,FALSE,avg,"case when sum(oh) = 0 then avg(percent_off_imputed) else safe_divide(sum(percent_off_imputed*oh),sum(oh)) end as percent_off",95
+price,agg__master_aggregate__l0_name,float64,master_table,FALSE,,,FALSE,avg,"case when sum(oh) = 0 then avg(price_imputed) else safe_divide(sum(price_imputed*oh),sum(oh)) end as price",96
+sell_through_cutoff,lost_sales,float64,,TRUE,numerical,,FALSE,,"{'FRANCHISE':0.3,'RETAIL':0.3}",97
+lsi_channel,lost_sales,float64,,TRUE,numerical,,FALSE,,"['FRANCHISE','RETAIL']",98
+l0_name,agg__master_aggregate__l0_name,string,master_table,FALSE,,,TRUE,,,99
+fiscal_bi_week,master_table,int64,fiscal_date_mapping,FALSE,,,FALSE,max,max(fiscal_bi_week) as fiscal_bi_week,100
+active_stores_cutoff,lost_sales,float64,,TRUE,numerical,,FALSE,,"{'FRANCHISE':0.5,'RETAIL':0.5}",101
+quantity_sold,sc__RETAIL,int64,master_table,TRUE,numerical,,FALSE,sum,sum(case when fiscal_year=2023 then qty_without_returns else 0 end) as quantity_sold,102
+aur,sc__RETAIL,float64,master_table,TRUE,numerical,,FALSE,sum,"safe_divide(sum(case when fiscal_year=2023 then price*qty_without_returns else 0 end),sum(case when fiscal_year=2023 then qty_without_returns else 0 end)) as aur",103
+revenue,sc__FRANCHISE,float64,master_table,TRUE,numerical,,FALSE,sum,sum(case when fiscal_year=2023 then revenue else 0 end) as revenue,104
+__algorithms,sc__RETAIL,,master_table,FALSE,numerical,,FALSE,sum,"[""faiss""]",105
+__algorithms,sc__FRANCHISE,,master_table,FALSE,numerical,,FALSE,sum,"[""faiss""]",106
+__no_of_clusters,sc__FRANCHISE,,master_table,,,,,,"[4,5,6,7]",107
+__no_of_clusters,sc__RETAIL,,master_table,,,,,,"[3,4,5]",108
+l1_name,agg__master_aggregate__l1_name,string,master_table,FALSE,,,TRUE,,,109
+channel,agg__master_aggregate__l1_name,string,master_table,FALSE,,,TRUE,,,110
+fiscal_month,agg__master_aggregate__l1_name,int64,master_table,FALSE,,,TRUE,,,111
+fiscal_quarter,agg__master_aggregate__l1_name,int64,master_table,FALSE,,,TRUE,,,112
+columbus_day,agg__master_aggregate__l0_name,int64,master_table,TRUE,,,FALSE,max,max(columbus_day) as columbus_day,113
+easter,agg__master_aggregate__l0_name,int64,master_table,TRUE,,,FALSE,max,max(easter) as easter,114
+fathers_day,agg__master_aggregate__l0_name,int64,master_table,TRUE,,,FALSE,max,max(fathers_day) as fathers_day,115
+good_friday,agg__master_aggregate__l0_name,int64,master_table,TRUE,,,FALSE,max,max(good_friday) as good_friday,116
+halloween,agg__master_aggregate__l0_name,int64,master_table,TRUE,,,FALSE,max,max(halloween) as halloween,117
+independence_day,agg__master_aggregate__l0_name,int64,master_table,TRUE,,,FALSE,max,max(independence_day) as independence_day,118
+labor_day,agg__master_aggregate__l0_name,int64,master_table,TRUE,,,FALSE,max,max(labor_day) as labor_day,119
+memorial_day,agg__master_aggregate__l0_name,int64,master_table,TRUE,,,FALSE,max,max(memorial_day) as memorial_day,120
+mothers_day,agg__master_aggregate__l0_name,int64,master_table,TRUE,,,FALSE,max,max(mothers_day) as mothers_day,121
+new_year,agg__master_aggregate__l0_name,int64,master_table,TRUE,,,FALSE,max,max(new_year) as new_year,122
+thanks_giving,agg__master_aggregate__l0_name,int64,master_table,TRUE,,,FALSE,max,max(thanks_giving) as thanks_giving,123
+valentines_day,agg__master_aggregate__l0_name,int64,master_table,TRUE,,,FALSE,max,max(valentines_day) as valentines_day,124
+winter_warm_up,agg__master_aggregate__l0_name,int64,master_table,TRUE,,,FALSE,max,max(winter_warm_up) as winter_warm_up,125
+presidents_day,agg__master_aggregate__l0_name,int64,master_table,TRUE,,,FALSE,max,max(presidents_day) as presidents_day,126
+__where_clause,agg__master_aggregate__l3_name,string,master_table,FALSE,,,FALSE,max,where channel is not null,127
+oh,agg__master_aggregate__l0_name,int64,master_table,TRUE,,,FALSE,sum,"ifnull(sum(case when extract(dayofweek from date)=1 then oh else 0 end),0) as oh",128
+__where_clause,agg__master_aggregate__l0_name,string,master_table,FALSE,,,FALSE,max,where channel is not null,129
+trend,agg__master_aggregate__l0_name,string,master_table,FALSE,,,FALSE,max,max(trend) as trend,130
+store_count,agg__master_aggregate__l0_name,int64,master_table,TRUE,,,FALSE,count,count(distinct store_code) as store_count,131
+sku_store_count,agg__master_aggregate__l0_name,int64,master_table,TRUE,,,FALSE,count,"count(distinct concat(store_code, product_code)) as sku_store_count",132
+sku_count,agg__master_aggregate__l0_name,int64,master_table,TRUE,,,FALSE,count,count(distinct product_code) as sku_count,133
+fiscal_year,agg__master_aggregate__l1_name,int64,master_table,FALSE,,,TRUE,,,134
+fiscal_year_week,agg__master_aggregate__l1_name,int64,master_table,FALSE,,,TRUE,,,135
+fiscal_year_month,agg__master_aggregate__l1_name,int64,master_table,FALSE,,,TRUE,,,136
+fiscal_bi_week,agg__master_aggregate__l1_name,int64,master_table,FALSE,,,TRUE,,,137
+l0_name,agg__master_aggregate__l1_name,string,master_table,FALSE,,,TRUE,,,138
+msrp,agg__master_aggregate__l1_name,float64,master_table,TRUE,,,FALSE,avg,"case when sum(oh) = 0 then avg(msrp_imputed) else safe_divide(sum(msrp_imputed*oh),sum(oh)) end as msrp",139
+cost,agg__master_aggregate__l1_name,float64,master_table,TRUE,,,FALSE,avg,"case when sum(oh) = 0 then avg(cost_price_per_unit_imputed) else safe_divide(sum(cost_price_per_unit_imputed*oh),sum(oh)) end as cost",140
+qty,agg__master_aggregate__l1_name,int64,master_table,TRUE,,,FALSE,sum,sum(qty_without_returns) as qty,141
+percent_off,agg__master_aggregate__l1_name,float64,master_table,TRUE,,,FALSE,avg,"case when sum(oh) = 0 then avg(percent_off_imputed) else safe_divide(sum(percent_off_imputed*oh),sum(oh)) end as percent_off",142
+price,agg__master_aggregate__l1_name,float64,master_table,FALSE,,,FALSE,avg,"case when sum(oh) = 0 then avg(price_imputed) else safe_divide(sum(price_imputed*oh),sum(oh)) end as price",143
+mlk_day,agg__master_aggregate__l1_name,int64,master_table,TRUE,,,FALSE,max,max(mlk_day) as mlk_day,144
+christmas,agg__master_aggregate__l1_name,int64,master_table,TRUE,,,FALSE,max,max(christmas) as christmas,145
+columbus_day,agg__master_aggregate__l1_name,int64,master_table,TRUE,,,FALSE,max,max(columbus_day) as columbus_day,146
+easter,agg__master_aggregate__l1_name,int64,master_table,TRUE,,,FALSE,max,max(easter) as easter,147
+fathers_day,agg__master_aggregate__l1_name,int64,master_table,TRUE,,,FALSE,max,max(fathers_day) as fathers_day,148
+good_friday,agg__master_aggregate__l1_name,int64,master_table,TRUE,,,FALSE,max,max(good_friday) as good_friday,149
+halloween,agg__master_aggregate__l1_name,int64,master_table,TRUE,,,FALSE,max,max(halloween) as halloween,150
+independence_day,agg__master_aggregate__l1_name,int64,master_table,TRUE,,,FALSE,max,max(independence_day) as independence_day,151
+labor_day,agg__master_aggregate__l1_name,int64,master_table,TRUE,,,FALSE,max,max(labor_day) as labor_day,152
+memorial_day,agg__master_aggregate__l1_name,int64,master_table,TRUE,,,FALSE,max,max(memorial_day) as memorial_day,153
+mothers_day,agg__master_aggregate__l1_name,int64,master_table,TRUE,,,FALSE,max,max(mothers_day) as mothers_day,154
+new_year,agg__master_aggregate__l1_name,int64,master_table,TRUE,,,FALSE,max,max(new_year) as new_year,155
+st_patricks_day,agg__master_aggregate__l1_name,int64,master_table,TRUE,,,FALSE,max,max(st_patricks_day) as st_patricks_day,156
+thanks_giving,agg__master_aggregate__l1_name,int64,master_table,TRUE,,,FALSE,max,max(thanks_giving) as thanks_giving,157
+valentines_day,agg__master_aggregate__l1_name,int64,master_table,TRUE,,,FALSE,max,max(valentines_day) as valentines_day,158
+winter_warm_up,agg__master_aggregate__l1_name,int64,master_table,TRUE,,,FALSE,max,max(winter_warm_up) as winter_warm_up,159
+christmas,agg__master_aggregate__l0_name,int64,master_table,TRUE,,,FALSE,max,max(christmas) as christmas,160
+channel,agg__master_aggregate__l2_name,string,master_table,FALSE,,,TRUE,,,161
+l0_name,agg__master_aggregate__l2_name,string,master_table,FALSE,,,TRUE,,,162
+fiscal_year_week,agg__master_aggregate__l3_name,int64,master_table,FALSE,,,TRUE,,,163
+fiscal_week,agg__master_aggregate__l3_name,int64,master_table,FALSE,,,TRUE,,,164
+__where_clause,agg__master_aggregate__l1_name,string,master_table,FALSE,,,FALSE,max,where channel is not null,165
+trend,agg__master_aggregate__l1_name,string,master_table,FALSE,,,FALSE,max,max(trend) as trend,166
+store_count,agg__master_aggregate__l1_name,int64,master_table,TRUE,,,FALSE,count,count(distinct store_code) as store_count,167
+sku_store_count,agg__master_aggregate__l1_name,int64,master_table,TRUE,,,FALSE,count,"count(distinct concat(store_code, product_code)) as sku_store_count",168
+sku_count,agg__master_aggregate__l1_name,int64,master_table,TRUE,,,FALSE,count,count(distinct product_code) as sku_count,169
+l2_name,agg__master_aggregate__l2_name,string,master_table,FALSE,,,TRUE,,,170
+aur,sc__FRANCHISE,float64,master_table,TRUE,numerical,,FALSE,sum,"safe_divide(sum(case when fiscal_year=2023 then price*qty_without_returns else 0 end),sum(case when fiscal_year=2023 then qty_without_returns else 0 end)) as aur",171
+fiscal_year,agg__master_aggregate__l3_name,int64,master_table,FALSE,,,TRUE,,,172
+l1_name,agg__master_aggregate__l2_name,string,master_table,FALSE,,,TRUE,,,173
+fiscal_month,agg__master_aggregate__l2_name,int64,master_table,FALSE,,,TRUE,,,174
+fiscal_quarter,agg__master_aggregate__l2_name,int64,master_table,FALSE,,,TRUE,,,175
+fiscal_year,agg__master_aggregate__l2_name,int64,master_table,FALSE,,,TRUE,,,176
+fiscal_year_week,agg__master_aggregate__l2_name,int64,master_table,FALSE,,,TRUE,,,177
+fiscal_year_month,agg__master_aggregate__l2_name,int64,master_table,FALSE,,,TRUE,,,178
+fiscal_bi_week,agg__master_aggregate__l2_name,int64,master_table,FALSE,,,TRUE,,,179
+msrp,agg__master_aggregate__l2_name,float64,master_table,TRUE,,,FALSE,avg,"case when sum(oh) = 0 then avg(msrp_imputed) else safe_divide(sum(msrp_imputed*oh),sum(oh)) end as msrp",180
+cost,agg__master_aggregate__l2_name,float64,master_table,TRUE,,,FALSE,avg,"case when sum(oh) = 0 then avg(cost_price_per_unit_imputed) else safe_divide(sum(cost_price_per_unit_imputed*oh),sum(oh)) end as cost",181
+qty,agg__master_aggregate__l2_name,int64,master_table,TRUE,,,FALSE,sum,sum(qty_without_returns) as qty,182
+percent_off,agg__master_aggregate__l2_name,float64,master_table,TRUE,,,FALSE,avg,"case when sum(oh) = 0 then avg(percent_off_imputed) else safe_divide(sum(percent_off_imputed*oh),sum(oh)) end as percent_off",183
+trend,agg__master_aggregate__l3_name,string,master_table,FALSE,,,FALSE,max,max(trend) as trend,184
+price,agg__master_aggregate__l2_name,float64,master_table,FALSE,,,FALSE,avg,"case when sum(oh) = 0 then avg(price_imputed) else safe_divide(sum(price_imputed*oh),sum(oh)) end as price",185
+mlk_day,agg__master_aggregate__l2_name,int64,master_table,TRUE,,,FALSE,max,max(mlk_day) as mlk_day,186
+christmas,agg__master_aggregate__l2_name,int64,master_table,TRUE,,,FALSE,max,max(christmas) as christmas,187
+columbus_day,agg__master_aggregate__l2_name,int64,master_table,TRUE,,,FALSE,max,max(columbus_day) as columbus_day,188
+easter,agg__master_aggregate__l2_name,int64,master_table,TRUE,,,FALSE,max,max(easter) as easter,189
+fathers_day,agg__master_aggregate__l2_name,int64,master_table,TRUE,,,FALSE,max,max(fathers_day) as fathers_day,190
+good_friday,agg__master_aggregate__l2_name,int64,master_table,TRUE,,,FALSE,max,max(good_friday) as good_friday,191
+halloween,agg__master_aggregate__l2_name,int64,master_table,TRUE,,,FALSE,max,max(halloween) as halloween,192
+independence_day,agg__master_aggregate__l2_name,int64,master_table,TRUE,,,FALSE,max,max(independence_day) as independence_day,193
+labor_day,agg__master_aggregate__l2_name,int64,master_table,TRUE,,,FALSE,max,max(labor_day) as labor_day,194
+memorial_day,agg__master_aggregate__l2_name,int64,master_table,TRUE,,,FALSE,max,max(memorial_day) as memorial_day,195
+mothers_day,agg__master_aggregate__l2_name,int64,master_table,TRUE,,,FALSE,max,max(mothers_day) as mothers_day,196
+new_year,agg__master_aggregate__l2_name,int64,master_table,TRUE,,,FALSE,max,max(new_year) as new_year,197
+st_patricks_day,agg__master_aggregate__l2_name,int64,master_table,TRUE,,,FALSE,max,max(st_patricks_day) as st_patricks_day,198
+thanks_giving,agg__master_aggregate__l2_name,int64,master_table,TRUE,,,FALSE,max,max(thanks_giving) as thanks_giving,199
+valentines_day,agg__master_aggregate__l2_name,int64,master_table,TRUE,,,FALSE,max,max(valentines_day) as valentines_day,200
+winter_warm_up,agg__master_aggregate__l2_name,int64,master_table,TRUE,,,FALSE,max,max(winter_warm_up) as winter_warm_up,201
+presidents_day,agg__master_aggregate__l2_name,int64,master_table,TRUE,,,FALSE,max,max(presidents_day) as presidents_day,202
+oh,agg__master_aggregate__l2_name,int64,master_table,TRUE,,,FALSE,sum,"ifnull(sum(case when extract(dayofweek from date)=1 then oh else 0 end),0) as oh",203
+__where_clause,agg__master_aggregate__l2_name,string,master_table,FALSE,,,FALSE,max,where channel is not null,204
+trend,agg__master_aggregate__l2_name,string,master_table,FALSE,,,FALSE,max,max(trend) as trend,205
+store_count,agg__master_aggregate__l2_name,int64,master_table,TRUE,,,FALSE,count,count(distinct store_code) as store_count,206
+sku_count,agg__master_aggregate__l2_name,int64,master_table,TRUE,,,FALSE,count,count(distinct product_code) as sku_count,207
+l0_name,agg__master_aggregate__l3_name,string,master_table,FALSE,,,TRUE,,,208
+l1_name,agg__master_aggregate__l3_name,string,master_table,FALSE,,,TRUE,,,209
+l2_name,agg__master_aggregate__l3_name,string,master_table,FALSE,,,TRUE,,,210
+l3_name,agg__master_aggregate__l3_name,string,master_table,FALSE,,,TRUE,,,211
+channel,agg__master_aggregate__l3_name,string,master_table,FALSE,,,TRUE,,,212
+fiscal_month,agg__master_aggregate__l3_name,int64,master_table,FALSE,,,TRUE,,,213
+fiscal_quarter,agg__master_aggregate__l3_name,int64,master_table,FALSE,,,TRUE,,,214
+oh,agg__master_aggregate__l1_name,int64,master_table,TRUE,,,FALSE,sum,"ifnull(sum(case when extract(dayofweek from date)=1 then oh else 0 end),0) as oh",215
+l0_name,agg__master_aggregate__l4_name,string,master_table,FALSE,,,TRUE,,,216
+fiscal_bi_week,agg__master_aggregate__l4_name,int64,master_table,FALSE,,,TRUE,,,217
+fiscal_year_month,agg__master_aggregate__l4_name,int64,master_table,FALSE,,,TRUE,,,218
+fiscal_year_week,agg__master_aggregate__l4_name,int64,master_table,FALSE,,,TRUE,,,219
+fiscal_week,agg__master_aggregate__l4_name,int64,master_table,FALSE,,,TRUE,,,220
+cost,agg__master_aggregate__l3_name,float64,master_table,TRUE,,,FALSE,avg,"case when sum(oh) = 0 then avg(cost_price_per_unit_imputed) else safe_divide(sum(cost_price_per_unit_imputed*oh),sum(oh)) end as cost",221
+qty,agg__master_aggregate__l3_name,int64,master_table,TRUE,,,FALSE,sum,sum(qty_without_returns) as qty,222
+percent_off,agg__master_aggregate__l3_name,float64,master_table,TRUE,,,FALSE,avg,"case when sum(oh) = 0 then avg(percent_off_imputed) else safe_divide(sum(percent_off_imputed*oh),sum(oh)) end as percent_off",223
+price,agg__master_aggregate__l3_name,float64,master_table,FALSE,,,FALSE,avg,"case when sum(oh) = 0 then avg(price_imputed) else safe_divide(sum(price_imputed*oh),sum(oh)) end as price",224
+mlk_day,agg__master_aggregate__l3_name,int64,master_table,TRUE,,,FALSE,max,max(mlk_day) as mlk_day,225
+christmas,agg__master_aggregate__l3_name,int64,master_table,TRUE,,,FALSE,max,max(christmas) as christmas,226
+columbus_day,agg__master_aggregate__l3_name,int64,master_table,TRUE,,,FALSE,max,max(columbus_day) as columbus_day,227
+easter,agg__master_aggregate__l3_name,int64,master_table,TRUE,,,FALSE,max,max(easter) as easter,228
+fathers_day,agg__master_aggregate__l3_name,int64,master_table,TRUE,,,FALSE,max,max(fathers_day) as fathers_day,229
+good_friday,agg__master_aggregate__l3_name,int64,master_table,TRUE,,,FALSE,max,max(good_friday) as good_friday,230
+halloween,agg__master_aggregate__l3_name,int64,master_table,TRUE,,,FALSE,max,max(halloween) as halloween,231
+independence_day,agg__master_aggregate__l3_name,int64,master_table,TRUE,,,FALSE,max,max(independence_day) as independence_day,232
+labor_day,agg__master_aggregate__l3_name,int64,master_table,TRUE,,,FALSE,max,max(labor_day) as labor_day,233
+memorial_day,agg__master_aggregate__l3_name,int64,master_table,TRUE,,,FALSE,max,max(memorial_day) as memorial_day,234
+mothers_day,agg__master_aggregate__l3_name,int64,master_table,TRUE,,,FALSE,max,max(mothers_day) as mothers_day,235
+new_year,agg__master_aggregate__l3_name,int64,master_table,TRUE,,,FALSE,max,max(new_year) as new_year,236
+st_patricks_day,agg__master_aggregate__l3_name,int64,master_table,TRUE,,,FALSE,max,max(st_patricks_day) as st_patricks_day,237
+thanks_giving,agg__master_aggregate__l3_name,int64,master_table,TRUE,,,FALSE,max,max(thanks_giving) as thanks_giving,238
+valentines_day,agg__master_aggregate__l3_name,int64,master_table,TRUE,,,FALSE,max,max(valentines_day) as valentines_day,239
+winter_warm_up,agg__master_aggregate__l3_name,int64,master_table,TRUE,,,FALSE,max,max(winter_warm_up) as winter_warm_up,240
+presidents_day,agg__master_aggregate__l3_name,int64,master_table,TRUE,,,FALSE,max,max(presidents_day) as presidents_day,241
+oh,agg__master_aggregate__l3_name,int64,master_table,TRUE,,,FALSE,sum,"ifnull(sum(case when extract(dayofweek from date)=1 then oh else 0 end),0) as oh",242
+store_count,agg__master_aggregate__l3_name,int64,master_table,TRUE,,,FALSE,count,count(distinct store_code) as store_count,243
+sku_store_count,agg__master_aggregate__l3_name,int64,master_table,TRUE,,,FALSE,count,"count(distinct concat(store_code, product_code)) as sku_store_count",244
+sku_count,agg__master_aggregate__l3_name,int64,master_table,TRUE,,,FALSE,count,count(distinct product_code) as sku_count,245
+growth_rate,sc__FRANCHISE,float64,master_table,TRUE,numerical,,FALSE,avg,"safe_divide(sum(case when fiscal_year=2023 then price*qty_without_returns else 0 end),sum(case when fiscal_year=2022 then price*qty_without_returns else 0 end)) as growth_rate",246
+l1_name,agg__master_aggregate__l4_name,string,master_table,FALSE,,,TRUE,,,247
+l2_name,agg__master_aggregate__l4_name,string,master_table,FALSE,,,TRUE,,,248
+l3_name,agg__master_aggregate__l4_name,string,master_table,FALSE,,,TRUE,,,249
+l4_name,agg__master_aggregate__l4_name,string,master_table,FALSE,,,TRUE,,,250
+channel,agg__master_aggregate__l4_name,string,master_table,FALSE,,,TRUE,,,251
+fiscal_quarter,agg__master_aggregate__l4_name,int64,master_table,FALSE,,,TRUE,,,252
+fiscal_year,agg__master_aggregate__l4_name,int64,master_table,FALSE,,,TRUE,,,253
+revenue,sc__RETAIL,float64,master_table,TRUE,numerical,,FALSE,sum,sum(case when fiscal_year=2023 then revenue else 0 end) as revenue,254
+msrp,agg__master_aggregate__l4_name,float64,master_table,TRUE,,,FALSE,avg,"case when sum(oh) = 0 then avg(msrp_imputed) else safe_divide(sum(msrp_imputed*oh),sum(oh)) end as msrp",255
+cost,agg__master_aggregate__l4_name,float64,master_table,TRUE,,,FALSE,avg,"case when sum(oh) = 0 then avg(cost_price_per_unit_imputed) else safe_divide(sum(cost_price_per_unit_imputed*oh),sum(oh)) end as cost",256
+qty,agg__master_aggregate__l4_name,int64,master_table,TRUE,,,FALSE,sum,sum(qty_without_returns) as qty,257
+percent_off,agg__master_aggregate__l4_name,float64,master_table,TRUE,,,FALSE,avg,"case when sum(oh) = 0 then avg(percent_off_imputed) else safe_divide(sum(percent_off_imputed*oh),sum(oh)) end as percent_off",258
+price,agg__master_aggregate__l4_name,float64,master_table,FALSE,,,FALSE,avg,"case when sum(oh) = 0 then avg(price_imputed) else safe_divide(sum(price_imputed*oh),sum(oh)) end as price",259
+mlk_day,agg__master_aggregate__l4_name,int64,master_table,TRUE,,,FALSE,max,max(mlk_day) as mlk_day,260
+christmas,agg__master_aggregate__l4_name,int64,master_table,TRUE,,,FALSE,max,max(christmas) as christmas,261
+columbus_day,agg__master_aggregate__l4_name,int64,master_table,TRUE,,,FALSE,max,max(columbus_day) as columbus_day,262
+easter,agg__master_aggregate__l4_name,int64,master_table,TRUE,,,FALSE,max,max(easter) as easter,263
+msrp,agg__master_aggregate__l3_name,float64,master_table,TRUE,,,FALSE,avg,"case when sum(oh) = 0 then avg(msrp_imputed) else safe_divide(sum(msrp_imputed*oh),sum(oh)) end as msrp",264
+quantity_sold,sc__FRANCHISE,int64,master_table,TRUE,numerical,,FALSE,sum,sum(case when fiscal_year=2023 then qty_without_returns else 0 end) as quantity_sold,265
+independence_day,agg__master_aggregate__l4_name,int64,master_table,TRUE,,,FALSE,max,max(independence_day) as independence_day,266
+labor_day,agg__master_aggregate__l4_name,int64,master_table,TRUE,,,FALSE,max,max(labor_day) as labor_day,267
+memorial_day,agg__master_aggregate__l4_name,int64,master_table,TRUE,,,FALSE,max,max(memorial_day) as memorial_day,268
+mothers_day,agg__master_aggregate__l4_name,int64,master_table,TRUE,,,FALSE,max,max(mothers_day) as mothers_day,269
+new_year,agg__master_aggregate__l4_name,int64,master_table,TRUE,,,FALSE,max,max(new_year) as new_year,270
+st_patricks_day,agg__master_aggregate__l4_name,int64,master_table,TRUE,,,FALSE,max,max(st_patricks_day) as st_patricks_day,271
+thanks_giving,agg__master_aggregate__l4_name,int64,master_table,TRUE,,,FALSE,max,max(thanks_giving) as thanks_giving,272
+valentines_day,agg__master_aggregate__l4_name,int64,master_table,TRUE,,,FALSE,max,max(valentines_day) as valentines_day,273
+winter_warm_up,agg__master_aggregate__l4_name,int64,master_table,TRUE,,,FALSE,max,max(winter_warm_up) as winter_warm_up,274
+presidents_day,agg__master_aggregate__l4_name,int64,master_table,TRUE,,,FALSE,max,max(presidents_day) as presidents_day,275
+__where_clause,agg__master_aggregate__l4_name,string,master_table,FALSE,,,FALSE,max,where channel is not null,276
+trend,agg__master_aggregate__l4_name,string,master_table,FALSE,,,FALSE,max,max(trend) as trend,277
+store_count,agg__master_aggregate__l4_name,int64,master_table,TRUE,,,FALSE,count,count(distinct store_code) as store_count,278
+sku_store_count,agg__master_aggregate__l4_name,int64,master_table,TRUE,,,FALSE,count,"count(distinct concat(store_code, product_code)) as sku_store_count",279
+sku_count,agg__master_aggregate__l4_name,int64,master_table,TRUE,,,FALSE,count,count(distinct product_code) as sku_count,280
+good_friday,agg__master_aggregate__l4_name,int64,master_table,TRUE,,,FALSE,max,max(good_friday) as good_friday,281
+l0_name,agg__master_aggregate__article,string,master_table,FALSE,,,TRUE,,,282
+fiscal_quarter,agg__master_aggregate__article,int64,master_table,FALSE,,,TRUE,,,283
+fiscal_month,agg__master_aggregate__article,int64,master_table,FALSE,,,TRUE,,,284
+channel,agg__master_aggregate__article,string,master_table,FALSE,,,TRUE,,,285
+color,agg__master_aggregate__article,string,master_table,FALSE,,,TRUE,,,286
+style,agg__master_aggregate__article,string,master_table,FALSE,,,TRUE,,,287
+l4_name,agg__master_aggregate__article,string,master_table,FALSE,,,TRUE,,,288
+l3_name,agg__master_aggregate__article,string,master_table,FALSE,,,TRUE,,,289
+l2_name,agg__master_aggregate__article,string,master_table,FALSE,,,TRUE,,,290
+l1_name,agg__master_aggregate__article,string,master_table,FALSE,,,TRUE,,,291
+style_color_id,agg__master_aggregate__article,string,master_table,FALSE,,,TRUE,,l5_name,292
+l4_name,agg__master_aggregate__product_code,string,master_table,FALSE,,,TRUE,,,293
+l3_name,agg__master_aggregate__product_code,string,master_table,FALSE,,,TRUE,,,294
+l2_name,agg__master_aggregate__product_code,string,master_table,FALSE,,,TRUE,,,295
+l1_name,agg__master_aggregate__product_code,string,master_table,FALSE,,,TRUE,,,296
+fiscal_week,agg__master_aggregate__article,int64,master_table,FALSE,,,TRUE,,,297
+fiscal_year_month,agg__master_aggregate__article,int64,master_table,FALSE,,,TRUE,,,298
+fiscal_bi_week,agg__master_aggregate__article,int64,master_table,FALSE,,,TRUE,,,299
+msrp,agg__master_aggregate__article,float64,master_table,TRUE,,,FALSE,avg,"case when sum(oh) = 0 then avg(msrp_imputed) else safe_divide(sum(msrp_imputed*oh),sum(oh)) end as msrp",300
+st_patricks_day,agg__master_aggregate__product_code,int64,master_table,TRUE,,,FALSE,max,max(st_patricks_day) as st_patricks_day,301
+cost,agg__master_aggregate__article,float64,master_table,TRUE,,,FALSE,avg,"case when sum(oh) = 0 then avg(cost_price_per_unit_imputed) else safe_divide(sum(cost_price_per_unit_imputed*oh),sum(oh)) end as cost",302
+qty,agg__master_aggregate__article,int64,master_table,TRUE,,,FALSE,sum,sum(qty_without_returns) as qty,303
+percent_off,agg__master_aggregate__article,float64,master_table,TRUE,,,FALSE,avg,"case when sum(oh) = 0 then avg(percent_off_imputed) else safe_divide(sum(percent_off_imputed*oh),sum(oh)) end as percent_off",304
+price,agg__master_aggregate__article,float64,master_table,FALSE,,,FALSE,avg,"case when sum(oh) = 0 then avg(price_imputed) else safe_divide(sum(price_imputed*oh),sum(oh)) end as price",305
+mlk_day,agg__master_aggregate__article,int64,master_table,TRUE,,,FALSE,max,max(mlk_day) as mlk_day,306
+christmas,agg__master_aggregate__article,int64,master_table,TRUE,,,FALSE,max,max(christmas) as christmas,307
+columbus_day,agg__master_aggregate__article,int64,master_table,TRUE,,,FALSE,max,max(columbus_day) as columbus_day,308
+easter,agg__master_aggregate__article,int64,master_table,TRUE,,,FALSE,max,max(easter) as easter,309
+fathers_day,agg__master_aggregate__article,int64,master_table,TRUE,,,FALSE,max,max(fathers_day) as fathers_day,310
+good_friday,agg__master_aggregate__article,int64,master_table,TRUE,,,FALSE,max,max(good_friday) as good_friday,311
+halloween,agg__master_aggregate__article,int64,master_table,TRUE,,,FALSE,max,max(halloween) as halloween,312
+independence_day,agg__master_aggregate__article,int64,master_table,TRUE,,,FALSE,max,max(independence_day) as independence_day,313
+labor_day,agg__master_aggregate__article,int64,master_table,TRUE,,,FALSE,max,max(labor_day) as labor_day,314
+memorial_day,agg__master_aggregate__article,int64,master_table,TRUE,,,FALSE,max,max(memorial_day) as memorial_day,315
+mothers_day,agg__master_aggregate__article,int64,master_table,TRUE,,,FALSE,max,max(mothers_day) as mothers_day,316
+new_year,agg__master_aggregate__article,int64,master_table,TRUE,,,FALSE,max,max(new_year) as new_year,317
+st_patricks_day,agg__master_aggregate__article,int64,master_table,TRUE,,,FALSE,max,max(st_patricks_day) as st_patricks_day,318
+thanks_giving,agg__master_aggregate__article,int64,master_table,TRUE,,,FALSE,max,max(thanks_giving) as thanks_giving,319
+valentines_day,agg__master_aggregate__article,int64,master_table,TRUE,,,FALSE,max,max(valentines_day) as valentines_day,320
+winter_warm_up,agg__master_aggregate__article,int64,master_table,TRUE,,,FALSE,max,max(winter_warm_up) as winter_warm_up,321
+presidents_day,agg__master_aggregate__article,int64,master_table,TRUE,,,FALSE,max,max(presidents_day) as presidents_day,322
+oh,agg__master_aggregate__article,int64,master_table,TRUE,,,FALSE,sum,"ifnull(sum(case when extract(dayofweek from date)=1 then oh else 0 end),0) as oh",323
+__where_clause,agg__master_aggregate__article,string,master_table,FALSE,,,FALSE,max,where channel is not null,324
+trend,agg__master_aggregate__article,string,master_table,FALSE,,,FALSE,max,max(trend) as trend,325
+store_count,agg__master_aggregate__article,int64,master_table,TRUE,,,FALSE,count,count(distinct store_code) as store_count,326
+sku_count,agg__master_aggregate__article,int64,master_table,TRUE,,,FALSE,count,count(distinct product_code) as sku_count,327
+l0_name,agg__master_aggregate__product_code,string,master_table,FALSE,,,TRUE,,,328
+fiscal_year,agg__master_aggregate__article,int64,master_table,FALSE,,,TRUE,,,329
+fiscal_bi_week,agg__master_aggregate__product_code,int64,master_table,FALSE,,,TRUE,,,330
+fiscal_year_month,agg__master_aggregate__product_code,int64,master_table,FALSE,,,TRUE,,,331
+style,agg__master_aggregate__product_code,string,master_table,FALSE,,,TRUE,,,332
+style_color_id,agg__master_aggregate__product_code,string,master_table,FALSE,,,TRUE,,l5_name,333
+color,agg__master_aggregate__product_code,string,master_table,FALSE,,,TRUE,,,334
+product_code,agg__master_aggregate__product_code,string,master_table,FALSE,,,TRUE,,,335
+channel,agg__master_aggregate__product_code,string,master_table,FALSE,,,TRUE,,,336
+fiscal_month,agg__master_aggregate__product_code,int64,master_table,FALSE,,,TRUE,,,337
+fiscal_quarter,agg__master_aggregate__product_code,int64,master_table,FALSE,,,TRUE,,,338
+fiscal_year,agg__master_aggregate__product_code,int64,master_table,FALSE,,,TRUE,,,339
+fiscal_week,agg__master_aggregate__product_code,int64,master_table,FALSE,,,TRUE,,,340
+fiscal_year_week,agg__master_aggregate__product_code,int64,master_table,FALSE,,,TRUE,,,341
+msrp,agg__master_aggregate__product_code,float64,master_table,TRUE,,,FALSE,avg,"case when sum(oh) = 0 then avg(msrp_imputed) else safe_divide(sum(msrp_imputed*oh),sum(oh)) end as msrp",342
+cost,agg__master_aggregate__product_code,float64,master_table,TRUE,,,FALSE,avg,"case when sum(oh) = 0 then avg(cost_price_per_unit_imputed) else safe_divide(sum(cost_price_per_unit_imputed*oh),sum(oh)) end as cost",343
+qty,agg__master_aggregate__product_code,int64,master_table,TRUE,,,FALSE,sum,sum(qty_without_returns) as qty,344
+fiscal_month,agg__master_aggregate__l4_name,int64,master_table,FALSE,,,TRUE,,,345
+fiscal_bi_week,agg__master_aggregate__l3_name,int64,master_table,FALSE,,,TRUE,,,346
+fiscal_year_month,agg__master_aggregate__l3_name,int64,master_table,FALSE,,,TRUE,,,347
+mlk_day,agg__master_aggregate__product_code,int64,master_table,TRUE,,,FALSE,max,max(mlk_day) as mlk_day,348
+christmas,agg__master_aggregate__product_code,int64,master_table,TRUE,,,FALSE,max,max(christmas) as christmas,349
+columbus_day,agg__master_aggregate__product_code,int64,master_table,TRUE,,,FALSE,max,max(columbus_day) as columbus_day,350
+easter,agg__master_aggregate__product_code,int64,master_table,TRUE,,,FALSE,max,max(easter) as easter,351
+fathers_day,agg__master_aggregate__product_code,int64,master_table,TRUE,,,FALSE,max,max(fathers_day) as fathers_day,352
+good_friday,agg__master_aggregate__product_code,int64,master_table,TRUE,,,FALSE,max,max(good_friday) as good_friday,353
+halloween,agg__master_aggregate__product_code,int64,master_table,TRUE,,,FALSE,max,max(halloween) as halloween,354
+independence_day,agg__master_aggregate__product_code,int64,master_table,TRUE,,,FALSE,max,max(independence_day) as independence_day,355
+labor_day,agg__master_aggregate__product_code,int64,master_table,TRUE,,,FALSE,max,max(labor_day) as labor_day,356
+memorial_day,agg__master_aggregate__product_code,int64,master_table,TRUE,,,FALSE,max,max(memorial_day) as memorial_day,357
+mothers_day,agg__master_aggregate__product_code,int64,master_table,TRUE,,,FALSE,max,max(mothers_day) as mothers_day,358
+new_year,agg__master_aggregate__product_code,int64,master_table,TRUE,,,FALSE,max,max(new_year) as new_year,359
+thanks_giving,agg__master_aggregate__product_code,int64,master_table,TRUE,,,FALSE,max,max(thanks_giving) as thanks_giving,360
+valentines_day,agg__master_aggregate__product_code,int64,master_table,TRUE,,,FALSE,max,max(valentines_day) as valentines_day,361
+winter_warm_up,agg__master_aggregate__product_code,int64,master_table,TRUE,,,FALSE,max,max(winter_warm_up) as winter_warm_up,362
+presidents_day,agg__master_aggregate__product_code,int64,master_table,TRUE,,,FALSE,max,max(presidents_day) as presidents_day,363
+__where_clause,agg__master_aggregate__product_code,string,master_table,FALSE,,,FALSE,max,where channel is not null,364
+trend,agg__master_aggregate__product_code,string,master_table,FALSE,,,FALSE,max,max(trend) as trend,365
+store_count,agg__master_aggregate__product_code,int64,master_table,TRUE,,,FALSE,count,count(distinct store_code) as store_count,366
+sku_store_count,agg__master_aggregate__product_code,int64,master_table,TRUE,,,FALSE,count,"count(distinct concat(store_code, product_code)) as sku_store_count",367
+sku_count,agg__master_aggregate__product_code,int64,master_table,TRUE,,,FALSE,count,count(distinct product_code) as sku_count,368
+age,agg__master_aggregate__product_code,int64,master_table,FALSE,,,FALSE,max,"max(date_diff(product_max_date,product_min_date,week)+1) as age",369
+longitude,master_table,float64,store_master,FALSE,,,FALSE,max,max(longitude) as longitude,370
+store_size,master_table,string,store_master,FALSE,,,FALSE,max,max(store_size) as store_size,371
+fiscal_year_month,master_table,int64,fiscal_date_mapping,FALSE,,,FALSE,max,max(fiscal_year_month) as fiscal_year_month,372
+active_product,master_table,int64,product_master,FALSE,,,FALSE,max,max(active) as active_product,373
+halloween,master_table,int64,event_master,FALSE,,,FALSE,max,max(halloween) as halloween,374
+presidents_day,master_table,int64,event_master,FALSE,,,FALSE,max,max(presidents_day) as presidents_day,375
+trend,master_table,int64,master_table,FALSE,,,FALSE,rank,"dense_rank() over (partition by coalesce(channel_t,channel_i,channel_s,channel_p) order by fiscal_year asc ) as trend",376
+mlk_day,agg__master_aggregate__l0_name,int64,master_table,TRUE,,,FALSE,max,max(mlk_day) as mlk_day,377
+st_patricks_day,agg__master_aggregate__l0_name,int64,master_table,TRUE,,,FALSE,max,max(st_patricks_day) as st_patricks_day,378
+fiscal_week,agg__master_aggregate__l1_name,int64,master_table,FALSE,,,TRUE,,,379
+presidents_day,agg__master_aggregate__l1_name,int64,master_table,TRUE,,,FALSE,max,max(presidents_day) as presidents_day,380
+fiscal_week,agg__master_aggregate__l2_name,int64,master_table,FALSE,,,TRUE,,,381
+discount_percent,agg__master_aggregate__l2_name,float64,master_table,TRUE,,,FALSE,avg,"ifnull(safe_divide(sum(msrp_imputed*qty_without_returns)-sum(revenue),sum(msrp_imputed*qty_without_returns)),avg(percent_off)) as discount_percent",382
+sku_store_count,agg__master_aggregate__l2_name,int64,master_table,TRUE,,,FALSE,count,"count(distinct concat(store_code, product_code)) as sku_store_count",383
+discount_percent,agg__master_aggregate__l3_name,float64,master_table,TRUE,,,FALSE,avg,"ifnull(safe_divide(sum(msrp_imputed*qty_without_returns)-sum(revenue),sum(msrp_imputed*qty_without_returns)),avg(percent_off)) as discount_percent",384
+discount_percent,agg__master_aggregate__l4_name,float64,master_table,TRUE,,,FALSE,avg,"ifnull(safe_divide(sum(msrp_imputed*qty_without_returns)-sum(revenue),sum(msrp_imputed*qty_without_returns)),avg(percent_off)) as discount_percent",385
+fathers_day,agg__master_aggregate__l4_name,int64,master_table,TRUE,,,FALSE,max,max(fathers_day) as fathers_day,386
+halloween,agg__master_aggregate__l4_name,int64,master_table,TRUE,,,FALSE,max,max(halloween) as halloween,387
+price,agg__master_aggregate__product_code,float64,master_table,FALSE,,,FALSE,avg,"case when sum(oh) = 0 then avg(price_imputed) else safe_divide(sum(price_imputed*oh),sum(oh)) end as price",388
+fiscal_year_week,agg__master_aggregate__article,int64,master_table,FALSE,,,TRUE,,,389
+growth_rate,sc__RETAIL,float64,master_table,TRUE,numerical,,FALSE,avg,"safe_divide(sum(case when fiscal_year=2023 then price*qty_without_returns else 0 end),sum(case when fiscal_year=2022 then price*qty_without_returns else 0 end)) as growth_rate",390
+product_max_date,master_table,date,master_table,FALSE,,,FALSE,max,"max(date) over(partition by coalesce(channel_t,channel_i,channel_s,channel_p),product_code,fiscal_year_week) as product_max_date",391
+discount_percent,agg__master_aggregate__l1_name,float64,master_table,TRUE,,,FALSE,avg,"ifnull(safe_divide(sum(msrp_imputed*qty_without_returns)-sum(revenue),sum(msrp_imputed*qty_without_returns)),avg(percent_off)) as discount_percent",392
+oh,agg__master_aggregate__l4_name,int64,master_table,TRUE,,,FALSE,sum,"ifnull(sum(case when extract(dayofweek from date)=1 then oh else 0 end),0) as oh",393
+discount_percent,agg__master_aggregate__article,float64,master_table,TRUE,,,FALSE,avg,"ifnull(safe_divide(sum(msrp_imputed*qty_without_returns)-sum(revenue),sum(msrp_imputed*qty_without_returns)),avg(percent_off)) as discount_percent",394
+sku_store_count,agg__master_aggregate__article,int64,master_table,TRUE,,,FALSE,count,"count(distinct concat(store_code, product_code)) as sku_store_count",395
+discount_percent,agg__master_aggregate__product_code,float64,master_table,TRUE,,,FALSE,avg,"ifnull(safe_divide(sum(msrp_imputed*qty_without_returns)-sum(revenue),sum(msrp_imputed*qty_without_returns)),avg(percent_off)) as discount_percent",396
+percent_off,agg__master_aggregate__product_code,float64,master_table,TRUE,,,FALSE,avg,"case when sum(oh) = 0 then avg(percent_off_imputed) else safe_divide(sum(percent_off_imputed*oh),sum(oh)) end as percent_off",397
+oh,agg__master_aggregate__product_code,int64,master_table,TRUE,,,FALSE,sum,"ifnull(sum(case when extract(dayofweek from date)=1 then oh else 0 end),0) as oh",398
+msrp,master_table,float64,transaction_master,FALSE,,,FALSE,avg,"safe_divide(sum(msrp*case when qty>0 then qty else 0 end),sum(case when qty>0 then qty else 0 end)) as msrp",399
+cost_price_per_unit,master_table,float64,transaction_master,FALSE,,,FALSE,sum,"safe_divide(sum(cost*case when qty>0 then qty else 0 end),sum(case when qty>0 then qty else 0 end)) as cost_price_per_unit",400

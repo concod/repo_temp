@@ -1,0 +1,341 @@
+column_name,entity,data_type,source,is_feature,feature_type,feature_encoding,unique_by,aggregation_func,gbq_formula,feature_metadata_code
+fiscal_year_week,naagg__master_aggregate__l0_name,integer,master_table,false,,,true,,max(fiscal_year_week) as fiscal_year_week,1
+fiscal_year_week,naagg__master_aggregate__l1_name,master_table,master_table,false,,,true,,max(fiscal_year_week) as fiscal_year_week,2
+l1_name,agg__master_aggregate__product_code,string,,false,,,true,,,3
+__algorithms,sc__KAY OUTLET,,master_table,false,numerical,,false,sum,"[""kmeans"",""faiss""]",4
+__algorithms,sc__JARED VAULT,,master_table,false,numerical,,false,sum,"[""kmeans"",""faiss""]",5
+msrp,naagg__master_aggregate__l0_name,float,master_table,true,,,false,sum,"case when ((SUM(date_inventory) = 0 AND channel NOT LIKE '%.COM' ) OR (SUM(qty_without_returns_imputed) = 0 AND channel LIKE '%.COM' )) then avg(retail_price_per_unit_imputed) else safe_divide(sum(retail_price_per_unit_imputed*(case when channel LIKE '%.COM' then qty_without_returns_imputed else date_inventory end )), SUM((CASE WHEN channel LIKE '%.COM' THEN qty_without_returns_imputed ELSE date_inventory END )))
+end as msrp",6
+price,naagg__master_aggregate__l1_name,float,master_table,true,,,false,sum,"case when ((SUM(date_inventory) = 0 AND channel NOT LIKE '%.COM' ) OR (SUM(qty_without_returns_imputed) = 0 AND channel LIKE '%.COM' )) then avg(retail_price_per_unit_imputed*(1-discount_percent_without_returns_imputed)) else safe_divide(sum(retail_price_per_unit_imputed*(1-discount_percent_without_returns_imputed)*(case when channel LIKE '%.COM' then qty_without_returns_imputed else date_inventory end )), sum((case when channel LIKE '%.COM' then qty_without_returns_imputed else date_inventory end ))) end as price",7
+revenue,sc__KAY,float,master_table,true,numerical,,false,sum,sum(rev_sc_ty) as revenue,8
+revenue,sc__JARED,float,master_table,true,numerical,,false,sum,sum(rev_sc_ty) as revenue,9
+revenue,sc__KAY OUTLET,float,master_table,true,numerical,,false,sum,sum(rev_sc_ty) as revenue,10
+revenue,sc__JARED VAULT,float,master_table,true,numerical,,false,sum,sum(rev_sc_ty) as revenue,11
+s0_name,master_table,string,store_master,false,,,false,max,max(s0_name) as s0_name,12
+s1_name,master_table,string,store_master,false,,,false,max,max(s1_name) as s1_name,13
+s2_name,master_table,string,store_master,false,,,false,max,max(s2_name) as s2_name,14
+s3_name,master_table,string,store_master,false,,,false,max,max(s3_name) as s3_name,15
+selling_days,agg__master_aggregate__product_code,integer,master_table,false,,,false,count,COUNT(DISTINCT(CASE WHEN qty_without_returns_imputed>0 THEN date END)) AS selling_days,16
+sfs_qty,agg__master_aggregate__product_code,float64,master_table,false,,,false,sum,SUM(sfs_qty_without_returns) AS sfs_qty,17
+sfs_qty_without_returns,master_table,float,transaction_master,false,,,false,sum,SUM(case when sfs_qty<0 then 0 else sfs_qty end) as sfs_qty_without_returns,18
+sku,master_table,string,product_master,false,,,false,max,max(product_code) as sku,19
+store_banner,master_table,string,store_master,false,,,false,max,max(store_banner) as store_banner,20
+thanks_giving,naagg__master_aggregate__l2_name,integer,master_table,true,,,false,max,max(thanks_giving) as thanks_giving,21
+thanks_giving,naagg__master_aggregate__l1_name,integer,master_table,true,,,false,max,max(thanks_giving) as thanks_giving,22
+thanks_giving,aggregation,integer,master_table,true,,,false,max,max(thanks_giving) as thanks_giving,23
+thanks_giving,naagg__master_aggregate__l0_name,integer,master_table,true,,,false,max,max(thanks_giving) as thanks_giving,24
+thanks_giving,master_table,integer,event_master,false,,,false,max,max(cast(thanks_giving as string)) as thanks_giving,25
+trend,master_table,int64,fiscal_date_mapping,false,,,false,max,max(trend) as trend,26
+trend,aggregation,integer,master_table,false,,,false,max,max(trend) as trend,27
+trend,naagg__master_aggregate__l0_name,integer,master_table,false,,,false,max,max(trend) as trend,28
+trend,naagg__master_aggregate__l1_name,integer,master_table,false,,,false,max,max(trend) as trend,29
+trend,naagg__master_aggregate__l2_name,integer,master_table,false,,,false,max,max(trend) as trend,30
+trend,agg__master_aggregate__product_code,integer,master_table,false,,,false,max,max(trend) as trend,31
+txn_count,master_table,string,transaction_master,false,,,false,sum,count(transaction_code) as txn_count,32
+valentines_day,agg__master_aggregate__product_code,integer,master_table,true,,,false,max,max(valentines_day) as valentines_day,33
+valentines_day,aggregation,integer,master_table,true,,,false,max,max(valentines_day) as valentines_day,34
+valentines_day,naagg__master_aggregate__l0_name,integer,master_table,true,,,false,max,max(valentines_day) as valentines_day,35
+valentines_day,naagg__master_aggregate__l1_name,integer,master_table,true,,,false,max,max(valentines_day) as valentines_day,36
+valentines_day,naagg__master_aggregate__l2_name,integer,master_table,true,,,false,max,max(valentines_day) as valentines_day,37
+valentines_day,master_table,integer,event_master,false,,,false,max,max(cast(valentines_day as string)) as valentines_day,38
+week26_flag,master_table,int64,master_table,false,,,false,max,MAX(CASE WHEN fiscal_week = 26 THEN 1 ELSE 0 END) over(partition by fiscal_week) AS week26_flag,39
+trend,ada_serve_pg_simulation,integer,master_aggregate__product_code,true,,,false,,trend,40
+weekday_indicator,pg_simulation_fiscal_date_col_removal,,fiscal_date_mapping,true,,,false,,weekday_indicator,41
+age,ada_serve_pg_simulation,float,master_aggregate__product_code,true,,AGE,false,,age,42
+active_stores_cutoff,lost_sales,float,,true,numerical,,false,,"{'ZALES':0.02,'ZALES OUTLET':0.1,'PEOPLES':0.03,'BANTER':0.01,'KAY':0.02,'JARED':0.02,'KAY OUTLET':0.02,'JARED VAULT':0.02}",43
+__algorithms,sc__ZALES,,master_table,false,numerical,,false,sum,"[""kmeans"",""faiss""]",44
+__algorithms,sc__BANTER,,master_table,false,numerical,,false,sum,"[""kmeans"",""faiss""]",45
+__algorithms,sc__PEOPLES,,master_table,false,numerical,,false,sum,"[""kmeans"",""faiss""]",46
+__algorithms,sc__ZALES OUTLET,,master_table,false,numerical,,false,sum,"[""kmeans"",""faiss""]",47
+__algorithms,sc__KAY,,master_table,false,numerical,,false,sum,"[""kmeans"",""faiss""]",48
+__algorithms,sc__JARED,,master_table,false,numerical,,false,sum,"[""kmeans"",""faiss""]",49
+fiscal_year_month,naagg__master_aggregate__l1_name,master_table,master_table,false,,,true,,max(fiscal_year_month) as fiscal_year_month,50
+fiscal_year_month,naagg__master_aggregate__l0_name,integer,master_table,false,,,true,,max(fiscal_year_month) as fiscal_year_month,51
+fiscal_year_quarter,naagg__master_aggregate__l1_name,master_table,master_table,false,,,true,,max(fiscal_year_quarter) as fiscal_year_quarter,52
+fiscal_year_quarter,naagg__master_aggregate__l0_name,integer,master_table,false,,,true,,max(fiscal_year_quarter) as fiscal_year_quarter,53
+fiscal_year_quarter,naagg__master_aggregate__l2_name,integer,master_table,false,,,true,,max(fiscal_year_quarter) as fiscal_year_quarter,54
+fiscal_year_quarter,agg__master_aggregate__product_code,integer,,false,,,true,,max(fiscal_year_quarter) as fiscal_year_quarter,55
+hierarchy_3,master_table,string,master_table,false,,,false,avg,"CONCAT(concat(REGEXP_EXTRACT(l0_name, r'(\d+)_.*'),'_',REGEXP_EXTRACT(l1_name, r'(\d+)_.*') ),'_',REGEXP_EXTRACT(l2_name, r'(\d+)_.*') ) AS hierarchy_3",56
+fiscal_year_week,naagg__master_aggregate__l2_name,integer,master_table,false,,,true,,max(fiscal_year_week) as fiscal_year_week,57
+weekday_number,master_table,int64,master_table,false,,,false,,"ROW_NUMBER() OVER( PARTITION BY product_code,store_code,fiscal_year,fiscal_week ORDER BY oh+qty_without_returns desc) as weekday_number",58
+discount_percentage,master_table,float64,transaction_master,false,,,false,avg,avg(discount_percentage) as discount_percentage,59
+cost,naagg__master_aggregate__l0_name,float,master_table,true,,,false,sum,"case when ((SUM(date_inventory) = 0 AND channel NOT LIKE '%.COM' ) OR (SUM(qty_without_returns_imputed) = 0 AND channel LIKE '%.COM' )) then avg(cost_price_per_unit_imputed) else safe_divide(sum(cost_price_per_unit_imputed*(case when channel LIKE '%.COM' then qty_without_returns_imputed else date_inventory end )), SUM((CASE WHEN channel LIKE '%.COM' THEN qty_without_returns_imputed ELSE date_inventory END )))
+END AS cost",60
+fiscal_bi_week,naagg__master_aggregate__l2_name,integer,master_table,false,,,true,,max(fiscal_bi_week) as fiscal_bi_week,61
+fiscal_bi_week,naagg__master_aggregate__l1_name,master_table,master_table,false,,,true,,max(fiscal_bi_week) as fiscal_bi_week,62
+fiscal_bi_week,naagg__master_aggregate__l0_name,integer,master_table,false,,,true,,max(fiscal_bi_week) as fiscal_bi_week,63
+fiscal_bi_week,agg__master_aggregate__product_code,integer,,false,,,true,,max(fiscal_bi_week) as fiscal_bi_week,64
+fiscal_day_in_month,pg_simulation_fiscal_date_col_removal,,fiscal_date_mapping,true,,,false,,fiscal_day_in_month,65
+fiscal_day_in_quarter,pg_simulation_fiscal_date_col_removal,,fiscal_date_mapping,true,,,false,,fiscal_day_in_quarter,66
+fiscal_day_in_season,pg_simulation_fiscal_date_col_removal,,fiscal_date_mapping,true,,,false,,fiscal_day_in_season,67
+fiscal_day_in_week,pg_simulation_fiscal_date_col_removal,,fiscal_date_mapping,true,,,false,,fiscal_day_in_week,68
+discount_percentage,agg__master_aggregate__product_code,float,master_table,true,,,false,sum,"CASE WHEN ((SUM(date_inventory) = 0 AND channel NOT LIKE '%.COM' ) OR (SUM(qty_without_returns_imputed) = 0 AND channel LIKE '%.COM' )) THEN AVG(discount_percent_without_returns_imputed) ELSE SAFE_DIVIDE(SUM(discount_percent_without_returns_imputed*(CASE WHEN channel LIKE '%.COM'  THEN qty_without_returns_imputed ELSE date_inventory END)), SUM((CASE WHEN channel  LIKE '%.COM' THEN qty_without_returns_imputed ELSE date_inventory END ))) END AS discount_percentage",69
+discount_percentage,naagg__master_aggregate__l1_name,float,master_table,true,,,false,sum,"CASE WHEN ((SUM(date_inventory) = 0 AND channel NOT LIKE '%.COM' ) OR (SUM(qty_without_returns_imputed) = 0 AND channel LIKE '%.COM' )) THEN AVG(discount_percent_without_returns_imputed) ELSE SAFE_DIVIDE(SUM(discount_percent_without_returns_imputed*(CASE WHEN channel LIKE '%.COM'  THEN qty_without_returns_imputed ELSE date_inventory END)), SUM((CASE WHEN channel  LIKE '%.COM' THEN qty_without_returns_imputed ELSE date_inventory END ))) END AS discount_percentage",70
+ecom_main_qty,agg__master_aggregate__product_code,float65,master_table,false,,,false,sum,SUM(ecom_main_qty_without_returns) AS ecom_main_qty,71
+ecom_main_qty_without_returns,master_table,float,transaction_master,false,,,false,sum,SUM(case when ecom_main_qty<0 then 0 else ecom_main_qty end) as ecom_main_qty_without_returns,72
+final_price_per_unit,master_table,float,transaction_master,false,,,false,sum,"safe_divide(sum(price * case when qty>0 then qty else 0 end ),sum(case when qty>0 then qty else 0 end)) as final_price_per_unit",73
+fiscal_bi_week,master_table,int64,fiscal_date_mapping,false,,,false,max,max(fiscal_bi_week) as fiscal_bi_week,74
+fiscal_day,master_table,int64,fiscal_date_mapping,false,,,false,max,max(fiscal_day) as fiscal_day,75
+fiscal_year_month,master_table,int64,fiscal_date_mapping,false,,,false,max,max(fiscal_year_month) as fiscal_year_month,76
+fiscal_year_quarter,master_table,int64,fiscal_date_mapping,false,,,false,max,max(fiscal_year_quarter) as fiscal_year_quarter,77
+growth_rate,sc__Other,float,master_table,true,numerical,,false,sum,"safe_divide(sum(rev_sc_ty),sum(rev_sc_ly)) as growth_rate",78
+growth_rate,sc__ZALES,float,master_table,true,numerical,,false,sum,"safe_divide(sum(rev_sc_ty),sum(rev_sc_ly)) as growth_rate",79
+growth_rate,sc__ZALES.COM,float,master_table,true,numerical,,false,sum,"safe_divide(sum(rev_sc_ty),sum(rev_sc_ly)) as growth_rate",80
+growth_rate,sc__KAY,float,master_table,true,numerical,,false,sum,"safe_divide(sum(rev_sc_ty),sum(rev_sc_ly)) as growth_rate",81
+growth_rate,sc__JARED,float,master_table,true,numerical,,false,sum,"safe_divide(sum(rev_sc_ty),sum(rev_sc_ly)) as growth_rate",82
+growth_rate,sc__KAY OUTLET,float,master_table,true,numerical,,false,sum,"safe_divide(sum(rev_sc_ty),sum(rev_sc_ly)) as growth_rate",83
+growth_rate,sc__JARED VAULT,float,master_table,true,numerical,,false,sum,"safe_divide(sum(rev_sc_ty),sum(rev_sc_ly)) as growth_rate",84
+l0_name,master_table,string,mainsubsku_master,false,,,false,max,max(l0_name) as l0_name,85
+l1_name,master_table,string,mainsubsku_master,false,,,false,max,max(l1_name) as l1_name,86
+l2_name,master_table,string,mainsubsku_master,false,,,false,max,max(l2_name) as l2_name,87
+latest_product_code,master_table,string,mainsubsku_master,false,,,false,max,max(latest_product_code) as latest_product_code,88
+mc_date_inventory,master_table,float64,inventory_master,false,,,false,max,max(mc_date_inventory) as mc_date_inventory,89
+mc_inventory_rnk,master_table,int64,master_table,false,,,false,row_number,"row_number() over(partition by product_code,date order by mc_date_inventory desc) as mc_inventory_rnk",90
+merchandise_category,aggregation,string,master_table,true,,,false,max,max (case when mc_inventory_rnk=1 and  merchandise_category_i='-' then merchandise_category_p when mc_inventory_rnk=1 then merchandise_category_i else merchandise_category_p end) as merchandise_category,91
+merchandise_category,master_table,string,master_table,false,,,false,coalesce,"coalesce(first_value(merchandise_category_i) over(partition by product_code, date order by mc_date_inventory desc),merchandise_category_p) as merchandise_category",92
+merchandise_category,naagg__master_aggregate__l0_name,string,master_table,true,,,false,max,max (case when mc_inventory_rnk=1 and  merchandise_category_i='-' then merchandise_category_p when mc_inventory_rnk=1 then merchandise_category_i else merchandise_category_p end) as merchandise_category,93
+pre_christmas_1,naagg__master_aggregate__l0_name,integer,master_table,true,,,false,max,max(pre_christmas_1) as pre_christmas_1,94
+fiscal_year_month,naagg__master_aggregate__l2_name,integer,master_table,false,,,true,,max(fiscal_year_month) as fiscal_year_month,95
+l0_name,naagg__master_aggregate__l0_name,string,master_table,false,,,true,,max(l0_name) as l0_name,96
+l0_name,agg__master_aggregate__product_code,string,,false,,,true,,,97
+l0_name,naagg__master_aggregate__l2_name,string,master_table,false,,,true,,,98
+l0_name,naagg__master_aggregate__l1_name,integer,master_table,false,,,true,,,99
+l1_name,naagg__master_aggregate__l2_name,string,master_table,false,,,true,,,100
+l1_name,naagg__master_aggregate__l1_name,integer,master_table,false,,,true,,,101
+l2_name,agg__master_aggregate__product_code,string,,false,,,true,,,102
+l2_name,naagg__master_aggregate__l2_name,string,master_table,false,,,true,,,103
+merchandise_category,naagg__master_aggregate__l2_name,string,master_table,true,,,false,max,max (case when mc_inventory_rnk=1 and  merchandise_category_i='-' then merchandise_category_p when mc_inventory_rnk=1 then merchandise_category_i else merchandise_category_p end) as merchandise_category,104
+merchandise_category,agg__master_aggregate__product_code,string,master_table,true,,,false,max,max (case when mc_inventory_rnk=1 and  merchandise_category_i='-' then merchandise_category_p when mc_inventory_rnk=1 then merchandise_category_i else merchandise_category_p end) as merchandise_category,105
+merchandise_category_i,master_table,string,inventory_master,false,,,false,max,max(merchandise_category) as merchandise_category_i,106
+merchandise_category_p,agg__master_aggregate__product_code,string,master_table,true,,,false,max,max(merchandise_category_p) as merchandise_category_p,107
+merchandise_category_p,aggregation,string,master_table,true,,,false,max,max(merchandise_category_p) as merchandise_category_p,108
+merchandise_category_p,naagg__master_aggregate__l0_name,string,master_table,true,,,false,max,max(merchandise_category_p) as merchandise_category_p,109
+merchandise_category_p,naagg__master_aggregate__l1_name,string,master_table,true,,,false,max,max(merchandise_category_p) as merchandise_category_p,110
+merchandise_category_p,naagg__master_aggregate__l2_name,string,master_table,true,,,false,max,max(merchandise_category_p) as merchandise_category_p,111
+merchandise_category_p,master_table,string,product_master,false,,,false,max,max(merchandise_category) as merchandise_category_p,112
+mothers_day,naagg__master_aggregate__l2_name,integer,master_table,true,,,false,max,max(mothers_day) as mothers_day,113
+mothers_day,naagg__master_aggregate__l0_name,integer,master_table,true,,,false,max,max(mothers_day) as mothers_day,114
+mothers_day,aggregation,integer,master_table,true,,,false,max,max(mothers_day) as mothers_day,115
+mothers_day,agg__master_aggregate__product_code,integer,master_table,true,,,false,max,max(mothers_day) as mothers_day,116
+mothers_day,naagg__master_aggregate__l1_name,integer,master_table,true,,,false,max,max(mothers_day) as mothers_day,117
+mothers_day,master_table,integer,event_master,false,,,false,max,max(cast(mothers_day as string)) as mothers_day,118
+msrp,master_table,float64,transaction_master,false,,,false,avg,"safe_divide(sum(msrp*qty),sum(qty)) as msrp",119
+msrp,naagg__master_aggregate__l2_name,float,master_table,true,,,false,sum,"case when ((SUM(date_inventory) = 0 AND channel NOT LIKE '%.COM' ) OR (SUM(qty_without_returns_imputed) = 0 AND channel LIKE '%.COM' )) then avg(retail_price_per_unit_imputed) else safe_divide(sum(retail_price_per_unit_imputed*(case when channel LIKE '%.COM' then qty_without_returns_imputed else date_inventory end )), SUM((CASE WHEN channel LIKE '%.COM' THEN qty_without_returns_imputed ELSE date_inventory END )))
+end as msrp",120
+msrp,aggregation,float,master_table,true,,,false,sum,"case when ((SUM(date_inventory) = 0 AND channel NOT LIKE '%.COM' ) OR (SUM(qty_without_returns_imputed) = 0 AND channel LIKE '%.COM' )) then avg(retail_price_per_unit_imputed) else safe_divide(sum(retail_price_per_unit_imputed*(case when channel LIKE '%.COM' then qty_without_returns_imputed else date_inventory end )), SUM((CASE WHEN channel LIKE '%.COM' THEN qty_without_returns_imputed ELSE date_inventory END )))
+end as msrp",121
+msrp,naagg__master_aggregate__l1_name,float,master_table,true,,,false,sum,"case when ((SUM(date_inventory) = 0 AND channel NOT LIKE '%.COM' ) OR (SUM(qty_without_returns_imputed) = 0 AND channel LIKE '%.COM' )) then avg(retail_price_per_unit_imputed) else safe_divide(sum(retail_price_per_unit_imputed*(case when channel LIKE '%.COM' then qty_without_returns_imputed else date_inventory end )), SUM((CASE WHEN channel LIKE '%.COM' THEN qty_without_returns_imputed ELSE date_inventory END )))
+end as msrp",122
+msrp,agg__master_aggregate__product_code,float,master_table,true,,,false,sum,"case when ((SUM(date_inventory) = 0 AND channel NOT LIKE '%.COM' ) OR (SUM(qty_without_returns_imputed) = 0 AND channel LIKE '%.COM' )) then avg(retail_price_per_unit_imputed) else safe_divide(sum(retail_price_per_unit_imputed*(case when channel LIKE '%.COM' then qty_without_returns_imputed else date_inventory end )), SUM((CASE WHEN channel LIKE '%.COM' THEN qty_without_returns_imputed ELSE date_inventory END )))
+end as msrp",123
+oh,master_table,int64,inventory_master,false,,,false,sum,sum(oh) as oh,124
+oh,aggregation,float,master_table,true,,,false,sum,"sum(case when weekday_number=1 then date_inventory else 0 end) as oh
+",125
+oh,naagg__master_aggregate__l0_name,float,master_table,true,,,false,sum,"sum(case when weekday_number=1 then date_inventory else 0 end) as oh
+",126
+oh,naagg__master_aggregate__l1_name,float,master_table,true,,,false,sum,"sum(case when weekday_number=1 then date_inventory else 0 end) as oh
+",127
+oh,naagg__master_aggregate__l2_name,float,master_table,true,,,false,sum,"sum(case when weekday_number=1 then date_inventory else 0 end) as oh
+",128
+oh,agg__master_aggregate__product_code,float,master_table,true,,,false,sum,sum(case when weekday_number=1 then date_inventory else 0 end) as oh,129
+percent_off,master_table,float,transaction_master,false,,,false,sum,"safe_divide(sum(discount_amount),sum(msrp * qty)) as percent_off",130
+percent_off,agg__master_aggregate__product_code,float,master_table,true,,,false,sum,"CASE WHEN ((SUM(date_inventory) = 0 AND channel NOT LIKE '%.COM' ) OR (SUM(qty_without_returns_imputed) = 0 AND channel LIKE '%.COM' )) THEN AVG(discount_percent_without_returns_imputed) ELSE SAFE_DIVIDE(SUM(discount_percent_without_returns_imputed*(CASE WHEN channel LIKE '%.COM' THEN qty_without_returns_imputed ELSE date_inventory END)), SUM((CASE WHEN channel LIKE '%.COM' THEN qty_without_returns_imputed ELSE date_inventory END ))) END AS percent_off",131
+pre_christmas_1,agg__master_aggregate__product_code,integer,master_table,true,,,false,max,max(pre_christmas_1) as pre_christmas_1,132
+pre_christmas_1,aggregation,integer,master_table,true,,,false,max,max(pre_christmas_1) as pre_christmas_1,133
+msrp,ada_serve_pg_simulation,float,master_aggregate__product_code,true,,,false,,msrp,134
+msrp,ada_serve_simulation,float,product_master,false,,BnM_Outlet,false,,price as msrp,135
+pre_christmas_1,naagg__master_aggregate__l2_name,integer,master_table,true,,,false,max,max(pre_christmas_1) as pre_christmas_1,136
+pre_christmas_1,master_table,integer,event_master,false,,,false,max,max(cast(pre_christmas_1 as string)) as pre_christmas_1,137
+pre_christmas_2,agg__master_aggregate__product_code,integer,master_table,true,,,false,max,max(pre_christmas_2) as pre_christmas_2,138
+pre_christmas_2,aggregation,integer,master_table,true,,,false,max,max(pre_christmas_2) as pre_christmas_2,139
+pre_christmas_2,naagg__master_aggregate__l0_name,integer,master_table,true,,,false,max,max(pre_christmas_2) as pre_christmas_2,140
+pre_christmas_2,naagg__master_aggregate__l1_name,integer,master_table,true,,,false,max,max(pre_christmas_2) as pre_christmas_2,141
+pre_christmas_2,naagg__master_aggregate__l2_name,integer,master_table,true,,,false,max,max(pre_christmas_2) as pre_christmas_2,142
+pre_christmas_2,master_table,integer,event_master,false,,,false,max,max(cast(pre_christmas_2 as string)) as pre_christmas_2,143
+pre_mothers_day,agg__master_aggregate__product_code,integer,master_table,true,,,false,max,max(pre_mothers_day) as pre_mothers_day,144
+pre_mothers_day,aggregation,integer,master_table,true,,,false,max,max(pre_mothers_day) as pre_mothers_day,145
+pre_mothers_day,naagg__master_aggregate__l0_name,integer,master_table,true,,,false,max,max(pre_mothers_day) as pre_mothers_day,146
+pre_mothers_day,naagg__master_aggregate__l1_name,integer,master_table,true,,,false,max,max(pre_mothers_day) as pre_mothers_day,147
+pre_mothers_day,naagg__master_aggregate__l2_name,integer,master_table,true,,,false,max,max(pre_mothers_day) as pre_mothers_day,148
+pre_mothers_day,master_table,integer,event_master,false,,,false,max,max(cast(pre_mothers_day as string)) as pre_mothers_day,149
+pre_thanks_giving,agg__master_aggregate__product_code,integer,master_table,true,,,false,max,max(pre_thanks_giving) as pre_thanks_giving,150
+pre_thanks_giving,aggregation,integer,master_table,true,,,false,max,max(pre_thanks_giving) as pre_thanks_giving,151
+pre_thanks_giving,naagg__master_aggregate__l1_name,integer,master_table,true,,,false,max,max(pre_thanks_giving) as pre_thanks_giving,152
+pre_thanks_giving,naagg__master_aggregate__l2_name,integer,master_table,true,,,false,max,max(pre_thanks_giving) as pre_thanks_giving,153
+pre_thanks_giving,master_table,integer,event_master,false,,,false,max,max(cast(pre_thanks_giving as string)) as pre_thanks_giving,154
+pre_valentines_day,naagg__master_aggregate__l0_name,integer,master_table,true,,,false,max,max(pre_valentines_day) as pre_valentines_day,155
+pre_valentines_day,naagg__master_aggregate__l2_name,integer,master_table,true,,,false,max,max(pre_valentines_day) as pre_valentines_day,156
+pre_valentines_day,aggregation,integer,master_table,true,,,false,max,max(pre_valentines_day) as pre_valentines_day,157
+pre_valentines_day,agg__master_aggregate__product_code,integer,master_table,true,,,false,max,max(pre_valentines_day) as pre_valentines_day,158
+pre_valentines_day,naagg__master_aggregate__l1_name,integer,master_table,true,,,false,max,max(pre_valentines_day) as pre_valentines_day,159
+pre_valentines_day,master_table,integer,event_master,false,,,false,max,max(cast(pre_valentines_day as string)) as pre_valentines_day,160
+price,naagg__master_aggregate__l2_name,float,master_table,true,,,false,sum,"case when ((SUM(date_inventory) = 0 AND channel NOT LIKE '%.COM' ) OR (SUM(qty_without_returns_imputed) = 0 AND channel LIKE '%.COM' )) then avg(retail_price_per_unit_imputed*(1-discount_percent_without_returns_imputed)) else safe_divide(sum(retail_price_per_unit_imputed*(1-discount_percent_without_returns_imputed)*(case when channel LIKE '%.COM' then qty_without_returns_imputed else date_inventory end )), sum((case when channel LIKE '%.COM' then qty_without_returns_imputed else date_inventory end ))) end as price",161
+price,master_table,float64,transaction_master,false,,,false,avg,"safe_divide(sum(price*qty),sum(qty)) as price",162
+price,agg__master_aggregate__product_code,float,master_table,true,,,false,sum,"case when ((SUM(date_inventory) = 0 AND channel NOT LIKE '%.COM' ) OR (SUM(qty_without_returns_imputed) = 0 AND channel LIKE '%.COM' )) then avg(retail_price_per_unit_imputed*(1-discount_percent_without_returns_imputed)) else safe_divide(sum(retail_price_per_unit_imputed*(1-discount_percent_without_returns_imputed)*(case when channel LIKE '%.COM' then qty_without_returns_imputed else date_inventory end )), sum((case when channel LIKE '%.COM' then qty_without_returns_imputed else date_inventory end ))) end as price",163
+price,aggregation,float,master_table,true,,,false,sum,"case when ((SUM(date_inventory) = 0 AND channel NOT LIKE '%.COM' ) OR (SUM(qty_without_returns_imputed) = 0 AND channel LIKE '%.COM' )) then avg(retail_price_per_unit_imputed*(1-discount_percent_without_returns_imputed)) else safe_divide(sum(retail_price_per_unit_imputed*(1-discount_percent_without_returns_imputed)*(case when channel LIKE '%.COM' then qty_without_returns_imputed else date_inventory end )), sum((case when channel LIKE '%.COM' then qty_without_returns_imputed else date_inventory end ))) end as price",164
+price,naagg__master_aggregate__l0_name,float,master_table,true,,,false,sum,"case when ((SUM(date_inventory) = 0 AND channel NOT LIKE '%.COM' ) OR (SUM(qty_without_returns_imputed) = 0 AND channel LIKE '%.COM' )) then avg(retail_price_per_unit_imputed*(1-discount_percent_without_returns_imputed)) else safe_divide(sum(retail_price_per_unit_imputed*(1-discount_percent_without_returns_imputed)*(case when channel LIKE '%.COM' then qty_without_returns_imputed else date_inventory end )), sum((case when channel LIKE '%.COM' then qty_without_returns_imputed else date_inventory end ))) end as price",165
+product_banner,master_table,string,product_master,false,,,false,max,max(product_banner) as product_banner,166
+product_max_date,master_table,int64,master_table,false,,,false,max,"max(date) over(partition by channel,product_code,fiscal_year_week) as product_max_date",167
+product_min_date,master_table,date,productmindate_master,false,,,false,min,min(product_min_date) as product_min_date,168
+qty,agg__master_aggregate__product_code,integer,master_table,true,,,false,sum,sum(qty_without_returns_imputed) as qty,169
+qty,aggregation,integer,master_table,true,,,false,sum,sum(qty_without_returns_imputed) as qty,170
+qty,naagg__master_aggregate__l0_name,integer,master_table,true,,,false,sum,sum(qty_without_returns_imputed) as qty,171
+qty,naagg__master_aggregate__l2_name,integer,master_table,true,,,false,sum,sum(qty_without_returns_imputed) as qty,172
+qty,naagg__master_aggregate__l1_name,integer,master_table,true,,,false,sum,sum(qty_without_returns_imputed) as qty,173
+qty_returns,master_table,float64,transaction_master,false,,,false,sum,SUM(case when qty<0 then (-1)*qty else 0 end) as qty_returns,174
+qty_without_returns,master_table,float64,transaction_master,false,,,false,sum,SUM(case when qty<0 then 0 else qty end) as qty_without_returns,175
+quantity_sold,master_table,int64,transaction_master,false,,,false,sum,sum(qty) as quantity_sold,176
+quantity_sold,sc__BANTER,integer,master_table,true,numerical,,false,sum,sum(qty_sc) as quantity_sold,177
+rev_sc_ty,master_table,float,transaction_master,false,,,false,sum,sum(case when fiscal_year = 2023 and qty>0 then revenue else 0 end ) as rev_sc_ty,178
+revenue,master_table,float,transaction_master,false,,,false,sum,sum(revenue) as revenue,179
+revenue,sc__BANTER,float,master_table,true,numerical,,false,sum,sum(rev_sc_ty) as revenue,180
+retail_price_per_unit,impute_features,float,master_table,false,price,,false,,product_retail_price_per_unit,181
+qty_without_returns,impute_features,float,master_table,false,qty,,false,,,182
+qty_sc,master_table,string,transaction_master,false,,,false,sum,sum(case when fiscal_year = 2023 and qty>0 then qty else 0 end ) as qty_sc,183
+quantity_sold,sc__BANTER.COM,integer,master_table,true,numerical,,false,sum,sum(qty_sc) as quantity_sold,184
+quantity_sold,sc__Other,integer,master_table,true,numerical,,false,sum,sum(qty_sc) as quantity_sold,185
+quantity_sold,sc__PEOPLES,integer,master_table,true,numerical,,false,sum,sum(qty_sc) as quantity_sold,186
+quantity_sold,sc__PEOPLES.COM,integer,master_table,true,numerical,,false,sum,sum(qty_sc) as quantity_sold,187
+quantity_sold,sc__ZALES,integer,master_table,true,numerical,,false,sum,sum(qty_sc) as quantity_sold,188
+quantity_sold,sc__ZALES OUTLET,integer,master_table,true,numerical,,false,sum,sum(qty_sc) as quantity_sold,189
+quantity_sold,sc__ZALES.COM,integer,master_table,true,numerical,,false,sum,sum(qty_sc) as quantity_sold,190
+quantity_sold,sc__KAY,integer,master_table,true,numerical,,false,sum,sum(qty_sc) as quantity_sold,191
+quantity_sold,sc__JARED,integer,master_table,true,numerical,,false,sum,sum(qty_sc) as quantity_sold,192
+quantity_sold,sc__KAY OUTLET,integer,master_table,true,numerical,,false,sum,sum(qty_sc) as quantity_sold,193
+quantity_sold,sc__JARED VAULT,integer,master_table,true,numerical,,false,sum,sum(qty_sc) as quantity_sold,194
+rev_sc_ly,master_table,float,transaction_master,false,,,false,sum,sum(case when fiscal_year = 2022 and qty>0 then revenue else 0 end ) as rev_sc_ly,195
+revenue,sc__BANTER.COM,float,master_table,true,numerical,,false,sum,sum(rev_sc_ty) as revenue,196
+revenue,sc__Other,float,master_table,true,numerical,,false,sum,sum(rev_sc_ty) as revenue,197
+revenue,sc__PEOPLES,float,master_table,true,numerical,,false,sum,sum(rev_sc_ty) as revenue,198
+revenue,sc__PEOPLES.COM,float,master_table,true,numerical,,false,sum,sum(rev_sc_ty) as revenue,199
+revenue,sc__ZALES,float,master_table,true,numerical,,false,sum,sum(rev_sc_ty) as revenue,200
+revenue,sc__ZALES OUTLET,float,master_table,true,numerical,,false,sum,sum(rev_sc_ty) as revenue,201
+revenue,sc__ZALES.COM,float,master_table,true,numerical,,false,sum,sum(rev_sc_ty) as revenue,202
+store_count,agg__master_aggregate__product_code,integer,master_table,true,,,false,count,count(distinct case when date_inventory = 0 then null else store_code end) as store_count,203
+store_count,aggregation,integer,master_table,true,,,false,count,count(distinct case when date_inventory = 0 then null else store_code end) as store_count,204
+store_count,naagg__master_aggregate__l0_name,integer,master_table,true,,,false,count,count(distinct case when date_inventory = 0 then null else store_code end) as store_count,205
+discount_percentage,naagg__master_aggregate__l2_name,float,master_table,true,,,false,sum,"CASE WHEN ((SUM(date_inventory) = 0 AND channel NOT LIKE '%.COM' ) OR (SUM(qty_without_returns_imputed) = 0 AND channel LIKE '%.COM' )) THEN AVG(discount_percent_without_returns_imputed) ELSE SAFE_DIVIDE(SUM(discount_percent_without_returns_imputed*(CASE WHEN channel LIKE '%.COM'  THEN qty_without_returns_imputed ELSE date_inventory END)), SUM((CASE WHEN channel  LIKE '%.COM' THEN qty_without_returns_imputed ELSE date_inventory END ))) END AS discount_percentage",206
+store_count,naagg__master_aggregate__l1_name,integer,master_table,true,,,false,count,count(distinct case when date_inventory = 0 then null else store_code end) as store_count,207
+lsi_channel,lost_sales,float,,true,numerical,,false,,"['ZALES','ZALES OUTLET','PEOPLES','BANTER','KAY','JARED','KAY OUTLET','JARED VAULT']",208
+date,pg_simulation_fiscal_date_col_removal,,fiscal_date_mapping,true,,,false,,date,209
+fiscal_day,pg_simulation_fiscal_date_col_removal,,fiscal_date_mapping,true,,,false,,fiscal_day,210
+fiscal_day_in_year,pg_simulation_fiscal_date_col_removal,,fiscal_date_mapping,true,,,false,,fiscal_day_in_year,211
+fiscal_day_name,pg_simulation_fiscal_date_col_removal,,fiscal_date_mapping,true,,,false,,fiscal_day_name,212
+store_count,ada_serve_pg_simulation,integer,master_aggregate__product_code,true,,,false,,store_count,213
+latest_product_code as product_code,agg__master_aggregate__product_code,string,,false,,,true,,,214
+fiscal_day_name_abb,pg_simulation_fiscal_date_col_removal,,fiscal_date_mapping,true,,,false,,,215
+sell_through_cutoff,lost_sales,float,,true,numerical,,false,,"{'ZALES':0.02,'ZALES OUTLET':0.01,'PEOPLES':0.5,'BANTER':0.01,'KAY':0.02,'JARED':0.02,'KAY OUTLET':0.02,'JARED VAULT':0.02}",216
+store_count,naagg__master_aggregate__l2_name,integer,master_table,true,,,false,count,count(distinct case when date_inventory = 0 then null else store_code end) as store_count,217
+store_name,master_table,string,store_master,false,,,false,max,max(store_name) as store_name,218
+store_size,master_table,float64,store_master,false,,,false,max,max(store_size) as store_size,219
+thanks_giving,agg__master_aggregate__product_code,integer,master_table,true,,,false,max,max(thanks_giving) as thanks_giving,220
+fiscal_week,naagg__master_aggregate__l1_name,integer,master_table,true,,,false,max,max(fiscal_week) as fiscal_week,221
+fiscal_month,naagg__master_aggregate__l0_name,integer,master_table,true,,,false,max,max(fiscal_month) as fiscal_month,222
+fiscal_month,naagg__master_aggregate__l1_name,integer,master_table,true,,,false,max,max(fiscal_month) as fiscal_month,223
+fiscal_month,master_table,int64,fiscal_date_mapping,false,,,false,max,max(fiscal_month) as fiscal_month,224
+fiscal_month,naagg__master_aggregate__l2_name,integer,master_table,true,,,false,max,max(fiscal_month) as fiscal_month,225
+fiscal_month,aggregation,integer,master_table,true,,,false,max,max(fiscal_month) as fiscal_month,226
+fiscal_month,agg__master_aggregate__product_code,integer,master_table,true,,,false,max,max(fiscal_month) as fiscal_month,227
+fiscal_season_begin_date,pg_simulation_fiscal_date_col_removal,,fiscal_date_mapping,true,,,false,,fiscal_season_begin_date,228
+fiscal_season_end_date,pg_simulation_fiscal_date_col_removal,,fiscal_date_mapping,true,,,false,,fiscal_season_end_date,229
+fiscal_quarter,master_table,int64,fiscal_date_mapping,false,,,false,max,max(fiscal_quarter) as fiscal_quarter,230
+fiscal_quarter,agg__master_aggregate__product_code,integer,master_table,true,,,false,max,max(fiscal_quarter) as fiscal_quarter,231
+fiscal_quarter,aggregation,integer,master_table,true,,,false,max,max(fiscal_quarter) as fiscal_quarter,232
+fiscal_quarter,naagg__master_aggregate__l0_name,integer,master_table,true,,,false,max,max(fiscal_quarter) as fiscal_quarter,233
+fiscal_quarter,naagg__master_aggregate__l2_name,integer,master_table,true,,,false,max,max(fiscal_quarter) as fiscal_quarter,234
+fiscal_year_week,agg__master_aggregate__product_code,integer,,false,,,true,,max(fiscal_year_week) as fiscal_year_week,235
+fiscal_week,master_table,int64,fiscal_date_mapping,false,,,false,max,max(fiscal_week) as fiscal_week,236
+fiscal_week,agg__master_aggregate__product_code,integer,master_table,true,,,false,max,max(fiscal_week) as fiscal_week,237
+fiscal_week,aggregation,integer,master_table,true,,,false,max,max(fiscal_week) as fiscal_week,238
+fiscal_week,naagg__master_aggregate__l0_name,integer,master_table,true,,,false,max,max(fiscal_week) as fiscal_week,239
+fiscal_week,naagg__master_aggregate__l2_name,integer,master_table,true,,,false,max,max(fiscal_week) as fiscal_week,240
+fiscal_year,master_table,int64,fiscal_date_mapping,false,,,false,max,max(fiscal_year) as fiscal_year,241
+fiscal_year_week,master_table,int64,fiscal_date_mapping,false,,,false,max,max(fiscal_year_week) as fiscal_year_week,242
+halloween,naagg__master_aggregate__l0_name,integer,master_table,true,,,false,max,max(halloween) as halloween,243
+halloween,naagg__master_aggregate__l1_name,integer,master_table,true,,,false,max,max(halloween) as halloween,244
+halloween,naagg__master_aggregate__l2_name,integer,master_table,true,,,false,max,max(halloween) as halloween,245
+halloween,aggregation,integer,master_table,true,,,false,max,max(halloween) as halloween,246
+halloween,agg__master_aggregate__product_code,integer,master_table,true,,,false,max,max(halloween) as halloween,247
+halloween,master_table,integer,event_master,false,,,false,max,max(cast(halloween as string)) as halloween,248
+it,master_table,float64,inventory_master,false,,,false,sum,sum(it) as it,249
+merchandise_category,naagg__master_aggregate__l1_name,string,master_table,true,,,false,max,max (case when mc_inventory_rnk=1 and  merchandise_category_i='-' then merchandise_category_p when mc_inventory_rnk=1 then merchandise_category_i else merchandise_category_p end) as merchandise_category,250
+pre_christmas_1,naagg__master_aggregate__l1_name,integer,master_table,true,,,false,max,max(pre_christmas_1) as pre_christmas_1,251
+pre_thanks_giving,naagg__master_aggregate__l0_name,integer,master_table,true,,,false,max,max(pre_thanks_giving) as pre_thanks_giving,252
+fiscal_month_name,pg_simulation_fiscal_date_col_removal,,fiscal_date_mapping,true,,,false,,fiscal_month_name,253
+fiscal_month_name_abb,pg_simulation_fiscal_date_col_removal,,fiscal_date_mapping,true,,,false,,fiscal_month_name_abb,254
+fiscal_year,naagg__master_aggregate__l0_name,integer,master_table,false,,,true,,max(fiscal_year) as fiscal_year,255
+fiscal_year,naagg__master_aggregate__l1_name,master_table,master_table,false,,,true,,max(fiscal_year) as fiscal_year,256
+fiscal_year,naagg__master_aggregate__l2_name,integer,master_table,false,,,true,,max(fiscal_year) as fiscal_year,257
+fiscal_year_month,agg__master_aggregate__product_code,integer,,false,,,true,,max(fiscal_year_month) as fiscal_year_month,258
+__where_clause,naagg__master_aggregate__l2_name,string,master_table,false,,,false,max,"where channel not in ('BANTER DC','BANTER Main DC','PEOPLES W','PEOPLES Main DC','KAY JARED DC','KAY JARED Main DC','KAY JARED W','DC','Main DC','W','Other') and channel is not null and date_inventory > 0",259
+__where_clause,aggregation,string,master_table,false,,,false,max,"where channel not in ('BANTER DC','BANTER Main DC','PEOPLES W','PEOPLES Main DC','KAY JARED DC','KAY JARED Main DC','KAY JARED W','DC','Main DC','W','Other') and channel is not null and date_inventory > 0",260
+__where_clause,naagg__master_aggregate__l0_name,string,master_table,false,,,false,max,"where channel not in ('BANTER DC','BANTER Main DC','PEOPLES W','PEOPLES Main DC','KAY JARED DC','KAY JARED Main DC','KAY JARED W','DC','Main DC','W','Other') and channel is not null and date_inventory > 0",261
+__where_clause,naagg__master_aggregate__l1_name,string,master_table,false,,,false,max,"where channel not in ('BANTER DC','BANTER Main DC','PEOPLES W','PEOPLES Main DC','KAY JARED DC','KAY JARED Main DC','KAY JARED W','DC','Main DC','W','Other') and channel is not null and date_inventory > 0",262
+__where_clause,agg__master_aggregate__product_code,string,master_table,false,,,false,max,"where channel not in ('BANTER DC','BANTER Main DC','PEOPLES W','PEOPLES Main DC','KAY JARED DC','KAY JARED Main DC','KAY JARED W','DC','Main DC','W','Other') and channel is not null and date_inventory > 0",263
+age,agg__master_aggregate__product_code,integer,master_table,false,,,false,max,"max(date_diff(product_max_date,product_min_date,week)+1) as age",264
+article,master_table,string,mainsubsku_master,false,,,false,max,max(latest_product_code) as article,265
+aur,sc__Other,float,master_table,true,numerical,,false,sum,"safe_divide(sum(rev_sc_ty),sum(qty_sc)) as aur",266
+aur,sc__ZALES,float,master_table,true,numerical,,false,sum,"safe_divide(sum(rev_sc_ty),sum(qty_sc)) as aur",267
+aur,sc__ZALES.COM,float,master_table,true,numerical,,false,sum,"safe_divide(sum(rev_sc_ty),sum(qty_sc)) as aur",268
+aur,sc__KAY,float,master_table,true,numerical,,false,sum,"safe_divide(sum(rev_sc_ty),sum(qty_sc)) as aur",269
+aur,sc__JARED,float,master_table,true,numerical,,false,sum,"safe_divide(sum(rev_sc_ty),sum(qty_sc)) as aur",270
+aur,sc__KAY OUTLET,float,master_table,true,numerical,,false,sum,"safe_divide(sum(rev_sc_ty),sum(qty_sc)) as aur",271
+aur,sc__JARED VAULT,float,master_table,true,numerical,,false,sum,"safe_divide(sum(rev_sc_ty),sum(qty_sc)) as aur",272
+bopis_qty,agg__master_aggregate__product_code,float64,master_table,false,,,false,sum,SUM(bopis_qty_without_returns) AS bopis_qty,273
+bopis_qty_without_returns,master_table,float,transaction_master,false,,,false,sum,SUM(case when bopis_qty<0 then 0 else bopis_qty end) as bopis_qty_without_returns,274
+channel_i,master_table,string,inventory_master,false,,,false,max,max(channel) as channel_i,275
+channel_t,master_table,string,transaction_master,false,,,false,max,max(channel) as channel_t,276
+christmas,agg__master_aggregate__product_code,integer,master_table,true,,,false,max,max(christmas) as christmas,277
+christmas,aggregation,integer,master_table,true,,,false,max,max(christmas) as christmas,278
+christmas,naagg__master_aggregate__l0_name,integer,master_table,true,,,false,max,max(christmas) as christmas,279
+christmas,naagg__master_aggregate__l1_name,integer,master_table,true,,,false,max,max(christmas) as christmas,280
+christmas,naagg__master_aggregate__l2_name,integer,master_table,true,,,false,max,max(christmas) as christmas,281
+christmas,master_table,integer,event_master,false,,,false,max,max(cast(christmas as string)) as christmas,282
+clearance,master_table,bool,product_master,false,,,false,max,max(clearance) as clearance,283
+coalesce_channel,master_table,string,master_table,false,,,false,max,"coalesce(channel_t,channel_i) as coalesce_channel",284
+discount_amount_without_returns,impute_features,float,master_table,false,discount,,false,,,285
+hierarchy_1,master_table,string,master_table,false,,,false,avg,"regexp_extract(l0_name,r'(\d+)_.*') as hierarchy_1",286
+hierarchy_2,master_table,string,master_table,false,,,false,avg,"concat(regexp_extract(l0_name,r'(\d+)_.*'),'_',regexp_extract(l1_name,r'(\d+)_.*') ) as hierarchy_2",287
+cost,naagg__master_aggregate__l1_name,float,master_table,true,,,false,sum,"case when ((SUM(date_inventory) = 0 AND channel NOT LIKE '%.COM' ) OR (SUM(qty_without_returns_imputed) = 0 AND channel LIKE '%.COM' )) then avg(cost_price_per_unit_imputed) else safe_divide(sum(cost_price_per_unit_imputed*(case when channel LIKE '%.COM' then qty_without_returns_imputed else date_inventory end )), SUM((CASE WHEN channel LIKE '%.COM' THEN qty_without_returns_imputed ELSE date_inventory END )))
+END AS cost",288
+cost,naagg__master_aggregate__l2_name,float,master_table,true,,,false,sum,"case when ((SUM(date_inventory) = 0 AND channel NOT LIKE '%.COM' ) OR (SUM(qty_without_returns_imputed) = 0 AND channel LIKE '%.COM' )) then avg(cost_price_per_unit_imputed) else safe_divide(sum(cost_price_per_unit_imputed*(case when channel LIKE '%.COM' then qty_without_returns_imputed else date_inventory end )), SUM((CASE WHEN channel LIKE '%.COM' THEN qty_without_returns_imputed ELSE date_inventory END )))
+END AS cost",289
+cost,master_table,float64,transaction_master,false,,,false,avg,"safe_divide(sum(cost*qty),sum(qty)) as cost",290
+retail_price_per_unit,master_table,float,transaction_master,false,,,false,sum,"safe_divide(sum(msrp*case when qty>0 then qty else 0 end ),sum(case when qty>0 then qty else 0 end )) as retail_price_per_unit",291
+channel,naagg__master_aggregate__l2_name,string,master_table,false,,,true,,,292
+article,agg__master_aggregate__product_code,varchar,master_table,false,,,false,,max(article) as article,293
+calendar_date,pg_simulation_fiscal_date_col_removal,,fiscal_date_mapping,true,,,false,,calendar_date,294
+fiscal_year,agg__master_aggregate__product_code,integer,,false,,,true,,max(fiscal_year) as fiscal_year,295
+channel,naagg__master_aggregate__l1_name,integer,master_table,false,,,true,,,296
+channel,naagg__master_aggregate__l0_name,string,master_table,false,,,true,,,297
+channel,agg__master_aggregate__product_code,string,,false,,,true,,,298
+cost,aggregation,float,master_table,true,,,false,sum,"case when ((SUM(date_inventory) = 0 AND channel NOT LIKE '%.COM' ) OR (SUM(qty_without_returns_imputed) = 0 AND channel LIKE '%.COM' )) then avg(cost_price_per_unit_imputed) else safe_divide(sum(cost_price_per_unit_imputed*(case when channel LIKE '%.COM' then qty_without_returns_imputed else date_inventory end )), SUM((CASE WHEN channel LIKE '%.COM' THEN qty_without_returns_imputed ELSE date_inventory END )))
+END AS cost",299
+cost,agg__master_aggregate__product_code,float,master_table,true,,,false,sum,"case when ((SUM(date_inventory) = 0 AND channel NOT LIKE '%.COM' ) OR (SUM(qty_without_returns_imputed) = 0 AND channel LIKE '%.COM' )) then avg(cost_price_per_unit_imputed) else safe_divide(sum(cost_price_per_unit_imputed*(case when channel LIKE '%.COM' then qty_without_returns_imputed else date_inventory end )), SUM((CASE WHEN channel LIKE '%.COM' THEN qty_without_returns_imputed ELSE date_inventory END )))
+END AS cost",300
+cost_price_per_unit,master_table,float,transaction_master,false,,,false,sum,"safe_divide(sum(cost*case when qty>0 then qty else 0 end),sum(case when qty>0 then qty else 0 end)) as cost_price_per_unit",301
+date_inventory,master_table,int64,master_table,false,,,false,max,"oh+coalesce(qty_without_returns,0) as date_inventory",302
+discount_amount,master_table,float64,transaction_master,false,,,false,sum,avg(discount_amount) as discount_amount,303
+discount_amount_without_returns,master_table,float64,transaction_master,false,,,false,sum,sum(case when qty>0 then discount_amount else 0 end) as discount_amount_without_returns,304
+discount_percent,sc__BANTER,float,master_table,true,numerical,,false,avg,avg(discount_percent_without_returns) as discount_percent,305
+discount_percent,sc__BANTER.COM,float,master_table,true,numerical,,false,avg,avg(discount_percent_without_returns) as discount_percent,306
+discount_percent,sc__Other,float,master_table,true,numerical,,false,avg,avg(discount_percent_without_returns) as discount_percent,307
+discount_percent,sc__PEOPLES,float,master_table,true,numerical,,false,avg,avg(discount_percent_without_returns) as discount_percent,308
+discount_percent,sc__PEOPLES.COM,float,master_table,true,numerical,,false,avg,avg(discount_percent_without_returns) as discount_percent,309
+discount_percent,sc__ZALES,float,master_table,true,numerical,,false,avg,avg(discount_percent_without_returns) as discount_percent,310
+discount_percent,sc__ZALES OUTLET,float,master_table,true,numerical,,false,avg,avg(discount_percent_without_returns) as discount_percent,311
+discount_percent,sc__ZALES.COM,float,master_table,true,numerical,,false,avg,avg(discount_percent_without_returns) as discount_percent,312
+discount_percent,sc__KAY,float,master_table,true,numerical,,false,avg,avg(discount_percent_without_returns) as discount_percent,313
+discount_percent,sc__JARED,float,master_table,true,numerical,,false,avg,avg(discount_percent_without_returns) as discount_percent,314
+discount_percent,sc__KAY OUTLET,float,master_table,true,numerical,,false,avg,avg(discount_percent_without_returns) as discount_percent,315
+discount_percent,sc__JARED VAULT,float,master_table,true,numerical,,false,avg,avg(discount_percent_without_returns) as discount_percent,316
+discount_percent_without_returns,master_table,float,transaction_master,false,,,false,sum,"safe_divide(sum(discount_percentage*case when qty>0 then qty else 0 end),sum(case when qty>0 then qty else 0 end)) AS discount_percent_without_returns",317
+discount_percentage,aggregation,float,master_table,true,,,false,sum,"CASE WHEN ((SUM(date_inventory) = 0 AND channel NOT LIKE '%.COM' ) OR (SUM(qty_without_returns_imputed) = 0 AND channel LIKE '%.COM' )) THEN AVG(discount_percent_without_returns_imputed) ELSE SAFE_DIVIDE(SUM(discount_percent_without_returns_imputed*(CASE WHEN channel LIKE '%.COM'  THEN qty_without_returns_imputed ELSE date_inventory END)), SUM((CASE WHEN channel  LIKE '%.COM' THEN qty_without_returns_imputed ELSE date_inventory END ))) END AS discount_percentage",318
+discount_percentage,naagg__master_aggregate__l0_name,float,master_table,true,,,false,sum,"CASE WHEN ((SUM(date_inventory) = 0 AND channel NOT LIKE '%.COM' ) OR (SUM(qty_without_returns_imputed) = 0 AND channel LIKE '%.COM' )) THEN AVG(discount_percent_without_returns_imputed) ELSE SAFE_DIVIDE(SUM(discount_percent_without_returns_imputed*(CASE WHEN channel LIKE '%.COM'  THEN qty_without_returns_imputed ELSE date_inventory END)), SUM((CASE WHEN channel  LIKE '%.COM' THEN qty_without_returns_imputed ELSE date_inventory END ))) END AS discount_percentage",319
+fiscal_quarter,naagg__master_aggregate__l1_name,integer,master_table,true,,,false,max,max(fiscal_quarter) as fiscal_quarter,320
+cost_price_per_unit,impute_features,float,master_table,false,price,,false,,product_cost_price_per_unit,321
+date_id,pg_simulation_fiscal_date_col_removal,,fiscal_date_mapping,true,,,false,,date_id,322
+discount_percent_without_returns,impute_features,float,master_table,false,discount,,false,,,323
+day_of_week,pg_simulation_fiscal_date_col_removal,,fiscal_date_mapping,true,,,false,,day_of_week,324
+discount_flag,master_table,float64,master_table,false,,,false,,case when discount_amount > 0 then 1 else 0 end as discount_flag,325
+date_inventory,impute_features,float,master_table,false,inventory,,false,,,326

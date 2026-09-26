@@ -1,0 +1,19 @@
+{
+    "presets": [
+        [
+            "@babel/preset-env"
+        ],
+        [
+            "@babel/preset-react",
+            {
+                "runtime": "automatic"
+            }
+        ]
+    ],
+    "ignore": [
+        "node_modules/**"
+    ],
+    "plugins": [
+        "@babel/plugin-transform-runtime"
+    ]
+}

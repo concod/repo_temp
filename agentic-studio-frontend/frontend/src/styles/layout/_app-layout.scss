@@ -1,0 +1,79 @@
+// Common App Layout Styles
+.app-page {
+  display: flex;
+  flex-direction: row;
+  height: 100vh; // Use full viewport height
+  overflow: hidden; // Prevent page-level scrolling
+}
+
+.app-content {
+  flex: 1; // Take remaining space after sidebar
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 24px); // Match sidebar height
+  margin: 12px 12px 12px 0; // Align with sidebar margins
+  overflow: hidden; // Prevent overflow at this level
+  
+  &__breadcrumb {
+    display: flex;
+  width: 100%;
+  padding: 12px 24px;
+  justify-content: space-between;
+  align-items: center;
+  }
+
+  &__body {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    padding-left: 24px;
+    padding-right: 24px;
+    flex: 1;
+    overflow-y: auto;
+    padding-bottom: 24px; // Add padding to prevent content from touching footer
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .app-content {
+    &__breadcrumb {
+      padding: 12px 16px 0 16px;
+    }
+
+    &__body {
+      width: 100%;
+      margin-left: 16px;
+      margin-right: 16px;
+    }
+  }
+}
+
+// Variants for different page types
+.app-page {
+  &--full-width {
+    .app-content__body {
+      width: 100%;
+      margin-left: 12px;
+      margin-right: 12px;
+    }
+  }
+
+  &--centered {
+    .app-content__body {
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+  }
+
+  &--no-padding {
+    .app-content__body {
+      margin: 0;
+      width: 100%;
+      gap: 0;
+    }
+  }
+}

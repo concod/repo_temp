@@ -1,0 +1,11 @@
+--liquibase formatted sql
+--changeset raja.duraisamy@impactanalytics.co:experiment_model_selection_data_dropdown_update7 stripComments:false splitStatements:false context:Release_1_0 labels:MTP-42740
+--comment: initial changeset for experiment_model_selection_data_dropdown_update
+
+CREATE TABLE IF NOT EXISTS ada_configurator.experiment_model_selection_data_dropdown (
+	experiment_id int4 NOT NULL,
+	model_selection_data_id int4 NULL,
+	CONSTRAINT experiment_model_selection_data_dr_model_selection_data_id_fkey FOREIGN KEY (model_selection_data_id) REFERENCES ada_configurator.experiment_model_selection_data(model_selection_data_id) ON DELETE CASCADE,
+	CONSTRAINT experiment_model_selection_data_dropdown_experiment_id_fkey FOREIGN KEY (experiment_id) REFERENCES ada_configurator.experiment_master(experiment_id) ON DELETE CASCADE
+);
+CREATE UNIQUE INDEX IF NOT EXISTS experiment_model_selection_da_experiment_id_model_selection_idx ON ada_configurator.experiment_model_selection_data_dropdown USING btree (experiment_id, model_selection_data_id);

@@ -1,0 +1,27 @@
+$bg: #f5f5f5;
+$panel: #ffffff;
+$text-primary: #0b1118;
+$text-secondary: #6b7280;
+$border: #e5e7eb;
+
+.asset-editor-page {
+    background: $bg;
+    color: $text-primary;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.asset-editor-page__content {
+    display: flex;
+    flex: 1;
+    height: calc(100vh - 72px);
+    min-height: 0;
+}
+
+@media (max-width: 900px) {
+    .asset-editor-page__content {
+        flex-direction: column;
+        height: auto;
+    }
+}

@@ -1,0 +1,28 @@
+"field_id","data_source","field_name","field_type","field_label","description","is_display"
+1,transaction,product_code,string,Product,Unique Product Identifier,false
+2,transaction,store_code,string,Store,Unique Store Identifier,false
+3,transaction,article,string,Article,Article or style identifier,false
+4,transaction,date,date,Date,Transaction Date,false
+5,transaction,qty,integer,Quantity Sold,Units sold in a transaction,true
+6,transaction,unit_nsp,numeric,Unit Net Selling Price,Final selling price per unit after discounts,true
+7,transaction,updated_total_extended_line_amount,numeric,Revenue,Total sales value generated,true
+8,transaction,updated_total_discount_amount,numeric,Total Discount Amount,Discount applied per transaction for the total quantities,true
+9,transaction,price,numeric,Current MSRP,MSRP,true
+10,transaction,updated_unit_cost,numeric,Unit Cost,Cost incurred per unit,true
+11,transaction,updated_unit_price,numeric,Unit Retail Price,Standard retail price per unit,true
+12,transaction,clearance_indicator_Value,numeric,Clearance Indicator Value,Unit Price of Clearance,true
+13,transaction,weighted_avg_unit_price,numeric,Weighted Average of Unit Price,Average unit price weighted by quantity,true
+14,transaction,discount_percentage,numeric,Discount Percentage,Percentage discount applied,true
+15,inventory,product_code,string,Product,Unique Product Identifier,false
+16,inventory,store_code,string,Store,Unique Store Identifier,false
+17,inventory,article,string,Article,Article or style identifier,false
+18,inventory,date,date,Date,Inventory Date,false
+19,inventory,oh,float,OnHand,Available stock in store,true
+20,inventory,oo,float,OnOrder,Stock ordered but not yet received,true
+21,inventory,it,float,InTransit,Stock currently being shipped,true
+22,inventory,allocatable_qty,float,Allocatable Quantity,Stock available for allocation,true
+23,forecast,product_code,string,Product,Unique Product Identifier,false
+24,forecast,store_code,string,Store,Unique Store Identifier,false
+25,forecast,article,string,Article,Article or style identifier,false
+26,forecast,fiscal_year_week,integer,Fiscal Year Week,Fiscal Year Week,false
+27,forecast,adjusted_forecast_qty,float,Adjusted Forecast Quantity,Forecast after manual/system adjustments,true

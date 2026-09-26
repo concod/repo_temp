@@ -1,0 +1,106 @@
+{
+    "CASCADE": {
+        "exclusions": [
+            "database/primark/schemas/global/tables/filter_user_configurations_mapping.sql"
+        ]
+    },
+    "DROP COLUMN": {
+        "exclusions": [
+            "database/primark/schemas/global/tables/product_attributes_filter.sql",
+            "database/primark/schemas/global/tables/product_store_attributes_filter.sql",
+            "database/primark/schemas/inventory_smart/tables/alerts_product_store_level.sql",
+            "database/primark/schemas/inventory_smart/tables/article_inventory_dashboard.sql",
+            "database/primark/schemas/global/tables/product_store_hierarchy_mapping.sql",
+            "database/primark/schemas/global/tables/new_store_projections.sql",
+            "database/primark/schemas/inventory_smart/tables/alerts_product_level.sql",
+            "database/primark/schemas/inventory_smart/tables/forecast_alerts_demand_zero.sql",
+            "database/primark/schemas/inventory_smart/tables/forecast_kpi_table.sql",
+            "database/primark/schemas/inventory_smart/tables/article_forecast_alerts_demand_zero.sql",
+            "database/primark/schemas/inventory_smart/tables/rcl_psa_config_table.sql"
+            
+        ]
+    },
+    "DROP CONSTRAINT": {
+        "exclusions": [
+            "database/primark/schemas/inventory_smart/tables/forecast_kpi_table.sql",
+            "database/primark/schemas/inventory_smart/tables/po_master.sql",
+            "database/primark/schemas/inventory_smart/tables/rcl_psa_config_table.sql",
+            "database/primark/schemas/global/tables/filter_user_configurations_mapping.sql"
+        ]
+    },
+    "DROP INDEX": {
+        "exclusions": [
+            "database/primark/schemas/inventory_smart/tables/create_allocation_result_flat_gurobi.sql"
+        ]
+    },
+    "DROP MATERIALIZED VIEW": {
+        "exclusions": []
+    },
+    "DROP SEQUENCE": {
+        "exclusions": []
+    },
+    "DROP TABLE": {
+        "exclusions": [
+            "database/primark/schemas/global/tables/new_store_mapping.sql",
+            "database/primark/schemas/inventory_smart/procedures/build_product_profile_attributes_filter.sql",
+            "database/primark/schemas/oms/functions/generate_rcl_oms_constraint_data.sql",
+            "database/primark/schemas/inventory_smart/tables/alerts_product_level.sql",
+            "database/primark/schemas/inventory_smart/tables/alerts_product_store_level.sql",
+            "database/primark/schemas/inventory_smart/tables/forecast_alerts.sql"
+        ]
+    },
+    "DROP TRIGGER": {
+        "exclusions": ["database/primark/schemas/global/functions/prevent_visible_name_dupes_fuc.sql"]
+    },
+    "DROP TYPE": {
+        "exclusions": []
+    },
+    "DROP VIEW": {
+        "exclusions": []
+    },
+    "INHERITS": {
+        "exclusions": []
+    },
+    "ONLY": {
+        "exclusions": [
+            "database/primark/schemas/oms/functions/oms_update_rcl_constraints_pack.sql",
+            "database/primark/schemas/oms/functions/get_oms_matrix_summary_orders.sql",
+            "database/primark/schemas/oms/functions/oms_update_rcl_create_constraints_pack.sql"
+        ]
+    },
+    "RENAME": {
+        "exclusions": [
+            "database/primark/schemas/global/tables/product_store_attributes_filter.sql",
+            "database/primark/schemas/inventory_smart/tables/article_inventory_dashboard.sql",
+            "database/primark/schemas/inventory_smart/tables/forecast_kpi_table.sql",
+            "database/primark/schemas/inventory_smart/tables/alerts_product_level.sql",
+            "database/primark/schemas/inventory_smart/tables/alerts_product_store_level.sql"
+        ]
+    },
+    "RESET": {
+        "exclusions": []
+    },
+    "STORAGE": {
+        "exclusions": []
+    },
+    "TEMPORARY": {
+        "exclusions": []
+    },
+    "TRUNCATE": {
+        "exclusions": [
+            "database/primark/schemas/public/procedures/generate_all_week_level_rcl_constraint_data.sql"
+        ]
+    },
+    "WITHOUT": {
+        "exclusions": [
+            "database/primark/schemas/inventory_smart/functions/sku_asn_allocated_units.sql",
+            "database/primark/schemas/inventory_smart/views/sku_asn_allocated_units.sql"
+        ]
+    },
+    "DEFERRED": {
+				"regex": "(?i)\b(DEFERRED|DEFERRABLE)\b",
+				"exclusions": [
+					"database/primark/schemas/global/functions/prevent_visible_name_dupes_fuc.sql"
+				]
+    }
+}

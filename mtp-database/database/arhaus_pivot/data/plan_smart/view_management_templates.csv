@@ -1,0 +1,3468 @@
+"template_id","screen_id","is_pivot","view_details","created_at","updated_at"
+7,7,false,"{
+  ""view_settings"": [
+    {
+      ""key"": ""timeline"",
+      ""title"": ""Timeline Hierarchy"",
+      ""options"": [
+        {
+          ""label"": ""Weeks"",
+          ""checked"": true,
+          ""category"": ""week""
+        },
+        {
+          ""label"": ""Month"",
+          ""checked"": true,
+          ""category"": ""month""
+        },
+        {
+          ""label"": ""Quarter"",
+          ""checked"": true,
+          ""category"": ""quarter""
+        },
+        {
+          ""label"": ""Half year"",
+          ""checked"": true,
+          ""category"": ""season""
+        },
+        {
+          ""label"": ""Year"",
+          ""checked"": true,
+          ""category"": ""year""
+        },
+        {
+          ""label"": ""Grand Total"",
+          ""checked"": true,
+          ""category"": ""grand_total""
+        }
+      ],
+      ""viewType"": ""checkbox-list"",
+      ""accessorType"": ""column""
+    },
+    {
+      ""key"": ""product"",
+      ""order"": 1,
+      ""title"": ""Product Hierarchy"",
+      ""options"": [
+        {
+          ""label"": ""Department"",
+          ""checked"": true,
+          ""category"": ""l2_name""
+        },
+        {
+          ""label"": ""Class"",
+          ""checked"": true,
+          ""category"": ""l3_name""
+        }
+      ],
+      ""viewType"": ""checkbox-list"",
+      ""accessorType"": ""column""
+    },
+    {
+      ""key"": ""channel"",
+      ""title"": ""Channel Hierarchy"",
+      ""options"": [
+        {
+          ""label"": ""Individual"",
+          ""checked"": true,
+          ""category"": ""individual""
+        },
+        {
+          ""label"": ""Omni"",
+          ""checked"": true,
+          ""category"": ""total""
+        }
+      ],
+      ""viewType"": ""checkbox-list"",
+      ""accessorType"": ""column""
+    },
+    {
+      ""key"": ""showValues"",
+      ""title"": ""Show values as"",
+      ""options"": [
+        {
+          ""label"": ""Absolute"",
+          ""checked"": true,
+          ""category"": ""absolute""
+        },
+        {
+          ""label"": ""Cont % to Omni"",
+          ""checked"": true,
+          ""category"": ""channel-cont""
+        },
+        {
+          ""label"": ""Cont % to Ttl"",
+          ""checked"": true,
+          ""category"": ""class-cont""
+        }
+      ],
+      ""viewType"": ""checkbox-list"",
+      ""accessorType"": ""column""
+    },
+    {
+      ""key"": ""version"",
+      ""title"": ""Version"",
+      ""selected"": true,
+      ""viewType"": ""toggle"",
+      ""accessorType"": ""row""
+    },
+    {
+      ""key"": ""variance"",
+      ""title"": ""Variance"",
+      ""selected"": true,
+      ""viewType"": ""toggle"",
+      ""accessorType"": ""row""
+    }
+  ]
+}",2024-12-27 14:21:19.952,2024-12-27 14:21:19.952
+1,1,false,"{
+ ""view_settings"": [
+        {
+          ""key"": ""timeline"",
+          ""title"": ""Timeline Hierarchy"",
+          ""options"": [
+            {
+              ""label"": ""Weeks"",
+              ""checked"": true,
+              ""category"": ""week""
+            },
+            {
+              ""label"": ""Month"",
+              ""checked"": true,
+              ""category"": ""month""
+            },
+            {
+              ""label"": ""Quarter"",
+              ""checked"": true,
+              ""category"": ""quarter""
+            },
+            {
+              ""label"": ""Half year"",
+              ""checked"": true,
+              ""category"": ""season""
+            },
+            {
+              ""label"": ""Year"",
+              ""checked"": true,
+              ""category"": ""year""
+            },
+            {
+              ""label"": ""Grand Total"",
+              ""checked"": true,
+              ""category"": ""grand_total""
+            }
+          ],
+          ""viewType"": ""checkbox-list"",
+          ""accessorType"": ""column""
+        },
+        {
+          ""key"": ""product"",
+          ""order"": 1,
+          ""title"": ""Product Hierarchy"",
+          ""options"": [
+            {
+              ""label"": ""Department"",
+              ""checked"": true,
+              ""category"": ""l2_name""
+            },
+            {
+              ""label"": ""Class"",
+              ""checked"": true,
+              ""category"": ""l3_name""
+            }
+          ],
+          ""viewType"": ""checkbox-list"",
+          ""accessorType"": ""column""
+        },
+        {
+          ""key"": ""channel"",
+          ""title"": ""Channel Hierarchy"",
+          ""options"": [
+            {
+              ""label"": ""Individual"",
+              ""checked"": true,
+              ""category"": ""individual""
+            },
+            {
+              ""label"": ""Omni"",
+              ""checked"": true,
+              ""category"": ""total""
+            }
+          ],
+          ""viewType"": ""checkbox-list"",
+          ""accessorType"": ""column""
+        },
+        {
+          ""key"": ""showValues"",
+          ""title"": ""Show values as"",
+          ""options"": [
+            {
+              ""label"": ""Absolute"",
+              ""checked"": true,
+              ""category"": ""absolute""
+            },
+            {
+              ""label"": ""Cont % to Omni"",
+              ""checked"": true,
+              ""category"": ""channel-cont""
+            },
+            {
+              ""label"": ""Cont % to Ttl"",
+              ""checked"": true,
+              ""category"": ""class-cont""
+            }
+          ],
+          ""viewType"": ""checkbox-list"",
+          ""accessorType"": ""column""
+        },
+        {
+          ""key"": ""version"",
+          ""title"": ""Version"",
+          ""selected"": true,
+          ""viewType"": ""toggle"",
+          ""accessorType"": ""row""
+        },
+        {
+          ""key"": ""variance"",
+          ""title"": ""Variance"",
+          ""selected"": true,
+          ""viewType"": ""toggle"",
+          ""accessorType"": ""row""
+        }
+      ],
+  ""show_hide_metrics"": [
+    [
+      {
+        ""label"": ""Written Sales"",
+        ""is_checked"": true,
+        ""order"": 1,
+        ""metric"": ""kpi"",
+        ""children"": [
+          {
+            ""label"": ""W Sls $"",
+            ""metric"": ""written_sales_dollars"",
+            ""order"": 4,
+            ""is_checked"": true
+          },
+          {
+            ""label"": ""W Comp Spread%"",
+            ""metric"": ""written_comp_spread_perc"",
+            ""order"": 6,
+            ""is_checked"": true
+          },
+          {
+            ""label"": ""W Sls $ Comp"",
+            ""metric"": ""written_sales_comp"",
+            ""order"": 7,
+            ""is_checked"": false
+          },
+          {
+            ""label"": ""W Sls $ NonComp"",
+            ""metric"": ""written_sales_noncomp"",
+            ""order"": 8,
+            ""is_checked"": false
+          },
+          {
+            ""label"": ""W GM %"",
+            ""metric"": ""written_gm_perc"",
+            ""order"": 17,
+            ""is_checked"": true
+          },
+          {
+            ""label"": ""W GM $"",
+            ""metric"": ""written_gm_dollar"",
+            ""order"": 18,
+            ""is_checked"": false
+          }
+        ]
+      }
+    ],
+    [
+      {
+        ""label"": ""TP"",
+        ""metric"": ""plan_version"",
+        ""is_checked"": true,
+        ""is_editable"": false
+      },
+      {
+        ""label"": ""LY"",
+        ""metric"": ""plan_version"",
+        ""is_checked"": true,
+        ""is_editable"": true
+      },
+      {
+        ""label"": ""Var LY%"",
+        ""metric"": ""plan_version"",
+        ""is_checked"": true,
+        ""is_editable"": true
+      },
+      {
+        ""label"": ""LLY"",
+        ""metric"": ""plan_version"",
+        ""is_checked"": true,
+        ""is_editable"": true
+      },
+      {
+        ""label"": ""Var LLY%"",
+        ""metric"": ""plan_version"",
+        ""is_checked"": true,
+        ""is_editable"": true
+      },
+      {
+        ""label"": ""IAF"",
+        ""metric"": ""plan_version"",
+        ""is_checked"": true,
+        ""is_editable"": true
+      },
+      {
+        ""label"": ""Var IAF%"",
+        ""metric"": ""plan_version"",
+        ""is_checked"": true,
+        ""is_editable"": true
+      }
+    ]
+  ]
+}",2024-12-20 16:42:12.892,2024-12-20 16:42:12.892
+2,2,false,"{
+      ""view_settings"": [
+        {
+          ""key"": ""timeline"",
+          ""title"": ""Timeline Hierarchy"",
+          ""options"": [
+            {
+              ""label"": ""Weeks"",
+              ""checked"": true,
+              ""category"": ""week""
+            },
+            {
+              ""label"": ""Month"",
+              ""checked"": true,
+              ""category"": ""month""
+            },
+            {
+              ""label"": ""Quarter"",
+              ""checked"": true,
+              ""category"": ""quarter""
+            },
+            {
+              ""label"": ""Half year"",
+              ""checked"": true,
+              ""category"": ""season""
+            },
+            {
+              ""label"": ""Year"",
+              ""checked"": true,
+              ""category"": ""year""
+            },
+            {
+              ""label"": ""Grand Total"",
+              ""checked"": true,
+              ""category"": ""grand_total""
+            }
+          ],
+          ""viewType"": ""checkbox-list"",
+          ""accessorType"": ""column""
+        },
+        {
+          ""key"": ""product"",
+          ""order"": 1,
+          ""title"": ""Product Hierarchy"",
+          ""options"": [
+            {
+              ""label"": ""Department"",
+              ""checked"": true,
+              ""category"": ""l2_name""
+            },
+            {
+              ""label"": ""Class"",
+              ""checked"": true,
+              ""category"": ""l3_name""
+            }
+          ],
+          ""viewType"": ""checkbox-list"",
+          ""accessorType"": ""column""
+        },
+        {
+          ""key"": ""channel"",
+          ""title"": ""Channel Hierarchy"",
+          ""options"": [
+            {
+              ""label"": ""Individual"",
+              ""checked"": true,
+              ""category"": ""individual""
+            },
+            {
+              ""label"": ""Omni"",
+              ""checked"": true,
+              ""category"": ""total""
+            }
+          ],
+          ""viewType"": ""checkbox-list"",
+          ""accessorType"": ""column""
+        },
+        {
+          ""key"": ""showValues"",
+          ""title"": ""Show values as"",
+          ""options"": [
+            {
+              ""label"": ""Absolute"",
+              ""checked"": true,
+              ""category"": ""absolute""
+            },
+            {
+              ""label"": ""Cont % to Omni"",
+              ""checked"": true,
+              ""category"": ""channel-cont""
+            },
+            {
+              ""label"": ""Cont % to Ttl"",
+              ""checked"": true,
+              ""category"": ""class-cont""
+            }
+          ],
+          ""viewType"": ""checkbox-list"",
+          ""accessorType"": ""column""
+        },
+        {
+          ""key"": ""version"",
+          ""title"": ""Version"",
+          ""selected"": true,
+          ""viewType"": ""toggle"",
+          ""accessorType"": ""row""
+        },
+        {
+          ""key"": ""variance"",
+          ""title"": ""Variance"",
+          ""selected"": true,
+          ""viewType"": ""toggle"",
+          ""accessorType"": ""row""
+        }
+      ],
+      ""show_hide_metrics"": [
+        [
+          {
+            ""label"": ""BOP Inventory"",
+            ""is_checked"": false,
+            ""order"": 1,
+            ""metric"": ""kpi"",
+            ""children"": [
+              {
+                ""label"": ""BOP $"",
+                ""metric"": ""bop_cost"",
+                ""order"": 1,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""BOP U"",
+                ""metric"": ""bop_units"",
+                ""order"": 2,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""BOP AUC"",
+                ""metric"": ""bop_auc"",
+                ""order"": 3,
+                ""is_checked"": false
+              }
+            ]
+          },
+          {
+            ""label"": ""Written Sales"",
+            ""is_checked"": true,
+            ""order"": 2,
+            ""metric"": ""kpi"",
+            ""children"": [
+              {
+                ""label"": ""W Sls $"",
+                ""metric"": ""written_sales_dollars"",
+                ""order"": 4,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""W Sls $ Bld"",
+                ""metric"": ""written_sales_build_ratio"",
+                ""order"": 5,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""W Comp Spread%"",
+                ""metric"": ""written_comp_spread_perc"",
+                ""order"": 6,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""W Sls $ Comp"",
+                ""metric"": ""written_sales_comp"",
+                ""order"": 7,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""W Sls $ NonComp"",
+                ""metric"": ""written_sales_noncomp"",
+                ""order"": 8,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""W Sls U"",
+                ""metric"": ""written_sales_units"",
+                ""order"": 9,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""W Sls U Bld"",
+                ""metric"": ""written_sales_units_build_ratio"",
+                ""order"": 10,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""W AIR"",
+                ""metric"": ""written_air"",
+                ""order"": 11,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""W DR%"",
+                ""metric"": ""written_dr_perc"",
+                ""order"": 12,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""W IMU%"",
+                ""metric"": ""wrtn_imu_per"",
+                ""order"": 13,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""W AUR"",
+                ""metric"": ""written_aur"",
+                ""order"": 14,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""W COGS"",
+                ""metric"": ""written_sales_cost"",
+                ""order"": 15,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""W AUC"",
+                ""metric"": ""written_auc"",
+                ""order"": 16,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""W GM %"",
+                ""metric"": ""written_gm_perc"",
+                ""order"": 17,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""W GM $"",
+                ""metric"": ""written_gm_dollar"",
+                ""order"": 18,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""W BO Sls $"",
+                ""metric"": ""written_backorder_sales"",
+                ""order"": 19,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""W BO Sls U"",
+                ""metric"": ""written_backorder_sales_units"",
+                ""order"": 20,
+                ""is_checked"": false
+              }
+            ]
+          },
+          {
+            ""label"": ""Written to Delivered"",
+            ""is_checked"": false,
+            ""order"": 3,
+            ""metric"": ""kpi"",
+            ""children"": [
+              {
+                ""label"": ""W Cncl Rtl $"",
+                ""metric"": ""cancelled_dollars"",
+                ""order"": 21,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""W Cncl Rtl %"",
+                ""metric"": ""written_cancel_retail_rate_perc"",
+                ""order"": 22,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""W Cncl U"",
+                ""metric"": ""cancelled_qty"",
+                ""order"": 23,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""W Cncl U %"",
+                ""metric"": ""written_cancel_units_rate_perc"",
+                ""order"": 24,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""W Cncl Cst $"",
+                ""metric"": ""cancelled_cost"",
+                ""order"": 25,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""W Cncl Cst $ %"",
+                ""metric"": ""written_cancel_cost_rate_perc"",
+                ""order"": 26,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""ND Sls $"",
+                ""metric"": ""non_delivered_dollars"",
+                ""order"": 27,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""Wgt Age ND Sls $"",
+                ""metric"": ""wei_age_non_delivered_sales_dollars"",
+                ""order"": 28,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""Fct D Sls $"",
+                ""metric"": ""fcst_d_sls_dollars"",
+                ""order"": 29,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""ND Sls U"",
+                ""metric"": ""non_delivered_qty"",
+                ""order"": 30,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""Wgt Age ND U"",
+                ""metric"": ""wei_age_non_delivered_units"",
+                ""order"": 31,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""Fct D Sls U"",
+                ""metric"": ""fct_sls_units"",
+                ""order"": 32,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""ND COGS"",
+                ""metric"": ""non_delivered_cost"",
+                ""order"": 33,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""Wgt Age ND COGS"",
+                ""metric"": ""wei_age_non_delivered_costs"",
+                ""order"": 34,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""Fct D COGS"",
+                ""metric"": ""fct_d_cost"",
+                ""order"": 35,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""D Sls $ Adj Fctr"",
+                ""metric"": ""retail_conversion_adjustment"",
+                ""order"": 36,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""D Sls U Adj Fctr"",
+                ""metric"": ""unit_conversion_adjustment"",
+                ""order"": 110,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""D COGS Adj Fctr"",
+                ""metric"": ""cost_conversion_adjustment"",
+                ""order"": 111,
+                ""is_checked"": false
+              }
+            ]
+          },
+          {
+            ""label"": ""Delivered Sales"",
+            ""is_checked"": true,
+            ""order"": 4,
+            ""metric"": ""kpi"",
+            ""children"": [
+              {
+                ""label"": ""D Sls $"",
+                ""metric"": ""delivered_net_sales_dollars"",
+                ""order"": 37,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""D Sls $ Bld"",
+                ""metric"": ""delivered_net_sales_build_ratio"",
+                ""order"": 38,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""D Sls U"",
+                ""metric"": ""delivered_net_sales_units"",
+                ""order"": 39,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""D Sls U Bld"",
+                ""metric"": ""delivered_net_sales_units_build_ratio"",
+                ""order"": 40,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""D AIR"",
+                ""metric"": ""delivered_air"",
+                ""order"": 41,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""D DR%"",
+                ""metric"": ""delivered_drperc"",
+                ""order"": 42,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""D AUR"",
+                ""metric"": ""delivered_aur"",
+                ""order"": 43,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""D COGS"",
+                ""metric"": ""delivered_net_sales_cost"",
+                ""order"": 44,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""D AUC"",
+                ""metric"": ""delivered_auc"",
+                ""order"": 45,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""D GM %"",
+                ""metric"": ""delivered_gmperc"",
+                ""order"": 46,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""D GM $"",
+                ""metric"": ""delivered_gm"",
+                ""order"": 47,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""D GMROI"",
+                ""metric"": ""delivered_gmroi"",
+                ""order"": 48,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""D Rtrn Rtl $"",
+                ""metric"": ""delivered_returns_dollars"",
+                ""order"": 49,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""D Rtrn Rtl %"",
+                ""metric"": ""delivered_retail_return_rate_perc"",
+                ""order"": 50,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""D Rtrn U"",
+                ""metric"": ""delivered_returns_qty"",
+                ""order"": 51,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""D Rtrn U %"",
+                ""metric"": ""delivered_unit_return_rate_perc"",
+                ""order"": 52,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""D Rtrn Cst $"",
+                ""metric"": ""delivered_returns_cost"",
+                ""order"": 53,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""D Rtrn Cst $ %"",
+                ""metric"": ""delivered_cost_return_rate_perc"",
+                ""order"": 54,
+                ""is_checked"": false
+              }
+            ]
+          },
+          {
+            ""label"": ""BOP Avg Inv"",
+            ""is_checked"": true,
+            ""order"": 5,
+            ""metric"": ""kpi"",
+            ""children"": [
+              {
+                ""label"": ""AOH C$"",
+                ""metric"": ""aoh_cost"",
+                ""order"": 55,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""AOH U"",
+                ""metric"": ""aoh_units"",
+                ""order"": 56,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""AOH FWOS C$"",
+                ""metric"": ""aoh_fwos_cost"",
+                ""order"": 57,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""AOH FWOS U"",
+                ""metric"": ""aoh_fwos_units"",
+                ""order"": 58,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""ATP C$"",
+                ""metric"": ""atp_cost"",
+                ""order"": 59,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""ATP U"",
+                ""metric"": ""atp_units"",
+                ""order"": 60,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""ATP FWOS C$"",
+                ""metric"": ""atp_fwos_cost"",
+                ""order"": 61,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""ATP FWOS U"",
+                ""metric"": ""atp_fwos_units"",
+                ""order"": 62,
+                ""is_checked"": false
+              }
+            ]
+          },
+          {
+            ""label"": ""OTB"",
+            ""is_checked"": true,
+            ""order"": 6,
+            ""metric"": ""kpi"",
+            ""children"": [
+              {
+                ""label"": ""OTB$ (WF-OP)"",
+                ""metric"": ""otb_wf_op"",
+                ""order"": 63,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""OTB$ (WF-LF)"",
+                ""metric"": ""otb_wf_lf"",
+                ""order"": 64,
+                ""is_checked"": true
+              }
+            ]
+          },
+          {
+            ""label"": ""Receipts"",
+            ""is_checked"": true,
+            ""order"": 7,
+            ""metric"": ""kpi"",
+            ""children"": [
+              {
+                ""label"": ""Ttl Rcpt $"",
+                ""metric"": ""total_receipt_cost"",
+                ""order"": 65,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""STK Rcpt $"",
+                ""metric"": ""stock_receipts_cost"",
+                ""order"": 66,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""SPO Rcpt $"",
+                ""metric"": ""special_order_receipt_cost"",
+                ""order"": 67,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""Rcpt $ % of STK"",
+                ""metric"": ""stock_perc_total_receipts_cost"",
+                ""order"": 68,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""Ttl Rcpt U"",
+                ""metric"": ""total_receipt_units"",
+                ""order"": 69,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""STK Rcpt U"",
+                ""metric"": ""stock_receipts_units"",
+                ""order"": 70,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""SPO Rcpt U"",
+                ""metric"": ""special_order_receipt_units"",
+                ""order"": 71,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""Rcpt U % of STK"",
+                ""metric"": ""stock_perc_total_receipts_units"",
+                ""order"": 72,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""Ttl Rcpt AUC"",
+                ""metric"": ""total_receipts_auc"",
+                ""order"": 73,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""STK Rcpt AUC"",
+                ""metric"": ""stock_receipts_auc"",
+                ""order"": 74,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""SPO Rcpt AUC"",
+                ""metric"": ""spo_receipts_auc"",
+                ""order"": 75,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""OO $ (TTL-P)"",
+                ""metric"": ""on_order_placed_total"",
+                ""order"": 76,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""OO $ (STK-P)"",
+                ""metric"": ""on_order_placed_stock"",
+                ""order"": 77,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""OO $ (SPO-P)"",
+                ""metric"": ""on_order_placed_spo"",
+                ""order"": 78,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""OO $ (TTL-UP)"",
+                ""metric"": ""on_order_unplaced_total"",
+                ""order"": 79,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""OO $ (STK-UP)"",
+                ""metric"": ""on_order_unplaced_stock"",
+                ""order"": 80,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""OO $ (SPO-UP)"",
+                ""metric"": ""on_order_unplaced_spo"",
+                ""order"": 81,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""% of Rcpt $ (STK-UP)"",
+                ""metric"": ""stock_perc_unplaced_receipt"",
+                ""order"": 82,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""OO U (TTL-P)"",
+                ""metric"": ""on_order_placed_total_unit"",
+                ""order"": 83,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""OO U (STK-P)"",
+                ""metric"": ""on_order_placed_stock_unit"",
+                ""order"": 84,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""OO U (SPO-P)"",
+                ""metric"": ""on_order_placed_spo_unit"",
+                ""order"": 85,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""OO U (TTL-UP)"",
+                ""metric"": ""on_order_unplaced_total_unit"",
+                ""order"": 86,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""OO U (STK-UP)"",
+                ""metric"": ""on_order_unplaced_stock_unit"",
+                ""order"": 87,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""OO U (SPO-UP)"",
+                ""metric"": ""on_order_unplaced_spo_unit"",
+                ""order"": 88,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""% of Rcpt U (STK-UP)"",
+                ""metric"": ""stock_perc_unplaced_receipt_unit"",
+                ""order"": 89,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""OO AUC (TTL-P)"",
+                ""metric"": ""on_order_placed_total_auc"",
+                ""order"": 90,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""OO AUC (STK-P)"",
+                ""metric"": ""on_order_placed_stock_auc"",
+                ""order"": 91,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""OO AUC (SPO-P)"",
+                ""metric"": ""on_order_placed_spo_auc"",
+                ""order"": 92,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""OO AUC (TTL-UP)"",
+                ""metric"": ""on_order_unplaced_total_auc"",
+                ""order"": 93,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""OO AUC (STK-UP)"",
+                ""metric"": ""on_order_unplaced_stock_auc"",
+                ""order"": 94,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""OO AUC (SPO-UP)"",
+                ""metric"": ""on_order_unplaced_spo_auc"",
+                ""order"": 95,
+                ""is_checked"": false
+              }
+            ]
+          },
+          {
+            ""label"": ""Inventory Adj"",
+            ""is_checked"": true,
+            ""order"": 8,
+            ""metric"": ""kpi"",
+            ""children"": [
+              {
+                ""label"": ""Inv Adj $"",
+                ""metric"": ""inv_adj_cost"",
+                ""order"": 96,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""Inv Adj $ %"",
+                ""metric"": ""inv_adj_cost_perc"",
+                ""order"": 97,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""Inv Adj U"",
+                ""metric"": ""inv_adj_units"",
+                ""order"": 98,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""Inv Adj U %"",
+                ""metric"": ""inv_adj_units_perc"",
+                ""order"": 99,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""Inv Adj AUC"",
+                ""metric"": ""inv_adj_auc"",
+                ""order"": 100,
+                ""is_checked"": true
+              }
+            ]
+          },
+          {
+            ""label"": ""EOP Inventory"",
+            ""is_checked"": true,
+            ""order"": 9,
+            ""metric"": ""kpi"",
+            ""children"": [
+              {
+                ""label"": ""EOP $"",
+                ""metric"": ""eop_cost"",
+                ""order"": 101,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""EOP U"",
+                ""metric"": ""eop_units"",
+                ""order"": 102,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""EOP AUC"",
+                ""metric"": ""eop_auc"",
+                ""order"": 103,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""EOP C$ OP"",
+                ""metric"": ""eop_cost_op"",
+                ""order"": 104,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""EOP C$ LF"",
+                ""metric"": ""eop_cost_lf"",
+                ""order"": 105,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""Avg Inv Cst $"",
+                ""metric"": ""average_inventory_cost"",
+                ""order"": 106,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""Avg Inv U"",
+                ""metric"": ""average_inventory_units"",
+                ""order"": 107,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""Trn $"",
+                ""metric"": ""turn_cost"",
+                ""order"": 108,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""Trn U"",
+                ""metric"": ""turn_units"",
+                ""order"": 109,
+                ""is_checked"": false
+              }
+            ]
+          }
+        ],
+        [
+          {
+            ""label"": ""WF"",
+            ""metric"": ""plan_version"",
+            ""is_checked"": true,
+            ""is_editable"": false
+          },
+          {
+            ""label"": ""LY"",
+            ""metric"": ""plan_version"",
+            ""is_checked"": true,
+            ""is_editable"": true
+          },
+          {
+            ""label"": ""Var LY%"",
+            ""metric"": ""plan_version"",
+            ""is_checked"": true,
+            ""is_editable"": true
+          },
+          {
+            ""label"": ""LLY"",
+            ""metric"": ""plan_version"",
+            ""is_checked"": true,
+            ""is_editable"": true
+          },
+          {
+            ""label"": ""Var LLY%"",
+            ""metric"": ""plan_version"",
+            ""is_checked"": true,
+            ""is_editable"": true
+          },
+          {
+            ""label"": ""IAF"",
+            ""metric"": ""plan_version"",
+            ""is_checked"": true,
+            ""is_editable"": true
+          },
+          {
+            ""label"": ""Var IAF%"",
+            ""metric"": ""plan_version"",
+            ""is_checked"": true,
+            ""is_editable"": true
+          },
+          {
+            ""label"": ""OP"",
+            ""metric"": ""plan_version"",
+            ""is_checked"": true,
+            ""is_editable"": true
+          },
+          {
+            ""label"": ""Var OP%"",
+            ""metric"": ""plan_version"",
+            ""is_checked"": true,
+            ""is_editable"": true
+          },
+          {
+            ""label"": ""LF"",
+            ""metric"": ""plan_version"",
+            ""is_checked"": true,
+            ""is_editable"": true
+          },
+          {
+            ""label"": ""Var LF%"",
+            ""metric"": ""plan_version"",
+            ""is_checked"": true,
+            ""is_editable"": true
+          },
+          {
+            ""label"": ""TP"",
+            ""metric"": ""plan_version"",
+            ""is_checked"": true,
+            ""is_editable"": true
+          },
+          {
+            ""label"": ""Var TP%"",
+            ""metric"": ""plan_version"",
+            ""is_checked"": true,
+            ""is_editable"": true
+          }
+        ]
+      ]
+    }",2024-12-20 16:42:26.091,2024-12-20 16:42:26.091
+3,3,false,"{
+      ""view_settings"": [
+        {
+          ""key"": ""timeline"",
+          ""title"": ""Timeline Hierarchy"",
+          ""options"": [
+            {
+              ""label"": ""Weeks"",
+              ""checked"": true,
+              ""category"": ""week""
+            },
+            {
+              ""label"": ""Month"",
+              ""checked"": true,
+              ""category"": ""month""
+            },
+            {
+              ""label"": ""Quarter"",
+              ""checked"": true,
+              ""category"": ""quarter""
+            },
+            {
+              ""label"": ""Half year"",
+              ""checked"": true,
+              ""category"": ""season""
+            },
+            {
+              ""label"": ""Year"",
+              ""checked"": true,
+              ""category"": ""year""
+            },
+            {
+              ""label"": ""Grand Total"",
+              ""checked"": true,
+              ""category"": ""grand_total""
+            }
+          ],
+          ""viewType"": ""checkbox-list"",
+          ""accessorType"": ""column""
+        },
+        {
+          ""key"": ""product"",
+          ""order"": 1,
+          ""title"": ""Product Hierarchy"",
+          ""options"": [
+            {
+              ""label"": ""Ttl Company"",
+              ""checked"": true,
+              ""category"": ""l0_name""
+            },
+            {
+              ""label"": ""Division"",
+              ""checked"": true,
+              ""category"": ""l1_name""
+            },
+            {
+              ""label"": ""Department"",
+              ""checked"": true,
+              ""category"": ""l2_name""
+            }
+          ],
+          ""viewType"": ""checkbox-list"",
+          ""accessorType"": ""column""
+        },
+        {
+          ""key"": ""channel"",
+          ""title"": ""Channel Hierarchy"",
+          ""options"": [
+            {
+              ""label"": ""Individual"",
+              ""checked"": true,
+              ""category"": ""individual""
+            },
+            {
+              ""label"": ""Omni"",
+              ""checked"": true,
+              ""category"": ""total""
+            }
+          ],
+          ""viewType"": ""checkbox-list"",
+          ""accessorType"": ""column""
+        },
+        {
+          ""key"": ""showValues"",
+          ""title"": ""Show values as"",
+          ""options"": [
+            {
+              ""label"": ""Absolute"",
+              ""checked"": true,
+              ""category"": ""absolute""
+            },
+            {
+              ""label"": ""Cont % to Omni"",
+              ""checked"": true,
+              ""category"": ""channel-cont""
+            },
+            {
+              ""label"": ""Cont % to Ttl"",
+              ""checked"": true,
+              ""category"": ""class-cont""
+            }
+          ],
+          ""viewType"": ""checkbox-list"",
+          ""accessorType"": ""column""
+        },
+        {
+          ""key"": ""version"",
+          ""title"": ""Version"",
+          ""selected"": true,
+          ""viewType"": ""toggle"",
+          ""accessorType"": ""row""
+        },
+        {
+          ""key"": ""variance"",
+          ""title"": ""Variance"",
+          ""selected"": true,
+          ""viewType"": ""toggle"",
+          ""accessorType"": ""row""
+        }
+      ],
+      ""show_hide_metrics"": [
+        [
+          {
+            ""label"": ""Written Sales"",
+            ""is_checked"": true,
+            ""order"": 1,
+            ""metric"": ""kpi"",
+            ""children"": [
+              {
+                ""label"": ""W Sls $"",
+                ""metric"": ""written_sales_dollars"",
+                ""order"": 4,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""W Comp Spread%"",
+                ""metric"": ""written_comp_spread_perc"",
+                ""order"": 6,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""W Sls $ Comp"",
+                ""metric"": ""written_sales_comp"",
+                ""order"": 7,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""W Sls $ NonComp"",
+                ""metric"": ""written_sales_noncomp"",
+                ""order"": 8,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""W GM %"",
+                ""metric"": ""written_gm_perc"",
+                ""order"": 17,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""W GM $"",
+                ""metric"": ""written_gm_dollar"",
+                ""order"": 18,
+                ""is_checked"": false
+              }
+            ]
+          }
+        ],
+        [
+          {
+            ""label"": ""TP"",
+            ""metric"": ""plan_version"",
+            ""is_checked"": true,
+            ""is_editable"": false
+          },
+          {
+            ""label"": ""LY"",
+            ""metric"": ""plan_version"",
+            ""is_checked"": true,
+            ""is_editable"": true
+          },
+          {
+            ""label"": ""Var LY%"",
+            ""metric"": ""plan_version"",
+            ""is_checked"": true,
+            ""is_editable"": true
+          },
+          {
+            ""label"": ""LLY"",
+            ""metric"": ""plan_version"",
+            ""is_checked"": true,
+            ""is_editable"": true
+          },
+          {
+            ""label"": ""Var LLY%"",
+            ""metric"": ""plan_version"",
+            ""is_checked"": true,
+            ""is_editable"": true
+          },
+          {
+            ""label"": ""IAF"",
+            ""metric"": ""plan_version"",
+            ""is_checked"": true,
+            ""is_editable"": true
+          },
+          {
+            ""label"": ""Var IAF%"",
+            ""metric"": ""plan_version"",
+            ""is_checked"": true,
+            ""is_editable"": true
+          }
+        ]
+      ]
+    }",2024-12-20 16:41:11.886,2024-12-20 16:41:11.886
+4,4,false,"{
+      ""view_settings"": [
+        {
+          ""key"": ""timeline"",
+          ""title"": ""Timeline Hierarchy"",
+          ""options"": [
+            {
+              ""label"": ""Weeks"",
+              ""checked"": true,
+              ""category"": ""week""
+            },
+            {
+              ""label"": ""Month"",
+              ""checked"": true,
+              ""category"": ""month""
+            },
+            {
+              ""label"": ""Quarter"",
+              ""checked"": true,
+              ""category"": ""quarter""
+            },
+            {
+              ""label"": ""Half year"",
+              ""checked"": true,
+              ""category"": ""season""
+            },
+            {
+              ""label"": ""Year"",
+              ""checked"": true,
+              ""category"": ""year""
+            },
+            {
+              ""label"": ""Grand Total"",
+              ""checked"": true,
+              ""category"": ""grand_total""
+            }
+          ],
+          ""viewType"": ""checkbox-list"",
+          ""accessorType"": ""column""
+        },
+        {
+          ""key"": ""product"",
+          ""order"": 1,
+          ""title"": ""Product Hierarchy"",
+          ""options"": [
+            {
+              ""label"": ""Department"",
+              ""checked"": true,
+              ""category"": ""l2_name""
+            },
+            {
+              ""label"": ""Class"",
+              ""checked"": true,
+              ""category"": ""l3_name""
+            }
+          ],
+          ""viewType"": ""checkbox-list"",
+          ""accessorType"": ""column""
+        },
+        {
+          ""key"": ""channel"",
+          ""title"": ""Channel Hierarchy"",
+          ""options"": [
+            {
+              ""label"": ""Individual"",
+              ""checked"": true,
+              ""category"": ""individual""
+            },
+            {
+              ""label"": ""Omni"",
+              ""checked"": true,
+              ""category"": ""total""
+            }
+          ],
+          ""viewType"": ""checkbox-list"",
+          ""accessorType"": ""column""
+        },
+        {
+          ""key"": ""showValues"",
+          ""title"": ""Show values as"",
+          ""options"": [
+            {
+              ""label"": ""Absolute"",
+              ""checked"": true,
+              ""category"": ""absolute""
+            },
+            {
+              ""label"": ""Cont % to Omni"",
+              ""checked"": true,
+              ""category"": ""channel-cont""
+            },
+            {
+              ""label"": ""Cont % to Ttl"",
+              ""checked"": true,
+              ""category"": ""class-cont""
+            }
+          ],
+          ""viewType"": ""checkbox-list"",
+          ""accessorType"": ""column""
+        },
+        {
+          ""key"": ""version"",
+          ""title"": ""Version"",
+          ""selected"": true,
+          ""viewType"": ""toggle"",
+          ""accessorType"": ""row""
+        },
+        {
+          ""key"": ""variance"",
+          ""title"": ""Variance"",
+          ""selected"": true,
+          ""viewType"": ""toggle"",
+          ""accessorType"": ""row""
+        }
+      ],
+      ""show_hide_metrics"": [
+        [
+          {
+            ""label"": ""BOP Inventory"",
+            ""is_checked"": false,
+            ""order"": 1,
+            ""metric"": ""kpi"",
+            ""children"": [
+              {
+                ""label"": ""BOP $"",
+                ""metric"": ""bop_cost"",
+                ""order"": 1,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""BOP U"",
+                ""metric"": ""bop_units"",
+                ""order"": 2,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""BOP AUC"",
+                ""metric"": ""bop_auc"",
+                ""order"": 3,
+                ""is_checked"": false
+              }
+            ]
+          },
+          {
+            ""label"": ""Written Sales"",
+            ""is_checked"": true,
+            ""order"": 2,
+            ""metric"": ""kpi"",
+            ""children"": [
+              {
+                ""label"": ""W Sls $"",
+                ""metric"": ""written_sales_dollars"",
+                ""order"": 4,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""W Sls $ Bld"",
+                ""metric"": ""written_sales_build_ratio"",
+                ""order"": 5,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""W Comp Spread%"",
+                ""metric"": ""written_comp_spread_perc"",
+                ""order"": 6,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""W Sls $ Comp"",
+                ""metric"": ""written_sales_comp"",
+                ""order"": 7,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""W Sls $ NonComp"",
+                ""metric"": ""written_sales_noncomp"",
+                ""order"": 8,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""W Sls U"",
+                ""metric"": ""written_sales_units"",
+                ""order"": 9,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""W Sls U Bld"",
+                ""metric"": ""written_sales_units_build_ratio"",
+                ""order"": 10,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""W AIR"",
+                ""metric"": ""written_air"",
+                ""order"": 11,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""W DR%"",
+                ""metric"": ""written_dr_perc"",
+                ""order"": 12,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""W IMU%"",
+                ""metric"": ""wrtn_imu_per"",
+                ""order"": 13,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""W AUR"",
+                ""metric"": ""written_aur"",
+                ""order"": 14,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""W COGS"",
+                ""metric"": ""written_sales_cost"",
+                ""order"": 15,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""W AUC"",
+                ""metric"": ""written_auc"",
+                ""order"": 16,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""W GM %"",
+                ""metric"": ""written_gm_perc"",
+                ""order"": 17,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""W GM $"",
+                ""metric"": ""written_gm_dollar"",
+                ""order"": 18,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""W BO Sls $"",
+                ""metric"": ""written_backorder_sales"",
+                ""order"": 19,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""W BO Sls U"",
+                ""metric"": ""written_backorder_sales_units"",
+                ""order"": 20,
+                ""is_checked"": false
+              }
+            ]
+          },
+          {
+            ""label"": ""Written to Delivered"",
+            ""is_checked"": false,
+            ""order"": 3,
+            ""metric"": ""kpi"",
+            ""children"": [
+              {
+                ""label"": ""W Cncl Rtl $"",
+                ""metric"": ""cancelled_dollars"",
+                ""order"": 21,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""W Cncl Rtl %"",
+                ""metric"": ""written_cancel_retail_rate_perc"",
+                ""order"": 22,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""W Cncl U"",
+                ""metric"": ""cancelled_qty"",
+                ""order"": 23,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""W Cncl U %"",
+                ""metric"": ""written_cancel_units_rate_perc"",
+                ""order"": 24,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""W Cncl Cst $"",
+                ""metric"": ""cancelled_cost"",
+                ""order"": 25,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""W Cncl Cst $ %"",
+                ""metric"": ""written_cancel_cost_rate_perc"",
+                ""order"": 26,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""ND Sls $"",
+                ""metric"": ""non_delivered_dollars"",
+                ""order"": 27,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""Wgt Age ND Sls $"",
+                ""metric"": ""wei_age_non_delivered_sales_dollars"",
+                ""order"": 28,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""Fct D Sls $"",
+                ""metric"": ""fcst_d_sls_dollars"",
+                ""order"": 29,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""ND Sls U"",
+                ""metric"": ""non_delivered_qty"",
+                ""order"": 30,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""Wgt Age ND U"",
+                ""metric"": ""wei_age_non_delivered_units"",
+                ""order"": 31,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""Fct D Sls U"",
+                ""metric"": ""fct_sls_units"",
+                ""order"": 32,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""ND COGS"",
+                ""metric"": ""non_delivered_cost"",
+                ""order"": 33,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""Wgt Age ND COGS"",
+                ""metric"": ""wei_age_non_delivered_costs"",
+                ""order"": 34,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""Fct D COGS"",
+                ""metric"": ""fct_d_cost"",
+                ""order"": 35,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""D Sls $ Adj Fctr"",
+                ""metric"": ""retail_conversion_adjustment"",
+                ""order"": 36,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""D Sls U Adj Fctr"",
+                ""metric"": ""unit_conversion_adjustment"",
+                ""order"": 110,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""D COGS Adj Fctr"",
+                ""metric"": ""cost_conversion_adjustment"",
+                ""order"": 111,
+                ""is_checked"": false
+              }
+            ]
+          },
+          {
+            ""label"": ""Delivered Sales"",
+            ""is_checked"": true,
+            ""order"": 4,
+            ""metric"": ""kpi"",
+            ""children"": [
+              {
+                ""label"": ""D Sls $"",
+                ""metric"": ""delivered_net_sales_dollars"",
+                ""order"": 37,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""D Sls $ Bld"",
+                ""metric"": ""delivered_net_sales_build_ratio"",
+                ""order"": 38,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""D Sls U"",
+                ""metric"": ""delivered_net_sales_units"",
+                ""order"": 39,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""D Sls U Bld"",
+                ""metric"": ""delivered_net_sales_units_build_ratio"",
+                ""order"": 40,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""D AIR"",
+                ""metric"": ""delivered_air"",
+                ""order"": 41,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""D DR%"",
+                ""metric"": ""delivered_drperc"",
+                ""order"": 42,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""D AUR"",
+                ""metric"": ""delivered_aur"",
+                ""order"": 43,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""D COGS"",
+                ""metric"": ""delivered_net_sales_cost"",
+                ""order"": 44,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""D AUC"",
+                ""metric"": ""delivered_auc"",
+                ""order"": 45,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""D GM %"",
+                ""metric"": ""delivered_gmperc"",
+                ""order"": 46,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""D GM $"",
+                ""metric"": ""delivered_gm"",
+                ""order"": 47,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""D GMROI"",
+                ""metric"": ""delivered_gmroi"",
+                ""order"": 48,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""D Rtrn Rtl $"",
+                ""metric"": ""delivered_returns_dollars"",
+                ""order"": 49,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""D Rtrn Rtl %"",
+                ""metric"": ""delivered_retail_return_rate_perc"",
+                ""order"": 50,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""D Rtrn U"",
+                ""metric"": ""delivered_returns_qty"",
+                ""order"": 51,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""D Rtrn U %"",
+                ""metric"": ""delivered_unit_return_rate_perc"",
+                ""order"": 52,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""D Rtrn Cst $"",
+                ""metric"": ""delivered_returns_cost"",
+                ""order"": 53,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""D Rtrn Cst $ %"",
+                ""metric"": ""delivered_cost_return_rate_perc"",
+                ""order"": 54,
+                ""is_checked"": false
+              }
+            ]
+          },
+          {
+            ""label"": ""BOP Avg Inv"",
+            ""is_checked"": true,
+            ""order"": 5,
+            ""metric"": ""kpi"",
+            ""children"": [
+              {
+                ""label"": ""AOH C$"",
+                ""metric"": ""aoh_cost"",
+                ""order"": 55,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""AOH U"",
+                ""metric"": ""aoh_units"",
+                ""order"": 56,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""AOH FWOS C$"",
+                ""metric"": ""aoh_fwos_cost"",
+                ""order"": 57,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""AOH FWOS U"",
+                ""metric"": ""aoh_fwos_units"",
+                ""order"": 58,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""ATP C$"",
+                ""metric"": ""atp_cost"",
+                ""order"": 59,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""ATP U"",
+                ""metric"": ""atp_units"",
+                ""order"": 60,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""ATP FWOS C$"",
+                ""metric"": ""atp_fwos_cost"",
+                ""order"": 61,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""ATP FWOS U"",
+                ""metric"": ""atp_fwos_units"",
+                ""order"": 62,
+                ""is_checked"": false
+              }
+            ]
+          },
+          {
+            ""label"": ""OTB"",
+            ""is_checked"": true,
+            ""order"": 6,
+            ""metric"": ""kpi"",
+            ""children"": [
+              {
+                ""label"": ""OTB$ (WF-OP)"",
+                ""metric"": ""otb_wf_op"",
+                ""order"": 63,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""OTB$ (WF-LF)"",
+                ""metric"": ""otb_wf_lf"",
+                ""order"": 64,
+                ""is_checked"": true
+              }
+            ]
+          },
+          {
+            ""label"": ""Receipts"",
+            ""is_checked"": true,
+            ""order"": 7,
+            ""metric"": ""kpi"",
+            ""children"": [
+              {
+                ""label"": ""Ttl Rcpt $"",
+                ""metric"": ""total_receipt_cost"",
+                ""order"": 65,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""STK Rcpt $"",
+                ""metric"": ""stock_receipts_cost"",
+                ""order"": 66,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""SPO Rcpt $"",
+                ""metric"": ""special_order_receipt_cost"",
+                ""order"": 67,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""Rcpt $ % of STK"",
+                ""metric"": ""stock_perc_total_receipts_cost"",
+                ""order"": 68,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""Ttl Rcpt U"",
+                ""metric"": ""total_receipt_units"",
+                ""order"": 69,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""STK Rcpt U"",
+                ""metric"": ""stock_receipts_units"",
+                ""order"": 70,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""SPO Rcpt U"",
+                ""metric"": ""special_order_receipt_units"",
+                ""order"": 71,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""Rcpt U % of STK"",
+                ""metric"": ""stock_perc_total_receipts_units"",
+                ""order"": 72,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""Ttl Rcpt AUC"",
+                ""metric"": ""total_receipts_auc"",
+                ""order"": 73,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""STK Rcpt AUC"",
+                ""metric"": ""stock_receipts_auc"",
+                ""order"": 74,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""SPO Rcpt AUC"",
+                ""metric"": ""spo_receipts_auc"",
+                ""order"": 75,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""OO $ (TTL-P)"",
+                ""metric"": ""on_order_placed_total"",
+                ""order"": 76,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""OO $ (STK-P)"",
+                ""metric"": ""on_order_placed_stock"",
+                ""order"": 77,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""OO $ (SPO-P)"",
+                ""metric"": ""on_order_placed_spo"",
+                ""order"": 78,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""OO $ (TTL-UP)"",
+                ""metric"": ""on_order_unplaced_total"",
+                ""order"": 79,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""OO $ (STK-UP)"",
+                ""metric"": ""on_order_unplaced_stock"",
+                ""order"": 80,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""OO $ (SPO-UP)"",
+                ""metric"": ""on_order_unplaced_spo"",
+                ""order"": 81,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""% of Rcpt $ (STK-UP)"",
+                ""metric"": ""stock_perc_unplaced_receipt"",
+                ""order"": 82,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""OO U (TTL-P)"",
+                ""metric"": ""on_order_placed_total_unit"",
+                ""order"": 83,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""OO U (STK-P)"",
+                ""metric"": ""on_order_placed_stock_unit"",
+                ""order"": 84,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""OO U (SPO-P)"",
+                ""metric"": ""on_order_placed_spo_unit"",
+                ""order"": 85,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""OO U (TTL-UP)"",
+                ""metric"": ""on_order_unplaced_total_unit"",
+                ""order"": 86,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""OO U (STK-UP)"",
+                ""metric"": ""on_order_unplaced_stock_unit"",
+                ""order"": 87,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""OO U (SPO-UP)"",
+                ""metric"": ""on_order_unplaced_spo_unit"",
+                ""order"": 88,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""% of Rcpt U (STK-UP)"",
+                ""metric"": ""stock_perc_unplaced_receipt_unit"",
+                ""order"": 89,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""OO AUC (TTL-P)"",
+                ""metric"": ""on_order_placed_total_auc"",
+                ""order"": 90,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""OO AUC (STK-P)"",
+                ""metric"": ""on_order_placed_stock_auc"",
+                ""order"": 91,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""OO AUC (SPO-P)"",
+                ""metric"": ""on_order_placed_spo_auc"",
+                ""order"": 92,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""OO AUC (TTL-UP)"",
+                ""metric"": ""on_order_unplaced_total_auc"",
+                ""order"": 93,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""OO AUC (STK-UP)"",
+                ""metric"": ""on_order_unplaced_stock_auc"",
+                ""order"": 94,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""OO AUC (SPO-UP)"",
+                ""metric"": ""on_order_unplaced_spo_auc"",
+                ""order"": 95,
+                ""is_checked"": false
+              }
+            ]
+          },
+          {
+            ""label"": ""Inventory Adj"",
+            ""is_checked"": true,
+            ""order"": 8,
+            ""metric"": ""kpi"",
+            ""children"": [
+              {
+                ""label"": ""Inv Adj $"",
+                ""metric"": ""inv_adj_cost"",
+                ""order"": 96,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""Inv Adj $ %"",
+                ""metric"": ""inv_adj_cost_perc"",
+                ""order"": 97,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""Inv Adj U"",
+                ""metric"": ""inv_adj_units"",
+                ""order"": 98,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""Inv Adj U %"",
+                ""metric"": ""inv_adj_units_perc"",
+                ""order"": 99,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""Inv Adj AUC"",
+                ""metric"": ""inv_adj_auc"",
+                ""order"": 100,
+                ""is_checked"": true
+              }
+            ]
+          },
+          {
+            ""label"": ""EOP Inventory"",
+            ""is_checked"": true,
+            ""order"": 9,
+            ""metric"": ""kpi"",
+            ""children"": [
+              {
+                ""label"": ""EOP $"",
+                ""metric"": ""eop_cost"",
+                ""order"": 101,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""EOP U"",
+                ""metric"": ""eop_units"",
+                ""order"": 102,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""EOP AUC"",
+                ""metric"": ""eop_auc"",
+                ""order"": 103,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""EOP C$ OP"",
+                ""metric"": ""eop_cost_op"",
+                ""order"": 104,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""EOP C$ LF"",
+                ""metric"": ""eop_cost_lf"",
+                ""order"": 105,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""Avg Inv Cst $"",
+                ""metric"": ""average_inventory_cost"",
+                ""order"": 106,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""Avg Inv U"",
+                ""metric"": ""average_inventory_units"",
+                ""order"": 107,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""Trn $"",
+                ""metric"": ""turn_cost"",
+                ""order"": 108,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""Trn U"",
+                ""metric"": ""turn_units"",
+                ""order"": 109,
+                ""is_checked"": false
+              }
+            ]
+          }
+        ],
+        [
+          {
+            ""label"": ""WF"",
+            ""metric"": ""plan_version"",
+            ""is_checked"": true,
+            ""is_editable"": false
+          },
+          {
+            ""label"": ""LY"",
+            ""metric"": ""plan_version"",
+            ""is_checked"": true,
+            ""is_editable"": true
+          },
+          {
+            ""label"": ""Var LY%"",
+            ""metric"": ""plan_version"",
+            ""is_checked"": true,
+            ""is_editable"": true
+          },
+          {
+            ""label"": ""LLY"",
+            ""metric"": ""plan_version"",
+            ""is_checked"": true,
+            ""is_editable"": true
+          },
+          {
+            ""label"": ""Var LLY%"",
+            ""metric"": ""plan_version"",
+            ""is_checked"": true,
+            ""is_editable"": true
+          },
+          {
+            ""label"": ""IAF"",
+            ""metric"": ""plan_version"",
+            ""is_checked"": true,
+            ""is_editable"": true
+          },
+          {
+            ""label"": ""Var IAF%"",
+            ""metric"": ""plan_version"",
+            ""is_checked"": true,
+            ""is_editable"": true
+          },
+          {
+            ""label"": ""OP"",
+            ""metric"": ""plan_version"",
+            ""is_checked"": true,
+            ""is_editable"": true
+          },
+          {
+            ""label"": ""Var OP%"",
+            ""metric"": ""plan_version"",
+            ""is_checked"": true,
+            ""is_editable"": true
+          },
+          {
+            ""label"": ""LF"",
+            ""metric"": ""plan_version"",
+            ""is_checked"": true,
+            ""is_editable"": true
+          },
+          {
+            ""label"": ""Var LF%"",
+            ""metric"": ""plan_version"",
+            ""is_checked"": true,
+            ""is_editable"": true
+          },
+          {
+            ""label"": ""TP"",
+            ""metric"": ""plan_version"",
+            ""is_checked"": true,
+            ""is_editable"": true
+          },
+          {
+            ""label"": ""Var TP%"",
+            ""metric"": ""plan_version"",
+            ""is_checked"": true,
+            ""is_editable"": true
+          }
+        ]
+      ]
+    }",2024-12-23 17:37:33.270,2024-12-23 17:37:33.270
+5,5,false,"{
+      ""view_settings"": [
+        {
+          ""key"": ""timeline"",
+          ""title"": ""Timeline Hierarchy"",
+          ""options"": [
+            {
+              ""label"": ""Weeks"",
+              ""checked"": true,
+              ""category"": ""week""
+            },
+            {
+              ""label"": ""Month"",
+              ""checked"": true,
+              ""category"": ""month""
+            },
+            {
+              ""label"": ""Quarter"",
+              ""checked"": true,
+              ""category"": ""quarter""
+            },
+            {
+              ""label"": ""Half year"",
+              ""checked"": true,
+              ""category"": ""season""
+            },
+            {
+              ""label"": ""Year"",
+              ""checked"": true,
+              ""category"": ""year""
+            },
+            {
+              ""label"": ""Grand Total"",
+              ""checked"": true,
+              ""category"": ""grand_total""
+            }
+          ],
+          ""viewType"": ""checkbox-list"",
+          ""accessorType"": ""column""
+        },
+        {
+          ""key"": ""product"",
+          ""order"": 1,
+          ""title"": ""Product Hierarchy"",
+          ""options"": [
+            {
+              ""label"": ""Department"",
+              ""checked"": true,
+              ""category"": ""l2_name""
+            },
+            {
+              ""label"": ""Class"",
+              ""checked"": true,
+              ""category"": ""l3_name""
+            }
+          ],
+          ""viewType"": ""checkbox-list"",
+          ""accessorType"": ""column""
+        },
+        {
+          ""key"": ""channel"",
+          ""title"": ""Channel Hierarchy"",
+          ""options"": [
+            {
+              ""label"": ""Individual"",
+              ""checked"": true,
+              ""category"": ""individual""
+            },
+            {
+              ""label"": ""Omni"",
+              ""checked"": true,
+              ""category"": ""total""
+            }
+          ],
+          ""viewType"": ""checkbox-list"",
+          ""accessorType"": ""column""
+        },
+        {
+          ""key"": ""showValues"",
+          ""title"": ""Show values as"",
+          ""options"": [
+            {
+              ""label"": ""Absolute"",
+              ""checked"": true,
+              ""category"": ""absolute""
+            },
+            {
+              ""label"": ""Cont % to Omni"",
+              ""checked"": true,
+              ""category"": ""channel-cont""
+            },
+            {
+              ""label"": ""Cont % to Ttl"",
+              ""checked"": true,
+              ""category"": ""class-cont""
+            }
+          ],
+          ""viewType"": ""checkbox-list"",
+          ""accessorType"": ""column""
+        },
+        {
+          ""key"": ""version"",
+          ""title"": ""Version"",
+          ""selected"": true,
+          ""viewType"": ""toggle"",
+          ""accessorType"": ""row""
+        },
+        {
+          ""key"": ""variance"",
+          ""title"": ""Variance"",
+          ""selected"": true,
+          ""viewType"": ""toggle"",
+          ""accessorType"": ""row""
+        }
+      ],
+      ""show_hide_metrics"": [
+        [
+          {
+            ""label"": ""BOP Inventory"",
+            ""is_checked"": false,
+            ""order"": 1,
+            ""metric"": ""kpi"",
+            ""children"": [
+              {
+                ""label"": ""BOP $"",
+                ""metric"": ""bop_cost"",
+                ""order"": 1,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""BOP U"",
+                ""metric"": ""bop_units"",
+                ""order"": 2,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""BOP AUC"",
+                ""metric"": ""bop_auc"",
+                ""order"": 3,
+                ""is_checked"": false
+              }
+            ]
+          },
+          {
+            ""label"": ""Written Sales"",
+            ""is_checked"": true,
+            ""order"": 2,
+            ""metric"": ""kpi"",
+            ""children"": [
+              {
+                ""label"": ""W Sls $"",
+                ""metric"": ""written_sales_dollars"",
+                ""order"": 4,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""W Sls $ Bld"",
+                ""metric"": ""written_sales_build_ratio"",
+                ""order"": 5,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""W Comp Spread%"",
+                ""metric"": ""written_comp_spread_perc"",
+                ""order"": 6,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""W Sls $ Comp"",
+                ""metric"": ""written_sales_comp"",
+                ""order"": 7,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""W Sls $ NonComp"",
+                ""metric"": ""written_sales_noncomp"",
+                ""order"": 8,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""W Sls U"",
+                ""metric"": ""written_sales_units"",
+                ""order"": 9,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""W Sls U Bld"",
+                ""metric"": ""written_sales_units_build_ratio"",
+                ""order"": 10,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""W AIR"",
+                ""metric"": ""written_air"",
+                ""order"": 11,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""W DR%"",
+                ""metric"": ""written_dr_perc"",
+                ""order"": 12,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""W IMU%"",
+                ""metric"": ""wrtn_imu_per"",
+                ""order"": 13,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""W AUR"",
+                ""metric"": ""written_aur"",
+                ""order"": 14,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""W COGS"",
+                ""metric"": ""written_sales_cost"",
+                ""order"": 15,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""W AUC"",
+                ""metric"": ""written_auc"",
+                ""order"": 16,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""W GM %"",
+                ""metric"": ""written_gm_perc"",
+                ""order"": 17,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""W GM $"",
+                ""metric"": ""written_gm_dollar"",
+                ""order"": 18,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""W BO Sls $"",
+                ""metric"": ""written_backorder_sales"",
+                ""order"": 19,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""W BO Sls U"",
+                ""metric"": ""written_backorder_sales_units"",
+                ""order"": 20,
+                ""is_checked"": false
+              }
+            ]
+          },
+          {
+            ""label"": ""Written to Delivered"",
+            ""is_checked"": false,
+            ""order"": 3,
+            ""metric"": ""kpi"",
+            ""children"": [
+              {
+                ""label"": ""W Cncl Rtl $"",
+                ""metric"": ""cancelled_dollars"",
+                ""order"": 21,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""W Cncl Rtl %"",
+                ""metric"": ""written_cancel_retail_rate_perc"",
+                ""order"": 22,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""W Cncl U"",
+                ""metric"": ""cancelled_qty"",
+                ""order"": 23,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""W Cncl U %"",
+                ""metric"": ""written_cancel_units_rate_perc"",
+                ""order"": 24,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""W Cncl Cst $"",
+                ""metric"": ""cancelled_cost"",
+                ""order"": 25,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""W Cncl Cst $ %"",
+                ""metric"": ""written_cancel_cost_rate_perc"",
+                ""order"": 26,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""ND Sls $"",
+                ""metric"": ""non_delivered_dollars"",
+                ""order"": 27,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""Wgt Age ND Sls $"",
+                ""metric"": ""wei_age_non_delivered_sales_dollars"",
+                ""order"": 28,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""Fct D Sls $"",
+                ""metric"": ""fcst_d_sls_dollars"",
+                ""order"": 29,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""ND Sls U"",
+                ""metric"": ""non_delivered_qty"",
+                ""order"": 30,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""Wgt Age ND U"",
+                ""metric"": ""wei_age_non_delivered_units"",
+                ""order"": 31,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""Fct D Sls U"",
+                ""metric"": ""fct_sls_units"",
+                ""order"": 32,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""ND COGS"",
+                ""metric"": ""non_delivered_cost"",
+                ""order"": 33,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""Wgt Age ND COGS"",
+                ""metric"": ""wei_age_non_delivered_costs"",
+                ""order"": 34,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""Fct D COGS"",
+                ""metric"": ""fct_d_cost"",
+                ""order"": 35,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""D Sls $ Adj Fctr"",
+                ""metric"": ""retail_conversion_adjustment"",
+                ""order"": 36,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""D Sls U Adj Fctr"",
+                ""metric"": ""unit_conversion_adjustment"",
+                ""order"": 110,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""D COGS Adj Fctr"",
+                ""metric"": ""cost_conversion_adjustment"",
+                ""order"": 111,
+                ""is_checked"": false
+              }
+            ]
+          },
+          {
+            ""label"": ""Delivered Sales"",
+            ""is_checked"": true,
+            ""order"": 4,
+            ""metric"": ""kpi"",
+            ""children"": [
+              {
+                ""label"": ""D Sls $"",
+                ""metric"": ""delivered_net_sales_dollars"",
+                ""order"": 37,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""D Sls $ Bld"",
+                ""metric"": ""delivered_net_sales_build_ratio"",
+                ""order"": 38,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""D Sls U"",
+                ""metric"": ""delivered_net_sales_units"",
+                ""order"": 39,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""D Sls U Bld"",
+                ""metric"": ""delivered_net_sales_units_build_ratio"",
+                ""order"": 40,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""D AIR"",
+                ""metric"": ""delivered_air"",
+                ""order"": 41,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""D DR%"",
+                ""metric"": ""delivered_drperc"",
+                ""order"": 42,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""D AUR"",
+                ""metric"": ""delivered_aur"",
+                ""order"": 43,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""D COGS"",
+                ""metric"": ""delivered_net_sales_cost"",
+                ""order"": 44,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""D AUC"",
+                ""metric"": ""delivered_auc"",
+                ""order"": 45,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""D GM %"",
+                ""metric"": ""delivered_gmperc"",
+                ""order"": 46,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""D GM $"",
+                ""metric"": ""delivered_gm"",
+                ""order"": 47,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""D GMROI"",
+                ""metric"": ""delivered_gmroi"",
+                ""order"": 48,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""D Rtrn Rtl $"",
+                ""metric"": ""delivered_returns_dollars"",
+                ""order"": 49,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""D Rtrn Rtl %"",
+                ""metric"": ""delivered_retail_return_rate_perc"",
+                ""order"": 50,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""D Rtrn U"",
+                ""metric"": ""delivered_returns_qty"",
+                ""order"": 51,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""D Rtrn U %"",
+                ""metric"": ""delivered_unit_return_rate_perc"",
+                ""order"": 52,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""D Rtrn Cst $"",
+                ""metric"": ""delivered_returns_cost"",
+                ""order"": 53,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""D Rtrn Cst $ %"",
+                ""metric"": ""delivered_cost_return_rate_perc"",
+                ""order"": 54,
+                ""is_checked"": false
+              }
+            ]
+          },
+          {
+            ""label"": ""BOP Avg Inv"",
+            ""is_checked"": true,
+            ""order"": 5,
+            ""metric"": ""kpi"",
+            ""children"": [
+              {
+                ""label"": ""AOH C$"",
+                ""metric"": ""aoh_cost"",
+                ""order"": 55,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""AOH U"",
+                ""metric"": ""aoh_units"",
+                ""order"": 56,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""AOH FWOS C$"",
+                ""metric"": ""aoh_fwos_cost"",
+                ""order"": 57,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""AOH FWOS U"",
+                ""metric"": ""aoh_fwos_units"",
+                ""order"": 58,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""ATP C$"",
+                ""metric"": ""atp_cost"",
+                ""order"": 59,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""ATP U"",
+                ""metric"": ""atp_units"",
+                ""order"": 60,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""ATP FWOS C$"",
+                ""metric"": ""atp_fwos_cost"",
+                ""order"": 61,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""ATP FWOS U"",
+                ""metric"": ""atp_fwos_units"",
+                ""order"": 62,
+                ""is_checked"": false
+              }
+            ]
+          },
+          {
+            ""label"": ""OTB"",
+            ""is_checked"": true,
+            ""order"": 6,
+            ""metric"": ""kpi"",
+            ""children"": [
+              {
+                ""label"": ""OTB$ (WF-OP)"",
+                ""metric"": ""otb_wf_op"",
+                ""order"": 63,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""OTB$ (WF-LF)"",
+                ""metric"": ""otb_wf_lf"",
+                ""order"": 64,
+                ""is_checked"": true
+              }
+            ]
+          },
+          {
+            ""label"": ""Receipts"",
+            ""is_checked"": true,
+            ""order"": 7,
+            ""metric"": ""kpi"",
+            ""children"": [
+              {
+                ""label"": ""Ttl Rcpt $"",
+                ""metric"": ""total_receipt_cost"",
+                ""order"": 65,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""STK Rcpt $"",
+                ""metric"": ""stock_receipts_cost"",
+                ""order"": 66,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""SPO Rcpt $"",
+                ""metric"": ""special_order_receipt_cost"",
+                ""order"": 67,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""Rcpt $ % of STK"",
+                ""metric"": ""stock_perc_total_receipts_cost"",
+                ""order"": 68,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""Ttl Rcpt U"",
+                ""metric"": ""total_receipt_units"",
+                ""order"": 69,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""STK Rcpt U"",
+                ""metric"": ""stock_receipts_units"",
+                ""order"": 70,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""SPO Rcpt U"",
+                ""metric"": ""special_order_receipt_units"",
+                ""order"": 71,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""Rcpt U % of STK"",
+                ""metric"": ""stock_perc_total_receipts_units"",
+                ""order"": 72,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""Ttl Rcpt AUC"",
+                ""metric"": ""total_receipts_auc"",
+                ""order"": 73,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""STK Rcpt AUC"",
+                ""metric"": ""stock_receipts_auc"",
+                ""order"": 74,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""SPO Rcpt AUC"",
+                ""metric"": ""spo_receipts_auc"",
+                ""order"": 75,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""OO $ (TTL-P)"",
+                ""metric"": ""on_order_placed_total"",
+                ""order"": 76,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""OO $ (STK-P)"",
+                ""metric"": ""on_order_placed_stock"",
+                ""order"": 77,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""OO $ (SPO-P)"",
+                ""metric"": ""on_order_placed_spo"",
+                ""order"": 78,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""OO $ (TTL-UP)"",
+                ""metric"": ""on_order_unplaced_total"",
+                ""order"": 79,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""OO $ (STK-UP)"",
+                ""metric"": ""on_order_unplaced_stock"",
+                ""order"": 80,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""OO $ (SPO-UP)"",
+                ""metric"": ""on_order_unplaced_spo"",
+                ""order"": 81,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""% of Rcpt $ (STK-UP)"",
+                ""metric"": ""stock_perc_unplaced_receipt"",
+                ""order"": 82,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""OO U (TTL-P)"",
+                ""metric"": ""on_order_placed_total_unit"",
+                ""order"": 83,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""OO U (STK-P)"",
+                ""metric"": ""on_order_placed_stock_unit"",
+                ""order"": 84,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""OO U (SPO-P)"",
+                ""metric"": ""on_order_placed_spo_unit"",
+                ""order"": 85,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""OO U (TTL-UP)"",
+                ""metric"": ""on_order_unplaced_total_unit"",
+                ""order"": 86,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""OO U (STK-UP)"",
+                ""metric"": ""on_order_unplaced_stock_unit"",
+                ""order"": 87,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""OO U (SPO-UP)"",
+                ""metric"": ""on_order_unplaced_spo_unit"",
+                ""order"": 88,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""% of Rcpt U (STK-UP)"",
+                ""metric"": ""stock_perc_unplaced_receipt_unit"",
+                ""order"": 89,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""OO AUC (TTL-P)"",
+                ""metric"": ""on_order_placed_total_auc"",
+                ""order"": 90,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""OO AUC (STK-P)"",
+                ""metric"": ""on_order_placed_stock_auc"",
+                ""order"": 91,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""OO AUC (SPO-P)"",
+                ""metric"": ""on_order_placed_spo_auc"",
+                ""order"": 92,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""OO AUC (TTL-UP)"",
+                ""metric"": ""on_order_unplaced_total_auc"",
+                ""order"": 93,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""OO AUC (STK-UP)"",
+                ""metric"": ""on_order_unplaced_stock_auc"",
+                ""order"": 94,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""OO AUC (SPO-UP)"",
+                ""metric"": ""on_order_unplaced_spo_auc"",
+                ""order"": 95,
+                ""is_checked"": false
+              }
+            ]
+          },
+          {
+            ""label"": ""Inventory Adj"",
+            ""is_checked"": true,
+            ""order"": 8,
+            ""metric"": ""kpi"",
+            ""children"": [
+              {
+                ""label"": ""Inv Adj $"",
+                ""metric"": ""inv_adj_cost"",
+                ""order"": 96,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""Inv Adj $ %"",
+                ""metric"": ""inv_adj_cost_perc"",
+                ""order"": 97,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""Inv Adj U"",
+                ""metric"": ""inv_adj_units"",
+                ""order"": 98,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""Inv Adj U %"",
+                ""metric"": ""inv_adj_units_perc"",
+                ""order"": 99,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""Inv Adj AUC"",
+                ""metric"": ""inv_adj_auc"",
+                ""order"": 100,
+                ""is_checked"": true
+              }
+            ]
+          },
+          {
+            ""label"": ""EOP Inventory"",
+            ""is_checked"": true,
+            ""order"": 9,
+            ""metric"": ""kpi"",
+            ""children"": [
+              {
+                ""label"": ""EOP $"",
+                ""metric"": ""eop_cost"",
+                ""order"": 101,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""EOP U"",
+                ""metric"": ""eop_units"",
+                ""order"": 102,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""EOP AUC"",
+                ""metric"": ""eop_auc"",
+                ""order"": 103,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""EOP C$ OP"",
+                ""metric"": ""eop_cost_op"",
+                ""order"": 104,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""EOP C$ LF"",
+                ""metric"": ""eop_cost_lf"",
+                ""order"": 105,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""Avg Inv Cst $"",
+                ""metric"": ""average_inventory_cost"",
+                ""order"": 106,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""Avg Inv U"",
+                ""metric"": ""average_inventory_units"",
+                ""order"": 107,
+                ""is_checked"": false
+              },
+              {
+                ""label"": ""Trn $"",
+                ""metric"": ""turn_cost"",
+                ""order"": 108,
+                ""is_checked"": true
+              },
+              {
+                ""label"": ""Trn U"",
+                ""metric"": ""turn_units"",
+                ""order"": 109,
+                ""is_checked"": false
+              }
+            ]
+          }
+        ],
+        [
+          {
+            ""label"": ""WF"",
+            ""metric"": ""plan_version"",
+            ""is_checked"": true,
+            ""is_editable"": false
+          },
+          {
+            ""label"": ""LY"",
+            ""metric"": ""plan_version"",
+            ""is_checked"": true,
+            ""is_editable"": true
+          },
+          {
+            ""label"": ""Var LY%"",
+            ""metric"": ""plan_version"",
+            ""is_checked"": true,
+            ""is_editable"": true
+          },
+          {
+            ""label"": ""LLY"",
+            ""metric"": ""plan_version"",
+            ""is_checked"": true,
+            ""is_editable"": true
+          },
+          {
+            ""label"": ""Var LLY%"",
+            ""metric"": ""plan_version"",
+            ""is_checked"": true,
+            ""is_editable"": true
+          },
+          {
+            ""label"": ""IAF"",
+            ""metric"": ""plan_version"",
+            ""is_checked"": true,
+            ""is_editable"": true
+          },
+          {
+            ""label"": ""Var IAF%"",
+            ""metric"": ""plan_version"",
+            ""is_checked"": true,
+            ""is_editable"": true
+          },
+          {
+            ""label"": ""OP"",
+            ""metric"": ""plan_version"",
+            ""is_checked"": true,
+            ""is_editable"": true
+          },
+          {
+            ""label"": ""Var OP%"",
+            ""metric"": ""plan_version"",
+            ""is_checked"": true,
+            ""is_editable"": true
+          },
+          {
+            ""label"": ""LF"",
+            ""metric"": ""plan_version"",
+            ""is_checked"": true,
+            ""is_editable"": true
+          },
+          {
+            ""label"": ""Var LF%"",
+            ""metric"": ""plan_version"",
+            ""is_checked"": true,
+            ""is_editable"": true
+          },
+          {
+            ""label"": ""TP"",
+            ""metric"": ""plan_version"",
+            ""is_checked"": true,
+            ""is_editable"": true
+          },
+          {
+            ""label"": ""Var TP%"",
+            ""metric"": ""plan_version"",
+            ""is_checked"": true,
+            ""is_editable"": true
+          }
+        ]
+      ]
+    }",2024-12-23 17:38:27.597,2024-12-23 17:38:27.597
+6,6,false,"{
+  ""view_settings"": [
+    {
+      ""key"": ""timeline"",
+      ""title"": ""Timeline Hierarchy"",
+      ""options"": [
+        {
+          ""label"": ""Weeks"",
+          ""checked"": true,
+          ""category"": ""week""
+        },
+        {
+          ""label"": ""Month"",
+          ""checked"": true,
+          ""category"": ""month""
+        },
+        {
+          ""label"": ""Quarter"",
+          ""checked"": true,
+          ""category"": ""quarter""
+        },
+        {
+          ""label"": ""Half year"",
+          ""checked"": true,
+          ""category"": ""season""
+        },
+        {
+          ""label"": ""Year"",
+          ""checked"": true,
+          ""category"": ""year""
+        },
+        {
+          ""label"": ""Grand Total"",
+          ""checked"": true,
+          ""category"": ""grand_total""
+        }
+      ],
+      ""viewType"": ""checkbox-list"",
+      ""accessorType"": ""column""
+    },
+    {
+      ""key"": ""product"",
+      ""order"": 1,
+      ""title"": ""Product Hierarchy"",
+      ""options"": [
+        {
+          ""label"": ""Department"",
+          ""checked"": true,
+          ""category"": ""l2_name""
+        },
+        {
+          ""label"": ""Class"",
+          ""checked"": true,
+          ""category"": ""l3_name""
+        }
+      ],
+      ""viewType"": ""checkbox-list"",
+      ""accessorType"": ""column""
+    },
+    {
+      ""key"": ""channel"",
+      ""title"": ""Channel Hierarchy"",
+      ""options"": [
+        {
+          ""label"": ""Individual"",
+          ""checked"": true,
+          ""category"": ""individual""
+        },
+        {
+          ""label"": ""Omni"",
+          ""checked"": true,
+          ""category"": ""total""
+        }
+      ],
+      ""viewType"": ""checkbox-list"",
+      ""accessorType"": ""column""
+    },
+    {
+      ""key"": ""showValues"",
+      ""title"": ""Show values as"",
+      ""options"": [
+        {
+          ""label"": ""Absolute"",
+          ""checked"": true,
+          ""category"": ""absolute""
+        },
+        {
+          ""label"": ""Cont % to Omni"",
+          ""checked"": true,
+          ""category"": ""channel-cont""
+        },
+        {
+          ""label"": ""Cont % to Ttl"",
+          ""checked"": true,
+          ""category"": ""class-cont""
+        }
+      ],
+      ""viewType"": ""checkbox-list"",
+      ""accessorType"": ""column""
+    },
+    {
+      ""key"": ""version"",
+      ""title"": ""Version"",
+      ""selected"": true,
+      ""viewType"": ""toggle"",
+      ""accessorType"": ""row""
+    },
+    {
+      ""key"": ""variance"",
+      ""title"": ""Variance"",
+      ""selected"": true,
+      ""viewType"": ""toggle"",
+      ""accessorType"": ""row""
+    }
+  ]
+}",2024-12-27 14:20:11.619,2024-12-27 14:20:11.619

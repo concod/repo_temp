@@ -1,0 +1,681 @@
+import React, { useEffect, useRef, useState } from "react";
+import { connect } from "react-redux";
+import AgGridComponent from "core/Utils/agGrid";
+import agGridColumnFormatter from "core/Utils/agGrid/column-formatter";
+import { makeStyles } from "@mui/styles";
+import globalStyles from "core/Styles/globalStyles";
+import { agGridRowFormatter } from "core/Utils/agGrid/row-formatter";
+import { Button, Badge } from "impact-ui-v3";
+import { cloneDeep, isEmpty } from "lodash";
+import LoadingOverlay from "core/Utils/Loader/loader";
+import EmptyStateWrapper from "core/commonComponents/coreComponentScreen/EmptyStateWrapper";
+import { Divider, Typography } from "@mui/material";
+
+import {
+  SEND_FOR_APPROVAL,
+  ERROR_MESSAGE,
+  OMS_ORDER_MANAGEMENT_SCREENNAME_KEY,
+} from "modules/oms/constants-oms/stringConstants";
+import { setOmsApprovalFlowTableLoader } from "modules/oms/services-oms/Order-Management/order-management-service";
+import { TENANT_LOCALE } from "modules/oms/constants-oms/stringConstants";
+import {
+  getOmsApprovalFlowColumnConfigInVendorStore,
+  getOmsApprovalFlowTableStoreData,
+  approveOmsApprovalFlowInVendorStore,
+  sendForApprovalOmsApprovalFlowInVendorStore,
+} from "modules/oms/services-oms/Order-Management/order-management-vendor-to-store-service";
+
+const useStyles = makeStyles((theme) => ({
+  tableHeaderContainer: {
+    display: "flex",
+    alignItems: "center",
+    gap: "1rem",
+  },
+  gridTitle: {
+    fontWeight: 700,
+    fontSize: "14px",
+    lineHeight: "16px",
+  },
+  totalOrderQtyContainer: {
+    display: "flex",
+    alignItems: "center",
+    gap: "4px",
+  },
+  totalOrderQtyLabel: {
+    fontWeight: 500,
+    fontSize: "12px",
+    lineHeight: "16px",
+  },
+}));
+
+const ApprovalFlowTableVendorStore = ({ displaySnackMessages, ...props }) => {
+  const globalClasses = globalStyles();
+  const classes = useStyles();
+
+  const [tableColumns, setTableColumns] = useState([]);
+  const tableGridInstance = useRef(null);
+  const [renderGrid, setRenderGrid] = useState(false);
+  const [rowCount, setRowCount] = useState(0);
+
+  const [isSendForApprovalButton, setIsSendForApprovalButton] = useState(false);
+  const [isApprovalButton, setIsApprovalButton] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [totalOrderQty, setTotalOrderQty] = useState(null);
+  const [refreshTable, setRefreshTable] = useState(false);
+  const [isOrderTypePresent, setIsOrderTypePresent] = useState(false); // New state to track presence of order_type
+
+  const generateUniqueId = () => {
+    return `${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+  };
+
+  //Renders with OMS Approval Flow Filters
+  useEffect(() => {
+    const fetchColumnConfig = async () => {
+      try {
+        setRenderGrid(false);
+        let cols = await props?.getOmsApprovalFlowColumnConfig();
+        let formattedColumns = agGridColumnFormatter(
+          cols?.data?.data,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          true
+        );
+
+        formattedColumns = formattedColumns.map((col) => {
+          try {
+            if (col.extra?.is_grouping_key) {
+              col.cellRenderer = "agGroupCellRenderer";
+              if (col.type === "str") {
+                col.rowGroup = true;
+                col.isEditable = false;
+              }
+            }
+
+            if (col.column_name === "size") {
+              // size column in child rows
+              col.cellRenderer = (params, extraProps) => {
+                try {
+                  if (params.node.level === 0) {
+                    return "";
+                  } else {
+                    return params.value || "-";
+                  }
+                } catch (error) {
+                  console.error("Error in size column renderer:", error);
+                  return params.value || "-";
+                }
+              };
+            }
+
+            return col;
+          } catch (error) {
+            console.error("Error formatting column:", col, error);
+            return col;
+          }
+        });
+
+        setTableColumns(formattedColumns);
+      } catch (error) {
+        displaySnackMessages(ERROR_MESSAGE, "error");
+        setRenderGrid(false);
+      }
+    };
+    fetchColumnConfig();
+  }, [props.selectedApprovalFilters]);
+
+  //Refreshes the AG Grid when the user send the order for approval / approve the order
+  useEffect(() => {
+    const fetchColumnConfig = async () => {
+      try {
+        setRenderGrid(false);
+        setRefreshTable(false);
+        let cols = await props?.getOmsApprovalFlowColumnConfig();
+        let formattedColumns = agGridColumnFormatter(
+          cols?.data?.data,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          true
+        );
+
+        formattedColumns = formattedColumns.map((col) => {
+          try {
+            if (col.extra?.is_grouping_key) {
+              col.cellRenderer = "agGroupCellRenderer";
+              if (col.type === "str") {
+                col.rowGroup = true;
+                col.isEditable = false;
+              }
+            }
+            if (col.column_name === "size") {
+              // size column in child rows
+              col.cellRenderer = (params, extraProps) => {
+                try {
+                  if (params.node.level === 0) {
+                    return "";
+                  } else {
+                    return params.value || "-";
+                  }
+                } catch (error) {
+                  console.error("Error in size column renderer:", error);
+                  return params.value || "-";
+                }
+              };
+            }
+
+            return col;
+          } catch (error) {
+            console.error("Error formatting column:", col, error);
+            return col;
+          }
+        });
+        setTableColumns(formattedColumns);
+      } catch (error) {
+        displaySnackMessages(ERROR_MESSAGE, "error");
+        setRenderGrid(false);
+      }
+    };
+    if (refreshTable) fetchColumnConfig();
+  }, [refreshTable]);
+
+  //Renders Grid when tablec columns are fetched
+  useEffect(() => {
+    if (tableColumns.length > 0) {
+      if (isApprovalButton !== false || isSendForApprovalButton !== false)
+        setRenderGrid(true);
+    }
+  }, [tableColumns, isApprovalButton, isSendForApprovalButton]);
+
+  // Add useEffect to check for 'order_type' in approvalProductFilters whenever selectedApprovalFilters changes
+  useEffect(() => {
+    const approvalProductFilters = (
+      props?.selectedApprovalFilters || []
+    ).filter((filter) => filter.attribute_name !== "fiscal_date_range");
+    const hasOrderType = approvalProductFilters.some(
+      (filter) => filter.attribute_name === "order_type"
+    );
+    setIsOrderTypePresent(hasOrderType);
+  }, [props.selectedApprovalFilters]);
+
+  const loadTableInstance = (params) => {
+    tableGridInstance.current = params;
+  };
+
+  const createApprovalPayload = () => {
+    try {
+      // Fetching the filters from local storage when navigating from Dashboard to Approval Flow Pane
+      const redirectionApprovalFilters = JSON.parse(
+        localStorage.getItem("approvalFlowFilters")
+      );
+
+      // Fetching the filters from local storage when navigating from Dashboard to Product Details page / Matrix Summary
+      const redirectionDetails = JSON.parse(
+        localStorage.getItem("omsRedirectionDetails")
+      );
+      const redirectionFilters = redirectionDetails?.isRedirection
+        ? redirectionDetails?.selectedFilters
+        : [];
+
+      //OMS Dashboard Filters
+      console.log("filters", props?.omsFilterVendorStoreConfiguration);
+      const appliedOmsFilters =
+        props?.omsFilterConfiguration?.appliedFilterData?.dependencyData ||
+        props?.omsFilterVendorStoreConfiguration;
+      redirectionApprovalFilters ||
+        props?.selectedFilters ||
+        redirectionFilters ||
+        [];
+      // const appliedOmsProductFilters = appliedOmsFilters?.filter(
+      //   (filter) => filter.display_type !== "fiscalCalendar"
+      // );
+      console.log("filters", props?.omsFilterVendorStoreConfiguration);
+      let appliedOmsDateFilters = [];
+      if (
+        props?.recommRecieptDate?.start_date &&
+        props?.recommRecieptDate?.end_date
+      ) {
+        appliedOmsDateFilters.push(props?.recommRecieptDate);
+      }
+      if (props?.ropDate?.start_date && props?.ropDate?.end_date) {
+        appliedOmsDateFilters.push(props?.ropDate);
+      }
+
+      //Approval Flow Filters
+      const approvalProductFilters = cloneDeep(
+        props?.selectedApprovalFilters?.filter(
+          (filter) => filter.attribute_name !== "fiscal_date_range"
+        )
+      );
+
+      //To check if the user has reset the filters or removed styles/l6_id/articles/skus
+      let selectedRowKeyPresentInFilters = false;
+      if (
+        approvalProductFilters?.length &&
+        props?.productIdentifiersFilters?.length
+      ) {
+        approvalProductFilters.map((filter) => {
+          if (
+            filter?.attribute_name ===
+            props?.productIdentifiersFilters[0]?.column_name
+          ) {
+            if (filter?.values?.length === 0) {
+              filter.values = props?.selectedRowsFilter[0]?.values || [];
+            }
+            selectedRowKeyPresentInFilters = true;
+          }
+        });
+      }
+
+      //If there is no filter available on the Approval Filters for selected styles/l6_id/articles/skus
+      if (
+        !selectedRowKeyPresentInFilters &&
+        props?.selectedRowsFilter?.length
+      ) {
+        approvalProductFilters.push(props?.selectedRowsFilter[0]);
+      }
+
+      let payload = {
+        level_of_heirarchy: props?.targetTable,
+        approval_date_filters: isEmpty(props?.orderPlacementDate)
+          ? []
+          : [props?.orderPlacementDate],
+        approval_filters:
+          approvalProductFilters?.length > 0
+            ? approvalProductFilters
+            : props?.selectedRowsFilter,
+        filters: props?.omsFilterVendorStoreConfiguration,
+        date_filter: appliedOmsDateFilters,
+      };
+
+      //If the Approval Flow pane is called from Style Order Summary screen, then add the order_group_id, article, order_placement_date to the payload
+      if (props?.targetTable === "style_order_summary") {
+        const checkConfig = props?.getCheckConfigurationForStyleOrderSummary();
+        const ordersSelectedFromStyleOrderSummary = filterObjectKeys(
+          props?.selectedRows
+        );
+        payload.orders = ordersSelectedFromStyleOrderSummary;
+        Object.assign(payload, checkConfig);
+        Object.assign(payload, props?.styleOrderSummaryPayload);
+      }
+
+      return payload;
+    } catch (error) {
+      console.log("Error in creating Approval Payload", error);
+      displaySnackMessages(ERROR_MESSAGE, "error");
+    }
+  };
+
+  const filterObjectKeys = (data) => {
+    try {
+      const productDetailsKey =
+        props?.productIdentifiersFilters[0]?.column_name;
+      const desiredKeys = [
+        "order_group_id",
+        productDetailsKey,
+        "order_placement_date",
+      ];
+      return data.map((obj) => {
+        return desiredKeys.reduce((acc, key) => {
+          if (
+            key === "order_placement_date" &&
+            !obj[key] &&
+            obj["order_placement_recom_date"]
+          ) {
+            acc[key] = obj["order_placement_recom_date"];
+          } else {
+            acc[key] = obj[key];
+          }
+          return acc;
+        }, {});
+      });
+    } catch (error) {
+      console.log("Error in filtering Object Keys", error);
+      displaySnackMessages(ERROR_MESSAGE, "error");
+    }
+  };
+
+  const manualCallBack = async (manualbody, pageIndex, params) => {
+    try {
+      props.setOmsApprovalFlowTableLoader(true);
+      setIsLoading(true);
+      let body = createApprovalPayload();
+      body.meta = {
+        ...manualbody,
+        limit: { limit: 10, page: pageIndex + 1 },
+      };
+      let response = await props.getOmsApprovalFlowTableStoreData(body);
+      if (response?.data?.status) {
+        const tableData = response?.data?.data?.data || response?.data?.data;
+        let formatedData = agGridRowFormatter(tableData);
+
+        formatedData = formatedData.map((row) => ({
+          ...row,
+          id: generateUniqueId(),
+          status_obj:
+            row.status_obj && row.status_obj.length > 0
+              ? row.status_obj
+              : undefined,
+        }));
+
+        setRowCount(formatedData.length);
+        setIsLoading(false);
+        setTotalOrderQty(response?.data?.data?.total_order_qty ?? 0);
+        return {
+          data: formatedData,
+          totalCount: response.data.total || formatedData.length,
+        };
+      } else {
+        props.setOmsApprovalFlowTableLoader(false);
+        setRowCount(0);
+        setIsLoading(false);
+        return { data: [], totalCount: 0 };
+      }
+    } catch (error) {
+      displaySnackMessages(ERROR_MESSAGE, "error");
+      props.setOmsApprovalFlowTableLoader(false);
+    }
+  };
+
+  const confirmApproval = async (actionType) => {
+    try {
+      let body = createApprovalPayload();
+      body.action = actionType;
+      let actionSuccess = false;
+      setIsLoading(true);
+      if (actionType === SEND_FOR_APPROVAL) {
+        const response = await props?.sendForApprovalOmsApprovalFlow(body);
+        if (response?.data?.status) {
+          actionSuccess = true;
+          if (response?.data?.data?.order_batch_name) {
+            displaySnackMessages(
+              `Success - ${SEND_FOR_APPROVAL} | Order ID : [${response?.data?.data?.order_batch_name}]`,
+              "success",
+              8000
+            );
+          } else {
+            if (response?.data?.data?.success?.length) {
+              displaySnackMessages(
+                `Success - ${SEND_FOR_APPROVAL} | Order ID : [${response?.data?.data?.success[0]}]`,
+                "success",
+                8000
+              );
+            }
+            if (response?.data?.data?.failed?.length) {
+              let orders = [];
+              response.data.data?.failed.forEach((order) => {
+                orders.push(order);
+              });
+              displaySnackMessages(
+                "Approval Failed for order IDs:" + orders.join(","),
+                "success",
+                8000
+              );
+            }
+          }
+        }
+      } else {
+        const response = await props?.approveOmsApprovalFlow(body);
+        if (response?.data?.status) {
+          actionSuccess = true;
+          if (response?.data?.data?.order_batch_name) {
+            displaySnackMessages(
+              `Success - Approve | Order ID : [${response?.data?.data?.order_batch_name}]`,
+              "success",
+              8000
+            );
+          } else {
+            if (response?.data?.data?.success?.length) {
+              displaySnackMessages(
+                `Success - $Approve | Order ID : [${response?.data?.data?.success[0]}]`,
+                "success",
+                8000
+              );
+            }
+            if (response?.data?.data?.failed?.length) {
+              let orders = [];
+              response.data.data?.failed.forEach((order) => {
+                orders.push(order);
+              });
+              displaySnackMessages(
+                "Approval Failed for order IDs:" + orders.join(","),
+                "success",
+                8000
+              );
+            }
+          }
+        }
+      }
+      setRefreshTable(true);
+      if (!actionSuccess) {
+        displaySnackMessages(ERROR_MESSAGE, "error");
+      }
+    } catch (error) {
+      setRefreshTable(true);
+      displaySnackMessages(ERROR_MESSAGE, "error");
+      console.log("Error in Approval Action - ", error);
+    }
+  };
+
+  useEffect(() => {
+    if (!isEmpty(props.userAccess)) {
+      // New access control: Check props.userAccess first
+      const approvalFlowAccess = props.userAccess?.find(
+        (item) =>
+          item.screen === OMS_ORDER_MANAGEMENT_SCREENNAME_KEY &&
+          item.module === "approval_flow"
+      );
+
+      if (approvalFlowAccess && approvalFlowAccess.isSendForApprovalButton) {
+        setIsSendForApprovalButton(approvalFlowAccess.isSendForApprovalButton);
+      } else {
+        const SHOW_SEND_BY_APPROVAL_BUTTON =
+          props?.screenConfig?.oms_dashboard?.approval_flow
+            ?.show_send_by_approval_button;
+        setIsSendForApprovalButton({ isVisible: SHOW_SEND_BY_APPROVAL_BUTTON });
+      }
+      if (approvalFlowAccess && approvalFlowAccess.isApprovalButton) {
+        setIsApprovalButton(approvalFlowAccess.isApprovalButton);
+      } else {
+        const SHOW_APPROVE_BUTTON =
+          props?.screenConfig?.oms_dashboard?.approval_flow
+            ?.show_approve_button;
+        setIsApprovalButton({ isVisible: SHOW_APPROVE_BUTTON });
+      }
+    } else {
+      // Fallback to existing access control logic
+      if (props.omsAccessControl.hasOwnProperty("isSendForApprovalButton")) {
+        setIsSendForApprovalButton(
+          props.omsAccessControl.isSendForApprovalButton
+        );
+      } else {
+        const SHOW_SEND_BY_APPROVAL_BUTTON =
+          props?.screenConfig?.oms_dashboard?.approval_flow
+            ?.show_send_by_approval_button;
+        setIsSendForApprovalButton({ isVisible: SHOW_SEND_BY_APPROVAL_BUTTON });
+      }
+      if (props.omsAccessControl.hasOwnProperty("isApprovalButton")) {
+        setIsApprovalButton(props.omsAccessControl.isApprovalButton);
+      } else {
+        const SHOW_APPROVE_BUTTON =
+          props?.screenConfig?.oms_dashboard?.approval_flow
+            ?.show_approve_button;
+        setIsApprovalButton({ isVisible: SHOW_APPROVE_BUTTON });
+      }
+    }
+  }, [props.userAccess, props.screenConfig, props.omsAccessControl]);
+
+  const disableApprovalButton = () => {
+    const isOrderPlacementDateMandatory =
+      props?.vendorToStoreScreenConfig?.order_placement_date_range?.isMandatory;
+    const isOrderPlacementDateEmpty =
+      isEmpty(props?.orderPlacementDate) ||
+      props?.orderPlacementDate?.start_date === null ||
+      props?.orderPlacementDate?.start_date === undefined ||
+      props?.orderPlacementDate?.end_date === null ||
+      props?.orderPlacementDate?.end_date === undefined;
+
+    if (isOrderPlacementDateMandatory) {
+      return rowCount === 0 || isLoading || isOrderPlacementDateEmpty;
+    } else {
+      return rowCount === 0 || isLoading;
+    }
+  };
+
+  const getTopRightOptions = () => {
+    let options = [];
+
+    // Only show Approve button if order_type is present
+    if (isApprovalButton?.isVisible) {
+      options.push(
+        <Button
+          id="approveButton"
+          color="primary"
+          variant="contained"
+          disabled={disableApprovalButton()}
+          onClick={() => confirmApproval("approve")}
+        >
+          {isApprovalButton?.label || "Approve"}
+        </Button>
+      );
+    }
+
+    // Only show Send For Approval button if order_type is present AND orderPlacementDate is not empty
+    if (isSendForApprovalButton?.isVisible) {
+      options.push(
+        <Button
+          id="sendForApprovalButton"
+          color="primary"
+          variant="contained"
+          className={`${globalClasses.marginLeft1rem}`}
+          disabled={disableApprovalButton()}
+          onClick={() => confirmApproval(SEND_FOR_APPROVAL)}
+        >
+          {isSendForApprovalButton.label || SEND_FOR_APPROVAL}
+        </Button>
+      );
+    }
+    return options;
+  };
+
+  const getTableHeader = () => {
+    return (
+      <div className={classes.tableHeaderContainer}>
+        <Typography className={classes.gridTitle}>Filtered Orders</Typography>
+
+        {totalOrderQty !== null && totalOrderQty !== undefined ? (
+          <>
+            <Divider orientation="vertical" flexItem />
+            <div className={classes.totalOrderQtyContainer}>
+              <Typography className={classes.totalOrderQtyLabel}>
+                Total Order Quantity:
+              </Typography>
+              <Badge
+                label={totalOrderQty.toLocaleString(TENANT_LOCALE)}
+                color="warning"
+                size="default"
+                variant="stroke"
+              />
+            </div>
+          </>
+        ) : null}
+      </div>
+    );
+  };
+
+  return (
+    <>
+      {renderGrid ? (
+        tableColumns?.length > 0 ? (
+          <>
+            <AgGridComponent
+              columns={tableColumns}
+              manualCallBack={(body, pageIndex, params) =>
+                manualCallBack(body, pageIndex, params)
+              }
+              suppressClickEdit={true}
+              selectAllHeaderComponent={false}
+              hideSelectAllRecords={true}
+              loadTableInstance={loadTableInstance}
+              rowSelection="multiple"
+              rowModelType="serverSide"
+              serverSideStoreType="partial"
+              onRowSelected
+              cacheBlockSize={10}
+              uniqueRowId={"id"}
+              pagination={true}
+              tableHeader={getTableHeader()}
+              topRightOptions={getTopRightOptions()}
+              treeData={true}
+              childKey={"status_obj"}
+              groupDisplayType={"custom"}
+            />
+          </>
+        ) : (
+          <div className={globalClasses.centerAlign}>
+            <EmptyStateWrapper />
+          </div>
+        )
+      ) : (
+        <LoadingOverlay loader={!renderGrid} />
+      )}
+    </>
+  );
+};
+
+const mapStateToProps = (store) => {
+  return {
+    userAccess:
+      store.omsReducer.orderingCommonService.orderingUserAccess?.vendor_store,
+    filterDashboardConfiguration:
+      store.filterReducer.filterDashboardConfiguration[
+        "omsApprovalFlowDialogFilterConfiguration"
+      ],
+    screenConfig: store.omsReducer.orderingCommonService.orderingScreensConfig,
+    selectedApprovalFilters:
+      store.omsReducer.orderManagementService.selectedApprovalFilters,
+    omsFilterConfiguration:
+      store.filterReducer.filterDashboardConfiguration[
+        "orderManagementFilterConfiguration"
+      ],
+    recommRecieptDate:
+      store.omsReducer.orderManagementService.recommRecieptDate,
+    ropDate: store.omsReducer.orderManagementService.ropDate,
+    productIdentifiersFilters:
+      store.omsReducer.orderManagementVendorToStoreService.deepDiveFilters,
+    vendorToStoreScreenConfig:
+      store.omsReducer.orderingCommonService.orderingVendorToStoreConfig
+        ?.oms_dashboard?.approval_flow,
+    omsAccessControl:
+      store?.omsReducer.orderingCommonService.orderingAccessControl,
+    selectedFilters: store.omsReducer.orderManagementService.selectedFilters,
+    omsFilterVendorStoreConfiguration:
+      store.filterReducer.filterDashboardConfiguration[
+        "orderManagementVendorStoreFilterConfiguration"
+      ]?.appliedFilterData?.dependencyData,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  setOmsApprovalFlowTableLoader: (payload) =>
+    dispatch(setOmsApprovalFlowTableLoader(payload)),
+  getOmsApprovalFlowColumnConfig: () =>
+    dispatch(getOmsApprovalFlowColumnConfigInVendorStore()),
+  getOmsApprovalFlowTableStoreData: (payload) =>
+    dispatch(getOmsApprovalFlowTableStoreData(payload)),
+  sendForApprovalOmsApprovalFlow: (payload) =>
+    dispatch(sendForApprovalOmsApprovalFlowInVendorStore(payload)),
+  approveOmsApprovalFlow: (payload) =>
+    dispatch(approveOmsApprovalFlowInVendorStore(payload)),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ApprovalFlowTableVendorStore);

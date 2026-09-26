@@ -1,0 +1,40 @@
+.replenishment-matrix__multi-row-separator {
+  border-bottom: 1px dashed #ccc;
+}
+
+.replenishment-matrix__error-text {
+  color: #ab3939;
+}
+
+.replenishment-matrix__unit-input {
+  width: 80px;
+  max-width: 80px;
+  min-width: 80px;
+  padding: 4px 6px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.replenishment-matrix__unit-input:disabled {
+  background-color: #f5f5f5;
+  color: #666;
+}
+
+.replenishment-matrix__unit-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 6px 0;
+  white-space: nowrap;
+}
+
+.replenishment-matrix__unit-row button {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.replenishment-matrix__finalise-btn--ineligible {
+  color: #ab3939 !important;
+  border-color: #ab3939 !important;
+}

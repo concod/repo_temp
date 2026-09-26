@@ -1,0 +1,92 @@
+tc_code,label,column_name,dimension,type,is_frozen,is_editable,is_aggregated,order_of_display,is_hidden,is_required,tc_mapping_code,child_tc_mapping_code,aggregate_type,formatter,is_row_span,footer,is_searchable,extra,is_sortable,width,is_deleted,is_master_group
+11000,Workstream ID,workstream_id,Product,str,false,false,false,1.0,false,false,"1100001",,,,false,,false,"{}",false,200,false,false
+11000,Levels,levels,Product,str,false,false,false,2.0,false,false,"1100002",,,,false,,false,"{}",false,200,false,false
+11000,Revenue Contribution,revenue_contribution,Product,str,false,false,false,3.0,false,false,"1100003",,,,false,,false,"{}",false,200,false,false
+11000,SKU Count,sku_count,Product,str,false,false,false,4.0,false,false,"1100004",,,,false,,false,"{}",false,200,false,false
+11000,Store Count,store_count,Product,str,false,false,false,5.0,false,false,"1100005",,,,false,,false,"{}",false,200,false,false
+11000,Model Training Status,training_status,Product,str,false,false,false,6.0,false,false,"1100006",,,,false,,false,"{}",false,200,false,false
+11000,Model Simulation Status,simulation_status,Product,str,false,false,false,7.0,false,false,"1100007",,,,false,,false,"{}",false,200,false,false
+11000,Accuracy,accuracy_percent,Product,str,false,false,false,8.0,false,false,"1100008",,,,false,,false,"{}",false,200,false,false
+11000,Coverage,coverage_percent,Product,str,false,false,false,9.0,false,false,"1100009",,,,false,,false,"{}",false,200,false,false
+11001,Experiment ID,experiment_id,Experiment,str,true,false,false,1.0,false,false,"1100101",,,,false,,false,"{}",false,200,false,false
+11001,Experiment Name,experiment_name,Experiment,str,false,false,false,2.0,false,false,"1100102",,,,false,,false,"{}",false,200,false,false
+11001,Level of Forecast,level_of_forecast,Experiment,str,false,false,false,3.0,false,false,"1100103",,,,false,,false,"{}",false,200,false,false
+11001,Level of Modelling,level_of_modelling,Experiment,str,false,false,false,4.0,false,false,"1100104",,,,false,,false,"{}",false,200,false,false
+11001,Status,experiment_status,Experiment,str,false,false,false,5.0,false,false,"1100105",,,,false,,false,"{}",false,200,false,false
+11001,Training Start Date,training_start,Experiment,str,false,false,false,6.0,false,false,"1100106",,,,false,,false,"{}",false,200,false,false
+11001,Last Trained Date,training_end,Experiment,str,false,false,false,7.0,false,false,"1100107",,,,false,,false,"{}",false,200,false,false
+11001,Accuracy Reports,report_status,Experiment,str,false,false,false,8.0,false,false,"1100108",,,,false,,false,"{}",false,200,false,false
+11001,Feedbacks,feedbacks,Experiment,str,false,false,false,9.0,false,false,"1100109",,,,false,,false,"{}",false,200,false,false
+11001,Exp. Chaining,exp_chain_flag,Experiment,str,false,false,false,10.0,false,false,"1100110",,,,false,,false,"{}",false,200,false,false
+11002,FMT ID,fmt_id,FMTsSummary,str,true,false,false,1.0,false,false,"1100201",,,,false,,false,"{}",false,200,false,false
+11002,FMT Name,fmt_name,FMTsSummary,str,false,false,false,2.0,false,false,"1100202",,,,false,,false,"{}",false,200,false,false
+11002,Feature List,features_list,FMTsSummary,str,false,false,false,3.0,false,false,"1100203",,,,false,,false,"{""width"": ""300""}",false,200,false,false
+11002,Status,status,FMTsSummary,str,false,false,false,4.0,false,false,"1100204",,,,false,,false,"{}",false,200,false,false
+11002,Experiments Dependent,dependent_experiments,FMTsSummary,str,false,false,false,5.0,false,false,"1100205",,,,false,,false,"{""width"": ""300""}",false,200,false,false
+11002,Updated At,last_updated_at,FMTsSummary,str,false,false,false,6.0,false,false,"1100206",,,,false,,false,"{}",false,200,false,false
+11002,Created By,created_by,FMTsSummary,str,false,false,false,7.0,false,false,"1100207",,,,false,,false,"{}",false,200,false,false
+11003,Feature Name,feature_name,CreateOREditFMT,str,false,false,false,1.0,false,false,"1100301",,,,false,,false,"{}",false,200,false,false
+11003,Mapped FMTs,list_of_mapped_fmts,CreateOREditFMT,str,false,false,false,2.0,false,false,"1100302",,,,false,,false,"{""width"": ""300""}",false,200,false,false
+11003,Status,status,CreateOREditFMT,str,false,false,false,3.0,false,false,"1100303",,,,false,,false,"{}",false,200,false,false
+11003,Level of Source,list_of_sources,CreateOREditFMT,str,false,false,false,4.0,false,false,"1100304",,,,false,,false,"{""width"": ""300""}",false,200,false,false
+11003,Formula,formula,CreateOREditFMT,str,false,false,false,5.0,false,false,"1100305",,,,false,,false,"{""width"": ""300""}",false,550,false,false
+11003,Updated At,last_updated_at,CreateOREditFMT,str,false,false,false,6.0,false,false,"1100306",,,,false,,false,"{}",false,200,false,false
+11003,Created By,created_by,CreateOREditFMT,str,false,false,false,7.0,false,false,"1100307",,,,false,,false,"{}",false,200,false,false
+11004,Feature Name,feature_name,FeatureTransformation,str,false,false,false,1.0,false,false,"1100401",,,,false,,false,"{}",false,200,false,false
+11004,Feature Category,feature_category,FeatureTransformation,dynamic-list,false,true,false,2.0,false,false,"1100402",,,,false,,false,"{""options_column"": ""feature_category_options"",""is_multi"": false}",false,200,false,false
+11004,Feature Usage,feature_usage,FeatureTransformation,dynamic-list,false,true,false,3.0,false,false,"1100403",,,,false,,false,"{""options_column"": ""feature_usage_options"",""is_multi"": false}",false,200,false,false
+11004,Feature Type,feature_type,FeatureTransformation,dynamic-list,false,true,false,4.0,false,false,"1100404",,,,false,,false,"{""options_column"": ""feature_type_options"",""is_multi"": false}",false,200,false,false
+11004,Type of Encoding,feature_encoding,FeatureTransformation,dynamic-list,false,true,false,5.0,false,false,"1100405",,,,false,,false,"{""options_column"": ""feature_encoding_options"",""is_multi"": false}",false,200,false,false
+11004,Feature Transformation,feature_transformation,FeatureTransformation,dynamic-list,false,true,false,6.0,false,false,"1100406",,,,false,,false,"{""options_column"": ""feature_transformation_options"", ""is_multi"": true}",false,200,false,false
+11004,Elasticity Computation Required,feature_elasticity,FeatureTransformation,dynamic-list,false,true,false,7.0,false,false,"1100407",,,,false,,false,"{""options_column"": ""feature_elasticity_options"",""is_multi"": false}",false,200,false,false
+11005,Selected Feature Method,selected_feature_method,product,str,false,false,false,1.0,false,false,"1100501",,,,false,,false,"{}",false,200,false,
+11005,Parameters,parameters,product,str,false,false,false,2.0,false,false,"1100502",,,,false,,false,"{}",false,200,false,
+11005,Limits,limits,product,dynamic-list,false,true,false,3.0,false,false,"1100503",,,,false,,false,"{""options_column"": ""limits_options"", ""is_multi"": false}",false,200,false,
+11006,KPI Error Metrics,kpi_error_metrics,product,str,false,false,false,1.0,false,false,"1100601",,,,false,,false,"{}",false,200,false,
+11006,Limits,weightage_selection,product,float,false,true,false,2.0,false,false,"1100602",,,,false,,false,"{}",false,200,false,
+11007,Feature Name,feature_name,product,str,false,false,false,1.0,false,false,"1100701",,,,false,,false,"{}",false,200,false,
+11007,List of Source,mapped_source_names,product,str,false,false,false,2.0,false,false,"1100702",,,,false,,false,"{}",false,200,false,
+11007,Formula,feature_value,product,str,false,true,false,3.0,false,false,"1100703",,,,false,,false,"{""width"": ""300""}",false,200,false,
+11007,Updated At,updated_at,product,str,false,false,false,4.0,false,false,"1100704",,,,false,,false,"{}",false,200,false,
+11007,Status,status,product,str,false,false,false,5.0,false,false,"1100705",,,,false,,false,"{}",false,200,false,
+11007,Updated By,updated_by,product,str,false,false,false,6.0,false,false,"1100706",,,,false,,false,"{}",false,200,false,
+11008,Source Level Type,type,product,str,false,false,false,1.0,false,false,"1100801",,,,false,,false,"{}",false,200,false,
+11008,Source Name,source_name,product,str,false,false,false,2.0,false,false,"1100802",,,,false,,false,"{}",false,200,false,
+11008,Source Hierarchy Level,level_of_aggregation,product,str,false,false,false,3.0,false,false,"1100803",,,,false,,false,"{}",false,200,false,
+11008,Source Feature List,features,product,str,false,false,false,4.0,false,false,"1100804",,,,false,,false,"{""width"": ""300""}",false,200,false,
+11009,Feature Name,feature_name,product,str,false,false,false,1.0,false,false,"1100901",,,,false,,false,"{}",false,200,false,
+11009,List of Source,mapped_source_names,product,str,false,false,false,2.0,false,false,"1100902",,,,false,,false,"{""width"": ""300""}",false,200,false,
+11009,Formula,feature_value,product,str,false,false,false,3.0,false,false,"1100903",,,,false,,false,"{""width"": ""300""}",false,200,false,
+11009,Mapped FMT's,mapped_fmts,product,str,false,false,false,4.0,false,false,"1100904",,,,false,,false,"{""width"": ""300""}",false,200,false,
+11009,Updated At,updated_at,product,str,false,false,false,5.0,false,false,"1100905",,,,false,,false,"{}",false,200,false,
+11009,Status,status,product,str,false,false,false,6.0,false,false,"1100906",,,,false,,false,"{}",false,200,false,
+11009,Updated By,updated_by,product,str,false,false,false,7.0,false,false,"1100907",,,,false,,false,"{}",false,200,false,
+11009,Finalised At,finalised_at,product,str,false,false,false,8.0,false,false,"1100908",,,,false,,false,"{}",false,200,false,
+11009,Finalised By,finalised_by,product,str,false,false,false,9.0,false,false,"1100909",,,,false,,false,"{}",false,200,false,
+11010,Source Type,source_type,product,str,false,false,false,1.0,false,false,"1101001",,,,false,,false,"{}",false,200,false,
+11010,Source Level Type,type,product,str,false,false,false,2.0,false,false,"1101002",,,,false,,false,"{}",false,200,false,
+11010,Source Name,source_name,product,str,false,false,false,3.0,false,false,"1101003",,,,false,,false,"{}",false,200,false,
+11010,Source Hierarchy Level,level_of_aggregation,product,str,false,false,false,4.0,false,false,"1101004",,,,false,,false,"{}",false,200,false,
+11010,Source Feature List,features,product,str,false,false,false,5.0,false,false,"1101005",,,,false,,false,"{""width"": ""300""}",false,200,false,
+11011,Feature Name,feature_name,product,str,false,false,false,1.0,false,true,"1101101",,,,false,,false,"{}",false,200,false,
+11011,List of Source,mapped_source_names,product,str,false,false,false,2.0,false,true,"1101102",,,,false,,false,"{""width"": ""300""}",false,200,false,
+11011,Formula,feature_value,product,str,false,false,false,3.0,false,true,"1101103",,,,false,,false,"{""width"": ""300""}",false,200,false,
+11011,Status,status,product,str,false,false,false,4.0,false,true,"1101104",,,,false,,false,"{}",false,200,false,
+11011,Created By,created_by,product,str,false,false,false,5.0,false,true,"1101105",,,,false,,false,"{}",false,200,false,
+11011,Created At,created_at,product,str,false,false,false,6.0,false,true,"1101106",,,,false,,false,"{}",false,200,false,
+11011,Updated By,updated_by,product,str,false,false,false,7.0,false,true,"1101107",,,,false,,false,"{}",false,200,false,
+11011,Updated At,updated_at,product,str,false,false,false,8.0,false,true,"1101108",,,,false,,false,"{}",false,200,false,
+11012,Source Level Type,source_level_type,product,list,false,true,false,1.0,false,true,"1101201",,,,false,,false,"{""options"":[{""label"":""Higher Level"",""value"":""higher_level""},{""label"":""Lower Level"",""value"":""lower_level""}]}",false,200,false,
+11012,Select Source,select_source,product,dynamic-list,false,true,false,2.0,false,true,"1101202",,,,false,,false,"{""options_column"": ""select_source_options"", ""is_multi"": false, ""width"": 200, ""onChangeCustomFunction"": false}",false,200,false,
+11012,Source Hierarchy Level,source_hierarchy_level,product,str,false,false,false,3.0,false,true,"1101203",,,,false,,false,"{}",false,200,false,
+11012,Join Level,join_level,product,str,false,false,false,4.0,false,true,"1101204",,,,false,,false,"{""width"": ""300""}",false,200,false,
+11012,Source Feature List,source_feature_list,product,str,false,false,false,5.0,false,true,"1101205",,,,false,,false,"{""width"": ""300""}",false,200,false,
+11012,Intermediate Variable Formula,intermediate_variable_formula,product,str,false,true,false,6.0,false,true,"1101206",,,,false,,false,"{}",false,200,false,
+11012,Intermediate Variable Name,intermediate_variable_name,product,str,false,true,false,7.0,false,true,"1101207",,,,false,,false,"{}",false,200,false,
+11012,Action,action,product,_,false,false,false,8.0,false,true,"1101208",,,,false,,false,"{}",false,200,false,
+11013,Source Type,source_type,product,str,false,false,false,1.0,false,true,"1101301",,,,false,,false,"{}",false,200,false,
+11013,Status,status,product,str,false,false,false,2.0,false,true,"1101302",,,,false,,false,"{}",false,200,false,
+11013,Source Level Type,type,product,str,false,false,false,3.0,false,true,"1101303",,,,false,,false,"{}",false,200,false,
+11013,Source Name,source_name,product,str,false,false,false,4.0,false,true,"1101304",,,,false,,false,"{}",false,200,false,
+11013,Source Hierarchy Level,level_of_aggregation,product,str,false,false,false,5.0,false,true,"1101305",,,,false,,false,"{}",false,200,false,
+11013,Source Feature List,features,product,str,false,false,false,6.0,false,true,"1101306",,,,false,,false,"{""width"": ""300""}",false,200,false,

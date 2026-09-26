@@ -1,0 +1,16 @@
+"source_column_name","source_column_datatype","required_in_product","generic_column_name","is_pk","generic_column_datatype","formula","is_attribute","is_hierarchy","hierarchy_level","is_null_allowed","unique_by","display_name","is_partition_col","is_clustering_col"
+discount_percentage,float64,true,discount_percentage,false,float,,false,false,,true,false,,false,
+msrp,float64,true,msrp,false,float,,false,false,,false,false,,false,
+transaction_code,varchar,true,transaction_code,true,varchar,,false,false,,false,true,,false,
+transaction_type_cd,varchar,true,transaction_type_cd,false,varchar,,false,false,,true,false,,false,
+transaction_type_desc,varchar,true,transaction_type_desc,false,varchar,,true,false,,false,false,,false,
+periodend_dt,date,true,date,false,date,,false,false,,false,true,,true,
+regional_product_key,varchar,true,product_code,false,varchar,,true,true,,false,true,,false,1
+global_facility_key,varchar,true,store_code,false,varchar,,true,true,,false,true,,false,1
+currency_cd,varchar,true,currency_code,false,varchar,,false,false,,false,true,,false,
+net_sls_qty,int64,true,qty,false,int4,,false,false,,false,false,,false,
+net_sls_exvat_amt,float64,true,revenue,false,float,,false,false,,false,false,,false,
+net_sls_cost_amt,float64,true,cost,false,float,,false,false,,false,false,,false,
+global_channel_desc,varchar,true,channel,false,varchar,,false,false,,false,false,,false,
+discount,float64,true,discount_amount,false,float,,false,false,,false,false,,false,
+,float64,true,price,false,float,"SAFE_DIVIDE(net_sls_exvat_amt,net_sls_qty)",true,false,,false,false,,false,

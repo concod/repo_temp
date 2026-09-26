@@ -1,0 +1,10 @@
+"source_column_name","source_column_datatype","required_in_product","generic_column_name","is_pk","generic_column_datatype","formula","is_attribute","is_hierarchy","hierarchy_level","is_null_allowed","unique_by","display_name","is_partition_col","is_clustering_col"
+Product_Code,STRING,true,product_code,false,varchar,,false,false,,false,true,,false,
+Pack_Type,STRING,true,pack_type,false,varchar,,false,false,,false,false,,false,
+Inventory_Date,DATE,true,date,false,date,,false,false,,false,true,,true,
+OnHandQty,FLOAT,true,oh,false,float8,,false,false,,false,false,,false,
+InTransitQty,FLOAT,true,it,false,float8,,false,false,,false,false,,false,
+OnOrderQty,FLOAT,true,oo,false,float8,,false,false,,false,false,,false,
+SYNCSTARTDATETIME,DATETIME,true,syncstartdatetime,false,datetime,,false,false,,false,false,,false,
+Store_Type,STRING,true,store_type,false,varchar,,false,false,,true,true,,false,
+Store_Code,STRING,true,store_code,false,varchar,"case when Store_Code = 'CA7777' and Store_Type = 'RTL' then 'CA7777-CAN-Retail-Store' when Store_Code = 'CA7777' and Store_Type = 'RTO' then 'CA7777-CAN-Outlet-Store' when Store_Code = 'JAX' and Store_Type = 'RTL' then 'JAX-USA-Retail-Store' when Store_Code = 'JAX' and Store_Type = 'RTO' then 'JAX-USA-Outlet-Store' when Store_Code = 'US7781' and Store_Type = 'RTL' then 'US7781-USA-Retail-Store' when Store_Code = 'US7781' and Store_Type = 'RTO' then 'US7781-USA-Outlet-Store' else store_code end",false,false,,false,true,,false,

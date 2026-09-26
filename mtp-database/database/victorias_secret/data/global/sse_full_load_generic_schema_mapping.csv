@@ -1,0 +1,9 @@
+"source_column_name","source_column_datatype","required_in_product","generic_column_name","is_pk","generic_column_datatype","formula","is_attribute","is_hierarchy","hierarchy_level","is_null_allowed","unique_by","display_name","is_partition_col","is_clustering_col"
+sku_id,int8,true,product_code,true,varchar,,false,false,,false,true,"",false,
+tier_group,varchar,true,tier_group,true,varchar,,false,false,,false,true,"",false,
+eff_startdate,date,true,eff_startdate,true,date,,false,false,,false,true,"",false,
+eff_enddate,date,true,eff_enddate,true,date,,false,false,,false,true,"",false,
+loc_num,varchar,true,store_code,true,varchar,,false,false,,false,true,"",false,
+mpq,int8,true,moq,false,int8,,false,false,,true,false,"",false,
+flagged_rows,int8,true,flagged_rows,false,int8,,false,false,,true,false,"",false,
+workstream,varchar,true,workstream,false,varchar,,false,false,,true,false,"",false,

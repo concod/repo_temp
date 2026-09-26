@@ -1,0 +1,41 @@
+--liquibase formatted sql
+--changeset liquibase:tb_fiscal_date_mapping stripComments:false splitStatements:false context:Release_1_0 labels:liquibase_project_start
+--comment: initial changeset for tb_fiscal_date_mapping
+
+CREATE TABLE IF NOT EXISTS "global".tb_fiscal_date_mapping (
+	date_id date NOT NULL,
+	fiscal_year int4 NULL,
+	fiscal_quarter int4 NULL,
+	fiscal_year_qtr int4 NULL,
+	fiscal_month int4 NULL,
+	fiscal_year_month int4 NULL,
+	fiscal_week int4 NULL,
+	fiscal_year_week int4 NULL,
+	fiscal_day_year int4 NULL,
+	fiscal_day_qtr int4 NULL,
+	fiscal_day_month int4 NULL,
+	fiscal_day_week int4 NULL,
+	fiscal_fd_year date NULL,
+	fiscal_ld_year date NULL,
+	fiscal_fd_qtr date NULL,
+	fiscal_ld_qtr date NULL,
+	fiscal_fd_month date NULL,
+	fiscal_ld_month date NULL,
+	fiscal_fd_week date NULL,
+	fiscal_ld_week date NULL,
+	fiscal_week_name varchar(50) NULL,
+	fiscal_season_name varchar(50) NULL,
+	fiscal_season_start date NULL,
+	fiscal_long_date varchar(50) NULL,
+	fiscal_day_name varchar(50) NULL,
+	holiday_event varchar(50) NULL,
+	is_holiday_flag int4 NULL,
+	is_fed_holiday_flag int4 NULL,
+	is_workday_flag int4 NULL,
+	month_name varchar(50) NULL,
+	"date" date NULL,
+	weeks_start_date date NULL,
+	CONSTRAINT tb_fiscal_date_mapping_pk PRIMARY KEY (date_id)
+);
+CREATE INDEX IF NOT EXISTS idx_tb_fiscal_date_mapping_id1 ON global.tb_fiscal_date_mapping USING btree (date);
+CREATE INDEX IF NOT EXISTS idx_tb_fiscal_date_mapping_id2 ON global.tb_fiscal_date_mapping USING btree (weeks_start_date);

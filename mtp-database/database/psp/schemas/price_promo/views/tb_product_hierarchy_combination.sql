@@ -1,0 +1,50 @@
+--liquibase formatted sql
+--changeset liquibase:tb_product_hierarchy_combination_v3 runAlways:true stripComments:false splitStatements:false context:tb_product_hierarchy_combination labels:tb_product_hierarchy_combination
+--comment: tb_product_hierarchy_combination
+--rollback: SELECT 1
+DROP VIEW IF EXISTS price_promo.tb_product_hierarchy_combination;
+CREATE OR REPLACE VIEW price_promo.tb_product_hierarchy_combination
+AS SELECT DISTINCT t1.l0_id,
+    t1.l0_cid,
+    t1.l0_cuq,
+    t1.l1_id,
+    t1.l1_cid,
+    t1.l1_cuq,
+    t1.l2_id,
+    t1.l2_cid,
+    t1.l2_cuq,
+    t1.l3_id,
+    t1.l3_cid,
+    t1.l3_cuq,
+    t1.manufacturer_id,
+    t1.manufacturer_cid,
+    t1.manufacturer,
+    t1.manufacturer_cuq,
+    t1.merchandiser_id,
+    t1.merchandiser_cid,
+    t1.merchandiser,
+    t1.merchandiser_cuq,
+    t1.brand_id,
+    t1.brand_cid,
+    t1.brand,
+    t1.brand_cuq,
+    t1.vendor_id,
+    t1.vendor_cid,
+    t1.vendor,
+    t1.vendor_cuq,
+    t1.hierarchy_id,
+    t1.uom_id,
+    t1.uom_cid,
+    t1.uom,
+    t1.uom_cuq,
+    t1.price_bucket_id,
+    t1.price_bucket_cid,
+    t1.price_bucket,
+    t1.price_bucket_cuq,
+    t1.size_bucket_id,
+    t1.size_bucket_cid,
+    t1.size_bucket,
+    t1.size_bucket_cuq,
+    t1.version_code
+   FROM price_promo.tb_product_hierarchy_combination_version t1
+  WHERE t1.version_code = global.get_table_version('price_promo.tb_product_hierarchy_combination_version'::text);

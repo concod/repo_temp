@@ -1,0 +1,56 @@
+"fc_code","label","column_name","type","display_type","level","dimension","is_mandatory","is_multiple_selection","range_min","range_max","default_value","is_disabled","is_clearable","display_order","is_required","extra","is_deleted"
+60,Channel,channel,non-cascaded,dropdown,1,channel,true,true,"","","",false,true,19,true,"{}",false
+60,End Year Month,end_date,non-cascaded,DateTimeField,,plan_period,true,false,[],[],[],false,true,2,true,"{""views"": [""year"", ""month""], ""adjustTo"": ""endOfMonth"", ""adjustDate"": true, ""disablePast"": true}",false
+60,Brand,l0_name,cascaded,dropdown,1,product,true,false,[],[],[],false,true,3,true,"{}",false
+60,Start Year Month,start_date,non-cascaded,DateTimeField,,plan_period,true,false,[],[],[],false,true,1,true,"{""views"": [""year"", ""month""], ""adjustTo"": ""startOfMonth"", ""adjustDate"": true, ""disablePast"": true}",false
+60,Size,size,cascaded,dropdown,8,product,false,true,[],[],[],false,true,10,true,"{}",false
+60,Color,color,cascaded,dropdown,7,product,false,true,[],[],[],false,true,9,true,"{}",false
+60,Sub-Channel,sub_channel,non-cascaded,dropdown,2,channel,false,true,"","","",false,true,20,true,"{}",false
+60,Department,l1_name,cascaded,dropdown,2,product,true,false,[],[],[],false,true,4,true,"{}",false
+60,Sub-Department,l2_name,cascaded,dropdown,3,product,false,true,[],[],[],false,true,5,true,"{}",false
+60,Class,l3_name,cascaded,dropdown,4,product,false,true,[],[],[],false,true,6,true,"{}",false
+60,Family,l4_name,cascaded,dropdown,5,product,false,true,[],[],[],false,true,7,true,"{}",false
+60,Parent,l5_name,cascaded,dropdown,6,product,false,true,[],[],[],false,true,8,true,"{}",false
+60,Shape,tree_shape,cascaded,dropdown,9,product,false,true,[],[],[],false,true,11,true,"{}",false
+60,Light Type,light_type,cascaded,dropdown,10,product,false,true,[],[],[],false,true,12,true,"{}",false
+60,Set/Each,size_set_pack,cascaded,dropdown,11,product,false,true,[],[],[],false,true,13,true,"{}",false
+60,Catalog,print_catalog,cascaded,dropdown,12,product,false,true,[],[],[],false,true,14,true,"{}",false
+60,Dropship,drop_ship,cascaded,dropdown,13,product,false,true,[],[],[],false,true,15,true,"{}",false
+60,Vendor,vendor,cascaded,dropdown,15,product,false,true,[],[],[],false,true,17,true,"{}",false
+60,Status,lifecycle,cascaded,dropdown,14,product,false,true,[],[],[],false,true,16,true,"{}",false
+60,Country of Origin,country_of_origin,cascaded,dropdown,16,product,false,true,[],[],[],false,true,18,true,"{}",false
+4004,Entry Date,entry_date,non-cascaded,DateTimeField,,plan_period,true,false,,,,false,true,7,true,"{""views"": [""year"", ""month""], ""adjustTo"": ""startOfMonth"", ""adjustDate"": true, ""disablePast"": true}",false
+4004,Exit Date,exit_date,non-cascaded,DateTimeField,,plan_period,false,false,,,,false,true,8,true,"{""views"": [""year"", ""month""], ""adjustTo"": ""endOfMonth"", ""adjustDate"": true, ""disablePast"": true}",false
+4004,Brand,l0_name,cascaded,dropdown,1,product,true,false,,,,false,false,1,false,"{}",false
+4004,Department,l1_name,cascaded,dropdown,2,product,true,false,,,,false,false,2,false,"{}",false
+4004,Sub-Department,l2_name,cascaded,dropdown,3,product,true,true,,,,false,true,3,false,"{}",false
+4004,Class,l3_name,cascaded,dropdown,4,product,true,true,,,,false,true,4,false,"{}",false
+4004,Family,l4_name,cascaded,dropdown,5,product,true,true,,,,false,true,5,false,"{}",false
+4004,Parent,l5_name,cascaded,dropdown,6,product,true,true,,,,false,true,6,false,"{}",false
+4002,Status,channel_status,cascaded,dropdown,,product,false,false,,,,false,false,48,false,"{}",false
+4002,Color,color,cascaded,dropdown,,product,false,true,,,,false,true,10,false,"{}",false
+4002,Cost,cost,cascaded,IntegerField,,product,false,false,"0","1000",,false,false,11,false,"{}",false
+4002,Country of Origin,country_of_origin,cascaded,dropdown,,product,false,false,,,,false,false,50,false,"{}",false
+4002,Dropship,drop_ship,cascaded,dropdown,,product,false,false,,,,false,false,47,false,"{}",false
+4002,Light Type,light_type,cascaded,dropdown,,product,false,false,,,,false,false,44,false,"{}",false
+4002,Price,price,cascaded,IntegerField,,product,false,false,"0","100000",,false,false,30,false,"{}",false
+4002,Catalog,print_catalog,cascaded,dropdown,,product,false,false,,,,false,false,46,false,"{}",false
+4002,Size,size,cascaded,dropdown,,product,false,false,,,,false,true,42,false,"{}",false
+4002,Set/Each,size_set_pack,cascaded,dropdown,,product,false,false,,,,false,false,45,false,"{}",false
+4002,Shape,tree_shape,cascaded,dropdown,,product,false,false,,,,false,false,43,false,"{}",false
+4002,Vendor,vendor,cascaded,dropdown,,product,false,false,,,,false,false,49,false,"{}",false
+4051,Channel,channel,non-cascaded,dropdown,1,channel,true,true,"","","",false,true,10,true,"{}",false
+4051,End Year Month,end_date,non-cascaded,DateTimeField,,plan_period,true,false,"","","",false,true,2,true,"{""views"": [""year"", ""month""], ""adjustTo"": ""endOfMonth"", ""adjustDate"": true, ""disablePast"": true}",false
+4051,Grouping Level,grouping_level,non-cascaded,dropdown,4,grouping_level,true,false,"","","",false,true,13,true,"{}",false
+4051,Report Type,report_type,non-cascaded,dropdown,4,grouping_level,true,false,"","","",false,true,12,true,"{}",false
+4051,Brand,l0_name,cascaded,dropdown,1,product,true,true,"","","",false,true,3,true,"{}",false
+4051,Department,l1_name,cascaded,dropdown,2,product,false,true,"","","",false,true,4,true,"{}",false
+4051,Sub Department,l2_name,cascaded,dropdown,3,product,false,true,"","","",false,true,5,true,"{}",false
+4051,Class,l3_name,cascaded,dropdown,4,product,false,true,"","","",false,true,6,true,"{}",false
+4051,Family,l4_name,cascaded,dropdown,4,product,false,true,"","","",false,true,7,true,"{}",false
+4051,Parent,l5_name,cascaded,dropdown,4,product,false,true,"","","",false,true,8,true,"{}",false
+4051,Status,lifecycle,cascaded,dropdown,4,product,false,true,[],[],[],false,true,9,true,"{}",false
+4051,Start Year Month,start_date,non-cascaded,DateTimeField,,plan_period,true,false,"","","",false,true,1,true,"{""views"": [""year"", ""month""], ""adjustTo"": ""startOfMonth"", ""adjustDate"": true, ""disablePast"": true}",false
+4051,Sub-Channel,sub_channel,non-cascaded,dropdown,2,channel,false,true,"","","",false,true,11,true,"{}",false
+4051,Time Dimension,time_dimension,non-cascaded,dropdown,4,grouping_level,false,false,"","","",false,true,14,true,"{}",false
+4051,Version,version,non-cascaded,dropdown,4,grouping_level,false,false,"","","",false,true,15,true,"{}",false

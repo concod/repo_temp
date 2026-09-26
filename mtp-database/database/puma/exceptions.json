@@ -1,0 +1,60 @@
+{
+    "DROP TRIGGER": {
+        "regex": "\\b(DROP\\s+TRIGGER)\\b",
+        "exclusions": []
+    },
+    "DROP PROCEDURE": {
+        "regex": "\\b(DROP\\s+PROCEDURE)\\b",
+        "exclusions": []
+    },
+    "DROP FUNCTION": {
+        "regex": "\\b(DROP\\s+FUNCTION)\\b",
+        "exclusions": []
+    },
+    "DROP CONSTRAINT": {
+        "regex": "\\b(DROP\\s+CONSTRAINT)\\b",
+        "exclusions": []
+    },
+    "DROP COLUMN": {
+        "regex": "\\b(DROP\\s+COLUMN)\\b",
+        "exclusions": []
+    },
+    "DROP VIEW": {
+        "regex": "\\b(DROP\\s+VIEW)\\b",
+        "exclusions": []
+    },
+    "DROP TABLE": {
+        "regex": "\\b(DROP\\s+TABLE)\\b",
+        "exclusions": [
+            "database/puma/schemas/public/procedures/sync_constraint_master_aps.sql"
+        ]
+    },
+    "DROP MATERIALIZED VIEW": {
+        "regex": "\\b(DROP\\s+MATERIALIZED\\s+VIEW)\\b",
+        "exclusions": []
+    },
+    "CASCADE": {
+        "regex": "\\b(CASCADE)\\b",
+        "exclusions": []
+    },
+    "GRANT": {
+        "regex": "\\b(GRANT)\\b",
+        "exclusions": []
+    },
+    "REVOKE": {
+        "regex": "\\b(REVOKE)\\b",
+        "exclusions": []
+    },
+    "ONLY": {
+        "regex": "\\b(ONLY)\\b",
+        "exclusions": []
+    },
+    "TRUNCATE": {
+        "regex": "\\b(TRUNCATE)\\b",
+        "exclusions": []
+    },
+    "LB RUN_ON_CHANGE": {
+        "regex": "\\b(DROP\\s+FUNCTION)\\b",
+        "exclusions": []
+    }
+}

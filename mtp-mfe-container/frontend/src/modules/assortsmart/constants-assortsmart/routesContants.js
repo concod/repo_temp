@@ -1,0 +1,9 @@
+export const OMNI_DASHBOARD = "/assort-smart/plan-dashboard/omnichannel";
+export const ASSORT_CLUSTER_DASHBOARD = "/assort-smart/cluster-dashboard";
+export const MASTER_PLAN_DASHBOARD = "/assort-smart/master-plan-dashboard";
+export const MFP_DASHBOARD = "/assort-smart/MFP-dashboard";
+export const CREATE_STORE_GROUP = "/assort-smart/store-grouping/create-group";
+export const HINDSIGHT_DASHBOARD = "/assort-smart/hindsight-dashboard";
+export const STRATEGY_DASHBOARD = "/assort-smart/strategy-dashboard";
+export const PRE_SEASON_DASHBOARD = "/assort-smart/pre-season-dashboard";
+export const CONFIGURATOR_LANDING = "/assort-configurator-landing-page";

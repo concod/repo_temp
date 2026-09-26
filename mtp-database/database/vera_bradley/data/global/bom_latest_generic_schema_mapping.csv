@@ -1,0 +1,12 @@
+"source_column_name","source_column_datatype","required_in_product","generic_column_name","is_pk","generic_column_datatype","formula","is_attribute","is_hierarchy","hierarchy_level","is_null_allowed","unique_by","display_name","is_partition_col","is_clustering_col"
+bom_version,STRING,true,bom_version,false,STRING,"",false,false,,true,true,"",false,
+line_num,FLOAT,true,line_num,false,FLOAT,"",false,false,,true,false,"",false,
+line_seq,INTEGER,true,line_seq,false,INTEGER,"",false,false,,true,false,"",false,
+bom_quantity,FLOAT,true,bom_quantity,false,FLOAT,"",false,false,,true,false,"",false,
+child_uom,STRING,true,child_uom,false,STRING,"",false,false,,true,false,"",false,
+is_active,INTEGER,true,is_active,false,INTEGER,"",false,false,,true,false,"",false,
+is_approved,INTEGER,true,is_approved,false,INTEGER,"",false,false,,true,false,"",false,
+DATAAREAID,STRING,true,DATAAREAID,false,STRING,"",false,false,,true,true,"",false,
+date,DATE,true,date,false,DATE,"",false,false,,true,true,"",false,
+parent_product_code,STRING,true,parent_product_code,false,STRING,"",false,false,,false,true,"",false,
+child_product_code,STRING,true,child_product_code,false,STRING,"",false,false,,false,true,"",false,

@@ -1,0 +1,9 @@
+export const STATIC_VALUE = "-";
+export const GRAND_TOTAL_KEY = "is_grand_total";
+export const GRAND_TOTAL_ACCESSOR = "grand_total";
+export const CONTRIBUTION_KEY = "is_contribution";
+export const VARIANCE_PERCENT_KEY = "is_variance_percent";
+export const VARIANCE_ABSOLUTE_KEY = "is_variance_absolute";
+export const FISCAL_YEAR_WEEK_ACCESSOR = "fiscal_year_week";
+export const PERCENTAGE = "percentage";
+export const TOGGLE_LOCK_ACTION = { LOCK: "LOCK", UNLOCK: "UNLOCK" };

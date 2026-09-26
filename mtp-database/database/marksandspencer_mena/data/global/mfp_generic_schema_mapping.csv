@@ -1,0 +1,13 @@
+"source_column_name","source_column_datatype","required_in_product","generic_column_name","is_pk","generic_column_datatype","formula","is_attribute","is_hierarchy","hierarchy_level","is_null_allowed","unique_by","display_name","is_partition_col","is_clustering_col"
+Class,varchar,true,l1_id,false,varchar,,false,false,,false,true,,,
+Subclass,varchar,true,l2_id,false,varchar,,false,false,,false,true,,,
+Dept,varchar,true,l0_id,false,varchar,,false,false,,false,true,,,
+Fiscal_Year,varchar,true,fiscal_year,false,varchar,,false,false,,false,true,,,
+Fiscal_Week,varchar,true,fiscal_week,false,varchar,,false,false,,false,true,,,
+Net_Sales_Retail,float8,true,Net_Sales_Retail,false,float8,,true,false,,true,false,,,
+Markdown_Retail,float8,true,Markdown_Retail,false,float8,,true,false,,true,false,,,
+Receipt_Units,varchar,true,Receipt_Units,false,varchar,,true,false,,true,false,,,
+Receipt_Cost,float8,true,Receipt_Cost,false,float8,,true,false,,true,false,,,
+Ownership_Type,varchar,true,ownership_by_type,false,varchar,,false,false,,false,true,,,
+Banner,varchar,true,banner,true,varchar,,false,false,,false,true,,,
+PRODUCT_BANNER,varchar,true,product_banner,false,varchar,,true,false,,true,false,,,

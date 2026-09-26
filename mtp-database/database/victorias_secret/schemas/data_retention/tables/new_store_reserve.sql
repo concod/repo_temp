@@ -1,0 +1,40 @@
+--liquibase formatted sql
+--changeset kamuju.mahaveer@impactanalytics.co:new_store_reserve_bkp_vs stripComments:false splitStatements:false context:VS_inv_smart labels:VS-766
+--comment: initial changeset for new_store_reserve backup
+CREATE TABLE IF NOT EXISTS data_retention.new_store_reserve (
+	store_code varchar NULL,
+	product_code varchar NULL,
+	"size" varchar NULL,
+	article varchar NULL,
+	opening_date date NULL,
+	reservation_date date NULL,
+	original_reserved int4 NULL,
+	remaining_reserved int4 NULL,
+	created_at timestamptz DEFAULT now() NULL,
+	approved bool DEFAULT false NULL,
+	created_by varchar NULL,
+	sister_store_code varchar NULL,
+	editable bool DEFAULT true NULL,
+	sister_store_mapping_date date NULL,
+	edit_details jsonb NULL,
+	store_group_mapping_date date NULL,
+	store_groups _varchar NULL,
+	mapped bool DEFAULT false NULL,
+	forecast_estimated int4 NULL,
+	store_grade varchar NULL,
+	wos float4 NULL,
+	min_stock float4 NULL,
+	max_stock float4 NULL,
+	channel varchar NULL,
+	mapping_code int4 NULL,
+	approved_qty int4 NULL,
+	released_qty int4 NULL,
+	released bool NULL,
+	remodel_flag bool NULL,
+	downstream_flag bool DEFAULT false NULL,
+	past_releases int4 DEFAULT 0 NULL,
+	is_deleted bool DEFAULT false NULL,
+	snapshot_date date NOT null,
+	CONSTRAINT new_store_reserve_un UNIQUE (store_code, product_code,snapshot_date)
+) PARTITION BY LIST (snapshot_date);
+

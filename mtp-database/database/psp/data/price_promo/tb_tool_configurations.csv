@@ -1,0 +1,1942 @@
+"id","module","config_name","config_value","config_value_type","is_used_by_fe"
+1,promo,primary,offer,text,true
+2,event,allow_promo_finalize_after_event_lock,false,boolean,false
+3,event,allow_promo_approval_after_event_lock,false,boolean,false
+4,promo,expanded,offers,text,true
+5,event,allow_promo_delete_after_event_lock,false,boolean,false
+6,event,allow_promo_execution_after_event_lock,false,boolean,false
+7,product,hierarchy_filters,"{
+  ""l0_ids"": {
+    ""id_column"": ""l0_cid"",
+    ""value_column"": ""l0_cuq"",
+    ""id"": 0,
+    ""is_linked_to_event"": true,
+    ""is_linked_to_promo"": true,
+    ""is_linked_to_downloads"": true,
+    ""is_linked_to_product_group"": true,
+    ""is_hierarchy"": true,
+    ""label"": ""Department"",
+    ""mvw_pg_column"": ""l0_ids"",
+    ""name_column"": ""l0_name"",
+    ""show_in_landing_page_table"": true
+  },
+  ""l1_ids"": {
+    ""id_column"": ""l1_cid"",
+    ""value_column"": ""l1_cuq"",
+    ""id"": 1,
+    ""is_linked_to_event"": true,
+    ""is_linked_to_promo"": true,
+    ""is_linked_to_downloads"": true,
+    ""is_linked_to_product_group"": true,
+    ""is_hierarchy"": true,
+    ""label"": ""Sub Department"",
+    ""mvw_pg_column"": ""l1_ids"",
+    ""name_column"": ""l1_name"",
+    ""show_in_landing_page_table"": true
+  },
+  ""l2_ids"": {
+    ""id_column"": ""l2_cid"",
+    ""value_column"": ""l2_cuq"",
+    ""id"": 2,
+    ""is_linked_to_event"": true,
+    ""is_linked_to_promo"": true,
+    ""is_linked_to_downloads"": true,
+    ""is_linked_to_product_group"": true,
+    ""is_hierarchy"": true,
+    ""label"": ""Class"",
+    ""mvw_pg_column"": ""l2_ids"",
+    ""name_column"": ""l2_name"",
+    ""show_in_landing_page_table"": true
+  },
+  ""l3_ids"": {
+    ""id_column"": ""l3_cid"",
+    ""value_column"": ""l3_cuq"",
+    ""id"": 3,
+    ""is_linked_to_event"": true,
+    ""is_linked_to_promo"": true,
+    ""is_linked_to_downloads"": true,
+    ""is_linked_to_product_group"": true,
+    ""is_hierarchy"": true,
+    ""label"": ""Sub Class"",
+    ""mvw_pg_column"": ""l3_ids"",
+    ""name_column"": ""l3_name"",
+    ""show_in_landing_page_table"": false
+  },
+  ""l4_ids"": {
+    ""id_column"": ""product_id"",
+    ""value_column"": ""product_name"",
+    ""id"": 4,
+    ""is_linked_to_event"": false,
+    ""is_linked_to_promo"": false,
+    ""is_linked_to_downloads"": true,
+    ""is_linked_to_product_group"": false,
+    ""is_hierarchy"": false,
+    ""label"": ""SKU"",
+    ""mvw_pg_column"": null,
+    ""name_column"": ""product_name"",
+    ""show_in_landing_page_table"": false
+  },
+  ""manufacturer_ids"": {
+    ""id_column"": ""manufacturer_cid"",
+    ""value_column"": ""manufacturer_cuq"",
+    ""id"": -1,
+    ""is_linked_to_event"": true,
+    ""is_linked_to_promo"": true,
+    ""is_linked_to_downloads"": true,
+    ""is_linked_to_product_group"": true,
+    ""is_hierarchy"": false,
+    ""label"": ""Manufacturer"",
+    ""mvw_pg_column"": ""manufacturer_ids"",
+    ""name_column"": ""manufacturer_cuq"",
+    ""show_in_landing_page_table"": false
+  },
+  ""merchandiser_ids"": {
+    ""id_column"": ""merchandiser_cid"",
+    ""value_column"": ""merchandiser_cuq"",
+    ""id"": -2,
+    ""is_linked_to_event"": true,
+    ""is_linked_to_promo"": true,
+    ""is_linked_to_downloads"": true,
+    ""is_linked_to_product_group"": true,
+    ""is_hierarchy"": false,
+    ""label"": ""Merchandiser"",
+    ""mvw_pg_column"": ""merchandiser_ids"",
+    ""name_column"": ""merchandiser_cuq"",
+    ""show_in_landing_page_table"": false
+  },
+  ""brand_ids"": {
+    ""id_column"": ""brand_cid"",
+    ""value_column"": ""brand_cuq"",
+    ""id"": -3,
+    ""is_linked_to_event"": true,
+    ""is_linked_to_promo"": true,
+    ""is_linked_to_downloads"": true,
+    ""is_linked_to_product_group"": true,
+    ""is_hierarchy"": false,
+    ""label"": ""Brand"",
+    ""mvw_pg_column"": ""brand_ids"",
+    ""name_column"": ""brand_cuq"",
+    ""show_in_landing_page_table"": false
+  },
+  ""vendor_ids"": {
+    ""id_column"": ""vendor_cid"",
+    ""value_column"": ""vendor_cuq"",
+    ""id"": -4,
+    ""is_linked_to_event"": true,
+    ""is_linked_to_promo"": true,
+    ""is_linked_to_downloads"": true,
+    ""is_linked_to_product_group"": true,
+    ""is_hierarchy"": false,
+    ""label"": ""Vendor"",
+    ""mvw_pg_column"": ""vendor_ids"",
+    ""name_column"": ""vendor_cuq"",
+    ""show_in_landing_page_table"": false
+  },
+  ""price_bucket_ids"": {
+    ""id_column"": ""price_bucket_cid"",
+    ""value_column"": ""price_bucket"",
+    ""id"": -5,
+    ""is_linked_to_event"": true,
+    ""is_linked_to_promo"": true,
+    ""is_linked_to_downloads"": true,
+    ""is_linked_to_product_group"": true,
+    ""is_hierarchy"": false,
+    ""label"": ""Price Bucket"",
+    ""mvw_pg_column"": ""price_bucket_ids"",
+    ""name_column"": ""price_bucket"",
+    ""show_in_landing_page_table"": false
+  },
+  ""size_bucket_ids"": {
+    ""id_column"": ""size_bucket_cid"",
+    ""value_column"": ""size_bucket"",
+    ""id"": -6,
+    ""is_linked_to_event"": true,
+    ""is_linked_to_promo"": true,
+    ""is_linked_to_downloads"": true,
+    ""is_linked_to_product_group"": true,
+    ""is_hierarchy"": false,
+    ""label"": ""Size Bucket"",
+    ""mvw_pg_column"": ""size_bucket_ids"",
+    ""name_column"": ""size_bucket"",
+    ""show_in_landing_page_table"": false
+  },
+  ""uom_ids"": {
+    ""id_column"": ""uom_cid"",
+    ""value_column"": ""uom"",
+    ""id"": -7,
+    ""is_linked_to_event"": true,
+    ""is_linked_to_promo"": true,
+    ""is_linked_to_downloads"": true,
+    ""is_linked_to_product_group"": true,
+    ""is_hierarchy"": false,
+    ""label"": ""Unit of Measure"",
+    ""mvw_pg_column"": ""uom_ids"",
+    ""name_column"": ""uom"",
+    ""show_in_landing_page_table"": false
+  } 
+}
+",json,false
+8,event,allow_event_delete_after_event_lock,false,boolean,false
+9,promo,standard,offer,text,true
+10,promo,plural,offers,text,true
+11,promo,standard_plural,offers,text,true
+12,event,primary,event,text,true
+13,event,expanded,event,text,true
+14,event,standard,event,text,true
+15,event,plural,events,text,true
+16,event,use_event,true,boolean,true
+17,event,alias,event,text,true
+18,event,identifier,Event,text,true
+19,promo,use_vendor_funding,true,boolean,true
+20,promo,alias_plural,offers,text,true
+21,event,alias_plural,events,text,true
+22,event,standard_plural,events,text,true
+23,product,client_product_id_key,product_id,text,false
+24,promo,alias,offer,text,true
+25,promo,identifier,Promotion testt,text,true
+26,store,excel_uplod_configuration,{},json,false
+27,product,discount_level_sku_additional_columns,"[
+  {
+    ""key"": ""product_id"",
+    ""db_column"": ""product_id_actual"",
+    ""display_name"": ""Product ID""
+  },
+  {
+    ""key"": ""primaryupc"",
+    ""db_column"": ""primaryupc"",
+    ""display_name"": ""Primary UPC""
+  },
+  {
+    ""key"": ""current_price"",
+    ""db_column"": ""promo_base_price"",
+    ""display_name"": ""Base Retail""
+  },
+  {
+    ""key"": ""cost"",
+    ""db_column"": ""cost"",
+    ""display_name"": ""Cost""
+  }
+]",json,false
+28,store,hierarchy_filters,"
+{
+  ""s0_ids"": {
+    ""id_column"": ""s0_id"",
+    ""value_column"": ""s0_name"",
+    ""linked_upload_value_column"": ""s0_name"",
+    ""id"": 0,
+    ""is_linked_to_event"": false,
+    ""is_linked_to_promo"": false,
+    ""is_linked_to_downloads"": false,
+    ""is_linked_to_store_group"": false,
+    ""label"": ""Country"",
+    ""name_column"": ""s0_name"",
+    ""show_in_landing_page_table"": true
+  }
+}",json,false
+29,product,excel_uplod_configuration,"{
+  ""upc id"": {
+    ""value_column"": ""primaryupc"",
+    ""order"": 0,
+    ""response_key"": ""client_primary_upc""
+  }
+}
+",json,false
+30,store,discount_level_store_additional_columns,[],json,false
+31,promo,showCurrencyDropdownStep3,true,boolean,true
+32,event,first_lock_buffer_days,"1",integer,false
+33,event,final_lock_buffer_days,"1",integer,false
+34,event,manual_unlocking_buffer_days,"1",integer,false
+35,event,show_events_buffer_days,"0",integer,false
+36,product,exclusion_upload_configuration,"{
+  ""upc id"": {
+    ""id_column"": ""primaryupc"",
+    ""cid_column"": ""primaryupc"",
+    ""value_column"": ""primaryupc"",
+    ""order"": 0,
+    ""id"": 0,
+    ""is_sku_column"": true
+  }
+}",json,false
+37,store,store_downloads_select_columns,"distinct s0_id, s0_name",text,false
+38,reporting,product_filter,"{
+  ""0"":[{""display"":""Department"",""column"":""l0_name"",""type"":""text""}],
+  ""1"":[{""display"":""Sub Department"",""column"":""l1_name"",""type"":""text""}],
+  ""2"":[{""display"":""Class"",""column"":""l2_name"",""type"":""text""}],
+  ""3"":[{""display"":""Sub Class"",""column"":""l3_name"",""type"":""text""}],
+  ""-1"":[{""display"":""Manufacturer"",""column"":""manufacturer_cuq"",""type"":""text""}],
+  ""-2"":[{""display"":""Merchandiser"",""column"":""merchandiser_cuq"",""type"":""text""}],
+  ""-3"":[{""display"":""Brand"",""column"":""brand_cuq"",""type"":""text""}],
+  ""-4"":[{""display"":""Vendor"",""column"":""vendor_cuq"",""type"":""text""}],
+  ""-5"":[{""display"":""Price Bucket"",""column"":""price_bucket"",""type"":""text""}],
+  ""-6"":[{""display"":""Size Bucket"",""column"":""size_bucket"",""type"":""text""}],
+  ""-7"":[{""display"":""Unit of Measure"",""column"":""uom"",""type"":""text""}],
+  ""4"":[
+    {""display"":""Product ID"",""column"":""l4_id"",""type"":""integer""},
+    {""display"":""UPC ID"",""column"":""primaryupc"",""type"":""text""},
+    {""display"":""Product Name"",""column"":""product_name"",""type"":""text""}
+  ]
+}",json,true
+39,reporting,store_filter,{},json,true
+40,promo,execution_approve_promos_buffer_days,"0",integer,false
+41,uam,mandatory_product_hierarchy_levels,"[""l0_ids"",""l1_ids"",""manufacturer_ids""]",json,true
+42,promo,scenario_data_refresh_date_buffer_x,"30",integer,false
+43,promo,scenario_data_refresh_date_buffer_y,"150",integer,false
+44,promo,eligible_promo_status_for_promo_refresh,"[0,2,4]",json,false
+45,promo,should_simulate_after_scenario_discounts_refresh,true,boolean,false
+46,promo,should_optimise_after_scenario_discounts_refresh,true,boolean,false
+47,step3,step3_price_file,"{
+  ""0"":[{""display"":""Department"",""column"":""l0_name"",""type"":""text""}],
+  ""1"":[{""display"":""Sub Department"",""column"":""l1_name"",""type"":""text""}],
+  ""2"":[{""display"":""Class"",""column"":""l2_name"",""type"":""text""}],
+  ""3"":[{""display"":""Sub Class"",""column"":""l3_name"",""type"":""text""}],
+  ""-1"":[{""display"":""Manufacturer"",""column"":""manufacturer"",""type"":""text""}],
+  ""-2"":[{""display"":""Merchandiser"",""column"":""merchandiser"",""type"":""text""}],
+  ""-3"":[{""display"":""Brand"",""column"":""brand"",""type"":""text""}],
+  ""-4"":[{""display"":""Vendor"",""column"":""vendor"",""type"":""text""}],
+  ""-6"":[{""display"":""Price Bucket"",""column"":""price_bucket"",""type"":""text""}],
+  ""-7"":[{""display"":""Size Bucket"",""column"":""size_bucket"",""type"":""text""}],
+  ""-5"":[{""display"":""Unit Of Measure (UOM)"",""column"":""uom"",""type"":""text""}],
+  ""4"":[
+    {""display"":""Product ID"",""column"":""product_id"",""type"":""integer""},
+    {""display"":""UPC ID"",""column"":""primaryupc"",""type"":""text""},
+    {""display"":""Product Name"",""column"":""product_name"",""type"":""text""}
+  ]
+}",json,false
+48,promo,allow_duplicate_promo_name,false,boolean,false
+49,event,vendor_submission_due_buffer_days,"0",integer,false
+50,vendor_product,excel_uplod_configuration,"{
+  ""upc id"": {
+    ""value_column"": ""primaryupc"",
+    ""order"": 0,
+    ""response_key"": ""client_primary_upc""
+  }
+}",json,false
+51,promo,finalized_promo_status_list,"[4,8]",json,false
+52,promo,bulk_edit_excel_template_configuration,"{
+          ""columns"": [
+                    {
+                              ""excel_column_name"": ""Promo ID"",
+                              ""db_column"": ""promo_id"",
+                              ""sql_expression"": ""pm.promo_id"",
+                              ""excel_column_width"": 15,
+                              ""excel_cell_formatter"": ""number_as_text_format"",
+                              ""is_required"": true,
+                              ""is_editable"": false,
+                              ""validation_type"": null,
+                              ""excel_column_order"": 1
+                    },
+                    {
+                              ""excel_column_name"": ""Offer Name"",
+                              ""db_column"": ""offer_name"",
+                              ""sql_expression"": ""pm.name"",
+                              ""excel_column_width"": 30,
+                              ""excel_cell_formatter"": ""general_format"",
+                              ""is_required"": false,
+                              ""is_editable"": false,
+                              ""validation_type"": null,
+                              ""excel_column_order"": 2,
+                              ""impute_special_characters"": true
+                    },
+                    {
+                              ""excel_column_name"": ""Category"",
+                              ""db_column"": ""category"",
+                              ""sql_expression"": """",
+                              ""excel_column_width"": 20,
+                              ""excel_cell_formatter"": ""general_format"",
+                              ""is_required"": false,
+                              ""is_editable"": false,
+                              ""validation_type"": null,
+                              ""excel_column_order"": 3
+                    },
+                    {
+                              ""excel_column_name"": ""Merchant"",
+                              ""db_column"": ""merchant"",
+                              ""sql_expression"": ""prm.merchandiser"",
+                              ""excel_column_width"": 20,
+                              ""excel_cell_formatter"": ""general_format"",
+                              ""is_required"": false,
+                              ""is_editable"": false,
+                              ""validation_type"": null,
+                              ""excel_column_order"": 4
+                    },
+                    {
+                              ""excel_column_name"": ""Item ID"",
+                              ""db_column"": ""product_id_actual"",
+                              ""sql_expression"": ""prm.product_id_actual"",
+                              ""excel_column_width"": 20,
+                              ""excel_cell_formatter"": ""number_as_text_format"",
+                              ""is_required"": false,
+                              ""is_editable"": false,
+                              ""validation_type"": null,
+                              ""excel_column_order"": 5
+                    },
+                    {
+                              ""excel_column_name"": ""UPC"",
+                              ""db_column"": ""primaryupc"",
+                              ""sql_expression"": ""prm.primaryupc"",
+                              ""excel_column_width"": 20,
+                              ""excel_cell_formatter"": ""number_as_text_format"",
+                              ""is_required"": true,
+                              ""is_editable"": false,
+                              ""validation_type"": null,
+                              ""excel_column_order"": 6
+                    },
+                    {
+                              ""excel_column_name"": ""In Set"",
+                              ""db_column"": ""in_set"",
+                              ""sql_expression"": ""CASE WHEN prm.psp_store_count > 0 AND prm.wnw_store_count > 0 THEN 'PSP/WNW' WHEN prm.psp_store_count > 0 THEN 'PSP' ELSE 'WNW' END"",
+                              ""excel_column_width"": 20,
+                              ""excel_cell_formatter"": ""general_format"",
+                              ""is_required"": false,
+                              ""is_editable"": false,
+                              ""validation_type"": null,
+                              ""excel_column_order"": 7
+                    },
+                    {
+                              ""excel_column_name"": ""Item Name"",
+                              ""db_column"": ""item_name"",
+                              ""sql_expression"": ""prm.product_description"",
+                              ""excel_column_width"": 20,
+                              ""excel_cell_formatter"": ""general_format"",
+                              ""is_required"": false,
+                              ""is_editable"": false,
+                              ""validation_type"": null,
+                              ""excel_column_order"": 8,
+                              ""impute_special_characters"": true
+                    },
+                    {
+                              ""excel_column_name"": ""Size"",
+                              ""db_column"": ""size_actual"",
+                              ""sql_expression"": ""prm.size_actual"",
+                              ""excel_column_width"": 20,
+                              ""excel_cell_formatter"": ""number_as_text_format"",
+                              ""is_required"": false,
+                              ""is_editable"": false,
+                              ""validation_type"": null,
+                              ""excel_column_order"": 9
+                    },
+                    {
+                              ""excel_column_name"": ""UOM"",
+                              ""db_column"": ""uom"",
+                              ""sql_expression"": ""prm.original_uom"",
+                              ""excel_column_width"": 20,
+                              ""excel_cell_formatter"": ""general_format"",
+                              ""is_required"": false,
+                              ""is_editable"": false,
+                              ""validation_type"": null,
+                              ""excel_column_order"": 10
+                    },
+                    {
+                              ""excel_column_name"": ""Scan Back"",
+                              ""db_column"": ""scan_back_allowance_amount"",
+                              ""sql_expression"": ""COALESCE((psd.scenario_data->(sm.scenario_order_id)::text->>'scan_back_allowance_amount')::numeric, 0)"",
+                              ""excel_column_width"": 20,
+                              ""excel_cell_formatter"": ""number_format"",
+                              ""is_required"": false,
+                              ""is_editable"": true,
+                              ""validation_type"": ""positive_float"",
+                              ""excel_column_order"": 11
+                    },
+                    {
+                              ""excel_column_name"": ""Off Invoice"",
+                              ""db_column"": ""off_invoice_allowance_amount"",
+                              ""sql_expression"": ""COALESCE((psd.scenario_data->(sm.scenario_order_id)::text->>'off_invoice_allowance_amount')::numeric, 0)"",
+                              ""excel_column_width"": 20,
+                              ""excel_cell_formatter"": ""number_format"",
+                              ""is_required"": false,
+                              ""is_editable"": true,
+                              ""validation_type"": ""positive_float"",
+                              ""excel_column_order"": 12
+                    },
+                    {
+                              ""excel_column_name"": ""Cost"",
+                              ""db_column"": ""cost"",
+                              ""sql_expression"": ""ROUND(COALESCE(prm.cost, 0)::numeric, 2)"",
+                              ""excel_column_width"": 15,
+                              ""excel_cell_formatter"": ""number_format"",
+                              ""is_required"": false,
+                              ""is_editable"": false,
+                              ""validation_type"": null,
+                              ""excel_column_order"": 13
+                    },
+                    {
+                              ""excel_column_name"": ""Regular Retail"",
+                              ""db_column"": ""base_price"",
+                              ""sql_expression"": ""ROUND(COALESCE(prm.promo_base_price, 0)::numeric, 2)"",
+                              ""excel_column_width"": 15,
+                              ""excel_cell_formatter"": ""number_format"",
+                              ""is_required"": false,
+                              ""is_editable"": false,
+                              ""validation_type"": null,
+                              ""excel_column_order"": 14
+                    },
+                    {
+                              ""excel_column_name"": ""Sale Retail"",
+                              ""db_column"": ""sale_retail_price"",
+                              ""sql_expression"": null,
+                              ""excel_column_width"": 20,
+                              ""excel_cell_formatter"": ""number_format"",
+                              ""is_required"": false,
+                              ""is_editable"": false,
+                              ""validation_type"": null,
+                              ""excel_column_order"": 15,
+                              ""is_formula"": true
+                    },
+                    {
+                              ""excel_column_name"": ""Savings"",
+                              ""db_column"": ""savings"",
+                              ""sql_expression"": null,
+                              ""excel_column_width"": 15,
+                              ""excel_cell_formatter"": ""number_format"",
+                              ""is_required"": false,
+                              ""is_editable"": false,
+                              ""validation_type"": null,
+                              ""excel_column_order"": 16,
+                              ""is_formula"": true
+                    },
+                    {
+                              ""excel_column_name"": ""Markdown %"",
+                              ""db_column"": ""percent_off"",
+                              ""sql_expression"": null,
+                              ""excel_column_width"": 10,
+                              ""excel_cell_formatter"": ""percent_format"",
+                              ""is_required"": false,
+                              ""is_editable"": false,
+                              ""validation_type"": null,
+                              ""excel_column_order"": 17,
+                              ""is_formula"": true
+                    },
+                    {
+                              ""excel_column_name"": ""Theme"",
+                              ""db_column"": ""theme"",
+                              ""sql_expression"": ""COALESCE(pp.user_metadata->>'theme', '')"",
+                              ""excel_column_width"": 25,
+                              ""excel_cell_formatter"": ""text_format"",
+                              ""is_required"": false,
+                              ""is_editable"": true,
+                              ""validation_type"": ""text"",
+                              ""excel_column_order"": 18,
+                              ""impute_special_characters"": true
+                    },
+                    {
+                              ""excel_column_name"": ""Vendor Promotional Theme"",
+                              ""db_column"": ""vendor_promotional_theme"",
+                              ""sql_expression"": ""COALESCE((COALESCE(pp.user_metadata->'vendor_scenario_data', '{}'::jsonb)->'1')->>'promotional_theme', '')"",
+                              ""excel_column_width"": 25,
+                              ""excel_cell_formatter"": ""text_format"",
+                              ""is_required"": false,
+                              ""is_editable"": false,
+                              ""validation_type"": ""text"",
+                              ""excel_column_order"": 19
+                    },
+                    {
+                              ""excel_column_name"": ""Start Date"",
+                              ""db_column"": ""start_date"",
+                              ""sql_expression"": ""pm.start_date"",
+                              ""excel_column_width"": 20,
+                              ""excel_cell_formatter"": ""text_format"",
+                              ""is_required"": false,
+                              ""is_editable"": false,
+                              ""validation_type"": null,
+                              ""excel_column_order"": 20,
+                              ""data_transformers"": {
+                                        ""type"": ""date_formatting"",
+                                        ""format"": ""MM/dd/yyyy"",
+                                        ""standardize_format"": true
+                              }
+                    },
+                    {
+                              ""excel_column_name"": ""End Date"",
+                              ""db_column"": ""end_date"",
+                              ""sql_expression"": ""pm.end_date"",
+                              ""excel_column_width"": 20,
+                              ""excel_cell_formatter"": ""text_format"",
+                              ""is_required"": false,
+                              ""is_editable"": false,
+                              ""validation_type"": null,
+                              ""excel_column_order"": 21,
+                              ""data_transformers"": {
+                                        ""type"": ""date_formatting"",
+                                        ""format"": ""MM/dd/yyyy"",
+                                        ""standardize_format"": true
+                              }
+                    },
+                    {
+                              ""excel_column_name"": ""Sale GP%"",
+                              ""db_column"": ""sale_gp_percent"",
+                              ""sql_expression"": null,
+                              ""excel_column_width"": 10,
+                              ""excel_cell_formatter"": ""percent_format"",
+                              ""is_required"": false,
+                              ""is_editable"": false,
+                              ""validation_type"": null,
+                              ""excel_column_order"": 22,
+                              ""is_formula"": true
+                    },
+                    {
+                              ""excel_column_name"": ""Regular GP%"",
+                              ""db_column"": ""regular_gp_percent"",
+                              ""sql_expression"": null,
+                              ""excel_column_width"": 10,
+                              ""excel_cell_formatter"": ""percent_format"",
+                              ""is_required"": false,
+                              ""is_editable"": false,
+                              ""validation_type"": null,
+                              ""excel_column_order"": 23,
+                              ""is_formula"": true
+                    },
+                    {
+                              ""excel_column_name"": ""Movement"",
+                              ""db_column"": ""movement"",
+                              ""sql_expression"": null,
+                              ""excel_column_width"": 10,
+                              ""excel_cell_formatter"": ""number_format"",
+                              ""is_required"": false,
+                              ""is_editable"": false,
+                              ""validation_type"": null,
+                              ""excel_column_order"": 24,
+                              ""is_formula"": true
+                    },
+                    {
+                              ""excel_column_name"": ""PSP Store Count"",
+                              ""db_column"": ""psp_store_count"",
+                              ""sql_expression"": ""prm.psp_store_count"",
+                              ""excel_column_width"": 10,
+                              ""excel_cell_formatter"": ""number_as_text_format"",
+                              ""is_required"": false,
+                              ""is_editable"": false,
+                              ""validation_type"": null,
+                              ""excel_column_order"": 25,
+                              ""is_formula"": true
+                    },
+                    {
+                              ""excel_column_name"": ""WNW Store Count"",
+                              ""db_column"": ""wnw_store_count"",
+                              ""sql_expression"": ""prm.wnw_store_count"",
+                              ""excel_column_width"": 10,
+                              ""excel_cell_formatter"": ""number_as_text_format"",
+                              ""is_required"": false,
+                              ""is_editable"": false,
+                              ""validation_type"": null,
+                              ""excel_column_order"": 26,
+                              ""is_formula"": true
+                    },
+                    {
+                              ""excel_column_name"": ""In-Store Only"",
+                              ""db_column"": ""in_store_only"",
+                              ""sql_expression"": ""COALESCE(pp.user_metadata->>'in_store_only', '')"",
+                              ""excel_column_width"": 25,
+                              ""excel_cell_formatter"": ""text_format"",
+                              ""is_required"": true,
+                              ""is_editable"": true,
+                              ""validation_type"": null,
+                              ""excel_column_order"": 27,
+                              ""impute_special_characters"": true
+                    },
+                    {
+                              ""excel_column_name"": ""Hot Deal"",
+                              ""db_column"": ""hot_deal"",
+                              ""sql_expression"": ""COALESCE(pp.user_metadata->>'hot_deal', '')"",
+                              ""excel_column_width"": 25,
+                              ""excel_cell_formatter"": ""text_format"",
+                              ""is_required"": false,
+                              ""is_editable"": true,
+                              ""validation_type"": null,
+                              ""excel_column_order"": 28,
+                              ""impute_special_characters"": true
+                    },
+                    {
+                              ""excel_column_name"": ""Proposed Pictured in Ad"",
+                              ""db_column"": ""pictured_in_ad"",
+                              ""sql_expression"": ""COALESCE(pp.user_metadata->>'pictured_in_ad', '')"",
+                              ""excel_column_width"": 25,
+                              ""excel_cell_formatter"": ""text_format"",
+                              ""is_required"": false,
+                              ""is_editable"": true,
+                              ""validation_type"": null,
+                              ""excel_column_order"": 29,
+                              ""impute_special_characters"": true
+                    },
+                    {
+                              ""excel_column_name"": ""Final Pictured in Ad"",
+                              ""db_column"": ""final_pictured_in_ad"",
+                              ""sql_expression"": ""COALESCE(pp.user_metadata->>'final_pictured_in_ad', '')"",
+                              ""excel_column_width"": 30,
+                              ""excel_cell_formatter"": ""text_format"",
+                              ""is_required"": false,
+                              ""is_editable"": true,
+                              ""validation_type"": ""text"",
+                              ""excel_column_order"": 30,
+                              ""impute_special_characters"": true
+                    },
+                    {
+                              ""excel_column_name"": ""Page #"",
+                              ""db_column"": ""page_number"",
+                              ""sql_expression"": ""COALESCE(pp.user_metadata->>'page_number', '')"",
+                              ""excel_column_width"": 40,
+                              ""excel_cell_formatter"": ""text_format"",
+                              ""is_required"": false,
+                              ""is_editable"": true,
+                              ""validation_type"": ""text"",
+                              ""excel_column_order"": 31,
+                              ""impute_special_characters"": true
+                    },
+                    {
+                              ""excel_column_name"": ""Layout Block"",
+                              ""db_column"": ""layout_block"",
+                              ""sql_expression"": ""COALESCE(pp.user_metadata->>'layout_block', '')"",
+                              ""excel_column_width"": 45,
+                              ""excel_cell_formatter"": ""text_format"",
+                              ""is_required"": false,
+                              ""is_editable"": true,
+                              ""validation_type"": ""text"",
+                              ""excel_column_order"": 32,
+                              ""impute_special_characters"": true
+                    },
+                    {
+                              ""excel_column_name"": ""S2/S5 Message"",
+                              ""db_column"": ""s2_or_s5_size"",
+                              ""sql_expression"": ""COALESCE(pp.user_metadata->>'s2_or_s5_size', '')"",
+                              ""excel_column_width"": 35,
+                              ""excel_cell_formatter"": ""text_format"",
+                              ""is_required"": false,
+                              ""is_editable"": true,
+                              ""validation_type"": ""text"",
+                              ""excel_column_order"": 33,
+                              ""impute_special_characters"": true
+                    },
+                    {
+                              ""excel_column_name"": ""Offer Description"",
+                              ""db_column"": ""offer_description"",
+                              ""sql_expression"": null,
+                              ""excel_column_width"": 40,
+                              ""excel_cell_formatter"": ""text_format"",
+                              ""is_required"": false,
+                              ""is_editable"": false,
+                              ""validation_type"": null,
+                              ""excel_column_order"": 34,
+                              ""is_formula"": true
+                    },
+                    {
+                              ""excel_column_name"": ""Loyalty"",
+                              ""db_column"": ""loyality_points"",
+                              ""sql_expression"": ""COALESCE(psd.scenario_data->(sm.scenario_order_id)::text->>'loyality_points', '')"",
+                              ""excel_column_width"": 30,
+                              ""excel_cell_formatter"": ""text_format"",
+                              ""is_required"": false,
+                              ""is_editable"": true,
+                              ""validation_type"": ""text"",
+                              ""excel_column_order"": 35,
+                              ""impute_special_characters"": true
+                    },
+                    {
+                              ""excel_column_name"": ""MAP"",
+                              ""db_column"": ""map"",
+                              ""sql_expression"": ""prm.map"",
+                              ""excel_column_width"": 15,
+                              ""excel_cell_formatter"": ""number_format"",
+                              ""is_required"": false,
+                              ""is_editable"": false,
+                              ""validation_type"": null,
+                              ""excel_column_order"": 36
+                    },
+                    {
+                              ""excel_column_name"": ""IMAP"",
+                              ""db_column"": ""imap"",
+                              ""sql_expression"": ""prm.imap"",
+                              ""excel_column_width"": 15,
+                              ""excel_cell_formatter"": ""number_format"",
+                              ""is_required"": false,
+                              ""is_editable"": false,
+                              ""validation_type"": null,
+                              ""excel_column_order"": 37
+                    },
+                    {
+                              ""excel_column_name"": ""Department"",
+                              ""db_column"": ""l0_name"",
+                              ""sql_expression"": ""prm.l0_name"",
+                              ""excel_column_width"": 20,
+                              ""excel_cell_formatter"": ""general_format"",
+                              ""is_required"": false,
+                              ""is_editable"": false,
+                              ""validation_type"": null,
+                              ""excel_column_order"": 38,
+                              ""impute_special_characters"": true
+                    },
+                    {
+                              ""excel_column_name"": ""Sub-Department"",
+                              ""db_column"": ""l1_name"",
+                              ""sql_expression"": ""prm.l1_name"",
+                              ""excel_column_width"": 20,
+                              ""excel_cell_formatter"": ""general_format"",
+                              ""is_required"": false,
+                              ""is_editable"": false,
+                              ""validation_type"": null,
+                              ""excel_column_order"": 39,
+                              ""impute_special_characters"": true
+                    },
+                    {
+                              ""excel_column_name"": ""Class"",
+                              ""db_column"": ""l2_name"",
+                              ""sql_expression"": ""prm.l2_name"",
+                              ""excel_column_width"": 20,
+                              ""excel_cell_formatter"": ""general_format"",
+                              ""is_required"": false,
+                              ""is_editable"": false,
+                              ""validation_type"": null,
+                              ""excel_column_order"": 40,
+                              ""impute_special_characters"": true
+                    },
+                    {
+                              ""excel_column_name"": ""Sub-Class"",
+                              ""db_column"": ""l3_name"",
+                              ""sql_expression"": ""prm.l3_name"",
+                              ""excel_column_width"": 20,
+                              ""excel_cell_formatter"": ""general_format"",
+                              ""is_required"": false,
+                              ""is_editable"": false,
+                              ""validation_type"": null,
+                              ""excel_column_order"": 41,
+                              ""impute_special_characters"": true
+                    },
+                    {
+                              ""excel_column_name"": ""Manufacturer Number"",
+                              ""db_column"": ""manufacturer_id"",
+                              ""sql_expression"": ""prm.manufacturer_id"",
+                              ""excel_column_width"": 20,
+                              ""excel_cell_formatter"": ""number_as_text_format"",
+                              ""is_required"": false,
+                              ""is_editable"": false,
+                              ""validation_type"": null,
+                              ""excel_column_order"": 42
+                    },
+                    {
+                              ""excel_column_name"": ""Manufacturer Name"",
+                              ""db_column"": ""manufacturer"",
+                              ""sql_expression"": ""prm.manufacturer"",
+                              ""excel_column_width"": 25,
+                              ""excel_cell_formatter"": ""general_format"",
+                              ""is_required"": false,
+                              ""is_editable"": false,
+                              ""validation_type"": null,
+                              ""excel_column_order"": 43,
+                              ""impute_special_characters"": true
+                    },
+                    {
+                              ""excel_column_name"": ""Brand"",
+                              ""db_column"": ""brand"",
+                              ""sql_expression"": ""prm.brand"",
+                              ""excel_column_width"": 20,
+                              ""excel_cell_formatter"": ""general_format"",
+                              ""is_required"": false,
+                              ""is_editable"": false,
+                              ""validation_type"": null,
+                              ""excel_column_order"": 44,
+                              ""impute_special_characters"": true
+                    },
+                    {
+                              ""excel_column_name"": ""NYLI Retail"",
+                              ""db_column"": ""base_retail_li"",
+                              ""sql_expression"": ""prm.base_retail_li"",
+                              ""excel_column_width"": 15,
+                              ""excel_cell_formatter"": ""number_format"",
+                              ""is_required"": false,
+                              ""is_editable"": false,
+                              ""validation_type"": null,
+                              ""excel_column_order"": 45
+                    },
+                    {
+                              ""excel_column_name"": ""Regular Retail Update"",
+                              ""db_column"": ""regular_retail_update"",
+                              ""sql_expression"": ""CASE WHEN ROUND(COALESCE(prm.promo_base_price, 0)::numeric, 2) = ROUND(COALESCE((pp.user_metadata->>'vendor_promo_base_price')::numeric, 0), 2) THEN NULL ELSE ROUND(COALESCE((pp.user_metadata->>'vendor_promo_base_price')::numeric, 0), 2) END"",
+                              ""excel_column_width"": 15,
+                              ""excel_cell_formatter"": ""number_format"",
+                              ""is_required"": false,
+                              ""is_editable"": false,
+                              ""validation_type"": null,
+                              ""excel_column_order"": 46
+                    },
+                    {
+                              ""excel_column_name"": ""Prebook"",
+                              ""db_column"": ""prebook"",
+                              ""sql_expression"": ""COALESCE(pp.user_metadata->>'prebook', '')"",
+                              ""excel_column_width"": 20,
+                              ""excel_cell_formatter"": ""text_format"",
+                              ""is_required"": false,
+                              ""is_editable"": true,
+                              ""validation_type"": ""text"",
+                              ""excel_column_order"": 47,
+                              ""impute_special_characters"": true
+                    },
+                    {
+                              ""excel_column_name"": ""PSP Display Plan"",
+                              ""db_column"": ""display"",
+                              ""sql_expression"": ""COALESCE(pp.user_metadata->>'display', '')"",
+                              ""excel_column_width"": 20,
+                              ""excel_cell_formatter"": ""text_format"",
+                              ""is_required"": false,
+                              ""is_editable"": true,
+                              ""validation_type"": ""text"",
+                              ""excel_column_order"": 48,
+                              ""impute_special_characters"": true
+                    },
+                    {
+                              ""excel_column_name"": ""WNW Display Plan"",
+                              ""db_column"": ""wnw_display"",
+                              ""sql_expression"": ""COALESCE(pp.user_metadata->>'wnw_display', '')"",
+                              ""excel_column_width"": 25,
+                              ""excel_cell_formatter"": ""text_format"",
+                              ""is_required"": false,
+                              ""is_editable"": true,
+                              ""validation_type"": ""text"",
+                              ""excel_column_order"": 49,
+                              ""impute_special_characters"": true
+                    },
+                    {
+                              ""excel_column_name"": ""Event/Campaign ID"",
+                              ""db_column"": ""event_id"",
+                              ""sql_expression"": ""pm.event_id"",
+                              ""excel_column_width"": 25,
+                              ""excel_cell_formatter"": ""number_as_text_format"",
+                              ""is_required"": false,
+                              ""is_editable"": true,
+                              ""validation_type"": ""text"",
+                              ""excel_column_order"": 50
+                    },
+                    {
+                              ""excel_column_name"": ""Offer Desc"",
+                              ""db_column"": ""offer_desc"",
+                              ""sql_expression"": null,
+                              ""excel_column_width"": 40,
+                              ""excel_cell_formatter"": ""text_format"",
+                              ""is_required"": false,
+                              ""is_editable"": false,
+                              ""validation_type"": null,
+                              ""excel_column_order"": 51,
+                              ""is_formula"": true
+                    },
+                    {
+                              ""excel_column_name"": ""Offer Type"",
+                              ""db_column"": ""offer_type"",
+                              ""sql_expression"": ""tasm.display_name"",
+                              ""excel_column_width"": 25,
+                              ""excel_cell_formatter"": ""text_format"",
+                              ""is_required"": true,
+                              ""is_editable"": true,
+                              ""skip_validation_cache"": true,
+                              ""validation_type"": ""dropdown"",
+                              ""allowed_values"": [
+                                        ""% Off"",
+                                        ""$ Off"",
+                                        ""PP"",
+                                        ""Reg Price"",
+                                        ""BXGY"",
+                                        ""BXGY % Off"",
+                                        ""BMSM""
+                              ],
+                              ""excel_column_order"": 52
+                    },
+                    {
+                              ""excel_column_name"": ""Offer Value"",
+                              ""db_column"": ""offer_value"",
+                              ""sql_expression"": ""COALESCE((psd.scenario_data->(sm.scenario_order_id)::text->>'offer_x_value')::numeric, 0)"",
+                              ""excel_column_width"": 20,
+                              ""excel_cell_formatter"": ""number_format"",
+                              ""is_required"": false,
+                              ""is_editable"": true,
+                              ""skip_validation_cache"": true,
+                              ""validation_type"": ""number"",
+                              ""excel_column_order"": 53
+                    },
+                    {
+                              ""excel_column_name"": ""Buy Type"",
+                              ""db_column"": ""buy_type"",
+                              ""sql_expression"": ""COALESCE(psd.scenario_data->(sm.scenario_order_id)::text->>'offer_x_type', '')"",
+                              ""excel_column_width"": 15,
+                              ""excel_cell_formatter"": ""text_format"",
+                              ""is_required"": false,
+                              ""is_editable"": true,
+                              ""skip_validation_cache"": true,
+                              ""is_complex_offer_column"": true,
+                              ""validation_type"": ""dropdown"",
+                              ""allowed_values"": [
+                                        ""$"",
+                                        ""Units""
+                              ],
+                              ""excel_column_order"": 54,
+                              ""data_transformers"": {
+                                        ""type"": ""value_mapping"",
+                                        ""value_mapping"": {
+                                                  ""unit"": ""Units"",
+                                                  ""dollar"": ""$"",
+                                                  ""dollar_off"": ""$ Off"",
+                                                  ""percent_off"": ""% Off""
+                                        }
+                              }
+                    },
+                    {
+                              ""excel_column_name"": ""Buy Value"",
+                              ""db_column"": ""buy_value"",
+                              ""sql_expression"": ""COALESCE((psd.scenario_data->(sm.scenario_order_id)::text->>'offer_x_value')::numeric, 0)"",
+                              ""excel_column_width"": 20,
+                              ""excel_cell_formatter"": ""number_format"",
+                              ""is_required"": false,
+                              ""is_editable"": true,
+                              ""skip_validation_cache"": true,
+                              ""is_complex_offer_column"": true,
+                              ""excel_column_order"": 55
+                    },
+                    {
+                              ""excel_column_name"": ""Get Type"",
+                              ""db_column"": ""get_type"",
+                              ""sql_expression"": ""COALESCE(psd.scenario_data->(sm.scenario_order_id)::text->>'offer_y_type', '')"",
+                              ""excel_column_width"": 20,
+                              ""excel_cell_formatter"": ""text_format"",
+                              ""is_required"": false,
+                              ""is_editable"": true,
+                              ""skip_validation_cache"": true,
+                              ""is_complex_offer_column"": true,
+                              ""validation_type"": ""dropdown"",
+                              ""allowed_values"": [
+                                        ""$ Off"",
+                                        ""% Off"",
+                                        ""AT $""
+                              ],
+                              ""excel_column_order"": 56,
+                              ""data_transformers"": {
+                                        ""type"": ""value_mapping"",
+                                        ""value_mapping"": {
+                                                  ""unit"": ""Units"",
+                                                  ""dollar"": ""$"",
+                                                  ""dollar_off"": ""$ Off"",
+                                                  ""percent_off"": ""% Off"",
+                                                  ""at_dollar"": ""AT $""
+                                        }
+                              }
+                    },
+                    {
+                              ""excel_column_name"": ""Get Value"",
+                              ""db_column"": ""get_value"",
+                              ""sql_expression"": ""COALESCE((psd.scenario_data->(sm.scenario_order_id)::text->>'offer_y_value')::numeric, 0)"",
+                              ""excel_column_width"": 20,
+                              ""excel_cell_formatter"": ""number_format"",
+                              ""is_required"": false,
+                              ""is_editable"": true,
+                              ""skip_validation_cache"": true,
+                              ""is_complex_offer_column"": true,
+                              ""excel_column_order"": 57
+                    },
+                    {
+                              ""excel_column_name"": ""Additional Discount %"",
+                              ""db_column"": ""additional_discount_percent"",
+                              ""sql_expression"": ""COALESCE((psd.scenario_data->(sm.scenario_order_id)::text->>'offer_z_value')::numeric, 0)"",
+                              ""excel_column_width"": 20,
+                              ""excel_cell_formatter"": ""number_format"",
+                              ""is_required"": false,
+                              ""is_editable"": true,
+                              ""is_complex_offer_column"": true,
+                              ""excel_column_order"": 58
+                    }
+          ],
+          ""error_columns"": [
+                    {
+                              ""excel_column_name"": ""Error Reason"",
+                              ""db_column"": ""error_reason"",
+                              ""excel_column_width"": 60,
+                              ""excel_cell_formatter"": ""text_format"",
+                              ""is_required"": false,
+                              ""is_editable"": false,
+                              ""validation_type"": null,
+                              ""excel_column_order"": 36,
+                              ""column_type"": ""error_reason""
+                    },
+                    {
+                              ""excel_column_name"": ""Has Errors"",
+                              ""db_column"": ""has_errors"",
+                              ""excel_column_width"": 15,
+                              ""excel_cell_formatter"": ""text_format"",
+                              ""is_required"": false,
+                              ""is_editable"": false,
+                              ""validation_type"": null,
+                              ""excel_column_order"": 37,
+                              ""column_type"": ""has_errors""
+                    }
+          ],
+          ""validation_rules"": {
+                    ""valid_offer_types"": [
+                              ""% Off"",
+                              ""$ Off"",
+                              ""PP"",
+                              ""Reg Price"",
+                              ""BXGY"",
+                              ""BXGY % Off"",
+                              ""BMSM""
+                    ],
+                    ""valid_y_n_values"": [
+                              ""Y"",
+                              ""N""
+                    ],
+                    ""valid_s_x_blank_values"": [
+                              ""S"",
+                              ""X"",
+                              """"
+                    ],
+                    ""valid_buy_types"": [
+                              ""$"",
+                              ""Units""
+                    ],
+                    ""valid_get_types"": [
+                              ""$ Off"",
+                              ""% Off"",
+                              ""AT $""
+                    ],
+                    ""percentage_range"": {
+                              ""min"": 0,
+                              ""max"": 100
+                    },
+                    ""currency_precision"": 2,
+                    ""date_format"": ""%Y-%m-%d"",
+                    ""business_rules"": {
+                              ""start_date_before_end_date"": true,
+                              ""promo_id_exists_in_master"": true,
+                              ""offer_value_positive_for_percent_off"": true,
+                              ""buy_value_positive_for_bxgy"": true,
+                              ""get_value_positive_for_bxgy"": true,
+                              ""one_offer_type_per_promo"": true,
+                              ""offer_value_range_validation"": true,
+                              ""buy_type_validation"": true,
+                              ""buy_value_validation"": true,
+                              ""get_type_validation"": true,
+                              ""get_value_validation"": true,
+                              ""additional_discount_validation"": true,
+                              ""offer_description_validation"": true,
+                              ""calculated_currency_validation"": true,
+                              ""calculated_percentage_validation"": true,
+                              ""positive_float_validation"": true,
+                              ""yn_validation"": true,
+                              ""hot_deal_validation"": true,
+                              ""conditional_mandatory_fields"": true,
+                              ""complex_offer_type_validation"": true
+                    },
+                    ""valid_bmsm_combinations"": [
+                              [
+                                        ""Units"",
+                                        ""% Off""
+                              ],
+                              [
+                                        ""Units"",
+                                        ""$ Off""
+                              ],
+                              [
+                                        ""Units"",
+                                        ""AT $""
+                              ],
+                              [
+                                        ""$"",
+                                        ""% Off""
+                              ],
+                              [
+                                        ""$"",
+                                        ""$ Off""
+                              ]
+                    ],
+                    ""conditional_validation_rules"": {
+                              ""simple_offer_types"": [
+                                        ""% Off"",
+                                        ""$ Off"",
+                                        ""PP"",
+                                        ""Reg Price""
+                              ],
+                              ""complex_offer_types"": [
+                                        ""BXGY"",
+                                        ""BXGY % Off"",
+                                        ""BMSM""
+                              ],
+                              ""bxgy_percent_off_types"": [
+                                        ""BXGY % Off""
+                              ],
+                              ""bmsm_only"": [
+                                        ""BMSM""
+                              ],
+                              ""conditional_mandatory_fields"": {
+                                        ""Buy Type"": {
+                                                  ""required_for"": ""bmsm_only"",
+                                                  ""message"": ""Buy Type is required for BMSM offer type""
+                                        },
+                                        ""Buy Value"": {
+                                                  ""required_for"": ""complex_offer_types"",
+                                                  ""message"": ""Buy Value is required for complex offer types""
+                                        },
+                                        ""Get Type"": {
+                                                  ""required_for"": ""bmsm_only"",
+                                                  ""message"": ""Get Type is required for BMSM offer type""
+                                        },
+                                        ""Get Value"": {
+                                                  ""required_for"": ""complex_offer_types"",
+                                                  ""message"": ""Get Value is required for complex offer types""
+                                        },
+                                        ""Additional Discount %"": {
+                                                  ""required_for"": ""bxgy_percent_off_types"",
+                                                  ""message"": ""Additional Discount % is required for BXGY % Off offer type""
+                                        },
+                                        ""Offer Value"": {
+                                                  ""required_for"": ""simple_offer_types"",
+                                                  ""message"": ""Offer Value is required for simple offer types""
+                                        }
+                              }
+                    },
+                    ""field_validation_rules"": {
+                              ""Promo ID"": {
+                                        ""validation_type"": ""number"",
+                                        ""numeric_type"": ""integer"",
+                                        ""min_value"": 1,
+                                        ""precision"": 0
+                              },
+                              ""Offer Type"": {
+                                        ""validation_type"": ""dropdown"",
+                                        ""validation_key"": ""valid_offer_types""
+                              },
+                              ""Offer Value"": {
+                                        ""validation_type"": ""offer_value"",
+                                        ""precision"": 2
+                              },
+                              ""Buy Type"": {
+                                        ""validation_type"": ""conditional_mandatory"",
+                                        ""default_value"": ""Units""
+                              },
+                              ""Buy Value"": {
+                                        ""validation_type"": ""conditional_mandatory""
+                              },
+                              ""Get Type"": {
+                                        ""validation_type"": ""conditional_mandatory"",
+                                        ""default_value"": ""Units""
+                              },
+                              ""Get Value"": {
+                                        ""validation_type"": ""conditional_mandatory""
+                              },
+                              ""Additional Discount %"": {
+                                        ""validation_type"": ""conditional_mandatory""
+                              },
+                              ""Scan Back"": {
+                                        ""validation_type"": ""allowance""
+                              },
+                              ""Off Invoice"": {
+                                        ""validation_type"": ""allowance""
+                              },
+                              ""Theme"": {
+                                        ""validation_type"": ""text""
+                              }
+                    },
+                    ""error_messages"": {
+                              ""file_parse_error"": ""Failed to parse Excel file: {error}"",
+                              ""file_empty"": ""Excel file is empty"",
+                              ""missing_columns"": ""Missing required columns: {columns}"",
+                              ""invalid_number"": ""{column_name} must be a valid number"",
+                              ""number_too_small"": ""{column_name} must be at least {min_value}"",
+                              ""number_too_large"": ""{column_name} must be at most {max_value}"",
+                              ""negative_not_allowed"": ""{column_name} must be a non-negative number"",
+                              ""zero_not_allowed"": ""{column_name} must be greater than 0"",
+                              ""whole_number_allowed_required"": ""{column_name} must be a whole number greater than 0"",
+                              ""positive_number_allowed"": ""{column_name} must be a positive number"",
+                              ""precision_exceeded"": ""{column_name} cannot have more than {precision} decimal places"",
+                              ""unreasonable_value"": ""{column_name} value seems unreasonably large. Please verify."",
+                              ""percentage_exceeded"": ""{column_name} cannot exceed 100%"",
+                              ""offer_value_exceeds_base_price_for_pp"": ""{column_name} must be greater than 0 and less than the product base retail price"",
+                              ""offer_value_exceeds_base_price_for_dollar_off"": ""{column_name} must be greater than or equal to 0 and less than the product base retail price"",
+                              ""exceeds_base_price"": ""{column_name} exceeds Base Price."",
+                              ""allowance_exceeds_base_price"": ""{column_name} must be ≤ base price."",
+                              ""offer_value_between_0_and_100"": ""{column_name} must be between 0–100 for the selected offer type"",
+                              ""invalid_dropdown_value"": ""{column_name} must be one of: {allowed_values}"",
+                              ""text_too_short"": ""{column_name} must be at least {min_length} characters long"",
+                              ""text_empty"": ""{column_name} is required and must be a valid text."",
+                              ""text_pattern_mismatch"": ""{column_name} does not match the required pattern"",
+                              ""promo_not_found"": ""{column_name} / Offer doesn't exist."",
+                              ""promo_locked"": ""{column_name} / Offer must be associated with an unlocked event."",
+                              ""promo_not_correct_product_selection_type"": ""{column_name} / Offer must be Specific products selection type."",
+                              ""promo_not_correct_product_discount_level"": ""{column_name} / Offer must be SKU product discount level."",
+                              ""promo_not_future"": ""{column_name} / Offer must correspond to a future offer."",
+                              ""promo_not_eligible_status"": ""{column_name} / Offer must be in a eligible status for edit."",
+                              ""upc_not_found"": ""{column_name} does not exist."",
+                              ""upc_duplicated"": ""{column_name} is duplicated for the same promo."",
+                              ""multiple_offer_types"": ""Only one {column_name} is allowed per Promo ID."",
+                              ""multiple_offer_types_step3"": ""Only one {column_name} is allowed per Promo ID."",
+                              ""invalid_offer_type"": ""Invalid {column_name}. Must be a supported type."",
+                              ""field_required"": ""{column_name} is required and cannot be empty"",
+                              ""invalid_bmsm_combination"": ""Invalid BMSM combination"",
+                              ""get_value_greater_than_buy_value"": ""{column_name_1} must be less than {column_name_2}"",
+                              ""invalid_value"": ""Unexpected value found in one of the columns""
+                    },
+                    ""validation_types"": {
+                              ""number"": {
+                                        ""validator_class"": ""ConfigurableNumericValidator"",
+                                        ""config_schema"": {
+                                                  ""min_value"": ""number"",
+                                                  ""max_value"": ""number"",
+                                                  ""allow_negative"": ""boolean"",
+                                                  ""precision"": ""number"",
+                                                  ""numeric_type"": ""string""
+                                        }
+                              },
+                              ""date"": {
+                                        ""validator_class"": ""DateValidator"",
+                                        ""config_schema"": {
+                                                  ""format"": ""string"",
+                                                  ""min_date"": ""string"",
+                                                  ""max_date"": ""string"",
+                                                  ""allow_future"": ""boolean"",
+                                                  ""allow_past"": ""boolean""
+                                        }
+                              },
+                              ""dropdown"": {
+                                        ""validator_class"": ""ConfigurableDropdownValidator"",
+                                        ""config_schema"": {
+                                                  ""allowed_values"": ""array"",
+                                                  ""validation_key"": ""string"",
+                                                  ""case_insensitive"": ""boolean""
+                                        }
+                              },
+                              ""text"": {
+                                        ""validator_class"": ""TextValidator"",
+                                        ""config_schema"": {
+                                                  ""min_length"": ""number"",
+                                                  ""allow_empty"": ""boolean"",
+                                                  ""pattern"": ""string""
+                                        }
+                              }
+                    }
+          },
+          ""metadata"": {
+                    ""version"": ""1.0"",
+                    ""description"": ""Excel template configuration for promotions module"",
+                    ""last_updated"": ""2024-01-01"",
+                    ""created_by"": ""system"",
+                    ""template_type"": ""bulk_edit""
+          }
+}",json,false
+53,product,vendor_discount_level_sku_additional_columns,"[
+  {
+    ""key"": ""primaryupc"",
+    ""db_column"": ""primaryupc"",
+    ""display_name"": ""Primary UPC""
+  },
+  {
+    ""key"": ""current_price"",
+    ""db_column"": ""promo_base_price"",
+    ""display_name"": ""Base Retail""
+  }
+]",json,false
+54,store,vendor_discount_level_store_additional_columns,[],json,false
+55,promo,bulk_edit_excel_template_eligible_statuses,"[2,4]",json,false
+56,promo,promo_edit_excel_step3_template_configuration,"{
+          ""columns"": [
+                    {
+                              ""excel_column_name"": ""UPC"",
+                              ""db_column"": ""primaryupc"",
+                              ""excel_column_width"": 20,
+                              ""excel_cell_formatter"": ""number_as_text_format"",
+                              ""is_required"": true,
+                              ""is_editable"": false,
+                              ""validation_type"": null,
+                              ""excel_column_order"": 1
+                    },
+                    {
+                              ""excel_column_name"": ""Scan Back"",
+                              ""db_column"": ""scan_back_allowance_amount"",
+                              ""excel_column_width"": 25,
+                              ""excel_cell_formatter"": ""number_format"",
+                              ""is_required"": false,
+                              ""is_editable"": true,
+                              ""validation_type"": ""positive_float"",
+                              ""excel_column_order"": 2
+                    },
+                    {
+                              ""excel_column_name"": ""Off Invoice"",
+                              ""db_column"": ""off_invoice_allowance_amount"",
+                              ""excel_column_width"": 25,
+                              ""excel_cell_formatter"": ""number_format"",
+                              ""is_required"": false,
+                              ""is_editable"": true,
+                              ""validation_type"": ""positive_float"",
+                              ""excel_column_order"": 3
+                    },
+                    {
+                              ""excel_column_name"": ""Offer Type"",
+                              ""db_column"": ""offer_type"",
+                              ""excel_column_width"": 25,
+                              ""excel_cell_formatter"": ""text_format"",
+                              ""is_required"": true,
+                              ""is_editable"": true,
+                              ""skip_validation_cache"": true,
+                              ""validation_type"": ""dropdown"",
+                              ""allowed_values"": [
+                                        ""% Off"",
+                                        ""$ Off"",
+                                        ""PP"",
+                                        ""Reg Price"",
+                                        ""BXGY"",
+                                        ""BXGY % Off"",
+                                        ""BMSM""
+                              ],
+                              ""excel_column_order"": 4
+                    },
+                    {
+                              ""excel_column_name"": ""Offer Value"",
+                              ""db_column"": ""offer_value"",
+                              ""excel_column_width"": 20,
+                              ""excel_cell_formatter"": ""number_format"",
+                              ""is_required"": false,
+                              ""is_editable"": true,
+                              ""skip_validation_cache"": true,
+                              ""validation_type"": ""number"",
+                              ""excel_column_order"": 5
+                    },
+                    {
+                              ""excel_column_name"": ""Buy Type"",
+                              ""db_column"": ""buy_type"",
+                              ""excel_column_width"": 15,
+                              ""excel_cell_formatter"": ""text_format"",
+                              ""is_required"": false,
+                              ""is_editable"": true,
+                              ""skip_validation_cache"": true,
+                              ""is_complex_offer_column"": true,
+                              ""validation_type"": ""dropdown"",
+                              ""allowed_values"": [
+                                        ""$"",
+                                        ""Units""
+                              ],
+                              ""data_transformers"": {
+                                        ""type"": ""value_mapping"",
+                                        ""value_mapping"": {
+                                                  ""unit"": ""Units"",
+                                                  ""dollar"": ""$"",
+                                                  ""dollar_off"": ""$ Off"",
+                                                  ""percent_off"": ""% Off""
+                                        }
+                              },
+                              ""excel_column_order"": 6
+                    },
+                    {
+                              ""excel_column_name"": ""Buy Value"",
+                              ""db_column"": ""buy_value"",
+                              ""excel_column_width"": 20,
+                              ""excel_cell_formatter"": ""number_format"",
+                              ""is_required"": false,
+                              ""is_editable"": true,
+                              ""skip_validation_cache"": true,
+                              ""is_complex_offer_column"": true,
+                              ""validation_type"": ""number"",
+                              ""excel_column_order"": 7
+                    },
+                    {
+                              ""excel_column_name"": ""Get Type"",
+                              ""db_column"": ""get_type"",
+                              ""excel_column_width"": 20,
+                              ""excel_cell_formatter"": ""text_format"",
+                              ""is_required"": false,
+                              ""is_editable"": true,
+                              ""skip_validation_cache"": true,
+                              ""is_complex_offer_column"": true,
+                              ""validation_type"": ""dropdown"",
+                              ""allowed_values"": [
+                                        ""$ Off"",
+                                        ""% Off"",
+                                        ""AT $""
+                              ],
+                              ""data_transformers"": {
+                                        ""type"": ""value_mapping"",
+                                        ""value_mapping"": {
+                                                  ""unit"": ""Units"",
+                                                  ""dollar"": ""$"",
+                                                  ""dollar_off"": ""$ Off"",
+                                                  ""percent_off"": ""% Off"",
+                                                  ""at_dollar"": ""AT $""
+                                        }
+                              },
+                              ""excel_column_order"": 8
+                    },
+                    {
+                              ""excel_column_name"": ""Get Value"",
+                              ""db_column"": ""get_value"",
+                              ""excel_column_width"": 20,
+                              ""excel_cell_formatter"": ""number_format"",
+                              ""is_required"": false,
+                              ""is_editable"": true,
+                              ""skip_validation_cache"": true,
+                              ""is_complex_offer_column"": true,
+                              ""validation_type"": ""number"",
+                              ""excel_column_order"": 9
+                    },
+                    {
+                              ""excel_column_name"": ""Additional Discount %"",
+                              ""db_column"": ""additional_discount_percent"",
+                              ""excel_column_width"": 25,
+                              ""excel_cell_formatter"": ""number_format"",
+                              ""is_required"": false,
+                              ""is_editable"": true,
+                              ""is_complex_offer_column"": true,
+                              ""validation_type"": ""percentage"",
+                              ""excel_column_order"": 10
+                    },
+                    {
+                              ""excel_column_name"": ""Offer Description"",
+                              ""db_column"": ""offer_description"",
+                              ""excel_column_width"": 40,
+                              ""excel_cell_formatter"": ""text_format"",
+                              ""is_required"": false,
+                              ""is_editable"": false,
+                              ""validation_type"": null,
+                              ""excel_column_order"": 11,
+                              ""is_formula"": true
+                    },
+                    {
+                              ""excel_column_name"": ""Marketing Support"",
+                              ""db_column"": ""marketing_support"",
+                              ""excel_column_width"": 25,
+                              ""excel_cell_formatter"": ""text_format"",
+                              ""is_required"": true,
+                              ""is_editable"": true,
+                              ""validation_type"": ""dropdown"",
+                              ""allowed_values"": [
+                                        ""NONE"",
+                                        ""SHIPPER"",
+                                        ""PRE-BOOK"",
+                                        ""OTHER""
+                              ],
+                              ""excel_column_order"": 12
+                    },
+                    {
+                              ""excel_column_name"": ""PROMOTIONAL THEME"",
+                              ""db_column"": ""promotional_theme"",
+                              ""excel_column_width"": 30,
+                              ""excel_cell_formatter"": ""text_format"",
+                              ""is_required"": false,
+                              ""is_editable"": true,
+                              ""validation_type"": ""text"",
+                              ""excel_column_order"": 13,
+                              ""impute_special_characters"": true
+                    },
+                    {
+                              ""excel_column_name"": ""LOYALTY POINTS"",
+                              ""db_column"": ""loyality_points"",
+                              ""excel_column_width"": 20,
+                              ""excel_cell_formatter"": ""text_format"",
+                              ""is_required"": false,
+                              ""is_editable"": true,
+                              ""validation_type"": ""text"",
+                              ""excel_column_order"": 14,
+                              ""impute_special_characters"": true
+                    },
+                    {
+                              ""excel_column_name"": ""SKU"",
+                              ""db_column"": ""product_description"",
+                              ""excel_column_width"": 50,
+                              ""excel_cell_formatter"": ""text_format"",
+                              ""is_required"": false,
+                              ""is_editable"": false,
+                              ""validation_type"": null,
+                              ""excel_column_order"": 15,
+                              ""impute_special_characters"": true
+                    }
+          ],
+          ""error_columns"": [
+                    {
+                              ""excel_column_name"": ""Error Reason"",
+                              ""db_column"": ""error_reason"",
+                              ""excel_column_width"": 60,
+                              ""excel_cell_formatter"": ""text_format"",
+                              ""is_required"": false,
+                              ""is_editable"": false,
+                              ""validation_type"": null,
+                              ""excel_column_order"": 15,
+                              ""column_type"": ""error_reason""
+                    },
+                    {
+                              ""excel_column_name"": ""Has Errors"",
+                              ""db_column"": ""has_errors"",
+                              ""excel_column_width"": 15,
+                              ""excel_cell_formatter"": ""text_format"",
+                              ""is_required"": false,
+                              ""is_editable"": false,
+                              ""validation_type"": null,
+                              ""excel_column_order"": 16,
+                              ""column_type"": ""has_errors""
+                    }
+          ],
+          ""validation_rules"": {
+                    ""valid_offer_types"": [
+                              ""% Off"",
+                              ""$ Off"",
+                              ""PP"",
+                              ""Reg Price"",
+                              ""BXGY"",
+                              ""BXGY % Off"",
+                              ""BMSM""
+                    ],
+                    ""valid_buy_types"": [
+                              ""$"",
+                              ""Units""
+                    ],
+                    ""valid_get_types"": [
+                              ""$ Off"",
+                              ""% Off"",
+                              ""AT $"",
+                              ""Units""
+                    ],
+                    ""valid_marketing_support"": [
+                              ""NONE"",
+                              ""SHIPPER"",
+                              ""PRE-BOOK"",
+                              ""OTHER""
+                    ],
+                    ""percentage_range"": {
+                              ""min"": 0,
+                              ""max"": 100
+                    },
+                    ""currency_precision"": 2,
+                    ""business_rules"": {
+                              ""promo_id_exists_in_master"": true,
+                              ""offer_value_positive_for_percent_off"": true,
+                              ""buy_value_positive_for_bxgy"": true,
+                              ""get_value_positive_for_bxgy"": true,
+                              ""one_offer_type_per_promo"": true,
+                              ""offer_value_range_validation"": true,
+                              ""buy_type_validation"": true,
+                              ""buy_value_validation"": true,
+                              ""get_type_validation"": true,
+                              ""get_value_validation"": true,
+                              ""additional_discount_validation"": true,
+                              ""positive_float_validation"": true,
+                              ""conditional_mandatory_fields"": true,
+                              ""complex_offer_type_validation"": true
+                    },
+                    ""valid_bmsm_combinations"": [
+                              [
+                                        ""Units"",
+                                        ""% Off""
+                              ],
+                              [
+                                        ""Units"",
+                                        ""$ Off""
+                              ],
+                              [
+                                        ""Units"",
+                                        ""AT $""
+                              ],
+                              [
+                                        ""$"",
+                                        ""% Off""
+                              ],
+                              [
+                                        ""$"",
+                                        ""$ Off""
+                              ]
+                    ],
+                    ""conditional_validation_rules"": {
+                              ""simple_offer_types"": [
+                                        ""% Off"",
+                                        ""$ Off"",
+                                        ""PP"",
+                                        ""Reg Price""
+                              ],
+                              ""complex_offer_types"": [
+                                        ""BXGY"",
+                                        ""BXGY % Off"",
+                                        ""BMSM""
+                              ],
+                              ""bxgy_percent_off_types"": [
+                                        ""BXGY % Off""
+                              ],
+                              ""bmsm_only"": [
+                                        ""BMSM""
+                              ],
+                              ""conditional_mandatory_fields"": {
+                                        ""Buy Type"": {
+                                                  ""required_for"": ""bmsm_only"",
+                                                  ""message"": ""Buy Type is required for BMSM offer type""
+                                        },
+                                        ""Buy Value"": {
+                                                  ""required_for"": ""complex_offer_types"",
+                                                  ""message"": ""Buy Value is required for Complex offer types""
+                                        },
+                                        ""Get Type"": {
+                                                  ""required_for"": ""bmsm_only"",
+                                                  ""message"": ""Get Type is required for BMSM offer type""
+                                        },
+                                        ""Get Value"": {
+                                                  ""required_for"": ""complex_offer_types"",
+                                                  ""message"": ""Get Value is required for Complex offer types""
+                                        },
+                                        ""Additional Discount %"": {
+                                                  ""required_for"": ""bxgy_percent_off_types"",
+                                                  ""message"": ""Additional Discount % is required for BXGY % Off offer type""
+                                        },
+                                        ""Offer Value"": {
+                                                  ""required_for"": ""simple_offer_types"",
+                                                  ""message"": ""Offer Value is required for Simple offer types""
+                                        }
+                              }
+                    },
+                    ""field_validation_rules"": {
+                              ""Promo ID"": {
+                                        ""validation_type"": ""number"",
+                                        ""numeric_type"": ""integer"",
+                                        ""min_value"": 1,
+                                        ""precision"": 0
+                              },
+                              ""Scan Back"": {
+                                        ""validation_type"": ""allowance""
+                              },
+                              ""Off Invoice"": {
+                                        ""validation_type"": ""allowance""
+                              },
+                              ""Offer Type"": {
+                                        ""validation_type"": ""dropdown"",
+                                        ""validation_key"": ""valid_offer_types""
+                              },
+                              ""Offer Value"": {
+                                        ""validation_type"": ""offer_value"",
+                                        ""precision"": 2
+                              },
+                              ""Buy Type"": {
+                                        ""validation_type"": ""conditional_mandatory"",
+                                        ""default_value"": ""Units""
+                              },
+                              ""Buy Value"": {
+                                        ""validation_type"": ""conditional_mandatory""
+                              },
+                              ""Get Type"": {
+                                        ""validation_type"": ""conditional_mandatory"",
+                                        ""default_value"": ""Units""
+                              },
+                              ""Get Value"": {
+                                        ""validation_type"": ""conditional_mandatory""
+                              },
+                              ""Additional Discount %"": {
+                                        ""validation_type"": ""conditional_mandatory""
+                              },
+                              ""Marketing Support"": {
+                                        ""validation_type"": ""dropdown"",
+                                        ""validation_key"": ""valid_marketing_support""
+                              }
+                    },
+                    ""error_messages"": {
+                              ""file_parse_error"": ""Failed to parse Excel file: {error}"",
+                              ""file_empty"": ""Excel file is empty"",
+                              ""missing_columns"": ""Missing required columns: {columns}"",
+                              ""invalid_number"": ""{column_name} must be a valid number"",
+                              ""number_too_small"": ""{column_name} must be at least {min_value}"",
+                              ""number_too_large"": ""{column_name} must be at most {max_value}"",
+                              ""negative_not_allowed"": ""{column_name} must be a non-negative number"",
+                              ""zero_not_allowed"": ""{column_name} must be greater than 0"",
+                              ""whole_number_allowed_required"": ""{column_name} must be a whole number greater than 0"",
+                              ""positive_number_allowed"": ""{column_name} must be a positive number"",
+                              ""precision_exceeded"": ""{column_name} cannot have more than {precision} decimal places"",
+                              ""unreasonable_value"": ""{column_name} value seems unreasonably large. Please verify."",
+                              ""percentage_exceeded"": ""{column_name} cannot exceed 100%"",
+                              ""offer_value_exceeds_base_price_for_pp"": ""{column_name} must be greater than 0 and less than the product base retail price"",
+                              ""offer_value_exceeds_base_price_for_dollar_off"": ""{column_name} must be greater than or equal to 0 and less than the product base retail price"",
+                              ""exceeds_base_price"": ""{column_name} exceeds Base Price."",
+                              ""allowance_exceeds_base_price"": ""{column_name} must be ≤ base price."",
+                              ""offer_value_between_0_and_100"": ""{column_name} must be between 0–100 for the selected offer type"",
+                              ""invalid_dropdown_value"": ""{column_name} must be one of: {allowed_values}"",
+                              ""text_too_short"": ""{column_name} must be at least {min_length} characters long"",
+                              ""text_empty"": ""{column_name} is required and must be a valid text."",
+                              ""text_pattern_mismatch"": ""{column_name} does not match the required pattern"",
+                              ""promo_not_found"": ""{column_name} / Offer doesn't exist."",
+                              ""promo_locked"": ""{column_name} / Offer must be associated with an unlocked event."",
+                              ""promo_not_correct_product_selection_type"": ""{column_name} / Offer must be Specific products selection type."",
+                              ""promo_not_correct_product_discount_level"": ""{column_name} / Offer must be SKU product discount level."",
+                              ""promo_not_future"": ""{column_name} / Offer must correspond to a future offer."",
+                              ""promo_not_eligible_status"": ""{column_name} / Offer must be in a eligible status for edit."",
+                              ""upc_not_found"": ""{column_name} does not exist."",
+                              ""upc_duplicated"": ""{column_name} is duplicated for the same promo."",
+                              ""multiple_offer_types"": ""Only one {column_name} is allowed per Promo ID."",
+                              ""multiple_offer_types_step3"": ""Only one {column_name} is allowed per Promo ID."",
+                              ""invalid_offer_type"": ""Invalid {column_name}. Must be a supported type."",
+                              ""field_required"": ""{column_name} is required and cannot be empty"",
+                              ""invalid_bmsm_combination"": ""Invalid BMSM combination"",
+                              ""get_value_greater_than_buy_value"": ""{column_name_1} must be less than {column_name_2}"",
+                              ""invalid_value"": ""Unexpected value found in one of the columns""
+                    },
+                    ""validation_types"": {
+                              ""number"": {
+                                        ""validator_class"": ""ConfigurableNumericValidator"",
+                                        ""config_schema"": {
+                                                  ""min_value"": ""number"",
+                                                  ""max_value"": ""number"",
+                                                  ""allow_negative"": ""boolean"",
+                                                  ""precision"": ""number"",
+                                                  ""numeric_type"": ""string""
+                                        }
+                              },
+                              ""dropdown"": {
+                                        ""validator_class"": ""ConfigurableDropdownValidator"",
+                                        ""config_schema"": {
+                                                  ""allowed_values"": ""array"",
+                                                  ""validation_key"": ""string"",
+                                                  ""case_insensitive"": ""boolean""
+                                        }
+                              },
+                              ""text"": {
+                                        ""validator_class"": ""TextValidator"",
+                                        ""config_schema"": {
+                                                  ""min_length"": ""number"",
+                                                  ""allow_empty"": ""boolean"",
+                                                  ""pattern"": ""string""
+                                        }
+                              },
+                              ""currency"": {
+                                        ""validator_class"": ""ConfigurableNumericValidator"",
+                                        ""config_schema"": {
+                                                  ""min_value"": 0,
+                                                  ""max_value"": 999999.99,
+                                                  ""allow_negative"": false,
+                                                  ""precision"": 2,
+                                                  ""numeric_type"": ""currency""
+                                        }
+                              },
+                              ""percentage"": {
+                                        ""validator_class"": ""ConfigurableNumericValidator"",
+                                        ""config_schema"": {
+                                                  ""min_value"": 0,
+                                                  ""max_value"": 100,
+                                                  ""allow_negative"": false,
+                                                  ""precision"": 2,
+                                                  ""numeric_type"": ""percentage""
+                                        }
+                              },
+                              ""positive_float"": {
+                                        ""validator_class"": ""ConfigurableNumericValidator"",
+                                        ""config_schema"": {
+                                                  ""min_value"": 0,
+                                                  ""max_value"": 999999.99,
+                                                  ""allow_negative"": false,
+                                                  ""precision"": 2,
+                                                  ""numeric_type"": ""currency""
+                                        }
+                              }
+                    }
+          },
+          ""metadata"": {
+                    ""version"": ""1.0"",
+                    ""description"": ""Excel template configuration for promotions step 3 module"",
+                    ""last_updated"": ""2024-01-01"",
+                    ""created_by"": ""system"",
+                    ""template_type"": ""step3""
+          }
+}",json,false
+57,filter,global_filter_write_eligible_role_codes,"[6,23,43]",json,false
+58,promo,step2_default_priority_number,"{""value"":1,""label"":""Price ""}",json,false
+59,promo,step2_default_offer_type,"{""discount_type_id"":15,""discount_type"":""percent_off"",""discount_display_name"":""% Off""}",json,false
+60,promo,step2_default_discount_level,"[{""label"":""SKU"",""value"":4}]",json,false
+61,promo,step2_default_store_discount_level,"{""label"":""All Stores"",""value"":-200}",json,false
+62,product,product_basic_details_to_show_in_table,"[""primaryupc"",""product_id"",""product_id_actual"",""product_description"",""promo_base_price"",""cost"",""l0_name"",""l1_name"",""l2_name"",""l3_name"",""manufacturer"",""merchandiser"",""brand"",""vendor"",""price_bucket"",""size_bucket"",""uom"",""map"",""imap"",""endcap_flag""]",json,false
+63,application,application_code,"21",integer,false
+64,promo,edit_ongoing_offer_buffer,"0",integer,false
+65,uam,mandatory_product_hierarchy_filters_for_superuser,"[""l0_ids"",""l1_ids""]",json,true
+66,product,step3_excel_sku_additional_columns,"[
+  {
+    ""db_column"": ""product_id_actual"",
+    ""excel_column_name"": ""Product ID"",
+    ""excel_cell_formatter"": ""number_as_text_format""
+  },
+  {
+    ""db_column"": ""promo_base_price"",
+    ""excel_column_name"": ""Base Price"",
+    ""excel_cell_formatter"": ""number_format"",
+    ""is_float"": true
+  },
+  {
+    ""db_column"": ""cost"",
+    ""excel_column_name"": ""Cost"",
+    ""excel_cell_formatter"": ""number_format"",
+    ""is_float"": true
+  }
+]",json,false
+67,product,vendor_step3_excel_sku_additional_columns,"[
+  {
+    ""db_column"": ""promo_base_price"",
+    ""excel_column_name"": ""Base Price"",
+    ""excel_cell_formatter"": ""number_format"",
+    ""is_float"": true
+  }
+]",json,false
+68,event,submission_due_date_alert_severity,"{
+  ""high"": 3,
+  ""medium"": 10,
+  ""low"": 20
+}",json,false
+69,promo,draft_status_alert_severity,"{
+  ""high"": 3,
+  ""medium"": 10,
+  ""low"": 20
+}",json,false
+70,vendor_product,product_catalog_download_columns,"[
+  {
+    ""db_column_name"": ""primaryupc"",
+    ""display_name"": ""UPC""
+  },
+  {
+    ""db_column_name"": ""product_id_actual"",
+    ""display_name"": ""ITEM ID""
+  },
+  {
+    ""db_column_name"": ""product_description"",
+    ""display_name"": ""Product Description""
+  },
+  {
+    ""db_column_name"": ""size_actual"",
+    ""display_name"": ""Retail Unit""
+  },
+  {
+    ""db_column_name"": ""original_uom"",
+    ""display_name"": ""Retail Measure""
+  },
+  {
+    ""db_column_name"": ""brand"",
+    ""display_name"": ""BrandName""
+  },
+  {
+    ""db_column_name"": ""manufacturer_id"",
+    ""display_name"": ""ManufacturerID""
+  },
+  {
+    ""db_column_name"": ""manufacturer"",
+    ""display_name"": ""ManufacturerName""
+  },
+  {
+    ""db_column_name"": ""merchant_mail_id"",
+    ""display_name"": ""Merchant EmailID""
+  },
+  {
+    ""db_column_name"": ""promo_base_price"",
+    ""display_name"": ""Regular Retail""
+  },
+  {
+    ""db_column_name"": ""map"",
+    ""display_name"": ""MAP""
+  }
+]",json,false
+71,event,valid_to_edit_condition,"(
+    CASE eam.attributes->>'event_applicable_for_vendor'
+        WHEN 'Yes'
+            THEN coalesce(LEAST(em.submit_by + 1, em.start_date) > date(timezone({timezone}, now())), true)
+        WHEN 'No'
+            THEN coalesce(em.start_date > date(timezone({timezone}, now())), true)
+    END
+) AND NOT em.is_locked",text,false
+72,promo,allow_duplicate_promo_name_under_same_event,false,boolean,false
+73,promo,allow_diff_discount_types,false,boolean,false
+74,promo,allow_diff_discount_types_for_vendor,true,boolean,false
+75,promo,promo_splitting_hierarchy_config,"{
+  ""consumables"": {
+    ""grouping_columns"": [""brand_cid"", ""l0_cid"", ""l1_cid"", ""l2_cid"", ""l3_cid"", ""merchandiser_cid""],
+    ""main_columns_for_promo_name"": [""brand""],
+    ""secondary_columns_for_promo_name"": [""l0_name"",""l1_name"",""l2_name"",""l3_name""]
+  },
+  ""non_consumables"": {
+    ""grouping_columns"": [""brand_cid"", ""l0_cid"", ""l1_cid"", ""l2_cid"", ""merchandiser_cid""],
+    ""main_columns_for_promo_name"": [""brand""],
+    ""secondary_columns_for_promo_name"": [""l0_name"",""l1_name"",""l2_name""]
+  }
+}",json,false

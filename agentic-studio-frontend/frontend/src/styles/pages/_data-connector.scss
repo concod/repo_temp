@@ -1,0 +1,177 @@
+// Data Connector Page Styles
+.data-connector-page {
+  width: 100%;
+  
+  .page-header {
+    margin-bottom: 24px;
+    
+    .header-content {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      
+      .header-title {
+        margin: 0;
+        color: var(--greys-100);
+      }
+      
+      .header-description {
+        margin: 0;
+
+      }
+    }
+  }
+  
+  .data-connector-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 20px;
+
+    &-configuration {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+      
+      .table-loading,
+      .table-error,
+      .table-empty {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 160px;
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        
+        .body-small {
+          color: #64748b;
+        }
+      }
+
+      .connections-table {
+        display: flex;
+        gap: 16px;
+        flex-direction: column;
+        
+        .table-header {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr 1fr 1fr 80px;
+          border-radius: 8px;
+          background: linear-gradient(109deg, #F1F6FF 9.27%, #FAF4FF 95.79%);
+          
+          .table-cell {
+            padding: 12px 16px;
+            font-weight: 600;
+            font-size: 14px;
+            color: #374151;
+            text-align: left;
+          }
+        }
+        
+        .table-row {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr 1fr 1fr 80px;
+          border-radius: 7px;
+          border: 1px solid #E5E7E9;
+          background: #FEFEFF;
+          
+          
+          &:hover {
+            background: #f8fafc;
+          }
+          
+          .table-cell {
+            padding: 10px 12px;
+            font-size: 12px;
+            color: #4b5563;
+            text-align: left;
+            
+            &.actions-cell {
+              text-align: center;
+              position: relative;
+              padding: 6px;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+          }
+        }
+      }
+      
+      .actions-dots {
+        cursor: pointer;
+        width: 16px;
+        height: 16px;
+        opacity: 0.6;
+        transition: opacity 0.2s ease;
+        
+        &:hover {
+          opacity: 1;
+        }
+      }
+
+      .actions-menu {
+        position: absolute;
+        top: 50%;
+        right: 8px;
+        transform: translateY(-50%);
+        background: white;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        padding: 6px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        z-index: 10;
+
+        .actions-menu-items {
+          display: flex;
+          gap: 6px;
+          
+          img {
+            width: 14px;
+            height: 14px;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.2s ease;
+            
+            &:hover {
+              opacity: 1;
+            }
+          }
+        }
+
+        .actions-menu-close {
+          img {
+            width: 14px;
+            height: 14px;
+            cursor: pointer;
+            opacity: 0.5;
+            transition: opacity 0.2s ease;
+            
+            &:hover {
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+    
+    &-addition {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      width: 100%;
+      
+        // SectionCard styling will be handled by the component's own styles
+    }
+  }
+  
+  .section-title {
+    color: #04112B;
+  }
+}

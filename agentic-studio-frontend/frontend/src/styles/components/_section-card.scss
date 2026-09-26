@@ -1,0 +1,136 @@
+// Section Card Component Styles
+.section-card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  width: 100%;
+  
+  .section-card__loading,
+  .section-card__empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    color: #64748b;
+  }
+}
+
+.section-card {
+  background: #ffffff;
+  border: 1px solid #E5E7E9;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: all 0.2s ease;
+  min-height: 180px;
+  
+  &:hover {
+    border: 1px solid transparent;
+    background: linear-gradient(#FFF, #FFF) padding-box, 
+                linear-gradient(90deg, #A93BFF 0%, #86E9FF 50%, #C3C8D4 100%) border-box;
+    // box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+  
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    
+    &-icon {
+      // The ToolsIcon component will handle its own styling
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    &-title {
+      color: var(--greys-100);
+    }
+  }
+  
+  &__body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    
+    &-description {
+      flex: 1;
+      
+      .body-medium {
+        color: #4B5767;
+        line-height: 1.5;
+      }
+    }
+    
+    &-actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: auto;
+      
+      .documentation-link {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        background: none;
+        border: none;
+        color: #A93BFF;
+        font-size: 11px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: color 0.2s ease;
+        
+        &:hover {
+          color: #7c3aed;
+          text-decoration: underline;
+        }
+        
+        .documentation-icon {
+          color: #A93BFF;
+          
+          svg {
+            width: 14px;
+            height: 14px;
+          }
+        }
+      }
+      
+      .configure-btn {
+        background: #8b5cf6;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-size: 11px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        
+        &:hover {
+          background: #7c3aed;
+          transform: translateY(-1px);
+          box-shadow: 0 4px 8px rgba(139, 92, 246, 0.3);
+        }
+        
+        &:active {
+          transform: translateY(0);
+        }
+      }
+      
+      // Override button component font size for SecondarySmallButton in this context
+      .btn--secondary.btn--sm {
+        font-size: 11px !important;
+        
+        .btn__text {
+          font-size: 11px !important;
+        }
+      }
+    }
+  }
+}

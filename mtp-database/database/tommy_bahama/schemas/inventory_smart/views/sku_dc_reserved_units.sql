@@ -1,0 +1,16 @@
+--liquibase formatted sql
+--changeset aniruddh.singh:pack_type_id added in sku_dc_reserved_units runOnChange:true stripComments:false splitStatements:false context:Release_1_2 labels:handle_both_pack_and_eaches
+--comment: handle both pack and eaches
+--rollback: SELECT 1
+DROP VIEW IF EXISTS inventory_smart.sku_dc_reserved_units;
+CREATE OR REPLACE VIEW inventory_smart.sku_dc_reserved_units
+AS SELECT dpc.product_code,
+    dpc.article,
+    dpc.size,
+    drq.dc_code,
+    drq.type,
+    drq.channel,
+    drq.pack_type_id,
+    COALESCE(drq.quantity, 0) * COALESCE(dpc.units_in_pack, 1) AS quantity
+   FROM inventory_smart.dc_pack_reserve_quantity drq
+     JOIN inventory_smart.dc_pack_configuration dpc USING (pack_type_id, article);

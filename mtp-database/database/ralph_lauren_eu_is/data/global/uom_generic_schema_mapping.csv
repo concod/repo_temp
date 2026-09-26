@@ -1,0 +1,9 @@
+source_column_name,source_column_datatype,required_in_product,is_pk,generic_column_name,generic_column_datatype,formula,is_attribute,is_hierarchy,hierarchy_level,is_null_allowed,unique_by,display_name,is_partition_col,is_clustering_col
+ITEMID,varchar,TRUE,FALSE,item_id,varchar,,FALSE,FALSE,,FALSE,TRUE,,FALSE,FALSE
+FROMUNIT,varchar,TRUE,FALSE,from_unit,varchar,,FALSE,FALSE,,FALSE,TRUE,,FALSE,FALSE
+FROMUNITDESCRIPTION,varchar,TRUE,FALSE,from_unit_description,varchar,,FALSE,FALSE,,FALSE,FALSE,,FALSE,FALSE
+TOUNIT,varchar,TRUE,FALSE,to_unit,varchar,,FALSE,FALSE,,FALSE,TRUE,,FALSE,FALSE
+TOUNITDESCRIPTION,varchar,TRUE,FALSE,to_unit_description,varchar,,FALSE,FALSE,,FALSE,FALSE,,FALSE,FALSE
+FACTOR,float8,TRUE,FALSE,factor,float8,,FALSE,FALSE,,FALSE,FALSE,,FALSE,FALSE
+SYNCSTARTDATETIME,date,TRUE,FALSE,date,date,,FALSE,FALSE,,FALSE,FALSE,,FALSE,FALSE
+DATAAREAID,varchar,TRUE,FALSE,DATAAREAID,varchar,,FALSE,FALSE,,FALSE,TRUE,,FALSE,FALSE

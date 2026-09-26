@@ -1,0 +1,19 @@
+--liquibase formatted sql
+--changeset rakesh.j@impactanalytics.co:plansmart_store_hierarchies_filter_flattened_kikK runOnChange:true stripComments:false splitStatements:false context:zdt-views labels:MTP-1
+--comment: initial changeset for plansmart_store_hierarchies_filter_flattened_kikK
+--rollback: SELECT 1
+Drop view if exists "global".plansmart_store_hierarchies_filter_flattened;
+CREATE OR REPLACE VIEW "global".plansmart_store_hierarchies_filter_flattened
+AS SELECT store_hierarchies_filter.hierarchy_code,
+    store_hierarchies_filter.path,
+    store_hierarchies_filter.level,
+    store_hierarchies_filter.active,
+    store_hierarchies_filter.created_at,
+    store_hierarchies_filter.updated_at,
+    store_hierarchies_filter.s0_id,
+    store_hierarchies_filter.s1_id,
+        CASE
+            WHEN store_hierarchies_filter.path::text ~~* '%Filialvertrieb%'::text OR store_hierarchies_filter.path::text ~~* '%eCommerce%'::text THEN true
+            ELSE false
+        END AS channel_flag
+   FROM global.store_hierarchies_filter;

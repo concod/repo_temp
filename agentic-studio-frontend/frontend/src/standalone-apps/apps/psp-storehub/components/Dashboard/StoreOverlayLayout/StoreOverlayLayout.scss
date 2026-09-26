@@ -1,0 +1,153 @@
+.store-overlay-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  gap: 0;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    border-bottom: 1px solid #E5E7EB;
+    flex-shrink: 0;
+  }
+
+  &__title {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 16px;
+    color: #0D152C;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__count {
+    font-weight: 400;
+    color: #7A8294;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: #F3F4F6;
+    }
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__close {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: #F3F4F6;
+    }
+  }
+
+  &__search-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 253px;
+    height: 28px;
+    border-radius: 8px;
+    border: 0.5px solid #C3C8D4;
+    background: #FFF;
+    transition: border-color 0.2s;
+
+    &:focus-within {
+      border-color: #26734B;
+    }
+  }
+
+  &__search-icon {
+    position: absolute;
+    left: 12px;
+    pointer-events: none;
+    flex-shrink: 0;
+  }
+
+  &__search-input {
+    width: 100%;
+    height: 100%;
+    padding: 0 12px 0 36px;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 14px;
+    color: #1F2B4D;
+    background: transparent;
+    outline: none;
+
+    &::placeholder {
+      color: #7A8294;
+    }
+  }
+
+  &__body {
+    overflow-y: auto;
+    flex: 1;
+    padding: 0;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  &__store-card {
+    width: 100%;
+    border-radius: 0;
+    border: none;
+    border-top: none !important;
+    border-bottom: 1px solid #E5E7EB;
+
+    &:first-child {
+      border-top: none !important;
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:hover {
+      background: #F9FAFB;
+      border: none;
+      border-top: none !important;
+      box-shadow: none;
+    }
+  }
+}
+

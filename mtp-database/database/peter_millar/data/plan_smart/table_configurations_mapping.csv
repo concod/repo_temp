@@ -1,0 +1,43 @@
+tc_code,label,column_name,dimension,type,is_frozen,is_editable,is_aggregated,order_of_display,is_hidden,is_required,tc_mapping_code,child_tc_mapping_code,aggregate_type,formatter,is_row_span,footer,is_searchable,extra,is_sortable,width,is_deleted,is_master_group
+715,Plan Display Name,plan_display_name,Plan,str,false,false,false,1.0,,false,"60_plan_display_name_User-Plan Name_Plan",,,,false,,true,"{}",true,200,false,false
+715,Start Year,start_year,Plan,number,false,false,false,2.0,,false,"60_start_year_Start Year_Plan",,,,false,,true,"{}",true,140,false,false
+715,Start Month,start_month,Plan,str,false,false,false,3.0,,false,"60_start_month_Start Month_Plan",,,,false,,true,"{}",true,200,false,false
+715,End Year,end_year,Plan,number,false,false,false,4.0,,false,"60_end_year_End Year_Plan",,,,false,,true,"{}",true,140,false,false
+715,End Month,end_month,Plan,str,false,false,false,5.0,,false,"60_end_month_End Month_Plan",,,,false,,true,"{}",true,200,false,false
+715,Region,s1_name,Plan,str,false,false,false,6.0,,false,"60_s1_name_Region_Plan",,,,false,,true,"{}",true,200,false,false
+715,Created By,created_by,Plan,str,false,false,false,8.0,false,false,"60_created_by_Created by_Plan",,,,false,,false,"{}",false,200,false,false
+715,Last Updated By,updated_by,Plan,str,false,false,false,10.0,,false,"60_updated_by_Last Updated By_Plan",,,,false,,false,"{}",true,200,false,false
+715,Created On,created_at,Plan,str,false,false,false,9.0,,false,"60_created_at_Created On_Plan",,,,false,,false,"{}",true,200,false,false
+715,Last Updated At,updated_at,Plan,str,false,false,false,11.0,,false,"60_updated_at_Last Updated At_Plan",,,,false,,false,"{}",true,200,false,false
+715,Company,l2_name,Plan,str,false,false,false,7.0,false,false,"60_l1_name_Division_Plan",,,,false,,true,"{}",false,200,false,false
+705,Plan Display Name,plan_display_name,Plan,str,false,false,false,1.0,,false,2800006,,,,false,,true,{},true,200,false,false
+705,Start Month,start_month,Plan,str,false,false,false,3.0,,false,2800010,,,,false,,true,{},true,200,false,false
+705,End Month,end_month,Plan,str,false,false,false,5.0,,false,2800012,,,,false,,true,{},true,200,false,false
+705,Channel,s4_name,Product,list,false,false,false,9.0,,false,e8dbe091-3e5e-4565-a1c8-f34413393e6c,,,,false,,true,{},true,200,false,false
+705,Sub Channel,s5_name,Product,list,false,false,false,10.0,,false,f393a5d6-179f-4ace-beed-9a7b5bed2688,,,,false,,true,{},true,200,false,false
+705,Start Year,start_year,Plan,number,false,false,false,2.0,,false,2800009,,,,false,,true,{},true,200,false,false
+705,End Year,end_year,Plan,number,false,false,false,4.0,,false,2800011,,,,false,,true,{},true,200,false,false
+705,Created By,created_by,Plan,str,false,false,false,11.0,,false,2800007,,,,false,,false,{},false,200,false,false
+705,Last Updated By,updated_by,Plan,str,false,false,false,13.0,,false,2800016,,,,false,,false,{},false,200,false,false
+705,Company,l2_name,Store,list,false,false,false,7.0,,false,2800017,,,,false,,true,{},true,200,false,false
+705,Region,s1_name,Store,list,false,false,false,6.0,,false,2800014,,,,false,,true,{},true,200,false,false
+705,Business Unit,s3_name,Store,str,false,false,false,8.0,,false,4c900697-cd5f-46a8-a6f3-4722fdf3b069,,,,false,,true,{},true,200,false,false
+708,Created By,created_by,CreatedComparePlan,str,false,false,false,3.0,false,false,a0647c6c-4013-4794-b9c2-98fb9894e60b,,,,false,,false,{},true,200,false,false
+708,Created On,created_at,CreatedComparePlan,DateTimeField,false,false,false,4.0,false,false,d5fcf699-989f-4d45-ac41-f1a8814c8d99,,,,false,,false,{},true,200,false,false
+708,Last Updated At,updated_at,CreatedComparePlan,DateTimeField,false,false,false,6.0,false,false,b8ae8853-486f-44fa-98b6-b59713d2d938,,,,false,,false,{},true,200,false,false
+708,Last Updated By,updated_by,CreatedComparePlan,str,false,false,false,5.0,false,false,2b0d1783-9763-478b-a0eb-5bbfceee4b67,,,,false,,false,{},true,200,false,false
+708,Plan Display Name,plan_display_name,CreatedComparePlan,str,false,false,false,2.0,false,false,f5afba81-3cb9-429f-b53a-212722ea0e2d,,,,false,,false,{},true,200,false,false
+708,Plan Index,plan_index,CreatedComparePlan,str,false,false,false,1.0,false,false,407bb3f5-a389-434e-9b80-dcbec2f1ffaf,,,,false,,false,{},true,200,false,false
+705,Created On,created_at,Plan,str,false,false,false,12.0,,false,2800008,,,,false,,false,{},true,200,false,false
+705,Last Updated At,updated_at,Plan,str,false,false,false,14.0,,false,2800015,,,,false,,false,{},true,200,false,false
+703,Date,date,plan,date,false,false,false,9.0,false,true,a9468869-2a19-49bd-b797-df3a157ac625,,,,true,,false,{},false,200,false,false
+703,Status,status,plan,str,false,false,false,8.0,false,true,8c9ec0f0-b63a-47a2-b428-b2db724e44eb,,,,true,,false,{},false,200,false,false
+703,User,user,plan,str,false,false,false,7.0,false,true,14a876ba-5cef-414c-9d18-c3b68bde0473,,,,true,,false,{},false,200,false,false
+703,Region,s1_name,plan,str,false,false,false,1.0,false,true,b58865bb-6e21-4fcd-b7cb-3ed2799c3080,,,,true,,false,{},true,200,false,false
+703,Company,s2_name,plan,str,false,false,false,2.0,false,true,bbdef6bd-e87c-4e02-bf03-88dba38c51dc,,,,true,,false,{},true,200,false,false
+703,Business Unit,s3_name,plan,str,false,false,false,3.0,false,true,e4130ce0-2442-479f-af0c-51e87c41164d,,,,true,,false,{},true,200,false,false
+703,Channel,s4_name,plan,str,false,false,false,4.0,false,true,"8cc33d32-35fd-4ebe-a40a-4b110ab7e216",,,,true,,false,{},true,200,false,false
+703,SubChannel,s5_name,plan,str,false,false,false,5.0,false,true,a8083cd7-9d48-428a-9e3d-ab2a1817a300,,,,true,,false,{},true,200,false,false
+703,Time Period,fiscal_quarter_name,plan,list,false,false,false,6.0,false,true,03cd1b01-ac0e-4f40-9aaf-3c9c801e0384,,,,true,,false,{},false,200,false,false
+703,Time,time,plan,datetime,false,false,false,10.0,false,true,3a7379d0-17b3-4068-9d56-dcf69bc83953,,,,true,,false,"{""useUnformattedDateTime"":true}",false,200,false,false
+715,Team,l2_name,Plan,str,false,false,false,10.0,false,false,16cf7556-33e1-40ec-9040-3e83b1132a7b,,,,false,,false,{},true,200,false,false

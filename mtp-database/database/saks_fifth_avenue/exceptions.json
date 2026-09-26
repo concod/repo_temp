@@ -1,0 +1,253 @@
+{
+    "CASCADE": {
+        "exclusions": [
+            "database/saks_fifth_avenue/schemas/price_promo_opt/procedures/drop_temp_tables.sql",
+            "database/saks_fifth_avenue/schemas/price_promo_opt/procedures/pc_simulation_create_column_day_partitions.sql",
+            "database/saks_fifth_avenue/schemas/public/procedures/sync_day_split_mkd.sql",
+            "database/saks_fifth_avenue/schemas/public/procedures/sync_day_split_opt.sql",
+            "database/saks_fifth_avenue/schemas/public/procedures/sync_simulation_week_mkd.sql",
+            "database/saks_fifth_avenue/schemas/public/procedures/sync_simulation_week_opt.sql",
+            "database/saks_fifth_avenue/schemas/public/procedures/sync_store_split_mkd.sql",
+            "database/saks_fifth_avenue/schemas/public/procedures/sync_store_split_opt.sql"
+        ]
+    },
+    "DROP COLUMN": {
+        "exclusions": [
+            "database/saks_fifth_avenue/schemas/global/tables/tb_notifications.sql",
+            "database/saks_fifth_avenue/schemas/price_markdown/tables/tb_strategy_master.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/bxgy_percentage.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/discount_level_config.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/master_valid_offers.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/product_selection_type_config.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/promo_master.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/promo_product.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/promo_product_hierarchy.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/promo_status_config.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/promo_store_hierarchy.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/promo_store_sg_hierarchy.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/ps_recommended_actuals.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/ps_recommended_finalized.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/ps_recommended_finalized_agg.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/ps_recommended_finalized_override.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/ps_recommended_finalized_stack.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/ps_recommended_finalized_stack_agg.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/ps_recommended_finalized_stack_override.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/ps_recommended_finalized_stack_override_agg.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/ps_recommended_ia_projected.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/ps_recommended_ia_projected_agg.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/ps_recommended_override.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/ps_recommended_override_agg.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/ps_recommended_override_ia.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/ps_recommended_override_ia_agg.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/ps_recommended_scenarios.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/ps_recommended_scenarios_agg.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/ps_recommended_scenarios_stack.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/ps_recommended_scenarios_stack_agg.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/ps_recommended_scenarios_stack_override.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/ps_recommended_scenarios_stack_override_agg.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/ps_recommended_stack_ia.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/ps_recommended_stack_ia_agg.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/ps_recommended_stack_override_ia.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/ps_recommended_stack_override_ia_agg.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/ps_reporting_post_promo_date.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/ps_rules.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/ps_scenario_discounts.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/scenario_master.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/store_selection_type_config.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/tb_action_log_master.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/tb_customer_type_config.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/tb_offer_distributor_channel_config.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/tb_placeholder_pricing.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/tb_placeholder_targets.sql",
+            "database/saks_fifth_avenue/schemas/price_promo_opt/tables/speed_tracing_simulate.sql",
+            "database/saks_fifth_avenue/schemas/price_promo_opt/tables/tb_pullforward_coefficient_opt.sql"
+        ]
+    },
+    "DROP CONSTRAINT": {
+        "exclusions": [
+            "database/saks_fifth_avenue/schemas/price_promo/tables/discount_level_config.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/included_products.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/included_promo_pg_hierarchy.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/product_selection_type_config.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/promo_master.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/promo_product_hierarchy.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/promo_product_pg_hierarchy.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/promo_store_hierarchy.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/promo_store_sg_hierarchy.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/promo_txn.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/promo_txn_basket.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/ps_rules.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/ps_scenario_discounts.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/scenario_master.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/store_selection_type_config.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/tb_action_log_payload.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/tb_customer_type_config.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/tb_offer_distributor_channel_config.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/tb_promo_product_groups.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/tb_promo_store_groups.sql"
+        ]
+    },
+    "DROP INDEX": {
+        "exclusions": [
+            "database/saks_fifth_avenue/schemas/price_markdown_opt/procedures/pc_insert_approval_metrics.sql",
+            "database/saks_fifth_avenue/schemas/price_markdown_opt/procedures/pc_opt_drop_index.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/discount_level_config.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/included_promo_pg_hierarchy.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/master_valid_offers.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/promo_master.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/promo_product.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/promo_product_hierarchy.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/promo_product_pg_hierarchy.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/promo_store_hierarchy.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/promo_store_sg_hierarchy.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/ps_rules.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/ps_scenario_discounts.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/scenario_master.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/tb_action_log_master.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/tb_placeholder_pricing.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/tb_placeholder_targets.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/tb_promo_product_groups.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/tb_promo_store_groups.sql",
+            "database/saks_fifth_avenue/schemas/price_promo_opt/tables/tb_pullforward_coefficient_opt.sql",
+            "database/saks_fifth_avenue/schemas/public/procedures/sync_product_master_mkd.sql",
+            "database/saks_fifth_avenue/schemas/public/procedures/sync_product_master_promo.sql"
+        ]
+    },
+    "DROP MATERIALIZED VIEW": {
+        "exclusions": [
+            "database/saks_fifth_avenue/schemas/price_markdown_opt/procedures/pc_create_materialized_view_day_split.sql",
+            "database/saks_fifth_avenue/schemas/price_markdown_opt/procedures/pc_create_materialized_view_sim.sql",
+            "database/saks_fifth_avenue/schemas/price_markdown_opt/procedures/pc_create_materialized_view_store_split.sql"
+        ]
+    },
+    "DROP SEQUENCE": {
+        "exclusions": []
+    },
+    "DROP TABLE": {
+        "exclusions": [
+            "database/saks_fifth_avenue/schemas/price_markdown/functions/fn_copy_ia_data_to_bl.sql",
+            "database/saks_fifth_avenue/schemas/price_markdown/functions/fn_create_bulk_edit_intermediate_table.sql",
+            "database/saks_fifth_avenue/schemas/price_markdown/functions/fn_fetch_approval_dashboard_table_data.sql",
+            "database/saks_fifth_avenue/schemas/price_markdown/functions/fn_fetch_decisions_dashboard_bl_vs_ia_graph_data.sql",
+            "database/saks_fifth_avenue/schemas/price_markdown/functions/fn_fetch_decisions_dashboard_bl_vs_ia_trend_data.sql",
+            "database/saks_fifth_avenue/schemas/price_markdown/functions/fn_fetch_decisions_dashboard_table_data.sql",
+            "database/saks_fifth_avenue/schemas/price_markdown/functions/fn_fetch_decisions_dashboard_table_data_non_pcd_level.sql",
+            "database/saks_fifth_avenue/schemas/price_markdown/functions/fn_get_step4_other_level.sql",
+            "database/saks_fifth_avenue/schemas/price_markdown/functions/fn_load_simulate_input_table.sql",
+            "database/saks_fifth_avenue/schemas/price_markdown/functions/fn_populate_step4_data.sql",
+            "database/saks_fifth_avenue/schemas/price_markdown/functions/fn_update_fetch_time_estimate_table.sql",
+            "database/saks_fifth_avenue/schemas/price_markdown/functions/fn_update_strategy_simulation_derived_table_data.sql",
+            "database/saks_fifth_avenue/schemas/price_markdown/functions/fn_workbench_get_step4_summary_download.sql",
+            "database/saks_fifth_avenue/schemas/price_markdown/functions/fn_workbench_get_step_4_download.sql",
+            "database/saks_fifth_avenue/schemas/price_markdown/functions/fn_workbench_s4_get_current_view_ol.sql",
+            "database/saks_fifth_avenue/schemas/price_markdown/functions/fn_workbench_s4_get_current_view_original.sql",
+            "database/saks_fifth_avenue/schemas/price_markdown/functions/fn_workbench_s4_get_summary_download.sql",
+            "database/saks_fifth_avenue/schemas/price_markdown_opt/functions/fn_opt_insert_disc_ia.sql",
+            "database/saks_fifth_avenue/schemas/price_markdown_opt/functions/fn_opt_ssd_insertion.sql",
+            "database/saks_fifth_avenue/schemas/price_markdown_opt/functions/fn_opt_temp_creation.sql",
+            "database/saks_fifth_avenue/schemas/price_markdown_opt/functions/fn_reporting_financial_validation.sql",
+            "database/saks_fifth_avenue/schemas/price_markdown_opt/functions/fn_reporting_graph_post_markdown_analysis.sql",
+            "database/saks_fifth_avenue/schemas/price_markdown_opt/functions/fn_reporting_location_rollup.sql",
+            "database/saks_fifth_avenue/schemas/price_markdown_opt/functions/fn_reporting_markdown_rollup.sql",
+            "database/saks_fifth_avenue/schemas/price_markdown_opt/functions/fn_reporting_post_markdown_analysis.sql",
+            "database/saks_fifth_avenue/schemas/price_markdown_opt/functions/fn_reporting_style_rollup.sql",
+            "database/saks_fifth_avenue/schemas/price_markdown_opt/functions/fn_stg_sync_opt_temp_creation.sql",
+            "database/saks_fifth_avenue/schemas/price_markdown_opt/functions/fn_stg_sync_ssd_insertion.sql",
+            "database/saks_fifth_avenue/schemas/price_markdown_opt/procedures/pc_act_create_tb_sku_store_mapping.sql",
+            "database/saks_fifth_avenue/schemas/price_markdown_opt/procedures/pc_act_refresh_strategy_cal.sql",
+            "database/saks_fifth_avenue/schemas/price_markdown_opt/procedures/pc_insert_approval_metrics.sql",
+            "database/saks_fifth_avenue/schemas/price_markdown_opt/procedures/pc_opt_drop_temp_tables.sql",
+            "database/saks_fifth_avenue/schemas/price_markdown_opt/procedures/pc_opt_replace_fin_temp_data.sql",
+            "database/saks_fifth_avenue/schemas/price_markdown_opt/procedures/pc_resim_drop_temp_tables.sql",
+            "database/saks_fifth_avenue/schemas/price_markdown_opt/procedures/pc_stg_sync_agg_temp.sql",
+            "database/saks_fifth_avenue/schemas/price_promo_opt/functions/fn_scenario_override_stack_3_2.sql",
+            "database/saks_fifth_avenue/schemas/price_promo_opt/procedures/pc_add_actuals_data.sql",
+            "database/saks_fifth_avenue/schemas/price_promo_opt/procedures/pc_add_actuals_stack_agg_data.sql",
+            "database/saks_fifth_avenue/schemas/price_promo_opt/procedures/pc_add_promo_reporting_data.sql",
+            "database/saks_fifth_avenue/schemas/price_promo_opt/procedures/pc_fetch_products_for_finalized_promos.sql",
+            "database/saks_fifth_avenue/schemas/price_promo_opt/procedures/pc_opt_pre_create_discount_filter.sql",
+            "database/saks_fifth_avenue/schemas/price_promo_opt/procedures/pc_opt_pre_simulation_create_gurobi_data.sql",
+            "database/saks_fifth_avenue/schemas/price_promo_opt/procedures/pc_opt_simulation_create_discount_filter.sql",
+            "database/saks_fifth_avenue/schemas/price_promo_opt/procedures/pc_opt_simulation_create_discount_filter_stack.sql",
+            "database/saks_fifth_avenue/schemas/price_promo_opt/procedures/pc_opt_simulation_drop_intermediate_tables.sql",
+            "database/saks_fifth_avenue/schemas/price_promo_opt/procedures/pc_opt_simulation_drop_intermediate_tables_stack.sql",
+            "database/saks_fifth_avenue/schemas/price_promo_opt/procedures/pc_simulation_bulk_resimulate.sql",
+            "database/saks_fifth_avenue/schemas/price_promo_opt/procedures/pc_simulation_cannibalization_coefficient.sql",
+            "database/saks_fifth_avenue/schemas/price_promo_opt/procedures/pc_simulation_cannibalization_coefficient_stack.sql",
+            "database/saks_fifth_avenue/schemas/price_promo_opt/procedures/pc_simulation_create_discount_filter.sql",
+            "database/saks_fifth_avenue/schemas/price_promo_opt/procedures/pc_simulation_create_discount_filter_date_stack.sql",
+            "database/saks_fifth_avenue/schemas/price_promo_opt/procedures/pc_simulation_create_ps_recommended_finalized_backup.sql",
+            "database/saks_fifth_avenue/schemas/price_promo_opt/procedures/pc_simulation_drop_intermediate_tables.sql",
+            "database/saks_fifth_avenue/schemas/price_promo_opt/procedures/pc_simulation_drop_intermediate_tables_stack.sql",
+            "database/saks_fifth_avenue/schemas/price_promo_opt/procedures/pc_simulation_fetch_store_level_data.sql",
+            "database/saks_fifth_avenue/schemas/price_promo_opt/procedures/pc_simulation_offer_attractiveness_factor.sql",
+            "database/saks_fifth_avenue/schemas/price_promo_opt/procedures/pc_simulation_pf_coefficient.sql",
+            "database/saks_fifth_avenue/schemas/price_promo_opt/procedures/pc_simulation_pf_coefficient_stack.sql",
+            "database/saks_fifth_avenue/schemas/public/procedures/sync_day_split_mkd.sql",
+            "database/saks_fifth_avenue/schemas/public/procedures/sync_day_split_opt.sql",
+            "database/saks_fifth_avenue/schemas/public/procedures/sync_simulation_week_mkd.sql",
+            "database/saks_fifth_avenue/schemas/public/procedures/sync_simulation_week_opt.sql",
+            "database/saks_fifth_avenue/schemas/public/procedures/sync_store_split_mkd.sql",
+            "database/saks_fifth_avenue/schemas/public/procedures/sync_store_split_opt.sql"
+        ]
+    },
+    "DROP TRIGGER": {
+        "exclusions": []
+    },
+    "DROP TYPE": {
+        "exclusions": [
+            "database/saks_fifth_avenue/schemas/price_promo/types/discount_level_value_enum.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/types/offer_distributor_channel_enum.sql"
+        ]
+    },
+    "DROP VIEW": {
+        "exclusions": []
+    },
+    "INHERITS": {
+        "exclusions": []
+    },
+    "ONLY": {
+        "exclusions": [
+            "database/saks_fifth_avenue/schemas/price_promo/types/offer_distributor_channel_enum.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/types/priority_offer_type_enum.sql"
+        ]
+    },
+    "RENAME": {
+        "exclusions": [
+            "database/saks_fifth_avenue/schemas/price_markdown/functions/fn_copy_ia_data_to_bl.sql",
+            "database/saks_fifth_avenue/schemas/price_promo/tables/tb_action_log_master.sql",
+            "database/saks_fifth_avenue/schemas/price_promo_opt/procedures/pc_simulation_create_ps_recommended_finalized_backup.sql"
+        ]
+    },
+    "RESET": {
+        "exclusions": []
+    },
+    "STORAGE": {
+        "exclusions": []
+    },
+    "TEMPORARY": {
+        "exclusions": []
+    },
+    "TRUNCATE": {
+        "exclusions": [
+            "database/saks_fifth_avenue/schemas/global/procedures/pc_refresh_4_hierarchy_configs.sql",
+            "database/saks_fifth_avenue/schemas/price_markdown/functions/fn_refresh_product_group_products_count.sql",
+            "database/saks_fifth_avenue/schemas/price_markdown_opt/procedures/pc_act_insert_ssd_temp.sql",
+            "database/saks_fifth_avenue/schemas/price_markdown_opt/procedures/pc_opt_truncate_strategy_qc_record.sql",
+            "database/saks_fifth_avenue/schemas/price_markdown_opt/procedures/pc_stg_config_all_config_products_stores.sql",
+            "database/saks_fifth_avenue/schemas/price_markdown_opt/procedures/pc_stg_config_already_existing_stg_products.sql",
+            "database/saks_fifth_avenue/schemas/price_markdown_opt/procedures/pc_stg_config_eligible_products_stores.sql",
+            "database/saks_fifth_avenue/schemas/price_markdown_opt/procedures/pc_stg_config_final_eligible_products_stores.sql",
+            "database/saks_fifth_avenue/schemas/price_markdown_opt/procedures/pc_stg_config_strategy_start_end_date.sql",
+            "database/saks_fifth_avenue/schemas/price_promo_opt/procedures/pc_fetch_products_for_finalized_promos.sql",
+            "database/saks_fifth_avenue/schemas/price_promo_opt/procedures/pc_fetch_products_for_finished_promos.sql"
+        ]
+    },
+    "WITHOUT": {
+        "exclusions": [
+            "database/saks_fifth_avenue/schemas/global/functions/fn_insert_notification.sql",
+            "database/saks_fifth_avenue/schemas/price_markdown/functions/fn_insert_auto_archive_logs.sql",
+            "database/saks_fifth_avenue/schemas/price_promo_opt/functions/fn_get_rules_data.sql"
+        ]
+    }
+}

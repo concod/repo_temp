@@ -1,0 +1,10 @@
+--liquibase formatted sql
+--changeset abhishek.singh@impactanalytics.co:bp_competitor_config_1 stripComments:false splitStatements:false context:Release_1_0 labels: liquibase_project_start
+--comment: changeset for base_pricing_restaurant.bp_competitor_config_1
+
+CREATE TABLE base_pricing_restaurant.bp_competitor_config (
+	id serial4 NOT NULL,
+	competitor_name text NULL,
+	competitor_label text NULL
+);
+CREATE INDEX bs_competitor_config ON base_pricing_restaurant.bp_competitor_config USING btree (id);

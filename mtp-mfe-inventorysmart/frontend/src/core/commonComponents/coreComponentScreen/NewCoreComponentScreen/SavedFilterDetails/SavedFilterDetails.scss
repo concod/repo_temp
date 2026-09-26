@@ -1,0 +1,50 @@
+.heading {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #0d152c;
+  line-height: 1.5rem;
+  margin-bottom: 25px;
+}
+
+.saved-filter-new-edit {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.dimension {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  hr {
+    margin: 24px 0px;
+    border: 0.5px solid #d9dde7;
+  }
+  .dimension-wise-filter {
+    display: flex;
+    flex-direction: column;
+    row-gap: 12px;
+    .dimension-heading {
+      font-size: 1rem;
+      font-weight: 500;
+      line-height: 1.25rem;
+      color: #60697d;
+      text-transform: capitalize;
+      margin-bottom: 4px;
+    }
+    .filters {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .required {
+      color: #e15554;
+    }
+    .filter-heading {
+      font-size: 0.75rem;
+      font-weight: 500;
+      line-height: 15px;
+      color: #758490;
+      text-transform: capitalize;
+    }
+  }
+}

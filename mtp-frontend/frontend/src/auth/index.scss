@@ -1,0 +1,221 @@
+/*----------------login css------------------*/
+@import "Styles/variables.scss";
+@import "Styles/mixins.scss";
+$headerHeight: pxToRem(56);
+
+
+.marketing {
+  &-container {
+    background: $white url("assets/Marketing_BG.png") center/cover;
+    box-shadow: -0.25rem 0 0.75rem -0.5rem rgba(0, 0, 0, 0.3);
+    padding: 3.4rem;
+    z-index: 1;
+  }
+
+  &__header {
+    color: #1D1D1D;
+    font-weight: 400;
+    line-height: 2.25rem;
+    letter-spacing: 0.04em;
+  }
+
+  &__image {
+    width: 100%;
+
+    &-wrapper {
+      margin: 0 auto;
+      max-width: pxToRem(420);
+      padding: 5.375rem 0;
+    }
+  }
+
+  &__description {
+    &-wrapper {
+      margin: 0 auto 1.5rem;
+      max-width: pxToRem(540);
+      padding: 0 3rem;
+      text-align: center;
+    }
+  }
+
+  &__indicators {
+    text-align: center;
+
+    .icons {
+      color: #C8C7C7;
+      cursor: pointer;
+      font-size: 0.625rem;
+      margin: 0 0.3rem;
+      
+      &.active {
+        color: #0055AF;
+        cursor: default;
+        pointer-events: none;
+      }
+    }
+  }
+}
+
+.signin-form {
+  &__header {
+    background-color: $white;
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.12);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: $headerHeight;
+    padding: 0 1rem;
+    position: relative;
+    z-index: 100;
+
+    .brand__title {
+      color: #1D1D1D;
+      font-weight: 600; 
+      line-height: normal;
+    }
+  }
+
+  &-container {
+    background-color: $white;
+    padding: 3.4rem;
+    position: relative;
+  
+    .sign-in-text {
+      font-weight: 400;
+      line-height: 1.5;
+      margin-bottom: 4rem;
+    }
+  
+    .signin-form {
+      .btn {
+        display: flex;
+        margin-bottom: 1.825rem;
+        margin-left: auto;
+        padding: 0;
+      }
+    
+      .btn-signin {
+        padding-bottom: 0.5rem;
+        padding-top: 0.5rem;
+      }
+    
+      .MuiInputLabel-root {
+        color: #1B2E42;
+        font-weight: 500;
+        margin-bottom: 0.25rem;
+      }
+    
+      .MuiInputBase-input {
+        @include font-size-body1();
+        color: #475569;
+        font-weight: 300;
+
+        &:-webkit-autofill,
+        &:-webkit-autofill:hover,
+        &:-webkit-autofill:focus,
+        &:-webkit-autofill:active {
+            -webkit-box-shadow: 0 0 0 62rem white inset !important;
+        }
+      }
+    }
+    
+    .login-options {
+      margin: 0 auto;
+      padding: pxToRem(50);
+      width: pxToRem(520);
+      border: 1px solid #DBDBDB;
+      border-radius: 0.5rem;
+  
+      .login__wrapper { 
+        max-width: 20rem;
+        margin: 0 auto;
+      }
+    
+      .MuiDivider-root {
+        justify-content: center;
+        color: #6E7E95;
+        margin-top: 1rem;
+    
+        &::after, &::before {
+          width: 0.5rem;
+          border-color: #6E7E95;
+        }
+      }
+    }
+    
+    .firebase-sign-in,
+    .firebase-without-emailLogin {
+      margin-top: 1rem;
+  
+      .firebaseui-card-content{
+        padding: 0;
+      }
+  
+      .firebaseui-idp-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0 1rem;
+        justify-content: center;
+        margin: 0;
+  
+        .firebaseui-list-item {
+          flex-grow: 1;
+          flex-basis: calc(50% - 1rem);
+          white-space: nowrap;
+          margin-bottom: 1rem;
+  
+          .firebaseui-idp-text {
+            @include font-size-body1();
+            color: #475569;
+          }
+
+          &:first-child {
+            .firebaseui-idp-text-long {
+              display: none;
+            }
+
+            .firebaseui-idp-text-short {
+              display: table-cell;
+            }
+          }
+        }
+      }
+    }
+  
+    .contact {
+      color: #87919A;
+    }
+  }
+}
+
+.h-md-100 {
+  min-height: calc(100vh - #{$headerHeight});
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.error-text {
+  color: red;
+  font-size: 0.75rem;
+  margin-top: pxToRem(3);
+}
+
+.error-border {
+  border: 1px solid #ffc0cb !important;
+  box-shadow: 0 1px 1rem 1px rgb(255 0 0 / 7%);
+}
+
+section.ia-login-page {
+  height: 100vh;
+}
+main.ia-login-body {
+  display: flex;
+}
+.ia-login-form {
+  flex: 1.17 0 0;
+}
+.marketing-container {
+  flex: 1 0 0;
+}

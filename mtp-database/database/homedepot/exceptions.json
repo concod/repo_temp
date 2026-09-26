@@ -1,0 +1,96 @@
+{
+    "CASCADE": {
+        "exclusions": []
+    },
+    "DROP COLUMN": {
+        "exclusions": [
+            "database/homedepot/schemas/base_pricing/functions/fn_manage_attribute.sql"
+        ]
+    },
+    "DROP CONSTRAINT": {
+        "exclusions": []
+    },
+    "DROP INDEX": {
+        "exclusions": [
+            "database/homedepot/schemas/base_pricing/functions/fn_create_competitor_attributes_mv.sql",
+            "database/homedepot/schemas/base_pricing/functions/fn_create_dynamic_attributes_mv.sql"
+        ]
+    },
+    "DROP MATERIALIZED VIEW": {
+        "exclusions": [
+            "database/homedepot/schemas/base_pricing/functions/fn_create_competitor_attributes_mv.sql",
+            "database/homedepot/schemas/base_pricing/functions/fn_create_dynamic_attributes_mv.sql",
+            "database/homedepot/schemas/base_pricing/functions/fn_create_rule_products_mv.sql",
+            "database/homedepot/schemas/base_pricing/functions/fn_create_rule_stores_mv.sql",
+            "database/homedepot/schemas/base_pricing/functions/fn_create_strategy_products_mv.sql",
+            "database/homedepot/schemas/base_pricing/functions/fn_create_strategy_stores_mv.sql",
+            "database/homedepot/schemas/base_pricing/functions/fn_refresh_exception_report.sql",
+            "database/homedepot/schemas/base_pricing/functions/fn_refresh_store_group_hierarchy_mv.sql"
+        ]
+    },
+    "DROP SEQUENCE": {
+        "exclusions": []
+    },
+    "DROP TABLE": {
+        "exclusions": [
+            "database/homedepot/schemas/base_pricing/tables/bp_latest_inventory_agg.sql",
+            "database/homedepot/schemas/base_pricing/tables/bp_latest_product_inventory_agg.sql",
+            "database/homedepot/schemas/base_pricing/tables/bp_latest_store_inventory_agg.sql",
+            "database/homedepot/schemas/base_pricing/tables/bp_product_store_mapping_c1.sql",
+            "database/homedepot/schemas/base_pricing/tables/bp_product_store_mapping_c2.sql",
+            "database/homedepot/schemas/base_pricing/tables/bp_product_store_mapping_c3.sql",
+            "database/homedepot/schemas/base_pricing/tables/bp_product_store_mapping_c4.sql",
+            "database/homedepot/schemas/base_pricing/tables/bp_product_store_mapping_c5.sql",
+            "database/homedepot/schemas/base_pricing/tables/bp_product_store_mapping_c6.sql",
+            "database/homedepot/schemas/base_pricing/tables/bp_product_store_mapping_c7.sql",
+            "database/homedepot/schemas/base_pricing/tables/bp_product_store_mapping_c8.sql",
+            "database/homedepot/schemas/base_pricing/tables/bp_product_store_mapping_c9.sql",
+            "database/homedepot/schemas/base_pricing/tables/bp_product_store_mapping_res.sql"
+        ]
+    },
+    "DROP TRIGGER": {
+        "exclusions": []
+    },
+    "DROP TYPE": {
+        "exclusions": []
+    },
+    "DROP VIEW": {
+        "exclusions": []
+    },
+    "INHERITS": {
+        "exclusions": []
+    },
+    "ONLY": {
+        "exclusions": [
+            "database/homedepot/schemas/base_pricing/functions/fn_delete_table_view_and_manage_default_view.sql"
+        ]
+    },
+    "RENAME": {
+        "exclusions": [
+            "database/homedepot/schemas/base_pricing/functions/fn_manage_attribute.sql"
+        ]
+    },
+    "RESET": {
+        "exclusions": []
+    },
+    "STORAGE": {
+        "exclusions": [
+            "database/homedepot/schemas/global/tables/product_attributes_filter.sql"
+        ]
+    },
+    "TEMPORARY": {
+        "exclusions": []
+    },
+    "TRUNCATE": {
+        "exclusions": [
+            "database/homedepot/schemas/base_pricing/functions/fn_manage_attribute.sql",
+            "database/homedepot/schemas/base_pricing/procedures/sp_product_hierarchy_cid_mapping.sql"
+        ]
+    },
+    "WITHOUT": {
+        "exclusions": [
+            "database/homedepot/schemas/base_pricing/functions/fn_bp_insert_rule_product_store_mapping.sql",
+            "database/homedepot/schemas/base_pricing/functions/fn_cleanup_future_approved_forecast_data.sql"
+        ]
+    }
+}

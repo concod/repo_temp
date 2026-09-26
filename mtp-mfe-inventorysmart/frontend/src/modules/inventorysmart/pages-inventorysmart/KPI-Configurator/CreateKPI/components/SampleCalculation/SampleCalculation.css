@@ -1,0 +1,82 @@
+.sampleRowContainer {
+    margin-bottom: 12px;
+    height: 40px !important;
+    display: grid !important;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(100px, max-content);
+    column-gap: 12px;
+    align-items: center;
+    padding: 0 12px !important;
+    width: max-content;
+    min-width: 100%;
+}
+
+.sampleRowHeader {
+    background-color: #f5f6fa;
+    height: 45px !important;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.sampleRowBody {
+    background-color: transparent;
+    border: 1px solid #D9DDE7;
+}
+
+.sampleRowContainer.sampleRowHeader {
+    background-color: #f5f6fa !important;
+    border: none !important;
+}
+
+.sampleRowContainer.sampleRowBody {
+    background-color: transparent !important;
+    border: 1px solid #D9DDE7 !important;
+}
+
+.sampleRowCell {
+    display: flex;
+    justify-content: flex-start !important;
+    padding-right: 12px;
+    align-items: center;
+}
+
+.sampleNumberValue {
+    justify-content: flex-end !important;
+}
+
+.sampleRowCell span {
+    margin-top: 0 !important;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.sampleRowHeader .sampleRowCell span {
+    white-space: nowrap;
+}
+
+.sampleTableWrapper {
+    width: 100%;
+}
+
+.sampleTableScrollWrapper {
+    overflow-x: auto;
+    overflow-y: auto;
+    max-height: 20rem;
+    width: 100%;
+}
+
+.sampleRowsBodyWrapper {
+    overflow-y: auto;
+}
+
+.sampleRowCell:last-child {
+    padding-right: 0;
+}
+
+.sampleRowHeader .sampleRowCell:not(:last-child) {
+    border-right: 1px solid #D9DDE7 !important;
+    padding-right: 12px !important;
+}

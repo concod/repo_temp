@@ -1,0 +1,11 @@
+"source_column_name","source_column_datatype","required_in_product","generic_column_name","is_pk","generic_column_datatype","formula","is_attribute","is_hierarchy","hierarchy_level","is_null_allowed","unique_by","display_name","is_partition_col","is_clustering_col"
+regional_product_key,varchar,true,product_code,true,varchar,,true,true,,false,true,,false,1
+global_facility_key,varchar,true,store_code,true,varchar,,true,true,,false,true,,false,1
+chain_id,varchar,true,channel,false,varchar,,true,true,,true,false,,false,
+global_channel_desc,varchar,true,subchannel,false,varchar,,false,false,,true,false,,false,
+periodend_dt,date,true,date,true,date,,false,false,,false,true,,true,
+boh_qty,int64,true,oh,false,int,,false,false,,true,false,,false,
+boh_intransit_qty,int64,true,it,false,int,,false,false,,true,false,,false,
+on_order_qty,int64,true,oo,false,int,,false,false,,true,false,,false,
+rfid_inventory_qty,int64,true,rfid_inv,false,int,,true,false,,true,false,,false,
+,int64,true,total_units,false,int,"COALESCE(boh_qty,0)+COALESCE(boh_intransit_qty,0)+COALESCE(on_order_qty,0)",false,false,,true,false,,false,

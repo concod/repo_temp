@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>   
+<databaseChangeLog
+   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd
+      http://www.liquibase.org/xml/ns/pro 
+      http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd">  
+
+      <includeAll path ="database/schemas/cortexeye/tables/" relativeToChangelogFile="true"/>
+      <includeAll path ="database/schemas/cortexeye/functions/" relativeToChangelogFile="true"/> 
+        <!-- <include file ="database/schemas/cortexeye/functions/update_update_at.sql" relativeToChangelogFile="true"/>  -->
+
+        <!-- <include file ="" relativeToChangelogFile="true"/>  -->
+      
+          
+
+      </databaseChangeLog>

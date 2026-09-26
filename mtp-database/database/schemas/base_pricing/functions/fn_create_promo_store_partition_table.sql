@@ -1,0 +1,32 @@
+--liquibase formatted sql
+--changeset abhishek.singh@impactanalytics.co:create_promo_store_partition_table runOnChange:true stripComments:false splitStatements:false context:Release_1_0 labels:liquibase_project_update
+--comment: initial changeset for create_promo_store_partition_table
+
+
+-- DROP FUNCTION base_pricing.fn_create_promo_store_partition_table(int4);
+DROP FUNCTION IF EXISTS base_pricing.fn_create_promo_store_partition_table();
+
+CREATE OR REPLACE FUNCTION base_pricing.fn_create_promo_store_partition_table(p_promo_id integer)
+ RETURNS void
+ LANGUAGE plpgsql
+AS $function$
+DECLARE
+    _partition_name TEXT;
+    _index_name TEXT;
+    _index_exists BOOLEAN;
+BEGIN
+    _partition_name := 'promo_store_' || p_promo_id;
+    _index_name := _partition_name || '_promo_id_idx';
+    
+    -- Create a new partition if it doesn't already exist
+    EXECUTE format('
+        CREATE TABLE IF NOT EXISTS base_pricing.%I 
+        PARTITION OF base_pricing.promo_store
+        FOR VALUES IN (%L)', _partition_name, p_promo_id);
+    
+    -- Create the index if it doesn't exist
+    EXECUTE format('CREATE INDEX IF NOT EXISTS %I ON base_pricing.%I (promo_id)', _index_name, _partition_name);
+
+END;
+$function$
+;

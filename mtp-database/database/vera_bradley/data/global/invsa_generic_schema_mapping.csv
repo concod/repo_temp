@@ -1,0 +1,11 @@
+"source_column_name","source_column_datatype","required_in_product","generic_column_name","is_pk","generic_column_datatype","formula","is_attribute","is_hierarchy","hierarchy_level","is_null_allowed","unique_by","display_name","is_partition_col","is_clustering_col"
+ALLOCATED_QTY,float8,true,allocated_qty,false,float8,,false,false,,false,false,"",false,
+VRAFORECASTCHANNELID,varchar,true,channel,false,varchar,,false,false,,false,true,"",false,
+BARCODE,int8,true,product_code,false,varchar,,false,false,,false,true,"",false,
+INVENTLOCATIONID,varchar,true,store_code,false,varchar,,false,false,,false,true,"",false,
+available_qty,float8,true,available_qty,false,float8,,false,true,,false,false,"",false,
+DATAAREAID,varchar,true,dataareaid,false,varchar,,false,false,,false,true,"",false,
+INVENTSITEID,varchar,true,INVENTSITEID,false,varchar,,false,false,,false,true,"",false,
+INVENTSTATUSID,varchar,true,INVENTSTATUSID,false,varchar,,false,false,,false,true,"",false,
+WMSLOCATIONID,varchar,true,WMSLOCATIONID,false,varchar,,false,false,,false,true,"",false,
+SYNCSTARTDATETIME,timestamp,true,syncstartdatetime,false,timestamp,,false,false,,false,true,"",true,

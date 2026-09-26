@@ -1,0 +1,36 @@
+@import "core/Styles/variables.scss";
+
+.popover {
+  transform: translate(-10px, 0);
+}
+
+.wrapper {
+  width: 540px;
+}
+
+.title {
+  margin-bottom: 10px;
+  line-height: 1.235;
+  letter-spacing: 0px;
+  color: rgb(0, 0, 0);
+  font-size: 0.875rem;
+}
+
+.header,
+.actions {
+  padding: 20px;
+}
+
+.header {
+  border-bottom: 1px solid $alto;
+}
+
+.actions {
+  border-top: 1px solid $alto;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.actions_primaryButton {
+  margin-left: 20px;
+}

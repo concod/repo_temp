@@ -1,0 +1,61 @@
+--liquibase formatted sql
+--changeset yashraj.jha@impactanalytics.co:fn_create_strategy_products_mv_2 stripComments:false runOnChange:true splitStatements:false context:Release_1_0 labels: liquibase_project_start
+--comment: changeset for base_pricing.fn_create_strategy_products_mv_2
+
+DROP FUNCTION IF EXISTS base_pricing.fn_create_strategy_products_mv;
+
+CREATE OR REPLACE FUNCTION base_pricing.fn_create_strategy_products_mv()
+ RETURNS void
+ LANGUAGE plpgsql
+ SECURITY DEFINER
+AS $function$
+DECLARE
+    lvl RECORD;
+    cols TEXT = '';
+    mv_sql TEXT;
+BEGIN
+    -- Loop over all product hierarchy levels to build the dynamic columns
+    FOR lvl IN
+        SELECT product_hierarchy_level_id
+        FROM base_pricing.bp_product_hierarchy_level
+        ORDER BY product_hierarchy_level_id
+    LOOP
+        cols := cols || format(
+            ', ARRAY_AGG(DISTINCT p.l%s_cid) FILTER (WHERE p.l%s_cid IS NOT NULL) AS l%s_ids',
+            lvl.product_hierarchy_level_id,
+            lvl.product_hierarchy_level_id,
+            lvl.product_hierarchy_level_id
+        );
+    END LOOP;
+
+    -- Drop the MV if it exists
+    EXECUTE 'DROP MATERIALIZED VIEW IF EXISTS base_pricing.mv_strategy_products_hierarchy_agg_data';
+    
+    -- Compose the CREATE MATERIALIZED VIEW statement
+    mv_sql := format($fmt$
+        CREATE MATERIALIZED VIEW base_pricing.mv_strategy_products_hierarchy_agg_data AS
+        SELECT
+            s.strategy_id
+            %s
+        FROM
+            (
+                SELECT strategy_id, product_id
+                FROM base_pricing.bp_strategy_products_stores
+                GROUP BY strategy_id, product_id
+            ) s
+        JOIN
+            base_pricing.bp_product_master p
+            ON s.product_id = p.product_id
+        GROUP BY
+            s.strategy_id
+        WITH DATA
+    $fmt$, cols);
+
+    -- Execute the dynamic SQL
+    EXECUTE mv_sql;
+    
+    -- Create index on strategy_id
+    EXECUTE 'CREATE INDEX idx_mv_strategy_products_hierarchy_agg_data_strategy_id ON base_pricing.mv_strategy_products_hierarchy_agg_data (strategy_id)';
+END;
+$function$
+;

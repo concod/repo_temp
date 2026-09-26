@@ -1,0 +1,149 @@
+@use "../../styles/typography" as t;
+
+.ib-agent-table {
+    display: flex;
+    flex-direction: column;
+    background: transparent;
+    border-radius: 0;
+    border: 0;
+    box-shadow: none;
+    overflow: hidden;
+    width: 100%;
+    animation: ibReportEnter 420ms ease both;
+
+    &__header {
+        padding: 0 0 10px;
+        border-bottom: 1px solid #eef1f5;
+    }
+
+    &__title {
+        margin: 0;
+        font-size: t.$ib-subsection-title-size;
+        font-weight: t.$ib-subsection-title-weight;
+        line-height: t.$ib-subsection-title-lh;
+        color: t.$ib-text-primary;
+    }
+
+    &__description {
+        margin: 6px 0 0;
+        font-size: 13px;
+        font-weight: t.$ib-description-weight;
+        line-height: t.$ib-description-lh;
+        color: t.$ib-text-muted;
+    }
+
+    &__scroll-wrapper {
+        width: 100%;
+        overflow-x: auto;
+        max-height: 520px;
+        margin-bottom: 0;
+
+        &::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: #c3c8d4;
+            border-radius: 4px;
+        }
+    }
+
+    &__table {
+        width: 100%;
+        margin: 0;
+        border-collapse: separate;
+        border-spacing: 0;
+        font-size: t.$ib-table-cell-size;
+
+        border: 1px solid #e2e6ee;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    thead {
+        position: sticky;
+        top: 0;
+        background: #f3f4f6;
+        z-index: 2;
+
+        th {
+            padding: 14px 16px;
+            font-size: t.$ib-table-header-size;
+            font-weight: t.$ib-table-header-weight;
+            line-height: t.$ib-table-header-lh;
+            color: t.$ib-table-header-color;
+            border-bottom: 1px solid #e9ebf2;
+
+            border-right: 1px solid #e1e4eb;
+
+            white-space: nowrap;
+            text-align: right;
+        }
+
+        th:last-child {
+            border-right: none;
+        }
+
+        /* Metric column header */
+        th:first-child {
+            text-align: left;
+        }
+    }
+
+    tbody {
+        tr {
+            transition: background 0.15s ease;
+
+            &:hover {
+                background: #f9fafc;
+            }
+        }
+
+        td {
+            padding: 14px 16px;
+            font-size: t.$ib-table-cell-size;
+            font-weight: t.$ib-table-cell-weight;
+            line-height: t.$ib-table-cell-lh;
+            border-bottom: 1px solid #eef1f5;
+
+            border-right: 1px solid #e1e4eb;
+
+            color: t.$ib-table-cell-color;
+            vertical-align: middle;
+            text-align: right;
+            white-space: nowrap;
+        }
+
+        .ib-agent-table__cell-content {
+            display: inline-flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 6px;
+            min-width: max-content;
+        }
+
+        .ib-agent-table__trend-arrow {
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .ib-agent-table__cell-content--positive {
+            color: #17803b;
+        }
+
+        .ib-agent-table__cell-content--negative {
+            color: #c5333f;
+        }
+
+        td:last-child {
+            border-right: none;
+        }
+
+        /* Metric column values */
+        td:first-child {
+            text-align: left;
+            font-weight: t.$ib-table-cell-primary-weight;
+            color: t.$ib-table-cell-primary-color;
+        }
+    }
+}

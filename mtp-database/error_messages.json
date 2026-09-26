@@ -1,0 +1,147 @@
+{
+    "liquibase_errors": {
+      "checksum_mismatch": {
+        "pattern": "(?i)change ?sets? check ?sum.*(?:was:.*but is now:|is now different)|checksum.*(?:was:.*but is now:|is now different|changed|does not match)",
+        "message": "⚠️ CHANGESET MODIFICATION DETECTED\n\n❌ Problem:\nYou modified an already executed changeset. The SQL body was changed after it was already run on the database.\n\n✅ Solution:\n1. Revert your changes to the original changeset\n2. OR create a NEW changeset with a different ID for your modifications\n3. OR delete the changeset entry from DATABASECHANGELOG table (only in dev/test)\n4. OR use liquibase clearCheckSums command (not recommended)\n\nExample:\n--liquibase formatted sql\n--changeset author@company.co:new_changeset_id_v2 stripComments:false\n-- This is the NEW changeset with your modifications\nCREATE TABLE...\n\nNote:\nNever modify executed changesets in production. Always create new changesets for changes."
+      },
+      "duplicate_changeset": {
+        "pattern": "Duplicate identifier|changeset.*already exists",
+        "message": "⚠️ DUPLICATE CHANGESET ID\n\n❌ Problem:\nThis changeset ID already exists in the database.\n\n✅ Solution:\nChange the changeset ID to a unique value.\n\nExample:\n--changeset author@company.co:table_name_action_timestamp"
+      },
+      "missing_table": {
+        "pattern": "relation.*does not exist|table.*does not exist",
+        "message": "⚠️ MISSING TABLE/RELATION\n\n❌ Problem:\nThe SQL references a table that doesn't exist yet.\n\n✅ Solution:\n1. Check if the table name is spelled correctly\n2. Ensure the table is created in an earlier changeset\n3. Check the schema name is correct"
+      }
+    },
+    
+    "vulnerability_messages": {
+      "DROP EXISTING FUNCTION": {
+        "expected": true,
+        "message": "⚠️ MISSING: DROP FUNCTION IF EXISTS\n\n❌ Problem:\nYour function does not have 'DROP FUNCTION IF EXISTS' statement before CREATE.\n\n✅ Solution:\nAdd this line before your CREATE FUNCTION statement:\n\nExample:\nDROP FUNCTION IF EXISTS schema_name.function_name(argument_types);\nCREATE OR REPLACE FUNCTION schema_name.function_name(...)"
+      },
+      
+      "DROP EXISTING PROCEDURE": {
+        "expected": true,
+        "message": "⚠️ MISSING: DROP PROCEDURE IF EXISTS\n\n❌ Problem:\nYour procedure does not have 'DROP PROCEDURE IF EXISTS' statement before CREATE.\n\n✅ Solution:\nAdd this line before your CREATE PROCEDURE statement:\n\nExample:\nDROP PROCEDURE IF EXISTS schema_name.procedure_name(argument_types);\nCREATE OR REPLACE PROCEDURE schema_name.procedure_name(...)"
+      },
+      
+      "DROP EXISTING VIEW": {
+        "expected": true,
+        "message": "⚠️ MISSING: DROP VIEW IF EXISTS\n\n❌ Problem:\nYour view does not have 'DROP VIEW IF EXISTS' statement before CREATE.\n\n✅ Solution:\nAdd this line before your CREATE VIEW statement:\n\nExample:\nDROP VIEW IF EXISTS schema_name.view_name;\nCREATE OR REPLACE VIEW schema_name.view_name AS ..."
+      },
+      
+      "LB ENABLE": {
+        "expected": true,
+        "message": "⚠️ MISSING: Liquibase Header\n\n❌ Problem:\nThis SQL file is missing the Liquibase formatted SQL header.\n\n✅ Solution:\nAdd this as the FIRST line of your SQL file:\n\nExample:\n--liquibase formatted sql\n--changeset author@company.co:changeset_id runOnChange:true stripComments:false splitStatements:false"
+      },
+      
+      "LB CHANGESET": {
+        "expected": true,
+        "message": "⚠️ MISSING: Changeset Metadata\n\n❌ Problem:\nThis SQL file is missing the changeset line.\n\n✅ Solution:\nAdd the changeset line after the liquibase header:\n\nExample:\n--liquibase formatted sql\n--changeset your.email@company.co:unique_changeset_id runOnChange:true stripComments:false splitStatements:false"
+      },
+      
+      "LB STRIP_COMMENTS": {
+        "expected": true,
+        "message": "⚠️ MISSING: stripComments:false\n\n❌ Problem:\nYour changeset is missing 'stripComments:false' attribute.\n\n✅ Solution:\nAdd 'stripComments:false' to your changeset line:\n\nExample:\n--changeset author@company.co:id runOnChange:true stripComments:false splitStatements:false"
+      },
+      
+      "LB STRIP_STMT": {
+        "expected": true,
+        "message": "⚠️ MISSING: splitStatements:false\n\n❌ Problem:\nYour changeset is missing 'splitStatements:false' attribute.\n\n✅ Solution:\nAdd 'splitStatements:false' to your changeset line:\n\nExample:\n--changeset author@company.co:id runOnChange:true stripComments:false splitStatements:false"
+      },
+      
+      "LB RUN_ON_CHANGE": {
+        "expected": true,
+        "message": "⚠️ MISSING: runOnChange:true\n\n❌ Problem:\nYour procedure/function/view is missing 'runOnChange:true' attribute.\n\n✅ Solution:\nAdd 'runOnChange:true' to your changeset line:\n\nExample:\n--changeset author@company.co:id runOnChange:true stripComments:false splitStatements:false\n\nNote:\nThis is REQUIRED for all procedures, functions, and views to update when code changes."
+      },
+      
+      "MISSING_PRIMARY_KEY": {
+        "expected": true,
+        "message": "⚠️ MISSING: Primary Key\n\n❌ Problem:\nThis table in the 'global' schema does not have a PRIMARY KEY defined.\n\n✅ Solution:\nAdd a PRIMARY KEY constraint to your table:\n\nExample:\nCREATE TABLE global.product_master (\n    product_id integer NOT NULL,\n    product_name text,\n    PRIMARY KEY (product_id)\n);\n\nNote:\nAll tables in 'global' schema MUST have a primary key for data integrity."
+      },
+
+      "EMOJI_IN_SQL": {
+        "expected": false,
+        "message": "⚠️ INVALID: Emoji Characters Detected in SQL\n\n❌ Problem:\nYour SQL file contains emoji characters which can cause:\n• Database encoding issues (UTF-8 vs UTF-16)\n• Replication failures across different systems\n• Query execution errors\n• Migration problems between environments\n• Compatibility issues with older database versions\n\n✅ Solution:\n1. Remove all emoji characters from your SQL file\n2. Use plain text descriptions instead of emojis\n3. If you need special characters, use standard ASCII symbols\n4. Replace emojis with descriptive words\n\nExample:\nBAD:  CREATE TABLE orders (status varchar); -- 📦 ✅ ❌\nGOOD: CREATE TABLE orders (status varchar); -- Package, Success, Error\n\nBAD:  COMMENT ON COLUMN users.name IS 'User name 👤';\nGOOD: COMMENT ON COLUMN users.name IS 'User name (person)';\n\nNote:\nEmojis are not standard SQL and can cause serious production issues. Use plain text only."
+      },
+      
+      "MISSING_UNIQUE_INDEX": {
+        "expected": true,
+        "message": "⚠️ MISSING: Unique Index on Materialized View\n\n❌ Problem:\nThis materialized view in 'inventory_smart' schema does not have a UNIQUE INDEX.\n\n✅ Solution:\nAdd a UNIQUE INDEX after your materialized view creation:\n\nExample:\nCREATE MATERIALIZED VIEW inventory_smart.ph_master AS ...;\nCREATE UNIQUE INDEX idx_ph_master_unique ON inventory_smart.ph_master (product_id, store_id);\n\nNote:\nUnique indexes on materialized views are required for refresh concurrency."
+      },
+      "CASCADE": {
+        "expected": false,
+        "message": "⚠️ DANGEROUS: CASCADE Operation Detected\n\n❌ Problem:\nUsing CASCADE can automatically drop dependent objects without explicit control, which may lead to unintended data loss.\n\n✅ Solution:\n1. Remove the CASCADE keyword from your DROP statement\n2. Manually drop dependent objects in the correct order\n3. If CASCADE is absolutely necessary, add this file to exceptions.json\n\nExample:\nDROP VIEW IF EXISTS dependent_view;\nDROP TABLE schema_name.table_name;\n\nNote:\nCASCADE operations are blocked to prevent accidental deletion of dependent objects."
+      },
+
+      "LOCK": {
+        "expected": false,
+        "message": "⚠️ DANGEROUS: LOCK Statement Detected\n\n❌ Problem:\nLOCK statements can cause performance issues and deadlocks.\n\n✅ Solution:\n1. Remove the LOCK statement from your SQL\n2. If LOCK is absolutely necessary, add this file to exceptions.json\n\nExample:\nLOCK TABLE schema_name.table_name IN EXCLUSIVE MODE;\n\nNote:\nLOCK statements are blocked to prevent performance issues and deadlocks."
+      },
+      
+      "DROP TABLE": {
+        "expected": false,
+        "message": "⚠️ DANGEROUS: DROP TABLE Statement Detected\n\n❌ Problem:\nDROP TABLE statements can cause permanent data loss in production databases.\n\n✅ Solution:\n1. For views, use DROP VIEW instead of DROP TABLE\n2. If you need to recreate a table, use ALTER TABLE to modify it instead\n3. For temporary refactoring, add this file to exceptions.json after review\n4. Ensure you have proper backups before dropping tables\n\nExample:\nDROP VIEW IF EXISTS schema_name.view_name;\nCREATE OR REPLACE VIEW schema_name.view_name AS ...\n\nNote:\nDROP TABLE is blocked to prevent accidental data loss. Contact db-architects@impactanalytics.co for exceptions."
+      },
+      
+      "DROP TRIGGER": {
+        "expected": false,
+        "message": "⚠️ WARNING: DROP TRIGGER Statement\n\n❌ Problem:\nDropping triggers can break automated workflows and data integrity checks.\n\n✅ Solution:\nIf the trigger needs to be replaced, use:\nDROP TRIGGER IF EXISTS trigger_name ON schema_name.table_name;\nCREATE TRIGGER trigger_name ..."
+      },
+      
+      "DROP CONSTRAINT": {
+        "expected": false,
+        "message": "⚠️ WARNING: DROP CONSTRAINT Statement\n\n❌ Problem:\nDropping constraints can compromise data integrity.\n\n✅ Solution:\nEnsure the constraint is being replaced or is no longer needed.\nALTER TABLE schema_name.table_name DROP CONSTRAINT constraint_name;\nALTER TABLE schema_name.table_name ADD CONSTRAINT new_constraint ..."
+      },
+      
+      "DROP COLUMN": {
+        "expected": false,
+        "message": "⚠️ DANGEROUS: DROP COLUMN Statement\n\n❌ Problem:\nDropping columns causes permanent data loss.\n\n✅ Solution:\n1. Verify the column is no longer used by any queries or applications\n2. Consider archiving the data first\n3. Get approval from db-architects@impactanalytics.co"
+      },
+      
+      "TRUNCATE": {
+        "expected": false,
+        "message": "⚠️ DANGEROUS: TRUNCATE Statement\n\n❌ Problem:\nTRUNCATE removes all rows from a table and cannot be rolled back easily.\n\n✅ Solution:\n1. For procedures starting with 'sync_', this may be allowed\n2. Otherwise, use DELETE with WHERE clauses for more control\n3. Add to exceptions.json if required for data refresh operations"
+      },
+      
+      "GRANT": {
+        "expected": false,
+        "message": "⚠️ SECURITY: GRANT Statement Detected\n\n❌ Problem:\nGRANT statements modify database permissions and should be managed centrally.\n\n✅ Solution:\nContact DevOps or db-architects@impactanalytics.co for permission changes."
+      },
+      
+      "REVOKE": {
+        "expected": false,
+        "message": "⚠️ SECURITY: REVOKE Statement Detected\n\n❌ Problem:\nREVOKE statements modify database permissions and should be managed centrally.\n\n✅ Solution:\nContact DevOps or db-architects@impactanalytics.co for permission changes."
+      },
+      
+      "ONLY": {
+        "expected": false,
+        "message": "⚠️ WARNING: ONLY Keyword Detected\n\n❌ Problem:\nThe ONLY keyword can cause unexpected behavior with table inheritance.\n\n✅ Solution:\nReview if ONLY is necessary for your use case or remove it."
+      },
+      
+      "DROP PROCEDURE": {
+        "expected": false,
+        "message": "⚠️ WARNING: DROP PROCEDURE Statement\n\n❌ Problem:\nDropping procedures can break application functionality.\n\n✅ Solution:\nThis should typically be in exceptions.json for procedures.\nEnsure the procedure is being replaced with CREATE OR REPLACE PROCEDURE."
+      },
+      
+      "DROP FUNCTION": {
+        "expected": false,
+        "message": "⚠️ WARNING: DROP FUNCTION Statement\n\n❌ Problem:\nDropping functions can break application functionality.\n\n✅ Solution:\nThis should typically be in exceptions.json for functions.\nEnsure the function is being replaced with CREATE OR REPLACE FUNCTION."
+      }
+    },
+    
+    "summary_messages": {
+        "all_failed": {
+            "border": "=",
+            "icon": "❌"
+        },
+        "partial_failed": {
+            "border": "=",
+            "icon": "⚠️"
+        },
+        "all_passed": {
+            "border": "=",
+            "icon": "✅"
+        }
+    }
+}

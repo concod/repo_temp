@@ -1,0 +1,15 @@
+"source_column_name","source_column_datatype","required_in_product","generic_column_name","is_pk","generic_column_datatype","formula","is_attribute","is_hierarchy","hierarchy_level","is_null_allowed"
+ProcessDateTime,varchar,true,feed_time,false,timestamp,"to_timestamp(processdatetime, 'YYYY-MM-DD HH24:MI:SS')",false,false,,false
+UPC,varchar,true,product_code,false,varchar,,false,false,,false
+InternationalStoreCode,varchar,true,store_code,false,varchar,,false,false,,false
+dmidInventoryDt,date,true,date,false,date,,false,false,,false
+OnHandQty,int8,true,oh,false,int8,,false,false,,false
+ExtOnHandCost,float8,true,oh_cost,false,float8,,true,false,,true
+ExtOnHandPNAMSRP,float8,true,oh_price_us,false,float8,,true,false,,true
+ExtOnHandPCAMSRP,float8,true,oh_price_canada,false,float8,,true,false,,true
+SumInTransitQty,int8,true,it,false,int8,,false,false,,false
+SumInTransitCost,float8,true,it_cost,false,float8,,true,false,,true
+SumInTransitPrice,float8,true,it_price_us,false,float8,,true,false,,true
+SumOnOrderQty,int8,true,oo,false,int8,,false,false,,false
+SumOnOrderCost,float8,true,oo_cost,false,float8,,true,false,,true
+SumOnOrderPrice,float8,true,oo_price_us,false,float8,,true,false,,true

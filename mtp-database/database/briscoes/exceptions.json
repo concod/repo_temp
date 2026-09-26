@@ -1,0 +1,156 @@
+{
+    "CASCADE": {
+        "exclusions": [
+            "database/briscoes/schemas/inventory_smart/procedures/create_configurator_sample_tables.sql"
+        ]
+    },
+    "DROP COLUMN": {
+        "exclusions": [
+            "database/briscoes/schemas/assort_smart/tables/launch_delivery_date.sql",
+            "database/briscoes/schemas/assort_smart/tables/line_plan_kpi_cards.sql",
+            "database/briscoes/schemas/assort_smart/tables/plan_cluster_aps_iap.sql",
+            "database/briscoes/schemas/assort_smart/tables/plan_cluster_aps_sp.sql",
+            "database/briscoes/schemas/assort_smart/tables/plan_cluster_aps_wp.sql",
+            "database/briscoes/schemas/assort_smart/tables/plan_cluster_depth_choice_iap.sql",
+            "database/briscoes/schemas/assort_smart/tables/plan_cluster_depth_choice_sp.sql",
+            "database/briscoes/schemas/assort_smart/tables/plan_cluster_depth_choice_wp.sql",
+            "database/briscoes/schemas/assort_smart/tables/plan_cluster_opt_master_iap.sql",
+            "database/briscoes/schemas/assort_smart/tables/plan_cluster_opt_master_sp.sql",
+            "database/briscoes/schemas/assort_smart/tables/plan_cluster_opt_master_wp.sql",
+            "database/briscoes/schemas/assort_smart/tables/plan_hierarchy_aps_iap.sql",
+            "database/briscoes/schemas/assort_smart/tables/plan_hierarchy_aps_sp.sql",
+            "database/briscoes/schemas/assort_smart/tables/plan_hierarchy_aps_wp.sql",
+            "database/briscoes/schemas/assort_smart/tables/plan_hierarchy_budget_opt_master_iap.sql",
+            "database/briscoes/schemas/assort_smart/tables/plan_hierarchy_budget_opt_master_sp.sql",
+            "database/briscoes/schemas/assort_smart/tables/plan_hierarchy_budget_opt_master_wp.sql",
+            "database/briscoes/schemas/global/tables/fiscal_date_mapping.sql",
+            "database/briscoes/schemas/global/tables/new_store_mapping.sql",
+            "database/briscoes/schemas/global/tables/product_attributes_filter.sql",
+            "database/briscoes/schemas/global/tables/product_store_hierarchy_mapping.sql",
+            "database/briscoes/schemas/inventory_smart/tables/article_inventory_dashboard.sql",
+            "database/briscoes/schemas/inventory_smart/tables/auto_allocation_input.sql",
+            "database/briscoes/schemas/inventory_smart/tables/dc_reserve_quantity.sql",
+            "database/briscoes/schemas/inventory_smart/tables/dc_split_ratio.sql",
+            "database/briscoes/schemas/item_smart/tables/ly_master.sql",
+            "database/briscoes/schemas/meta_schema/tables/tb_editableflow_master.sql",
+            "database/briscoes/schemas/meta_schema/tables/tb_formula_master.sql",
+            "database/briscoes/schemas/meta_schema/tables/tb_kpi_config.sql",
+            "database/briscoes/schemas/meta_schema/tables/tb_kpi_master.sql",
+            "database/briscoes/schemas/meta_schema/tables/tb_table_columns_mst.sql",
+            "database/briscoes/schemas/oms/tables/oms_alerts.sql",
+            "database/briscoes/schemas/oms/tables/oms_alerts_store.sql",
+            "database/briscoes/schemas/oms/tables/oms_constraints_lead_time.sql",
+            "database/briscoes/schemas/oms/tables/oms_constraints_lead_time_store.sql",
+            "database/briscoes/schemas/oms/tables/oms_constraints_order_policy.sql",
+            "database/briscoes/schemas/oms/tables/oms_constraints_safety_stock_store.sql",
+            "database/briscoes/schemas/oms/tables/oms_deep_dive_base.sql",
+            "database/briscoes/schemas/oms/tables/oms_kpi_store.sql",
+            "database/briscoes/schemas/oms/tables/oms_orders_recommended.sql",
+            "database/briscoes/schemas/assort_smart/tables/line_plan_choice_launch.sql"
+        ]
+    },
+    "DROP CONSTRAINT": {
+        "exclusions": [
+            "database/briscoes/schemas/assort_smart/tables/launch_delivery_date.sql",
+            "database/briscoes/schemas/assort_smart/tables/line_plan_image_upload.sql",
+            "database/briscoes/schemas/assort_smart/tables/line_plan_kpi_cards.sql",
+            "database/briscoes/schemas/assort_smart/tables/line_plan_review_target.sql",
+            "database/briscoes/schemas/data_platform/tables/data_ingestion_config.sql",
+            "database/briscoes/schemas/global/tables/new_store_mapping.sql",
+            "database/briscoes/schemas/inventory_smart/tables/dc_split_ratio.sql",
+            "database/briscoes/schemas/inventory_smart/tables/dc_transit_time_mapping.sql",
+            "database/briscoes/schemas/item_smart/tables/ly_master.sql",
+            "database/briscoes/schemas/meta_schema/tables/tb_applications.sql",
+            "database/briscoes/schemas/meta_schema/tables/tb_kpi_config.sql",
+            "database/briscoes/schemas/meta_schema/tables/tb_table_columns_mst.sql",
+            "database/briscoes/schemas/oms/tables/oms_alerts.sql",
+            "database/briscoes/schemas/oms/tables/oms_constraints_order_policy.sql",
+            "database/briscoes/schemas/inventory_smart/tables/dc_reserve_quantity.sql"
+        ]
+    },
+    "DROP INDEX": {
+        "exclusions": [
+            "database/briscoes/schemas/global/tables/product_attributes_filter.sql",
+            "database/briscoes/schemas/oms/tables/oms_orders_approved.sql",
+            "database/briscoes/schemas/oms/tables/oms_orders_recommended.sql",
+            "database/briscoes/schemas/oms/tables/oms_orders_recommended_store.sql",
+            "database/briscoes/schemas/oms/tables/oms_po_master_store.sql",
+            "database/briscoes/schemas/oms/tables/oms_kpi_store.sql",
+            "database/briscoes/schemas/oms/tables/oms_constraints_lead_time_store.sql"
+        ]
+    },
+    "DROP MATERIALIZED VIEW": {
+        "exclusions": []
+    },
+    "DROP SEQUENCE": {
+        "exclusions": []
+    },
+    "DROP TABLE": {
+        "exclusions": [
+            "database/briscoes/schemas/assort_smart/tables/depth_multiplier.sql",
+            "database/briscoes/schemas/inventory_smart/procedures/build_product_profile_attributes_filter.sql",
+            "database/briscoes/schemas/item_smart/procedures/create_alerts.sql",
+            "database/briscoes/schemas/item_smart/procedures/create_new_sku.sql",
+            "database/briscoes/schemas/oms/functions/generate_rcl_oms_constraint_data.sql",
+            "database/briscoes/schemas/public/procedures/sync_oms_rcl_constraints.sql",
+            "database/briscoes/schemas/public/procedures/sync_rcl_constraint.sql",
+            "database/briscoes/schemas/public/procedures/sync_rcl_dc_store.sql"
+        ]
+    },
+    "DROP TRIGGER": {
+        "exclusions": []
+    },
+    "DROP TYPE": {
+        "exclusions": []
+    },
+    "DROP VIEW": {
+        "exclusions": []
+    },
+    "INHERITS": {
+        "exclusions": []
+    },
+    "ONLY": {
+        "exclusions": [
+            "database/briscoes/schemas/public/procedures/auto_approve_first_cycle_orders.sql"
+        ]
+    },
+    "RENAME": {
+        "exclusions": [
+            "database/briscoes/schemas/assort_smart/tables/line_plan_image_upload.sql",
+            "database/briscoes/schemas/inventory_smart/tables/alerts_product_level.sql",
+            "database/briscoes/schemas/inventory_smart/tables/article_inventory_dashboard.sql",
+            "database/briscoes/schemas/inventory_smart/tables/forecast_alerts.sql",
+            "database/briscoes/schemas/item_smart/procedures/change_old_to_new_part.sql",
+            "database/briscoes/schemas/item_smart/procedures/change_old_to_new_part_itemfact.sql",
+            "database/briscoes/schemas/item_smart/tables/product_attribute_hierarchy_mapping.sql",
+            "database/briscoes/schemas/oms/tables/vendor_store_comments.sql",
+            "database/briscoes/schemas/space_smart/tables/store_metrics.sql",
+            "database/briscoes/schemas/inventory_smart/tables/dc_pack_reserve_quantity_derived_table.sql",
+            "database/briscoes/schemas/assort_smart/tables/line_plan_choice_launch.sql"
+        ]
+    },
+    "RESET": {
+        "exclusions": []
+    },
+    "STORAGE": {
+        "exclusions": []
+    },
+    "TEMPORARY": {
+        "exclusions": []
+    },
+    "TRUNCATE": {
+        "exclusions": [
+            "database/briscoes/schemas/item_smart/procedures/populate_alerts.sql",
+            "database/briscoes/schemas/item_smart/procedures/update_itemfact_sku.sql",
+            "database/briscoes/schemas/item_smart/procedures/update_itemfact_sku_week.sql",
+            "database/briscoes/schemas/public/procedures/generate_all_rcl_constraint_data.sql",
+            "database/briscoes/schemas/public/procedures/generate_all_week_level_rcl_constraint_data.sql"
+        ]
+    },
+    "WITHOUT": {
+        "exclusions": [
+            "database/briscoes/schemas/inventory_smart/functions/auto_allocation_input_articles.sql",
+            "database/briscoes/schemas/oms/functions/oms_order_details_set_all.sql"
+        ]
+    }
+}

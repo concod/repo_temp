@@ -1,0 +1,15 @@
+--liquibase formatted sql
+--changeset sidhartha.c@impactanalytics.co:dc_split_ratio stripComments:false splitStatements:false context:Release_1_0 ignore:false labels:briscoes_dc_split_ratio
+--comment: initial changeset for dc_split_ratio
+
+CREATE TABLE IF NOT EXISTS inventory_smart.dc_split_ratio (
+	id serial4 NOT NULL,
+	article varchar(50) NULL,
+	product_code varchar(50) NOT NULL,
+	"size" varchar(50) NULL,
+	loc_code varchar(50) NOT NULL,
+	sales_org_name varchar(50) NOT NULL,
+	fiscal_year_week int4 NOT NULL,
+	peneteration float8 NULL,
+	CONSTRAINT pk_dc_split_ratio PRIMARY KEY (product_code, loc_code, sales_org_name, fiscal_year_week)
+);

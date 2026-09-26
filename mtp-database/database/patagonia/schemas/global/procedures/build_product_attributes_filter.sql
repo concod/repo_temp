@@ -1,0 +1,218 @@
+--liquibase formatted sql
+--changeset kamaleshkanagaraj@impactanalytics.co:build_product_attributes_filter runOnChange:true stripComments:false splitStatements:false context:build_product_attributes_filter labels:first commit
+--comment: initial changeset for build_product_attributes_filter
+--rollback: SELECT 1
+DROP PROCEDURE if EXISTS global.build_product_attributes_filter(IN _product_code character varying);
+CREATE OR REPLACE PROCEDURE global.build_product_attributes_filter(IN _product_code character varying)
+ LANGUAGE plpgsql
+AS $procedure$
+declare
+	_sql text;
+	_final_cols_list text;
+	_final_cols_list_excluded text;
+	_final_cols_list_pa text;
+	_final_cols_list_paf text;
+	_sync_sql text;
+	_worker text;
+    _log_code varchar := gen_random_uuid();
+	_sp_name varchar := 'global.build_product_attributes_filter';
+	_log_step varchar;
+	_st TIMESTAMP := clock_timestamp();
+	_p_cnt INT;
+	_ddl text ;
+begin
+	call global.data_ingestion_logs(_log_code, _sp_name, 'start', null,  (clock_timestamp() - _st)::text, null);
+	perform set_config('local.log_code', _log_code, true);
+	perform set_config('local.sp_name', _sp_name, true);
+	begin
+
+		SELECT COUNT(*) AS cnt 
+		INTO _p_cnt
+		FROM global.product_master pm
+		WHERE NOT EXISTS( SELECT 1 FROM global.product_attributes  pa 
+						   WHERE pm.product_code = pa.product_code AND attribute_name = 'l0_name');
+
+		IF _p_cnt > 0 THEN 
+		
+		 RAISE EXCEPTION 'Ingestion needs attention: % products without attributes.', _p_cnt;
+		 
+	    END IF;
+		
+        /* ------------------------------------------------------------------------
+        -------------------------- Get required cols list -------------------------
+        ------------------------------------------------------------------------ */
+        select 
+          string_agg('"' || generic_column_name || '"', ', '), 
+          string_agg(concat('excluded.', '"' || generic_column_name || '"'), ', '),
+          string_agg(concat('pa.', '"' || generic_column_name || '"'), ', '),
+          string_agg(concat('paf.', '"' || generic_column_name || '"'), ', ') 
+		  into _final_cols_list, 
+          _final_cols_list_excluded, 
+         _final_cols_list_pa,
+         _final_cols_list_paf
+        from 
+          (
+            select 
+              generic_column_name
+            from 
+              global.product_generic_schema_mapping 
+            where 
+              required_in_product and generic_column_name not in ('product_tag', 'ordering', 'sku_grade', 
+	        'clearance_article', 'product_direct_channel', 
+	        'articlestatustag', 'replenishment_status',
+	        'psa_codes', 'rcl_hash')
+            union 
+            select 
+              column_name as generic_column_name 
+            from 
+              information_schema."columns" c 
+            where 
+              table_name = 'product_master' 
+              and table_schema = 'global'
+          ) x;
+		  
+        select 
+          ' select * from (SELECT * FROM global.product_master pm {where}) pm ' || string_agg(_tsql, ' ') into _sql
+        from 
+          (
+            select 
+              'LEFT JOIN (SELECT product_code, attribute_value::' || _attr_dt || ' AS ' || _attr || ' FROM global.product_attributes {where} and attribute_name = ''' || _attr || ''') X' || _counter || ' USING(product_code)' as _tsql 
+            from 
+              (
+                select 
+                  generic_column_name as _attr, 
+                  generic_column_datatype as _attr_dt, 
+                  row_number() OVER () as _counter 
+                from 
+                  global.product_generic_schema_mapping pgsm 
+                where 
+                  required_in_product 
+                  and is_attribute 
+                order by 
+                  hierarchy_level asc
+              ) x
+          ) x;
+		 select CONCAT( 'create table if not exists public.new_paf AS SELECT * FROM global.product_master pm  where 1=0 ; ',
+		  				  string_agg(psql ,';') 
+						) into _ddl
+		 from 
+		  (
+			select  'ALTER TABLE public.new_paf ADD COLUMN IF NOT EXISTS '||concat(_attr,' ',_attr_dt)||'' as psql
+			from 
+			  (	
+				select 
+				  generic_column_name as _attr, 
+				  generic_column_datatype as _attr_dt
+				from 
+				  global.product_generic_schema_mapping pgsm 
+				where 
+				  required_in_product 
+				  and is_attribute 
+				order by 
+				  hierarchy_level asc
+			  ) x
+			 )x;
+		--raise notice '_ddl: %', _ddl;
+		
+        /* ------------------------------------------------------------------------
+        ------------------------------- Ingestion ---------------------------------
+        ------------------------------------------------------------------------ */
+		_log_step := 'new paf calculate';
+        
+		perform set_config('local.log_step', _log_step, true);
+		SELECT async_query INTO _worker FROM public.async_query('call global.execute_as_admin(''call global.create_partitions_for_paf(''''product_attributes_filter'''')'')');
+
+        PERFORM public.async_query_status(_worker, 'cleanup');
+
+		SELECT async_query INTO _worker FROM public.async_query('DROP TABLE IF EXISTS public.paf_delete, public.new_paf, public.new_paf_delta;');
+        PERFORM public.async_query_status(_worker, 'cleanup');
+
+		SELECT async_query INTO _worker FROM public.async_query(_ddl);
+        PERFORM public.async_query_status(_worker, 'cleanup');
+		
+		--SELECT async_query INTO _worker FROM public.async_query('insert into public.new_paf ' || _sql);
+       -- PERFORM public.async_query_status(_worker, 'cleanup');
+		--call global.data_ingestion_logs(_log_code, _sp_name, _log_step, null, (clock_timestamp() - _st)::text, null);
+
+		_sql := ' WITH rows 
+				 AS (
+						insert into public.new_paf ' || _sql ||
+					 ' RETURNING 1
+        			) SELECT count(1) as cnt FROM rows;';
+		--raise notice '_sync_sql: %', _sql;
+		PERFORM public.parellel_insert(_sql, 50, 'global.product_master', 'product_code',null, 2000);
+		call global.data_ingestion_logs(_log_code, _sp_name, _log_step, null, (clock_timestamp() - _st)::text, null);
+
+		_sql := '';
+		
+		_log_step := 'new paf delta calculate';
+		perform set_config('local.log_step', _log_step, true);
+		_sql := 'select pa.product_code
+        from public.new_paf pa left join global.product_attributes_filter paf using(product_code, l0_name,l1_name)
+        where (' || _final_cols_list_pa || ') is distinct from (' || _final_cols_list_paf || ')';
+		SELECT async_query INTO _worker FROM public.async_query('create table public.new_paf_delta as ' || _sql);
+        PERFORM public.async_query_status(_worker, 'cleanup');
+		call global.data_ingestion_logs(_log_code, _sp_name, _log_step, null, (clock_timestamp() - _st)::text, null);
+
+		------------------------------------------------------------------------
+		
+		_log_step := 'paf upsert';
+		perform set_config('local.log_step', _log_step, true);
+        _sync_sql := 'insert into global.product_attributes_filter (' || _final_cols_list || ') 
+        select ' || _final_cols_list || '
+        from public.new_paf {where}
+        on conflict(product_code, l0_name,l1_name) do 
+        update 
+        set (' || _final_cols_list || ') = (' || _final_cols_list_excluded || ')';
+        raise notice '_sync_sql: %', _sync_sql;
+        perform public.parellel_insert('WITH rows AS (
+            ' || _sync_sql || '
+            RETURNING 1
+        ) 
+        SELECT 
+          count(1) as cnt 
+        FROM 
+          rows;', 50, 'public.new_paf_delta', 'product_code', 'new_paf_idx', 2000);
+		call global.data_ingestion_logs(_log_code, _sp_name, _log_step, null, (clock_timestamp() - _st)::text, null);
+		
+        /* ------------------------------------------------------------------------
+        ----------------------- Cleanup for old l0_names --------------------------
+        ------------------------------------------------------------------------ */
+		_log_step := 'calculate products with old l0 names';
+		perform set_config('local.log_step', _log_step, true);
+        _sql :='create table public.paf_delete as
+		select product_code as old_pc, l0_name, l1_name from (
+		select paf.product_code, paf.l0_name, paf.l1_name, new_paf.product_code as new_product_code from global.product_attributes_filter paf left join public.new_paf new_paf using(product_code, l0_name, l1_name)
+		) x where new_product_code is null;';
+        SELECT async_query INTO _worker FROM public.async_query(_sql);
+        PERFORM public.async_query_status(_worker, 'cleanup');
+		call global.data_ingestion_logs(_log_code, _sp_name, _log_step, null, (clock_timestamp() - _st)::text, null);
+		
+		------------------------------------------------------------------------
+		
+		_log_step := 'deleting products with old l0,l1 names';
+		perform set_config('local.log_step', _log_step, true);
+        _sql := 'WITH rows AS (
+     		DELETE FROM 
+          		global.product_attributes_filter paf using public.paf_delete pafd
+          		{where} and (paf.product_code, paf.l0_name, paf.l1_name) = (pafd.old_pc, pafd.l0_name, pafd.l1_name) 
+ 			RETURNING 1
+        ) 
+        SELECT 
+          count(1) as cnt 
+        FROM 
+          rows;';
+        PERFORM public.parellel_insert(_sql, 50, 'public.paf_delete', 'old_pc', 'paf_delete_old_pc_idx', 500);
+
+		------------------------------------------------------------------------
+--		can not cleanup public.paf_delete, public.new_paf, public.new_paf_delta as it's pass as input to above parellel_insert query will lock this SP
+		call global.data_ingestion_logs(_log_code, _sp_name, 'end', null,  (clock_timestamp() - _st)::text, null);
+	exception
+		when others then
+	        -- Log the error if an exception occurs during any part of the procedure
+	        call global.data_ingestion_logs(_log_code, _sp_name, _log_step, SQLERRM, (clock_timestamp() - _st)::text, null);
+            raise exception 'Error occurred in the procedure: %', SQLERRM;
+	end;
+end;
+$procedure$
+;

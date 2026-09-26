@@ -1,0 +1,8 @@
+"source_column_name","source_column_datatype","required_in_product","generic_column_name","is_pk","generic_column_datatype","formula","is_attribute","is_hierarchy","hierarchy_level","is_null_allowed","unique_by","display_name","is_partition_col","is_clustering_col"
+rfid_date,date,true,date,true,date,,false,false,,false,true,,false,
+sku_id,int8,true,product_code,true,varchar,,false,false,,false,true,,false,
+epc_units,int8,true,epc_units,false,int8,,false,false,,false,false,,false,
+oh_quantity,int8,true,oh_quantity,false,int8,,false,false,,false,false,,false,
+delta,int8,true,delta,false,int8,,false,false,,false,false,,false,
+loc_num,varchar,true,store_code,true,varchar,,false,false,,false,true,,false,
+flagged_rows,int8,true,flagged_rows,false,int8,,false,false,,true,false,,false,

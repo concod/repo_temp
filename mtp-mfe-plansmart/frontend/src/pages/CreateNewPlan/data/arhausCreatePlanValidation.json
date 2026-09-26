@@ -1,0 +1,683 @@
+{
+  "client": "Arhaus",
+  "fields": {
+    "plan_stage": {
+      "showPlaceholderWithRatio": true,
+      "dependentOn": [],
+      "itHaspayloadDependency": [],
+      "itHasDependency": [],
+      "dataType": "int",
+      "maxSelectionLimit": null,
+      "sequentialSelection": null,
+      "payloadDependentOn": [],
+      "apiCall": true,
+      "reportFilterDependency": [],
+      "application_code": 4,
+      "apiEndPoint": "/plan-smart/tenant-config",
+      "apiCallType": "PLANSMART",
+      "apiCallMethod": "POST",
+      "validation_rules": {},
+      "field_validation": {},
+      "group_field_validation": [],
+      "options": [
+        {
+          "value": "Working Plan",
+          "label": "Working Plan"
+        },
+        {
+          "value": "Working Plan",
+          "label": "Scenario Plan"
+        }
+      ],
+      "defults": {
+        "fc_code": 161,
+        "label": "Plan Stage",
+        "column_name": "plan_stage",
+        "type": "cascaded",
+        "display_type": "dropdown",
+        "level": null,
+        "dimension": "plan",
+        "is_mandatory": true,
+        "is_multiple_selection": false,
+        "range_min": null,
+        "range_max": null,
+        "default_value": null,
+        "is_disabled": false,
+        "is_clearable": true,
+        "display_order": 1.0,
+        "is_required": false,
+        "extra": {
+          "showPlaceholderWithRatio": true
+        },
+        "is_deleted": false
+      }
+    },
+    "start_year": {
+      "showPlaceholderWithRatio": true,
+      "dependentOn": [],
+      "itHaspayloadDependency": [],
+      "itHasDependency": ["end_month","end_year"],
+      "payloadDependentOn": [],
+      "reportFilterDependency": [],
+      "dataType": "int",
+      "application_code": 4,
+      "apiCall": true,
+      "apiCallType": "PLANSMART",
+      "apiCallMethod": "POST",
+      "apiEndPoint": "/plan-smart/start-year",
+      "options": [
+        {
+          "value": 2023,
+          "label": 2023
+        },
+        {
+          "value": 2024,
+          "label": 2024
+        },
+        {
+          "value": 2025,
+          "label": 2025
+        },
+        {
+          "value": 2026,
+          "label": 2026
+        },
+        {
+          "value": 2027,
+          "label": 2027
+        }
+      ],
+      "validation_rules": {},
+      "field_validation": {},
+      "group_field_validation": [
+        {
+          "fields": [
+            "start_year",
+            "start_month",
+            "end_year",
+            "end_month"
+          ],
+          "type": "durationValidation"
+        }
+      ],
+      "maxSelectionLimit": null,
+      "sequentialSelection": null,
+      "defults": {
+        "fc_code": 161,
+        "label": "Start Year",
+        "column_name": "start_year",
+        "type": "cascaded",
+        "display_type": "dropdown",
+        "level": null,
+        "dimension": "plan",
+        "is_mandatory": true,
+        "is_multiple_selection": false,
+        "range_min": null,
+        "range_max": null,
+        "default_value": null,
+        "is_disabled": false,
+        "is_clearable": true,
+        "display_order": 2.0,
+        "is_required": false,
+        "extra": {
+          "showPlaceholderWithRatio": true
+        },
+        "is_deleted": false
+      }
+    },
+    "start_month": {
+      "showPlaceholderWithRatio": true,
+      "dependentOn": [],
+      "itHaspayloadDependency": [],
+      "itHasDependency": ["end_month"],
+      "reportFilterDependency": [],
+      "dataType": "string",
+      "apiCall": false,
+      "payloadDependentOn": [],
+      "application_code": 4,
+      "options": [
+        {
+          "value": "JANUARY",
+          "label": "JANUARY"
+        },
+        {
+          "value": "FEBRUARY",
+          "label": "FEBRUARY"
+        },
+        {
+          "value": "MARCH",
+          "label": "MARCH"
+        },
+        {
+          "value": "APRIL",
+          "label": "APRIL"
+        },
+        {
+          "value": "MAY",
+          "label": "MAY"
+        },
+        {
+          "value": "JUNE",
+          "label": "JUNE"
+        },
+        {
+          "value": "JULY",
+          "label": "JULY"
+        },
+        {
+          "value": "AUGUST",
+          "label": "AUGUST"
+        },
+        {
+          "value": "SEPTEMBER",
+          "label": "SEPTEMBER"
+        },
+        {
+          "value": "OCTOBER",
+          "label": "OCTOBER"
+        },
+        {
+          "value": "NOVEMBER",
+          "label": "NOVEMBER"
+        },
+        {
+          "value": "DECEMBER",
+          "label": "DECEMBER"
+        }
+      ],
+      "apiCallType": "PLANSMART",
+      "apiCallMethod": "GET",
+      "apiEndPoint": "/plan-smart/month-names",
+      "maxSelectionLimit": null,
+      "sequentialSelection": null,
+      "validation_rules": {},
+      "field_validation": {},
+      "group_field_validation": [
+        {
+          "fields": [
+            "start_year",
+            "start_month",
+            "end_year",
+            "end_month"
+          ],
+          "type": "durationValidation"
+        }
+      ],
+      "defults": {
+        "fc_code": 161,
+        "label": "Start Month",
+        "column_name": "start_month",
+        "type": "cascaded",
+        "display_type": "dropdown",
+        "level": null,
+        "dimension": "plan",
+        "is_mandatory": true,
+        "is_multiple_selection": false,
+        "range_min": null,
+        "range_max": null,
+        "default_value": null,
+        "is_disabled": false,
+        "is_clearable": true,
+        "display_order": 3.0,
+        "is_required": false,
+        "extra": {
+          "showPlaceholderWithRatio": true
+        },
+        "is_deleted": false
+      }
+    },
+    "end_year": {
+      "showPlaceholderWithRatio": true,
+      "dependentOn": ["start_year"],
+      "payloadDependentOn": [
+        "start_year"
+      ],
+      "filterpayloadDependentOn": ["start_year"],
+      "reportFilterDependency": [],
+      "dataType": "int",
+      "application_code": 4,
+      "itHaspayloadDependency": [],
+      "itHasDependency": ["end_month"],
+      "apiCall": true,
+      "options": [
+        {
+          "value": 2023,
+          "label": 2023
+        },
+        {
+          "value": 2024,
+          "label": 2024
+        },
+        {
+          "value": 2025,
+          "label": 2025
+        },
+        {
+          "value": 2026,
+          "label": 2026
+        },
+        {
+          "value": 2027,
+          "label": 2027
+        },
+        {
+          "value": 2028,
+          "label": 2028
+        },
+        {
+          "value": 2029,
+          "label": 2029
+        }
+      ],
+      "apiCallType": "PLANSMART",
+      "apiCallMethod": "POST",
+      "apiEndPoint": "/plan-smart/end-year",
+      "maxSelectionLimit": null,
+      "sequentialSelection": null,
+      "validation_rules": {},
+      "field_validation": {},
+      "group_field_validation": [
+        {
+          "fields": [
+            "start_year",
+            "start_month",
+            "end_year",
+            "end_month"
+          ],
+          "type": "durationValidation"
+        }
+      ],
+      "defults": {
+        "fc_code": 161,
+        "label": "End Year",
+        "column_name": "end_year",
+        "type": "cascaded",
+        "display_type": "dropdown",
+        "level": null,
+        "dimension": "plan",
+        "is_mandatory": true,
+        "is_multiple_selection": false,
+        "range_min": null,
+        "range_max": null,
+        "default_value": null,
+        "is_disabled": false,
+        "is_clearable": true,
+        "display_order": 4.0,
+        "is_required": false,
+        "extra": {
+          "showPlaceholderWithRatio": true
+        },
+        "is_deleted": false
+      }
+    },
+    "end_month": {
+      "showPlaceholderWithRatio": true,
+      "dependentOn": ["start_year","end_year","start_month"],
+      "payloadDependentOn": ["start_year","end_year","start_month"],
+      "filterpayloadDependentOn": ["start_year","end_year","start_month"],
+      "reportFilterDependency": [],
+      "application_code": 4,
+      "dataType": "string",
+      "itHaspayloadDependency": [],
+      "itHasDependency": [],
+      "apiCall": true,
+      "options": [
+        {
+          "value": "JANUARY",
+          "label": "JANUARY"
+        },
+        {
+          "value": "FEBRUARY",
+          "label": "FEBRUARY"
+        },
+        {
+          "value": "MARCH",
+          "label": "MARCH"
+        },
+        {
+          "value": "APRIL",
+          "label": "APRIL"
+        },
+        {
+          "value": "MAY",
+          "label": "MAY"
+        },
+        {
+          "value": "JUNE",
+          "label": "JUNE"
+        },
+        {
+          "value": "JULY",
+          "label": "JULY"
+        },
+        {
+          "value": "AUGUST",
+          "label": "AUGUST"
+        },
+        {
+          "value": "SEPTEMBER",
+          "label": "SEPTEMBER"
+        },
+        {
+          "value": "OCTOBER",
+          "label": "OCTOBER"
+        },
+        {
+          "value": "NOVEMBER",
+          "label": "NOVEMBER"
+        },
+        {
+          "value": "DECEMBER",
+          "label": "DECEMBER"
+        }
+      ],
+      "apiCallType": "PLANSMART",
+      "apiEndPoint": "/plan-smart/end-months",
+      "apiCallMethod": "POST",
+      "maxSelectionLimit": null,
+      "sequentialSelection": null,
+      "validation_rules": {},
+      "field_validation": {},
+      "group_field_validation": [
+        {
+          "fields": [
+            "start_year",
+            "start_month",
+            "end_year",
+            "end_month"
+          ],
+          "type": "durationValidation"
+        }
+      ],
+      "defults": {
+        "fc_code": 161,
+        "label": "End Month",
+        "column_name": "end_month",
+        "type": "cascaded",
+        "display_type": "dropdown",
+        "level": null,
+        "dimension": "plan",
+        "is_mandatory": true,
+        "is_multiple_selection": false,
+        "range_min": null,
+        "range_max": null,
+        "default_value": null,
+        "is_disabled": false,
+        "is_clearable": true,
+        "display_order": 5.0,
+        "is_required": false,
+        "extra": {
+          "showPlaceholderWithRatio": true
+        },
+        "is_deleted": false
+      }
+    },
+    "l1_name": {
+      "showPlaceholderWithRatio": true,
+      "dependentOn": [],
+      "itHaspayloadDependency": [],
+      "itHasDependency": [
+        "l2_name",
+        "l3_name"
+      ],
+      "reportFilterDependency": [
+        "l2_name",
+        "l3_name"
+      ],
+      "filterpayloadDependentOn": [],
+      "payloadDependentOn": [],
+      "application_code": 4,
+      "dataType": "array",
+      "hierarchy": [],
+      "id": 44,
+      "apiCall": true,
+      "apiCallType": "MODEL",
+      "apiCallMethod": "POST",
+      "apiEndPoint": "/core/attribute-filter/product",
+      "options": [],
+      "maxSelectionLimit": null,
+      "sequentialSelection": null,
+      "validation_rules": {},
+      "field_validation": {},
+      "group_field_validation": [],
+      "dimension": "product",
+      "defults": {
+        "fc_code": 161,
+        "label": "Division",
+        "column_name": "l1_name",
+        "type": "cascaded",
+        "display_type": "dropdown",
+        "level": null,
+        "dimension": "product",
+        "is_mandatory": false,
+        "is_multiple_selection": false,
+        "range_min": null,
+        "range_max": null,
+        "default_value": null,
+        "is_disabled": false,
+        "is_clearable": true,
+        "display_order": 6.0,
+        "is_required": false,
+        "extra": {
+          "showPlaceholderWithRatio": true
+        },
+        "is_deleted": false
+      }
+    },
+    "l2_name": {
+      "showPlaceholderWithRatio": true,
+      "dependentOn": [
+        "l1_name"
+      ],
+      "itHasDependency": [
+        "l3_name"
+      ],
+      "reportFilterDependency": [
+        "l3_name"
+      ],
+      "filterpayloadDependentOn": [
+        "l1_name"
+      ],
+      "application_code": 4,
+      "itHaspayloadDependency": [],
+      "payloadDependentOn": [
+        "l1_name"
+      ],
+      "dataType": "array",
+      "id": 44,
+      "hierarchy": [],
+      "apiCall": true,
+      "apiCallType": "MODEL",
+      "apiCallMethod": "POST",
+      "apiEndPoint": "/core/attribute-filter/product",
+      "options": [],
+      "maxSelectionLimit": null,
+      "sequentialSelection": null,
+      "validation_rules": {},
+      "field_validation": {},
+      "group_field_validation": [],
+      "dimension": "product",
+      "defults": {
+        "fc_code": 161,
+        "label": "Department",
+        "column_name": "l2_name",
+        "type": "cascaded",
+        "display_type": "dropdown",
+        "level": 2.0,
+        "dimension": "product",
+        "is_mandatory": true,
+        "is_multiple_selection": false,
+        "range_min": null,
+        "range_max": null,
+        "default_value": null,
+        "is_disabled": false,
+        "is_clearable": true,
+        "display_order": 7.0,
+        "is_required": false,
+        "extra": {
+          "showPlaceholderWithRatio": true
+        },
+        "is_deleted": false
+      }
+    },
+    "l3_name": {
+      "showPlaceholderWithRatio": true,
+      "filterpayloadDependentOn": [
+        "l2_name",
+        "l1_name"
+      ],
+      "dependentOn": [
+        "l1_name",
+        "l2_name"
+      ],
+      "reportFilterDependency": [],
+      "payloadDependentOn": [
+        "l1_name",
+        "l2_name"
+      ],
+      "dataType": "array",
+      "application_code": 4,
+      "id": 44,
+      "itHaspayloadDependency": [],
+      "itHasDependency": [],
+      "hierarchy": [],
+      "apiCall": true,
+      "apiCallType": "PLANSMART",
+      "apiCallMethod": "POST",
+      "apiEndPoint": "/core/attribute-filter/product",
+      "options": [],
+      "maxSelectionLimit": null,
+      "sequentialSelection": null,
+      "validation_rules": {},
+      "field_validation": {},
+      "group_field_validation": [],
+      "defults": {
+        "fc_code": 161,
+        "label": "Class",
+        "column_name": "l3_name",
+        "type": "cascaded",
+        "display_type": "dropdown",
+        "level": 3.0,
+        "dimension": "product",
+        "is_mandatory": false,
+        "is_multiple_selection": true,
+        "range_min": null,
+        "range_max": null,
+        "default_value": null,
+        "is_disabled": false,
+        "is_clearable": true,
+        "display_order": 8.0,
+        "is_required": false,
+        "extra": {
+          "showPlaceholderWithRatio": true
+        },
+        "is_deleted": false
+      }
+    },
+    "plan_display_name": {
+      "maxLengthLimit": 50,
+      "dependentOn": [],
+      "payloadDependentOn": [],
+      "dataType": "string",
+      "itHaspayloadDependency": [],
+      "itHasDependency": [],
+      "application_code": 4,
+      "hierarchy": [],
+      "reportFilterDependency": [],
+      "apiCall": false,
+      "apiCallType": null,
+      "apiCallMethod": null,
+      "apiEndPoint": null,
+      "options": null,
+      "maxSelectionLimit": null,
+      "sequentialSelection": null,
+      "validation_rules": {},
+      "field_validation": {},
+      "group_field_validation": [],
+      "defults": {
+        "fc_code": 161,
+        "label": "Plan Display Name",
+        "column_name": "plan_display_name",
+        "type": "non-cascaded",
+        "display_type": "TextField",
+        "level": null,
+        "dimension": "create_plan",
+        "is_mandatory": true,
+        "is_multiple_selection": false,
+        "range_min": null,
+        "range_max": null,
+        "default_value": null,
+        "is_disabled": false,
+        "is_clearable": false,
+        "display_order": null,
+        "is_required": true,
+        "extra": {
+          "maxLengthLimit": 50
+        },
+        "is_deleted": false
+      }
+    },
+    "channel": {
+      "showPlaceholderWithRatio": true,
+      "dependentOn": [],
+      "itHaspayloadDependency": [],
+      "itHasDependency": [],
+      "payloadDependentOn": [],
+      "application_code": 4,
+      "dataType": "array",
+      "hierarchy": [],
+      "id": 44,
+      "apiCall": true,
+      "apiCallType": "MODEL",
+      "reportFilterDependency": [],
+      "apiCallMethod": "POST",
+      "apiEndPoint": "/plan-smart/plan/store-attributes",
+      "options": [],
+      "maxSelectionLimit": null,
+      "sequentialSelection": null,
+      "validation_rules": {},
+      "field_validation": {},
+      "group_field_validation": [],
+      "dimension": "product"
+    },
+    "l0_name": {
+      "showPlaceholderWithRatio": true,
+      "dependentOn": [],
+      "payloadDependentOn": [],
+      "itHasDependency": [
+        "l2_name",
+        "l3_name",
+        "l1_name"
+      ],
+      "itHaspayloadDependency": [
+        "l2_name",
+        "l3_name",
+        "l1_name"
+      ],
+      "reportFilterDependency": [
+        "l2_name",
+        "l3_name",
+        "l1_name"
+      ],
+      "filterpayloadDependentOn": [],
+      "application_code": 4,
+      "dataType": "array",
+      "validation_rules": {},
+      "field_validation": {},
+      "group_field_validation": [],
+      "apiCall": true,
+      "apiCallMethod": "POST",
+      "apiCallType": "PLANSMART",
+      "apiEndPoint": "/core/attribute-filter/product",
+      "dimension": "Product",
+      "options": [],
+      "defults": {}
+    }
+  },
+  "report_options": [
+    {
+      "label": "Corporate/ OTB",
+      "value": "otb_report"
+    }
+  ]
+}

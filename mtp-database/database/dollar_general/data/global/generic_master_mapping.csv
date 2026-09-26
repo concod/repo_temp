@@ -1,0 +1,14 @@
+source_table,source_level,generic_mapping_table,destination_table,destination_level,to_be_ingested,is_required_in_master,persist_attributes_table,persist_hierarchies_table,cross_validations,pull_type,persist_to_postgres,data_loss_threshold,id
+inventory_intermediate,,inventory_generic_schema_mapping,inventory_master,,TRUE,TRUE,FALSE,FALSE,"['product_master', 'store_master']",incremental,FALSE,100,1
+transaction_intermediate,,transaction_generic_schema_mapping,transaction_master,,TRUE,TRUE,FALSE,FALSE,"['product_master', 'store_master']",incremental,FALSE,100,2
+store_band_intermediate,,store_band_generic_schema_mapping,store_band_master,,TRUE,TRUE,TRUE,TRUE,"['product_master', 'store_master']",full,FALSE,100,3
+pack_configurations_intermediate,,pack_configurations_generic_schema_mapping,pack_configurations_master,,TRUE,TRUE,FALSE,FALSE,['product_master'],full,FALSE,100,4
+receipt_intermediate,,receipt_generic_schema_mapping,receipt_master,,TRUE,TRUE,FALSE,FALSE,['product_master'],incremental,FALSE,100,5
+po_data_intermediate,,po_generic_schema_mapping,po_master,,TRUE,TRUE,FALSE,FALSE,['product_master'],incremental,FALSE,100,6
+store_reserve_intermediate,,store_reserve_generic_schema_mapping,store_reserve_master,,TRUE,TRUE,FALSE,FALSE,['product_master'],incremental,FALSE,100,7
+store_schedule_intermediate,,store_schedule_generic_schema_mapping,store_schedule_master,,TRUE,TRUE,FALSE,FALSE,[ 'store_master'],full,FALSE,100,8
+product_intermediate,,product_generic_schema_mapping,product_master,,TRUE,TRUE,TRUE,TRUE,,full,TRUE,100,9
+store_intermediate,,store_generic_schema_mapping,store_master,,TRUE,TRUE,TRUE,TRUE,,full,TRUE,100,10
+fiscal_calendar_intermediate,,fiscal_generic_schema_mapping,fiscal_date_mapping,,TRUE,TRUE,FALSE,FALSE,,incremental,TRUE,100,11
+asn_intermediate,,asn_generic_schema_mapping,asn_master,,TRUE,TRUE,FALSE,FALSE,,incremental,FALSE,100,12
+product_intermediate,,product_ps_generic_schema_mapping,product_ps_master,,TRUE,TRUE,TRUE,TRUE,,full,FALSE,100,13

@@ -1,0 +1,29 @@
+--liquibase formatted sql
+--changeset sriraj.varanasi@impactanalytics.co:oms_kpi_master stripComments:false splitStatements:false context:Release_1_0 ignore:false labels:briscoes_oms_kpi_master
+--comment: initial changeset for oms_kpi_master
+
+CREATE TABLE IF NOT EXISTS inventory_smart.oms_vendor_projection (
+	article varchar NOT NULL,
+	"size" varchar NULL,
+	product_code varchar NOT NULL,
+	vendor_name varchar NULL,
+	vendor_code varchar NOT NULL,
+	loc_code varchar NOT NULL,
+	channel varchar NOT NULL,
+	fiscal_year_month int4 NOT NULL,
+	fiscal_month_name varchar NULL,
+	fiscal_year int4 NULL,
+	store_forecast_pred float8 NULL,
+	store_forecast_pred_cost float8 NULL,
+	dc_forecast_pred_constrained float8 NULL,
+	dc_forecast_pred_constrained_cost float8 NULL,
+	dc_forecast_pred_unconstrained float8 NULL,
+	dc_forecast_pred_unconstrained_cost float8 NULL,
+	order_quantity float8 NULL,
+	order_quantity_cost float8 NULL,
+	raw_roq float8 NULL,
+	raw_roq_cost float8 NULL,
+	roq_constrained int4 NULL,
+	roq_constrained_cost float8 NULL,
+	CONSTRAINT pk_oms_vendor_projection PRIMARY KEY (product_code, loc_code, vendor_code, channel, fiscal_year_month)
+);

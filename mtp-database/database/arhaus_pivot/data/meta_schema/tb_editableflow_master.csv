@@ -1,0 +1,309 @@
+"on_change_kpi_id","lock_and_hold_id","kpi_to_calculate","calculation_order","formula","sequenceflow","allsequencetimelineupdate","sequencetimelinecount"
+1,1,4,1,"product_of_two(kpi1,division(kpi3,100))",false,false,0
+1,1,5,2,kpi1-kpi4,false,false,0
+1,1,15,3,"product_of_two(kpi1,division(kpi14,100))",false,false,0
+14,2,15,1,"product_of_two(kpi1,division(kpi14,100))",false,false,0
+14,2,14,2,"product_of_two(division(kpi15,kpi1),100)",false,false,0
+1,3,4,1,"product_of_two(kpi1,division(kpi3,100))",false,false,0
+1,3,6,1,"division(kpi1,kpi8)",false,false,0
+1,3,15,1,"product_of_two(kpi1,division(kpi14,100))",false,false,0
+1,3,2,2,"division(kpi1,(kpi1,previous_timeline))",false,false,0
+1,3,5,2,kpi1-kpi4,false,false,0
+1,3,7,2,"division(kpi6,(kpi6,previous_timeline))",false,false,0
+1,3,9,2,kpi1-kpi15,false,false,0
+1,3,10,3,"division(kpi9,kpi6)",false,false,0
+1,3,12,4,"product_of_two(1-division(kpi10,kpi11),100)",false,false,0
+1,3,31,5,"product_of_two(kpi30,kpi51 + kpi1)",false,false,0
+1,3,32,6,"division(kpi31,(kpi31,previous_timeline))",false,false,0
+1,3,33,6,"division(kpi31,kpi35)",false,false,0
+1,3,41,6,"product_of_two(kpi31,division(kpi40,100))",false,false,0
+1,3,34,7,"division(kpi33,(kpi33,previous_timeline))",false,false,0
+1,3,36,7,kpi31 - kpi41,false,false,0
+1,3,37,8,"division(kpi36,kpi33)",false,false,0
+1,3,48,9,kpi51 + kpi1 - kpi31 ,false,false,0
+1,3,49,9,kpi52 + kpi6 - kpi33,false,false,0
+1,3,50,9,kpi53 + kpi9 - kpi36,false,false,0
+1,3,57,10,kpi54-kpi36+kpi60-kpi93,false,false,0
+1,3,58,10,kpi55-kpi33+kpi61-kpi94,false,false,0
+1,3,59,10,"division(kpi54-kpi36+kpi60-kpi93,kpi55-kpi33+kpi61-kpi94)",false,false,0
+1,3,101,11,"(kpi101,previous_timeline)-(kpi9,previous_timeline)+(kpi60,previous_timeline)-(kpi93,previous_timeline)",false,false,0
+1,3,102,11,"(kpi102,previous_timeline)-(kpi6,previous_timeline)+(kpi61,previous_timeline)-(kpi94,previous_timeline)",false,false,0
+1,3,103,11,"(kpi101,previous_timeline)+(kpi60,previous_timeline)",false,false,0
+1,3,104,11,"(kpi102,previous_timeline)+(kpi61,previous_timeline)",false,false,0
+1,3,105,12,kpi105,false,false,0
+1,3,106,12,kpi106,false,false,0
+1,3,107,12,kpi107,false,false,0
+1,3,108,12,kpi108,false,false,0
+6,4,1,1,"product_of_two(kpi6,kpi8)",false,false,0
+6,4,4,2,"product_of_two(kpi1,division(kpi3,100))",false,false,0
+6,4,15,2,"product_of_two(kpi1,division(kpi14,100))",false,false,0
+6,4,2,3,"division(kpi1,(kpi1,previous_timeline))",false,false,0
+6,4,5,3,kpi1-kpi4,false,false,0
+6,4,7,3,"division(kpi6,(kpi6,previous_timeline))",false,false,0
+6,4,9,3,kpi1-kpi15,false,false,0
+6,4,10,4,"division(kpi9,kpi6)",false,false,0
+6,4,12,5,"product_of_two(1-division(kpi10,kpi11),100)",false,false,0
+6,4,31,6,"product_of_two(kpi30,kpi51 + kpi1)",false,false,0
+6,4,32,7,"division(kpi31,(kpi31,previous_timeline))",false,false,0
+6,4,33,7,"division(kpi31,kpi35)",false,false,0
+6,4,41,7,"product_of_two(kpi31,division(kpi40,100))",false,false,0
+6,4,34,8,"division(kpi33,(kpi33,previous_timeline))",false,false,0
+6,4,36,8,kpi31 - kpi41,false,false,0
+6,4,37,9,"division(kpi36,kpi33)",false,false,0
+6,4,48,10,kpi51 + kpi1 - kpi31 ,false,false,0
+6,4,49,10,kpi52 + kpi6 - kpi33,false,false,0
+6,4,50,10,kpi53 + kpi9 - kpi36,false,false,0
+6,4,57,11,kpi54-kpi36+kpi60-kpi93,false,false,0
+6,4,58,11,kpi55-kpi33+kpi61-kpi94,false,false,0
+6,4,59,11,"division(kpi54-kpi36+kpi60-kpi93,kpi55-kpi33+kpi61-kpi94)",false,false,0
+6,4,101,12,"(kpi101,previous_timeline)-(kpi9,previous_timeline)+(kpi60,previous_timeline)-(kpi93,previous_timeline)",false,false,0
+6,4,102,12,"(kpi102,previous_timeline)-(kpi6,previous_timeline)+(kpi61,previous_timeline)-(kpi94,previous_timeline)",false,false,0
+6,4,103,12,"(kpi101,previous_timeline)+(kpi60,previous_timeline)",false,false,0
+6,4,104,12,"(kpi102,previous_timeline)+(kpi61,previous_timeline)",false,false,0
+6,4,105,13,kpi105,false,false,0
+6,4,106,13,kpi106,false,false,0
+6,4,107,13,kpi107,false,false,0
+6,4,108,13,kpi108,false,false,0
+8,5,6,1,"division(kpi1,kpi8)",false,false,0
+8,5,8,2,"division(kpi1,kpi6)",false,false,0
+8,5,7,3,"division(kpi6,(kpi6,previous_timeline))",false,false,0
+8,5,10,3,"division(kpi9,kpi6)",false,false,0
+8,5,13,3,"product_of_two(1-division(kpi8,kpi11),100)",false,false,0
+8,5,12,4,"product_of_two(1-division(kpi10,kpi11),100)",false,false,0
+8,5,49,5,kpi52 + kpi6 - kpi33,false,false,0
+8,5,102,6,"(kpi102,previous_timeline)-(kpi6,previous_timeline)+(kpi61,previous_timeline)-(kpi94,previous_timeline)",false,false,0
+8,5,104,6,"(kpi102,previous_timeline)+(kpi61,previous_timeline)",false,false,0
+8,5,106,7,kpi106,false,false,0
+8,5,108,7,kpi108,false,false,0
+11,6,1,1,"product_of_two(product_of_two(kpi6,kpi11),1-division(kpi13,100))",false,false,0
+11,6,8,2,"division(kpi1,kpi6)",false,false,0
+11,6,2,3,"division(kpi1,(kpi1,previous_timeline))",false,false,0
+11,6,4,3,"product_of_two(kpi1,division(kpi3,100))",false,false,0
+11,6,11,3,"division(kpi8,1-division(kpi13,100))",false,false,0
+11,6,15,3,kpi1-kpi9,false,false,0
+11,6,5,4,kpi1-kpi4,false,false,0
+11,6,12,4,"product_of_two(1-division(kpi10,kpi11),100)",false,false,0
+11,6,14,4,"product_of_two(division(kpi15,kpi1),100)",false,false,0
+11,6,31,5,"product_of_two(kpi30,kpi51 + kpi1)",false,false,0
+11,6,33,6,"division(kpi31,kpi35)",false,false,0
+11,6,41,6,"product_of_two(kpi31,division(kpi40,100))",false,false,0
+11,6,36,7,kpi31 - kpi41,false,false,0
+11,6,37,8,"division(kpi36,kpi33)",false,false,0
+11,6,48,9,kpi51 + kpi1 - kpi31 ,false,false,0
+11,6,49,9,kpi52 + kpi6 - kpi33,false,false,0
+11,6,50,9,kpi53 + kpi9 - kpi36,false,false,0
+11,6,57,10,kpi54-kpi36+kpi60-kpi93,false,false,0
+11,6,58,10,kpi55-kpi33+kpi61-kpi94,false,false,0
+11,6,59,10,"division(kpi54-kpi36+kpi60-kpi93,kpi55-kpi33+kpi61-kpi94)",false,false,0
+13,7,6,1,"division(kpi1,product_of_two(kpi11,1-division(kpi13,100)))",false,false,0
+13,7,8,2,"division(kpi1,kpi6)",false,false,0
+13,7,7,3,"division(kpi6,(kpi6,previous_timeline))",false,false,0
+13,7,9,3,"product_of_two(kpi6,kpi10)",false,false,0
+13,7,13,3,"product_of_two(1-division(kpi8,kpi11),100)",false,false,0
+13,7,15,4,kpi1-kpi9,false,false,0
+13,7,14,5,"product_of_two(division(kpi15,kpi1),100)",false,false,0
+13,7,49,6,kpi52 + kpi6 - kpi33,false,false,0
+13,7,50,6,kpi53 + kpi9 - kpi36,false,false,0
+13,7,101,7,"(kpi101,previous_timeline)-(kpi9,previous_timeline)+(kpi60,previous_timeline)-(kpi93,previous_timeline)",false,false,0
+13,7,102,7,"(kpi102,previous_timeline)-(kpi6,previous_timeline)+(kpi61,previous_timeline)-(kpi94,previous_timeline)",false,false,0
+13,7,103,7,"(kpi101,previous_timeline)+(kpi60,previous_timeline)",false,false,0
+13,7,104,7,"(kpi102,previous_timeline)+(kpi61,previous_timeline)",false,false,0
+13,7,105,8,kpi105,false,false,0
+13,7,106,8,kpi106,false,false,0
+13,7,107,8,kpi107,false,false,0
+13,7,108,8,kpi108,false,false,0
+14,8,15,1,"product_of_two(kpi1,division(kpi14,100))",false,false,0
+14,8,14,2,"product_of_two(division(kpi15,kpi1),100)",false,false,0
+14,8,9,3,kpi1-kpi15,false,false,0
+14,8,10,4,"division(kpi9,kpi6)",false,false,0
+14,8,12,5,"product_of_two(1-division(kpi10,kpi11),100)",false,false,0
+14,8,50,6,kpi53 + kpi9 - kpi36,false,false,0
+14,8,101,7,"(kpi101,previous_timeline)-(kpi9,previous_timeline)+(kpi60,previous_timeline)-(kpi93,previous_timeline)",false,false,0
+14,8,105,8,kpi105,false,false,0
+30,10,31,1,"product_of_two(kpi30,kpi51 + kpi1)",false,false,0
+30,10,30,2,"division(kpi31,kpi51 + kpi1)",false,false,0
+30,10,32,3,"division(kpi31,(kpi31,previous_timeline))",false,false,0
+30,10,33,3,"division(kpi31,kpi35)",false,false,0
+30,10,41,3,"product_of_two(kpi31,division(kpi40,100))",false,false,0
+30,10,34,4,"division(kpi33,(kpi33,previous_timeline))",false,false,0
+30,10,36,4,kpi31 - kpi41,false,false,0
+30,10,37,5,"division(kpi36,kpi33)",false,false,0
+30,10,48,5,kpi51 + kpi1 - kpi31 ,false,false,0
+30,10,49,5,kpi52 + kpi6 - kpi33,false,false,0
+30,10,50,5,kpi53 + kpi9 - kpi36,false,false,0
+30,10,59,6,"division(kpi54-kpi36+kpi60+kpi93,kpi55-kpi33+kpi61+kpi94)",false,false,0
+31,11,30,1,"division(kpi31,kpi51 + kpi1)",false,false,0
+31,11,32,1,"division(kpi31,(kpi31,previous_timeline))",false,false,0
+31,11,33,1,"division(kpi31,kpi35)",false,false,0
+31,11,41,1,"product_of_two(kpi31,division(kpi40,100))",false,false,0
+31,11,34,2,"division(kpi33,(kpi33,previous_timeline))",false,false,0
+31,11,36,2,kpi31 - kpi41,false,false,0
+31,11,37,3,"division(kpi36,kpi33)",false,false,0
+31,11,48,3,kpi51 + kpi1 - kpi31 ,false,false,0
+31,11,49,3,kpi52 + kpi6 - kpi33,false,false,0
+31,11,50,3,kpi53 + kpi9 - kpi36,false,false,0
+31,11,59,4,"division(kpi54-kpi36+kpi60+kpi93,kpi55-kpi33+kpi61+kpi94)",false,false,0
+35,13,33,1,"division(kpi31,kpi35)",false,false,0
+35,13,35,2,"division(kpi31,kpi33)",false,false,0
+35,13,34,3,"division(kpi33,(kpi33,previous_timeline))",false,false,0
+35,13,37,3,"division(kpi36,kpi33)",false,false,0
+35,13,49,3,kpi52 + kpi6 - kpi33,false,false,0
+35,13,59,4,"division(kpi57,kpi55-kpi33+kpi61+kpi94)",false,false,0
+40,15,41,1,"product_of_two(kpi31,division(kpi40,100))",false,false,0
+40,15,40,2,"product_of_two(division(kpi41,kpi31),100)",false,false,0
+40,15,36,3,kpi31 - kpi41,false,false,0
+40,15,37,4,"division(kpi36,kpi33)",false,false,0
+40,15,50,4,kpi53 + kpi9 - kpi36,false,false,0
+40,15,59,5,"division(kpi54-kpi36+kpi60+kpi93,kpi58)",false,false,0
+54,16,55,1,"division(kpi54,kpi56)",false,false,0
+54,16,91,2,"product_of_two(division(kpi93,kpi54),100)",false,false,0
+54,16,92,3,"product_of_two(division(kpi94,kpi55),100)",false,false,0
+54,16,57,4,kpi54-kpi36+kpi60-kpi93,false,false,0
+54,16,58,5,kpi55-kpi33+kpi61-kpi94,false,false,0
+54,16,59,6,"division(kpi57,kpi58)",false,false,0
+55,17,54,1,"product_of_two(kpi55,kpi56)",false,false,0
+55,17,91,2,"product_of_two(division(kpi93,kpi54),100)",false,false,0
+55,17,92,3,"product_of_two(division(kpi94,kpi55),100)",false,false,0
+55,17,57,4,kpi54-kpi36+kpi60-kpi93,false,false,0
+55,17,58,5,kpi55-kpi33+kpi61-kpi94,false,false,0
+55,17,59,6,"division(kpi57,kpi58)",false,false,0
+56,18,55,1,"division(kpi54,kpi56)",false,false,0
+56,18,56,2,"division(kpi54,kpi55)",false,false,0
+56,18,58,3,kpi55-kpi33+kpi61-kpi94,false,false,0
+56,18,59,4,"division(kpi57,kpi58)",false,false,0
+60,19,61,1,"division(kpi60,kpi62)",false,false,0
+60,19,80,2,kpi60-kpi71,false,false,0
+60,19,81,3,kpi61-kpi72,false,false,0
+60,19,57,5,kpi54-kpi36+kpi60-kpi93,false,false,0
+60,19,58,6,kpi55-kpi33+kpi61-kpi94,false,false,0
+60,19,59,7,"division(kpi57,kpi58)",false,false,0
+60,19,101,8,"(kpi101,previous_timeline)-(kpi9,previous_timeline)+(kpi60,previous_timeline)-(kpi93,previous_timeline)",false,false,0
+60,19,102,8,"(kpi102,previous_timeline)-(kpi6,previous_timeline)+(kpi61,previous_timeline)-(kpi94,previous_timeline)",false,false,0
+60,19,103,8,"(kpi101,previous_timeline)+(kpi60,previous_timeline)",false,false,0
+60,19,104,8,"(kpi102,previous_timeline)+(kpi61,previous_timeline)",false,false,0
+60,19,105,9,kpi105,false,false,0
+60,19,106,9,kpi106,false,false,0
+60,19,107,9,kpi107,false,false,0
+60,19,108,9,kpi108,false,false,0
+61,20,62,1,"division(kpi60,kpi61)",false,false,0
+61,20,81,2,kpi61-kpi72,false,false,0
+61,20,58,4,kpi55-kpi33+kpi61-kpi94,false,false,0
+61,20,59,5,"division(kpi57,kpi58)",false,false,0
+61,20,102,6,"(kpi102,previous_timeline)-(kpi6,previous_timeline)+(kpi61,previous_timeline)-(kpi94,previous_timeline)",false,false,0
+61,20,104,6,"(kpi102,previous_timeline)+(kpi61,previous_timeline)",false,false,0
+61,20,106,7,kpi106,false,false,0
+61,20,108,7,kpi108,false,false,0
+91,21,93,1,"product_of_two(kpi54,division(kpi91,100))",false,false,0
+91,21,91,2,"product_of_two(division(kpi93,kpi54),100)",false,false,0
+31,11,57,4,kpi54-kpi36+kpi60-kpi93,false,false,0
+40,15,57,5,kpi54-kpi36+kpi60-kpi93,false,false,0
+30,10,58,6,kpi55-kpi33+kpi61-kpi94,false,false,0
+31,11,58,4,kpi55-kpi33+kpi61-kpi94,false,false,0
+35,13,58,4,kpi55-kpi33+kpi61-kpi94,false,false,0
+60,19,82,4,"division(kpi80,kpi81)",false,false,0
+61,20,82,3,"division(kpi80,kpi81)",false,false,0
+91,21,95,3,"division(kpi93,kpi94)",false,false,0
+91,21,57,4,kpi54-kpi36+kpi60-kpi93,false,false,0
+91,21,59,5,"division(kpi57,kpi58)",false,false,0
+91,21,101,6,"(kpi101,previous_timeline)-(kpi9,previous_timeline)+(kpi60,previous_timeline)-(kpi93,previous_timeline)",false,false,0
+91,21,103,6,"(kpi101,previous_timeline)+(kpi60,previous_timeline)",false,false,0
+91,21,105,7,kpi105,false,false,0
+91,21,107,7,kpi107,false,false,0
+92,22,94,1,"product_of_two(kpi55,division(kpi92,100))",false,false,0
+92,22,92,2,"product_of_two(division(kpi94,kpi55),100)",false,false,0
+92,22,93,3,"product_of_two(kpi94,kpi95)",false,false,0
+92,22,91,4,"product_of_two(division(kpi93,kpi54),100)",false,false,0
+92,22,57,5,kpi54-kpi36+kpi60-kpi93,false,false,0
+92,22,58,6,kpi55-kpi33+kpi61-kpi94,false,false,0
+92,22,59,7,"division(kpi57,kpi58)",false,false,0
+92,22,101,8,"(kpi101,previous_timeline)-(kpi9,previous_timeline)+(kpi60,previous_timeline)-(kpi93,previous_timeline)",false,false,0
+92,22,102,8,"(kpi102,previous_timeline)-(kpi6,previous_timeline)+(kpi61,previous_timeline)-(kpi94,previous_timeline)",false,false,0
+92,22,103,8,"(kpi101,previous_timeline)+(kpi60,previous_timeline)",false,false,0
+92,22,104,8,"(kpi102,previous_timeline)+(kpi61,previous_timeline)",false,false,0
+92,22,105,9,kpi105,false,false,0
+92,22,106,9,kpi106,false,false,0
+92,22,107,9,kpi107,false,false,0
+92,22,108,9,kpi108,false,false,0
+93,23,91,1,"product_of_two(division(kpi93,kpi54),100)",false,false,0
+93,23,95,2,"division(kpi93,kpi94)",false,false,0
+93,23,57,3,kpi54-kpi36+kpi60-kpi93,false,false,0
+93,23,59,4,"division(kpi57,kpi58)",false,false,0
+93,23,101,5,"(kpi101,previous_timeline)-(kpi9,previous_timeline)+(kpi60,previous_timeline)-(kpi93,previous_timeline)",false,false,0
+93,23,103,5,"(kpi101,previous_timeline)+(kpi60,previous_timeline)",false,false,0
+93,23,105,6,kpi105,false,false,0
+93,23,107,6,kpi107,false,false,0
+94,24,93,1,"product_of_two(kpi94,kpi95)",false,false,0
+94,24,91,2,"product_of_two(division(kpi93,kpi54),100)",false,false,0
+94,24,92,3,"product_of_two(division(kpi94,kpi55),100)",false,false,0
+94,24,57,4,kpi54-kpi36+kpi60-kpi93,false,false,0
+94,24,58,5,kpi55-kpi33+kpi61-kpi94,false,false,0
+94,24,59,6,"division(kpi57,kpi58)",false,false,0
+94,24,101,7,"(kpi101,previous_timeline)-(kpi9,previous_timeline)+(kpi60,previous_timeline)-(kpi93,previous_timeline)",false,false,0
+94,24,102,7,"(kpi102,previous_timeline)-(kpi6,previous_timeline)+(kpi61,previous_timeline)-(kpi94,previous_timeline)",false,false,0
+94,24,103,7,"(kpi101,previous_timeline)+(kpi60,previous_timeline)",false,false,0
+94,24,104,7,"(kpi102,previous_timeline)+(kpi61,previous_timeline)",false,false,0
+94,24,105,8,kpi105,false,false,0
+94,24,106,8,kpi106,false,false,0
+94,24,107,8,kpi107,false,false,0
+94,24,108,8,kpi108,false,false,0
+57,25,31,1,"product_of_two(kpi30,(kpi48,previous_timeline) + kpi1)",true,true,0
+57,25,32,2,"division(kpi31,(kpi31,previous_timeline))",true,true,0
+57,25,33,2,"division(kpi31,kpi35)",true,true,0
+57,25,41,2,"product_of_two(kpi31,division(kpi40,100))",true,true,0
+57,25,34,3,"division(kpi33,(kpi33,previous_timeline))",true,true,0
+57,25,36,3,kpi31 - kpi41,true,true,0
+57,25,48,4,"(kpi48,previous_timeline) + kpi1 - kpi31 ",true,true,0
+57,25,49,4,"(kpi49,previous_timeline) + kpi6 - kpi33",true,true,0
+57,25,50,4,"(kpi50,previous_timeline) + kpi9 - kpi36",true,true,0
+57,25,51,4,"(kpi48,previous_timeline)",true,true,0
+57,25,52,4,"(kpi49,previous_timeline)",true,true,0
+57,25,53,4,"(kpi50,previous_timeline)",true,true,0
+57,25,54,5,"(kpi57,previous_timeline)",true,true,0
+57,25,55,5,"(kpi58,previous_timeline)",true,true,0
+57,25,56,5,"(kpi59,previous_timeline)",true,true,0
+57,25,57,5,"(kpi57,previous_timeline)-kpi36+kpi60-kpi93",true,true,0
+57,25,58,5,"(kpi58,previous_timeline)-kpi33+kpi61-kpi94",true,true,0
+57,25,59,5,"division((kpi57,previous_timeline)-kpi36+kpi60-kpi93,(kpi58,previous_timeline)-kpi33+kpi61-kpi94)",true,true,0
+57,25,91,5,"product_of_two(division(kpi93,(kpi57,previous_timeline)),100)",true,true,0
+57,25,92,5,"product_of_two(division(kpi94,(kpi58,previous_timeline)),100)",true,true,0
+57,25,101,6,"(kpi101,previous_timeline)-(kpi9,previous_timeline)+(kpi60,previous_timeline)-(kpi93,previous_timeline)",true,true,0
+57,25,102,6,"(kpi102,previous_timeline)-(kpi6,previous_timeline)+(kpi61,previous_timeline)-(kpi94,previous_timeline)",true,true,0
+57,25,103,6,"(kpi101,previous_timeline)+(kpi60,previous_timeline)",true,true,0
+57,25,104,6,"(kpi102,previous_timeline)+(kpi61,previous_timeline)",true,true,0
+57,25,105,7,kpi105,true,true,0
+57,25,106,7,kpi106,true,true,0
+57,25,107,7,kpi107,true,true,0
+57,25,108,7,kpi108,true,true,0
+58,29,31,1,"product_of_two(kpi30,(kpi48,previous_timeline) + kpi1)",true,true,0
+58,29,32,2,"division(kpi31,(kpi31,previous_timeline))",true,true,0
+58,29,33,2,"division(kpi31,kpi35)",true,true,0
+58,29,41,2,"product_of_two(kpi31,division(kpi40,100))",true,true,0
+58,29,34,3,"division(kpi33,(kpi33,previous_timeline))",true,true,0
+58,29,36,3,kpi31 - kpi41,true,true,0
+58,29,48,4,"(kpi48,previous_timeline) + kpi1 - kpi31 ",true,true,0
+58,29,49,4,"(kpi49,previous_timeline) + kpi6 - kpi33",true,true,0
+58,29,50,4,"(kpi50,previous_timeline) + kpi9 - kpi36",true,true,0
+58,29,51,4,"(kpi48,previous_timeline)",true,true,0
+58,29,52,4,"(kpi49,previous_timeline)",true,true,0
+58,29,53,4,"(kpi50,previous_timeline)",true,true,0
+58,29,54,5,"(kpi57,previous_timeline)",true,true,0
+58,29,55,5,"(kpi58,previous_timeline)",true,true,0
+58,29,56,5,"(kpi59,previous_timeline)",true,true,0
+58,29,57,5,"(kpi57,previous_timeline)-kpi36+kpi60-kpi93",true,true,0
+58,29,58,5,"(kpi58,previous_timeline)-kpi33+kpi61-kpi94",true,true,0
+58,29,59,5,"division((kpi57,previous_timeline)-kpi36+kpi60-kpi93,(kpi58,previous_timeline)-kpi33+kpi61-kpi94)",true,true,0
+58,29,91,5,"product_of_two(division(kpi93,(kpi57,previous_timeline)),100)",true,true,0
+58,29,92,5,"product_of_two(division(kpi94,(kpi58,previous_timeline)),100)",true,true,0
+58,29,101,6,"(kpi101,previous_timeline)-(kpi9,previous_timeline)+(kpi60,previous_timeline)-(kpi93,previous_timeline)",true,true,0
+58,29,102,6,"(kpi102,previous_timeline)-(kpi6,previous_timeline)+(kpi61,previous_timeline)-(kpi94,previous_timeline)",true,true,0
+58,29,103,6,"(kpi101,previous_timeline)+(kpi60,previous_timeline)",true,true,0
+58,29,104,6,"(kpi102,previous_timeline)+(kpi61,previous_timeline)",true,true,0
+58,29,105,7,kpi105,true,true,0
+58,29,106,7,kpi106,true,true,0
+58,29,107,7,kpi107,true,true,0
+58,29,108,7,kpi108,true,true,0
+57,25,2,7,"division(kpi1,(kpi1,previous_timeline))",true,true,0
+57,25,7,7,"division(kpi6,(kpi6,previous_timeline))",true,true,0
+58,29,2,7,"division(kpi1,(kpi1,previous_timeline))",true,true,0
+58,29,7,7,"division(kpi6,(kpi6,previous_timeline))",true,true,0
+30,10,57,6,kpi54-kpi36+kpi60-kpi93,false,false,0

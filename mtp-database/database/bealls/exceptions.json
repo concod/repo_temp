@@ -1,0 +1,91 @@
+{
+    "CASCADE": {
+        "exclusions": [
+            "database/bealls/schemas/inventory_smart/functions/article_selection_list.sql"
+        ]
+    },
+    "DROP COLUMN": {
+        "exclusions": [
+            "database/bealls/schemas/global/tables/product_store_attributes_filter.sql",
+            "database/bealls/schemas/inventory_smart/tables/asn_master.sql",
+            "database/bealls/schemas/inventory_smart/tables/rcl_constraint_master.sql",
+            "database/bealls/schemas/meta_schema/tables/tb_editableflow_master.sql",
+            "database/bealls/schemas/meta_schema/tables/tb_formula_master.sql",
+            "database/bealls/schemas/meta_schema/tables/tb_kpi_config.sql",
+            "database/bealls/schemas/meta_schema/tables/tb_kpi_master.sql",
+            "database/bealls/schemas/meta_schema/tables/tb_table_columns_mst.sql",
+            "database/bealls/schemas/global/tables/product_store_hierarchy_mapping.sql"
+        ]
+    },
+    "DROP CONSTRAINT": {
+        "exclusions": [
+            "database/bealls/schemas/global/tables/filter_user_configurations_mapping.sql",
+            "database/bealls/schemas/global/tables/product_attributes_filter.sql",
+            "database/bealls/schemas/global/tables/store_attributes_filter.sql",
+            "database/bealls/schemas/inventory_smart/tables/article_status_tag.sql",
+            "database/bealls/schemas/inventory_smart/tables/dc_pack_reserve_quantity.sql",
+            "database/bealls/schemas/inventory_smart/tables/rcl_constraint_master.sql",
+            "database/bealls/schemas/inventory_smart/tables/woc_master.sql",
+            "database/bealls/schemas/meta_schema/tables/tb_applications.sql",
+            "database/bealls/schemas/meta_schema/tables/tb_kpi_config.sql",
+            "database/bealls/schemas/meta_schema/tables/tb_table_columns_mst.sql"
+        ]
+    },
+    "DROP INDEX": {
+        "exclusions": [
+            "database/bealls/schemas/global/tables/product_attributes_filter.sql"
+        ]
+    },
+    "DROP MATERIALIZED VIEW": {
+        "exclusions": []
+    },
+    "DROP SEQUENCE": {
+        "exclusions": []
+    },
+    "DROP TABLE": {
+        "exclusions": [
+            "database/bealls/schemas/inventory_smart/procedures/build_product_profile_attributes_filter.sql"
+        ]
+    },
+    "DROP TRIGGER": {
+        "exclusions": []
+    },
+    "DROP TYPE": {
+        "exclusions": []
+    },
+    "DROP VIEW": {
+        "exclusions": ["database/bealls/schemas/global/procedures/build_store_hierarchies_filter_flattern.sql"]
+    },
+    "INHERITS": {
+        "exclusions": []
+    },
+    "ONLY": {
+        "exclusions": []
+    },
+    "RENAME": {
+        "exclusions": [
+            "database/bealls/schemas/global/tables/store_attributes_filter.sql",
+            "database/bealls/schemas/inventory_smart/tables/dc_pack_reserve_quantity.sql"
+        ]
+    },
+    "RESET": {
+        "exclusions": []
+    },
+    "STORAGE": {
+        "exclusions": []
+    },
+    "TEMPORARY": {
+        "exclusions": []
+    },
+    "TRUNCATE": {
+        "exclusions": []
+    },
+    "WITHOUT": {
+        "exclusions": [
+            "database/bealls/schemas/inventory_smart/functions/sku_dc_allocated_units.sql",
+            "database/bealls/schemas/inventory_smart/functions/sku_po_allocated_units.sql",
+            "database/bealls/schemas/inventory_smart/views/sku_dc_allocated_units.sql",
+            "database/bealls/schemas/inventory_smart/views/sku_po_allocated_units.sql"
+        ]
+    }
+}

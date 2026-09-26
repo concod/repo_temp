@@ -1,0 +1,245 @@
+// ProductPage.scss
+
+
+.loading_container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-page-error {
+    // Fill the entire screen height minus any potential headers
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; // Vertical centering
+    align-items: center; // Horizontal centering
+    text-align: center;
+    padding: 20px;
+
+    h2 {
+        font-size: 2rem;
+        color: #333;
+        margin-bottom: 12px;
+    }
+
+    p {
+        color: #666;
+        margin-bottom: 24px;
+        max-width: 400px;
+        line-height: 1.5;
+    }
+
+    // Styling the Link component from react-router-dom
+    a {
+        display: inline-block;
+        padding: 12px 24px;
+        background-color: var(--primary-color);
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 600;
+        transition: background-color 0.2s ease, transform 0.1s ease;
+
+        &:active {
+            transform: scale(0.98);
+        }
+    }
+}
+
+.product-page {
+    padding: 20px;
+    width: 100vw;
+    margin: 0 auto;
+    overflow-x: hidden;
+    overflow-y: visible; // Allow vertical scrolling
+
+    &__container {
+        display: flex;
+        flex-direction: column; // Mobile first: stacked
+        gap: 24px;
+        width: 100%;
+    }
+
+    &__image-wrapper {
+        width: 100%;
+        border-radius: 12px;
+        overflow: hidden;
+        background: #f8f8f8;
+
+        .product-page__image {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+    }
+
+    &__details {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__category {
+        color: #666;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        letter-spacing: 1px;
+    }
+
+    &__stock-chip {
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+
+        &.in-stock {
+            background-color: #e6f4ea;
+            color: #1e7e34;
+        }
+
+        &.out-of-stock {
+            background-color: #fce8e6;
+            color: #d93025;
+        }
+    }
+
+    &__name {
+        font-size: 1.75rem;
+        margin: 0;
+        color: #111;
+    }
+
+    &__sku {
+        color: #888;
+        font-size: 0.9rem;
+        margin: 0;
+    }
+
+    &__price {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #007bff;
+    }
+
+    &__description {
+        h3 {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        p {
+            line-height: 1.6;
+            color: #444;
+        }
+    }
+
+    &__locate-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 16px;
+        background-color: var(--primary-color);
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        margin-top: 10px;
+
+        i {
+            font-size: 0.9rem;
+        }
+
+        &:disabled {
+            opacity: 0.5;
+        }
+    }
+
+    &__recommendations {
+        margin-top: 60px; // Space between product details and recommendations
+        padding-bottom: 40px;
+        width: 100%;
+
+        .recommendations-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #111;
+            margin-bottom: 20px;
+        }
+
+        .recommendations-scroll {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            width: 100%;
+            padding: 10px 4px 20px 4px; // Bottom padding for card shadows
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+
+            &::-webkit-scrollbar {
+                display: none; // Hide scrollbar for Chrome/Safari
+            }
+
+            -ms-overflow-style: none; // IE/Edge
+            scrollbar-width: none; // Firefox
+
+            &__item {
+                flex: 0 0 auto;
+                scroll-snap-align: start;
+            }
+        }
+    }
+
+    // --- RESPONSIVE BREAKPOINTS ---
+
+    // iPad / Tablets
+    @media (min-width: 768px) {
+        padding: 40px;
+
+        &__container {
+            flex-direction: row; // Side by side
+            align-items: flex-start;
+            gap: 40px;
+        }
+
+        &__image-wrapper {
+            flex: 1; // 50% width
+            max-height: 500px;
+        }
+
+        &__details {
+            flex: 1; // 50% width
+        }
+
+        &__name {
+            font-size: 2.2rem;
+        }
+    }
+
+    // Desktop
+    @media (min-width: 1024px) {
+        &__container {
+            gap: 80px;
+        }
+
+        &__image-wrapper {
+            max-height: 600px;
+        }
+
+        &__description p {
+            font-size: 1.1rem;
+        }
+    }
+}

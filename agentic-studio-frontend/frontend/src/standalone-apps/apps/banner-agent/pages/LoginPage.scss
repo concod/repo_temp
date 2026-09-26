@@ -1,0 +1,263 @@
+@use "../styles/typography" as t;
+
+.login-page {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    background: #f4f7c5;
+
+    .login-page-header {
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 2;
+
+        img {
+            width: 205px;
+            height: auto;
+            display: block;
+        }
+    }
+
+    .background {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        background-image: url("../assets/login-bg-mask.png");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        .grid {
+            position: absolute;
+            inset: 0;
+            display: none;
+        }
+    }
+
+    .login-container {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 40px;
+        max-width: 1200px;
+        margin: 0 auto;
+        min-height: 100vh;
+        padding: 100px 40px 40px;
+    }
+
+    .login-card {
+        width: 100%;
+        max-width: 420px;
+        background: #fff;
+        border-radius: 16px;
+        padding: 30px;
+        box-shadow: 0 0 16px rgba(0, 0, 0, 0.06);
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+
+        h2 {
+            margin: 0;
+            text-align: center;
+            @include t.ba-type-section-title;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+
+            img {
+                width: 135px;
+                height: 30px;
+                object-fit: contain;
+                display: block;
+            }
+
+            .logo-icon {
+                width: 32px;
+                height: 24px;
+                background: #ccc;
+                border-radius: 4px;
+            }
+
+            .logo-text {
+                text-align: right;
+
+                .title {
+                    margin: 0;
+                    font-weight: 800;
+                }
+
+                .subtitle {
+                    margin: 0;
+                    font-size: 10px;
+                }
+            }
+        }
+
+        .form {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+
+            .field {
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+
+                label {
+                    @include t.ba-type-label;
+                }
+
+                input {
+                    border: 1px solid #d9dde7;
+                    border-radius: 4px;
+                    padding: 10px;
+                    @include t.ba-type-input;
+
+                    &:focus {
+                        outline: none;
+                        border-color: #8ea0ff;
+                        box-shadow: 0 0 0 3px rgba(66, 89, 238, 0.16);
+                    }
+
+                    &::placeholder {
+                        color: #94a3b8;
+                    }
+                }
+
+                .password-input-wrap {
+                    position: relative;
+
+                    input {
+                        width: 100%;
+                        padding-right: 64px;
+                    }
+
+                    .password-toggle {
+                        position: absolute;
+                        top: 50%;
+                        right: 10px;
+                        transform: translateY(-50%);
+                        border: none;
+                        background: transparent;
+                        padding: 0;
+                        color: t.$ba-text-link;
+                        @include t.ba-type-caption;
+                        cursor: pointer;
+
+                        &:disabled {
+                            opacity: 0.6;
+                            cursor: not-allowed;
+                        }
+                    }
+                }
+            }
+
+            .forgot {
+                text-align: right;
+                @include t.ba-type-caption;
+                color: t.$ba-text-accent;
+                cursor: pointer;
+            }
+
+            .btn {
+                background: #c3c8d4;
+                color: #fff;
+                padding: 12px;
+                border-radius: 40px;
+                height: 38px;
+                border: none;
+                cursor: pointer;
+                @include t.ba-type-button;
+
+                &:not(:disabled) {
+                    background: t.$ba-text-accent;
+                }
+
+                &:disabled {
+                    opacity: 0.7;
+                    cursor: not-allowed;
+                }
+            }
+        }
+
+        .signup {
+            text-align: center;
+            @include t.ba-type-caption;
+
+            .link-btn {
+                background: none;
+                border: none;
+                padding: 0;
+                @include t.ba-type-caption;
+                color: t.$ba-text-link;
+                cursor: pointer;
+
+                &:disabled {
+                    opacity: 0.6;
+                    cursor: not-allowed;
+                }
+            }
+        }
+
+        .form-footer {
+            display: flex;
+            justify-content: center;
+
+            img {
+                width: 132px;
+                height: auto;
+                display: block;
+            }
+        }
+
+        .submit-message {
+            margin: 0;
+            text-align: center;
+            @include t.ba-type-caption;
+            color: #0f766e;
+
+            &--error {
+                color: #b42318;
+            }
+        }
+    }
+
+    .illustration {
+        width: 500px;
+        max-width: 42vw;
+        aspect-ratio: 1;
+        // background: rgba(255, 255, 255, 0.4);
+        // border-radius: 20px;
+        // border: 1px solid rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(4px);
+    }
+}
+
+@media (max-width: 980px) {
+    .login-page {
+        .login-page-header {
+            top: 20px;
+            right: 20px;
+
+            img {
+                width: 150px;
+            }
+        }
+
+        .login-container {
+            justify-content: center;
+            padding: 88px 24px 24px;
+        }
+
+        .illustration {
+            display: none;
+        }
+    }
+}

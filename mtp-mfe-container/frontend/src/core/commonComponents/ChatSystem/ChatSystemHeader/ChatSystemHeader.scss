@@ -1,0 +1,59 @@
+.chat-system-header {
+  padding: 6.5px 16px 5.5px 16px;
+  border-bottom: 1px solid #d9dde7;
+  .event-name {
+    padding-left: 10px;
+  }
+  .event-name-data {
+    display: flex;
+    align-items: center;
+  }
+  .resolve {
+    display: flex;
+    margin-left: 16px;
+    align-items: center;
+    .ia-styles.ia-btn.ia-btn-link {
+      padding: 0px 0px 0px 10px;
+      height: 21px;
+      font-family: "Poppins";
+      svg path {
+        fill: #60697d !important;
+      }
+    }
+  }
+  .right-side-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+.member-section,
+.avatar-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .more-avatar {
+    border: 1px dashed #758490;
+    height: 20px;
+    width: 20px;
+    color: #758490;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 400;
+    background-color: white;
+  }
+}
+.avatar-section {
+  margin-right: 12px;
+  margin-left: 12px;
+}
+
+.member-section {
+  margin-left: 8px;
+  .ia-styles.ia-btn.ia-btn-link {
+    font-family: "Poppins";
+  }
+}

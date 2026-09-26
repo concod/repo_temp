@@ -1,0 +1,51 @@
+tc_code,label,column_name,dimension,type,is_frozen,is_editable,is_aggregated,order_of_display,is_hidden,is_required,tc_mapping_code,child_tc_mapping_code,aggregate_type,formatter,is_row_span,footer,is_searchable,extra,is_sortable,width,is_deleted,is_master_group
+2,Status,status,Product,list,FALSE,TRUE,TRUE,9,FALSE,TRUE,68,,unique,,FALSE,,FALSE,"{""in_table_edit"" : true}",FALSE,200,FALSE,FALSE
+2,Category,l1_name,Product,str,FALSE,FALSE,FALSE,6,FALSE,FALSE,7,,unique,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+2,Product,article,Product,str,TRUE,FALSE,FALSE,2,FALSE,FALSE,4,,unique,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+2,SKU,product_code,Product,str,TRUE,FALSE,FALSE,1,FALSE,FALSE,3,,,,FALSE,,TRUE,"{""is_grouping_key"":true}",TRUE,200,FALSE,FALSE
+2,Brand,l0_name,Product,str,FALSE,FALSE,FALSE,5,FALSE,FALSE,55,,unique,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+2,Size,size,Product,str,TRUE,FALSE,TRUE,3,FALSE,FALSE,2830,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+2,Class,l2_name,Product,str,FALSE,FALSE,FALSE,7,FALSE,FALSE,47,,unique,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+2,Product Description,l4_name,Product,str,FALSE,FALSE,FALSE,4,FALSE,FALSE,3220581,,,,FALSE,,TRUE,{},FALSE,200,FALSE,FALSE
+2,Status From Date,status_start_time,Product,datetime,FALSE,TRUE,FALSE,10,FALSE,TRUE,1917,,,MM-DD-YYYY,FALSE,,FALSE,"{""in_table_edit"": true}",FALSE,200,FALSE,FALSE
+2,Status To Date,status_end_time,Product,datetime,FALSE,TRUE,FALSE,11,FALSE,FALSE,1918,,,MM-DD-YYYY,FALSE,,FALSE,"{""in_table_edit"": true}",FALSE,200,FALSE,FALSE
+11,SKU,product_code,product,str,TRUE,FALSE,FALSE,1,FALSE,FALSE,11001,,,,FALSE,,TRUE,{},FALSE,200,FALSE,FALSE
+11,Product,article,product,str,TRUE,FALSE,FALSE,2,FALSE,FALSE,11002,,,,FALSE,,TRUE,{},FALSE,200,FALSE,FALSE
+11,Brand,l0_name,product,str,FALSE,FALSE,FALSE,5,FALSE,FALSE,11004,,,,FALSE,,TRUE,{},FALSE,200,FALSE,FALSE
+11,Category,l1_name,product,str,FALSE,FALSE,FALSE,6,FALSE,FALSE,11005,,,,FALSE,,TRUE,{},FALSE,200,FALSE,FALSE
+11,Mapped Customer Groups,mapped_stores_count,product,link,FALSE,FALSE,FALSE,9,FALSE,FALSE,11008,,,,FALSE,,FALSE,{},FALSE,200,FALSE,FALSE
+11,Product Description,l4_name,Product,str,FALSE,FALSE,FALSE,4,FALSE,FALSE,3220582,,,,FALSE,,TRUE,{},FALSE,200,FALSE,FALSE
+11,Size,size,Product Mapping,str,TRUE,FALSE,FALSE,3,FALSE,TRUE,7391011,,,,FALSE,,TRUE,{},TRUE,300,FALSE,FALSE
+19,SKU,product_code,Product,str,TRUE,FALSE,FALSE,1,FALSE,FALSE,ea5a3132-f650-40d9-ba48-4dcde5c3643f,,,,FALSE,,TRUE,"{""is_grouping_key"": true}",TRUE,200,FALSE,FALSE
+19,Brand,l0_name,Product,str,FALSE,FALSE,FALSE,5,FALSE,FALSE,3c6ac6a2-968d-4079-a699-fb896f8b00f0,,unique,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+19,Product,article,Product,str,TRUE,FALSE,FALSE,2,FALSE,FALSE,51a9faad-b1f7-4e21-9cda-8024ff38d477,,unique,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+19,Category,l1_name,Product,str,FALSE,FALSE,FALSE,6,FALSE,FALSE,8758e247-f489-4cb4-91d7-066bbbc5085c,,unique,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+19,Product Description,l4_name,Product,str,FALSE,FALSE,FALSE,4,FALSE,FALSE,3220583,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+19,DC Name,name,Product,str,TRUE,FALSE,FALSE,9,FALSE,FALSE,1101010003,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+19,Start Date,start_date,Product,date,FALSE,FALSE,FALSE,10,FALSE,FALSE,5e64ffaf-ad7c-44f2-878f-d0c32d42558e,,,MM-DD-YYYY,FALSE,,FALSE,{},FALSE,200,FALSE,FALSE
+19,End Date,end_date,Product,date,FALSE,FALSE,FALSE,11,FALSE,FALSE,19_end_date_End Date_Product,,,MM-DD-YYYY,FALSE,,FALSE,{},FALSE,200,FALSE,FALSE
+19,Size,size,Product Mapping,str,TRUE,FALSE,FALSE,3,FALSE,TRUE,7398019,,,,FALSE,,TRUE,{},TRUE,300,FALSE,FALSE
+250,Brand,l0_name,Product,str,FALSE,FALSE,FALSE,5,FALSE,FALSE,1002,,unique,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+250,Category,l1_name,Product,str,FALSE,FALSE,FALSE,6,FALSE,FALSE,1009,,unique,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+250,Collection,l2_name,Product,str,FALSE,FALSE,FALSE,5,FALSE,FALSE,1003,,unique,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+250,Product,article,Product,str,FALSE,FALSE,FALSE,3,FALSE,FALSE,1006,,unique,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+250,SKU,product_code,Product,str,TRUE,FALSE,FALSE,1,FALSE,FALSE,1001,,,,FALSE,,TRUE,"{""is_grouping_key"": true}",TRUE,200,FALSE,FALSE
+250,Status From Date,status_start_time,Product,datetime,FALSE,TRUE,FALSE,9,FALSE,TRUE,1004,,,,FALSE,,FALSE,"{""in_table_edit"": true}",FALSE,200,FALSE,FALSE
+250,Status To Date,status_end_time,Product,datetime,FALSE,TRUE,FALSE,10,FALSE,FALSE,1005,,,,FALSE,,FALSE,"{""in_table_edit"": true}",FALSE,200,FALSE,FALSE
+250,Subclass,l5_name,Product,str,FALSE,FALSE,FALSE,4,FALSE,FALSE,1008,,unique,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+399,Product,article,Product Mapping,str,FALSE,FALSE,FALSE,0,FALSE,TRUE,73900,,,,FALSE,,TRUE,{},TRUE,300,FALSE,FALSE
+399,Size,size,Product Mapping,str,FALSE,FALSE,FALSE,1,FALSE,TRUE,73910,,,,FALSE,,TRUE,{},TRUE,300,FALSE,FALSE
+399,Brand,l0_name,Product Mapping,str,FALSE,FALSE,FALSE,2,FALSE,TRUE,73950,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+399,Category,l1_name,Product Mapping,str,FALSE,FALSE,FALSE,3,FALSE,TRUE,73960,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+399,Label Code,label_code,Product Mapping,str,FALSE,FALSE,FALSE,4,FALSE,TRUE,39904,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+399,Dimension Pack,dimension_pack,Product Mapping,str,FALSE,FALSE,FALSE,5,FALSE,TRUE,39905,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+399,DC,loc_name,Product Mapping,str,FALSE,FALSE,FALSE,6,FALSE,TRUE,73930,,,,FALSE,,TRUE,{},TRUE,300,FALSE,FALSE
+399,Safety Stock Method,safety_stock_method,Product Mapping,list,FALSE,TRUE,FALSE,7,FALSE,TRUE,74000,,,,FALSE,,FALSE,"{""options"":[{""label"":""Service Level"",""value"":""Service Level""},{""label"":""Safety Stock Unit"",""value"":""User Input""},{""label"":""WOS (Safety Stock)"",""value"":""WOS""}]}",FALSE,250,FALSE,FALSE
+399,Safety Stock Unit,stock_units,Product Mapping,int,FALSE,TRUE,FALSE,8,FALSE,TRUE,74010,,,,FALSE,,FALSE,"{""max"": 99999, ""overrideWidth"": 200}",FALSE,300,FALSE,FALSE
+399,Service Level (%),service_level_pct,Product Mapping,percentage,FALSE,TRUE,FALSE,9,FALSE,TRUE,74020,,,,FALSE,,FALSE,"{""dynamicMaxKey"": 99}",FALSE,300,FALSE,FALSE
+399,WOS (Safety Stock),safety_stock_twos,Product Mapping,int,FALSE,TRUE,FALSE,10,FALSE,TRUE,74030,,,,FALSE,,FALSE,"{""max"": 99999, ""overrideWidth"": 200}",FALSE,300,FALSE,FALSE
+350,Customer Group,store_code,store,str,FALSE,FALSE,FALSE,1,FALSE,TRUE,350001,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+350,Time Periods,time_period,DateTime,str,FALSE,FALSE,FALSE,2,FALSE,TRUE,350002,,count,,FALSE,,FALSE,{},FALSE,200,FALSE,FALSE
+145,File Name,name,file,str,TRUE,FALSE,TRUE,1,FALSE,FALSE,71271,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+145,Created at,timeCreated,file,str,FALSE,FALSE,TRUE,3,FALSE,FALSE,71291,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+145,View,url,file,str,FALSE,FALSE,TRUE,4,FALSE,FALSE,71301,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE

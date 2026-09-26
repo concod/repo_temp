@@ -1,0 +1,10 @@
+"source_column_name","source_column_datatype","required_in_product","generic_column_name","is_pk","generic_column_datatype","formula","is_attribute","is_hierarchy","hierarchy_level","is_null_allowed","unique_by","display_name","is_partition_col","is_clustering_col"
+PRODUCT_ID,varchar,true,product_code,true,varchar,,false,false,,false,true,,false,
+ESTIMATED_DATE_OF_DELIVERY,varchar,true,date,false,date,,false,false,,true,false,,false,
+syncstartdatetime,datetime,true,syncstartdatetime,false,datetime,,false,false,,true,false,,false,
+ASN_ID,int8,true,asn_id,true,int8,,false,false,,false,true,,false,
+ASN_CREATION_DATE_TIME,varchar,true,asn_creation_date_time,false,varchar,,false,false,,true,false,,false,
+CONTAINER_NUMBER,varchar,true,container_number,false,varchar,,false,false,,true,false,,false,
+PURCHASE_ORDER_ID,varchar,true,purchase_order_id,true,varchar,,false,false,,false,true,,false,
+PURCHASE_ORDER_ITEM_ID,int8,true,purchase_order_item_id,true,int8,,false,false,,false,true,,false,
+QTY_SHIPPED,int8,true,qty_shipped,false,int8,,false,false,,true,false,,false,

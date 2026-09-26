@@ -1,0 +1,121 @@
+{% include "header.html" %}
+<div class="pagetitle">
+	<h1>Partitions</h1>
+</div>
+
+<section class="section">
+    <div class="row">
+        <div class="col-lg-4">
+            <br/>
+            <select id='projects' onchange='handleSelection(); add_loader();' class="form-control" style="width:100%;">
+                <!-- <option>a</option> -->
+                {% for sc in projects %}
+                    <option {{ 'selected' if sc == selected_project else '' }}>{{ sc }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-lg-4">
+            <br/>
+            <select id='datasets' name="datasets" onchange='handleSelection_dat(); add_loader();' class="form-control" style="width:100%;">
+                <option>Select a Dataset</option>
+				{% for dataset in datasets %}
+                    <option value="{{ dataset }}" {% if dataset == selected_dataset %}selected{% endif %}>{{ dataset }}</option>
+                {% endfor %}
+            </select>
+        </div>
+		<div class="col-lg-4">
+            <br/>
+            <select id='filters' name="filters" onchange='handleSelection_dat(); add_loader();' class="form-control" style="width:100%;">
+                {% for filter in ['partitioned_tables', 'clustered_tables', 'no_partition_and_cluster', 'partitioned_and_clustered'] %}
+                    <option value="{{ filter }}" {% if filter == selected_filter %}selected{% endif %}>{{ filter }}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+    <br/><br/>
+</section>
+
+<div class="card">
+				<div class="card-body">
+					<!--h5 class="card-title">DataBases</h5>
+					<p>Choose a database from list to manage.</p-->
+
+					<!-- Table with stripped rows -->
+					<table class="table datatable table-hover">
+						<thead>
+							<tr>
+								<th>Table Name</th>
+								<th>Partition Columns</th>
+								<th>Cluster Columns</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for row in tables %}
+								<tr>
+									<td>{{row[0]}}</td>
+									<td>{{row[1]}}</td>
+									<td>{{row[2]}}</td>
+									<!-- <td>{{", ".join(row['memberof'])}}</td> -->
+									<!-- <td><a href="/table-op/{{ row['blocker_id'] }}/kill_lock">Kill Blocker</a></td> -->
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+					<!-- End Table with stripped rows -->
+
+				</div>
+			</div>
+{% include "footer.html" %}
+
+<!-- Your JavaScript -->
+<script>
+    function handleSelection() {
+        var selectedProject = document.getElementById('projects').value;
+
+        // Make an asynchronous request to the Flask backend
+        fetch('/partitions', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ selectedProject: selectedProject }),
+})
+.then(response => response.text())  // Adjust to response.text() for HTML content
+.then(data => {
+    // Open a new document and replace the entire content
+    document.open();
+    document.write(data);
+    document.close();
+})
+.catch(error => {
+    console.error('Error:', error);
+});
+
+
+    }
+	function handleSelection_dat() {
+        var selectedProject = document.getElementById('projects').value;
+		var selectedDataset = document.getElementById('datasets').value;
+		var selectedFilter = document.getElementById('filters').value;
+
+        // Make an asynchronous request to the Flask backend
+                fetch('/partitions', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ selectedProject: selectedProject, selectedDataset: selectedDataset, selectedFilter: selectedFilter  }),
+})
+.then(response => response.text())  // Adjust to response.text() for HTML content
+.then(data => {
+    // Open a new document and replace the entire content
+    document.open();
+    document.write(data);
+    document.close();
+})
+.catch(error => {
+    console.error('Error:', error);
+});
+
+    }
+</script>

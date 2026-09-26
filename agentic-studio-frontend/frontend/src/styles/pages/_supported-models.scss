@@ -1,0 +1,35 @@
+.supported-models-page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 24px;
+  width: 100%;
+  min-height: 100vh;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    justify-content: flex-start;
+    align-items: start;
+    width: 100%;
+
+    // Auto-fit cards with minimum 280px width, growing to fill available space
+    // Cards will wrap to new rows when screen gets smaller
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr;
+      justify-items: center;
+    }
+
+    @media (max-width: 320px) {
+      grid-template-columns: 1fr;
+      justify-items: stretch;
+    }
+  }
+}

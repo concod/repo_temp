@@ -1,0 +1,86 @@
+{
+    "CASCADE": {
+        "exclusions": []
+    },
+    "DROP COLUMN": {
+        "exclusions": [
+            "database/figs/schemas/global/tables/new_store_mapping.sql",
+            "database/figs/schemas/inventory_smart/tables/alerts_product_level.sql",
+            "database/figs/schemas/inventory_smart/tables/alerts_product_store_level.sql",
+            "database/figs/schemas/inventory_smart/tables/article_inventory_dashboard.sql",
+            "database/figs/schemas/inventory_smart/tables/auto_allocation_input.sql",
+            "database/figs/schemas/inventory_smart/tables/product_profile_master.sql"
+        ]
+    },
+    "DROP CONSTRAINT": {
+        "exclusions": [
+            "database/figs/schemas/global/tables/new_store_mapping.sql",
+            "database/figs/schemas/oms/tables/oms_orders_approval_hist.sql",
+            "database/figs/schemas/oms/tables/oms_orders_approved.sql"
+        ]
+    },
+    "DROP INDEX": {
+        "exclusions": [
+            "database/figs/schemas/public/procedures/generate_rcl_week_level_constraint_data.sql"
+        ]
+    },
+    "DROP MATERIALIZED VIEW": {
+        "exclusions": []
+    },
+    "DROP SEQUENCE": {
+        "exclusions": []
+    },
+    "DROP TABLE": {
+        "exclusions": [
+            "database/figs/schemas/inventory_smart/functions/generate_rcl_oms_constraint_data.sql",
+            "database/figs/schemas/inventory_smart/procedures/build_product_profile_attributes_filter.sql",
+            "database/figs/schemas/oms/tables/oms_po_master.sql"
+        ]
+    },
+    "DROP TRIGGER": {
+        "exclusions": []
+    },
+    "DROP TYPE": {
+        "exclusions": []
+    },
+    "DROP VIEW": {
+        "exclusions": []
+    },
+    "INHERITS": {
+        "exclusions": []
+    },
+    "ONLY": {
+        "exclusions": []
+    },
+    "RENAME": {
+        "exclusions": [
+            "database/figs/schemas/global/tables/product_attributes_filter.sql",
+            "database/figs/schemas/global/tables/store_attributes_filter.sql",
+            "database/figs/schemas/inventory_smart/tables/dc_reserve_quantity_archive.sql",
+            "database/figs/schemas/oms/tables/oms_alerts.sql"
+        ]
+    },
+    "RESET": {
+        "exclusions": []
+    },
+    "STORAGE": {
+        "exclusions": []
+    },
+    "TEMPORARY": {
+        "exclusions": []
+    },
+    "TRUNCATE": {
+        "exclusions": [
+            "database/figs/schemas/public/procedures/generate_all_rcl_constraint_data.sql"
+        ]
+    },
+    "WITHOUT": {
+        "exclusions": [
+            "database/figs/schemas/inventory_smart/functions/auto_allocation_input_articles.sql"
+        ]
+    },
+    "LB RUN_ON_CHANGE": {
+        "regex": "\\b(DROP\\s+FUNCTION)\\b",
+        "exclusions": ["database/figs/schemas/inventory_smart/tables/get_tenant_timezone.sql"]
+    }
+}

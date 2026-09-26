@@ -1,0 +1,12 @@
+"source_column_name","source_column_datatype","required_in_product","generic_column_name","is_pk","generic_column_datatype","formula","is_attribute","is_hierarchy","hierarchy_level","is_null_allowed","unique_by","display_name","is_partition_col","is_clustering_col"
+parent_product_code,varchar,true,parent_product_code,true,varchar,,false,false,,false,true,,false,
+size,varchar,true,size,true,varchar,,false,false,,false,true,,false,
+child_product_code,varchar,true,child_product_code,false,varchar,,false,false,,false,false,,false,
+bom_quantity,int4,true,bom_quantity,false,int4,,false,false,,true,false,,false,
+date,date,true,date,false,date,,false,false,,true,false,,false,
+is_approved,int4,true,is_approved,false,int4,,false,false,,true,false,,false,
+bom_version,varchar,true,bom_version,false,varchar,,false,false,,true,false,,false,
+child_uom,varchar,true,child_uom,false,varchar,,false,false,,true,false,,false,
+dataareaid,varchar,true,dataareaid,false,varchar,,false,false,,true,false,,false,
+line_seq,int4,true,line_seq,false,int4,,false,false,,true,false,,false,
+line_num,float8,true,line_num,false,float8,,false,false,,true,false,,false,

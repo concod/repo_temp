@@ -1,0 +1,310 @@
+.users-page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  
+  .users-content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+
+    &-table {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      width: 100%;
+
+      &-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        
+        .section-title {
+          color: var(--greys-100);
+          font-weight: 600;
+        }
+      }
+
+      &-body {
+        width: 100%;
+        
+        .table-loading,
+        .table-error,
+        .table-empty {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 40px;
+          background: var(--greys-1000);
+          border-radius: 8px;
+          border: 1px solid var(--greys-800);
+          
+          span {
+            color: var(--greys-300);
+          }
+        }
+
+        .table-error span {
+          color: var(--error-color, #ef4444);
+        }
+      }
+    }
+  }
+
+  // Users table styles (exact replica from data-connector)
+  .users-table {
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+    
+    .table-header {
+      display: grid;
+      grid-template-columns: 2fr 2.5fr 1fr 1fr;
+      border-radius: 8px;
+      background: linear-gradient(109deg, #F1F6FF 9.27%, #FAF4FF 95.79%);
+      
+      .table-cell {
+        padding: 12px 16px;
+        font-weight: 600;
+        font-size: 14px;
+        color: #374151;
+        text-align: left;
+      }
+    }
+    
+    .table-row {
+      display: grid;
+      grid-template-columns: 2fr 2.5fr 1fr 1fr;
+      border-radius: 7px;
+      border: 1px solid #E5E7E9;
+      background: #FEFEFF;
+      
+      &:hover {
+        background: #f8fafc;
+      }
+      
+      .table-cell {
+        padding: 10px 12px;
+        font-size: 12px;
+        color: #4b5563;
+        text-align: left;
+        display: flex;
+        align-items: center;
+      }
+    }
+
+    // User info with avatar
+    .user-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+
+      .user-avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        object-fit: cover;
+        flex-shrink: 0;
+      }
+
+
+      span {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        min-width: 0;
+      }
+    }
+
+    // Role badge
+    .role-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 8px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: capitalize;
+
+      &.admin {
+        background: rgba(239, 68, 68, 0.1);
+        color: #fca5a5;
+        border: 1px solid rgba(239, 68, 68, 0.2);
+      }
+
+      &.user {
+        background: rgba(59, 130, 246, 0.1);
+        color: #93c5fd;
+        border: 1px solid rgba(59, 130, 246, 0.2);
+      }
+    }
+
+    // Status badge
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 8px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 500;
+
+      &.active {
+        background: rgba(34, 197, 94, 0.1);
+        color: #86efac;
+        border: 1px solid rgba(34, 197, 94, 0.2);
+      }
+
+      &.inactive {
+        background: rgba(156, 163, 175, 0.1);
+        color: #d1d5db;
+        border: 1px solid rgba(156, 163, 175, 0.2);
+      }
+    }
+
+    // Status label styling
+    .subtle-green {
+      font-size: 12px !important;
+    }
+
+  }
+
+  // Pagination styles
+  .pagination-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+    margin-top: 16px;
+    border-top: 1px solid var(--greys-800);
+
+    .pagination-info {
+      .body-small {
+        color: var(--greys-300);
+        font-size: 14px;
+      }
+    }
+
+    .pagination-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      .pagination-btn {
+        padding: 8px 16px;
+        border: 1px solid var(--greys-700);
+        background: var(--greys-900);
+        color: var(--greys-200);
+        border-radius: 6px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+
+        &:hover:not(:disabled) {
+          background: var(--greys-800);
+          border-color: var(--greys-600);
+        }
+
+        &:disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+      }
+
+      .pagination-pages {
+        display: flex;
+        gap: 4px;
+        margin: 0 8px;
+
+        .pagination-page {
+          width: 36px;
+          height: 36px;
+          border: 1px solid var(--greys-700);
+          background: var(--greys-900);
+          color: var(--greys-200);
+          border-radius: 6px;
+          font-size: 14px;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          &:hover:not(.active) {
+            background: var(--greys-800);
+            border-color: var(--greys-600);
+          }
+
+          &.active {
+            background: var(--primary-500, #6366f1);
+            border-color: var(--primary-500, #6366f1);
+            color: white;
+          }
+        }
+      }
+    }
+  }
+
+  // Responsive design for pagination
+  @media (max-width: 768px) {
+    .pagination-container {
+      flex-direction: column;
+      gap: 12px;
+      align-items: stretch;
+
+      .pagination-controls {
+        justify-content: center;
+        
+        .pagination-btn {
+          padding: 6px 12px;
+          font-size: 12px;
+        }
+
+        .pagination-pages {
+          .pagination-page {
+            width: 32px;
+            height: 32px;
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+
+  // Responsive design
+  @media (max-width: 1024px) {
+    .users-table {
+      .table-header,
+      .table-row {
+        grid-template-columns: 1.5fr 2fr 1fr 1fr 80px;
+        gap: 12px;
+        padding: 12px 16px;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .users-table {
+      .table-header,
+      .table-row {
+        grid-template-columns: 1fr 1.5fr 80px 80px 60px;
+        gap: 8px;
+        padding: 12px;
+        font-size: 12px;
+      }
+
+      .user-info {
+        gap: 8px;
+
+        .user-avatar,
+        .user-avatar-placeholder {
+          width: 24px;
+          height: 24px;
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}

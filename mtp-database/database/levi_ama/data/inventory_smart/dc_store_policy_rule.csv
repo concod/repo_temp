@@ -1,0 +1,140 @@
+"rule_name","rule_structure","default_value","rule_type","is_mandatory","rule_key"
+Set Minimum DC Inventory,"{
+        ""minimum_dc_inventory"": {
+            ""label"": ""Enter Integers"", 
+            ""value"": {
+                ""type"": ""int""
+            }
+        }
+    }","{""minimum_dc_inventory"": 6}",auto-allocation,false,minimum_dc_inventory
+Set CutOff WOS,"{
+        ""cut_off_wos"": {
+            ""label"": ""Enter Integers"", 
+            ""value"": {""type"": ""int""}
+        }
+    }","{""cut_off_wos"": 6}",auto-allocation,false,cut_off_wos
+Set WOS Threshold,"{
+        ""current_wos"": {
+            ""dropdown"": {
+            ""label"": ""Current WOS"", 
+            ""value"": {
+                ""type"": ""dropdown"", 
+                ""value"": [
+                    {""lt"": ""<""}, 
+                    {""gte"": "">=""}
+                ]
+            },
+            ""order"": 1
+        }, 
+        ""threshold"": {
+            ""label"": ""Threshold(0 to 1)"",
+            ""value"": {""type"": ""float""},
+            ""order"": 2,
+			""max"": 1,
+			""min"": 0
+        }, 
+        ""target_wos"": {
+            ""label"": ""Target WOS"",
+            ""order"": 3
+        }
+    }
+}","{""current_wos"": {""dropdown"": ""lt"", ""threshold"": 0.7}}",auto-allocation,false,current_wos
+Triggered if MinStock not satisfied,"{
+        ""minstock_not_satisfiled"": {
+            ""label"": """", 
+            ""value"": {
+                ""type"": ""boolean""
+            }
+        }
+    }","{""minstock_not_satisfiled"": true}",auto-allocation,false,minstock_not_satisfiled
+DC to Store Strategy,"{
+    ""dc_to_store_strategy"": {
+        ""label"": ""DC to Store Strategy"",
+        ""value"": {
+            ""label"": ""Choose Strategy"",
+            ""type"": ""dropdown"",
+            ""value"": [
+                {""mins_first_and_then_wos"": ""Mins First and then WOS""},
+                {""mins_only"": ""Mins Only""},
+                {""wos_only"": ""WOS only""}
+            ]
+        }
+	}
+}","{""dc_to_store_strategy"": ""mins_first_and_then_wos""}",dc-store-rule,false,dc_to_store_strategy
+Demand Type,"{
+	""demand_type"": {
+      ""label"": ""Demand Type"",
+      ""value"": {
+        ""label"": ""Demand Type"",
+        ""type"": ""dropdown"",
+        ""value"": [
+          {
+            ""ia_forecast"": ""IA Forecast""
+          },
+          {
+            ""aps"": ""APS""
+          },
+          {
+            ""fixed_inventory_push"": ""Fixed Inventory Push""
+          }
+        ],
+        ""dependencies"": [
+          {
+            ""label"": ""IA Forecast"",
+            ""value"": {
+              ""type"": ""-""
+            },
+            ""show_on"": ""ia_forecast"",
+            ""default_value"": ""-""
+          },
+          {
+            ""label"": ""APS"",
+            ""value"": {
+              ""type"": ""int""
+            },
+            ""show_on"": ""aps"",
+            ""default_value"": ""5"",
+			""min"": 0,
+			""max"": 10000
+          },
+          {
+            ""label"": ""Fixed Inventory Push"",
+            ""value"": {
+              ""type"": ""percent""
+            },
+            ""show_on"": ""fixed_inventory_push"",
+            ""default_value"": ""10%"",
+			""min"": 0,
+			""max"": 100
+          }
+        ]
+      }
+    }
+}","{""demand_type"": {""ia_forecast"": ""-""}}",dc-store-rule,false,demand_type
+DC Inventory Source,"{
+    ""dc_inventory_source"": {
+        ""label"": ""DC Inventory Source"",
+        ""value"": {
+            ""label"": ""Choose Source"",
+            ""type"": ""dropdown"",
+            ""value"": [
+                {""on_hand"": ""DC on hand""},
+                {""in_transit"": ""DC in transit""}
+            ]
+        }
+    }
+}","{""dc_inventory_source"": ""on_hand""}",dc-store-rule,false,dc_inventory_source
+Prioritization Strategy,"{
+    ""prioritization_strategy"": {
+        ""label"": ""Prioritization Strategy"",
+        ""value"": {
+            ""label"": ""Choose Strategy"",
+            ""type"": ""dropdown"",
+            ""value"": [
+                {""ia_priority"": ""IA Priority""},
+                {""fairshare"": ""Fair Share""}
+            ]
+        }
+	}
+}
+","{""prioritization_strategy"": ""ia_priority""}",dc-store-rule,false,prioritization_strategy

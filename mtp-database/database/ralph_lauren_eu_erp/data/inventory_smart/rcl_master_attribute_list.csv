@@ -1,0 +1,18 @@
+attribute_name,is_hierarchy,is_attribute,is_main_col,hierarchy_level,datatype,label,order_of_display,is_mandatory,module_code,attribute_dimension,extra
+subdepartment,TRUE,TRUE,FALSE,,varchar,Subdepartment,2,FALSE,170,product,{}
+class,FALSE,TRUE,FALSE,,varchar,Class,3,FALSE,170,product,{}
+subclass,TRUE,TRUE,FALSE,,varchar,Subclass,4,FALSE,170,product,{}
+style,FALSE,TRUE,FALSE,,varchar,Style,5,FALSE,170,product,{}
+article,FALSE,TRUE,FALSE,,varchar,Style-Color ID,6,FALSE,170,product,{}
+department,TRUE,TRUE,FALSE,,varchar,Department,1,TRUE,170,product,{}
+size_id,FALSE,TRUE,FALSE,,varchar,Size,7,FALSE,170,product,{}
+store_tier,FALSE,TRUE,FALSE,,varchar,Location Grade,1,FALSE,170,store,"{""dimension"":""product_store""}"
+store_category,FALSE,TRUE,FALSE,,varchar,Store Category,2,FALSE,170,store,"{""dimension"":""product_store""}"
+geo_region,FALSE,TRUE,FALSE,,varchar,Geo Region,3,FALSE,170,store,"{""dimension"":""product_store""}"
+subclass,FALSE,TRUE,FALSE,,varchar,Subclass,4,FALSE,10003,product,{}
+size,FALSE,TRUE,FALSE,,varchar,Size,7,FALSE,10003,product,{}
+article,FALSE,TRUE,FALSE,,varchar,Style Color ID,6,FALSE,10003,product,{}
+department,TRUE,TRUE,FALSE,,varchar,Department,1,TRUE,10003,product,{}
+subdepartment,TRUE,TRUE,FALSE,,varchar,Subdepartment,2,TRUE,10003,product,{}
+style,TRUE,TRUE,FALSE,,varchar,Style,5,FALSE,10003,product,{}
+class ,TRUE,TRUE,FALSE,,varchar,Class,3,FALSE,10003,product,{}

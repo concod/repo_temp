@@ -1,0 +1,29 @@
+"kpi_code","kc_code","name","description","formula","table_name","variables","type","formula_description","identifier","display_name","sort_order","format","min_thres","max_thres"
+9,1,avg_basket_size,Average number of units sold per transaction,"SAFE_DIVIDE(sum_qty,trans_count)",mondaysmart_sales_subset_daily,"{sum_qty,trans_count}",simple,,Transaction and Basket Metrics,Basket Size,12,"0.00a",-0.02,0.02
+26,5,planned_aur,planned aur,"SAFE_DIVIDE(planned_sales, planned_qty)",mondaysmart_planned_subset_daily,"{planned_sales,planned_qty}",plan_simple,,Planned KPIs,Planned ASP,42,,,
+2,1,quantity,Quantity of products sold during the selected time period,sum_qty,mondaysmart_sales_subset_daily,{sum_qty},simple,,Financial Performance Metrics,Sales Units,2,"0.00a",-0.02,0.02
+25,5,planned_aum,planned aum,"SAFE_DIVIDE(planned_mrgn, planned_qty)",mondaysmart_planned_subset_daily,"{planned_mrgn,planned_qty}",plan_simple,,Planned KPIs,Planned AUM,41,,,
+7,1,avg_discount_per,Average percentage discount applied on products sold during the selected time period,"SAFE_DIVIDE(avg_disc_per,sum_qty )*100",mondaysmart_sales_subset_daily,"{avg_disc_per,sum_qty}",simple,,Discount Metrics,Overall Discount %,8,"0.00%",-0.02,0.02
+6,1,gross_margin_perc,Gross Margin percentage earned on the total sales in the selected time period,"SAFE_DIVIDE(sum_mrgn,sum_rev)*100",mondaysmart_sales_subset_daily,"{sum_rev,sum_mrgn}",simple,,Financial Performance Metrics,Gross Margin %,7,"0.00%",-0.02,0.02
+22,2,oh,Inventory remaining at the end of the selected time period,oh_eop,mondaysmart_inventory_subset_daily,{oh_eop},inventory,,,,,"0.00a",,
+23,2,oo,Inventory remaining at the end of the selected time period,oo_eop,mondaysmart_inventory_subset_daily,{oo_eop},inventory,,,,,"0.00a",,
+13,2,freshness,Index for % articles that have been introduced in the product mix in the last 28 days,freshness,mondaysmart_inventory_subset_daily,{freshness},inventory,,Inventory KPIs,Freshness,15,,,
+10,1,avg_basket_value,Revenue generated per transaction during the selected time period,"SAFE_DIVIDE(sum_rev,trans_count)",mondaysmart_sales_subset_daily,"{sum_rev,trans_count}",simple,,Transaction and Basket Metrics,Basket Value,11,$0.00a,-0.02,0.02
+12,2,inv_eop,Inventory remaining at the end of the selected time period,inv_eop,mondaysmart_inventory_subset_daily,{inv_eop},inventory,,Inventory KPIs,Inventory EOP,14,"0.00a",,
+29,5,planned_gross_margin_perc,planned gross margin percentage,"SAFE_DIVIDE(planned_mrgn, planned_sales) * 100",mondaysmart_planned_subset_daily,"{planned_mrgn,planned_sales}",plan_simple,,Planned KPIs,Planned gross margin percentage,45,,,
+5,1,aum,Average gross margin per unit sold by the business in the selected time period,"SAFE_DIVIDE(sum_mrgn,sum_qty)",mondaysmart_sales_subset_daily,"{sum_mrgn,sum_qty}",simple,,Financial Performance Metrics,AUM,5,$0.00a,-0.02,0.02
+24,2,it,Inventory remaining at the end of the selected time period,it_eop,mondaysmart_inventory_subset_daily,{it_eop},inventory,,,,,"0.00a",,
+30,5,planned_eoh,planned eoh,planned_eoh,mondaysmart_planned_subset_daily,{planned_eoh},plan_inventory,,Planned KPIs,Planned Inventory End,46,,,
+8,1,transactions,Total number of transactions in the selected timeframe,trans_count,mondaysmart_sales_subset_daily,{trans_count},simple,,Transaction and Basket Metrics,Transactions,10,"0.00a",-0.02,0.02
+31,2,stock_turn,Number of times inventory is sold and replaced over a rolling 52-week window,"SAFE_DIVIDE((sum_qty*2),(oh_eop+oh_bop))",mondaysmart_inventory_subset_daily,"{sum_qty,oh_eop,oh_bop}",inventory,,Inventory KPIs,Stock Turn,47,"0.00a",-0.02,0.02
+15,2,inv_cost,"The total cost incurred to acquire and hold inventory, including purchase and carrying costs.",sum_oh_cost*conversion_val,mondasmart_inventory_subset_daily,"{sum_oh_cost,conversion_val}",inventory,,Inventory KPIs,Inventory Cost,16,$0.00a,-0.02,0.02
+16,2,inv_value,"Total value of inventory available on hand in stores at full retail price, at the end of the selected time period",oh_eop * msrp_inv * conversion_val,mondasmart_inventory_subset_daily,"{oh_eop,msrp_inv,conversion_val}",inventory,,Inventory KPIs,Inventory Value,17,$0.00a,-0.02,0.02
+4,1,margin,Gross margin generated from the sales in the selected time period,sum_mrgn * conversion_val,mondaysmart_sales_subset_daily,"{sum_mrgn,conversion_val}",simple,,Financial Performance Metrics,Gross Margin,4,$0.00a,-0.02,0.02
+14,1,markdown_spend,Total cost of price reductions,markdown_spend * conversion_val,mondaysmart_inventory_subset_daily,"{markdown_spend,conversion_val}",simple,,Discount Metrics,Markdown Spend,9,$0.00a,-0.02,0.02
+11,1,msrp,Average MSRP of units sold,msrp * conversion_val,mondaysmart_sales_subset_daily,"{msrp,conversion_val}",simple,,Transaction and Basket Metrics,MSRP,13,$0.00a,-0.02,0.02
+27,5,planned_margin,planned margin,planned_mrgn * conversion_val,mondaysmart_planned_subset_daily,"{planned_mrgn,conversion_val}",plan_simple,,Planned KPIs,Planned margin,43,,,
+28,5,planned_quantity,planned quantity,planned_qty ,mondaysmart_planned_subset_daily,{planned_qty},plan_simple,,Planned KPIs,Planned quantity,44,,,
+20,5,planned_sales,planned sales,planned_sales * conversion_val,mondaysmart_planned_subset_daily,"{planned_sales,conversion_val}",plan_simple,,Planned KPIs,Planned sales,40,,,
+1,1,sales,Gross revenue that was generated from sales during the selected time period ,sum_rev * conversion_val,mondaysmart_sales_subset_daily,"{sum_rev,conversion_val}",simple,,Financial Performance Metrics,Gross Revenue,1,$0.00a,-0.02,0.02
+21,1,aur,Average unit retail,"SAFE_DIVIDE(sum_rev,sum_qty)",mondaysmart_sales_subset_daily,"{sum_rev,sum_qty}",simple,,Financial Performance Metrics,ASP,18,$0.00a,-0.02,0.02
+3,1,selling_price,Average revenue generated per unit sold,"SAFE_DIVIDE(sum_rev, sum_qty)",mondaysmart_sales_subset_daily,"{sum_rev,sum_qty}",simple,,,,3,,,

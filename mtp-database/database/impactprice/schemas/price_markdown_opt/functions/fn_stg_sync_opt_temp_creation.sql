@@ -1,0 +1,161 @@
+--liquibase formatted sql
+--changeset keerthana.reddy@impactanalytics.co::fn_stg_sync_opt_temp_creation_06042026 runOnChange:true stripComments:false splitStatements:false context:Release_1_0 labels:liquibase_project_update
+--comment: initial changeset for fn_stg_sync_opt_temp_creation_06042026
+
+DROP FUNCTION IF EXISTS price_markdown_opt.fn_stg_sync_opt_temp_creation(in_strategy_id integer, _stg_disc_ref text, _version text, inv_dates date, sim_start_date date, sim_end_date date);
+
+CREATE OR REPLACE FUNCTION price_markdown_opt.fn_stg_sync_opt_temp_creation(in_strategy_id integer, _stg_disc_ref text, _version text, inv_dates date, sim_start_date date, sim_end_date date)
+ RETURNS boolean
+ LANGUAGE plpgsql
+ SECURITY DEFINER
+AS $function$
+	DECLARE
+	vl_test_query text;
+	vl_total_count int := 9999999;
+	start_time TIMESTAMP;
+    end_time TIMESTAMP;
+
+	BEGIN
+
+			execute format('drop table if exists price_markdown_opt_temp.syn_ss_temp1_%1$s_%2$s ;',in_strategy_id, _version);
+			execute format('drop table if exists price_markdown_opt_temp.syn_ssd_temp3_%1$s_%2$s ;',in_strategy_id, _version);
+			execute format('drop table if exists price_markdown_opt_temp.syn_ssp_temp2_%1$s_%2$s ;',in_strategy_id, _version);
+      execute format('drop table if exists price_markdown_opt_temp.syn_ssdd_temp4_%1$s_%2$s ;',in_strategy_id, _version);
+			execute format('drop table if exists price_markdown_opt_temp.tb_%1$s_%2$s_ssd_temp ;',in_strategy_id, _version);
+
+----------------------
+			vl_test_query :=  format('create unlogged table price_markdown_opt_temp.syn_ss_temp1_%1$s_%2$s as
+							SELECT 
+								a.strategy_id, a.product_id, a.store_id, 
+								a.product_level_id, a.store_level_id, a.include_from_date, 
+								b.l3_cid, b.l0_cid, b.currency_id, b.msrp, b.cost, 
+								b.msrp_with_vat,
+								c.total_inventory
+							FROM (select * from price_markdown.tb_strategy_sku_store_mapping
+									WHERE strategy_id = %1$s) a
+							INNER JOIN pricesmart.product_master b
+							ON  b.product_id = a.product_id
+							INNER join price_markdown_opt.tb_temp_sync_inv c
+							ON (c.product_id = a.product_id AND c.store_id = a.store_id);',in_strategy_id, _version);
+
+			raise notice 'query- 1 --%' , vl_test_query;
+			start_time := clock_timestamp();
+			execute vl_test_query;
+			end_time := clock_timestamp();
+			RAISE NOTICE 'Time taken SQL 1 statement: %', end_time - start_time;
+------------------------
+			vl_test_query :=  format('create unlogged table price_markdown_opt_temp.syn_ssp_temp2_%1$s_%2$s as
+								select v2.*
+								from
+									(select pcd_id
+									from price_markdown.tb_strategy_pcd_new
+									where strategy_id = %1$s
+									and pcd_end_date > ''%3$s''
+									group by 1 ) v1
+								inner join
+									(select product_level_id, store_level_id,
+									(pcd.value->>''%5$s'')::integer as pcd_id,
+									(pcd.value->>''%6$s'')::numeric as markdown_percentage_exact,
+									floor((pcd.value->>''%6$s'')::numeric / 5.0) * 5 as markdown_percentage_rounded
+									from price_markdown.tb_strategy_discount_level tsd
+									CROSS JOIN LATERAL jsonb_each(tsd.%4$s) as pcd(key, value)
+									where tsd.strategy_id = %1$s) v2
+								on v1.pcd_id = v2.pcd_id;',
+								in_strategy_id, _version, inv_dates,
+								CASE WHEN _stg_disc_ref = '_ia' THEN 'ia_pcd_data' ELSE 'pcd_data' END,
+								CASE WHEN _stg_disc_ref = '_ia' THEN 'ia_pcd_id' ELSE 'pcd_id' END,
+								CASE WHEN _stg_disc_ref = '_ia' THEN 'ia_markdown_percentage' ELSE 'markdown_percentage' END);
+			raise notice 'query- 2 --%' , vl_test_query;
+			start_time := clock_timestamp();
+			execute vl_test_query;
+			end_time := clock_timestamp();
+			RAISE NOTICE 'Time taken SQL 2 statement: %', end_time - start_time;
+-------------------------
+			vl_test_query :=  format('create unlogged table price_markdown_opt_temp.syn_ssd_temp3_%1$s_%2$s as
+							SELECT a1.*,
+							a2.product_id, a2.store_id, a2.product_level_id, a2.store_level_id, a2.include_from_date,
+							a2.opt_level_bins, a2.l3_cid, a2.l0_cid, a2.currency_id, a2.msrp, a2.cost, 
+							a2.msrp_with_vat, a2.inv_oh	
+							FROM
+							(
+							SELECT strategy_id, pcd_id AS event, pcd_start_date AS start_date, pcd_end_date AS end_date,
+								   fisc.date, weeks_start_date
+							FROM price_markdown.tb_strategy_pcd_new pcd
+							INNER JOIN pricesmart.tb_fiscal_date_mapping fisc
+								ON fisc.date BETWEEN pcd_start_date AND pcd_end_date
+								WHERE strategy_id = %1$s
+								AND fisc.date > ''%3$s'') a1
+							INNER JOIN
+								( SELECT t1.strategy_id, t1.product_id, t1.store_id, t1.product_level_id, t1.store_level_id,
+								t1.include_from_date, concat(t1.product_level_id, ''_'', t1.store_level_id) AS opt_level_bins,
+								t1.l3_cid, t1.l0_cid, t1.currency_id, t1.msrp, t1.cost, 
+								t1.msrp_with_vat, 
+								coalesce(t1.total_inventory,0) AS inv_oh
+								FROM
+								price_markdown_opt_temp.syn_ss_temp1_%1$s_%2$s t1 )a2
+							ON a1.strategy_id = a2.strategy_id
+							WHERE date >= include_from_date  ;',in_strategy_id,_version,inv_dates);
+
+    raise notice 'query- 3 --%' , vl_test_query;
+	start_time := clock_timestamp();
+	execute vl_test_query;
+	end_time := clock_timestamp();
+	RAISE NOTICE 'Time taken SQL 3 statement: %', end_time - start_time;
+-------------------------
+			vl_test_query :=  format('create unlogged table  price_markdown_opt_temp.syn_ssdd_temp4_%1$s_%2$s as
+			SELECT d1.*, d3.day_split_ratio, d5.markdown_percentage_rounded, d5.markdown_percentage_exact
+			FROM
+			price_markdown_opt_temp.syn_ssd_temp3_%1$s_%2$s d1
+             INNER JOIN pricesmart.tb_store_master sm
+             ON d1.store_id = sm.store_id
+             left join
+                        (SELECT date, day_split_ratio, l3_cid, l0_cid, s0_id, s1_id
+                        FROM price_markdown_opt.mvm_day_split_%1$s c2
+                        WHERE c2.date > ''%3$s'' AND c2.date <=''%4$s'' ) d3
+               on d3.l3_cid = d1.l3_cid
+              and d3.l0_cid = d1.l0_cid
+              and d3.date = d1.date
+              and d3.s0_id = sm.s0_id
+              and d3.s1_id = sm.s1_id
+             left join price_markdown_opt_temp.syn_ssp_temp2_%1$s_%2$s d5
+             on d1.product_level_id = d5.product_level_id
+             and d1.store_level_id = d5.store_level_id
+             and d1.event = d5.pcd_id;',in_strategy_id,_version,inv_dates,sim_end_date);
+
+    raise notice 'query- 4 A --%' , vl_test_query;
+	start_time := clock_timestamp();
+	execute vl_test_query;
+	end_time := clock_timestamp();
+	RAISE NOTICE 'Time taken SQL 4A statement: %', end_time - start_time;
+	-------------
+            vl_test_query :=  format('CREATE unlogged TABLE IF NOT EXISTS price_markdown_opt_temp.tb_%1$s_%2$s_ssd_temp AS
+			select e1.*,
+			coalesce(((e2.elasticity * (e1.markdown_percentage_exact - e2.base_percentage) / 100) + 1) * e2.sales_units * e1.day_split_ratio, 0) as sales_units_bef_cap,
+			coalesce(e2.baseline_sales_units * e1.day_split_ratio, 0) AS baseline_sales_units_bef_cap,
+			(
+				coalesce(((e2.elasticity * (e1.markdown_percentage_exact - e2.base_percentage) / 100) + 1) * e2.sales_units * e1.day_split_ratio, 0)
+				- coalesce(e2.baseline_sales_units * e1.day_split_ratio, 0)
+			) AS incremental_sales_units_bef_cap,
+			(
+				coalesce(((e2.elasticity * (e1.markdown_percentage_exact - e2.base_percentage) / 100) + 1) * e2.sales_units * e1.day_split_ratio, 0)
+				- coalesce(e2.baseline_sales_units * e1.day_split_ratio, 0)
+			) AS incremental_sales_units
+            FROM price_markdown_opt_temp.syn_ssdd_temp4_%1$s_%2$s e1
+			INNER JOIN pricesmart.tb_store_master sm
+			ON e1.store_id = sm.store_id
+			inner join price_markdown_opt.mvm_sim_%1$s e2
+			 on e1.weeks_start_date = e2.week_start_date
+			 AND e1.markdown_percentage_rounded = e2.base_percentage
+			 AND e1.product_id = e2.product_id
+			 and e2.s0_id = sm.s0_id
+			 and e2.s1_id = sm.s1_id
+			 and e2.week_start_date BETWEEN ''%3$s'' AND ''%4$s'';',in_strategy_id,_version,sim_start_date,sim_end_date);
+	raise notice 'query- Final --%' , vl_test_query;
+	start_time := clock_timestamp();
+	execute vl_test_query;
+	end_time := clock_timestamp();
+	RAISE NOTICE 'Time taken final statement: %', end_time - start_time;
+		RETURN true;
+  end;
+$function$
+;

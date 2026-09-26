@@ -1,0 +1,118 @@
+"tc_code","label","column_name","dimension","type","is_frozen","is_editable","is_aggregated","order_of_display","is_hidden","is_required","tc_mapping_code","child_tc_mapping_code","aggregate_type","formatter","is_row_span","footer","is_searchable","extra","is_sortable","width","is_deleted","is_master_group"
+702,Style,style,Plan,link,false,true,false,9.0,false,false,"2712",,,,false,,false,"{}",true,200,false,false
+704,Style color,styleColor,Plan,link,false,true,false,9.0,false,false,"2714",,,,false,,false,"{}",true,200,false,false
+707,KPI/Metrics,metric,masterplan,list,true,false,false,1.0,false,true,"576",,,,true,,false,"{}",true,200,false,false
+707,Reference,reference,masterplan,list,true,false,false,2.0,false,true,"577",,,,false,,false,"{}",true,200,false,false
+708,Plan Index,plan_index,CreatedComparePlan,str,false,false,false,2.0,false,false,"2726",,,,false,,false,"{}",true,200,false,false
+708,Plan Display Name,plan_display_name,CreatedComparePlan,str,false,false,false,1.0,false,false,"2725",,,,false,,false,"{}",true,200,false,false
+708,Created By,created_by,CreatedComparePlan,str,false,false,false,3.0,false,false,"1829",,,,false,,false,"{}",true,200,false,false
+708,Created On,created_at,CreatedComparePlan,DateTimeField,false,false,false,4.0,false,false,"1831",,,,false,,false,"{}",true,200,false,false
+708,Last Updated By,updated_by,CreatedComparePlan,str,false,false,false,5.0,false,false,"1832",,,,false,,false,"{}",true,200,false,false
+708,Last Updated At,updated_at,CreatedComparePlan,DateTimeField,false,false,false,6.0,false,false,"1833",,,,false,,false,"{}",true,200,false,false
+709,kpiGroup,kpiGroup,Plan,list,true,false,false,1.0,false,true,"6000",,,,true,,false,"{}",false,200,false,false
+709,KPIs,KPIs,Plan,list,false,false,false,2.0,false,true,"6007",,,,true,,false,"{}",false,200,false,false
+709,Reference,reference,Plan,list,false,false,false,3.0,false,true,"6011",,,,false,,false,"{""hideToolTip"" : true}",false,200,false,false
+710,Level,level,reports,list,true,false,false,1.0,true,false,"400",,,,false,,false,"{
+""accessor"": ""level"",
+	""rowGroup"":true,
+	""showRangeFilter"": false,
+	""hide"": true,
+        ""id"": ""level"",
+        ""field"": ""level"",
+        ""filter"": true,
+        ""headerComponent"": null,
+        ""headerName"": ""Level""
+}",false,200,false,false
+710,Reference,reference,reports,list,true,false,false,2.0,false,true,"401",,,,false,,true,"{
+
+        ""accessor"": ""department"",
+""field"": ""reference"",
+        ""filter"": true,
+        ""headerComponent"": null,
+        ""headerName"": ""Reference"",
+        ""id"": ""reference"",
+         ""accessor"": ""reference"",
+         ""menuTabs"": [
+            ""generalMenuTab"",
+            ""columnsMenuTab""
+        ],
+        ""pinned"": ""left"",
+        ""required"": true,
+        ""resizable"": true,
+        ""showRangeFilter"": false
+}",false,200,false,false
+710,Department,department,reports,list,true,false,false,3.0,true,true,"402",,,,false,,true,"{
+ ""pinned"": ""left"",
+""resizable"": true,
+""rowGroup"": true,
+""showRangeFilter"": false
+}",false,200,false,false
+710,Class,class,reports,list,true,false,false,4.0,true,false,"403",,,,false,,true,"{
+""field"": ""class"",
+        ""filter"": true,
+        ""headerComponent"": null,
+        ""headerName"": ""Class"",
+        ""hide"": true,
+        ""id"": ""department"",
+        ""accessor"": ""class"",
+        ""pinned"": ""left"",
+        ""resizable"": true,
+        ""rowGroup"": true,
+        ""showRangeFilter"": false
+}",false,200,false,false
+711,Hierarchy,hierarchy,hierarchies,str,false,false,false,1.0,true,true,"57001",,,,false,,false,"{
+	""disableSortBy"": true,
+	""is_row_span"": false,
+""enableRowGroup"": true,
+""rowGroup"": true
+}",false,200,false,false
+711,Version,version,version,str,false,false,false,1.0,false,true,"57002",,,,true,,false,"{
+""enableRowGroup"": true,
+""filter"": ""agSetColumnFilter""
+}
+",false,200,false,false
+712,KPI/Metrics,metric,Plan,list,true,false,false,1.0,false,true,"1799",,,,true,,false,"{""ignoreValueGetter"":true}",false,200,false,false
+712,Reference,reference,Plan,list,false,false,false,2.0,false,true,"1808",,,,false,,false,"{""ignoreValueGetter"":true,""hideToolTip"" : true}",false,400,false,false
+713,Kpi/Metric,metric,Plan,str,false,false,false,1.0,false,false,dc7fa4d6-62cb-4994-9471-b6a0074b6d4c,,,,false,,false,"{""overrideWidth"": 290}",false,200,false,false
+713,Lock,lock,Plan,str,false,true,false,2.0,false,false,dc18729f-d4b8-40d2-94db-18bb165d0988,,,,false,,false,"{""overrideWidth"": 350}",false,200,false,false
+713,Dependency,dependency,Plan,str,false,false,false,3.0,false,false,"661e5cb4-26af-4879-8ee7-977e519e073c",,,,false,,false,"{""overrideWidth"": 900}",false,200,false,false
+714,Parameters,parameters,plan,,false,false,false,1.0,false,false,"2800001",,,,false,,false,"{}",false,135,false,false
+714,Priority,priority,plan,,false,false,false,2.0,false,false,"2800002",,,,false,,false,"{}",false,135,false,false
+714,Target Value,targetValue,plan,percentage,false,true,false,3.0,,false,"2800003",,,,false,,false,"{}",false,135,false,false
+714,Threshold % Value,thresholdPercValue,plan,percentage,false,true,false,4.0,,false,"2800004",,,,false,,false,"{}",false,135,false,false
+716,Class,l4_name,Plan,str,false,false,false,9.0,false,false,"49085911-5db6-4aa7-a374-79da7bef090b",,,,false,,true,"{}",true,200,false,false
+716,Created By,created_by,Plan,str,false,false,false,10.0,false,false,fe11068b-5447-4bbf-be6c-a9d4f6504184,,,,false,,false,"{}",false,200,false,false
+716,Created On,created_at,Plan,str,false,false,false,11.0,false,false,"5f011a11-2f11-4d3a-acb8-9b7d05f7570a",,,,false,,false,"{}",false,200,false,false
+716,Department,l2_name,Plan,str,false,false,false,7.0,false,false,b1462fbf-755c-43ec-8b31-21bbc7e32b4d,,,,false,,true,"{}",true,200,false,false
+716,Division,l1_name,Plan,str,false,false,false,6.0,false,false,e9227156-d117-453b-9326-3e27bc05707b,,,,false,,true,"{}",true,200,false,false
+716,End Month,end_month,Plan,str,false,false,false,5.0,false,false,f1c1839b-0ea6-4237-a210-58a014c2d792,,,,false,,true,"{}",false,200,false,false
+716,End Year,end_year,Plan,number,false,false,false,4.0,false,false,accca78a-d00b-41e6-ad7f-599944ba55c3,,,,false,,true,"{}",false,200,false,false
+716,Last Updated At,updated_at,Plan,str,false,false,false,13.0,false,false,a7c3c1f7-3801-4a7a-a20c-6d8801c92161,,,,false,,false,"{}",false,200,false,false
+716,Last Updated By,updated_by,Plan,str,false,false,false,12.0,false,false,"7e39a06e-915b-4d75-a05b-4735f0c929d6",,,,false,,false,"{}",false,200,false,false
+716,Plan Display Name,plan_display_name,Plan,str,false,false,false,1.0,false,false,"628bfbe8-b8c2-4c93-a1cb-7cf0e8fb4e69",,,,false,,true,"{}",true,200,false,false
+716,Start Month,start_month,Plan,str,false,false,false,3.0,false,false,d6b428b4-e3eb-4b67-bfe2-ba9a8068f446,,,,false,,true,"{}",false,200,false,false
+716,Start Year,start_year,Plan,number,false,false,false,2.0,false,false,"135d0b51-457f-4776-b8a3-15ed910034a9",,,,false,,true,"{}",false,200,false,false
+716,Subdepartment,l3_name,Plan,str,false,false,false,8.0,false,false,"8c16ad96-c1a3-46eb-9be3-13283607a98d",,,,false,,true,"{}",true,200,false,false
+717,Class,l4_name,Product,str,false,false,false,3.0,false,true,"1e725292-f783-426f-b7d5-44071ae0e89a",,,,true,,false,"{}",true,200,false,false
+717,Date,date,plan,date,false,false,false,7.0,false,true,"84e39ddb-f181-4f35-957b-4d852ffb053b",,,,true,,false,"{}",false,200,false,false
+717,Department,l2_name,Product,str,false,false,false,2.0,false,true,b0c216d4-059c-4208-83b6-5b1f62838cbf,,,,true,,false,"{}",true,200,false,false
+717,Division,l1_name,Product,str,false,false,false,1.0,false,true,bb298f41-a218-4a9f-96ba-f2036c25840d,,,,true,,false,"{}",true,200,false,false
+717,Quarter,fiscal_quarter_name,plan,list,false,false,false,4.0,false,true,b4c8eed9-ad50-43f2-a663-6557c0fcf9a2,,,,true,,false,"{}",false,200,false,false
+717,Season,season,Plan,list,false,false,false,6.0,,false,b811de95-6b97-48b9-b12f-9cf7b44bd90e,,,,false,,false,"{}",true,200,false,false
+717,Status,status,plan,str,false,false,false,6.0,false,true,b657baae-78c6-4b69-876c-d59fb7291011,,,,true,,false,"{}",false,200,false,false
+717,Subdepartment,l3_name,Product,str,false,false,false,3.0,false,true,dcbb76a3-2eeb-4773-aa7e-5c3ab2d4657c,,,,true,,false,"{}",true,200,false,false
+717,Time,time,plan,datetime,false,false,false,8.0,false,true,c16a401c-b677-4329-b9ba-2968a4b6999e,,,,true,,false,"{""useUnformattedDateTime"":true}",false,200,false,false
+717,User,user,plan,str,false,false,false,5.0,false,true,"6ae9094c-78b6-4a0b-866d-85918b83daed",,,,true,,false,"{}",false,200,false,false
+718,Class,l4_name,Plan,str,false,false,false,5.0,false,false,"6392edb6-5483-438a-ad87-aa756f4c3159",,,,false,,true,"{}",true,200,false,false
+718,Created By,created_by,Plan,str,false,false,false,10.0,,false,"1abe3c2a-7bbb-4fdc-bf9d-be74b0794130",,,,false,,false,"{}",true,200,false,false
+718,Created On,created_at,Plan,str,false,false,false,11.0,,false,aaa2b40d-c17b-4b6e-b44e-01453851444a,,,,false,,false,"{}",true,200,false,false
+718,Department,l2_name,Plan,str,false,false,false,3.0,,false,c6ce98ac-da58-490c-a1fb-129abe9a3be1,,,,false,,true,"{}",true,200,false,false
+718,Division,l1_name,Plan,str,false,false,false,2.0,,false,"458aca99-3fee-46b7-bf05-a74ef0db6be0",,,,false,,true,"{}",true,200,false,false
+718,End Month,end_month,Plan,str,false,false,false,9.0,,false,ab0bafc3-c936-4f6f-a665-6061ffd5ee90,,,,false,,true,"{}",true,200,false,false
+718,End Year,end_year,Plan,number,false,false,false,8.0,,false,"26ce9fc8-d675-4e93-aaa8-8051de74bb11",,,,false,,true,"{}",true,200,false,false
+718,Last Updated At,updated_at,Plan,str,false,false,false,13.0,,false,"9f4f225f-a2ea-46de-9c0c-eaaecbddd0c7",,,,false,,false,"{}",true,200,false,false
+718,Last Updated By,updated_by,Plan,str,false,false,false,12.0,,false,a7a0804f-bff3-420e-8ae8-c6579e9b2f46,,,,false,,false,"{}",true,200,false,false
+718,Plan Display Name,plan_display_name,Plan,str,false,false,false,1.0,,false,"44f82493-97fd-42f0-b598-fc5247f53e0e",,,,false,,true,"{}",true,200,false,false
+718,Start Month,start_month,Plan,str,false,false,false,7.0,,false,"4a179bd2-5071-4247-9513-e369d0292ada",,,,false,,true,"{}",true,200,false,false
+718,Start Year,start_year,Plan,number,false,false,false,6.0,,false,"7d05c897-d6c6-4a6a-b26d-154079ca0168",,,,false,,true,"{}",true,200,false,false
+718,Subdepartment,l3_name,Plan,str,false,false,false,4.0,,false,"2070b516-0f01-4cf8-81ed-7390c8db1af9",,,,false,,true,"{}",true,200,false,false

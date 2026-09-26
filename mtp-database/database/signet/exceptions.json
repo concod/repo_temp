@@ -1,0 +1,94 @@
+{
+    "CASCADE": {
+        "exclusions": []
+    },
+    "DROP COLUMN": {
+        "exclusions": [
+            "database/signet/schemas/inventory_smart/tables/constraint_master_weekly.sql"
+        ]
+    },
+    "DROP CONSTRAINT": {
+        "exclusions": [
+            "database/signet/schemas/global/tables/alerts_product_is_resolved.sql",
+            "database/signet/schemas/global/tables/alerts_product_store_is_resolved.sql",
+            "database/signet/schemas/global/tables/dc_reserve_quantity_anomaly.sql",
+            "database/signet/schemas/global/tables/default_store_grade.sql",
+            "database/signet/schemas/global/tables/product_attributes_filter.sql",
+            "database/signet/schemas/global/tables/store_groups_to_grade.sql",
+            "database/signet/schemas/inventory_smart/tables/alerts_product_level.sql",
+            "database/signet/schemas/inventory_smart/tables/alerts_product_store_level.sql",
+            "database/signet/schemas/inventory_smart/tables/dc_reserve_delta.sql",
+            "database/signet/schemas/inventory_smart/tables/dc_reserve_quantity.sql",
+            "database/signet/schemas/inventory_smart/tables/lost_sales.sql",
+            "database/signet/schemas/inventory_smart/tables/model_stock.sql",
+            "database/signet/schemas/inventory_smart/tables/oms_alerts_sku_loc_vendor.sql",
+            "database/signet/schemas/inventory_smart/tables/oms_orders_recommended.sql",
+            "database/signet/schemas/inventory_smart/tables/product_profile_mapping.sql"
+        ]
+    },
+    "DROP INDEX": {
+        "exclusions": [
+            "database/signet/schemas/global/tables/product_attributes_filter.sql",
+            "database/signet/schemas/inventory_smart/tables/alerts_product_store_level.sql",
+            "database/signet/schemas/inventory_smart/tables/constraint_validity_master.sql",
+            "database/signet/schemas/inventory_smart/tables/dc_reserve_quantity.sql"
+        ]
+    },
+    "DROP MATERIALIZED VIEW": {
+        "exclusions": []
+    },
+    "DROP SEQUENCE": {
+        "exclusions": []
+    },
+    "DROP TABLE": {
+        "exclusions": [
+            "database/signet/schemas/public/procedures/constraint_master_reclassification_process.sql",
+            "database/signet/schemas/inventory_smart/tables/dc_availability_report_flattened.sql",
+            "database/signet/schemas/inventory_smart/procedures/build_product_profile_attributes_filter.sql"
+        ]
+    },
+    "DROP TRIGGER": {
+        "exclusions": []
+    },
+    "DROP TYPE": {
+        "exclusions": []
+    },
+    "DROP VIEW": {
+        "exclusions": []
+    },
+    "INHERITS": {
+        "exclusions": []
+    },
+    "ONLY": {
+        "exclusions": []
+    },
+    "RENAME": {
+        "exclusions": [
+            "database/signet/schemas/global/tables/set_all_details.sql"
+        ]
+    },
+    "RESET": {
+        "exclusions": [
+            "database/signet/schemas/global/procedures/build_product_attributes_delta.sql"
+        ]
+    },
+    "STORAGE": {
+        "exclusions": []
+    },
+    "TEMPORARY": {
+        "exclusions": []
+    },
+    "TRUNCATE": {
+        "exclusions": [
+            "database/signet/schemas/public/functions/populate_available_hierarchy_codes_simple.sql"
+        ]
+    },
+    "WITHOUT": {
+        "exclusions": [
+            "database/signet/schemas/inventory_smart/tables/style_mapping_store_priority_exception_table.sql",
+            "database/signet/schemas/inventory_smart/tables/style_mapping_table_anamoly.sql",
+            "database/signet/schemas/inventory_smart/views/sku_dc_allocated_units.sql",
+            "database/signet/schemas/inventory_smart/views/sku_dc_allocations.sql"
+        ]
+    }
+}

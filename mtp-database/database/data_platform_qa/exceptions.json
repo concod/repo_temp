@@ -1,0 +1,130 @@
+{
+    "DROP TRIGGER": {
+        "regex": "(?i)\\bDROP\\s+TRIGGER\\b",
+        "exclusions": [
+            "database/data_platform_qa/schemas/global/functions/audit_trigger_create.sql",
+            "database/data_platform_qa/schemas/global/functions/execute_dynamic_ddl_for_replication.sql",
+            "database/data_platform_qa/schemas/global/functions/rcl_trigger_function.sql"
+        ]
+    },
+    "DROP CONSTRAINT": {
+        "regex": "(?i)\\bDROP\\s+CONSTRAINT\\b",
+        "exclusions": [
+            "database/data_platform_qa/schemas/global/functions/create_drop_index_list_ingestion.sql",
+            "database/data_platform_qa/schemas/global/tables/filter_configurations_compulsory_mapping.sql",
+            "database/data_platform_qa/schemas/global/tables/filter_configurations_mapping.sql",
+            "database/data_platform_qa/schemas/global/tables/keyboard_shortcut_keys.sql",
+            "database/data_platform_qa/schemas/global/tables/mail_notification_mapping.sql",
+            "database/data_platform_qa/schemas/global/tables/product_attributes.sql",
+            "database/data_platform_qa/schemas/global/tables/product_groups_mapping.sql",
+            "database/data_platform_qa/schemas/global/tables/rcl_priority_mapping.sql",
+            "database/data_platform_qa/schemas/global/tables/rcl_product_mapping_product_store.sql",
+            "database/data_platform_qa/schemas/global/tables/rcl_product_mapping_product_store_exceptions.sql",
+            "database/data_platform_qa/schemas/global/tables/store_attributes.sql",
+            "database/data_platform_qa/schemas/global/tables/store_groups.sql",
+            "database/data_platform_qa/schemas/global/tables/store_groups_mapping.sql",
+            "database/data_platform_qa/schemas/global/tables/table_config_views.sql",
+            "database/data_platform_qa/schemas/global/tables/table_configurations_mapping.sql",
+            "database/data_platform_qa/schemas/global/tables/upload_report_master.sql",
+            "database/data_platform_qa/schemas/global/tables/user_attributes.sql",
+            "database/data_platform_qa/schemas/global/tables/user_master.sql",
+            "database/data_platform_qa/schemas/global/tables/user_preference_table_config.sql"
+        ]
+    },
+    "DROP COLUMN": {
+        "regex": "(?i)\\bDROP\\s+COLUMN\\b",
+        "exclusions": [
+            "database/data_platform_qa/schemas/global/tables/application_master.sql",
+            "database/data_platform_qa/schemas/global/tables/filter_configurations_mapping.sql",
+            "database/data_platform_qa/schemas/global/tables/new_store_data.sql",
+            "database/data_platform_qa/schemas/global/tables/new_store_mapping.sql",
+            "database/data_platform_qa/schemas/global/tables/new_store_reserve.sql",
+            "database/data_platform_qa/schemas/global/tables/notifications_master.sql",
+            "database/data_platform_qa/schemas/global/tables/rcl_priority_mapping.sql"
+        ]
+    },
+    "DROP VIEW": {
+        "regex": "(?i)\\bDROP\\s+VIEW\\b",
+        "exclusions": [
+            "database/data_platform_qa/schemas/global/procedures/build_product_hierarchies_filter_flattern.sql",
+            "database/data_platform_qa/schemas/global/procedures/build_store_hierarchies_filter_flattern.sql"
+        ]
+    },
+    "DROP TABLE": {
+        "regex": "\\bDROP\\s+TABLE\\s+(?:IF\\s+EXISTS\\s+)?(?:[\"\\']?\\w+[\"\\']?\\.)[\"\\']?\\w+[\"\\']?",
+        "exclusions": [
+            "database/data_platform_qa/schemas/global/functions/persist_rcl_pmps_exceptions_main_table.sql",
+            "database/data_platform_qa/schemas/global/functions/rcl_create_pmps_version_2_tester.sql",
+            "database/data_platform_qa/schemas/global/procedures/build_product_attributes.sql",
+            "database/data_platform_qa/schemas/global/procedures/build_product_attributes_filter.sql",
+            "database/data_platform_qa/schemas/global/procedures/build_product_hierarchies_filter_for_modelling.sql",
+            "database/data_platform_qa/schemas/global/procedures/build_store_attributes.sql",
+            "database/data_platform_qa/schemas/global/procedures/build_store_attributes_filter.sql",
+            "database/data_platform_qa/schemas/global/procedures/build_ticket_attribute_filter.sql",
+            "database/data_platform_qa/schemas/global/tables/product_time_attributes.sql",
+            "database/data_platform_qa/schemas/global/tables/dynamic_ddl_for_replication.sql"
+        ]
+    },
+    "DROP MATERIALIZED VIEW": {
+        "regex": "(?i)\\bDROP\\s+MATERIALIZED\\s+VIEW\\b",
+        "exclusions": []
+    },
+    "DROP INDEX": {
+        "regex": "(?i)\\bDROP\\s+INDEX\\b",
+        "exclusions": [
+            "database/data_platform_qa/schemas/global/functions/create_drop_index_list_ingestion.sql",
+            "database/data_platform_qa/schemas/global/tables/rcl_priority_mapping.sql"
+        ]
+    },
+    "DROP TYPE": {
+        "regex": "(?i)\\bDROP\\s+TYPE\\b",
+        "exclusions": [
+            "database/data_platform_qa/schemas/global/types/product_hierarchy.sql"
+        ]
+    },
+    "DROP SEQUENCE": {
+        "regex": "(?i)\\bDROP\\s+SEQUENCE\\b",
+        "exclusions": [
+            "database/data_platform_qa/schemas/global/tables/rcl_master.sql",
+            "database/data_platform_qa/schemas/global/tables/upload_report_master.sql"
+        ]
+    },
+    "RENAME": {
+        "regex": "(?i)\\bRENAME\\b",
+        "exclusions": [
+            "database/data_platform_qa/schemas/global/tables/rcl_product_mapping_product_store_exceptions.sql"
+        ]
+    },
+    "CASCADE": {
+        "regex": "(?i)\\bCASCADE\\b",
+        "exclusions": []
+    },
+    "ONLY": {
+        "regex": "(?i)\\bONLY\\b",
+        "exclusions": [
+            "database/data_platform_qa/schemas/global/functions/create_drop_index_list_ingestion.sql"
+        ]
+    },
+    "TRUNCATE": {
+        "regex": "(?i)\\bTRUNCATE\\s+(?:TABLE\\s+)?(?:[\\\"']?\\w+[\\\"']?\\.)\\w+",
+        "exclusions": []
+    },
+    "TEMPORARY": {
+        "regex": "(?i)\\b(TEMPORARY|TEMP)\\b",
+        "exclusions": []
+    },
+    "INHERITS": {
+        "regex": "(?i)\\bINHERITS\\b",
+        "exclusions": []
+    },
+    "STORAGE": {
+        "regex": "(?i)\\bSTORAGE\\b",
+        "exclusions": [
+            "database/data_platform_qa/schemas/global/tables/product_attributes_filter.sql"
+        ]
+    },
+    "WITHOUT": {
+        "regex": "(?i)\\bWITHOUT\\b",
+        "exclusions": []
+    }
+}

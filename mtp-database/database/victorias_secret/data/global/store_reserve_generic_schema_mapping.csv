@@ -1,0 +1,9 @@
+source_column_name,source_column_datatype,required_in_product,generic_column_name,is_pk,generic_column_datatype,formula,is_attribute,is_hierarchy,hierarchy_level,is_null_allowed,unique_by,display_name,is_partition_col,is_clustering_col
+adj_id,varchar,TRUE,adj_id,FALSE,varchar,,FALSE,FALSE,,TRUE,FALSE,,FALSE,
+choiceid,varchar,TRUE,l6_id,TRUE,varchar,,FALSE,FALSE,,FALSE,TRUE,,FALSE,
+sku_id,int8,TRUE,product_code,TRUE,varchar,,FALSE,FALSE,,FALSE,TRUE,,FALSE,
+loc_num,varchar,TRUE,store_code,TRUE,varchar,,FALSE,FALSE,,FALSE,TRUE,,FALSE,
+qty,int8,TRUE,qty,FALSE,int8,,FALSE,FALSE,,TRUE,FALSE,,FALSE,
+start_date,date,TRUE,start_date,FALSE,date,,FALSE,FALSE,,TRUE,FALSE,,FALSE,
+end_date,date,TRUE,end_date,FALSE,date,,FALSE,FALSE,,TRUE,FALSE,,FALSE,
+flagged_rows,int8,TRUE,flagged_rows,FALSE,int8,,FALSE,FALSE,,TRUE,FALSE,,FALSE,

@@ -1,0 +1,571 @@
+/* Opacity-only enter: does not fight AG Grid (width is not animated on the table pane). */
+@keyframes pivotPanelShellFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Width comes from .planningScreenPivotColumn / .masterPlanPivotColumn flex-basis */
+.pivotPanelInline.planningScreenPivotPane {
+  flex: 1 1 auto;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  min-height: 0;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid #eceefd;
+  border-radius: 12px;
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.06);
+  box-sizing: border-box;
+  overflow: hidden;
+  animation: pivotPanelShellFadeIn 0.12s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pivotPanelInline.planningScreenPivotPane {
+    animation: none;
+  }
+}
+
+.pivotPanelInline__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  padding: 12px 16px;
+  border-bottom: 1px solid #eceefd;
+}
+
+.pivotPanelInline__title {
+  margin: 0;
+  font-family: Manrope, sans-serif;
+  font-size: 16px;
+  font-weight: 800;
+  line-height: 24px;
+  color: #0d152c;
+}
+
+.pivotPanelInline__close {
+  color: #60697d;
+}
+
+.pivotPanelInline__body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0 16px 16px;
+}
+
+.pivotPanelInline__footer {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+  padding: 12px 16px;
+  border-top: 1px solid #eceefd;
+  background: #fff;
+}
+
+.pivotPanelInline__footerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.pivotPanelInline__footerActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto;
+}
+
+/* Figma footer actions ~32px tall; impact-ui `small` was ~24px in DevTools */
+.pivotPanelInline__footerRow button {
+  min-height: 32px;
+  box-sizing: border-box;
+}
+
+.pivotPanelInline__footerHint {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  color: #758490;
+  text-align: right;
+}
+
+.pivotTotalsSection {
+  margin-top: 16px;
+  width: 100%;
+  border: 1px solid #eceefd;
+  border-radius: 12px;
+  background: #fff;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.pivotTotalsSection__summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px 14px;
+  margin: 0;
+  border: none;
+  background: #fff;
+  cursor: pointer;
+  font-family: Manrope, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: #1d1d1d;
+  text-align: left;
+}
+
+.pivotTotalsSection__summary:hover {
+  background: #f8f9fc;
+}
+
+.pivotTotalsSection__chevron {
+  color: #60697d;
+  transition: transform 0.2s ease;
+}
+
+.pivotTotalsSection__chevron--open {
+  transform: rotate(180deg);
+}
+
+.pivotTotalsSection__content {
+  padding: 0 16px 16px;
+}
+
+.pivotTotalsSection__grandHeading {
+  margin-bottom: 0;
+}
+
+.panelHeading {
+  color: #1d1d1d;
+  font-family: Manrope;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 800;
+  margin-bottom: 10px;
+  line-height: 21px;
+  padding-top: 16px;
+}
+
+.panelSubHeading {
+  font-family: Manrope;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 125%;
+  color: #7a8294;
+}
+
+.fieldContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  border-radius: 12px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--Colors-Greys-300, #f2f4fa);
+}
+
+.dropZoneContainer {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.dropZone {
+  min-height: 400px;
+  border: 1px dotted #b3bdf8;
+  background-color: #f5f6ff;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+
+  label {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 18px;
+  }
+}
+
+.dimensionAxis {
+  position: relative;
+  margin: 0 auto;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.selectedDimensionContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 0;
+  width: 100% !important;
+  max-width: 100%;
+  min-width: 0;
+  flex: 1;
+  min-height: 0;
+}
+
+.selectedDimensionContainer .dimensionKey {
+  min-height: 0 !important;
+}
+
+/* Card chrome for dimension rows — see RenderDimension.scss for layout details */
+.dimensionKey {
+  box-sizing: border-box;
+}
+
+.dropZoneHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+  width: 100%;
+
+  .dimensionDropDown {
+    width: 200px;
+  }
+}
+
+.selectedMetricsParentContainer {
+  overflow: hidden;
+}
+
+.selectedMetricsContainer {
+  background-color: #eceefd;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-radius: 8px;
+  height: 241px;
+  padding: 12px;
+  margin-top: 10px;
+  overflow-y: auto;
+}
+
+.selectedMetricsContainer > * {
+  flex-shrink: 0;
+}
+
+.selectedMetrics {
+  background-color: #ffff;
+  height: 33px;
+  padding: 6px 4px 6px 4px;
+  gap: 6px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+
+  font-family: Manrope;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  color: #1f2b4d;
+
+  position: relative;
+
+  .removeKpiIcon {
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+  }
+
+  &:hover .removeKpiIcon {
+    opacity: 1;
+  }
+}
+
+.selectedMetrics:hover {
+  border: 1px solid #b3bdf8;
+  cursor: pointer;
+}
+
+.selectedMetricsIcon {
+  position: relative;
+  top: 3px;
+  margin-right: 6px;
+}
+
+.measurePannelButton {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+  max-width: 100%;
+  gap: 8px;
+  overflow: hidden;
+
+  .ia-btn-link {
+    padding-left: 0px;
+  }
+
+  .ia-btn {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .ia-styles.ia-btn.ia-btn-link svg path {
+    fill: #4259ee !important;
+  }
+}
+
+.measurePanelContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  flex-wrap: wrap;
+}
+
+/* Nested metrics Panel portals to body — sidebar + page pad + main row gap + pivot width */
+.measuresPanel .panel-container {
+  height: 557px;
+  top: 180px;
+  right: calc(64px + 24px + 12px + 687px);
+  z-index: 9999;
+}
+
+.measuresPanel .panel-body-container {
+  padding: 16px;
+  height: calc(100% - 44px);
+}
+
+.measuresPanel .metricsPanel .panel-footer {
+  display: none;
+}
+
+.kpiListContainer {
+  display: flex;
+  gap: 10px;
+  height: 560px;
+}
+
+.kpiGroupListContainer {
+  width: 264px;
+  height: 530px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  margin-top: 10px;
+}
+
+.kpiGroupList {
+  margin-top: 10px;
+}
+
+.kpiToggleGroup {
+  display: flex;
+  align-items: center;
+}
+
+.kpiVersionList {
+  margin-top: 12px;
+  padding-left: 40px;
+}
+
+.selectedKpiContainer {
+  height: 458px;
+  width: 314px !important;
+  border: 1px dotted #b3bdf8;
+  background: #f5f6ff;
+  border-radius: 12px;
+  width: 270px;
+  padding: 16px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.selectedKpiCard {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.vertical-divider-container {
+  display: flex;
+  align-items: center;
+  padding-top: 2px;
+}
+
+.SelectedMetricsHeading {
+  font-family: Manrope;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 21px;
+}
+
+.SelectedMetricsSubHeading {
+  color: #7a8294;
+  font-family: Manrope;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 125%;
+}
+
+.emptyMetrics {
+  position: relative;
+  font-size: 12px;
+  line-height: 18px;
+  color: #758490;
+  font-weight: 400;
+  top: 45%;
+  width: 100%;
+  text-align: center;
+}
+
+.toggleContainer {
+  height: 16px;
+  width: 16px;
+  cursor: pointer;
+  transform: rotate(0deg);
+  transition: transform 0.2s ease;
+}
+
+.toggleContainer.active {
+  transform: rotate(90deg);
+}
+
+.lineBreak {
+  border: 1px solid #efefef;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.removeKpiIcon {
+  float: right;
+  margin-top: 2px;
+  height: 15px;
+  cursor: pointer;
+}
+
+.draggedDimensionIcon {
+  height: 16px;
+  display: block;
+}
+
+.draggedDimensionContainer {
+  display: flex;
+  align-items: center;
+}
+
+.varianceItem {
+  .ia-select-button-clear-icon {
+    display: none;
+  }
+
+  .ia-select-container-v3-styled-menu {
+    width: 100px;
+    min-width: unset;
+  }
+}
+.draggedDimensionLabel {
+  position: relative;
+  bottom: 0px;
+}
+.draggedDimensionContainer {
+  position: relative;
+  top: 0px;
+}
+
+.toggle-list {
+  width: 100px;
+  margin-right: 30px;
+}
+
+.setting-tab-subheading {
+  font-weight: 600;
+  color: #394960;
+  font-size: 12px;
+  line-height: 18px;
+  margin: 0;
+}
+
+.checkboxes-container {
+  width: 18px;
+  height: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dimensionAxisLabel {
+  font-family: Manrope;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 125%;
+  color: #1f2b4d;
+}
+
+.contribution-select .ia-select-styled-dropdown-main-button {
+  width: 400px;
+}
+
+.fieldContainer {
+  .MuiChip-root.impact_badges_icon_label_stroke.small-badge {
+    height: var(--Size-Sz4, 24px) !important;
+    padding: 3px 12px !important;
+    align-items: center !important;
+    border-color: #b3bdf8;
+  }
+
+  .MuiChip-root.impact_badges_icon_label_stroke .MuiChip-label {
+    font-family: Manrope;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    color: #60697d;
+  }
+}
+
+.metric-alert-container {
+  margin-top: 30px;
+
+  .ia-styles.ia-alert.MuiAlert-standardInfo .MuiAlert-icon {
+    padding-right: 12px !important;
+    margin-top: 1px !important;
+  }
+
+  .ia-styles.ia-alert.MuiAlert-standardInfo {
+    width: 100% !important;
+    max-width: 100%;
+    height: 36px !important;
+    min-width: 0 !important;
+    padding: 8px 16px !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+  }
+}

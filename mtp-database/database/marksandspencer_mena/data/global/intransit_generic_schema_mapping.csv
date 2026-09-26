@@ -1,0 +1,17 @@
+source_column_name,source_column_datatype,required_in_product,generic_column_name,is_pk,generic_column_datatype,formula,is_attribute,is_hierarchy,hierarchy_level,is_null_allowed,unique_by,display_name,is_partition_col,is_clustering_col
+Article_Number,varchar,TRUE,article,TRUE,varchar,,FALSE,FALSE,,FALSE,TRUE,,FALSE,1
+source_code,varchar,TRUE,source_code,TRUE,varchar,,FALSE,FALSE,,TRUE,TRUE,,FALSE,
+source_type,varchar,TRUE,source_type,FALSE,varchar,,FALSE,FALSE,,FALSE,FALSE,,FALSE,
+destination_code,varchar,TRUE,destination_code,TRUE,varchar,,FALSE,FALSE,,TRUE,TRUE,,FALSE,
+destination_type,varchar,TRUE,destination_type,FALSE,varchar,,FALSE,FALSE,,FALSE,FALSE,,FALSE,
+departure_date,date,TRUE,departure_date,TRUE,date,,FALSE,FALSE,,TRUE,TRUE,,FALSE,
+estimated_arrival_date,date,TRUE,estimated_arrival_date,TRUE,date,,FALSE,FALSE,,FALSE,FALSE,,FALSE,
+arrival_date,date,TRUE,arrival_date,TRUE,date,,FALSE,FALSE,,TRUE,TRUE,,FALSE,
+order_creation_date,date,TRUE,order_date,TRUE,date,,FALSE,FALSE,,FALSE,FALSE,,FALSE,
+country,varchar,TRUE,country,FALSE,varchar,,FALSE,FALSE,,TRUE,FALSE,,FALSE,
+soft_delete,boolean,TRUE,soft_delete,FALSE,boolean,,FALSE,FALSE,,FALSE,FALSE,,FALSE,
+market,varchar,TRUE,market,FALSE,varchar,,FALSE,FALSE,,FALSE,FALSE,,FALSE,
+product_code,varchar,TRUE,product_code,TRUE,varchar,,FALSE,FALSE,,FALSE,TRUE,,FALSE,
+total_qty,float8,TRUE,qty,FALSE,float8,,FALSE,FALSE,,FALSE,FALSE,,FALSE,
+source_fulfilment_store_code,varchar,TRUE,source_fulfilment_code,TRUE,varchar,,FALSE,FALSE,,TRUE,FALSE,,FALSE,
+destination_fulfilment_store_code,varchar,TRUE,destination_fulfilment_code,TRUE,varchar,,FALSE,FALSE,,TRUE,FALSE,,FALSE,

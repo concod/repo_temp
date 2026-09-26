@@ -1,0 +1,8 @@
+source_column_name,source_column_datatype,required_in_product,generic_column_name,is_pk,generic_column_datatype,formula,is_attribute,is_hierarchy,hierarchy_level,is_null_allowed,unique_by,display_name,is_partition_col,is_clustering_col
+,,TRUE,leadtime_key,TRUE,varchar,"concat(country ,'-' ,  channel ,'-' ,  style )",FALSE,FALSE,,FALSE,TRUE,,FALSE,
+country,string,TRUE,country,FALSE,varchar,,FALSE,FALSE,,FALSE,FALSE,,FALSE,1
+channel,string,TRUE,channel,FALSE,varchar,,FALSE,FALSE,,FALSE,FALSE,,FALSE,2
+Style,string,TRUE,style,FALSE,varchar,,FALSE,FALSE,,TRUE,FALSE,,FALSE,
+Order_to_PO_Generation_Lead_Time,integer,TRUE,order_to_po_generation_lead_time,FALSE,int8,,FALSE,FALSE,,TRUE,FALSE,,FALSE,
+PO_Generation_to_DC_Lead_Time,integer,TRUE,po_generation_to_dc_lead_time,FALSE,int8,,FALSE,FALSE,,TRUE,FALSE,,FALSE,
+Fabric_LT,integer,TRUE,fabric_lt,FALSE,int8,,FALSE,FALSE,,TRUE,FALSE,,FALSE,

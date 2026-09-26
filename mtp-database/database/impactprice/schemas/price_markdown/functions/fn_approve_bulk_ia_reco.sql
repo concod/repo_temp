@@ -1,0 +1,657 @@
+--liquibase formatted sql
+--changeset anoop.madamsetty@impactanalytics.co:fn_approve_bulk_ia_reco-2 runOnChange:true stripComments:false splitStatements:false context:Release_1_0 labels:approval
+--comment: Updated to use p_hierarchy_filters JSONB parameter and fn_build_hierarchy_filters function
+
+DROP FUNCTION if exists price_markdown.fn_approve_bulk_ia_reco;
+
+CREATE OR REPLACE FUNCTION price_markdown.fn_approve_bulk_ia_reco(
+    _strategy_id integer[],
+    currency_ids integer[],
+    _start_date date,
+    _end_date date,
+    in_user_id integer,
+    is_dd_filters boolean DEFAULT false,
+    in_approval_filter character varying DEFAULT NULL::character varying,
+    status_condition text DEFAULT NULL::text,
+    action_status_condition text DEFAULT NULL::text,
+    pcds integer[] DEFAULT NULL::integer[],
+    exclusion_combinations jsonb DEFAULT NULL::jsonb,
+    p_hierarchy_filters jsonb DEFAULT NULL::jsonb
+)
+ RETURNS TABLE(strategy_id integer, strategy_name text, min_strategy_disc_id integer, max_strategy_disc_id integer, user_id integer, insert_discount_time integer)
+ LANGUAGE plpgsql
+AS $function$
+DECLARE
+    vl_test_query text :=  '';
+	filtered_strategy_ids integer[];
+	strategy_where_arr text[];
+	where_condition text := '';
+	strategy_fetching_array integer[];
+	curr_timezone text := '';
+	start_time TIMESTAMP;
+	end_time TIMESTAMP;
+	total_time_taken integer;
+	_query_combine text := '';
+	
+	-- Hierarchy filter conditions
+	hierarchy_where_conditions text[];
+begin
+	start_time := clock_timestamp();
+
+    vl_test_query := 'drop table if exists exclusion_combination_1;';
+	execute vl_test_query;
+
+	IF exclusion_combinations IS NOT NULL THEN
+		vl_test_query := Format(
+			'create temp table exclusion_combination_1 as (
+			select * from json_to_recordset(%L) as d(strategy_id int, product_level_id int, store_level_id int, pcd_id int)
+			)', exclusion_combinations);
+		RAISE NOTICE 'exclusion query 1: %', vl_test_query;
+		execute vl_test_query;
+	ELSE
+		vl_test_query := 'create temp table exclusion_combination_1 as (
+			select null::int as strategy_id, null::int as product_level_id, null::int as store_level_id, null::int as pcd_id
+			where false
+		);';
+		execute vl_test_query;
+	    RAISE NOTICE 'exclusion query 2: %', vl_test_query;
+	END IF;
+
+	vl_test_query := 'select remarks from metaschema.tb_app_sub_master where name = ''client_timezone''';
+	execute vl_test_query into curr_timezone;
+
+	if is_dd_filters is true then
+        vl_test_query := format('select array(select distinct am.strategy_id from
+                                        price_markdown.tb_approval_metrics am
+                                    where
+                                        pcd_id = any(%1$L) %2$s %3$s)',
+                                        pcds, status_condition, action_status_condition);
+        RAISE NOTICE 'query 1: %', vl_test_query;
+        execute vl_test_query into strategy_fetching_array;
+        where_condition := format('am.pcd_id = any(array[%1$s]) %2$s %3$s',array_to_string(pcds, ',') , status_condition, action_status_condition);
+    else
+        if array_length(_strategy_id, 1) > 0 then
+			filtered_strategy_ids := _strategy_id;
+		else
+			-- Build dynamic hierarchy conditions using the new function
+			SELECT strategy_where_conditions
+			INTO hierarchy_where_conditions
+			FROM price_markdown.fn_build_hierarchy_filters(p_hierarchy_filters);
+
+			-- Add hierarchy conditions to strategy_where_arr if any exist
+			IF array_length(hierarchy_where_conditions, 1) > 0 THEN
+				strategy_where_arr := strategy_where_arr || hierarchy_where_conditions;
+			END IF;
+
+			vl_test_query := format('select
+									array_agg(sm.strategy_id)
+								from
+									price_markdown.tb_strategy_master sm
+								where
+									sm.status in (1,2,3)
+									and sm.start_date <= ''%2$s''::date
+									and sm.end_date >= ''%1$s''::date
+									%3$s', _start_date, _end_date, array_to_string(strategy_where_arr, ' ')
+								);
+			execute vl_test_query into filtered_strategy_ids;
+		end if;
+		where_condition := format('am.strategy_id = any(array[%1$s]) and pcd_start_date > date(timezone(''%2$s'', now())) %3$s %4$s', array_to_string(filtered_strategy_ids, ','), curr_timezone, status_condition, action_status_condition);
+		strategy_fetching_array := filtered_strategy_ids;
+	end if;
+	RAISE NOTICE 'where clause: %', where_condition;
+
+	vl_test_query :=  'drop table if exists tb_tmp_metrics;';
+	  execute vl_test_query;
+
+  	vl_test_query:= format('create temp table tb_tmp_metrics as
+		(
+		select
+		am.strategy_id,
+		sm.strategy_name,
+		am.pcd_id,
+		pcd_start_date,
+		pcd_end_date,
+		level_mapping.product_level_value,
+		am.product_level_id,
+		am.channel_info,
+		level_mapping.store_level_value,
+        level_mapping.store_level_id,
+		stores_with_inventory,
+		am.status,
+		am.action_status,
+		am.pcd_number,
+		am.dept,
+		am.class,
+		am.brand,
+		am.mfg,
+		am.base_price,
+		am.age,
+		am.updated_at,
+		-- fin
+		round(fin_units) as fin_sales_units,
+		round(fin_revenue::numeric,2) as fin_revenue_$,
+		round(fin_margin::numeric,2) as fin_gm_$,
+		round(fin_gm_percent::numeric,2) as fin_gm_percent,
+		round(fin_aum::numeric,2) as fin_aum_$,
+		round(fin_sellthrough::numeric,2) as fin_st_percent,
+		round(fin_markdown_spend) as fin_markdown_$,
+		round(fin_inventory) as fin_inventory,
+		fin_discount,
+		fin_incremental_discount,
+		fin_previous_discount,
+		fin_pcd_price,
+		fin_previous_pcd_price,
+		fin_markdown_type,
+		fin_previous_markdown_type,
+		fin_inventory_cost,
+		-- IA
+		round(ia_units) as ia_sales_units,
+		round(ia_revenue::numeric,2) as ia_revenue_$,
+		round(ia_margin::numeric,2) as ia_gm_$,
+		round(ia_gm_percent::numeric,2) as ia_gm_percent,
+		round(ia_aum::numeric,2) as ia_aum_$,
+		round(ia_sellthrough::numeric,2) as ia_st_percent,
+		round(ia_markdown_spend) as ia_markdown_$,
+		round(ia_inventory) as ia_inventory,
+		ia_discount,
+		ia_incremental_discount,
+		ia_previous_discount,
+		ia_pcd_price,
+		ia_previous_pcd_price,
+		ia_markdown_type,
+		ia_previous_markdown_type,
+		ia_inventory_cost
+		from price_markdown.tb_approval_metrics am
+		inner join
+		price_markdown.tb_strategy_master sm
+		using (strategy_id)
+		inner join (
+				select product_level_id,store_level_id, min(product_level_value) as product_level_value, min(store_level_value) as store_level_value
+				from price_markdown.tb_strategy_sku_store_mapping
+				where strategy_id = any (%2$L)
+				group by 1,2
+				) level_mapping
+		using(product_level_id, store_level_id)
+		inner join (
+		select
+			sdl.strategy_id, tsp.pcd_id, sdl.product_level_id, sdl.store_level_id
+		from
+			price_markdown.tb_strategy_discount_level sdl
+		cross join lateral jsonb_each(sdl.pcd_data) as pcd_entry(key, value)
+		join price_markdown.tb_strategy_pcd_new tsp
+			on sdl.strategy_id = tsp.strategy_id and tsp.order_number = pcd_entry.key::int
+		where
+			sdl.strategy_id = any (%2$L)
+			group by 1,2,3,4
+		) tsd
+		on tsd.strategy_id  = am.strategy_id
+		and tsd.pcd_id = am.pcd_id
+		and tsd.store_level_id = am.store_level_id
+		and tsd.product_level_id = am.product_level_id
+		where %1$s and am.strategy_id = any(%2$L)
+		AND NOT EXISTS (
+				SELECT 1
+				FROM exclusion_combination_1 as excl
+				WHERE excl.strategy_id = am.strategy_id
+					AND excl.pcd_id = am.pcd_id
+					AND excl.store_level_id = am.store_level_id
+					AND excl.product_level_id = am.product_level_id
+			)
+		);',where_condition, strategy_fetching_array);
+
+	RAISE NOTICE 'SQL 2 statement: %', vl_test_query;
+	execute vl_test_query;
+
+	vl_test_query :=  'drop table if exists tb_temp_final_metrics;';
+	execute vl_test_query;
+
+	vl_test_query:= format('create temp table tb_temp_final_metrics as
+			(
+			select
+				*
+			from
+				tb_tmp_metrics tm
+			%1$s
+			);',in_approval_filter);
+
+	RAISE NOTICE 'SQL tb_temp_final_metrics statement: %', vl_test_query;
+	execute vl_test_query;
+
+	-- tb_temp_1: Find matching combos from tb_strategy_discount_level
+	vl_test_query :=  'drop table if exists tb_temp_1;';
+	execute vl_test_query;
+	vl_test_query:= Format('
+	create temp table tb_temp_1 as (
+	select
+		distinct
+	    sdl.strategy_id,
+	    sdl.product_level_id,
+	    sdl.store_level_id,
+	    tsp.pcd_id
+	from price_markdown.tb_strategy_discount_level as sdl
+	cross join lateral jsonb_each(sdl.pcd_data) as pcd_entry(key, value)
+	join price_markdown.tb_strategy_pcd_new tsp
+		on sdl.strategy_id = tsp.strategy_id and tsp.order_number = pcd_entry.key::int
+	join tb_temp_final_metrics tm
+	on
+	    tm.strategy_id = sdl.strategy_id and
+		tm.pcd_id = tsp.pcd_id and
+		tm.product_level_id = sdl.product_level_id and
+		tm.store_level_id = sdl.store_level_id
+	where sdl.strategy_id = any (%1$L)
+	);', strategy_fetching_array
+	);
+	execute vl_test_query;
+
+	raise notice 'SQL 3 statement: %',
+	vl_test_query;
+
+	vl_test_query :=  'drop table if exists ia_approve_items;';
+	execute vl_test_query;
+	vl_test_query:= '
+	create temp table ia_approve_items as (
+	with cte_1 as (
+	select
+	strategy_id, product_level_id, pcd_id, store_level_id,
+	count(*) over (partition by strategy_id, product_level_id, store_level_id) as count_1
+	from tb_temp_1
+	)
+	select strategy_id, product_level_id, pcd_id, store_level_id
+	from cte_1
+	where count_1 = 1
+	);';
+	execute vl_test_query;
+
+	raise notice 'SQL ia_approve_items statement: %',
+	vl_test_query;
+
+	-- input_data_1: Join with ia_pcd_data from tb_strategy_discount_level to get IA-recommended markdown_percentage
+	vl_test_query := 'drop table if exists input_data_1;';
+	execute vl_test_query;
+	vl_test_query := format('create temp table input_data_1 as (
+				select
+					tp.strategy_id,
+					tp.product_level_id,
+					sdl.store_level_id,
+					tp.pcd_id,
+					(ia_pcd_entry.value->>''ia_markdown_percentage'')::float8 as markdown_percentage
+				from ia_approve_items tp
+				join price_markdown.tb_strategy_discount_level sdl
+					on tp.strategy_id = sdl.strategy_id
+					and tp.product_level_id = sdl.product_level_id
+					and tp.store_level_id = sdl.store_level_id
+				cross join lateral jsonb_each(sdl.ia_pcd_data) as ia_pcd_entry(key, value)
+				join price_markdown.tb_strategy_pcd_new tsp
+					on sdl.strategy_id = tsp.strategy_id
+					and tsp.order_number = ia_pcd_entry.key::int
+				where tp.strategy_id = any(%1$L)
+					and tsp.pcd_id = tp.pcd_id
+			);',
+	strategy_fetching_array);
+	execute vl_test_query;
+	raise notice 'SQL input_data_1 statement: %', vl_test_query;
+
+	-- tb_temp_int: Unnest pcd_data from tb_strategy_discount_level with PCD ranking
+	vl_test_query := 'drop table if exists tb_temp_int;';
+	execute vl_test_query;
+
+	vl_test_query := Format('
+		create temp table tb_temp_int as (
+			select
+				sdl.strategy_id,
+				sdl.product_level_id,
+				sdl.store_level_id,
+				tsp.pcd_id,
+				pcd_entry.key as pcd_order_key,
+				(pcd_entry.value->>''markdown_percentage'')::float8 as markdown_percentage,
+				(pcd_entry.value->>''previous_markdown_percentage'')::float8 as previous_markdown_percentage,
+				(pcd_entry.value->>''is_locked'')::int as is_locked,
+				coalesce(pcd_entry.value->>''approval_status'', ''Not Approved'') as approval_status,
+				coalesce(pcd_entry.value->>''action_status'', ''No Action'') as action_status,
+				(pcd_entry.value->>''average_retail_price'')::float8 as average_retail_price,
+				(pcd_entry.value->>''average_retail_price_with_vat'')::float8 as average_retail_price_with_vat,
+				coalesce((pcd_entry.value->>''sim_flag'')::int, 0) as sim_flag,
+				pcd_entry.value->>''markdown_type'' as markdown_type,
+				(pcd_entry.value->>''incremental_discount'')::float8 as incremental_discount,
+				sdl.channel_info,
+				sdl.currency_id,
+				sdl.created_at,
+				sdl.created_by,
+				row_number() over (
+					partition by
+					sdl.strategy_id, sdl.product_level_id, sdl.store_level_id
+					order by pcd_entry.key::int) as rank_1
+			from price_markdown.tb_strategy_discount_level as sdl
+			cross join lateral jsonb_each(sdl.pcd_data) as pcd_entry(key, value)
+			join price_markdown.tb_strategy_pcd_new as tsp
+				on sdl.strategy_id = tsp.strategy_id and tsp.order_number = pcd_entry.key::int
+			where sdl.strategy_id = ANY(%1$L)
+		);',
+		strategy_fetching_array
+	);
+	execute vl_test_query;
+
+	raise notice 'SQL tb_temp_int statement: %',
+	vl_test_query;
+
+	-- temp_1: Identify IA reco rows (with IA-recommended markdown_percentage)
+	vl_test_query := 'drop table if exists temp_1;';
+	execute vl_test_query;
+
+	vl_test_query := Format('
+		create temp table temp_1 as (
+			select
+				ti.strategy_id,
+				ti.product_level_id,
+				ti.store_level_id,
+				ti.pcd_id,
+				ti.pcd_order_key,
+				input_data.markdown_percentage as markdown_percentage
+			from tb_temp_int as ti
+			join input_data_1 as input_data
+				on ti.strategy_id = input_data.strategy_id
+				and ti.product_level_id = input_data.product_level_id
+				and ti.pcd_id = input_data.pcd_id
+				and ti.store_level_id = input_data.store_level_id
+			where ti.strategy_id = ANY(%1$L) and input_data.markdown_percentage is not null
+		);',
+		strategy_fetching_array
+	);
+	execute vl_test_query;
+
+	raise notice 'SQL temp_1 statement: %',
+	vl_test_query;
+
+	-- tb_temp_2: Recalculate all affected PCDs from IA reco PCD onward
+	vl_test_query := 'drop table if exists tb_temp_2;';
+	execute vl_test_query;
+
+	vl_test_query := Format('
+	create temp table tb_temp_2 as (
+	with cte_1 as (
+	select
+		ti.strategy_id,
+		ti.product_level_id,
+		ti.store_level_id,
+		ti.pcd_id,
+		ti.pcd_order_key,
+		ti.pcd_order_key::int as pcd_order_int,
+		temp_1.pcd_order_key::int as temp_1_pcd_order_int,
+		case when ti.pcd_order_key::int > temp_1.pcd_order_key::int then
+			case when coalesce(sm.is_hard_markdown, false) then
+				greatest(
+					ti.markdown_percentage,
+					temp_1.markdown_percentage
+				)
+			else
+				ti.markdown_percentage
+			end
+		when ti.pcd_order_key::int = temp_1.pcd_order_key::int then temp_1.markdown_percentage
+		else ti.markdown_percentage end as markdown_percentage,
+		ti.markdown_percentage as original_markdown_percentage,
+		ti.is_locked,
+		ti.average_retail_price,
+		ti.average_retail_price_with_vat,
+		ti.approval_status as approval_status_1,
+		ti.action_status as action_status_1,
+		ti.sim_flag,
+		rank() over (
+			partition by
+			ti.strategy_id, ti.product_level_id, ti.store_level_id
+			order by case when ti.pcd_order_key::int > temp_1.pcd_order_key::int then
+				case when coalesce(sm.is_hard_markdown, false) then
+					greatest(
+						ti.markdown_percentage,
+						temp_1.markdown_percentage
+					)
+				else
+					ti.markdown_percentage
+				end
+			when ti.pcd_order_key::int = temp_1.pcd_order_key::int then temp_1.markdown_percentage
+			else ti.markdown_percentage end) as rank_md
+	from tb_temp_int as ti
+	join temp_1
+		on ti.strategy_id = temp_1.strategy_id
+		and ti.product_level_id = temp_1.product_level_id
+		and ti.store_level_id = temp_1.store_level_id
+	join price_markdown.tb_strategy_master as sm
+		on ti.strategy_id = sm.strategy_id
+	where ti.strategy_id = ANY(%1$L)
+	)
+	select * from (
+		select *,
+		coalesce(
+			lag(markdown_percentage) over (
+				partition by strategy_id, product_level_id, store_level_id order by pcd_order_int), 0
+		) as previous_markdown_percentage,
+		price_markdown.fn_get_incremental_discount(
+			markdown_percentage,
+			coalesce(
+				lag(markdown_percentage) over (
+					partition by strategy_id, product_level_id, store_level_id order by pcd_order_int), 0
+			)
+		) as incremental_discount,
+		case
+			when rank_md = 1 then ''First Markdown''
+			else ''Final Sale Price''
+		end as markdown_type,
+		case
+			when pcd_order_int = temp_1_pcd_order_int then ''Finally Approved''
+			when pcd_order_int > temp_1_pcd_order_int and original_markdown_percentage <> markdown_percentage then ''Initially Approved''
+			else approval_status_1
+		end as approval_status,
+		case
+			when pcd_order_int = temp_1_pcd_order_int then ''Accepted IA reco''
+			else action_status_1
+		end as action_status
+	from cte_1) temp_1
+	where pcd_order_int >= temp_1_pcd_order_int
+	);', strategy_fetching_array
+	);
+	execute vl_test_query;
+
+	raise notice 'SQL tb_temp_2 statement: %',
+	vl_test_query;
+
+	-- Step 5a: Build full pcd_data by merging updated PCDs with unchanged PCDs
+	vl_test_query := 'drop table if exists tb_temp_full;';
+	execute vl_test_query;
+
+	vl_test_query := Format('
+		create temp table tb_temp_full as (
+			-- Updated PCDs from tb_temp_2 (sim_flag = 1)
+			select
+				t2.strategy_id,
+				t2.product_level_id,
+				t2.store_level_id,
+				t2.pcd_order_key,
+				jsonb_build_object(
+					''pcd_id'', t2.pcd_id,
+					''sim_flag'', 1,
+					''is_locked'', t2.is_locked,
+					''markdown_type'', t2.markdown_type,
+					''approval_status'', t2.approval_status,
+					''action_status'', t2.action_status,
+					''markdown_percentage'', t2.markdown_percentage,
+					''average_retail_price'', t2.average_retail_price,
+					''average_retail_price_with_vat'', t2.average_retail_price_with_vat,
+					''incremental_discount'', t2.incremental_discount,
+					''previous_markdown_percentage'', t2.previous_markdown_percentage
+				) as pcd_value
+			from tb_temp_2 t2
+			UNION ALL
+			-- Unchanged PCDs from tb_temp_int (not in tb_temp_2, but only for affected combos)
+			select
+				ti.strategy_id,
+				ti.product_level_id,
+				ti.store_level_id,
+				ti.pcd_order_key,
+				jsonb_build_object(
+					''pcd_id'', ti.pcd_id,
+					''sim_flag'', ti.sim_flag,
+					''is_locked'', ti.is_locked,
+					''markdown_type'', coalesce(ti.markdown_type, ''First Markdown''),
+					''approval_status'', ti.approval_status,
+					''action_status'', ti.action_status,
+					''markdown_percentage'', ti.markdown_percentage,
+					''average_retail_price'', ti.average_retail_price,
+					''average_retail_price_with_vat'', ti.average_retail_price_with_vat,
+					''incremental_discount'', coalesce(ti.incremental_discount, 0),
+					''previous_markdown_percentage'', ti.previous_markdown_percentage
+				) as pcd_value
+			from tb_temp_int ti
+			where NOT EXISTS (
+				select 1 from tb_temp_2 t2
+				where t2.strategy_id = ti.strategy_id
+				  and t2.product_level_id = ti.product_level_id
+				  and t2.store_level_id = ti.store_level_id
+				  and t2.pcd_order_key = ti.pcd_order_key
+			)
+			and EXISTS (
+				select 1 from tb_temp_2 t2
+				where t2.strategy_id = ti.strategy_id
+				  and t2.product_level_id = ti.product_level_id
+				  and t2.store_level_id = ti.store_level_id
+			)
+		);',
+		strategy_fetching_array
+	);
+	execute vl_test_query;
+
+	raise notice 'SQL 5a statement: %',
+	vl_test_query;
+
+	-- Step 5b: Aggregate full pcd_data per (strategy, product, store)
+	vl_test_query := 'drop table if exists tb_temp_full_agg;';
+	execute vl_test_query;
+
+	vl_test_query := '
+		create temp table tb_temp_full_agg as (
+			select
+				tf.strategy_id,
+				tf.product_level_id,
+				tf.store_level_id,
+				jsonb_object_agg(tf.pcd_order_key, tf.pcd_value) as pcd_data,
+				min(ti.channel_info) as channel_info,
+				min(ti.currency_id) as currency_id,
+				min(ti.created_at) as created_at,
+				min(ti.created_by) as created_by
+			from tb_temp_full tf
+			join tb_temp_int ti
+				on tf.strategy_id = ti.strategy_id
+				and tf.product_level_id = ti.product_level_id
+				and tf.store_level_id = ti.store_level_id
+				and tf.pcd_order_key = ti.pcd_order_key
+			group by tf.strategy_id, tf.product_level_id, tf.store_level_id
+		);';
+	execute vl_test_query;
+
+	raise notice 'SQL 5b statement: %',
+	vl_test_query;
+
+	-- Step 5c: DELETE affected rows from tb_strategy_discount_level
+	vl_test_query := '
+		DELETE FROM price_markdown.tb_strategy_discount_level sdl
+		USING tb_temp_full_agg agg
+		WHERE sdl.strategy_id = agg.strategy_id
+			AND sdl.product_level_id = agg.product_level_id
+			AND sdl.store_level_id = agg.store_level_id;';
+	execute vl_test_query;
+
+	raise notice 'SQL 5c statement: %',
+	vl_test_query;
+
+	-- Step 5d: INSERT new rows with rebuilt pcd_data, RETURNING strategy_id, id
+	vl_test_query := 'drop table if exists tb_temp_3;';
+	execute vl_test_query;
+
+	vl_test_query := Format('
+		create temp table tb_temp_3 as (
+		with new_data as (
+			INSERT INTO price_markdown.tb_strategy_discount_level
+				(strategy_id, product_level_id, store_level_id, pcd_data, channel_info, currency_id, created_at, updated_at, created_by, updated_by)
+			SELECT
+				agg.strategy_id,
+				agg.product_level_id,
+				agg.store_level_id,
+				agg.pcd_data,
+				agg.channel_info,
+				agg.currency_id,
+				agg.created_at,
+				now(),
+				agg.created_by,
+				%1$L::integer
+			FROM tb_temp_full_agg agg
+			RETURNING strategy_id, id
+		)
+		select
+			new_data.strategy_id,
+			min(sm.strategy_name) as strategy_name,
+			min(new_data.id) as min_strategy_disc_id,
+			max(new_data.id) as max_strategy_disc_id,
+			%1$L::int as user_id
+		from new_data
+		join price_markdown.tb_strategy_master as sm
+			using(strategy_id)
+		group by 1
+		);', in_user_id);
+	execute vl_test_query;
+
+	raise notice 'SQL 5d statement: %',
+	vl_test_query;
+
+	-- Update tb_strategy_master status based on approval_status in pcd_data
+	vl_test_query := Format('
+		with strategy_approval_status as (
+			select
+				sdl.strategy_id,
+				max((pcd_entry.value->>''approval_status'')::text) as has_final_approval
+			from
+				price_markdown.tb_strategy_discount_level sdl
+			cross join lateral jsonb_each(sdl.pcd_data) as pcd_entry(key, value)
+			where
+				sdl.strategy_id = ANY(%1$L)
+			group by
+				1
+		)
+		update
+			price_markdown.tb_strategy_master ts
+		set
+			status = case
+				when sas.has_final_approval = ''Finally Approved'' then 2
+				else 1
+			end,
+			updated_at = now(),
+			updated_by = %2$L::integer
+		from
+			strategy_approval_status sas
+		where
+			ts.strategy_id = sas.strategy_id
+			and ts.status not in (3);',
+		strategy_fetching_array, in_user_id);
+
+	execute vl_test_query;
+
+	raise notice 'SQL strategy_master statement: %',
+	vl_test_query;
+
+	end_time := clock_timestamp();
+
+	total_time_taken := round(extract(second
+	from
+	(end_time - start_time)));
+
+	raise notice 'Time taken: %',
+	total_time_taken;
+
+	_query_combine := format('select
+		tb_temp_3.*,
+		%1$L::int as insert_discount_time
+		from tb_temp_3',
+	total_time_taken);
+
+	return query execute _query_combine;
+
+END;
+$function$
+;

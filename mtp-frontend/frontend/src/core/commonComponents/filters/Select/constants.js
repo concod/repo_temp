@@ -1,0 +1,9 @@
+export const OPTION_SET = "OPTION_SET";
+export const OPTION_INIT = "OPTION_INIT";
+export const OPTION_ERROR = "OPTION_ERROR";
+export const OPTION_SUCCESS = "OPTION_SUCCESS";
+export const OPTION_RESET = "OPTION_RESET";
+export const SEARCH_SUCCESS = "SEARCH_SUCCESS";
+export const SEARCH_RESET = "SEARCH_RESET";
+export const BATCH_SIZE = 50;
+export const SCROLL_TO_BOTTOM_VARIANCE = 1;

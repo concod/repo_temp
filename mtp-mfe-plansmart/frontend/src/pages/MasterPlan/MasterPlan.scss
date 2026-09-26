@@ -1,0 +1,53 @@
+.action-buttons-flex-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.filter-board-wrapper {
+  display: "flex";
+  width: "100%";
+}
+.filter-buttons-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  padding-left: 3rem;
+}
+.selected-filters-wrapper {
+  padding: 2px;
+  margin: 5px;
+}
+
+.masterplan-table-container {
+  outline: 1px solid #d3d9df;
+  padding: 5px;
+  margin: 10px;
+  position: relative;
+  top: 10px;
+  .MuiPaper-root {
+    padding: 0px;
+  }
+}
+.masterplan-empty-filter-wrapper {
+  top: 50%;
+  left: 50%;
+  opacity: 0.4;
+  position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+.emptyState-wrapper .emptyState-container {
+  width: 100%;
+  box-shadow: none;
+  padding-top: 100px;
+}
+
+.emptyState-wrapper .emptyState-button-container {
+  display: none;
+}
+
+.master-plan-history-modal {
+  width: 1238px !important;
+  max-height: 748px !important;
+}

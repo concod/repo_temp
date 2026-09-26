@@ -1,0 +1,213 @@
+{
+  "clients": [
+    {
+      "name": "pacsun",
+      "data_path": "../pacsun/data/inventory_smart",
+      "schema_path": "../pacsun/schemas/inventory_smart",
+      "additional_paths": []
+    },
+    {
+      "name": "coach_na",
+      "data_path": "../coach_na/data/inventory_smart",
+      "schema_path": "../coach_na/schemas/inventory_smart",
+      "additional_paths": []
+    },
+    {
+      "name": "lovisa",
+      "data_path": "../lovisa/data/inventory_smart",
+      "schema_path": "../lovisa/schemas/inventory_smart",
+      "additional_paths": []
+    },
+    {
+      "name": "levis_us",
+      "data_path": "../levis_us/data/inventory_smart",
+      "schema_path": "../levis_us/schemas/inventory_smart",
+      "additional_paths": []
+    },
+    {
+      "name": "levi_lse",
+      "data_path": "../levi_lse/data/inventory_smart",
+      "schema_path": "../levi_lse/schemas/inventory_smart",
+      "additional_paths": []
+    },
+    {
+      "name": "spanx",
+      "data_path": "../spanx/data/inventory_smart",
+      "schema_path": "../spanx/schemas/inventory_smart",
+      "additional_paths": []
+    },
+    {
+      "name": "crackerbarrel",
+      "data_path": "../crackerbarrel/data/inventory_smart",
+      "schema_path": "../crackerbarrel/schemas/inventory_smart",
+      "additional_paths": []
+    },
+    {
+      "name": "briscoes",
+      "data_path": "../briscoes/data/inventory_smart",
+      "schema_path": "../briscoes/schemas/inventory_smart",
+      "additional_paths": []
+    },
+    {
+      "name": "victorias_secret",
+      "data_path": "../victorias_secret/data/inventory_smart",
+      "schema_path": "../victorias_secret/schemas/inventory_smart",
+      "additional_paths": []
+    },
+    {
+      "name": "victorias_secret_international",
+      "data_path": "../victorias_secret_international/data/inventory_smart",
+      "schema_path": "../victorias_secret_international/schemas/inventory_smart",
+      "additional_paths": []
+    },
+    {
+      "name": "carters",
+      "data_path": "../carters/data/inventory_smart",
+      "schema_path": "../carters/schemas/inventory_smart",
+      "additional_paths": []
+    },
+    {
+      "name": "dollar_general",
+      "data_path": "../dollar_general/data/inventory_smart",
+      "schema_path": "../dollar_general/schemas/inventory_smart",
+      "additional_paths": []
+    },
+    {
+      "name": "tommy_bahama",
+      "data_path": "../tommy_bahama/data/inventory_smart",
+      "schema_path": "../tommy_bahama/schemas/inventory_smart",
+      "additional_paths": []
+    },
+    {
+      "name": "aritzia",
+      "data_path": "../aritzia/data/inventory_smart",
+      "schema_path": "../aritzia/schemas/inventory_smart",
+      "additional_paths": []
+    },
+    {
+      "name": "figs",
+      "data_path": "../figs/data/inventory_smart",
+      "schema_path": "../figs/schemas/inventory_smart",
+      "additional_paths": []
+    },
+    {
+      "name": "primark",
+      "data_path": "../primark/data/inventory_smart",
+      "schema_path": "../primark/schemas/inventory_smart",
+      "additional_paths": []
+    },
+     {
+      "name": "tillys",
+      "data_path": "../tillys/data/inventory_smart",
+      "schema_path": "../tillys/schemas/inventory_smart",
+      "additional_paths": []
+    },
+    {
+      "name": "lululemon",
+      "data_path": "../lululemon/data/inventory_smart",
+      "schema_path": "../lululemon/schemas/inventory_smart",
+      "additional_paths": []
+    },
+    {
+      "name": "starboard",
+      "data_path": "../starboard/data/inventory_smart",
+      "schema_path": "../starboard/schemas/inventory_smart",
+      "additional_paths": []
+    }
+  ],
+  "omit_global_csv": [],
+  "include_global_files": [
+    "acl_master.csv",
+    "roles_master.csv",
+    "screen_master.csv",
+    "role_action_module_mapping.csv",
+    "module_master.csv",
+    "filter_configurations.csv",
+    "filter_configurations_mapping.csv",
+    "table_configurations.csv",
+    "table_configurations_mapping.csv",
+    "tenant_attribute_master.csv",
+    "notification_system_event_master.csv",
+    "upload_report_validation_master.csv",
+    "action_master.csv",
+    "application_master.csv"
+  ],
+  "include_inventory_smart_schemas": [
+    "views",
+    "tables",
+    "functions"
+  ],
+  "include_global_schemas": [
+    "views",
+    "tables",
+    "functions"
+  ],
+  "oms_file_patterns": [
+    "oms*",
+    "*oms_*"
+  ],
+  "exclude_paths": [
+    "database/carters/schemas/global/tables/product_attributes_filter.sql",
+    "database/briscoes/schemas/global/tables/product_attributes_filter.sql",
+    "database/levis_us/schemas/global/functions/product_status_agg_list.sql",
+    "database/levi_lse/schemas/global/functions/product_status_agg_list.sql",
+    "database/spanx/schemas/global/tables/product_attributes_filter.sql",
+    "database/briscoes/schemas/inventory_smart/tables/alerts_product_level.sql",
+    "database/briscoes/schemas/inventory_smart/tables/forecast_alerts.sql"
+  ],
+  "exclude_files": [
+    "product_attributes_filter.sql",
+    "product_store_hierarchy_mapping.sql",
+    "article_inventory_dashboard.sql",
+    "store_attributes_filter.sql",
+    "product_store_attributes_filter_store_code_1.sql",
+    "article_status_tag.sql",
+    "ph_master.sql",
+    "store_asc_mapping.sql",
+    "store_capacity_version.sql",
+    "lms_attributes.sql",
+    "final_allocations_results.sql",
+    "dc_pack_reserve_quantity.sql",
+    "special_characters_mapping.sql",
+    "expedite_orders_report.sql",
+    "tb_auto_allocation_status.sql",
+    "fiscal_date_mapping.sql",
+    "ladder_planning_lead_time_generic_schema_mapping.sql",
+    "ladder_planning_style_moq_generic_schema_mapping.sql",
+    "lbb_forecast_generic_schema_mapping.sql",
+    "gbq_update_logs.sql",
+    "allocate_replen_tag.sql",
+    "send_order_for_approval.sql",
+    "get_approval_orders.sql",
+    "build_product_hierarchies_filter.sql",
+    "pc_refresh_1_product_group_products_data.sql",
+    "pc_refresh_2_event_hierarchy_data_with_exclusion.sql",
+    "dc_transfer_constraints.sql",
+    "dc_service_levels.sql",
+    "dc_review_recommendation.sql",
+    "configurator_sidelayout"
+  ],
+  "global_data_relative_path": "../{client}/data/global",
+  "environments": {
+    "PROD": {
+      "branch": "main",
+      "src_branch": "develop/uat",
+      "priority": 1
+    },
+    "UAT": {
+      "branch": "develop/uat",
+      "src_branch": "develop/test",
+      "priority": 2
+    },
+    "TEST": {
+      "branch": "develop/test",
+      "src_branch": "develop/dev",
+      "priority": 3
+    },
+    "DEV": {
+      "branch": "develop/dev",
+      "src_branch": "",
+      "priority": 4
+    }
+  }
+}

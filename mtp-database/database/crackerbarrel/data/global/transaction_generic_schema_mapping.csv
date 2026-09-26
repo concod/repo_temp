@@ -1,0 +1,13 @@
+"source_column_name","source_column_datatype","required_in_product","generic_column_name","is_pk","generic_column_datatype","formula","is_attribute","is_hierarchy","hierarchy_level","is_null_allowed"
+Bucket,varchar,false,,false,,,false,false,,false
+Clearance,varchar,true,clearance,false,bool,Clearance is null or Clearance != 'NON CLR',false,false,,false
+Posting_Date_Time,varchar,true,feed_time,false,timestamp,"to_timestamp(Posting_Date_Time, 'YYYY-MM-DD HH24:MI:SS')",false,false,,false
+DocSID,varchar,true,transaction_code,false,varchar,,false,false,,false
+LineTransactionType,varchar,true,type,false,varchar,,false,false,,false
+Transaction_Date,date,true,date,false,date,,false,false,,false
+UPC,varchar,true,product_code,false,varchar,,false,false,,false
+Store_Fulfilled,varchar,true,store_code,false,varchar,,false,false,,false
+Store_Credited,varchar,true,credited_store_code,false,varchar,,true,false,,true
+SumQty,int8,true,qty,false,int8,,false,false,,false
+SumExtPrc,float8,true,price,false,float8,,false,false,,false
+SumExtCost,float8,true,cost,false,float8,,false,false,,false

@@ -1,0 +1,41 @@
+source_table,source_level,generic_mapping_table,destination_table,destination_level,to_be_ingested,is_required_in_master,persist_attributes_table,persist_hierarchies_table,cross_validations,pull_type,persist_to_postgres,data_loss_threshold,id
+grading_intermediate,"store_code, style, u_startdate, u_enddate",grading_generic_schema_mapping,grading_master,,TRUE,FALSE,FALSE,FALSE,,full,FALSE,100,1
+dc_store_transit_intermediate,"source,dest,transmode",dc_transit_time_generic_schema_mapping,transit_time_master,,TRUE,FALSE,FALSE,FALSE,,incremental,FALSE,100,2
+fiscal_intermediate,calendar_date,fiscal_generic_schema_mapping,fiscal_date_mapping,,TRUE,TRUE,FALSE,FALSE,,full,TRUE,100,3
+store_sku_eligibility_intermediate,"product_code,store_code,eff_startdate,eff_enddate",sse_full_load_generic_schema_mapping,store_sku_eligibility_master,,TRUE,FALSE,FALSE,FALSE,,full,FALSE,100,4
+store_reserve_intermediate,"l6_id,product_code, store_code",store_reserve_generic_schema_mapping,store_reserve_master,,TRUE,FALSE,FALSE,FALSE,,full,FALSE,100,5
+location_sku_intermediate,"product_code,store_code,start_date,end_date",location_sku_generic_schema_mapping,location_sku_master,,TRUE,FALSE,FALSE,FALSE,,full,FALSE,100,6
+store_sku_grading_intermediate,"product_code,store_code,eff_startdate,eff_enddate,u_startdate,u_enddate",sse_grading_generic_schema_mapping,store_sku_grading_master,,TRUE,FALSE,FALSE,FALSE,,full,FALSE,100,7
+store_sku_eligibility_delta_intermediate,"product_code,store_code,eff_startdate,eff_enddate",sse_generic_schema_mapping,store_sku_eligibility_delta_master,,TRUE,FALSE,FALSE,FALSE,,full,FALSE,100,8
+inventory_intermediate,"product_code, store_code, date",inventory_generic_schema_mapping,inventory_master,,TRUE,TRUE,FALSE,FALSE,,incremental,FALSE,100,9
+store_intermediate,"store_code,location_number",store_generic_schema_mapping,store_master,,TRUE,TRUE,TRUE,TRUE,,full,TRUE,100,10
+exchange_rate_intermediate,"from_currency, to_currency, valid_from",exchange_rate_generic_schema_mapping,exchange_rate_master,,TRUE,FALSE,FALSE,FALSE,,incremental,FALSE,100,11
+rfid_intermediate,"sku_id, loc_num, rfid_date",rfid_generic_schema_mapping,rfid_master,,TRUE,FALSE,FALSE,FALSE,,incremental,FALSE,100,12
+transaction_intermediate,"transaction_code,date,line_id,product_code,store_code,transaction_type",transaction_generic_schema_mapping,transaction_master,,TRUE,TRUE,FALSE,FALSE,,incremental,FALSE,100,13
+po_asn_intermediate,"po_id,po_item,asn_id,asn_item",po_asn_generic_schema_mapping,po_asn_master,,TRUE,FALSE,FALSE,FALSE,,full,FALSE,100,14
+ecomm_dom_and_int_split_intermediate,"brand_code, subclass, year_month",ecomm_dom_and_int_split_generic_schema_mapping,ecomm_dom_and_int_split_master,,TRUE,FALSE,FALSE,FALSE,,full,FALSE,100,15
+real_estate_intermediate,"legacy_store_code, flagged_rows",real_estate_generic_schema_mapping,real_estate_master,,TRUE,FALSE,FALSE,FALSE,,full,TRUE,100,16
+events_calendar_intermediate,date,events_generic_schema_mapping,event_master,,FALSE,TRUE,FALSE,FALSE,,incremental,FALSE,100,17
+supersession_intermediate,"SUPERSESSION_ID, SEQUENCE_NUMBER, SIZE",supersession_generic_schema_mapping,supersession_master,,TRUE,FALSE,FALSE,FALSE,,full,FALSE,100,18
+article_site_delta_intermediate,"product_code,store_code",article_site_generic_schema_mapping,article_site_delta_master,,TRUE,FALSE,FALSE,FALSE,,full,FALSE,100,19
+size_orders_intermediate,size,size_orders_generic_schema_mapping,size_orders_master,,TRUE,FALSE,FALSE,FALSE,,full,FALSE,100,20
+order_reason_intermediate,order_reason,order_reason_generic_schema_mapping,order_reason_master,,TRUE,FALSE,FALSE,FALSE,,full,FALSE,100,21
+ship_mode_intermediate,ship_mode,ship_mode_generic_schema_mapping,ship_mode_master,,TRUE,FALSE,FALSE,FALSE,,full,FALSE,100,22
+product_intermediate,product_code,product_generic_schema_mapping,product_master,,TRUE,TRUE,TRUE,TRUE,,full,TRUE,100,23
+ticket_type_intermediate,ticket_type,ticket_type_generic_schema_mapping,ticket_type_master,,TRUE,FALSE,FALSE,FALSE,,full,FALSE,100,24
+mfp_plan_intermediate,"l6_id, fiscal_year_week, organization",mfp_generic_schema_mapping,mfp_master,,TRUE,FALSE,FALSE,FALSE,,incremental,FALSE,100,25
+article_inventory_dashboard,,qc_article_inventory_dashboard_generic_schema_mapping,,,FALSE,,,,,,,100,26
+article_status_tag,,qc_article_status_tag_generic_schema_mapping,,,FALSE,,,,,,,100,27
+asn_to_allocate_alert,,qc_asn_to_allocate_alert_generic_schema_mapping,,,FALSE,,,,,,,100,28
+dc_transit_time,,qc_dc_transit_time_generic_schema_mapping,,,FALSE,,,,,,,100,29
+latest_inventory,,qc_latest_inventory_generic_schema_mapping,,,FALSE,,,,,,,100,30
+new_choices_allocation_alert,,qc_new_choices_allocation_alert_generic_schema_mapping,,,FALSE,,,,,,,100,31
+product_dc_mapping,,qc_product_dc_mapping_generic_schema_mapping,,,FALSE,,,,,,,100,32
+product_store_attributes_filter,,qc_product_store_attributes_filter_generic_schema_mapping,,,FALSE,,,,,,,100,33
+product_store_mapping,,qc_product_store_mapping_generic_schema_mapping,,,FALSE,,,,,,,100,34
+store_dc_mapping,,qc_store_dc_mapping_generic_schema_mapping,,,FALSE,,,,,,,100,35
+product_store_attributes_filter_store_code,,qc_psaf_store_code_generic_schema_mapping,,,FALSE,,,,,,,100,36
+article_store_grade,,qc_article_store_grade_generic_schema_mapping,,,FALSE,,,,,,,100,37
+dashboard_date_ticker,,qc_dashboard_date_ticker_generic_schema_mapping,,,FALSE,,,,,,,100,38
+store_sku_grading_delta_intermediate,"product_code,store_code,eff_startdate,eff_enddate,u_startdate,u_enddate",sse_grading_delta_generic_schema_mapping,store_sku_grading_delta_master,,TRUE,FALSE,FALSE,FALSE,"['product_master', 'store_master']",full,FALSE,100,39
+Intransit_intermediate,"docnum,lineitem,arrivdate,shipdate,source_status,source,dest,article",intransit_generic_schema_mapping,intransit_master,,TRUE,FALSE,FALSE,FALSE,"['product_master', 'store_master']",full,FALSE,100,40

@@ -1,0 +1,27 @@
+"source_column_name","source_column_datatype","required_in_product","generic_column_name","is_pk","generic_column_datatype","formula","is_attribute","is_hierarchy","hierarchy_level","is_null_allowed","unique_by","display_name","is_partition_col","is_clustering_col"
+product_bucket_code,integer,true,product_bucket_code,false,int8,,false,false,,true,false,,false,1
+,,true,product_code,true,varchar,"concat(prod_id,'-',q_str_cntry,'-', channel)",false,false,,false,true,,false,
+,,true,workstream,false,varchar,"concat(q_str_cntry,'-',channel)",false,false,,true,false,,false,
+date_id,date,true,date,true,date,,false,false,,false,true,,true,
+q_md_typ,integer,true,q_md_type,false,int8,,false,false,,true,false,,false,
+inv_it_u,float,true,it,false,float8,,false,false,,true,false,,false,
+inv_oh_u,float,true,oh,false,float8,,false,false,,true,false,,false,
+inv_it_cost,float,true,it_cost,false,float8,,false,false,,true,false,,false,
+inv_oh_cost,float,true,oh_cost,false,float8,,false,false,,true,false,,false,
+inv_cost,float,true,total_cost,false,float8,,false,false,,true,false,,false,
+inv_it_clr_u,float,false,it_clr,false,float8,,false,false,,true,false,,false,
+inv_oh_clr_u,float,false,oh_clr,false,float8,,false,false,,true,false,,false,
+inv_clr_u,float,false,total_clr,false,float8,,false,false,,true,false,,false,
+inv_it_clr_cost,float,false,it_clr_cost,false,float8,,false,false,,true,false,,false,
+inv_oh_clr_cost,float,false,oh_clr_cost,false,float8,,false,false,,true,false,,false,
+inv_clr_cost,float,false,total_clr_cost,false,float8,,false,false,,true,false,,false,
+q_str_cntry,string,true,country_store,false,varchar,,false,false,,false,false,,false,
+bu_cntry_cd,string,true,country_product,false,varchar,,false,false,,true,false,,false,
+SYNCSTARTDATETIME,datetime,true,syncstartdatetime,false,datetime,,false,false,,false,false,,false,
+master_str,string,true,store_code,true,varchar,,false,false,,false,true,,false,3
+channel,string,true,channel,false,varchar,,false,false,,false,false,,false,
+prod_id,integer,true,prod_sku_key,false,varchar,,false,false,,false,false,,false,2
+,,true,min_date_week_inv,false,date,"max(date_id) over (partition by prod_id, master_str, channel, extract(isoyear from date_id)*100+extract(isoweek from date_id))",false,false,,true,false,,false,
+inv_u,float,true,total_u,false,float8,,false,false,,true,false,,false,
+oo_unt,float,true,oo_unt,false,float8,,false,false,,true,false,,false,
+,,true,clearance_flag,false,bool,case when inv_clr_u>0 then True else False end,false,false,,true,false,,false,

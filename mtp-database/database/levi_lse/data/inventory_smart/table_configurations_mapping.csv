@@ -1,0 +1,1285 @@
+"tc_code","label","column_name","dimension","type","is_frozen","is_editable","is_aggregated","order_of_display","is_hidden","is_required","tc_mapping_code","child_tc_mapping_code","aggregate_type","formatter","is_row_span","footer","is_searchable","extra","is_sortable","width","is_deleted","is_master_group"
+264,Store Group Code,sg_code,Inventory,str,true,false,false,1.0,false,false,"322075",,,,false,,false,"{}",false,200,false,false
+264,Store Group Name,name,Inventory,str,true,false,false,2.0,false,false,"322076",,,,false,,true,"{}",false,200,false,false
+264,Store Name,store_name,Inventory,str,false,false,false,4.0,false,false,"322078",,,,false,,false,"{}",false,200,false,false
+264,Store Number,store_code,Inventory,str,false,false,false,3.0,false,false,"322077",,,,false,,false,"{}",false,200,false,false
+268,Consumer,l1_name,Product Profile,str,false,false,false,3.0,false,false,"322089",,,,false,,false,"{}",false,200,false,false
+268,Planning Group,l0_name,Product Profile,str,false,false,false,2.0,false,false,"323088",,,,false,,false,"{}",false,200,false,false
+268,Created At,created_at,Product Profile,datetime,false,false,false,5.0,false,false,"322092",,,,false,,false,"{}",false,200,false,false
+268,Created By,user_name,Product Profile,str,false,false,false,6.0,false,false,"322091",,,,false,,false,"{}",false,200,false,false
+268,Product Profile,name,Product Profile,str,true,false,false,1.0,false,false,"322087",,,,false,,false,"{}",false,200,false,false
+268,Time Attribute,date_value,Product Profile,str,false,false,false,4.0,false,false,"322090",,,,false,,false,"{}",false,200,false,false
+267,Modified At,updated_at,Inventory,str,false,false,false,4.0,false,false,"322086",,,,false,,false,"{}",false,200,false,false
+267,Modified By,updated_by,Inventory,str,false,false,false,3.0,false,false,"322085",,,,false,,false,"{}",false,200,false,false
+267,Rule Name,rule_name,Inventory,str,false,false,false,2.0,false,false,"322084",,,,false,,false,"{}",false,200,false,false
+266,Modified At,updated_at,Inventory,str,false,false,false,4.0,false,false,"322082",,,,false,,false,"{}",false,200,false,false
+266,Modified By,updated_by,Inventory,str,false,false,false,3.0,false,false,"322081",,,,false,,false,"{}",false,200,false,false
+266,Rule Name,rule_name,Inventory,str,false,false,false,2.0,false,false,"322080",,,,false,,false,"{}",false,200,false,false
+274,Modified At,updated_at,Inventory,str,false,false,false,4.0,false,false,"322253",,,,false,,false,"{}",false,200,false,false
+274,Modified By,updated_by,Inventory,str,false,false,false,3.0,false,false,"322252",,,,false,,false,"{}",false,200,false,false
+274,Scheduler Name,sh_name,Inventory,str,false,false,false,2.0,false,false,"322251",,,,false,,false,"{}",false,200,false,false
+275,Rule Name,rule_name,Inventory,str,FALSE,TRUE,FALSE,12,FALSE,FALSE,275061,,,,FALSE,,TRUE,{},FALSE,400,FALSE,FALSE
+275,Auto Allocation Rules,auto_allocation_rule_name,Inventory,link,false,false,false,18.0,false,false,"275067",,,,false,,false,"{}",false,200,false,false
+275,Auto Allocation Scheduler,auto_allocation_schedular_name,Inventory,link,false,false,false,19.0,false,false,"275068",,,,false,,false,"{}",false,200,false,false
+275,DC to Store Strategy Rules,dc_store_rule_name,Inventory,link,false,false,false,17.0,false,false,"275066",,,,false,,false,"{}",false,200,false,false
+275,From Date,start_date,Inventory,datetime,false,true,false,14.0,false,false,"275063",,,,false,,true,"{}",false,400,false,false
+275,Product Profile,product_profile,Inventory,link,false,false,false,16.0,false,false,"275065",,,,false,,false,"{}",false,200,false,false
+275,Store/Store Groups Mapped,store_store_groups_mapped,Inventory,link,false,false,false,13.0,false,false,"275062",,,,false,,false,"{}",false,200,false,false
+275,To Date,end_date,Inventory,datetime,false,true,false,15.0,false,false,"275064",,,,false,,true,"{}",false,400,false,false
+138,PC9,display_article,Product,str,false,false,false,1.0,false,false,"511725d5-62d7-4952-bc7b-8ca4f9a3aedb",,,,false,,true,"{}",true,200,false,false
+138,Fiscal Year,fiscal_year,Product,str,false,false,false,2.0,false,false,"00cbcb29-7805-4c0b-90c6-2c1aa8fec2bc",,,,false,,true,"{}",true,200,false,false
+138,Fiscal Week,fiscal_week,Product,int,false,false,false,3.0,false,false,"34335b2f-6ee3-49a4-9c52-718822059819",,,,false,,true,"{}",true,200,false,false
+138,Product Information,product_information,Product,str,false,false,false,3.1,false,false,"321098",,,,false,,true,"{}",true,200,false,false
+138,Consumer,l1_name,Product,str,false,false,false,3.2,false,false,"13801","321098",,,false,,true,"{}",true,200,false,false
+138,Category,l3_name,Product,str,false,false,false,4.0,false,false,"13802","321098",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+138,Class,l4_name,Product,str,false,false,false,5.0,false,false,"13803","321098",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+138,Subclass,l5_name,Product,str,false,false,false,6.0,false,false,"13804","321098",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+138,PC5,l7_code,Product,str,false,false,false,8.0,false,false,"4a03c9ff-3c16-4464-a778-9ab073e4e2ed","321098",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+138,PC9 Description,article_description,Product,str,false,false,false,10.0,false,false,b54d404d-0317-43ff-b9fb-023b1d5981eb,"321098",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+138,Eligible Store Count,store_count,Product,int,false,false,false,11.0,false,false,"3cfabe62-992f-4748-9bc2-8d93491e9c19",,,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+138,Size,size,Product,str,false,false,false,12.0,false,false,"7082667a-a7c3-4fe0-a35b-989cefdb3cff",,,,false,,true,"{}",true,200,false,false
+138,Store OH,sum_store_oh,Product,int,false,false,false,13.0,false,false,"0b7f0d83-5ffb-4f06-868f-0667e6e13393",,,,false,,true,"{}",true,200,false,false
+138,Store OO,sum_store_oo,Product,int,false,false,false,14.0,false,false,"8992b797-890a-4f3d-a13c-b974bc79854e",,,,false,,true,"{}",true,200,false,false
+138,Store IT,sum_store_it,Product,int,false,false,false,15.0,false,false,"54761379-715c-450d-b10e-4444de73d47f",,,,false,,true,"{}",true,200,false,false
+138,Sales Units,sum_sales_units,Product,int,false,false,false,16.0,false,false,"0385f84e-aa4c-43b3-b144-ef6d56471434",,,,false,,true,"{}",true,200,false,false
+138,ROS,avg_ros,Product,int,false,false,false,17.0,false,false,"7025cd96-5132-4e56-8684-57e27fc2b251",,,,false,,true,"{}",true,200,false,false
+138,FWOS Threshold,avg_fwos_threshold,Product,int,false,false,false,18.0,false,false,"23582af9-4935-4bbb-844f-3787d93dcf50",,,,false,,true,"{}",true,200,false,false
+138,WOS Actual,avg_wos_actual,Product,int,false,false,false,19.0,false,false,b6d291cb-2833-44c6-82c9-e17175017523,,,,false,,true,"{}",true,200,false,false
+138,FWOS Target,avg_fwos_target,Product,int,false,false,false,20.0,false,false,"4f247fbf-231c-4afc-9680-c8cb05e7129f",,,,false,,true,"{}",true,200,false,false
+138,Excess Inventory Units,sum_excess_inventory_units,Product,int,false,false,false,21.0,false,false,"64f5609a-9c21-49d3-b83a-e24a96b0a221",,,,false,,true,"{}",true,200,false,false
+138,Excess Inventory ( In $)*,sum_excess_inv,Product,dollar,false,false,false,22.0,false,false,"9b585904-17d1-40a8-a6ad-e35d39c6ab4b",,,,false,,true,"{}",true,200,false,false
+138,EOP OH Inventory,sum_eop_oh_inventory,Product,int,false,false,false,23.0,false,false,ca86a5f2-a9bf-4e41-bcb1-2c51b6aaad86,,,,false,,true,"{}",true,200,false,false
+271,Rule Level ID,rcl_code,Product,str,false,false,false,1.0,false,true,"322116",,FALSE,FALSE,false,FALSE,false,"{}",true,200,false,false
+271,Selected Level,level,Product,str,false,false,false,2.0,false,true,"322117",,,,false,,false,"{}",true,200,false,false
+271,Lowest Level,lowest_level,Product,str,false,false,false,3.0,false,true,"322114",,FALSE,FALSE,false,FALSE,false,"{}",true,200,false,false
+271,Priority,priority,Product,str,false,false,false,4.0,false,true,"322115",,FALSE,FALSE,false,FALSE,false,"{}",true,200,false,false
+271,Updated By,user,Product,str,false,false,false,5.0,false,true,"322118",,FALSE,FALSE,false,FALSE,false,"{}",true,200,false,false
+271,Last modified,updated_at,Product,str,false,false,false,6.0,false,true,"322113",,FALSE,FALSE,false,FALSE,false,"{}",true,200,false,false
+271,Action,action,Product,link,false,false,false,7.0,false,true,"322112",,FALSE,FALSE,false,FALSE,false,"{}",true,200,false,false
+231,Allocated Quantity,allocated_quantity,Product,int,false,false,false,6.0,false,true,ecdca529-07c9-4a88-9673-86a43408a57a,,,,false,,true,"{}",true,200,false,false
+231,Allocation Plan Name,allocation_plan_name,Product,str,false,false,false,1.0,false,true,"61c0bf56-d671-47bb-8f52-2f65c9922b6d",,,,false,,true,"{}",true,200,false,false
+231,Bulk Remaining,bulk_remaining,Product,int,false,false,false,5.0,false,true,"9774877e-11b2-454a-b648-d105d244c7ad",,,,false,,true,"{}",true,200,false,false
+231,Creation Date,creation_date,Product,str,false,false,false,3.0,false,true,"4fff4e56-7d89-43de-b5c4-a6d744da7b54",,,,false,,true,"{}",true,200,false,false
+231,DC Mapped,dc_mapped,Product,str,false,false,false,9.0,false,true,e25580f3-8707-412b-bba7-5914693146f5,,,,false,,true,"{}",true,200,false,false
+231,IOB,iob,Product,int,false,false,false,8.0,false,true,b75e03c4-b6c9-49bf-9714-d0ad66201ea3,,,,false,,true,"{}",true,200,false,false
+231,Last Week Units,lw_sales_units,Product,int,false,false,false,4.0,false,true,"20f76849-d24f-4461-a245-becf1f743823",,,,false,,true,"{}",true,200,false,false
+231,PC9,display_article,Product,str,false,false,false,2.0,false,true,dd34bc25-5c9b-44c6-92b2-2224f63e20a3,,,,false,,true,"{}",true,200,false,false
+231,VIR Remaining,vir_reservation_remaining_pdu_remaining,Product,int,false,false,false,7.0,false,true,"2bacc897-8797-42de-9ae4-c0dafb5ff4cf",,,,false,,true,"{}",true,200,false,false
+231,Last Allocated Date,last_allocated_date,Inventory,date,FALSE,FALSE,FALSE,8,,FALSE,32000040,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+272,Auto Allocation Rules,auto_allocation_rule_name,Inventory,link,false,false,false,17.0,false,false,c64d7713-c1bd-4cd2-be00-37ed0a05c0ff,,,,false,,false,"{}",false,200,false,false
+272,Auto Allocation Schedular,auto_allocation_schedular_name,Inventory,link,false,false,false,18.0,false,false,"8a972ffd-4b28-4bee-802a-e8b95efa0219",,,,false,,true,"{}",false,200,false,false
+272,Category,l3_name,Product,str,false,false,false,7.0,false,false,"8d4c2bd9-3b28-4627-b297-bf19ece1e68e",,,,false,,true,"{}",false,200,false,false
+272,Class,l4_name,Product,str,false,false,false,6.0,false,false,"49a1f3ee-735b-4080-903a-85b922f39bbd",,,,false,,true,"{}",false,200,false,false
+272,Consumer,l1_name,Product,str,false,false,false,8.0,false,false,"4ffa3b69-1d1b-443c-a3a8-5ac846d18f87",,,,false,,true,"{}",false,200,false,false
+272,DC to Store Strategy Rules,dc_store_rule_name,Inventory,link,false,false,false,16.0,false,false,"52b22ed8-3694-45d8-ae49-fe02bf2d8b02",,,,false,,false,"{}",false,200,false,false
+272,From Date,start_date,Inventory,datetime,false,true,false,13.0,false,false,"252a2ed4-2acd-4e4d-8b8f-46cf66c3b0fc",,,,false,,true,"{}",false,400,false,false
+272,Global Fit Platform,global_fit_platform,Product,str,false,false,false,10.0,false,false,e18ed20f-4d6d-47a0-8778-8910895976ac,,,,false,,true,"{}",false,200,false,false
+272,PC5,l7_code,Product,str,false,false,false,4.0,false,false,"9aa58a3d-1610-48e4-b9e1-08d24b002dda",,,,false,,true,"{}",false,200,false,false
+272,PC9,article,Product,str,false,false,false,3.0,false,false,e91c895d-57df-4e26-995a-550ce72f7adc,,,,false,,true,"{}",false,200,false,false
+272,Planning Group,l0_name,Product,str,false,false,false,9.0,false,false,d6294231-1341-4a32-95b7-935d7f5347f2,,,,false,,true,"{}",false,200,false,false
+272,Product Group Name,name,Product,str,false,false,false,11.0,false,false,"452f0afd-b9a5-48b2-9c38-c54681184d4d",,,,false,,true,"{}",false,200,false,false
+272,Product Profile,product_profile,Inventory,link,false,false,false,15.0,false,false,"73411659-1734-4f33-aa1b-eece6d33dd1e",,,,false,,false,"{}",false,200,false,false
+272,Rule Creation Level,c_rcl_code,Inventory,str,true,false,false,2.0,false,false,f0a6ed90-935c-4d00-92f6-0a0c6229e909,,,,false,,true,"{}",false,200,false,false
+272,Rule ID,c_rule_code,Inventory,str,true,false,false,1.0,false,false,"61943519-b0b4-48a8-a0dc-101a532d00cf",,,,false,,true,"{}",false,200,false,false
+272,Store/Store Groups Mapped,store_store_groups_mapped,Inventory,link,false,false,false,12.0,false,false,"6a36b472-55a3-44b5-8ea8-9b7f680430cf",,,,false,,false,"{}",false,200,false,false
+272,Subclass,l5_name,Product,str,false,false,false,5.0,false,false,"20a0541c-507c-4e88-bc61-e8f687407a56",,,,false,,true,"{}",false,200,false,false
+272,To Date,end_date,Inventory,datetime,false,true,false,14.0,false,false,cc485e6a-ccd7-4d1f-ab58-d322440d0431,,,,false,,true,"{}",false,400,false,false
+272,Rule Name,rule_name,Inventory,str,true,true,false,2.2,false,false,"2750611",,,,false,,true,"{}",false,400,false,false
+80,PC9,display_article,Product Profile,link,true,true,false,1.0,false,true,"2007a",,,,false,,true,"{}",true,200,false,false
+80,PC9 Description,article_description,Product Profile,str,true,false,false,2.0,false,true,"2008",,,,false,,true,"{}",true,200,false,false
+80,PC5,l7_code,Product Profile,str,false,false,false,3.0,false,true,"2010",,,,false,,true,"{}",true,200,false,false
+80,Planning Group,l0_name,Product Profile,str,false,false,false,4.0,false,true,"2011",,,,false,,true,"{}",true,200,false,false
+80,Consumer,l1_name,Product,str,false,false,false,5.0,false,false,"2012",,,,false,,true,"{}",true,200,false,false
+80,Category,l3_name,Product Profile,str,false,false,false,6.0,false,true,"2013",,,,false,,true,"{}",true,200,false,false
+80,MFP Categorization,mfp_categorization,Product Profile,str,false,false,false,7.0,false,true,"2009",,,,false,,true,"{}",true,200,false,false
+80,Class,l4_name,Product,str,false,false,false,8.0,false,false,"2014",,,,false,,true,"{}",true,200,false,false
+80,SubClass,l5_name,Product Profile,str,false,false,false,9.0,false,true,"2015",,,,false,,true,"{}",true,200,false,false
+80,Color,color_name,Product Profile,str,false,false,false,10.0,false,true,"2016",,,,false,,true,"{}",true,200,false,false
+242,Store Name,store_name,others,str,true,false,false,1.0,false,true,"2036",,,,false,,true,"{}",true,200,false,false
+242,Store ID,store_code,others,str,true,false,false,2.0,false,true,"2037",,,,false,,true,"{}",true,200,false,false
+242,Country,country_id,others,str,true,false,false,3.0,false,true,"2038",,,,false,,true,"{}",true,200,false,false
+242,Franchise Partner Name,franchise_name,others,str,true,false,false,4.0,false,true,"20391",,,,false,,true,"{}",true,200,false,false
+242,Overall Proportion %,overall_proportion,others,percentage,false,false,false,6.0,false,true,"2039",,,roundOfftoTwoDecimals,false,,false,"{""defaultSortBy"": ""desc"", ""multiplier"": true}",true,200,false,false
+242,Product Profile Pen%,product_profile_pen,others,percentage,false,false,false,7.0,false,false,"2040",,,roundOfftoTwoDecimals,false,,false,"{""multiplier"": true}",true,200,false,false
+81,Product Profile,name,Product Profile,link,true,true,false,1.0,false,true,"2017",,,,false,,true,"{}",true,200,false,false
+81,Product Information,product_information,Product Profile,str,true,true,false,2.0,false,true,321099,,,,false,,true,"{}",true,200,false,false
+81,Planning Group,l0_name,Product Profile,str,false,false,false,2.0,false,true,"2018",321099,,,false,,false,"{}",true,200,false,false
+81,Consumer,l1_name,Product Profile,str,false,false,false,3.0,false,true,"2019",321099,,,false,,false,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+81,Category,l3_name,Product Profile,str,false,false,false,4.0,false,true,"2020",321099,,,false,,false,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+81,Class,l4_name,Product Profile,str,false,false,false,6.0,false,true,"2021",321099,,,false,,false,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+81,Subclass,l5_name,Product Profile,str,false,false,false,7.0,false,true,"2022",321099,,,false,,false,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+81,PC5,l7_code,Product Profile,str,false,false,false,8.0,false,true,"2023",321099,,,false,,false,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+81,Display Article,display_article,Product Profile,str,false,false,false,7.1,true,true,"2090",,,,false,,false,"{}",true,200,false,false
+81,MFP Categorization,mfp_categorization,Product Profile,str,false,false,false,5.0,false,true,"2024",321099,,,false,,false,"{}",true,200,false,false
+81,Sales Attribute,sales_attribute,Product Profile,str,false,false,false,9.0,false,true,"2025",,,,false,,false,"{}",true,200,false,false
+81,Time Attribute,date_value,Product Profile,str,false,false,false,10.0,false,true,"2026",,,,false,,false,"{}",true,200,false,false
+81,Created At,created_at,Product Profile,datetime,false,false,false,11.0,false,true,"2027",,,,false,,true,"{}",true,200,false,false
+81,Created By,user_name,Product Profile,str,false,false,false,12.0,false,true,"2028",,,,false,,true,"{}",true,200,false,false
+81,Edit,edit,Product Profile,edit_icon,false,true,false,13.0,false,true,"2029",,,,false,,false,"{}",true,200,false,false
+81,Delete,delete,Product Profile,delete_icon,false,true,false,14.0,false,true,"2030",,,,false,,false,"{}",true,200,false,false
+83,PC9,display_article,Product,str,true,false,false,1.0,false,true,"2041a",,,,false,,true,"{}",true,200,false,false
+83,PC9 Description,article_description,Product,str,true,false,false,2.0,false,true,"2041b",,,,false,,true,"{}",true,200,false,false
+83,Planning Group,l0_name,Product Profile,str,false,false,false,3.0,true,true,"2041",,,,false,,true,"{}",true,200,false,false
+83,Consumer,l1_name,Product Profile,str,false,false,false,4.0,false,true,"2042",,,,false,,true,"{}",true,200,false,false
+83,Category,l3_name,Product Profile,str,false,false,false,5.0,false,true,"2043",,,,false,,true,"{}",true,200,false,false
+83,PC5,l7_code,Product Profile,str,false,false,false,6.0,false,true,"2044",,,,false,,true,"{}",true,200,false,false
+83,MFP Categorization,mfp_categorization,Product Profile,str,false,false,false,7.0,false,true,"2045",,,,false,,true,"{}",true,200,false,false
+83,Class,l4_name,Product Profile,str,false,false,false,8.0,false,true,"2046",,,,false,,true,"{}",true,200,false,false
+83,Subclass,l5_name,Product Profile,str,false,false,false,9.0,false,true,"2047",,,,false,,true,"{}",true,200,false,false
+83,Contribution %,contribution,Product,percentage,false,false,false,10.0,false,true,"2048",,,roundOfftoTwoDecimals,false,,true,"{""multiplier"": true}",true,200,false,false
+83,Sales Qty,sales,Product,int,false,false,false,11.0,false,true,"2049",,,,false,,true,"{}",true,200,false,false
+82,PC9 ID,article,Product Profile,str,false,false,false,1.0,false,true,"2068",,,,false,,true,"{}",true,200,false,false
+82,PC9 Description,product_description,Product Profile,str,false,false,false,2.0,false,true,"2069",,,,false,,true,"{}",true,200,false,false
+82,Contribution %,contribution,Product Profile,percentage,false,false,false,3.0,false,true,"2070",,,roundOfftoTwoDecimals,false,,false,"{""multiplier"": true}",true,200,false,false
+240,Overall Proportion %,overall_proportion,others,percentage,false,true,false,4.0,false,true,"2053",,,roundOfftoTwoDecimals,false,,false,"{""defaultSortBy"": ""desc"", ""multiplier"": true}",true,200,false,false
+240,Store Name,store_name,others,str,true,false,false,2.0,false,true,"2050",,,,false,,true,"{}",true,200,false,false
+240,Store ID,store_code,others,str,true,false,false,1.0,false,true,"2051",,,,false,,true,"{}",true,200,false,false
+240,Product Profile Pen%,product_profile_pen,others,percentage,false,true,false,5.0,false,false,"2054",,,roundOfftoTwoDecimals,false,,false,"{""multiplier"": true}",true,200,false,false
+240,Country,country_id,others,str,true,false,false,3.0,false,true,"322005",,,,false,,true,"{}",true,200,false,false
+240,Franchise Partner Name,franchise_name,others,str,true,false,false,4.0,false,true,"322006",,,,false,,true,"{}",true,200,false,false
+27,Store Name,store_name,others,str,true,false,false,1.0,false,true,"2055",,,,false,,true,"{}",true,200,false,false
+27,Store Number,store_code,others,str,true,false,false,2.0,false,true,"2056",,,,false,,true,"{}",true,200,false,false
+27,Overall Proportion %,overall_proportion,others,percentage,false,false,false,4.0,false,true,"2058",,,roundOfftoTwoDecimals,false,,false,"{""defaultSortBy"": ""desc"", ""multiplier"": true}",true,200,false,false
+27,Product Profile Pen%,product_profile_pen,others,percentage,false,false,false,5.0,false,false,"2059",,,roundOfftoTwoDecimals,false,,false,"{""multiplier"": true}",true,200,false,false
+505,Rule ID,rule_code,product,str,true,false,false,1.0,,false,"50501",,,,false,,false,"{}",false,200,false,false
+505,Rule Creation Level ID,rcl_code,product,str,true,false,false,2.0,,false,"50502",,,,false,,false,"{}",false,200,false,false
+505,Planning group,l0_name,product,str,false,false,false,3.0,,false,"50503",,,,false,,false,"{}",false,200,false,false
+505,Consumer,l1_name,product,str,false,false,false,5.0,,false,"50505",,,,false,,false,"{}",false,200,false,false
+505,Category,l3_name,product,str,false,false,false,7.0,,false,"50506",,,,false,,false,"{}",false,200,false,false
+505,Class,l4_name,product,str,false,false,false,8.0,,false,"50507",,,,false,,false,"{}",false,200,false,false
+505,Subclass,l5_name,product,str,false,false,false,9.0,,false,"50508",,,,false,,false,"{}",false,200,false,false
+505,MFP Categorizatio,mfp_categorization,product,str,false,false,false,10.0,,false,"50522",,,,false,,false,"{}",false,200,false,false
+505,PC5 ID,l7_code,product,str,false,false,false,12.0,,false,"50509",,,,false,,false,"{}",false,200,false,false
+505,PC9,display_article,product,str,false,false,false,13.0,,false,"50510",,,,false,,false,"{}",false,200,false,false
+505,PC9 Description,article_description,product,str,false,false,false,14.0,,false,"50511",,,,false,,false,"{}",false,200,false,false
+505,Size,size,product,str,false,false,false,15.0,,false,"50512",,,,false,,false,"{}",false,200,false,false
+505,Store Grade,psa_name,Store,str,false,false,false,16.0,false,true,"50513",,,,false,,false,"{}",false,200,false,false
+505,Franchise Partner Name,franchise_name,Store,str,false,false,false,16.1,false,true,"50532",,,,false,,false,"{}",false,200,false,false
+505,Country,country_id,Store,str,false,false,false,16.2,false,true,"50533",,,,false,,false,"{}",false,200,false,false
+505,Start Date,start_date,product,datetime,false,true,false,17.0,,false,"50514",,,DD-MM-YYYY,false,,false,"{""dateFormat"": ""MM-DD-YYYY"", ""disablePast"": true}",false,200,false,false
+505,End Date,end_date,product,datetime,false,true,false,18.0,,false,"50515",,,DD-MM-YYYY,false,,false,"{""dateFormat"": ""MM-DD-YYYY"", ""disablePast"": true}",false,200,false,false
+505,Min,min_stock,product,int,false,true,false,19.0,,false,"50516",,,,false,,false,"{""dynamicMaxKey"": ""max_stock"",""dynamicMinMaxOnBlur"": true,""typeFormat"": ""number"",""width"": 250}",false,200,false,false
+505,Max,max_stock,Product,int,false,true,false,20.0,false,true,"50517",,false,,false,false,false,"{""dynamicMinKey"": ""min_stock"",""dynamicMinMaxOnBlur"": true,""typeFormat"": ""number"",""noNullValues"": true,""width"": 250}",false,200,false,false
+505,Min distribution by size,min_distribution,product,link,false,true,false,21.1,false,false,"50530",,,,false,,false,"{}",false,200,false,false
+505,Size selection data,x_units_per_size,product,str,false,true,false,21.2,true,false,"50531",,,,false,,false,"{}",false,200,false,false
+505,FWOS Target,wos,Product,int,false,true,false,21.0,false,true,"50518",,false,,false,false,false,"{}",false,200,false,false
+505,Action,action,product,action,false,false,false,22.0,,false,"50519",,,,false,,false,"{}",false,200,false,false
+505,Updated By,user,Product,str,false,false,false,23.0,false,true,"50520",,false,,false,false,false,"{}",false,200,false,false
+505,Last modified,updated_at,Product,datetime,false,false,false,24.0,false,true,"50521",,false,DD-MM-YYYY,false,false,false,"{}",false,200,false,false
+273,Edit,edit,Inventory,edit_icon,false,true,false,5.0,false,false,"60601",,,,false,,false,"{}",false,200,false,false
+273,Delete,delete,Inventory,delete_icon,false,true,false,6.0,false,false,"60602",,,,false,,false,"{}",false,200,false,false
+273,Modified At,updated_at,Inventory,str,false,false,false,4.0,false,false,"60603",,,,false,,false,"{}",false,200,false,false
+273,Modified By,updated_by,Inventory,str,false,false,false,3.0,false,false,"60604",,,,false,,false,"{}",false,200,false,false
+273,Scheduler Frequency,sh_frequency,Inventory,link,false,false,false,2.0,false,false,"60605",,,,false,,false,"{}",false,200,false,false
+273,Scheduler Name,sh_name,Inventory,link,false,false,false,1.0,false,false,"60606",,,,false,,false,"{}",false,200,false,false
+511,Rule Level ID,rcl_code,Product,str,false,false,false,1.0,false,true,"234e997f-6bbc-4c6d-966d-714139a1c7d3",,FALSE,FALSE,false,FALSE,false,"{}",false,200,false,false
+511,Selected Level,level,Product,str,false,false,false,2.0,false,true,fcfb9099-2703-4f42-a7a2-bedf24c31f14,,,,false,,false,"{}",false,200,false,false
+511,Lowest Level,lowest_level,Product,str,false,false,false,3.0,false,true,"11884fe0-c1da-4ebc-8364-bdb72fd3f353",,FALSE,FALSE,false,FALSE,false,"{}",false,200,false,false
+511,Priority,priority,Product,str,false,false,false,4.0,false,true,"7dff6501-ff00-412a-bebb-a4174761e34c",,FALSE,FALSE,false,FALSE,false,"{}",false,200,false,false
+511,Updated By,user,Product,str,false,false,false,5.0,false,true,"7c044ba9-f5f9-4f17-a467-0c2d39bb1b68",,FALSE,FALSE,false,FALSE,false,"{}",false,200,false,false
+511,Last modified,updated_at,Product,date,false,false,false,6.0,false,true,c4a25661-02d2-44e0-899b-e33e84f3c352,,FALSE,DD-MM-YYYY,false,FALSE,false,"{}",false,200,false,false
+511,Action,action,Product,link,false,false,false,7.0,false,true,"74d4b362-9c4b-475a-b297-1caf5f201d8f",,FALSE,FALSE,false,FALSE,false,"{}",false,200,false,false
+506,Rule ID,rule_code,product,str,true,false,false,1.0,,false,"50601",,,,false,,false,"{}",false,200,false,false
+506,Rule Creation Level ID,rcl_code,product,str,true,false,false,2.0,,false,"50602",,,,false,,false,"{}",false,200,false,false
+506,Planning group,l0_name,product,str,false,false,false,3.0,,false,"50616",,,,false,,false,"{}",false,200,false,false
+506,Consumer,l1_name,product,str,false,false,false,5.0,,false,"50604",,,,false,,false,"{}",false,200,false,false
+506,Category,l3_name,product,str,false,false,false,7.0,,false,"50605",,,,false,,false,"{}",false,200,false,false
+506,Class,l4_name,product,str,false,false,false,8.0,,false,"50606",,,,false,,false,"{}",false,200,false,false
+506,Subclass,l5_name,product,str,false,false,false,9.0,,false,"50607",,,,false,,false,"{}",false,200,false,false
+506,MFP Categorizatio,mfp_categorization,product,str,false,false,false,10.0,,false,"50617",,,,false,,false,"{}",false,200,false,false
+506,PC5 ID,l7_code,product,str,false,false,false,12.0,,false,"50618",,,,false,,false,"{}",false,200,false,false
+506,PC9,display_article,product,str,false,false,false,13.0,,false,"50625",,,,false,,false,"{}",false,200,false,false
+506,PC9 Description,article_description,product,str,false,false,false,14.0,,false,"50626",,,,false,,false,"{}",false,200,false,false
+506,Size,size,product,str,false,false,false,15.0,,false,"50608",,,,false,,false,"{}",false,200,false,false
+506,Store ID,store_code,Store,str,false,false,false,16.0,false,true,"50609",,,,false,,false,"{}",false,200,false,false
+506,Start Date,start_date,product,datetime,false,true,false,17.0,,false,"50615",,,DD-MM-YYYY,false,,false,"{""dateFormat"": ""MM-DD-YYYY"", ""disablePast"": true}",false,200,false,false
+506,End Date,end_date,product,datetime,false,true,false,18.0,,false,"50619",,,DD-MM-YYYY,false,,false,"{""dateFormat"": ""MM-DD-YYYY"", ""disablePast"": true}",false,200,false,false
+506,Min,min_stock,product,int,false,true,false,19.0,,false,"50611",,,,false,,false,"{""dynamicMaxKey"": ""max_stock"",""dynamicMinMaxOnBlur"": true,""typeFormat"": ""number"",""width"": 250}",false,200,false,false
+506,Max,max_stock,Product,int,false,true,false,20.0,false,true,"50612",,false,,false,false,false,"{""dynamicMinKey"": ""min_stock"",""dynamicMinMaxOnBlur"": true,""typeFormat"": ""number"",""noNullValues"": true,""width"": 250}",false,200,false,false
+506,FWOS Target,wos,Product,int,false,true,false,21.0,false,true,"50610",,false,,false,false,false,"{}",false,200,false,false
+506,Action,action,product,action,false,false,false,22.0,,false,"50624",,,,false,,false,"{}",false,200,false,false
+506,Updated By,user,Product,str,false,false,false,23.0,false,true,"50614",,false,,false,false,false,"{}",false,200,false,false
+506,Last modified,updated_at,Product,datetime,false,false,false,24.0,false,true,"50613",,false,DD-MM-YYYY,false,false,false,"{}",false,200,false,false
+510,Rule ID,rule_code,product,str,true,false,false,1.0,,false,"51001",,,,false,,true,"{}",false,200,false,false
+510,Rule Creation Level,rcl_code,product,str,true,false,false,2.0,,false,"51002",,,,false,,true,"{}",false,200,false,false
+510,Planning group,l0_name,product,str,true,false,false,3.0,,false,"51003",,,,false,,true,"{}",false,200,false,false
+510,Consumer,l1_name,product,str,false,false,false,5.0,,false,"51005",,,,false,,true,"{}",false,200,false,false
+510,Category,l3_name,product,str,false,false,false,6.0,,false,"51006",,,,false,,true,"{}",false,200,false,false
+510,Class,l4_name,product,str,false,false,false,7.0,,false,"51007",,,,false,,true,"{}",false,200,false,false
+510,Subclass,l5_name,product,str,false,false,false,8.0,,false,"51008",,,,false,,true,"{}",false,200,false,false
+510,MFP Categorization,mfp_categorization,product,str,false,false,false,9.0,,false,"51009",,,,false,,true,"{}",false,200,false,false
+510,PC5 ID,l7_code,product,str,false,false,false,10.0,,false,"51010",,,,false,,true,"{}",false,200,false,false
+510,PC9,display_article,product,str,false,false,false,11.0,,false,"51011",,,,false,,true,"{}",false,200,false,false
+510,PC9 Description,article_description,product,str,false,false,false,12.0,,false,"51012",,,,false,,true,"{}",false,200,false,false
+510,Size,size,product,str,false,false,false,13.0,,false,"51013",,,,false,,true,"{}",false,200,false,false
+269,Rule Name,rule_name,Inventory,link,false,false,false,2.0,false,false,"2690001",,,,false,,false,"{}",false,200,false,false
+269,Modified By,updated_by,Inventory,str,false,false,false,3.0,false,false,"2690002",,,,false,,false,"{}",false,200,false,false
+269,Modified At,updated_at,Inventory,str,false,false,false,4.0,false,false,"2690003",,,,false,,false,"{}",false,200,false,false
+269,Edit,edit,Inventory,edit_icon,false,true,false,5.0,false,false,"2690004",,,,false,,false,"{}",false,200,false,false
+269,Delete,delete,Inventory,delete_icon,false,true,false,6.0,false,false,"2690005",,,,false,,false,"{}",false,200,false,false
+270,Rule Name,rule_name,Inventory,link,false,false,false,2.0,false,false,"322107",,,,false,,false,"{}",false,200,false,false
+270,Modified By,updated_by,Inventory,str,false,false,false,3.0,false,false,"322108",,,,false,,false,"{}",false,200,false,false
+270,Modified At,updated_at,Inventory,str,false,false,false,4.0,false,false,"322109",,,,false,,false,"{}",false,200,false,false
+270,Edit,edit,Inventory,edit_icon,false,true,false,5.0,false,false,"322110",,,,false,,false,"{}",false,200,false,false
+270,Delete,delete,Inventory,delete_icon,false,true,false,6.0,false,false,"322111",,,,false,,false,"{}",false,200,false,false
+301,Action Item,name,Product,str,FALSE,FALSE,FALSE,1,FALSE,FALSE,345000,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+301,Description,description,Product,str,FALSE,FALSE,FALSE,2,FALSE,FALSE,345001,,,,FALSE,,TRUE,{},TRUE,300,FALSE,FALSE
+301,#PC9s,article_count,Product,int,FALSE,FALSE,FALSE,3,FALSE,FALSE,345002,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+105,Allocation Plan Name,name,Inventory,str,false,false,false,1.0,false,false,"1034",,[NULL],[NULL],false,[NULL],true,"{}",true,200,false,false
+105,Bulk Remaining,inv_avai,Inventory,int,false,false,false,4.0,false,false,"1038",,[NULL],[NULL],false,[NULL],false,"{}",true,200,false,false
+105,Allocated Quantity,allocated_total,Inventory,str,false,false,false,5.0,false,false,"1039",,[NULL],[NULL],false,[NULL],true,"{}",true,200,false,false
+105,# PC9,art_count,Inventory,str,false,false,false,2.0,false,false,"1035",,,,false,,true,"{}",true,200,false,false
+105,Creation Date,created_at,Inventory,datetime,false,false,false,3.0,false,false,"1036",,[NULL],DD-MM-YYYY,false,[NULL],false,"{}",true,200,false,false
+106,Plan Code,plan_code,Inventory,str,true,false,false,1.0,false,false,"1043",,[NULL],[NULL],false,[NULL],false,"{}",true,200,false,false
+106,PC9,display_article,Inventory,str,true,false,false,2.0,false,false,"1044",,,,false,,true,"{}",true,200,false,false
+106,Product Information,product_info,Inventory,str,false,false,false,3.0,false,false,321041,,[NULL],[NULL],false,[NULL],false,"{}",true,200,false,false
+106,PC9 Description,article_description,Inventory,str,false,false,false,3.0,false,false,"1045",321041,,,false,,false,"{}",false,200,false,false
+106,Planning Group,l0_name,Inventory,str,false,false,false,4.0,false,false,"1046",321041,[NULL],[NULL],false,[NULL],true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+106,Consumer,l1_name,Inventory,str,false,false,false,5.0,false,false,"1047",321041,[NULL],[NULL],false,[NULL],true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+106,Category,l3_name,Inventory,str,false,false,false,5.1,false,false,"106113",321041,[NULL],[NULL],false,[NULL],true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+106,MFP Categorization,mfp_categorization,Inventory,str,false,false,false,5.2,false,false,"106115",321041,[NULL],[NULL],false,[NULL],true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+106,Class,l4_name,Inventory,str,false,false,false,5.3,false,false,"106111",321041,[NULL],[NULL],false,[NULL],true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+106,Sub Class,l5_name,Inventory,str,false,false,false,5.4,false,false,"106112",321041,[NULL],[NULL],false,[NULL],true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+106,Auto Allocation DC,auto_allocation_dc,Inventory,str,false,false,false,5.5,false,true,"106114",,,,false,,true,"{}",true,200,false,false
+106,Total Allocated,allocated_total,Inventory,int,false,false,false,6.0,false,false,"1048",,,,false,,true,"{}",true,300,false,false
+106,DC OH,dc_oh,Inventory,int,false,false,false,2,false,false,"1049",,,,false,,true,"{}",true,200,false,false
+106,VIR Remaining,vir_reservation_total,Inventory,int,false,false,false,8.0,false,false,"1050",,,,false,,false,"{}",false,200,false,false
+106,IOB,iob,Inventory,int,false,false,false,9.0,false,false,"1051",,,,false,,false,"{}",false,200,false,false
+106,Last Allocated Date,last_allocation_date,Inventory,datetime,false,false,false,12.0,false,false,"1054",,,DD-MM-YYYY,false,,true,"{}",true,200,false,false
+106,LW Sales Units,last_week_sales,Inventory,str,false,false,false,7.0,false,false,"1052",,[NULL],[NULL],false,[NULL],true,"{}",true,200,false,false
+106,DC Mapped,dc_mapped,Inventory,str,false,false,false,11.0,false,false,"1053",,,,false,,true,"{}",true,200,false,false
+243,PC9,display_article,product,str,TRUE,FALSE,FALSE,1,FALSE,FALSE,243020,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+243,Product Information,product_information,product,str,FALSE,FALSE,FALSE,2,FALSE,FALSE,321102,,,,FALSE,,FALSE,{},FALSE,200,FALSE,FALSE
+243,PC5,l7_code,product,str,FALSE,FALSE,FALSE,3,FALSE,FALSE,243001,321102,,,FALSE,,FALSE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",FALSE,200,FALSE,FALSE
+243,PC9 Description,article_description,product,str,FALSE,FALSE,FALSE,4,FALSE,FALSE,243028,321102,,,FALSE,,FALSE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",FALSE,200,FALSE,FALSE
+243,Consumer,l1_name,product,str,FALSE,FALSE,TRUE,5,FALSE,FALSE,243003,321102,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+243,Category,l3_name,product,str,FALSE,FALSE,FALSE,6,FALSE,FALSE,243004,321102,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+243,MFP Categorization,mfp_categorization,product,str,FALSE,FALSE,FALSE,7,FALSE,FALSE,243034,321102,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+243,Class,l4_name,product,str,FALSE,FALSE,FALSE,8,FALSE,FALSE,243005,321102,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+243,Sub Class,l5_name,product,str,FALSE,FALSE,FALSE,9,FALSE,FALSE,243006,321102,,,FALSE,,FALSE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",FALSE,200,FALSE,FALSE
+243,Size,size,product,str,FALSE,FALSE,FALSE,10,FALSE,FALSE,243010,,,,FALSE,,FALSE,{},FALSE,200,FALSE,FALSE
+243,Store Information,store_information,store,str,FALSE,FALSE,FALSE,11,FALSE,FALSE,321147,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+243,Store ID,store_code,store,str,FALSE,FALSE,FALSE,12,FALSE,FALSE,243011,321147,,,FALSE,,FALSE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",FALSE,200,FALSE,FALSE
+243,Store Name,store_name,store,str,FALSE,FALSE,FALSE,13,FALSE,FALSE,243012,321147,,,FALSE,,FALSE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",FALSE,200,FALSE,FALSE
+243,Store Grade,store_grade,store,str,FALSE,FALSE,FALSE,14,FALSE,FALSE,243013,321147,,,FALSE,,FALSE,{},FALSE,200,FALSE,FALSE
+243,On Floor Date,on_floor_date,product,date,FALSE,FALSE,FALSE,15,FALSE,FALSE,243035,,,DD-MM-YYYY,FALSE,,FALSE,"{""dateFormat"": ""DD-MM-YYYY""}",TRUE,200,FALSE,FALSE
+243,Markdown Date,markdown_date,product,date,FALSE,FALSE,FALSE,16,FALSE,FALSE,243036,,,DD-MM-YYYY,FALSE,,FALSE,"{""dateFormat"": ""DD-MM-YYYY""}",TRUE,200,FALSE,FALSE
+243,Color,color,product,str,FALSE,FALSE,FALSE,17,FALSE,FALSE,243009,321102,,,FALSE,,FALSE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",FALSE,200,FALSE,FALSE
+243,Total Allocated,total_allocated,product,int,FALSE,FALSE,FALSE,18,FALSE,FALSE,243015,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+243,FWOS Target,wos,product,int,FALSE,FALSE,FALSE,19,FALSE,FALSE,243023,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+243,Total Sales,total_sales,product,int,FALSE,FALSE,FALSE,20,FALSE,FALSE,243002,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+243,Qty Match % (Plan vs Actual),qty_match_plan_vs_actual,product,percentage,FALSE,FALSE,FALSE,21,FALSE,FALSE,243016,,,roundOfftoTwoDecimals,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+243,Size Match % (Plan vs Actual),size_match_plan_vs_actual,product,percentage,FALSE,FALSE,FALSE,22,FALSE,FALSE,243017,,,roundOfftoTwoDecimals,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+243,Qty Match % (Actual vs Sales),qty_match_actual_vs_sales,product,percentage,FALSE,FALSE,FALSE,23,FALSE,FALSE,243018,,,roundOfftoTwoDecimals,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+243,Size Match % (Actual vs Sales),size_match_actual_vs_sales,product,percentage,FALSE,FALSE,FALSE,24,FALSE,FALSE,243019,,,roundOfftoTwoDecimals,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+243,MIN,min,product,int,FALSE,FALSE,FALSE,25,FALSE,FALSE,243021,,,,FALSE,,FALSE,{},FALSE,200,FALSE,FALSE
+243,MAX,max,product,int,FALSE,FALSE,FALSE,26,FALSE,FALSE,243022,,,,FALSE,,FALSE,{},FALSE,200,FALSE,FALSE
+243,Store OH,oh,product,int,FALSE,FALSE,FALSE,27,FALSE,FALSE,243029,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+243,Store IT,it,product,int,FALSE,FALSE,FALSE,28,FALSE,FALSE,243030,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+243,Store OO,oo,product,int,FALSE,FALSE,FALSE,29,FALSE,FALSE,243031,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+243,(OH+OO+IT)+allocated,wos_oh_oo_it_allocated,product,float,FALSE,FALSE,FALSE,30,TRUE,FALSE,243024,,,,FALSE,,FALSE,{},FALSE,200,FALSE,FALSE
+243,(OH+OO+IT),wos_oh_oo_it,product,float,FALSE,FALSE,FALSE,31,TRUE,FALSE,243025,,,,FALSE,,FALSE,{},FALSE,200,FALSE,FALSE
+243,(OH+OO),wos_oh_oo,product,float,FALSE,FALSE,FALSE,32,TRUE,FALSE,243026,,,,FALSE,,FALSE,{},FALSE,200,FALSE,FALSE
+243,(OH),wos_oh,product,float,FALSE,FALSE,FALSE,33,TRUE,FALSE,243027,,,,FALSE,,FALSE,{},FALSE,200,FALSE,FALSE
+243,Total Inventory,total_inv,product,float,FALSE,FALSE,FALSE,34,TRUE,FALSE,243032,,,,FALSE,,FALSE,{},FALSE,200,FALSE,FALSE
+243,Remaining Available To Allocate,remaining_available_to_allocate,product,float,FALSE,FALSE,FALSE,35,TRUE,FALSE,243033,,,,FALSE,,FALSE,{},FALSE,200,FALSE,FALSE
+220,Product Information,product_information,Product,str,false,false,false,1.0,false,false,321097,,,,false,,true,"{}",true,251,false,false
+220,PC5,l7_code,Product,str,FALSE,FALSE,FALSE,1,FALSE,FALSE,"22001",321097,,,FALSE,,TRUE,"{}",TRUE,200,FALSE,FALSE
+220,PC9,display_article,Product,str,FALSE,FALSE,FALSE,2,FALSE,FALSE,"22002",321097,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+220,PC9 Description,article_description,Product,str,FALSE,FALSE,FALSE,3,FALSE,FALSE,"22003",321097,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+220,Color,color,Product,str,FALSE,FALSE,FALSE,4,FALSE,FALSE,"22004",321097,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+220,Consumer,l1_name,Product,str,FALSE,FALSE,FALSE,5,FALSE,FALSE,"22005",321097,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+220,Category,l3_name,Product,str,FALSE,FALSE,FALSE,6,FALSE,FALSE,"22006",321097,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+220,Class,l4_name,Product,str,FALSE,FALSE,FALSE,7,FALSE,FALSE,"22007",321097,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+220,Subclass,l5_name,Product,str,FALSE,FALSE,FALSE,8,FALSE,FALSE,"22008",321097,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+220,Past 4 week actual promo,past_4_week_actual_promo,Product,int,FALSE,FALSE,FALSE,9,FALSE,FALSE,"22009",,,,FALSE,,TRUE,"{}",TRUE,200,FALSE,FALSE
+220,Next 4 week planned promo,next_4_week_planned_promo,Product,int,FALSE,FALSE,FALSE,10,FALSE,FALSE,"22010",,,,FALSE,,TRUE,"{}",TRUE,200,FALSE,FALSE
+220,Promo Deviation (%),promo_deviation_percentage,Product,float,FALSE,FALSE,FALSE,11,FALSE,FALSE,"22011",,,,FALSE,,TRUE,"{}",TRUE,200,FALSE,FALSE
+220,Past 4 Week Actual,past_4_week_actual,Product,int,FALSE,FALSE,FALSE,12,FALSE,FALSE,"22012",,,,FALSE,,TRUE,"{}",TRUE,200,FALSE,FALSE
+220,Past 4 Week Forecast,past_4_week_forecast,Product,int,FALSE,FALSE,FALSE,13,FALSE,FALSE,"22013",,,,FALSE,,TRUE,"{}",TRUE,200,FALSE,FALSE
+220,Absolute Error,absolute_error,Product,int,FALSE,FALSE,FALSE,14,FALSE,FALSE,"22014",,,,FALSE,,TRUE,"{}",TRUE,200,FALSE,FALSE
+220,Accuracy (%),accuracy,Product,float,FALSE,FALSE,FALSE,15,FALSE,FALSE,"22015",,,,FALSE,,TRUE,"{}",TRUE,200,FALSE,FALSE
+220,Store On Hand,store_oh,Product,int,FALSE,FALSE,FALSE,16,FALSE,FALSE,"22016",,,,FALSE,,TRUE,"{}",TRUE,200,FALSE,FALSE
+220,Store In Transit,store_it,Product,int,FALSE,FALSE,FALSE,17,FALSE,FALSE,"22017",,,,FALSE,,TRUE,"{}",TRUE,200,FALSE,FALSE
+220,Store On Order,store_oo,Product,int,FALSE,FALSE,FALSE,18,FALSE,FALSE,"22018",,,,FALSE,,TRUE,"{}",TRUE,200,FALSE,FALSE
+220,In-stock (%),instock_percentage,Product,percentage,FALSE,FALSE,FALSE,19,FALSE,FALSE,"22019",,,,FALSE,,TRUE,"{}",TRUE,200,FALSE,FALSE
+221,PC5,l7_code,Product,str,FALSE,FALSE,FALSE,1,FALSE,FALSE,"22101",,,,FALSE,,TRUE,"{}",TRUE,200,FALSE,FALSE
+221,Product Information,product_information,Product,str,false,false,false,2,false,false,321096,,,,false,,true,"{}",true,251,false,false
+221,PC9,display_article,Product,str,FALSE,FALSE,FALSE,2,FALSE,FALSE,"22102",321096,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+221,PC9 Description,article_description,Product,str,FALSE,FALSE,FALSE,3,FALSE,FALSE,"22103",321096,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+221,Color,color,Product,str,FALSE,FALSE,FALSE,4,FALSE,FALSE,"22104",321096,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+221,Consumer,l1_name,Product,str,FALSE,FALSE,FALSE,5,FALSE,FALSE,"22105",321096,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+221,Category,l3_name,Product,str,FALSE,FALSE,FALSE,6,FALSE,FALSE,"22106",321096,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+221,Class,l4_name,Product,str,FALSE,FALSE,FALSE,7,FALSE,FALSE,"22107",321096,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+221,Subclass,l5_name,Product,str,FALSE,FALSE,FALSE,8,FALSE,FALSE,"22108",321096,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+221,Last 4 Weeks Actuals,last_4_weeks_actuals,Product,int,FALSE,FALSE,FALSE,9,FALSE,FALSE,"22109",,,,FALSE,,TRUE,"{}",TRUE,200,FALSE,FALSE
+221,Last 4 Weeks Forecast,last_4_weeks_forecast,Product,int,FALSE,FALSE,FALSE,10,FALSE,FALSE,"22110",,,,FALSE,,TRUE,"{}",TRUE,200,FALSE,FALSE
+221,Next 4 Weeks Forecast,next_4_weeks_forecast,Product,int,FALSE,FALSE,FALSE,11,FALSE,FALSE,"22111",,,,FALSE,,TRUE,"{}",TRUE,200,FALSE,FALSE
+221,Deviation (%),deviation_percentage,Product,float,FALSE,FALSE,FALSE,12,FALSE,FALSE,"22112",,,,FALSE,,TRUE,"{}",TRUE,200,FALSE,FALSE
+221,Store On Hand,store_oh,Product,int,FALSE,FALSE,FALSE,13,FALSE,FALSE,"22113",,,,FALSE,,TRUE,"{}",TRUE,200,FALSE,FALSE
+221,Store In Transit,store_it,Product,int,FALSE,FALSE,FALSE,14,FALSE,FALSE,"22114",,,,FALSE,,TRUE,"{}",TRUE,200,FALSE,FALSE
+221,Store On Order,store_oo,Product,int,FALSE,FALSE,FALSE,15,FALSE,FALSE,"22115",,,,FALSE,,TRUE,"{}",TRUE,200,FALSE,FALSE
+221,In-stock (%),instock_percentage,Product,percentage,FALSE,FALSE,FALSE,16,FALSE,FALSE,"22116",,,,FALSE,,TRUE,"{}",TRUE,200,FALSE,FALSE
+222,PC5,l7_code,Product,str,FALSE,FALSE,FALSE,1,FALSE,FALSE,"22201",,,,FALSE,,TRUE,"{}",TRUE,200,FALSE,FALSE
+222,Product Information,product_information,Product,str,false,false,false,2,false,false,321095,,,,false,,true,"{}",true,251,false,false
+222,PC9,display_article,Product,str,FALSE,FALSE,FALSE,2,FALSE,FALSE,"22202",321095,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+222,PC9 Description,article_description,Product,str,FALSE,FALSE,FALSE,3,FALSE,FALSE,"22203",321095,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+222,Color,color,Product,str,FALSE,FALSE,FALSE,4,FALSE,FALSE,"22204",321095,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+222,Consumer,l1_name,Product,str,FALSE,FALSE,FALSE,5,FALSE,FALSE,"22205",321095,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+222,Category,l3_name,Product,str,FALSE,FALSE,FALSE,6,FALSE,FALSE,"22206",321095,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+222,Class,l4_name,Product,str,FALSE,FALSE,FALSE,7,FALSE,FALSE,"22207",321095,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+222,Subclass,l5_name,Product,str,FALSE,FALSE,FALSE,8,FALSE,FALSE,"22208",321095,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+222,Past 4 week actual promo,past_4_week_actual_promo,Product,int,FALSE,FALSE,FALSE,9,FALSE,FALSE,"22209",,,,FALSE,,TRUE,"{}",TRUE,200,FALSE,FALSE
+222,Next 4 week planned promo,next_4_week_planned_promo,Product,int,FALSE,FALSE,FALSE,10,FALSE,FALSE,"22210",,,,FALSE,,TRUE,"{}",TRUE,200,FALSE,FALSE
+222,Promo Deviation (%),promo_deviation_percentage,Product,float,FALSE,FALSE,FALSE,11,FALSE,FALSE,"22211",,,,FALSE,,TRUE,"{}",TRUE,200,FALSE,FALSE
+222,Past 4 Week Actual,past_4_week_actual,Product,int,FALSE,FALSE,FALSE,12,FALSE,FALSE,"22212",,,,FALSE,,TRUE,"{}",TRUE,200,FALSE,FALSE
+222,Past 4 Week Forecast,past_4_week_forecast,Product,int,FALSE,FALSE,FALSE,13,FALSE,FALSE,"22213",,,,FALSE,,TRUE,"{}",TRUE,200,FALSE,FALSE
+222,Absolute Error,absolute_error,Product,int,FALSE,FALSE,FALSE,14,FALSE,FALSE,"22214",,,,FALSE,,TRUE,"{}",TRUE,200,FALSE,FALSE
+222,Accuracy (%),accuracy,Product,float,FALSE,FALSE,FALSE,15,FALSE,FALSE,"22215",,,,FALSE,,TRUE,"{}",TRUE,200,FALSE,FALSE
+222,Store On Hand,store_oh,Product,int,FALSE,FALSE,FALSE,16,FALSE,FALSE,"22216",,,,FALSE,,TRUE,"{}",TRUE,200,FALSE,FALSE
+222,Store In Transit,store_it,Product,int,FALSE,FALSE,FALSE,17,FALSE,FALSE,"22217",,,,FALSE,,TRUE,"{}",TRUE,200,FALSE,FALSE
+222,Store On Order,store_oo,Product,int,FALSE,FALSE,FALSE,18,FALSE,FALSE,"22218",,,,FALSE,,TRUE,"{}",TRUE,200,FALSE,FALSE
+222,In-stock (%),instock_percentage,Product,percentage,FALSE,FALSE,FALSE,19,FALSE,FALSE,"22219",,,,FALSE,,TRUE,"{}",TRUE,200,FALSE,FALSE
+223,PC5,l7_code,Product,str,FALSE,FALSE,FALSE,1,FALSE,FALSE,"22301",,,,FALSE,,TRUE,"{}",TRUE,200,FALSE,FALSE
+223,Product Information,product_information,Product,str,false,false,false,2,false,false,321094,,,,false,,true,"{}",true,251,false,false
+223,PC9,display_article,Product,str,FALSE,FALSE,FALSE,2,FALSE,FALSE,"22302",321094,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+223,PC9 Description,article_description,Product,str,FALSE,FALSE,FALSE,3,FALSE,FALSE,"22303",321094,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+223,Color,color,Product,str,FALSE,FALSE,FALSE,4,FALSE,FALSE,"22304",321094,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+223,Consumer,l1_name,Product,str,FALSE,FALSE,FALSE,5,FALSE,FALSE,"22305",321094,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+223,Category,l3_name,Product,str,FALSE,FALSE,FALSE,6,FALSE,FALSE,"22306",321094,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+223,Class,l4_name,Product,str,FALSE,FALSE,FALSE,7,FALSE,FALSE,"22307",321094,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+223,Subclass,l5_name,Product,str,FALSE,FALSE,FALSE,8,FALSE,FALSE,"22308",321094,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+223,LY Past 4 Week Actual,ly_past_4_week_actual,Product,int,FALSE,FALSE,FALSE,9,FALSE,FALSE,"22309",,,,FALSE,,TRUE,"{}",TRUE,200,FALSE,FALSE
+223,LY Next 4 Week Actual,ly_next_4_week_actual,Product,int,FALSE,FALSE,FALSE,10,FALSE,FALSE,"22310",,,,FALSE,,TRUE,"{}",TRUE,200,FALSE,FALSE
+223,LY Deviation (%),ly_deviation_percentage,Product,int,FALSE,FALSE,FALSE,11,FALSE,FALSE,"22311",,,,FALSE,,TRUE,"{}",TRUE,200,FALSE,FALSE
+223,Past 4 Week Actual,past_4_week_actual,Product,int,FALSE,FALSE,FALSE,12,FALSE,FALSE,"22312",,,,FALSE,,TRUE,"{}",TRUE,200,FALSE,FALSE
+223,Next 4 Weeks Forecast,next_4_weeks_forecast,Product,int,FALSE,FALSE,FALSE,13,FALSE,FALSE,"22313",,,,FALSE,,TRUE,"{}",TRUE,200,FALSE,FALSE
+223,Forecast Deviation (%),forecast_deviation_percentage,Product,int,FALSE,FALSE,FALSE,14,FALSE,FALSE,"22314",,,,FALSE,,TRUE,"{}",TRUE,200,FALSE,FALSE
+223,Past 4 week actual store count,past_4_week_actual_store_count,Product,int,FALSE,FALSE,FALSE,15,FALSE,FALSE,"22315",,,,FALSE,,TRUE,"{}",TRUE,200,FALSE,FALSE
+223,Next 4 week store count,next_4_week_store_count,Product,int,FALSE,FALSE,FALSE,16,FALSE,FALSE,"22316",,,,FALSE,,TRUE,"{}",TRUE,200,FALSE,FALSE
+223,Store Count deviation (%),store_count_deviation_percentage,Product,int,FALSE,FALSE,FALSE,17,FALSE,FALSE,"22317",,,,FALSE,,TRUE,"{}",TRUE,200,FALSE,FALSE
+223,Past 4 week actual promo,past_4_week_actual_promo,Product,int,FALSE,FALSE,FALSE,18,FALSE,FALSE,"22318",,,,FALSE,,TRUE,"{}",TRUE,200,FALSE,FALSE
+223,Next 4 week planned promo,next_4_week_planned_promo,Product,int,FALSE,FALSE,FALSE,19,FALSE,FALSE,"22319",,,,FALSE,,TRUE,"{}",TRUE,200,FALSE,FALSE
+223,Promo Deviation (%),promo_deviation_percentage,Product,float,FALSE,FALSE,FALSE,20,FALSE,FALSE,"22320",,,,FALSE,,TRUE,"{}",TRUE,200,FALSE,FALSE
+223,Store On Hand,store_oh,Product,int,FALSE,FALSE,FALSE,21,FALSE,FALSE,"22321",,,,FALSE,,TRUE,"{}",TRUE,200,FALSE,FALSE
+223,Store In Transit,store_it,Product,int,FALSE,FALSE,FALSE,22,FALSE,FALSE,"22322",,,,FALSE,,TRUE,"{}",TRUE,200,FALSE,FALSE
+223,Store On Order,store_oo,Product,int,FALSE,FALSE,FALSE,23,FALSE,FALSE,"22323",,,,FALSE,,TRUE,"{}",TRUE,200,FALSE,FALSE
+121,Store Info,Store Info,Product,str,false,false,false,1.0,false,false,"97001",,,,false,,true,"{}",true,300,false,false
+121,Store Number,store_code,Product,str,false,false,false,2.0,false,false,"97002","97001",,,false,,true,"{}",true,300,false,false
+121,Sales Attributes,Sales Attributes,Product,str,false,false,false,6.0,false,false,"97006",,,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,300,false,false
+121,LW Units,lw_units,Product,str,false,false,false,7.0,false,false,"97007","97006",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,300,false,false
+121,LW Revenue,lw_revenue,Product,dollar,false,false,false,8.0,false,false,"97008","97006",,,false,,true,"{}",true,300,false,false
+121,LW Margin %,lw_margin_perc,Product,int,false,false,false,9.0,false,false,"97009","97006",,,false,,true,"{}",true,300,false,false
+121,Price,price,Product,int,false,false,false,10.0,false,false,"97010","97006",,,false,,true,"{}",true,300,false,false
+121,Store Inventory,Store Inventory,Product,int,false,false,false,11.0,false,false,"97011",,,,false,,true,"{}",true,300,false,false
+121,OH,oh,Product,float,false,false,false,12.0,false,false,"97016","97011",,roundOfftoTwoDecimals,false,,true,"{}",true,300,false,false
+121,OH+IT,oh_it,Product,int,false,false,false,13.0,false,false,"97017","97011",,,false,,true,"{}",true,300,false,false
+121,WOS,WOS,Product,float,false,false,false,14.0,false,false,"97019",,,roundOfftoTwoDecimals,false,,true,"{}",true,300,false,false
+121,OH Actual,wos_oh,Product,int,false,false,false,15.0,false,false,"97018","97019",,roundOfftoTwoDecimals,false,,true,"{}",true,300,false,false
+121,OH+OO Actual,wos_oh_oo,Product,int,false,false,false,16.0,false,false,"97012","97019",,roundOfftoTwoDecimals,false,,true,"{}",true,300,false,false
+121,OH+OO+IT Actual,wos_oh_it_oo,Product,int,false,false,false,17.0,false,false,"97013","97019",,,false,,true,"{}",true,300,false,false
+121,WOS Target,wos_target,Product,int,false,false,false,18.0,false,false,"97014","97019",,,false,,true,"{}",true,300,false,false
+122,PC9,display_article,Product,str,TRUE,false,false,1.0,false,false,"122001d",,,,false,,true,"{}",true,300,false,false
+122,Product Information,article_info,Product,str,false,false,false,2.0,false,false,"122002",,,,false,,true,"{}",true,300,false,false
+122,Consumer,l1_name,Product,str,false,false,false,2.0,false,false,"122002d",122002,,,false,,true,"{}",true,300,false,false
+122,Category,l3_name,Product,str,false,false,false,4.0,false,false,"122004","122002",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,300,false,false
+122,Class,l4_name,Product,str,false,false,false,5.0,false,false,"122005","122002",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,300,false,false
+122,Sub Class,l5_name,Product,str,false,false,false,6.0,false,false,"122006","122002",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,300,false,false
+122,PC5,l7_code,Product,str,false,false,false,9.0,false,false,"122007","122002",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,300,false,false
+122,PC9 Description,article_description,Product,str,false,false,false,10.0,false,false,"122009","122002",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,300,false,false
+122,Global Fit Platform,global_fit_platform,Product,str,false,false,false,7.0,false,false,"122012","122002",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,300,false,false
+122,Markdown Date,markdown_date,Product,date,false,false,false,15.0,false,false,"122013",,,,false,,true,"{""value"":""DD-MM-YYYY""}",true,300,false,false
+122,Price,price,Product,dollar,false,false,false,20.0,false,false,"122014",,,roundOfftoTwoDecimals,false,,true,{},true,300,false,false
+122,Color,color,Product,str,false,false,false,8.0,false,false,"122015","122002",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,300,false,false
+122,Distributions,distributions,Product,str,false,false,false,11.0,false,false,"122016","122002",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,300,false,false
+122,Product Type,product_tag,Product,str,false,false,false,11.0,false,false,"20e37501-e74f-47eb-9dca-5a72af0b7878",,,,false,,true,"{}",true,300,false,false
+122,Floorset Date,floorset_date,Product,date,false,false,false,14.0,false,false,"122017",,,,false,,true,"{""value"":""DD-MM-YYYY""}",true,300,false,false
+122,Size Count,size_count,Product,str,false,false,false,13.0,false,false,"122019",,,,false,,true,{},true,300,false,false
+122,OH Units,oh,Product,int,false,false,false,20.0,false,false,"122020",,,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,300,false,false
+122,LW Revenue,lw_revenue,Product,dollar,false,false,false,18.0,false,false,"122026",,,,false,,true,"{}",true,300,false,false
+122,LW Units,lw_units,Product,int,false,false,false,17.0,false,false,"122027",,,,false,,true,"{}",true,300,false,false
+122,Last 8 Week Sales,last_8_week_sales,Product,int,false,false,false,28.0,TRUE,false,"122028",,,,false,,true,"{}",true,300,false,false
+122,IT Units,it,Product,int,false,false,false,21.0,false,false,"122029",,,,false,,true,"{}",true,300,false,false
+122,OO Units,oo,Product,int,false,false,false,22.0,false,false,"122030",,,,false,,true,"{}",true,300,false,false
+122,Excess,excess,Product,link,false,true,false,26.0,false,false,b2a406b4-1988-422e-8c5f-a57c8a7b50cf,"122048",,,false,,true,"{}",true,300,false,false
+122,Store Count,Store Count,Product,str,false,false,false,8.0,false,false,"122048",,,,false,,true,"{}",true,300,false,false
+122,IOB,iob,Product,int,false,false,false,20.0,TRUE,false,"122031",,,,false,,true,"{}",true,300,false,false
+122,Normal,normal,Product,link,false,true,false,25.0,false,false,"122032","122048",,,false,,true,"{}",true,300,false,false
+122,Shortfall,shortfall,Product,link,false,true,false,24.0,false,false,"122033","122048",,,false,,true,"{}",true,300,false,false
+122,Stockout,stockout,Product,link,false,true,false,23.0,false,false,"122034","122048",,,false,,true,"{}",true,300,false,false
+122,WOS (OH Actual),wos_oh,Product,float,false,false,false,27.0,false,false,"122035",,,roundOfftoOneDecimals,false,,true,"{}",true,300,false,false
+122,WOS (OH+IT+OO Actual),wos_oh_it_oo,Product,float,FALSE,false,false,29.0,false,false,"122037",,,roundOfftoOneDecimals,false,,true,"{}",true,300,false,false
+122,WOS (OH+OO),wos_oh_oo,Product,float,FALSE,false,false,28.0,false,false,"122038",,,roundOfftoOneDecimals,false,,true,"{}",true,300,false,false
+122,WOS Target,wos_target,Product,float,false,false,false,30.0,false,false,"122039",,,roundOfftoOneDecimals,false,,true,"{}",true,300,false,false
+122,Instock %,instock_perc,Product,progress-bar,false,false,false,19.0,false,false,"122040",,,roundOfftoOneDecimals,false,,true,"{}",true,300,false,false
+122,LW Margin %,lw_margin_perc,Product,progress-bar,false,false,false,19.0,false,false,"122041",,,roundOfftoOneDecimals,false,,true,"{}",true,300,false,false
+122,% Committed,perc_committed,Product,progress-bar,false,false,false,42.0,true,false,"122042",,,roundOfftoOneDecimals,false,,true,"{""multiplier"":true}",true,300,false,false
+122,Promo %,promo_percentage,Product,progress-bar,false,false,false,21.0,false,false,"122043",,,roundOfftoOneDecimals,false,,true,"{}",true,300,false,false
+122,Sell Through %,sell_through_perc,Product,progress-bar,false,false,false,44.0,true,false,"122044",,,roundOfftoOneDecimals,false,,true,"{}",true,300,false,false
+122,Last Allocated,last_allocated,Product,date,false,false,false,16.0,false,false,"23216760-7b0f-46cf-88d2-700e7acc666b",,,,false,,true,"{}",true,300,false,false
+122,Door Count,door_count,Product,int,false,false,false,12.0,false,false,"339ebb83-c32c-4b1e-8fd1-796bcd08c440",,,,false,,true,"{}",true,300,false,false
+122,Store Inv. Snapshot,snapshot,Store,box-plot,FALSE,FALSE,FALSE,30,FALSE,FALSE,323005,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+122,Sales Last 8 Weeks,sales_last_8_weeks,Product,table-chart,FALSE,FALSE,FALSE,31,FALSE,FALSE,323001,,,,FALSE,,TRUE,"{""plotType"": ""line"", ""dataLabels"": [""-W8"", ""-W7"", ""-W6"", ""-W5"", ""-W4"", ""-W3"", ""-W2"", ""-W1""]}",TRUE,200,FALSE,FALSE
+122,Sales - WTD vs LW,sales_cw_vs_lw,Product,table-chart,FALSE,FALSE,FALSE,32,FALSE,FALSE,323002,,,,FALSE,,TRUE,"{""plotType"": ""bar"", ""dataLabels"": [""Last Week"", ""This Week""]}",TRUE,200,FALSE,FALSE
+122,Size In Stock %,in_stock,Product,progress-bar,FALSE,FALSE,FALSE,33,FALSE,FALSE,323017,,,roundOff,FALSE,,FALSE,"{""multiplier"": true}",TRUE,300,FALSE,FALSE
+122,Current WOS (OH),cwos,Store,cell-tag,FALSE,FALSE,FALSE,34,FALSE,FALSE,323015,,,,FALSE,,TRUE,"{""badgeLabel"": ""Target WOS""}",TRUE,200,FALSE,FALSE
+225,PC9,display_article,Product,str,true,false,false,1.0,false,false,"6cb7fa4f-a2b7-4443-ac4c-b45ae01a2068",,,,false,,true,"{}",true,251,false,false
+225,Consumer,l1_name,Product,str,false,false,false,2.0,false,false,"4ef3e4d3-2d14-454b-a65e-b78be74ed584","321090",,,false,,true,"{}",true,251,false,false
+225,Product Information,product_information,Product,str,false,false,false,2.0,false,false,"321090",,,,false,,true,"{}",true,251,false,false
+225,Category,l3_name,Product,str,false,false,false,3.0,false,false,"90368093-ca1c-4e81-912b-c16f53e18b2e","321090",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,251,false,false
+225,MFP Categorization,mfp_categorization,Product,str,false,false,false,4.0,false,false,"1c1ee009-55ef-4a48-a3bc-2b72e07f1d0e","321090",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,251,false,false
+225,Class,l4_name,Product,str,false,false,false,4.1,false,false,fa68f8d7-358e-40e0-adbc-3bce9f974e20,"321090",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,251,false,false
+225,Subclass,l5_name,Product,str,false,false,false,5.0,false,false,d69c6768-634e-40a4-8f4f-71593b74b865,"321090",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,251,false,false
+225,PC5,l7_code,Product,str,false,false,false,6.0,false,false,fd612e18-f898-4c93-9b5a-15d10aade791,"321090",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,251,false,false
+225,Color,color,Product,str,false,false,false,7.0,false,false,"9c116469-6965-4f10-9bb5-579ee9df9a56","321090",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,251,false,false
+225,PC9 Description,article_description,Product,str,false,false,false,8.0,false,false,b87f27cb-843a-43f2-b274-d718abab8fe0,"321090",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,251,false,false
+225,Product Lifecycle,lifecycle,Product,str,false,false,false,9.0,false,false,"6e53be4d-717c-43a5-86a3-db6935fde174","321090",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,251,false,false
+225,Planned Clearance Date,planned_clearance_date,Product,date,false,false,false,9.0,false,false,f634c6b6-c50f-427c-9f43-527ada7472e9,,,,false,,true,"{}",true,251,false,false
+225,DC OH,available_dc_oh,Product,int,false,false,false,10.0,false,false,a580c339-2d7f-404d-a1dd-1271b21f2f8d,,,,false,,false,"{}",false,251,false,true
+225,VIR Remaining,vir_reservation_remaining_pdu_remaining,Product,int,false,false,false,10.5,false,false,"46355a2b-256d-4053-903c-f3099348b6c3",,,,false,,false,"{}",false,251,false,true
+225,IOB,iob,Product,int,false,false,false,11.0,false,false,"99e0f007-a85f-4ca8-b065-60764a4326b9",,,,false,,false,"{}",false,251,false,true
+225,In-stock%,instock_percentage,Product,percentage,false,false,false,13.0,false,false,a34fe7c1-a84e-4191-bc7e-c2bd861d2c36,,,roundOfftoOneDecimals,false,,true,"{}",true,251,false,false
+225,DC Mapped,dc_mapped,Product,str,false,false,false,17.0,false,false,"8f4fe1ee-e825-4cfd-88c4-3fa5307a1e71",,,,false,,true,"{}",true,251,false,false
+225,FWOS Target,fwos,Product,int,false,false,false,18.0,false,false,"76615024-91d7-42f9-9f64-5bb3c2d2a747",,,,false,,true,"{}",true,251,false,false
+89,Store Number,store_code,Store,str,TRUE,FALSE,FALSE,1,FALSE,TRUE,6000,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+89,Store Name,store_name,Store,str,TRUE,FALSE,FALSE,2,FALSE,TRUE,6001,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+89,Store Cluster,store_cluster,Store,str,TRUE,FALSE,FALSE,3,FALSE,TRUE,6002,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+89,Store Grade,store_grade,Store,str,TRUE,FALSE,FALSE,4,FALSE,TRUE,6003,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+89,Overall Proportion (%),overall_proportion,Others,percentage,FALSE,FALSE,FALSE,5,FALSE,TRUE,6004,,,roundOfftoTwoDecimals,FALSE,,FALSE,{},TRUE,400,FALSE,FALSE
+89,Size to Overall Store Contribution %,size_level_proportion,Others,percentage,FALSE,FALSE,FALSE,6,FALSE,TRUE,6005,,,,FALSE,,FALSE,{},TRUE,400,FALSE,FALSE
+89,Min,min_stock,Others,int,FALSE,TRUE,FALSE,7,FALSE,TRUE,6006,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+89,ROS,aps/ros_rounded,Others,int,FALSE,FALSE,FALSE,8,FALSE,TRUE,6007,,,,FALSE,,TRUE,"{""typeFormat"": ""number""}",TRUE,200,FALSE,FALSE
+89,Max,max_stock,Others,int,FALSE,TRUE,FALSE,9,FALSE,TRUE,6008,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+89,Aggr Min,min_stock_sum,Others,int,FALSE,FALSE,FALSE,10,FALSE,TRUE,6009,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+89,Aggr Max,max_stock_sum,Others,int,FALSE,FALSE,FALSE,11,FALSE,TRUE,6010,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+89,WOS Target,wos_rounded,Others,int,FALSE,TRUE,FALSE,12,FALSE,TRUE,6011,,,,FALSE,,TRUE,"{""typeFormat"": ""number""}",TRUE,200,FALSE,FALSE
+89,Estimated Demand,estimated_demand,Others,int,FALSE,FALSE,FALSE,13,FALSE,TRUE,6012,,,roundOfftoTwoDecimals,FALSE,,TRUE,{},TRUE,260,FALSE,FALSE
+89,Transit Time,transit_time,Others,int,FALSE,FALSE,FALSE,14,FALSE,TRUE,6013,,,roundOfftoTwoDecimals,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+89,Store On Hand,on_hand,Others,int,FALSE,FALSE,FALSE,15,FALSE,TRUE,6014,,,roundOfftoTwoDecimals,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+89,Store On Order,on_order,Others,int,FALSE,FALSE,FALSE,16,FALSE,TRUE,6015,,,roundOfftoTwoDecimals,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+89,Store In Transit,in_transit,Others,int,FALSE,FALSE,FALSE,17,FALSE,TRUE,6016,,,roundOfftoTwoDecimals,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+96,Product Information,product_information,Product,str,false,false,false,1.0,false,false,"321103",,,,false,,true,"{}",true,251,false,false
+96,PC9,display_article,Product,str,false,false,false,2.0,false,false,"1003","321103",,,false,,true,"{}",false,200,false,false
+96,Consumer,l1_name,Product,str,false,false,false,3.0,false,false,"1005","321103",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",false,200,false,false
+96,Category,l3_name,Product,str,false,false,false,4.0,false,false,"1006","321103",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",false,200,false,false
+96,Class,l4_name,Product,str,false,false,false,5.0,false,false,"1007","321103",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",false,200,false,false
+96,Subclass,l5_name,Product,str,false,false,false,6.0,false,false,"1008","321103",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",false,200,false,false
+96,MFP Categorization,mfp_categorization,Product,str,false,false,false,7.0,false,false,"1002","321103",,,false,,false,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",false,200,false,false
+96,PC5,l7_code,Product,str,false,false,false,8.0,false,false,"1001","321103",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",false,200,false,false
+96,PC9 Description,article_description,Product,str,false,false,false,9.0,false,false,"1004","321103",,,false,,false,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",false,200,false,false
+96,Auto-Allocation DC,auto_allocation_dc,Product,str,false,false,false,10.0,false,false,"1021",,,,false,,true,"{}",false,200,false,false
+96,Product Life Cycle,product_life_cycle,Product,str,false,false,false,11.0,false,false,"1009","321103",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",false,200,false,false
+96,On Floor Date,on_floor_date,Product,datetime,false,false,false,12.0,false,false,"1010",,,DD-MM-YYYY,false,,false,"{""dateFormat"": ""DD-MM-YYYY""}",false,200,false,false
+96,Markdown Date,markdown_date,Product,datetime,false,false,false,13.0,false,false,"1011",,,DD-MM-YYYY,false,,false,"{""dateFormat"": ""DD-MM-YYYY""}",false,200,false,false
+96,Last Allocated,last_allocated,Product,str,false,false,false,13.2,false,false,"1012",,,,false,,false,"",false,200,false,false
+96,Demand Type,demand_type,Product,list,false,true,false,13.5,false,false,"1013",,,,false,,false,"{""options"": [{""label"": ""Fixed"",""value"": ""Fixed""},{""label"": ""IA Forecast"",""value"": ""IA""}]}",false,200,false,false
+96,WOS Target,wos,Product,int,false,true,false,15.0,false,false,"1014",,,,false,,true,"{""min"": 0, ""max"": 52}",false,200,false,false
+96,Product Profile,product_profiles,Product,dynamic-list,false,true,false,16.0,false,false,"1015",,,,false,,false,"{""options_column"": ""product_profiles_options""}",false,200,false,false
+96,Eligible Sizes,sizes,Product,dynamic-list,false,true,false,17.0,false,false,"1016",,,,false,,false,"{""options_column"": ""sizes_options"", ""is_multi"": true, ""width"": 200}",false,200,false,false
+96,Store Eligibility Groups,store_groups,Product,dynamic-list,false,true,false,18.0,false,false,"1017",,,,false,,false,"{""options_column"": ""store_groups_options"", ""is_multi"": true}",false,200,false,false
+96,DC,dcs,Product,dynamic-list,false,true,false,19.0,false,false,"1018",,,,false,,false,"{""options_column"": ""dcs_options"", ""is_multi"": true}",false,200,false,false
+96,No. Eligible Stores,mapped_stores_count,Product,int,false,false,false,20.0,false,false,"1019",,,,false,,false,"{}",false,200,false,false
+96,VIR Remaining,vir_pdu_remaining,Product,float,false,false,false,21.0,false,false,"1020",,,,false,,true,"{}",false,200,false,false
+96,IOB,iob,Product,int,false,false,false,22.0,false,false,"1022",,,,false,,true,"{}",false,200,false,false
+96,DC Inv On Hand,oh,Product,int,false,false,false,23.0,false,false,"1023",,,,false,,true,"{}",false,200,false,false
+96,Total Allocated Qty,allocated_units,Product,int,false,false,false,24.0,false,false,"1024",,,,false,,false,"{}",false,200,false,false
+96,Inv. Source,inventory_source,Product,list,false,true,false,25.0,false,false,"1025",,,,false,,false,"{""dc"":{""options"":[{""label"":""DC Inv. on Hand"",""value"":""on_hand""}]},""po"":{""options"":[{""label"":""PO"",""value"":""po""}]},""options"":[{""label"":""DC Inv. on Hand"",""value"":""on_hand""}]}",false,200,false,false
+96,VIR Constraint Flag,vir_constraint,Product,list,false,true,false,26.0,false,false,"1026",,,,false,,false,"{""options"":[{""label"":""No Constraints"",""value"":""No Constraints""},{""label"":""VIR Constraints"",""value"":""VIR Constraints""},{""label"":""VIR + IOB Constraints"",""value"":""VIR + IOB Constraints""}]}",false,200,false,false
+96,Last 4 Week Sales,last_4_week_sales,Product,int,false,false,false,27.0,false,false,"1027",,,,false,,false,"{}",false,200,false,false
+96,LW Sales Units,lw_units,Product,int,false,false,false,28.0,false,false,"1028",,,,false,,false,"{}",false,200,false,false
+96,LW Sales $,lw_revenue,Product,dollar,false,false,false,29.0,false,false,"1029",,,,false,,false,"{}",false,200,false,false
+96,LW Sales Margin,lw_margin,Product,dollar,false,false,false,30.0,false,false,"1030",,,,false,,false,"{}",false,200,false,false
+96,Discount %,discount,Product,percentage,false,false,false,31.0,false,false,"1031",,,,false,,false,"{}",false,200,false,false
+96,User Defined Inv. in %,user_def_inv_perc,Product,percentage,false,true,false,32.0,false,false,"1032",,,,false,,false,"{""min"": 0,""max"": 100}",false,200,false,false
+96,Fixed Inv. Push,user_def_inv,Product,int,false,true,false,33.0,false,true,"1033",,,,false,,false,"{""dynamicMaxKey"": ""net_available_inventory""}",false,200,false,false
+96,Fixed Qty to Allocate,final_tot_inventory,Product,int,false,false,false,34.0,false,false,"1041",,,,false,,false,"{""valueGetter"": ""data.net_available_inventory*data.user_def_inv_perc/100""}",false,200,false,false
+91,Available Inventory,available,product,str,false,false,false,3.0,false,false,"68bea66f-c19b-4254-8fbb-4be8448e57f2",,,,false,,false,"{""is_dynamic"": true,""ignoreSuppressSizeToFit"": true}",false,200,false,false
+91,Allocated Units,allocated,product,str,false,false,false,5.0,false,false,"545ad711-ed49-40d6-a1dd-f59ee6d2e18d",,,,false,,false,"{""is_dynamic"": true,""ignoreSuppressSizeToFit"": true}",false,200,false,false
+224,PC9,display_article,Product,str,true,false,false,1.0,false,false,"22401",,,,false,,true,"{}",true,200,false,false
+224,Product Information,product_information,Product,str,false,false,false,2.0,false,false,"22402",,,,false,,true,"{}",false,200,false,false
+224,Consumer,l1_name,Product,str,false,false,false,3.0,false,false,"22403","22402",,,false,,true,"{}",true,200,false,false
+224,Category,l3_name,Product,str,false,false,false,4.0,false,false,"22404","22402",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+224,MFP Categorization,mfp_categorization,Product,str,false,false,false,5.0,false,false,"22405","22402",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+224,Class,l4_name,Product,str,false,false,false,6.0,false,false,"22406","22402",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+224,Subclass,l5_name,Product,str,false,false,false,7.0,false,false,"22407","22402",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+224,PC5,l7_code,Product,str,false,false,false,8.0,false,false,"22408","22402",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+224,Color,color,Product,str,false,false,false,9.0,false,false,"22409","22402",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+224,PC9 Description,article_description,Product,str,false,false,false,10.0,false,false,"22410","22402",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+224,Product Lifecycle,lifecycle,Product,str,false,false,false,11.0,false,false,"22411","22402",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+224,Fiscal Year,fiscal_year,Product,str,false,false,false,12.0,false,false,"22412",,,,false,,true,"{}",true,200,false,false
+224,Fiscal Week,fiscal_week,Product,str,false,false,false,13.0,false,false,"22413",,,,false,,true,"{}",true,200,false,false
+224,Available Due- In to Allocate,available_due_in_to_allocate,Product,int,false,false,false,14.0,false,false,"22414",,,,false,,true,"{}",true,200,false,false
+224,Receiving DC,receiving_dc,Product,str,false,false,false,15.0,false,false,"22415",,,,false,,true,"{}",true,200,false,false
+224,DC Mapped,dc_mapped,Product,str,false,false,false,16.0,false,false,"22416",,,,false,,true,"{}",true,200,false,false
+224,Last Allocated Date,last_allocated_date,Inventory,date,false,false,false,17.0,false,false,"22417",,,,false,,true,"{}",true,200,false,false
+226,PC9,display_article,Product,str,true,false,false,1,false,false,226001,,,,false,,true,"{}",true,251,false,false
+226,Product Information,product_information,Product,str,false,false,false,2,false,false,321088,,,,false,,true,"{}",true,251,false,false
+226,Consumer,l1_name,Product,str,false,false,false,3,false,false,7f9c5b10-f242-4ce7-978b-d52b754c7c88,321088,,,false,,true,{},true,251,false,false
+226,Category,l3_name,Product,str,false,false,false,4,false,false,e0b9e99e-f5af-4cb9-bccb-abd72ded6a03,321088,,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,251,false,false
+226,MFP Categorization,mfp_categorization,Product,str,false,false,false,5,false,false,1c692f9f-4b89-4b66-b745-37625f299be4,321088,,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,251,false,false
+226,Class,l4_name,Product,str,false,false,false,6,false,false,706b0d3c-80df-4866-82f4-506791ce074c,321088,,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,251,false,false
+226,Subclass,l5_name,Product,str,false,false,false,7,false,false,5725c1f7-5a69-4461-ad19-05341ce9ec36,321088,,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,251,false,false
+226,PC5,l7_code,Product,str,false,false,false,8,false,false,226002,321088,,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,251,false,false
+226,Color,color,Product,str,false,false,false,9,false,false,6c5d73ef-63ea-4e4e-ba5c-953f3f4671bf,321088,,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,251,false,false
+226,PC9 Description,article_description,Product,str,false,false,false,10,false,false,f64a61fe-6af1-4277-a849-2179d2aefed8,321088,,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,251,false,false
+226,Product Lifecycle,lifecycle,Product,str,false,false,false,11,false,false,0120d09d-dc5c-4f9f-9120-a710b22e1639,321088,,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,251,false,false
+226,Store OH,store_oh,Product,int,false,false,false,12,false,false,3118c163-a940-40bf-a0d2-8b4786345fe6,,,,false,,true,"{}",true,251,false,false
+226,Store IT,store_it,Product,int,false,false,false,13,false,false,93408c67-db9f-423b-843d-0e2d4d77c560,,,,false,,true,"{}",true,251,false,false
+226,Store OO,store_oo,Product,int,false,false,false,14,false,false,2c5037da-2d6f-4759-a94a-86dcba36630c,,,,false,,true,"{}",true,251,false,false
+226,Available DC OH,available_dc_oh,Product,int,false,false,false,15,false,false,da54fc26-c7a2-403a-bc12-dc75615eab28,,,,false,,true,"{}",true,251,false,true
+226,IOB,iob,Product,int,false,false,false,16,false,false,226_iob_IOB (Legacy & DDC separate for US)_Product,,,,false,,true,"{}",true,251,false,true
+226,VIR Remaining,vir_reservation_remaining_pdu_remaining,Product,int,false,false,false,17,false,false,226_vir_reservation_remaining_pdu_remaining_VIR Reservation Remaining/PDU Remaining_Product,,,,false,,true,"{}",true,251,false,true
+226,Last Week Sales,last_week_sales,Product,int,false,false,false,18,false,false,741ec026-c6c5-408b-8794-3e6e6ec063e6,,,,false,,true,"{}",true,251,false,false
+226,Last Week Revenue,last_week_revenue,Product,dollar,false,false,false,19,false,false,7558cf05-7a78-45fc-8fcf-3e0da7510a85,,,,false,,true,"{}",true,251,false,false
+226,Last 4 Week Sales,last_4_week_sales,Product,int,false,false,false,20,false,false,cc904d0f-fa33-4db3-bf36-f1bc4fa4918a,,,,false,,true,"{}",true,251,false,false
+226,Forecast,forecast,Product,int,false,false,false,21,false,false,226_forecast_Forecast_Product,,,,false,,true,"{}",true,251,false,false
+226,FWOS Target,fwos_target,Product,int,false,false,false,22,false,false,dc5b6b1e-df5a-40a4-8ce2-9f5362c8dcbb,,,,false,,true,"{}",true,251,false,false
+226,Door count,door_count,Product,int,false,false,false,23,false,false,226_door_count_Door count_Product,,,,false,,true,"{}",true,251,false,false
+226,DC Mapped,dc_mapped,Product,str,false,false,false,24,false,false,226_dc_mapped_DC Mapped_Product,,,,false,,true,"{}",true,251,false,false
+226,In-stock%,instock_percentage,Product,percentage,false,false,false,25,false,false,b5298805-1ff2-43e0-8702-22ec862acc8a,,,roundOfftoOneDecimals,false,,true,"{}",true,251,false,false
+227,PC9,display_article,Product,str,true,false,false,1,false,false,35a4ecd2-ddc8-4224-a655-df8a5606d13f,,,,false,,true,"{}",true,251,false,false
+227,Product Information,product_information,Product,str,false,false,false,2,false,false,321087,,,,false,,true,"{}",true,251,false,false
+227,Consumer,l1_name,Product,str,false,false,false,3,false,false,c974a518-ca38-434b-a2e7-d687dae1aec8,321087,,,false,,true,"{}",true,251,false,false
+227,Category,l3_name,Product,str,false,false,false,4,false,false,8ca28761-b229-4647-a8e7-b6799b04fe69,321087,,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,251,false,false
+227,MFP Categorization,mfp_categorization,Product,str,false,false,false,5,false,false,95e60c04-369a-4626-a9b9-6f2c9104aeb6,321087,,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,251,false,false
+227,Class,l4_name,Product,str,false,false,false,6,false,false,7fd3284e-a278-4102-a7c9-8d3519acebe8,321087,,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,251,false,false
+227,Subclass,l5_name,Product,str,false,false,false,7,false,false,e1f9e446-224d-4752-9dc8-cbd061b80b06,321087,,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,251,false,false
+227,PC5,l7_code,Product,str,false,false,false,8,false,false,430bbdd4-26ee-4523-940b-07e77ed3b7e5,321087,,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,251,false,false
+227,Color,color,Product,str,false,false,false,9,false,false,cf44252a-8ea4-45ec-9ff9-7463fcb5d97e,321087,,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,251,false,false
+227,PC9 Description,article_description,Product,str,false,false,false,10,false,false,56d558ab-528c-49cf-976e-35ee87b22cfd,321087,,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,251,false,false
+227,Product Lifecycle,lifecycle,Product,str,false,false,false,11,false,false,a7b07b49-ed78-4b51-b78a-05f998726e88,321087,,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,251,false,false
+227,Store OH,store_oh,Product,int,false,false,false,12,false,false,74f4917f-6410-4085-a0c7-be47abd9af2f,,,,false,,true,"{}",true,251,false,false
+227,Store IT,store_it,Product,int,false,false,false,13,false,false,18bcac23-6aca-4f69-aa57-043136893b7e,,,,false,,true,"{}",true,251,false,false
+227,Store OO,store_oo,Product,int,false,false,false,14,false,false,e5f8c387-442d-446f-924e-b90f41a8c018,,,,false,,true,"{}",true,251,false,false
+227,Available DC OH,available_dc_oh,Product,int,false,false,false,15,false,false,e91cce5d-8b7b-4bd5-bec6-9c45af87236e,,,,false,,true,"{}",true,251,false,true
+227,Last Week Sales,last_week_sales,Product,int,false,false,false,16,false,false,0e6ac24a-b2d4-46d9-8e7e-cef66cda4a08,,,,false,,true,"{}",true,251,false,false
+227,Last Week Revenue,last_week_revenue,Product,dollar,false,false,false,17,false,false,94cbcc04-4f04-4881-81af-0e6e01894277,,,,false,,true,"{}",true,251,false,false
+227,Last 4 Week Sales,last_4_week_sales,Product,int,false,false,false,18,false,false,6d8bfa13-135f-4757-8107-8b45a4857dea,,,,false,,true,"{}",true,251,false,false
+227,Forecast,forecast,Product,int,false,false,false,19,false,false,c0cfb924-cd37-44cb-ac31-f2efc40bfa32,,,,false,,true,"{}",true,251,false,false
+227,FWOS Target,fwos_target,Product,int,false,false,false,20,false,false,43c692d6-b102-4c2f-8e71-b308ffc359ed,,,,false,,true,"{}",true,251,false,false
+227,Door count,door_count,Product,int,false,false,false,21,false,false,e5b8b4df-b0f7-45cb-8517-3ed95c21ab18,,,,false,,true,"{}",true,251,false,false
+227,DC Mapped,dc_mapped,Product,str,false,false,false,22,false,false,3b877b81-760b-432d-9c78-ac477f890a9e,,,,false,,true,"{}",true,251,false,false
+227,In-stock%,instock_percentage,Product,percentage,false,false,false,23,false,false,42e2e4ff-d097-4295-882b-ff2b6606a381,,,roundOfftoOneDecimals,false,,true,"{}",true,251,false,false
+228,PC9,display_article,Product,str,true,false,false,1,false,false,391add25-cc0f-4954-9c92-d618ee7fa22f,,,,false,,true,"{}",true,251,false,false
+228,Product Information,product_information,Product,str,false,false,false,2,false,false,321089,,,,false,,true,"{}",true,251,false,false
+228,Consumer,l1_name,Product,str,false,false,false,3,false,false,f82e746b-d93b-4312-b0ca-f5920e8068c9,321089,,,false,,true,{},true,251,false,false
+228,Category,l3_name,Product,str,false,false,false,4,false,false,e7484f12-941d-450b-989a-723d4d928a18,321089,,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,251,false,false
+228,MFP Categorization,mfp_categorization,Product,str,false,false,false,5,false,false,814946d2-1b4e-4f0e-ab72-9e684c534dea,321089,,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,251,false,false
+228,Class,l4_name,Product,str,false,false,false,6,false,false,ca96d054-d031-4973-96b3-37159c9f57ec,321089,,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,251,false,false
+228,Subclass,l5_name,Product,str,false,false,false,7,false,false,43f73f9e-27c7-44f3-bf34-8c6cffc19545,321089,,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,251,false,false
+228,PC5,l7_code,Product,str,false,false,false,8,false,false,18ae306e-ea38-4262-8bb1-1a8da111dc4b,321089,,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,251,false,false
+228,Color,color,Product,str,false,false,false,9,false,false,d7dcca31-0147-436b-ac24-9aa5333fcbd9,321089,,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,251,false,false
+228,PC9 Description,article_description,Product,str,false,false,false,10,false,false,52a2709b-8d74-41bc-9129-81400af9b9b7,321089,,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,251,false,false
+228,Product Lifecycle,lifecycle,Product,str,false,false,false,11,false,false,ab9f8b1f-2983-42cc-8864-eb889e230483,321089,,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,251,false,false
+228,Store OH,store_oh,Product,int,false,false,false,12,false,false,b3826ad9-6db7-4d85-90ca-55a857799c67,,,,false,,true,"{}",true,251,false,false
+228,Store IT,store_it,Product,int,false,false,false,13,false,false,3c4b4ad9-c1ca-4924-b9b9-8a42ee8a15fd,,,,false,,true,"{}",true,251,false,false
+228,Store OO,store_oo,Product,int,false,false,false,14,false,false,0bcb3823-a4b7-4d17-8a03-4bc256675d60,,,,false,,true,"{}",true,251,false,false
+228,Available DC OH,available_dc_oh,Product,int,false,false,false,15,false,false,0f3a0300-42b8-4020-89ef-1cebcb2e6109,,,,false,,true,"{}",true,251,false,true
+228,IOB,iob,Product,int,false,false,false,16,false,false,228_iob_IOB (Legacy & DDC separate for US)_Product,,,,false,,true,"{}",true,251,false,true
+228,VIR Remaining,vir_reservation_remaining_pdu_remaining,Product,int,false,false,false,17,false,false,228_vir_reservation_remaining_pdu_remaining_VIR Reservation Remaining/PDU Remaining_Product,,,,false,,true,"{}",true,251,false,true
+228,Last Week Sales,last_week_sales,Product,int,false,false,false,18,false,false,829752fb-4fa1-4449-8717-e56b826b8987,,,,false,,true,"{}",true,251,false,false
+228,Last Week Revenue,last_week_revenue,Product,dollar,false,false,false,19,false,false,9bfc421c-e27c-4af7-8152-b3453e1dc6c9,,,,false,,true,"{}",true,251,false,false
+228,Last 4 Week Sales,last_4_week_sales,Product,int,false,false,false,20,false,false,ec1d8480-2c61-4622-bbbf-1167d00a4666,,,,false,,true,"{}",true,251,false,false
+228,Forecast,forecast,Product,int,false,false,false,21,false,false,46a3ec92-17a2-41a0-9010-dc5c7957dfee,,,,false,,true,"{}",true,251,false,false
+228,FWOS Target,fwos_target,Product,int,false,false,false,22,false,false,26be4c8a-8ded-49f2-9836-3db6a6cc461c,,,,false,,true,"{}",true,251,false,false
+228,Door count,door_count,Product,int,false,false,false,23,false,false,605cac67-14f2-4387-87df-326da3df711a,,,,false,,true,"{}",true,251,false,false
+228,DC Mapped,dc_mapped,Product,str,false,false,false,24,false,false,427f1c52-24de-4528-96ad-da4d6c55c803,,,,false,,true,"{}",true,251,false,false
+228,In-stock%,instock_percentage,Product,percentage,false,false,false,25,false,false,957447bc-1869-4b04-a8f6-8de7edb5956c,,,roundOfftoOneDecimals,false,,true,"{}",true,251,false,false
+230,PC9,display_article,Product,str,true,false,false,1.0,false,true,"23002",,,,false,,true,"{}",true,200,false,false
+230,Product Information,product_information,Product,str,false,false,false,2.0,false,false,321091,,,,false,,true,"{}",FALSE,200,FALSE,FALSE
+230,PC5,l7_code,Product,str,false,false,false,6.0,false,true,"23001",321091,,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+230,PC9 Description,article_description,Product,str,false,false,false,8.0,false,false,"230013",321091,,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,251,false,false
+230,Color,color_name,Product,str,false,false,false,7.0,false,true,"23003",321091,,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+230,Consumer,l1_name,Product,str,false,false,false,2.0,false,true,"23004",321091,,,false,,true,{},true,200,false,false
+230,Category,l3_name,Product,str,false,false,false,3.0,false,true,"23005",321091,,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+230,Class,l4_name,Product,str,false,false,false,4.0,false,true,"23006",321091,,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+230,Subclass,l5_name,Product,str,false,false,false,5.0,false,true,"23007",321091,,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+230,DC OH,available_dc_oh,Product,int,false,false,false,14.0,false,true,"23008",,,,false,,true,"{}",true,200,false,true
+230,Store OH,store_oh,Product,int,false,false,false,16.0,false,true,"23009",,,,false,,true,"{}",true,200,false,false
+230,Store IT,store_it,Product,int,false,false,false,17.0,false,true,"23010",,,,false,,true,"{}",true,200,false,false
+230,Store OO,store_oo,Product,int,false,false,false,18.0,false,true,"23011",,,,false,,true,"{}",true,200,false,false
+230,DC Mapped,dc_mapped,Product,str,false,false,false,21.0,false,true,"23012",,,,false,,true,"{}",true,200,false,false
+230,Auto Allocation DC,auto_allocation_dc,Product,str,false,false,false,22.0,false,true,"23013",,,,false,,true,"{}",true,200,false,false
+230,IOB,iob,Product,int,false,false,false,13.0,false,true,"23014",,,,false,,true,"{}",true,200,false,true
+230,FWOS Target,fwos,Product,int,false,false,false,23.0,false,true,"23015",,,,false,,true,"{}",true,200,false,false
+230,VIR Remaining,vir_reservation_remaining_pdu_remaining,Product,int,false,false,false,12.0,false,true,"23016",,,,false,,true,"{}",true,200,false,true
+149,Allocation Plan Name,name,Inventory,str,TRUE,FALSE,FALSE,1,FALSE,FALSE,682,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+149,Allocation ID,plan_code,Inventory,str,TRUE,FALSE,FALSE,1,FALSE,FALSE,321215,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+149,Inventory,inventory,Inventory,list,FALSE,FALSE,FALSE,3,FALSE,FALSE,684,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+149,Created By,created_by,Inventory,str,FALSE,FALSE,FALSE,4,FALSE,FALSE,685,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+149,Created On,created_at,Inventory,datetime,FALSE,FALSE,FALSE,5,FALSE,FALSE,686,,,DD-MM-YYYY,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+149,Status,status,Inventory,str,FALSE,FALSE,FALSE,6,FALSE,FALSE,689,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+149,# Allocated PC9,no_allocated_articles,Inventory,int,FALSE,FALSE,FALSE,8,FALSE,FALSE,2446,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+149,# Stores,no_stores_allocated,Inventory,int,FALSE,FALSE,FALSE,9,FALSE,FALSE,2447,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+13,Action,action,Inventory,review_btn,false,true,false,9.0,false,false,"233243",,,,false,,false,"{""ignore_in_api"": true}",false,200,false,false
+13,Created By,created_by,Inventory,str,false,false,false,6.0,false,false,"244534",,,,false,,true,"{}",true,200,false,false
+13,Created On,created_at,Inventory,datetime,false,false,false,5.0,false,false,"233034",,,,false,,true,"{}",true,200,false,false
+13,Plan Name,name,Inventory,str,true,false,false,1.0,false,false,"4345434",,,,false,,true,"{}",true,220,false,false
+13,Released On,updated_at,Inventory,datetime,false,false,false,7.0,false,false,"454354",,,,false,,true,"{}",true,200,false,false
+13,Status,status,Inventory,str,false,false,false,8.0,false,false,"23283453",,,,false,,false,"{}",false,200,false,false
+13,# Stores,no_stores_allocated,Inventory,int,false,false,false,3.0,false,false,"24493453",,,,false,,false,"{}",false,200,false,false
+13,#Style Colors Allocated,no_allocated_articles,Inventory,int,false,false,false,2.0,false,false,"434543234",,,,false,,false,"{}",false,200,false,false
+13,Total Allocated ,total_allocated_qty,Inventory,int,false,false,false,4.0,false,false,"3454534",,,,false,,false,"{}",false,240,false,false
+263,Rule ID,c_rule_code,Inventory,str,true,false,false,1.0,false,false,db1faf17-af5a-408f-b8e9-d395661b7fe0,,,,false,,true,"{}",false,200,false,false
+263,Rule Creation Level,c_rcl_code,Inventory,str,true,false,false,2.0,false,false,"7bae465b-e68c-4f3b-82e1-61a72f50e86d",,,,false,,true,"{}",false,200,false,false
+263,Rule Name,rule_name,Inventory,str,true,false,false,3.0,false,false,"7d2f1e45-89ab-4cde-9012-3456789abcde",,,,false,,true,"{}",false,200,false,false
+263,Planning Group,l0_name,Product,str,false,false,false,4.0,false,false,"33a3b460-20da-4901-9b8e-e63001065692",,,,false,,true,"{}",false,200,false,false
+263,Consumer,l1_name,Product,str,false,false,false,5.0,false,false,"179f70ef-0a0b-4a6b-8e06-58819637da7c",,,,false,,true,"{}",false,200,false,false
+263,Category,l3_name,Product,str,false,false,false,6.0,false,false,"8ba4f464-d6b8-465f-acd5-89e6e9c23200",,,,false,,true,"{}",false,200,false,false
+263,MFP Categorization,mfp_categorization,Product,str,false,false,false,7.0,false,false,"7f8ff306-66fc-41c0-ae2e-bff6288c4d3f",,,,false,,true,"{}",false,200,false,false
+263,Class,l4_name,Product,str,false,false,false,8.0,false,false,"11a5bd69-28c7-4089-b52a-b5187ee3e63b",,,,false,,true,"{}",false,200,false,false
+263,Subclass,l5_name,Product,str,false,false,false,9.0,false,false,"796d8afd-8538-4ba2-855b-365fddc9adf5",,,,false,,true,"{}",false,200,false,false
+263,PC5,l7_code,Product,str,false,false,false,10.0,false,false,"6d0b6062-5d03-441c-a79c-2d9d64a79a22",,,,false,,true,"{}",false,200,false,false
+263,PC9,display_article,Product,str,false,false,false,11.0,false,false,"3a436fd3-aa1b-41d2-a410-4c95760247bd",,,,false,,true,"{}",false,200,false,false
+263,Store/Store Groups Mapped,store_store_groups_mapped,Inventory,link,false,false,false,12.0,false,false,"9b126d63-3aa2-4713-a670-5d910ef266f5",,,,false,,false,"{}",false,200,false,false
+263,From Date,start_date,Inventory,datetime,false,true,false,13.0,false,false,d9ab1d25-8897-45d5-b133-80dfcb0f954b,,,,false,,true,"{}",false,400,false,false
+263,To Date,end_date,Inventory,datetime,false,true,false,14.0,false,false,"202305f2-aff8-4eb5-a745-c86b08331700",,,,false,,true,"{}",false,400,false,false
+263,Product Profile,product_profile,Inventory,link,false,false,false,15.0,false,false,f3ec5f05-1473-4bc2-8f58-39d0d8e7707f,,,,false,,false,"{}",false,200,false,false
+263,DC to Store Strategy Rules,dc_store_rule_name,Inventory,link,false,false,false,16.0,false,false,"29e249de-938f-4196-b80f-57d00206d7ac",,,,false,,false,"{}",false,200,false,false
+263,Auto Allocation Rules,auto_allocation_rule_name,Inventory,link,false,false,false,17.0,false,false,"68aed282-6761-4f34-a033-3512326b34db",,,,false,,false,"{}",false,200,false,false
+263,Auto Allocation Scheduler,auto_allocation_schedular_name,Inventory,link,false,true,false,18.0,false,false,c74045c9-fb64-4a9f-ad4a-d3cf38112343,,,,false,,true,"{}",false,200,false,false
+317,PC9,display_article,Inventory,str,true,false,false,1.0,false,false,"9103",,,,false,,true,"{}",true,200,false,false
+317,PC9 Description,article_description,Inventory,str,false,false,false,2.0,false,false,"9115","321104",,,false,,true,"{}",true,200,false,false
+317,Allocation Plan Name,allocated_plan_name,Inventory,str,true,false,false,3.0,false,false,"9105",,,,false,,true,"{}",true,200,false,false
+317,Product Information,product_information,Inventory,str,true,false,false,3.0,false,false,"321104",,,,false,,true,"{}",true,200,false,false
+317,PC5,l7_code,Inventory,str,false,false,false,4.0,false,false,"9104","321104",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+317,Color,color,Inventory,str,false,false,false,5.0,false,false,"9112","321104",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+317,Total Units Allocated,total_units_allocated,Inventory,int,false,false,false,6.0,false,false,"19109",,,,false,,false,"{}",false,200,false,false
+317,Min Units Allocated,min_units_allocation,Inventory,int,false,false,false,7.0,false,false,"9100",,,,false,,false,"{}",false,200,false,false
+317,WOS Units Allocated,wos_units_allocation,Inventory,int,false,false,false,8.0,false,false,"9107",,,,false,,false,"{}",false,200,false,false
+317,DC Available,dc_available,Inventory,int,false,false,false,9.0,false,false,"9113",,,,false,,false,"{}",false,200,false,false
+317,Mins,mins,Inventory,int,false,false,false,10.0,false,false,"9114",,,,false,,false,"{}",false,200,false,false
+317,WOS Actual,actual_wos,Inventory,float,false,false,false,11.0,false,false,"913171",,,roundOfftoTwoDecimals,false,,false,"{}",false,200,false,false
+317,FWOS Target,wos,Inventory,float,false,false,false,12.0,false,false,"913172",,,roundOfftoTwoDecimals,false,,false,"{}",false,200,false,false
+318,Store ID,store,Inventory,str,true,false,false,1.0,false,false,"55194",,,,false,,true,"{}",true,200,false,false
+318,Store Name,store_name,Inventory,str,true,false,false,2.0,false,false,"55193",,,,false,,true,"{}",true,200,false,false
+318,Total Units Allocated,total_units_allocated,Inventory,int,false,false,false,3.0,false,false,"55203",,,,false,,false,"{}",false,200,false,false
+318,Min Units Allocated,min_units_allocated,Inventory,int,false,false,false,4.0,false,false,"55200",,,,false,,false,"{}",false,200,false,false
+318,Wos Units Allocated,wos_units_allocated,Inventory,int,false,false,false,5.0,false,false,"55192",,,,false,,false,"{}",false,200,false,false
+318,# Allocated PC9,allocated_pc9,Inventory,int,false,false,false,6.0,false,false,"55210",,,,false,,true,"{}",true,200,false,false
+318,Store OH,store_oh,Inventory,int,false,false,false,7.0,false,false,"55202",,,,false,,true,"{}",true,200,false,false
+318,Store OO,store_oo,Inventory,int,false,false,false,8.0,false,false,"55201",,,,false,,true,"{}",true,200,false,false
+318,Store IT,store_it,Inventory,int,false,false,false,9.0,false,false,"55198",,,,false,,true,"{}",true,200,false,false
+318,FWOS Target,fwos_target,Inventory,float,false,false,false,10.0,false,false,"55212",,,roundOfftoTwoDecimals,false,,true,"{}",true,200,false,false
+318,WOS Actual,actual_wos,Inventory,float,false,false,false,11.0,false,false,"55213",,,roundOfftoTwoDecimals,false,,true,"{}",true,200,false,false
+318,Mins,mins,Inventory,int,false,false,false,12.0,false,false,"55214",,,,false,,true,"{}",true,200,false,false
+117,# PC9s,no_style_color,Store,int,FALSE,FALSE,FALSE,1,FALSE,FALSE,11701,,,,FALSE,,FALSE,"{""iconType"":""style""}",FALSE,200,FALSE,FALSE
+117,Plan Store Count,all_stores,Store,int,FALSE,FALSE,FALSE,2,FALSE,FALSE,11702,,,,FALSE,,FALSE,"{""iconType"":""store""}",FALSE,200,FALSE,FALSE
+117,# Allocated Stores,allocated_stores,Store,int,FALSE,FALSE,FALSE,3,FALSE,FALSE,11703,,,,FALSE,,FALSE,"{""iconType"":""store_per_style""}",FALSE,200,FALSE,FALSE
+117,#Allocated StyleColor-Stores,allocated_stylecolor_store_cnt,Store,int,FALSE,FALSE,FALSE,4.1,FALSE,FALSE,11714,,,,FALSE,,FALSE,"{""iconType"":""stylecolor_store""}",FALSE,200,FALSE,FALSE
+117,Allocated Quantity,total_allocated_qty,Store,int,FALSE,FALSE,FALSE,5,FALSE,FALSE,11705,,,,FALSE,,FALSE,"{""iconType"":""allocated_qty_total""}",FALSE,200,FALSE,FALSE
+117,Net DC Available,net_dc_available,Store,int,FALSE,FALSE,FALSE,6,FALSE,FALSE,11706,,,,FALSE,,FALSE,"{""iconType"":""dc_allocated_qty""}",FALSE,200,FALSE,FALSE
+117,VIR Remaining,dc_level_vir_pdu_remaining,Store,int,FALSE,FALSE,FALSE,7,FALSE,FALSE,11707,,,,FALSE,,FALSE,"{""iconType"":""vir_remaining""}",FALSE,200,FALSE,FALSE
+117,IOB,dc_level_iob,Store,int,FALSE,FALSE,FALSE,8,FALSE,FALSE,11708,,,,FALSE,,FALSE,"{""iconType"":""isiob""}",FALSE,200,FALSE,FALSE
+117,Allocated Quantity (by Size),allocated_qty,Store,int,FALSE,FALSE,FALSE,9,FALSE,FALSE,11709,,,,FALSE,,FALSE,"{""iconType"":""allocated_qnt_by_size""}",FALSE,200,FALSE,FALSE
+119,PC9,display_article,Product,link,TRUE,TRUE,FALSE,1,FALSE,FALSE,11901,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+119,Product Information,product_information,Product,str,TRUE,TRUE,FALSE,2,FALSE,FALSE,321140,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+119,PC9 Description,description,Product,str,FALSE,FALSE,FALSE,2,FALSE,FALSE,11902,321140,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+119,PC5,l7_code,Product,str,FALSE,FALSE,FALSE,3,FALSE,FALSE,11903,321140,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+119,Demand Type Used,demand_type,Product,str,FALSE,FALSE,FALSE,4,FALSE,FALSE,11904,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+119,Plan Store Count,all_stores,Product,str,FALSE,FALSE,FALSE,5,FALSE,FALSE,11905,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+119,Consumer,l1_name,Product,str,FALSE,FALSE,FALSE,6,FALSE,FALSE,11906,321140,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+119,Category,l3_name,Product,str,FALSE,FALSE,FALSE,7,FALSE,FALSE,11907,321140,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+119,MFP Categorization,mfp_categorization,Product,str,FALSE,FALSE,FALSE,8,FALSE,FALSE,11908,321140,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+119,Class,l4_name,Product,str,FALSE,FALSE,FALSE,9,FALSE,FALSE,11909,321140,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+119,Subclass,l5_name,Product,str,FALSE,FALSE,FALSE,10,FALSE,FALSE,11910,321140,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+119,# Allocated Stores,store_cnt,Product,str,FALSE,FALSE,FALSE,11,FALSE,FALSE,11911,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+119,Min Constraint,min,Product,int,FALSE,FALSE,FALSE,12,FALSE,FALSE,11912,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+119,Max Constraint,max,Product,int,FALSE,FALSE,FALSE,13,FALSE,FALSE,11913,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+119,Allocated Size Quantity,allocated_quantity_size,Product,int,FALSE,FALSE,FALSE,14,FALSE,FALSE,11914,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+119,Allocated retail value ($),total_allocated_retail_value,Product,dollar,FALSE,FALSE,FALSE,15,FALSE,FALSE,11915,,,roundOfftoTwoDecimals,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+119,Net DC available,inventory_available,Product,int,FALSE,FALSE,FALSE,16,FALSE,FALSE,11916,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+119,VIR Remaining (Pre-Allocation),dc_level_vir_pre_allocation,Product,int,FALSE,FALSE,FALSE,17,FALSE,FALSE,11917,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+119,VIR Remaining (Post-Allocation),dc_level_vir_post_allocation,Product,int,FALSE,FALSE,FALSE,18,FALSE,FALSE,11918,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+119,% Committed,perc_committed,Product,percentage,FALSE,FALSE,FALSE,19,FALSE,FALSE,11919,,,roundOfftoOneDecimals,FALSE,,TRUE,"{""multiplier"": false}",TRUE,200,FALSE,FALSE
+119,IOB,dc_level_iob,Store,int,FALSE,FALSE,FALSE,20,,FALSE,11920,,,,FALSE,,FALSE,{},FALSE,200,FALSE,FALSE
+119,Markdown Date,markdown_date,Product,date,FALSE,FALSE,FALSE,21,,FALSE,11921,,,,FALSE,,FALSE,{},FALSE,200,FALSE,FALSE
+119,Total Allocated Quantity,allocated_total,Product,int,FALSE,FALSE,FALSE,22,FALSE,FALSE,11922,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+119,In-Stock%,instock_percentage,Product,percentage,FALSE,FALSE,FALSE,23,,FALSE,11923,,,roundOfftoOneDecimals,FALSE,,FALSE,"{""multiplier"": false}",FALSE,200,FALSE,FALSE
+119,Remaining DC Available to Allocate,hle_net_available_qty,Product,int,FALSE,FALSE,FALSE,24,FALSE,FALSE,11925,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+119,Allocated Pack Quantity,hle_allocated_pack_qty,Product,int,FALSE,TRUE,FALSE,25,FALSE,FALSE,11924,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+129,Store Information,store_information,Store,link,TRUE,TRUE,FALSE,1,FALSE,FALSE,321145,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+129,Store Number,store_code,Product,str,FALSE,FALSE,FALSE,1,FALSE,FALSE,12101,321145,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+129,Store Name,store_name,Product,str,FALSE,FALSE,FALSE,2,FALSE,FALSE,12102,321145,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+129,Store Cluster,store_cluster,Product,str,FALSE,FALSE,FALSE,3,FALSE,FALSE,12103,321145,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+129,Store Grade,store_grade,Product,str,FALSE,FALSE,FALSE,4,FALSE,FALSE,12104,321145,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+129,Store On Hand,oh,Product,int,FALSE,FALSE,FALSE,5,FALSE,FALSE,12105,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+129,Store On Order,oo,Product,int,FALSE,FALSE,FALSE,6,FALSE,FALSE,12106,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+129,Store In Transit,it,Product,int,FALSE,FALSE,FALSE,7,FALSE,FALSE,12107,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+129,Min Constraint,min_store,Product,int,FALSE,FALSE,FALSE,8,FALSE,FALSE,12108,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+129,Max Constraint,max_store,Product,int,FALSE,FALSE,FALSE,9,FALSE,FALSE,12109,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+129,Demand Type,demand_type,Product,str,FALSE,FALSE,FALSE,10,FALSE,FALSE,12110,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+129,LW Sales Units,lw_qty,Product,int,FALSE,FALSE,FALSE,11,FALSE,FALSE,12111,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+129,LW Margin %,lw_margin_perc,Product,percentage,FALSE,FALSE,FALSE,12,FALSE,FALSE,12112,,,roundOfftoOneDecimals,FALSE,,TRUE,"{""multiplier"": false}",TRUE,200,FALSE,FALSE
+129,Aggregated Demand (For the Target WOS),aggregated_demand,Product,int,FALSE,FALSE,FALSE,13,FALSE,FALSE,12113,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+129,RDD,delivery_dt,Product,date,FALSE,TRUE,FALSE,14,FALSE,FALSE,12114,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+129,Allocated For Min,min_allocation,Product,int,FALSE,FALSE,FALSE,15,FALSE,FALSE,12115,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+129,Allocated For Demand,wos_allocation,Product,int,FALSE,FALSE,FALSE,16,FALSE,FALSE,12116,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+129,Allocated Quantity at PC 13 Level,allocated_qty_by_pack_dc_level,Product,int,FALSE,TRUE,FALSE,17,FALSE,FALSE,12117,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+129,Available Quantity at PC 13 Level,available_qty_by_pack,Product,int,FALSE,FALSE,FALSE,18,FALSE,FALSE,12118,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+129,In-stock %,instock_percentage,Product,percentage,FALSE,FALSE,FALSE,19,FALSE,FALSE,12119,,,roundOfftoOneDecimals,FALSE,,FALSE,"{""multiplier"": false}",FALSE,200,FALSE,FALSE
+129,Last 4 Week Sales Units,last_4_week_sales,Product,int,FALSE,FALSE,FALSE,20,FALSE,FALSE,12120,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+129,WOS Target,wos_target,Product,float,FALSE,FALSE,FALSE,21,FALSE,FALSE,12121,,,roundOfftoOneDecimals,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+129,Last Week Sales $,lw_revenue,Product,dollar,FALSE,FALSE,FALSE,22,FALSE,FALSE,12122,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+129,WOS Actual,wos_actual,Product,float,FALSE,FALSE,FALSE,23,FALSE,FALSE,12123,,,roundOfftoOneDecimals,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+118,# PC9s,art_cnt,Product,int,FALSE,FALSE,FALSE,1,FALSE,FALSE,11801,,,,FALSE,,TRUE,"{""iconType"":""style""}",TRUE,200,FALSE,FALSE
+118,# Allocated Stores,store_cnt,Product,int,FALSE,FALSE,FALSE,2,FALSE,FALSE,11802,,,,FALSE,,TRUE,"{""iconType"":""store""}",TRUE,200,FALSE,FALSE
+118,PC13 depth per store,sku_depth_per_store,Product,int,FALSE,FALSE,FALSE,3,FALSE,FALSE,11803,,,,FALSE,,TRUE,"{""iconType"":""depth_per_store""}",TRUE,200,FALSE,FALSE
+118,#Allocated StyleColor-Stores,allocated_stylecolor_store_cnt,Product,int,FALSE,FALSE,FALSE,2.1,FALSE,FALSE,11814,,,,FALSE,,TRUE,"{""iconType"":""stylecolor_store""}",TRUE,200,FALSE,FALSE
+118,Allocated Quantity,dc_allocated,Product,int,FALSE,FALSE,FALSE,4,FALSE,FALSE,11804,,,,FALSE,,TRUE,"{""iconType"":""allocated_qty_total""}",TRUE,200,FALSE,FALSE
+118,Net DC Available,dc_available,Product,int,FALSE,FALSE,FALSE,5,FALSE,FALSE,11805,,,,FALSE,,TRUE,"{""iconType"":""dc_allocated_qty""}",TRUE,200,FALSE,FALSE
+118,VIR Remaining,dc_level_vir_pdu_remaining,Product,int,FALSE,FALSE,FALSE,6,FALSE,FALSE,11806,,,,FALSE,,TRUE,"{""iconType"":""vir_remaining""}",TRUE,200,FALSE,FALSE
+118,IOB,dc_level_iob,Product,int,FALSE,FALSE,FALSE,7,FALSE,FALSE,11807,,,,FALSE,,TRUE,"{""iconType"":""isiob""}",TRUE,200,FALSE,FALSE
+118,Store Cluster Allocated Qty,store_cluster_allocated,Product,int,FALSE,FALSE,FALSE,8,FALSE,FALSE,11808,,,,FALSE,,TRUE,"{""iconType"":""store_grade_allocated_qty""}",TRUE,200,FALSE,FALSE
+118,Store Cluster Allocated Percentage,store_cluster_perc,Product,percentage,FALSE,FALSE,FALSE,9,FALSE,FALSE,11809,,,roundOff,FALSE,,TRUE,"{""iconType"":""lw_margin""}",TRUE,200,FALSE,FALSE
+118,Store Grade Allocated Qty,store_grade_allocated,Product,int,FALSE,FALSE,FALSE,10,FALSE,FALSE,11810,,,,FALSE,,TRUE,"{""iconType"":""store_grade_allocated_quantity""}",TRUE,200,FALSE,FALSE
+118,Store Grade Allocated Percentage,store_grade_perc,Product,percentage,FALSE,FALSE,FALSE,11,FALSE,FALSE,11811,,,roundOff,FALSE,,TRUE,"{""iconType"":""store_grade_allocated_percentage""}",TRUE,200,FALSE,FALSE
+330,Store Information,store_information,Store,str,TRUE,TRUE,FALSE,1,FALSE,FALSE,321150,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+330,Store Number,store_code,Product,link,FALSE,TRUE,FALSE,1,FALSE,FALSE,33001,321150,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+330,Store Name,store_name,Product,str,FALSE,FALSE,FALSE,2,FALSE,FALSE,33002,321150,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+330,# PC9s,style_color_cnt,Product,int,FALSE,FALSE,FALSE,4,FALSE,FALSE,33004,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+330,Store Cluster,store_cluster,Product,str,FALSE,FALSE,FALSE,5,FALSE,FALSE,33005,321150,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+330,Store Grade,store_grade,Product,str,FALSE,FALSE,FALSE,6,FALSE,FALSE,33006,321150,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+330,Store on Hand,oh,Product,int,FALSE,FALSE,FALSE,7,FALSE,FALSE,33007,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+330,Store on Order,oo,Product,int,FALSE,FALSE,FALSE,8,FALSE,FALSE,33008,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+330,Store In Transit,it,Product,int,FALSE,FALSE,FALSE,9,FALSE,FALSE,33009,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+330,OH+OO+IT,oh_oo_it_total,Product,int,FALSE,FALSE,FALSE,10,FALSE,FALSE,33010,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+330,Min constraint,min_store,Product,int,FALSE,FALSE,FALSE,11,FALSE,FALSE,33011,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+330,Max constraint,max_store,Product,int,FALSE,FALSE,FALSE,12,FALSE,FALSE,33012,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+330,FWOS Target,fwos_target,Product,float,FALSE,FALSE,FALSE,13,FALSE,FALSE,33013,,,roundOfftoOneDecimals,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+330,Allocated Total Quantity,allocated_quantity,Product,int,FALSE,FALSE,FALSE,14,FALSE,FALSE,33014,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+330,Allocated Pack Quantity,allocated_quantity_packs_eaches,Product,int,FALSE,TRUE,FALSE,14.1,FALSE,FALSE,32900,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+330,Allocated retail value ($),total_allocated_retail_value,Product,dollar,FALSE,FALSE,FALSE,15,FALSE,FALSE,33015,,,roundOfftoTwoDecimals,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+330,Allocated %,allocation_perc,Product,percentage,FALSE,FALSE,FALSE,16,FALSE,FALSE,33016,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+330,WOS Allocation,wos_allocation,Product,int,FALSE,FALSE,FALSE,17,FALSE,FALSE,33017,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+330,Min Allocation,min_allocation,Product,int,FALSE,FALSE,FALSE,18,FALSE,FALSE,33018,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+330,Projected FWOS,projected_fwos,Product,float,FALSE,FALSE,FALSE,19,FALSE,FALSE,33019,,,roundOfftoOneDecimals,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+330,Last Week Sales $,lw_revenue,Product,dollar,FALSE,FALSE,FALSE,20,FALSE,FALSE,33020,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+330,Last 4 Weeks Sales Units,last_4_week_sales,Product,int,FALSE,FALSE,FALSE,21,FALSE,FALSE,33021,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+330,Actual WOS,wos_actual,Product,float,FALSE,FALSE,FALSE,22,FALSE,FALSE,33022,,,roundOfftoOneDecimals,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+280,Action,action,Product,link,false,false,false,7.0,false,true,"280_action_Action_Product",,FALSE,FALSE,false,FALSE,false,"{}",false,200,false,false
+280,Selected Level,level,Product,list,false,false,false,2.0,false,true,"280_selected_level_Selected Level_Product",,,,false,,false,"{}",false,200,false,false
+280,Rule Level ID,rcl_code,Product,str,false,false,false,1.0,false,true,"280_rcl_code_Rule Level ID_Product",,FALSE,FALSE,false,FALSE,false,"{}",false,200,false,false
+280,Priority,priority,Product,str,false,false,false,4.0,false,true,"280_priority_Priority_Product",,FALSE,FALSE,false,FALSE,false,"{}",false,200,false,false
+508,Store ID,store_code,Store,str,false,false,false,1.0,false,false,"50803",,,,false,,true,"{}",false,200,false,false
+508,Store Name,store_name,Store,str,false,false,false,2.0,false,false,"50804",,,,false,,true,"{}",false,200,false,false
+508,Planning Group,planning_group_name,Product,str,false,false,false,3.0,false,false,"50806",,,,false,,true,"{}",true,200,false,false
+508,Country,country_id,Store,str,false,false,false,4.0,false,false,"50805",,,,false,,true,"{}",true,200,false,false
+508,City,city,Store,str,false,false,false,5.0,false,false,"50802",,,,false,,true,"{}",false,200,false,false
+508,Franchise Partner Name,franchise_name,Store,str,false,false,false,6.0,false,false,"50801",,,,false,,true,"{}",false,200,false,false
+508,Business Model,businessmodel,Store,str,false,false,false,7.0,false,false,"50807",,,,false,,true,"{}",false,200,false,false
+522,Fiscal Year,fiscal_year,Product,str,false,false,false,1,false,false,"52201",,,,false,,true,"{}",true,200,false,false
+522,Fiscal Month,fiscal_month,Product,int,false,false,false,2,false,false,"52203",,,,false,,true,"{}",true,200,false,false
+522,Fiscal Week,fiscal_week,Product,int,false,false,false,3,false,false,"52202",,,,false,,true,"{}",true,200,false,false
+522,Product Information,product_information,Product,str,false,false,false,4,false,false,321105,,,,false,,true,"{}",true,200,false,false
+522,Consumer,l1_name,Product,str,false,false,false,4,false,false,"52215",321105,,,false,,true,"{}",true,200,false,false
+522,Category,l3_name,Product,str,false,false,false,5,false,false,"52216",321105,,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+522,Class,l4_name,Product,str,false,false,false,6,false,false,"52217",321105,,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+522,Subclass,l5_name,Product,str,false,false,false,7,false,false,"52218",321105,,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+522,Product Lifecycle,lifecycle,Product,str,false,false,false,8,false,false,"52206",321105,,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+522,MFP Categorization,mfp_categorization,product,str,false,false,false,9,false,true,522102,321105,,,false,,false,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,170,false,false
+522,PC5,l7_code,Product,str,false,false,false,10,false,false,"52213",321105,,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+522,Color,color,Product,str,false,false,false,11,false,false,"52214",321105,,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+522,PC9,display_article,Product,str,false,false,false,12,false,false,"52204",321105,,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+522,PC9 Description,article_description,Product,str,false,false,false,13,false,false,"52212",321105,,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+522,Store Information,store_information,Store,str,false,false,false,5,false,false,321148,,,,false,,true,"{}",true,200,false,false
+522,Territory,territory,Store,str,false,false,false,14,false,false,"52210",321148,,,false,,true,"{}",true,200,false,false
+522,District,district,Store,str,false,false,false,15,false,false,"52211",321148,,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+522,Store Cluster,store_cluster,Store,str,false,false,false,16,false,false,"52208",321148,,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+522,Store Grade,store_grade,Store,str,false,false,false,17,false,false,"52209",321148,,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+522,Store Name,store_name,Store,str,false,false,false,18,false,false,"52207",321148,,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+522,Store ID,store_code,Store,str,false,false,false,19,false,false,"52205",321148,,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+522,On Floor Date,on_floor_date,Product,date,false,false,false,20,false,false,"522100",,,DD-MM-YYYY,false,,true,"{}",true,200,false,false
+522,Markdown Date,markdown_date,Product,datetime,false,false,false,21,false,false,"522101",,,DD-MM-YYYY,false,,true,"{}",true,200,false,false
+522,Opening Inventory,opening_inventory,Product,int,false,false,false,22,false,false,"52220",,,,false,,true,"{}",true,200,false,false
+522,Sales Units,sales_units,Product,int,false,false,false,23,false,false,"52221",,,,false,,true,"{}",true,200,false,false
+522,Cluster Avg Sales,cluster_avg_sales,Product,int,false,false,false,24,false,false,"52222",,,,false,,true,"{}",true,200,false,false
+522,Lost Opportunity (Units),lost_units,Product,int,false,false,false,25,false,false,"52223",,,,false,,true,"{}",true,200,false,false
+522,Lost Opportunity (In $),lost_sales,Product,dollar,false,false,false,26,false,false,"52224",,,,false,,false,"{}",true,200,false,false
+522,MSRP (in $),selling_price,Product,dollar,false,false,false,27,false,false,"52225",,,,false,,false,"{}",true,200,false,false
+137,PC9,display_article,Product,str,false,false,false,1.0,false,false,"326003",,,,false,,true,"{}",true,200,false,false
+137,Fiscal Year,fiscal_year,Product,str,false,false,false,2.0,false,false,"326000",,,,false,,true,"{}",true,200,false,false
+137,Fiscal Week,fiscal_week,Product,int,false,false,false,3.0,false,false,"326001",,,,false,,true,"{}",true,200,false,false
+137,Product Information,product_information,Product,str,false,false,false,4.0,false,false,"321106",,,,false,,true,"{}",true,200,false,false
+137,Consumer,l1_name,Product,str,false,false,false,5.0,false,false,"326024","321106",,,false,,true,"{}",true,200,false,false
+137,Category,l3_name,Product,str,false,false,false,6.0,false,false,"326025","321106",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+137,Class,l4_name,Product,str,false,false,false,7.0,false,false,"326026","321106",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+137,Subclass,l5_name,Product,str,false,false,false,8.0,false,false,"326027","321106",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+137,PC5,l7_code,Product,str,false,false,false,10.0,false,false,"326006","321106",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+137,Color,color,Product,str,false,false,false,11.0,false,false,"326018","321106",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+137,PC9 Description,article_description,Product,str,false,false,false,12.0,false,false,"326004","321106",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+137,Size,size,Product,str,false,false,false,13.0,false,false,"326005",,,,false,,true,"{}",true,200,false,false
+137,Store Information,store_information,Store,str,false,false,false,14.0,false,false,"321144",,,,false,,true,"{}",true,200,false,false
+137,On Floor Date,on_floor_date,Product,date,false,false,false,14.1,false,false,"326030",,,DD-MM-YYYY,false,,true,"{}",true,200,false,false
+137,Markdown Date,markdown_date,Product,datetime,false,false,false,14.2,false,false,"326031",,,DD-MM-YYYY,false,,true,"{}",true,200,false,false
+137,District,district,Product,str,false,false,false,15.0,false,false,"326022","321144",,,false,,true,"{}",true,200,false,false
+137,State,state,Product,str,false,false,false,16.0,false,false,"326021","321144",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+137,Store Cluster,store_cluster,Product,str,false,false,false,17.0,false,false,"326020","321144",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+137,Store Grade,store_grade,Product,str,false,false,false,18.0,false,false,"326023","321144",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+137,Store Name,store_name,Product,str,false,false,false,19.0,false,false,"326019","321144",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+137,Store ID,store_code,Product,str,false,false,false,20.0,false,false,"326002","321144",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+137,Store OH,store_oh,Product,int,false,false,false,21.0,false,false,"326007",,,,false,,true,"{}",true,200,false,false
+137,Store OO,store_oo,Product,int,false,false,false,22.0,false,false,"326008",,,,false,,true,"{}",true,200,false,false
+137,Store IT,store_it,Product,int,false,false,false,23.0,false,false,"326009",,,,false,,true,"{}",true,200,false,false
+137,Sales Units,sales_units,Product,int,false,false,false,24.0,false,false,"326010",,,,false,,true,"{}",true,200,false,false
+137,ROS,ros,Product,int,false,false,false,25.0,false,false,"326011",,,,false,,true,"{}",true,200,false,false
+137,FWOS Threshold,fwos_threshold,Product,int,false,false,false,26.0,false,false,"326012",,,,false,,true,"{}",true,200,false,false
+137,WOS Actual,wos_actual,Product,int,false,false,false,27.0,false,false,"326013",,,,false,,true,"{}",true,200,false,false
+137,FWOS Target,fwos_target,Product,int,false,false,false,28.0,false,false,"326014",,,,false,,true,"{}",true,200,false,false
+137,Excess Inventory Units,excess_inventory_units,Product,int,false,false,false,29.0,false,false,"326015",,,,false,,true,"{}",true,200,false,false
+137,Excess Inventory (in $),excess_inv,Product,dollar,false,false,false,30.0,false,false,"326016",,,roundOfftoTwoDecimals,false,,true,"{}",true,200,false,false
+137,EOP OH Inventory,eop_oh_inventory,Product,int,false,false,false,31.0,false,false,"326017",,,,false,,true,"{}",true,200,false,false
+237,Product Information,product_info,Product,str,FALSE,FALSE,FALSE,1,FALSE,TRUE,321107,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+237,PC9,display_article,Product,str,FALSE,FALSE,FALSE,1,FALSE,TRUE,23701,321107,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+237,PC9 Description,article_description,Product,str,FALSE,FALSE,FALSE,11,FALSE,TRUE,23702,321107,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+237,Carryover/New,carryover_new,Product,str,FALSE,FALSE,FALSE,7,FALSE,TRUE,23704,321107,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+237,Distributions,distributions,Product,str,FALSE,FALSE,FALSE,12,FALSE,TRUE,23705,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+237,Eligible Store Count,eligible_store_count,Product,int,FALSE,FALSE,FALSE,13,FALSE,TRUE,23706,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+237,PC5,l7_code,Product,str,FALSE,FALSE,FALSE,9,FALSE,TRUE,23707,321107,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+237,Color,color,Product,str,FALSE,FALSE,FALSE,10,FALSE,TRUE,23708,321107,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+237,Planning Group,l0_name,Product,str,FALSE,FALSE,FALSE,9,TRUE,TRUE,23709,321107,,,FALSE,,FALSE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",FALSE,200,FALSE,FALSE
+237,Consumer,l1_name,Product,str,FALSE,FALSE,FALSE,2,FALSE,TRUE,23710,321107,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+237,Category,l3_name,Product,str,FALSE,FALSE,FALSE,3,FALSE,TRUE,23711,321107,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+237,Class,l4_name,Product,str,FALSE,FALSE,FALSE,4,FALSE,TRUE,23712,321107,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+237,Subclass,l5_name,Product,str,FALSE,FALSE,FALSE,5,FALSE,TRUE,23713,321107,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+237,Product Status,product_status,Product,str,FALSE,FALSE,FALSE,15,FALSE,TRUE,23714,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+237,Product Lifecycle,lifecycle,Product,str,FALSE,FALSE,FALSE,8,FALSE,TRUE,23715,321107,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+237,Markdown Flag,markdown_flag,Product,str,FALSE,FALSE,FALSE,14,FALSE,TRUE,23716,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+237,L W Sales Units,lw_sales_units,Product,int,FALSE,FALSE,FALSE,16,FALSE,TRUE,23717,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+237,Last 4 Week Sales,last_4_week_sales,Product,int,FALSE,FALSE,FALSE,17,FALSE,TRUE,23718,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+237,WOS,wos,Product,str,FALSE,FALSE,FALSE,,FALSE,FALSE,23719,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+237,WOS (OH+OO+IT),wos_oh_oo_it,Product,float,FALSE,FALSE,FALSE,25,FALSE,TRUE,23720,23719,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+237,WOS (OH+IT),wos_oh_it,Product,float,FALSE,FALSE,FALSE,26,FALSE,TRUE,23721,23719,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+237,WOS (OH),wos_oh,Product,float,FALSE,FALSE,FALSE,27,FALSE,TRUE,23722,23719,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+237,Store,store,Product,str,FALSE,FALSE,FALSE,,FALSE,FALSE,23723,,,,FALSE,,TRUE,{},TRUE,200,FALSE,TRUE
+237,Store On Hand,store_on_hand,Product,link,FALSE,TRUE,FALSE,20,FALSE,TRUE,23724,23723,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+237,Store In Transit,store_in_transit,Product,link,FALSE,TRUE,FALSE,22,FALSE,TRUE,23725,23723,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+237,Store On Order,store_on_order,Product,link,FALSE,TRUE,FALSE,23,FALSE,TRUE,23726,23723,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+237,Total Store Inventory,total_store_inventory,Product,link,FALSE,TRUE,FALSE,24,FALSE,TRUE,23727,23723,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+238,Product Information,product_info,Product,str,FALSE,FALSE,FALSE,1,FALSE,TRUE,321108,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+238,PC9,display_article,Product,str,FALSE,FALSE,FALSE,1,FALSE,TRUE,23801,321108,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+238,PC9 Description,article_description,Product,str,FALSE,FALSE,FALSE,10,FALSE,TRUE,23802,321108,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+238,Carryover/New,carryover_new,Product,str,FALSE,FALSE,FALSE,4,TRUE,TRUE,23804,321108,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+238,Distributions,distributions,Product,str,FALSE,FALSE,FALSE,5,TRUE,TRUE,23805,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+238,PC5,l7_code,Product,str,FALSE,FALSE,FALSE,8,FALSE,TRUE,23806,321108,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+238,Color,color,Product,str,FALSE,FALSE,FALSE,9,FALSE,TRUE,23807,321108,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+238,Planning Group,l0_name,Product,str,FALSE,FALSE,FALSE,8,TRUE,TRUE,23808,321108,,,FALSE,,FALSE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",FALSE,200,FALSE,FALSE
+238,Consumer,l1_name,Product,str,FALSE,FALSE,FALSE,2,FALSE,TRUE,23809,321108,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+238,Category,l3_name,Product,str,FALSE,FALSE,FALSE,3,FALSE,TRUE,23810,321108,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+238,Class,l4_name,Product,str,FALSE,FALSE,FALSE,4,FALSE,TRUE,23811,321108,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+238,Subclass,l5_name,Product,str,FALSE,FALSE,FALSE,5,FALSE,TRUE,23812,321108,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+238,Product Status,product_status,Product,str,FALSE,FALSE,FALSE,12,FALSE,TRUE,23813,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+238,Product Lifecycle,lifecycle,Product,str,FALSE,FALSE,FALSE,7,FALSE,TRUE,23814,321108,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+238,Markdown Flag,markdown_flag,Product,str,FALSE,FALSE,FALSE,11,FALSE,TRUE,23815,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+238,LW Sales Units,lw_sales_units,Product,int,FALSE,FALSE,FALSE,21,FALSE,TRUE,23816,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+238,Last 4 Week Sales,last_4_week_sales,Product,int,FALSE,FALSE,FALSE,22,FALSE,TRUE,23817,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+238,WOS,wos,Product,str,FALSE,FALSE,FALSE,,FALSE,TRUE,23818,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+238,WOS (OH+OO+IT),wos_oh_oo_it,Product,float,FALSE,FALSE,FALSE,30,FALSE,TRUE,23819,23818,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+238,WOS (OH+IT),wos_oh_it,Product,float,FALSE,FALSE,FALSE,31,FALSE,TRUE,23820,23818,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+238,WOS (OH),wos_oh,Product,float,FALSE,FALSE,FALSE,32,FALSE,TRUE,23821,23818,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+238,Store Information,store_information,Store,str,FALSE,FALSE,FALSE,2,FALSE,TRUE,321146,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+238,Store ID,store_code,Store,str,FALSE,FALSE,FALSE,19,FALSE,TRUE,23822,321146,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+238,Store Name,store_name,Store,str,FALSE,FALSE,FALSE,18,FALSE,TRUE,23823,321146,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+238,Store Grade,store_grade,Store,str,FALSE,FALSE,FALSE,16,FALSE,TRUE,23824,321146,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+238,Store Status,store_status,Store,str,FALSE,FALSE,FALSE,20,FALSE,TRUE,23825,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+238,Store Cluster,store_cluster,Store,str,FALSE,FALSE,FALSE,15,FALSE,TRUE,23826,321146,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+238,Territory,territory,Store,str,FALSE,FALSE,FALSE,13,FALSE,TRUE,23827,321146,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+238,District,district,Store,str,FALSE,FALSE,FALSE,14,FALSE,TRUE,23828,321146,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+238,Climate,climate,Store,str,FALSE,FALSE,FALSE,17,FALSE,TRUE,23829,321146,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+238,Store,store,Product,str,FALSE,FALSE,FALSE,,FALSE,FALSE,23830,,,,FALSE,,TRUE,{},TRUE,200,FALSE,TRUE
+238,Store On Hand,store_on_hand,Product,link,FALSE,TRUE,FALSE,25,FALSE,TRUE,23831,23830,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+238,Store In Transit,store_in_transit,Product,link,FALSE,TRUE,FALSE,27,FALSE,TRUE,23832,23830,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+238,Store On Order,store_on_order,Product,link,FALSE,TRUE,FALSE,28,FALSE,TRUE,23833,23830,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+238,Total Store Inventory,total_store_inventory,Product,link,FALSE,TRUE,FALSE,29,FALSE,TRUE,23834,23830,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+239,Store Name,store_name,Store,str,false,false,false,2.0,false,false,23902,,,,false,,false,{},false,200,false,false
+239,Store Number,store_code,Store,str,FALSE,FALSE,FALSE,1.1,FALSE,FALSE,23901,,,,false,,false,{},false,200,false,false
+136,Store Name,store_name,Store,str,FALSE,FALSE,FALSE,2.0,FALSE,FALSE,24102,,,,false,,false,{},false,200,false,false
+136,Store Number,store_code,Store,str,FALSE,FALSE,FALSE,1.1,FALSE,FALSE,24101,,,,false,,false,{},false,200,false,false
+180,Fiscal Week,fiscal_week,Product,int,FALSE,FALSE,FALSE,1,TRUE,FALSE,321000,,,,FALSE,,TRUE,"{}",TRUE,200,false,false
+180,Fiscal Year,fiscal_year,Product,str,FALSE,FALSE,FALSE,2,TRUE,FALSE,321001,,,,FALSE,,TRUE,"{}",TRUE,200,false,false
+180,Product Information,product_info,Product,str,FALSE,FALSE,FALSE,3,TRUE,FALSE,321109,,,,FALSE,,TRUE,"{}",TRUE,200,false,false
+180,PC9,display_article,Product,str,FALSE,FALSE,FALSE,13,FALSE,FALSE,321004,321109,,,FALSE,,TRUE,"{}",TRUE,200,false,false
+180,PC5,l7_code,Product,str,FALSE,FALSE,FALSE,11,FALSE,FALSE,321005,321109,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,false,false
+180,PC9 Description,article_description,Product,str,FALSE,FALSE,FALSE,14,FALSE,FALSE,321006,321109,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,false,false
+180,Consumer,l1_name,Product,str,FALSE,FALSE,FALSE,3,FALSE,FALSE,321008,321109,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,false,false
+180,Category,l3_name,Product,str,FALSE,FALSE,FALSE,4,FALSE,FALSE,321009,321109,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,false,false
+180,MFP Categorization,mfp_categorization,Product,str,FALSE,FALSE,FALSE,8,FALSE,FALSE,321092,321109,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,false,false
+180,Class,l4_name,Product,str,FALSE,FALSE,FALSE,5,FALSE,FALSE,321010,321109,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,false,false
+180,SubClass,l5_name,Product,str,FALSE,FALSE,FALSE,6,FALSE,FALSE,321011,321109,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,false,false
+180,Distributions,distributions,Product,str,FALSE,FALSE,FALSE,12,TRUE,FALSE,321013,321109,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,false,false
+180,Product Lifecycle,lifecycle,Product,str,FALSE,FALSE,FALSE,7,FALSE,FALSE,321014,321109,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,false,false
+180,Color,color,Product,str,FALSE,FALSE,FALSE,12,FALSE,FALSE,321015,321109,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,false,false
+180,Min,min,Product,int,FALSE,FALSE,FALSE,20,FALSE,FALSE,321016,,,,FALSE,,TRUE,{},TRUE,200,false,false
+180,Size,size,Product,str,FALSE,FALSE,FALSE,15,FALSE,FALSE,321017,,,,FALSE,,TRUE,"{}",TRUE,200,false,false
+180,PC13,display_product_code,Product,str,FALSE,FALSE,FALSE,16,FALSE,FALSE,321018,321109,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,false,false
+180,Max,max,Product,int,FALSE,FALSE,FALSE,21,FALSE,FALSE,321019,,,,FALSE,,TRUE,"{}",TRUE,200,false,false
+180,Store OH,store_oh,Product,int,FALSE,FALSE,FALSE,17,FALSE,FALSE,321020,,,,FALSE,,TRUE,"{}",TRUE,200,false,false
+180,Store IT,store_it,Product,int,FALSE,FALSE,FALSE,18,FALSE,FALSE,321021,,,,FALSE,,TRUE,"{}",TRUE,200,false,false
+180,Store OO,store_oo,Product,int,FALSE,FALSE,FALSE,19,FALSE,FALSE,321022,,,,FALSE,,TRUE,{},TRUE,200,false,false
+180,Last week Sales,last_week_sales,Product,float,FALSE,FALSE,FALSE,22,FALSE,FALSE,321023,,,roundOfftoTwoDecimals,FALSE,,TRUE,"{}",TRUE,200,false,false
+180,Forecast Error %,forecast_error_percent,Product,percentage,FALSE,FALSE,FALSE,24,FALSE,FALSE,321024,,,roundOfftoTwoDecimals,FALSE,,TRUE,"{}",TRUE,200,false,false
+180,Markdown Date,markdown_date,Product,datetime,false,false,false,8.0,false,false,"321025",,,DD-MM-YYYY,false,,false,"{""dateFormat"": ""DD-MM-YYYY""}",false,200,false,false
+180,On Floor Date,on_floor_date,Product,datetime,false,false,false,9.0,false,false,"321026",,,DD-MM-YYYY,false,,false,"{""dateFormat"": ""DD-MM-YYYY""}",false,200,false,false
+180,Adjusted Forecast,adjusted_user_forecast,Product,float,FALSE,FALSE,FALSE,23,FALSE,FALSE,321040,,,,FALSE,,TRUE,"{}",TRUE,200,false,false
+180,Count of OOS days,count_of_oos_days,Product,int,FALSE,FALSE,FALSE,25,FALSE,FALSE,321027,,,,FALSE,,TRUE,"{}",TRUE,200,false,false
+180,Count of Eligible Days,count_of_eligible_days,Product,int,FALSE,FALSE,FALSE,26,FALSE,FALSE,321028,,,,FALSE,,TRUE,"{}",TRUE,200,false,false
+180,In stock OH %,in_stock_oh_percent,Product,percentage,FALSE,FALSE,FALSE,27,FALSE,FALSE,321029,,,,FALSE,,TRUE,"{}",TRUE,200,false,false
+180,Count of OOS Days LY,count_of_oos_days_ly,Product,int,FALSE,FALSE,FALSE,28,FALSE,FALSE,321030,,,,FALSE,,TRUE,"{}",TRUE,200,false,false
+180,In stock OH LY %,in_stock_oh_ly_percent,Product,percentage,FALSE,FALSE,FALSE,29,FALSE,FALSE,321031,,,,FALSE,,TRUE,"{}",TRUE,200,false,false
+180,Count of OOS Days (OH+IT),count_of_oos_days_oh_it,Product,int,FALSE,FALSE,FALSE,30,FALSE,FALSE,321032,,,,FALSE,,TRUE,"{}",TRUE,200,false,false
+180,In stock OH+IT %,in_stock_oh_it_percent,Product,percentage,FALSE,FALSE,FALSE,31,FALSE,FALSE,321033,,,,FALSE,,TRUE,"{}",TRUE,200,false,false
+180,Count of OOS Days LY (OH+IT),count_of_oos_days_ly_oh_it,Product,int,FALSE,FALSE,FALSE,32,FALSE,FALSE,321034,,,,FALSE,,TRUE,"{}",TRUE,200,false,false
+180,In stock OH +IT LY %,in_stock_oh_it_ly_percent,Product,percentage,FALSE,FALSE,FALSE,33,FALSE,FALSE,321035,,,,FALSE,,TRUE,"{}",TRUE,200,false,false
+180,Count of OOS Days (OH+IT+OO),count_of_oos_days_oh_it_oo,Product,int,FALSE,FALSE,FALSE,34,FALSE,FALSE,321036,,,,FALSE,,TRUE,"{}",TRUE,200,false,false
+180,In stock OH+IT+OO %,in_stock_oh_it_oo_percent,Product,percentage,FALSE,FALSE,FALSE,35,FALSE,FALSE,321037,,,,FALSE,,TRUE,"{}",TRUE,200,false,false
+180,Count of OOS Days LY (OH+IT+OO),count_of_oos_days_ly_oh_it_oo,Product,int,FALSE,FALSE,FALSE,36,FALSE,FALSE,321038,,,,FALSE,,TRUE,"{}",TRUE,200,false,false
+180,In stock OH +IT+OO LY %,in_stock_oh_it_oo_ly_percent,Product,percentage,FALSE,FALSE,FALSE,37,FALSE,FALSE,321039,,,,FALSE,,TRUE,"{}",TRUE,200,false,false
+182,Fiscal Week,fiscal_week,Product,int,TRUE,FALSE,FALSE,1,FALSE,FALSE,321043,,,,FALSE,,TRUE,"{}",TRUE,200,false,false
+182,Fiscal Year,fiscal_year,Product,str,TRUE,FALSE,FALSE,2,FALSE,FALSE,321044,,,,FALSE,,TRUE,"{}",TRUE,200,false,false
+182,Store Information,store_information,Product,str,FALSE,FALSE,FALSE,26,FALSE,FALSE,321187,,,,FALSE,,TRUE,"{}",TRUE,200,false,false
+182,Store ID,store_code,Product,str,FALSE,FALSE,FALSE,24,FALSE,FALSE,321045,321187,,,FALSE,,TRUE,"{}",TRUE,200,false,false
+182,Store Name,store_name,Product,str,FALSE,FALSE,FALSE,23,FALSE,FALSE,321046,321187,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,false,false
+182,Product Information,product_information,Product,str,FALSE,FALSE,FALSE,26,FALSE,FALSE,322187,,,,FALSE,,TRUE,"{}",TRUE,200,false,false
+182,PC9,display_article,Product,str,FALSE,FALSE,FALSE,14,FALSE,FALSE,321047,322187,,,FALSE,,TRUE,"{}",TRUE,200,false,false
+182,PC5,l7_code,Product,str,FALSE,FALSE,FALSE,12,FALSE,FALSE,321048,322187,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,false,false
+182,PC9 Description,article_description,Product,str,FALSE,FALSE,FALSE,15,FALSE,FALSE,321049,322187,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,false,false
+182,Consumer,l1_name,Product,str,FALSE,FALSE,FALSE,3,FALSE,FALSE,321051,322187,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,false,false
+182,Store Cluster,store_cluster,Product,str,FALSE,FALSE,FALSE,20,FALSE,FALSE,321052,321187,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,false,false
+182,Store Grade,store_grade,Product,str,FALSE,FALSE,FALSE,21,FALSE,FALSE,321053,321187,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,false,false
+182,Category,l3_name,Product,str,FALSE,FALSE,FALSE,4,FALSE,FALSE,321054,322187,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,false,false
+182,Class,l4_name,Product,str,FALSE,FALSE,FALSE,5,FALSE,FALSE,321055,322187,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,false,false
+182,SubClass,l5_name,Product,str,FALSE,FALSE,FALSE,6,FALSE,FALSE,321056,322187,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,false,false
+182,Distributions,distributions,Product,str,FALSE,FALSE,FALSE,8,FALSE,FALSE,321058,,,,FALSE,,TRUE,"{}",TRUE,200,false,false
+182,Product Lifecycle,lifecycle,Product,str,FALSE,FALSE,FALSE,11,FALSE,FALSE,321059,,,,FALSE,,TRUE,"{}",TRUE,200,false,false
+182,Color,color,Product,str,FALSE,FALSE,FALSE,13,FALSE,FALSE,321062,322187,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,false,false
+182,Min,min,Product,int,FALSE,FALSE,FALSE,28,FALSE,FALSE,321063,,,,FALSE,,TRUE,{},TRUE,200,false,false
+182,Max,max,Product,int,FALSE,FALSE,FALSE,29,FALSE,FALSE,321042,,,,FALSE,,TRUE,"{}",TRUE,200,false,false
+182,Size,size,Product,str,FALSE,FALSE,FALSE,16,FALSE,FALSE,321064,,,,FALSE,,TRUE,"{}",TRUE,200,false,false
+182,PC13,display_product_code,Product,str,FALSE,FALSE,FALSE,17,FALSE,FALSE,321065,322187,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,false,false
+182,Markdown Date,markdown_date,Product,datetime,false,false,false,9.0,false,false,"321066",,,DD-MM-YYYY,false,,false,"{""dateFormat"": ""DD-MM-YYYY""}",false,200,false,false
+182,On Floor Date,on_floor_date,Product,datetime,false,false,false,10.0,false,false,"321067",,,DD-MM-YYYY,false,,false,"{""dateFormat"": ""DD-MM-YYYY""}",false,200,false,false
+182,Store OH,store_oh,Product,int,FALSE,FALSE,FALSE,25,FALSE,FALSE,321068,,,,FALSE,,TRUE,"{}",TRUE,200,false,false
+182,Store IT,store_it,Product,int,FALSE,FALSE,FALSE,26,FALSE,FALSE,321069,,,,FALSE,,TRUE,"{}",TRUE,200,false,false
+182,Store OO,store_oo,Product,int,FALSE,FALSE,FALSE,27,FALSE,FALSE,321070,,,,FALSE,,TRUE,"{}",TRUE,200,false,false
+182,Adjusted Forecast,adjusted_user_forecast,Product,float,FALSE,FALSE,FALSE,31,FALSE,FALSE,321071,,,,FALSE,,TRUE,"{}",TRUE,200,false,false
+182,Last week Sales,last_week_sales,Product,float,FALSE,FALSE,FALSE,30,FALSE,FALSE,321072,,,,FALSE,,TRUE,"{}",TRUE,200,false,false
+182,Forecast Error %,forecast_error_percent,Product,percentage,FALSE,FALSE,FALSE,32,FALSE,FALSE,321073,,,roundOfftoTwoDecimals,FALSE,,TRUE,"{}",TRUE,200,false,false
+182,Count of OOS days,count_of_oos_days,Product,int,FALSE,FALSE,FALSE,33,FALSE,FALSE,321074,,,,FALSE,,TRUE,"{}",TRUE,200,false,false
+182,Count of Eligible Days,count_of_eligible_days,Product,int,FALSE,FALSE,FALSE,34,FALSE,FALSE,321075,,,,FALSE,,TRUE,"{}",TRUE,200,false,false
+182,In stock OH %,in_stock_oh_percent,Product,percentage,FALSE,FALSE,FALSE,35,FALSE,FALSE,321076,,,,FALSE,,TRUE,"{}",TRUE,200,false,false
+182,Count of OOS Days LY,count_of_oos_days_ly,Product,int,FALSE,FALSE,FALSE,36,FALSE,FALSE,321077,,,,FALSE,,TRUE,"{}",TRUE,200,false,false
+182,In stock OH LY %,in_stock_oh_ly_percent,Product,percentage,FALSE,FALSE,FALSE,37,FALSE,FALSE,321078,,,,FALSE,,TRUE,"{}",TRUE,200,false,false
+182,Count of OOS Days (OH+IT),count_of_oos_days_oh_it,Product,int,FALSE,FALSE,FALSE,38,FALSE,FALSE,321079,,,,FALSE,,TRUE,"{}",TRUE,200,false,false
+182,In stock OH+IT %,in_stock_oh_it_percent,Product,percentage,FALSE,FALSE,FALSE,39,FALSE,FALSE,321080,,,,FALSE,,TRUE,"{}",TRUE,200,false,false
+182,Count of OOS Days LY (OH+IT),count_of_oos_days_ly_oh_it,Product,int,FALSE,FALSE,FALSE,40,FALSE,FALSE,321081,,,,FALSE,,TRUE,"{}",TRUE,200,false,false
+182,In stock OH +IT LY %,in_stock_oh_it_ly_percent,Product,percentage,FALSE,FALSE,FALSE,41,FALSE,FALSE,321082,,,,FALSE,,TRUE,"{}",TRUE,200,false,false
+182,Count of OOS Days (OH+IT+OO),count_of_oos_days_oh_it_oo,Product,int,FALSE,FALSE,FALSE,42,FALSE,FALSE,321083,,,,FALSE,,TRUE,"{}",TRUE,200,false,false
+182,In stock OH+IT+OO %,in_stock_oh_it_oo_percent,Product,percentage,FALSE,FALSE,FALSE,43,FALSE,FALSE,321084,,,,FALSE,,TRUE,"{}",TRUE,200,false,false
+182,Count of OOS Days LY (OH+IT+OO),count_of_oos_days_ly_oh_it_oo,Product,int,FALSE,FALSE,FALSE,44,FALSE,FALSE,321085,,,,FALSE,,TRUE,"{}",TRUE,200,false,false
+182,In stock OH +IT+OO LY %,in_stock_oh_it_oo_ly_percent,Product,percentage,FALSE,FALSE,FALSE,45,FALSE,FALSE,321086,,,,FALSE,,TRUE,"{}",TRUE,200,false,false
+182,MFP Categorization,mfp_categorization,Product,str,FALSE,FALSE,FALSE,6.1,FALSE,FALSE,321100,322187,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,false,false
+355,Store Code,store_code,Store,list,FALSE,TRUE,FALSE,1,FALSE,TRUE,321235,,,,FALSE,,FALSE,"{""store_attribute_column"": true}",TRUE,300,FALSE,FALSE
+355,Store Name,store_name,Store,TextField,FALSE,FALSE,FALSE,2,FALSE,TRUE,321236,,,,FALSE,,FALSE,"{""store_attribute_column"": true}",TRUE,300,FALSE,FALSE
+355,State,state,Store,TextField,FALSE,FALSE,FALSE,3,FALSE,TRUE,321237,,,,FALSE,,FALSE,"{""store_attribute_column"": true}",TRUE,300,FALSE,FALSE
+355,Business Model,businessmodel,Store,TextField,false,false,false,4.0,false,true,"321238",,,,false,,false,"{""store_attribute_column"": true}",true,300,false,false
+355,Franchise Partner Name,franchise_name,Store,TextField,false,false,false,5.0,false,true,"321239",,,,false,,false,"{""store_attribute_column"": true}",true,300,false,false
+355,Channel,channel,Store,TextField,FALSE,FALSE,FALSE,6,FALSE,FALSE,321240,,,,FALSE,,FALSE,"{""store_attribute_column"": true}",TRUE,300,FALSE,FALSE
+355,Open Date,open_date,Store,TextField,FALSE,FALSE,FALSE,7,FALSE,FALSE,321241,,,,FALSE,,FALSE,"{""store_attribute_column"": true}",TRUE,300,FALSE,FALSE
+355,Country,country_id,Store,TextField,FALSE,FALSE,FALSE,8,FALSE,TRUE,321242,,,,FALSE,,FALSE,"{""store_attribute_column"": true}",TRUE,300,FALSE,FALSE
+355,Territory,territory,Store,TextField,FALSE,FALSE,FALSE,9,FALSE,TRUE,321250,,,,FALSE,,FALSE,"{""store_attribute_column"": true}",TRUE,300,FALSE,FALSE
+354,Store Code,store_code,Inventory,link,false,true,false,1,false,false,321243,,,,false,,true,"{""be_configs"": {""sql_alias"": ""DISTINCT store_code as store_code""}}",true,170,false,false
+354,Store Name,store_name,Inventory,str,FALSE,FALSE,FALSE,2,FALSE,FALSE,321244,,,,FALSE,,TRUE,{},TRUE,170,FALSE,FALSE
+354,Store Opening Date,open_date,Inventory,date,FALSE,FALSE,FALSE,3,FALSE,FALSE,321245,,,,FALSE,,FALSE,"{""be_configs"": {""sql_alias"": ""opening_date as open_date""}}",TRUE,170,FALSE,FALSE
+354,Status,status,Inventory,str,false,false,false,4,true,false,321251,,,,false,,false,{},false,170,false,false
+354,Status,status_text,Inventory,str,FALSE,FALSE,FALSE,4,FALSE,FALSE,321246,,,,FALSE,,FALSE,"{""be_configs"":{""exclude_from_sql"":true}}",FALSE,170,FALSE,FALSE
+354,Store Groups,store_groups,Inventory,str,false,false,false,5,true,false,321286,,,,false,,false,"{}",false,170,false,false
+354,Sister Store Mapping Date,sister_store_mapping_date,Inventory,str,false,false,false,6,true,false,321287,,,,false,,false,"{}",false,170,false,false
+354,Editable,editable,Inventory,str,false,false,false,7,true,false,321288,,,,false,,false,"{""be_configs"": {""sql_alias"": ""true as editable""}}",false,170,false,false
+354,Store Group Mapping Date,store_group_mapping_date,Inventory,str,false,false,false,8,true,false,321289,,,,false,,false,"{}",false,170,false,false
+354,Action Required,action_required,Inventory,link,FALSE,TRUE,FALSE,9,FALSE,FALSE,321247,,,,FALSE,,FALSE,"{""be_configs"":{""exclude_from_sql"":true}}",FALSE,170,FALSE,FALSE
+354,Edit,edit,Inventory,edit_icon,FALSE,TRUE,FALSE,10,FALSE,FALSE,321248,,,,FALSE,,FALSE,"{""be_configs"":{""exclude_from_sql"":true}}",FALSE,170,FALSE,FALSE
+354,Delete,delete,Inventory,delete_icon,FALSE,TRUE,FALSE,11,FALSE,FALSE,321249,,,,FALSE,,FALSE,"{""be_configs"":{""exclude_from_sql"":true}}",FALSE,170,FALSE,FALSE
+1600,Store ID,store,store,str,false,false,false,2.0,false,false,"32878",,,,false,,true,"{}",true,200,false,false
+1600,Store Name,store_name,store,str,false,false,false,3.0,false,false,"32879",,,,false,,true,"{}",true,200,false,false
+1600,Allocated Quantity,allocated_total,Inventory,int,false,false,false,4.0,false,false,"32871",,,,false,,false,"{}",true,130,false,false
+1600,#PC9s,style_count,Inventory,link,false,true,false,5.0,false,false,"32872",,,,false,,true,"{""enableIcon"": true}",true,200,false,false
+1600,#Allocations,allocation_count,Inventory,int,false,false,false,6.0,false,false,"32874",,,,false,,true,"{}",true,200,false,false
+1600,Store Capacity,store_capacity,Inventory,int,false,false,false,8.0,false,false,"32873",,,,false,,true,"{}",true,200,false,false
+1600,Net Available capacity,net_available_capacity,Inventory,int,false,false,false,9.0,false,false,"32876",,,,false,,true,"{}",true,200,false,false
+1600,Store % to Capacity,store_percentage_to_capacity,Inventory,progress-bar,false,false,false,10.0,false,false,"160010",,,,false,,true,"{""multiplier"": true}",true,200,false,false
+1600,Eaches,store_level_eaches,Inventory,int,false,false,false,4.1,false,false,"160001","32871",,,false,,false,"{}",true,130,false,false
+1600,Packs,store_level_packs,Inventory,int,false,false,false,4.2,false,false,"160002","32871",,,false,,false,"{}",true,130,false,false
+1600,Total,allocated_total,Inventory,int,false,false,false,4.3,false,false,"160003","32871",,,false,,false,"{}",true,130,false,false
+1600,Net Available to Allocate,dc_net_available,Inventory,int,false,false,false,8.0,false,false,"160008",,,,false,,false,"{}",true,200,false,false
+1600,Eaches,store_level_eaches_available,Inventory,int,false,false,false,8.1,false,false,"160009","160008",,,false,,false,"{}",true,200,false,false
+1600,Packs,store_level_packs_available,Inventory,int,false,false,false,8.2,false,false,"1600010","160008",,,false,,false,"{}",true,200,false,false
+1600,Total,available_total,Inventory,int,false,false,false,8.3,false,false,"1600011","160008",,,false,,false,"{}",true,200,false,false
+1601,Consumer,l1_name,product,str,false,false,false,1.0,false,false,"160101",,,,false,,true,"{}",true,200,false,false
+1601,Category,l3_name,product,str,false,false,false,2.0,false,false,"160102",,,,false,,true,"{}",true,200,false,false
+1601,Allocated Quantity,allocated_total,Inventory,int,false,false,false,3.0,false,false,"160107",,,,false,,true,"{}",true,200,false,false
+1601,#PC9s,style_count,Inventory,int,false,false,false,4.0,false,false,"160117",,,,false,,true,"{}",true,200,false,false
+1601,#Stores,store_count,Inventory,link,false,true,false,5.0,false,false,"160108",,,,false,,true,"{""enableIcon"": true}",true,200,false,false
+1601,#Allocations,allocation_count,Inventory,int,false,false,false,6.0,false,false,"160109",,,,false,,true,"{}",true,200,false,false
+1601,Net VIR Remaining,vir_reservation_total,Inventory,int,false,false,false,7.0,false,false,"160110",,,,false,,true,"{}",true,200,false,false
+1601,Eaches,product_level_eaches,Inventory,int,false,false,false,3.1,false,false,"160119","160107",,,false,,false,"{}",true,130,false,false
+1601,Packs,product_level_packs,Inventory,int,false,false,false,3.2,false,false,"160120","160107",,,false,,false,"{}",true,130,false,false
+1601,Total,allocated_total,Inventory,int,false,false,false,3.3,false,false,"160121","160107",,,false,,false,"{}",true,130,false,false
+1601,Net Available to Allocate,dc_net_available,Inventory,int,false,false,false,6.1,false,false,"160111",,,,false,,false,"{}",true,200,false,false
+1601,Eaches,product_level_eaches_available,Inventory,int,false,false,false,6.2,false,false,"160112","160111",,,false,,false,"{}",true,200,false,false
+1601,Packs,product_level_packs_available,Inventory,int,false,false,false,6.3,false,false,"160113","160111",,,false,,false,"{}",true,200,false,false
+1601,Total,available_total,Inventory,int,false,false,false,6.4,false,false,"160114","160111",,,false,,false,"{}",true,200,false,false
+126,Store ID,store,store,str,false,false,false,1.0,false,false,"2824",,,,false,,true,"{}",true,200,false,false
+126,Store Name,store_name,store,str,false,false,false,2.0,false,false,"2283",,,,false,,true,"{}",true,200,false,false
+126,Store Grade,store_grade,store,str,false,false,false,3.0,false,false,"2284",,,,false,,true,"{}",true,200,false,false
+126,PC9 ID,display_article,product,str,false,false,false,4.0,false,false,"2286",,,,false,,true,"{}",true,200,false,false
+126,PC9 Description,article_description,product,str,false,false,false,5.0,false,false,"32105555",,,,false,,true,"{}",true,200,false,false
+126,Store Cluster,store_cluster,store,str,false,false,false,6.0,false,false,"407",,,,false,,true,"{}",true,200,false,false
+126,Consumer,l1_name,product,str,false,false,false,7.0,false,false,"406",,,,false,,true,"{}",true,200,false,false
+126,Category,l3_name,product,str,false,false,false,8.0,false,false,"32105959",,,,false,,true,"{}",true,200,false,false
+126,PC5,pc5,product,str,false,false,false,9.0,false,false,"32105858",,,,false,,true,"{}",true,200,false,false
+126,FWOS Target,wos,Inventory,int,false,false,false,10.0,false,false,"32876060",,,,false,,true,"{}",true,200,false,false
+126,DC Name,dc_name,store,str,false,false,false,11.0,false,false,"32106060",,,,false,,true,"{}",true,200,false,false
+126,VIR Remaining,vir_reservation_remaining,Inventory,int,false,false,false,12.0,false,false,"32106161",,,,false,,true,"{}",true,200,false,false
+126,Min Constraint,min,Inventory,int,false,false,false,13.0,false,false,"2282",,,,false,,true,"{}",true,200,false,false
+126,Allocated Total Quantity,allocated_total,Inventory,int,false,false,false,14.0,false,false,"2288",,,,false,,true,"{}",true,200,false,false
+126,"Allocated Total Retail Value (__ia_char_10)",allocated_value,Inventory,int,false,false,false,15.0,false,false,"32105656",,,,false,,true,"{}",true,200,false,false
+126,WOS Allocation,wos_units_allocation,Inventory,int,false,false,false,16.0,false,false,"32105757",,,,false,,true,"{}",true,200,false,false
+126,Min Allocation,min_units_allocation,Inventory,int,false,false,false,17.0,false,false,"32105758",,,,false,,true,"{}",true,200,false,false
+126,Store % to Capacity,store_percentage_to_capacity,Inventory,progress-bar,false,false,false,18.1,false,false,"126181",,,,false,,true,"{""multiplier"": true}",true,200,false,false
+126,Created At,created_at,Inventory,datetime,false,false,false,19.0,false,false,"32105760",,,,false,,true,"{}",true,200,false,false
+126,Created By,created_by,Inventory,str,false,false,false,20.0,false,false,"32105761",,,,false,,true,"{}",true,200,false,false
+126,RDD,delivery_dt,Inventory,datetime,false,false,false,21.0,false,false,"32105762",,,,false,,true,"{}",true,200,false,false
+126,Allocation Plan ID,allocation_code,Inventory,link,false,true,false,22.0,false,false,"32105763",,,,false,,true,"{}",true,200,false,false
+126,Eaches,store_product_level_eaches,Inventory,int,false,false,false,14.1,false,false,"126001","2288",,,false,,false,"{}",true,130,false,false
+126,Packs,store_product_level_packs,Inventory,int,false,false,false,14.2,false,false,"126002","2288",,,false,,false,"{}",true,130,false,false
+126,Total,allocated_total,Inventory,int,false,false,false,14.3,false,false,"126003","2288",,,false,,false,"{}",true,130,false,false
+126,Net Available to Allocate,dc_net_available,Inventory,int,false,false,false,18.1,false,false,"126025",,,,false,,false,"{}",true,200,false,false
+126,Eaches,store_product_level_eaches_available,Inventory,int,false,false,false,18.2,false,false,"126026","126025",,,false,,false,"{}",true,200,false,false
+126,Packs,store_product_level_packs_available,Inventory,int,false,false,false,18.3,false,false,"126027","126025",,,false,,false,"{}",true,200,false,false
+126,Total,available_total,Inventory,int,false,false,false,18.4,false,false,"126028","126025",,,false,,false,"{}",true,200,false,false
+107,Consumer,l1_name,product,dynamic-list,false,true,false,1.0,false,true,"32422",,,,false,,false,"{
+  ""options_column"": ""l1_name_options"",
+  ""is_multi"": true,
+  ""width"": 200,
+  ""onChangeCustomFunction"": true
+}",true,170,false,false
+107,Category,l3_name,product,dynamic-list,false,true,false,2.0,false,true,"32421",,,,false,,false,"{
+  ""options_column"": ""l3_name_options"",
+  ""is_multi"": true,
+  ""width"": 200,
+  ""onChangeCustomFunction"": true
+}",true,170,false,false
+107,Class,l4_name,product,dynamic-list,false,true,false,3.0,false,true,"32419",,,,false,,false,"{
+  ""options_column"": ""l4_name_options"",
+  ""is_multi"": true,
+  ""width"": 200,
+  ""onChangeCustomFunction"": true
+}",true,170,false,false
+107,Sub Class,l5_name,product,dynamic-list,false,true,false,4.0,false,true,"32420",,,,false,,false,"{
+  ""options_column"": ""l5_name_options"",
+  ""is_multi"": true,
+  ""width"": 200,
+  ""onChangeCustomFunction"": true
+}",true,170,false,false
+107,MFP Categorization,mfp_categorization,product,dynamic-list,false,true,false,5.0,false,true,"32423",,,,false,,false,"{
+  ""options_column"": ""mfp_categorization_options"",
+  ""is_multi"": true,
+  ""width"": 200,
+  ""onChangeCustomFunction"": true
+}",true,170,false,false
+107,Sister Store,store_code,store,dynamic-list,false,true,false,6.0,false,false,"32425",,,,false,,false,"{
+  ""options_column"": ""store_code_options"",
+  ""is_multi"": false,
+  ""width"": 200,
+  ""onChangeCustomFunction"": true
+}",true,170,false,false
+107,Multiplier,multiplier,Inventory,float,false,true,false,7.0,false,false,"32426",,,,false,,false,"{""ignoreFormatting"": true}",true,170,false,false
+107,Created By,created_by,Inventory,str,false,false,false,8.0,false,false,"92428",,,,false,,false,"{""ignoreFormatting"": true}",true,170,false,false
+360,Planning Group,l0_name,Inventory,str,false,false,false,1.0,false,true,"5001",,,,false,,true,"{""be_configs"":{""sql_alias"":""nsp.l0_name as l0_name""}}",true,200,false,false
+360,Consumer,l1_name,Inventory,str,false,false,false,2.0,false,false,"5002",,,,false,,true,"{""be_configs"":{""sql_alias"":""nsp.l1_name as l1_name""}}",true,200,false,false
+360,Category,l3_name,Inventory,str,false,false,false,3.0,false,true,"5003",,,,false,,true,"{""be_configs"":{""sql_alias"":""nsp.l3_name as l3_name""}}",true,200,false,false
+360,Class,l4_name,Inventory,str,false,false,false,4.0,false,false,"5004",,,,false,,true,"{""be_configs"":{""sql_alias"":""nsp.l4_name as l4_name""}}",true,200,false,false
+360,SubClass,l5_name,Inventory,str,false,false,false,5.0,false,true,"5005",,,,false,,true,"{""be_configs"":{""sql_alias"":""nsp.l5_name as l5_name""}}",true,200,false,false
+360,Multiplier,multiplier,Inventory,float,false,false,false,9.0,false,false,"5009","5006",,,false,,false,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open"", ""be_configs"":{""sql_alias"":""nsm.multiplier as multiplier""}}",false,200,false,false
+360,Projected Units,projected_units,Inventory,int,false,false,false,10.0,false,true,"5010",,,,false,,false,"{""be_configs"":{""sql_alias"":""nsp.projected_units as projected_units""}}",false,200,false,false
+360,Projected Value(in $),projected_value,Inventory,float,false,false,false,11.0,false,true,"5011",,,,false,,false,"{""be_configs"":{""sql_alias"":""nsp.projected_value as projected_value""}}",false,200,false,false
+360,Sister Store,sister_store,Inventory,str,false,false,false,6.0,false,false,"5006",,,,false,,false,"{""be_configs"":{""exclude_from_sql"":true}}",false,200,false,false
+360,ID,sister_store_code,Inventory,str,false,false,false,7.0,false,false,"5007","5006",,,false,,false,"{""be_configs"":{""sql_alias"":""nsp.sister_store_code as sister_store_code""}}",false,200,false,false
+360,Name,sister_store_name,Inventory,str,false,false,false,8.0,false,false,"5008","5006",,,false,,false,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open"", ""be_configs"":{""sql_alias"":""saf.store_name as sister_store_name""}}",false,200,false,false
+108,Allocated Quantity,allocated_total,Inventory,str,false,false,false,5.0,false,false,"3039",,[NULL],[NULL],false,[NULL],true,"{}",true,200,false,false
+108,Allocation Plan Name,name,Inventory,str,false,false,false,1.0,false,false,"3034",,[NULL],[NULL],false,[NULL],true,"{}",true,200,false,false
+108,Bulk Remaining,inv_avai,Inventory,int,false,false,false,4.0,false,false,"3038",,[NULL],[NULL],false,[NULL],false,"{}",true,200,false,false
+108,Creation Date,created_at,Inventory,str,false,false,false,3.0,false,false,"3036",,[NULL],[NULL],false,[NULL],false,"{}",true,200,false,false
+108,# PC9,art_count,Inventory,int,false,false,false,2.0,false,false,"3035",,,,false,,true,"{}",true,200,false,false
+109,Plan Code,plan_code,Inventory,str,true,false,false,1.0,false,false,"3043",,[NULL],[NULL],false,[NULL],false,"{}",true,200,false,false
+109,PC9,display_article,Inventory,str,true,false,false,2.0,false,false,"3044",,,,false,,true,"{}",true,200,false,false
+109,Product Information,product_info,Inventory,str,false,false,false,3.0,false,false,321093,,,,false,,true,"{}",true,251,false,false
+109,PC9 Description,article_description,Inventory,str,false,false,false,3.0,false,false,"3045",321093,,,false,,false,"{}",false,200,false,false
+109,Planning Group,l0_name,Inventory,str,false,false,false,4.0,false,false,"3046",321093,[NULL],[NULL],false,[NULL],true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+109,Consumer,l1_name,Inventory,str,false,false,false,5.0,false,false,"3047",321093,[NULL],[NULL],false,[NULL],true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+109,Category,l3_name,Inventory,str,false,false,false,5.1,false,false,"109122",321093,[NULL],[NULL],false,[NULL],true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+109,MFP Categorization,mfp_categorization,Inventory,str,false,false,false,5.2,false,false,"109124",321093,[NULL],[NULL],false,[NULL],true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+109,Class,l4_name,Inventory,str,false,false,false,5.3,false,false,"109120",321093,[NULL],[NULL],false,[NULL],true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+109,Sub Class,l5_name,Inventory,str,false,false,false,5.4,false,false,"109121",321093,[NULL],[NULL],false,[NULL],true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+109,Auto Allocation DC,auto_allocation_dc,Inventory,str,false,false,false,5.5,false,true,"109123",,,,false,,true,"{}",true,200,false,false
+109,Total Allocated,allocated_total,Inventory,int,false,false,false,6.0,false,false,"3048",,,,false,,true,"{}",true,300,false,false
+109,LW Sales Units,last_week_sales,Inventory,str,false,false,false,7.0,false,false,"3052",,[NULL],[NULL],false,[NULL],true,"{}",true,200,false,false
+109,VIR Remaining,vir_reservation_total,Inventory,int,false,false,false,8.0,false,false,"3050",,,,false,,false,"{}",false,200,false,false
+109,IOB,iob,Inventory,int,false,false,false,9.0,false,false,"3051",,,,false,,false,"{}",false,200,false,false
+109,DC OH,dc_oh,Inventory,int,false,false,false,10.0,false,false,"3049",,,,false,,true,"{}",true,200,false,false
+109,DC Mapped,dc_mapped,Inventory,str,false,false,false,11.0,false,false,"3053",,,,false,,true,"{}",true,200,false,false
+109,Last Allocated Date,last_allocation_date,Inventory,date,false,false,false,12.0,false,false,"3054",,,,false,,true,"{}",true,200,false,false
+110,Allocated Quantity,allocated_total,Inventory,str,false,false,false,5.0,false,false,"11005",,[NULL],[NULL],false,[NULL],true,"{}",true,200,false,false
+110,Allocation Plan Name,name,Inventory,str,false,false,false,1.0,false,false,"11001",,[NULL],[NULL],false,[NULL],true,"{}",true,200,false,false
+110,Bulk Remaining,inv_avai,Inventory,int,false,false,false,4.0,false,false,"11004",,[NULL],[NULL],false,[NULL],false,"{}",true,200,false,false
+110,Creation Date,created_at,Inventory,str,false,false,false,3.0,false,false,"11003",,[NULL],[NULL],false,[NULL],false,"{}",true,200,false,false
+110,# PC9,art_count,Inventory,str,false,false,false,2.0,false,false,"11002",,,,false,,true,"{}",true,200,false,false
+110,Consumer,l1_name,Inventory,str,false,false,false,5.0,false,false,"11006",,[NULL],[NULL],false,[NULL],true,"{}",true,200,false,false
+111,Allocation Plan Name,plan_code,Product,str,false,false,false,1.0,false,true,"11101",,,,false,,true,"{}",true,200,false,false
+111,PC9,display_article,Product,str,false,false,false,2.0,false,true,"11102",,,,false,,true,"{}",true,200,false,false
+111,Product Information,product_info,Inventory,str,false,false,false,2.1,false,false,111093,,,,false,,true,"{}",true,251,false,false
+111,PC9 Description,article_description,Inventory,str,false,false,false,2.2,false,false,"111094",111093,,,false,,false,"{}",false,200,false,false
+111,Planning Group,l0_name,Inventory,str,false,false,false,2.3,false,false,"111095",111093,[NULL],[NULL],false,[NULL],true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+111,Consumer,l1_name,Inventory,str,false,false,false,2.4,false,false,"111096",111093,[NULL],[NULL],false,[NULL],true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+111,Category,l3_name,Inventory,str,false,false,false,2.5,false,false,"111099",111093,[NULL],[NULL],false,[NULL],true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+111,MFP Categorization,mfp_categorization,Inventory,str,false,false,false,2.6,false,false,"111101",111093,[NULL],[NULL],false,[NULL],true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+111,Class,l4_name,Inventory,str,false,false,false,2.7,false,false,"111097",111093,[NULL],[NULL],false,[NULL],true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+111,Sub Class,l5_name,Inventory,str,false,false,false,2.8,false,false,"111098",111093,[NULL],[NULL],false,[NULL],true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,200,false,false
+111,Auto Allocation DC,auto_allocation_dc,Inventory,str,false,false,false,2.9,false,true,"111100",,,,false,,true,"{}",true,200,false,false
+111,Last Week Units,last_week_sales,Product,int,false,false,false,3.0,false,true,"11103",,,,false,,true,"{}",true,200,false,false
+111,Bulk Remaining,inv_avai,Product,int,false,false,false,4.0,false,true,"11104",,,,false,,true,"{}",true,200,false,false
+111,Allocated Quantity,allocated_total,Product,int,false,false,false,5.0,false,true,"11105",,,,false,,true,"{}",true,200,false,false
+111,VIR Remaining,vir_reservation_total,Product,int,false,false,false,6.0,false,true,"11106",,,,false,,true,"{}",true,200,false,false
+111,IOB,iob,Product,int,false,false,false,7.0,false,true,"11107",,,,false,,true,"{}",true,200,false,false
+111,DC Mapped,dc_mapped,Product,str,false,false,false,8.0,false,true,"11108",,,,false,,true,"{}",true,200,false,false
+111,Last Allocated Date,last_allocation_date,Inventory,date,FALSE,FALSE,FALSE,9,,FALSE,11109,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+100,Attributes,attributes,Inventory,str,false,false,false,1.0,false,true,"5012",,,,false,,true,"{}",false,200,false,false
+100,Store Name,store_name,Inventory,str,false,false,false,1.1,false,true,"5013","5012",,,false,,true,"{}",false,200,false,false
+100,Store Opening Date,open_date,Inventory,datetime,false,true,false,1.2,false,true,"5014","5012",,,false,,true,"{""disablePast"": true}",false,200,false,false
+100,Country,country_id,Inventory,str,false,false,false,2.0,false,true,"5018",,,,false,,true,"{}",false,200,false,false
+100,Business Model,businessmodel,Inventory,str,false,false,false,3.0,false,true,"5015",,,,false,,true,"{}",false,200,false,false
+100,Franchise Partner Name,franchise_name,Inventory,str,false,false,false,4.0,false,true,"5016",,,,false,,true,"{}",false,200,false,false
+101,Store Count,store_count,Inventory,str,false,false,false,2.0,false,true,"5021",,,,false,,true,"{}",false,200,false,false
+101,Store Group,sg_name,Inventory,link,false,true,false,1.0,false,true,"5020",,,,false,,true,"{}",false,200,false,false
+102,Store ID,store_code,Inventory,str,false,false,false,1.1,false,true,"5028",,,,false,,true,"{}",false,200,false,false
+102,Store Name,store_name,Inventory,str,false,false,false,1.2,false,true,"5022",,,,false,,true,"{}",false,200,false,false
+102,State,state,Inventory,str,false,false,false,4,false,true,"5025",,,,false,,true,"{}",false,200,false,false
+102,District,district,Inventory,str,false,false,false,3,false,true,"5024",,,,false,,true,"{}",false,200,false,false
+890,Style ID,article,Product,str,true,false,false,1.0,false,false,"890001",,,,false,,true,"{}",true,300,false,false
+890,Style description,article_description,Product,str,true,false,false,2.0,false,false,"890002",,,,false,,true,"{}",true,300,false,false
+890,Product hierarchy and attributes,product_info,Product,str,false,false,false,3.0,false,false,"890006","",,,false,,true,"{}",true,300,false,false
+890,Class,l4_name,Product,str,false,false,false,4.0,false,false,"890007","890006",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,300,false,false
+890,Subclass,l5_name,Product,str,false,false,false,5.0,false,false,"890005","890006",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,300,false,false
+890,Brand,l0_name,Product,str,false,false,false,6.0,false,false,"890003","890006",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,300,false,false
+890,Division,l1_name,Product,str,false,false,false,7.0,false,false,"890004","890006",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,300,false,false
+890,Transfer Strategy,transfer_info,Product,str,false,false,false,8.0,false,false,"890008","",,,false,,true,"{}",true,300,false,false
+890,Optimisation level,optimisation_level,Product,dynamic-list,false,true,false,9.0,false,false,"890009","890008",,,false,,false,"{""options_column"": ""optimisation_level_options"", ""is_multi"": false,""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,300,false,false
+890,Transfer Strategy,transfer_strategy,Product,dynamic-list,false,true,false,10.0,false,false,"890010","890008",,,false,,false,"{""options_column"": ""transfer_strategy_options"", ""is_multi"": false,""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,300,false,false
+890,Transfer Rule,transfer_rule,Product,dynamic-list,false,true,false,11.0,false,false,"890012","890008",,,false,,false,"{""options_column"": ""transfer_rule_options"", ""is_multi"": false,""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",false,300,false,false
+890,Threshold,threshold_info,Product,str,false,false,false,12.0,false,false,"890022","",,,false,,false,"{}",false,300,false,false
+890,DC Inventory Threshold,dc_inventory_threshold,Product,int,false,true,false,13.0,false,false,"890011","890022",,,false,,false,"{""validation"": ""positive""}",false,300,false,false
+890,Fixed Push %,fixed_push_percent,Product,percentage,false,true,false,14.0,false,false,"890013","890022",,,false,,false,"{""validation"": ""percentage"", ""min"": 0, ""max"": 100}",false,300,false,false
+890,Source WOS threshold multiplier,source_wos_threshold_multiplier,Product,float,false,true,false,15.0,false,false,"890015","890022",,roundOfftoTwoDecimals,false,,false,"{""validation"": ""positive""}",false,300,false,false
+890,Destination WOS threshold multiplier,dest_wos_threshold_multiplier,Product,float,false,true,false,16.0,false,false,"890018","890022",,roundOfftoTwoDecimals,false,,false,"{""validation"": ""positive""}",false,300,false,false
+15,Rule Name,rule_name,store,link,false,true,false,1.0,,false,"64b76a3b-3da1-40d5-9077-5868d0eda0f7",,,,false,,true,"{}",true,200,false,false
+15,Channel,channel,store,str,false,false,false,2.0,,false,"7ea33416-60fe-4fbc-b0e6-a4a00ad613da",,,,false,,true,"{}",true,200,false,false
+15,Linkage cluster,transfer_within,store,str,false,false,false,3.0,,false,bfb96bdd-725a-4239-b7fc-4f97fdbd8cee,,,,false,,true,"{}",true,200,false,false
+15,Created At,created_at,store,datetime,false,false,false,4.0,,false,bdd86747-4b60-4850-9712-344d1479a9fb,,,,false,,true,"{}",true,200,false,false
+15,Created By,created_by,store,str,false,false,false,5.0,,false,"84ebd3b1-d074-4290-839f-102b754ae690",,,,false,,true,"{}",true,200,false,false
+15,Updated At,updated_at,store,datetime,false,false,false,6.0,,false,"39c8b49f-6e8a-45ee-b7cb-b7d15c427174",,,,false,,true,"{}",true,200,false,false
+15,Updated By,updated_by,store,str,false,false,false,7.0,,false,"68aa4c6f-8760-4e46-a58c-0409b70b2f2e",,,,false,,true,"{}",true,200,false,false
+17,STORE Number (Destination),store_code_dest,store,str,false,false,false,1.0,,false,cf762e0d-1b44-4ac3-9b7e-25c8247baae2,,,,false,,true,"{}",true,200,false,false
+17,STORE Name (Destination),store_name_dest,store,str,false,false,false,2.0,,false,"8b6af1ec-06d8-410e-800a-0fff77bd2dee",,,,false,,true,"{}",true,200,false,false
+17,REGION (Destination),region_dest,store,str,false,false,false,3.0,,false,"7e5cc880-612a-458f-a8ea-74d4c6b0830f",,,,false,,true,"{}",true,200,false,false
+17,STORE Number (Source),store_code_source,store,str,false,false,false,4.0,,false,e2e3f10c-fbfc-4988-ad4e-934f2bb2862f,,,,false,,true,"{}",true,200,false,false
+17,STORE Name (Source),store_name_source,store,str,false,false,false,5.0,,false,"74adedcf-f0bf-41dc-a49e-eb0b42b0a7be",,,,false,,true,"{}",true,200,false,false
+17,REGION (Source),region_source,store,str,false,false,false,6.0,,false,f20656e1-be18-45ca-9df7-32822f9e41e8,,,,false,,true,"{}",true,200,false,false
+17,PRIORITY,priority,store,str,false,false,false,7.0,,false,"234512bf-2e98-4d8f-8b07-6c7c6127828b",,,,false,,true,"{}",true,200,false,false
+17,DISTANCE,distance,store,float,false,false,false,8.0,,false,b60f0896-dd2f-4471-8293-714542c20277,,,,false,,true,"{}",true,200,false,false
+17,LEAD TIME,lead_time,store,int,false,false,false,9.0,,false,a5cfa076-c106-4ad4-b86a-a00b8942d62c,,,,false,,true,"{}",true,200,false,false
+17,PRODUCT LEVEL MIN TRANSFER QTY,product_level_min_qty,store,int,false,false,false,10.0,,false,"51c2d233-567f-4a47-a9ab-e0560e4050e1",,,,false,,true,"{}",true,200,false,false
+17,OVERALL MIN TRANSFER QTY,overall_min_qty,store,int,false,false,false,11.0,,false,"57c81dfb-0ddf-49a8-9055-1b80c139fffd",,,,false,,true,"{}",true,200,false,false
+19,DISTANCE,distance_km,store,str,false,false,false,8.0,,false,"0212df66-b402-4c7d-a578-bc22421822be",,,,false,,true,"{}",true,200,false,false
+19,LEAD TIME,lead_time_days,store,str,false,false,false,9.0,,false,dbdb5995-8753-49bd-a522-719bf7d83c39,,,,false,,true,"{}",true,200,false,false
+19,OVERALL MIN TRANSFER QTY,overall_min_qty,store,str,false,true,false,11.0,,false,"896dd083-44c0-45ab-a0ec-ed9972aeed29",,,,false,,true,"{}",true,200,false,false
+19,PRIORITY,priority,store,dynamic-list,false,true,false,7.0,,false,dcdfca65-1f07-4af9-8bd7-af414d99bfc1,,,,false,,true,"{""options_column"": ""priority_options"", ""is_multi"": false}",true,200,false,false
+19,PRODUCT LEVEL MIN TRANSFER QTY,product_level_min_qty,store,str,false,true,false,10.0,,false,b63f46d4-09bf-4b2e-a961-ef610987dc56,,,,false,,true,"{}",true,200,false,false
+19,REGION (Destination),dst_region,store,str,false,false,false,3.0,,false,"18cf6ac9-7183-4d61-afc8-960be1b76543",,,,false,,true,"{}",true,200,false,false
+19,REGION (Source),src_region,store,str,false,false,false,6.0,,false,"87ac3c9f-5a92-4685-816c-b715c5349055",,,,false,,true,"{}",true,200,false,false
+19,STORE Name (Destination),dst_store_name,store,str,false,false,false,2.0,,false,"25ec7d4e-0cc9-47cc-b190-f6b732b7e239",,,,false,,true,"{}",true,200,false,false
+19,STORE Name (Source),src_store_name,store,str,false,false,false,5.0,,false,"0bd1c5ef-2c32-4d6a-b03c-c4a49c0807c9",,,,false,,true,"{}",true,200,false,false
+19,STORE Number (Destination),dst_store_id,store,str,false,false,false,1.0,,false,e0dc0cda-55d7-4e6b-96f8-860e80bc9079,,,,false,,true,"{}",true,200,false,false
+19,STORE Number (Source),src_store_id,store,str,false,false,false,4.0,,false,"3122b7cf-9082-4781-aba7-72f2ac939774",,,,false,,true,"{}",true,200,false,false
+356,Planning Group,l0_name,Product,str,false,false,false,1.0,false,false,"321252",,,,false,,true,"{}",true,300,false,false
+356,Consumer,l1_name,Product,str,false,false,false,2.0,false,false,"321253",,,,false,,true,"{}",true,300,false,false
+356,Category,l3_name,Product,str,false,false,false,3.0,false,false,"321254",,,,false,,true,"{}",true,300,false,false
+356,Class,l4_name,Product,str,false,false,false,4.0,false,false,"321255",,,,false,,true,"{}",true,300,false,false
+356,SubClass,l5_name,Product,str,false,false,false,5.0,false,false,"321256",,,,false,,true,"{}",true,300,false,false
+356,MFP Categorization,mfp_categorization,Product,str,false,false,false,6.0,false,false,"321257",,,,false,,true,"{}",true,300,false,false
+356,PC5,l7_code,Product,str,false,false,false,6.1,false,false,"321267",,,,false,,true,"{}",true,300,false,false
+356,PC9,display_article,Product,str,false,false,false,6.2,false,false,"321268",,,,false,,true,"{}",true,300,false,false
+356,Store Name,store_name,Product,str,false,false,false,6.3,false,false,"321269",,,,false,,true,"{}",true,300,false,false
+356,Opening Date,opening_date,Product,str,false,false,false,7.0,false,false,"321258",,,,false,,false,"{}",true,300,false,false
+356,Sales Units,sales_qty,Product,int,false,false,false,8.0,false,false,"321259",,,,false,,false,"{}",true,300,false,false
+356,Sister Store Sales Units,sister_store_sales_qty,Product,int,false,false,false,9.0,false,false,"321260",,,,false,,false,"{}",true,300,false,false
+356,Sister Store Multiplier,multiplier,Product,int,false,false,false,10.0,false,false,"321262",,,,false,,false,"{}",true,300,false,false
+356,Allocated Units,units_allocated,Product,int,false,false,false,11.0,false,false,"321263",,,,false,,false,"{}",true,300,false,false
+356,Sell-through %,sell_through,Product,percentage,false,false,false,12.0,false,false,"321264",,,roundOfftoTwoDecimals,false,,false,"{""multiplier"": true}",true,300,false,false
+356,Sister Store Sell-through %,sister_store_sell_through,Product,percentage,false,false,false,13.0,false,false,"321265",,,roundOfftoTwoDecimals,false,,false,"{""multiplier"": true}",true,300,false,false
+891,Style ID,article,Product,str,true,false,false,1.0,false,false,"891001",,,,false,,true,"{}",true,300,false,false
+891,Style description,article_description,Product,str,true,false,false,2.0,false,false,"891002",,,,false,,true,"{}",true,300,false,false
+891,Product hierarchy and attributes,product_info,Product,str,false,false,false,3.0,false,false,"891006",,,,false,,true,"{}",true,300,false,false
+891,Class,l4_name,Product,str,false,false,false,4.0,false,false,"891007","891006",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,300,false,false
+891,Subclass,l5_name,Product,str,false,false,false,5.0,false,false,"891005","891006",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,300,false,false
+891,Brand,l0_name,Product,str,false,false,false,6.0,false,false,"891003","891006",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,300,false,false
+891,Division,l1_name,Product,str,false,false,false,7.0,false,false,"891004","891006",,,false,,true,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,300,false,false
+891,Total stores mapped,total_stores,Product,int,false,false,false,7.1,false,false,"891009",,,,false,,false,"{}",true,300,false,false
+891,DC inventory,total_dc_inventory,Product,int,false,false,false,7.2,false,false,"891010",,,,false,,false,"{}",true,300,false,false
+891,Transfer Strategy,transfer_info,Product,str,false,false,false,8.0,false,false,"891008",,,,false,,true,"{}",true,300,false,false
+891,Optimisation level,optimisation_level,Product,dynamic-list,false,true,false,9.0,false,false,"891021","891008",,,false,,false,"{""options_column"": ""optimisation_level_options"", ""is_multi"": false,""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,300,false,false
+891,Transfer Strategy,transfer_strategy,Product,dynamic-list,false,true,false,10.0,false,false,"891025","891008",,,false,,false,"{""options_column"": ""transfer_strategy_options"", ""is_multi"": false,""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",true,300,false,false
+891,Transfer Rule,transfer_rule,Product,dynamic-list,false,true,false,11.0,false,false,"891012","891008",,,false,,false,"{""options_column"": ""transfer_rule_options"", ""is_multi"": false,""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",false,300,false,false
+891,Threshold,threshold_info,Product,str,false,false,false,12.0,false,false,"891022",,,,false,,false,"{}",false,300,false,false
+891,DC Inventory Threshold,dc_inventory_threshold,Product,int,false,true,false,13.0,false,false,"891011","891022",,,false,,false,"{""validation"": ""positive""}",false,300,false,false
+891,Fixed Push %,fixed_push_percent,Product,percentage,false,true,false,14.0,false,false,"891013","891022",,,false,,false,"{""validation"": ""percentage"", ""min"": 0, ""max"": 100}",false,300,false,false
+891,Source WOS threshold multiplier,source_wos_threshold_multiplier,Product,float,false,true,false,15.0,false,false,"891015","891022",,roundOfftoTwoDecimals,false,,false,"{""validation"": ""positive""}",false,300,false,false
+891,Destination WOS threshold multiplier,dest_wos_threshold_multiplier,Product,float,false,true,false,16.0,false,false,"891018","891022",,roundOfftoTwoDecimals,false,,false,"{""validation"": ""positive""}",false,300,false,false
+249,Rule ID,rule_code,product,str,true,false,false,1.0,,false,"505011",,,,false,,false,"{}",false,200,false,false
+249,Rule Creation Level ID,rcl_code,product,str,true,false,false,2.0,,false,"505012",,,,false,,false,"{}",false,200,false,false
+249,Planning group,l0_name,product,str,false,false,false,3.0,,false,"505013",,,,false,,false,"{}",false,200,false,false
+249,Consumer,l1_name,product,str,false,false,false,5.0,,false,"505014",,,,false,,false,"{}",false,200,false,false
+249,Category,l3_name,product,str,false,false,false,7.0,,false,"505015",,,,false,,false,"{}",false,200,false,false
+249,Class,l4_name,product,str,false,false,false,8.0,,false,"505016",,,,false,,false,"{}",false,200,false,false
+249,Subclass,l5_name,product,str,false,false,false,9.0,,false,"505017",,,,false,,false,"{}",false,200,false,false
+249,MFP Categorizatio,mfp_categorization,product,str,false,false,false,10.0,,false,"505018",,,,false,,false,"{}",false,200,false,false
+249,PC5 ID,l7_code,product,str,false,false,false,12.0,,false,"505019",,,,false,,false,"{}",false,200,false,false
+249,PC9,display_article,product,str,false,false,false,13.0,,false,"505020",,,,false,,false,"{}",false,200,false,false
+249,PC9 Description,article_description,product,str,false,false,false,14.0,,false,"505021",,,,false,,false,"{}",false,200,false,false
+249,Size,size,product,str,false,false,false,15.0,,false,"505022",,,,false,,false,"{}",false,200,false,false
+249,Store Grade,psa_name,Store,str,false,false,false,16.0,false,true,"505023",,,,false,,false,"{}",false,200,false,false
+249,Franchise Partner Name,franchise_name,Store,str,false,false,false,16.1,false,true,"505024",,,,false,,false,"{}",false,200,false,false
+249,Country,country_id,Store,str,false,false,false,16.2,false,true,"505025",,,,false,,false,"{}",false,200,false,false
+249,Start Date,start_date,product,datetime,false,true,false,17.0,,false,"505026",,,DD-MM-YYYY,false,,false,"{""dateFormat"": ""MM-DD-YYYY"", ""disablePast"": true}",false,200,false,false
+249,End Date,end_date,product,datetime,false,true,false,18.0,,false,"505027",,,DD-MM-YYYY,false,,false,"{""dateFormat"": ""MM-DD-YYYY"", ""disablePast"": true}",false,200,false,false
+249,Min,min_stock,product,int,false,true,false,19.0,,false,"505028",,,,false,,false,"{""dynamicMaxKey"": ""max_stock"",""dynamicMinMaxOnBlur"": true,""typeFormat"": ""number"",""width"": 250}",false,200,false,false
+249,Max,max_stock,Product,int,false,true,false,20.0,false,true,"505029",,false,,false,false,false,"{""dynamicMinKey"": ""min_stock"",""dynamicMinMaxOnBlur"": true,""typeFormat"": ""number"",""noNullValues"": true,""width"": 250}",false,200,false,false
+249,FWOS Target,wos,Product,int,false,true,false,21.0,false,true,"505030",,false,,false,false,false,"{}",false,200,false,false
+249,Min distribution by size,min_distribution,product,link,false,true,false,21.1,false,false,"505031",,,,false,,false,"{}",false,200,false,false
+249,Action,action,product,action,false,false,false,22.0,,false,"505033",,,,false,,false,"{}",false,200,false,false
+249,Updated By,user,Product,str,false,false,false,23.0,false,true,"505034",,false,,false,false,false,"{}",false,200,false,false
+249,Last modified,updated_at,Product,datetime,false,false,false,24.0,false,true,"505035",,false,DD-MM-YYYY,false,false,false,"{}",false,200,false,false
+233,PC5,l7_code,Product,str,FALSE,FALSE,FALSE,1,FALSE,FALSE,22324,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+233,PC9,display_article,Product,str,FALSE,FALSE,FALSE,2,FALSE,FALSE,22325,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+233,PC9 Description,article_description,Product,str,FALSE,FALSE,FALSE,3,FALSE,FALSE,22326,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+233,Color,color,Product,str,FALSE,FALSE,FALSE,4,FALSE,FALSE,22327,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+233,Consumer,l1_name,Product,str,FALSE,FALSE,FALSE,5,FALSE,FALSE,22328,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+233,Category,l3_name,Product,str,FALSE,FALSE,FALSE,6,FALSE,FALSE,22329,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+233,Class,l4_name,Product,str,FALSE,FALSE,FALSE,7,FALSE,FALSE,22330,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+233,Subclass,l5_name,Product,str,FALSE,FALSE,FALSE,8,FALSE,FALSE,22331,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+233,Last 4 Weeks Actuals,last_4_weeks_actuals,Product,int,FALSE,FALSE,FALSE,9,FALSE,FALSE,22332,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+233,Next 4 Weeks WSP,next_4_weeks_wsp,Product,int,FALSE,FALSE,FALSE,10,FALSE,FALSE,22333,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+233,Next 4 Weeks Forecast,next_4_weeks_forecast,Product,int,FALSE,FALSE,FALSE,13,FALSE,FALSE,22334,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+233,Absolute Error,absolute_error_wsp_vs_fore,Product,int,FALSE,FALSE,FALSE,14,FALSE,FALSE,22335,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+233,Forecast Deviation (%),deviation_percentage_wsp_vs_fore,Product,percentage,FALSE,FALSE,FALSE,15,FALSE,FALSE,22336,,,roundOfftoTwoDecimals,FALSE,,FALSE,"{""multiplier"": true}",TRUE,200,FALSE,FALSE
+113,Sister Store Code,sister_store_code,custom,str,FALSE,TRUE,FALSE,6,FALSE,FALSE,109_sister_store_code,,[NULL],[NULL],FALSE,[NULL],TRUE,{},TRUE,200,FALSE,FALSE
+113,Hierarchies,hierarchies,custom,str,FALSE,TRUE,FALSE,6,FALSE,FALSE,109_hierarchies,,[NULL],[NULL],FALSE,[NULL],TRUE,{},TRUE,200,FALSE,FALSE

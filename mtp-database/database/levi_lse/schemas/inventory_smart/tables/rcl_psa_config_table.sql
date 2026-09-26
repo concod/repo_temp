@@ -1,0 +1,43 @@
+--liquibase formatted sql
+--changeset liquibase:rcl_psa_config_table stripComments:false splitStatements:false context:Release_1_0 labels:liquibase_project_start
+--comment: intial changeset for rcl_psa_config_table
+create table if not exists inventory_smart.rcl_psa_config_table(
+    id int4 not null, 
+    l0_name varchar not null, 
+    l1_name varchar not null,
+    l2_name varchar not null,
+    psa_name varchar not null, 
+    psa_code varchar not null, 
+    updated_at timestamptz default now(),
+    constraint psa_config_table_pk primary key (l0_name, l1_name, l2_name, psa_code)
+);
+
+--changeset linu.nazil:rcl_master_v4 stripComments:false splitStatements:false context:Release_1_0 labels:liquibase_project_start
+--comment: modified changeset for rcl_master
+create sequence if not exists inventory_smart.rcl_psa_config_table_id_seq;
+alter table "inventory_smart".rcl_psa_config_table alter column id SET DEFAULT nextval('inventory_smart.rcl_psa_config_table_id_seq');
+
+--changeset linu.nazil:rcl_psa_config_table_2 stripComments:false splitStatements:false context:Release_1_0 labels:liquibase_project_start
+--comment: intial changeset for rcl_psa_config_table
+ALTER TABLE inventory_smart.rcl_psa_config_table ADD COLUMN IF NOT EXISTS l0_id varchar NULL;
+ALTER TABLE inventory_smart.rcl_psa_config_table ADD COLUMN IF NOT EXISTS l1_id varchar NULL;
+ALTER TABLE inventory_smart.rcl_psa_config_table ADD COLUMN IF NOT EXISTS l2_id varchar NULL;
+ALTER TABLE inventory_smart.rcl_psa_config_table ADD COLUMN IF NOT EXISTS sub_psa_code varchar NULL;
+
+--changeset linu.nazil:rcl_psa_config_table_3 stripComments:false splitStatements:false context:Release_1_0 labels:liquibase_project_start
+--comment: intial changeset for rcl_psa_config_table
+ALTER TABLE inventory_smart.rcl_psa_config_table ALTER COLUMN psa_name DROP NOT NULL; 
+
+--changeset himansh.bhardwaj:rcl_psa_config_table_4 stripComments:false splitStatements:false context:Release_1_0 labels:liquibase_project_start
+--comment: adding country_id and franchise_name
+ALTER TABLE inventory_smart.rcl_psa_config_table
+ADD COLUMN IF NOT EXISTS country_id varchar NOT NULL DEFAULT 'NC',
+ADD COLUMN IF NOT EXISTS franchise_name varchar NOT NULL DEFAULT 'NF';
+
+--changeset himansh.bhardwaj:rcl_psa_config_table_5 stripComments:false splitStatements:false context:Release_1_0 labels:liquibase_project_start
+--comment: masking them null and no default values
+ALTER TABLE inventory_smart.rcl_psa_config_table 
+ALTER COLUMN country_id DROP NOT NULL,
+ALTER COLUMN country_id DROP DEFAULT,
+ALTER COLUMN franchise_name DROP NOT NULL,
+ALTER COLUMN franchise_name DROP DEFAULT;

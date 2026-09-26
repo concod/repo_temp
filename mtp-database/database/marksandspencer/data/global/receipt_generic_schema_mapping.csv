@@ -1,0 +1,12 @@
+"source_column_name","source_column_datatype","required_in_product","generic_column_name","is_pk","generic_column_datatype","formula","is_attribute","is_hierarchy","hierarchy_level","is_null_allowed","unique_by","display_name","is_partition_col","is_clustering_col"
+SKU,varchar,true,product_code,true,varchar,,false,false,,false,true,,,
+PO_Number,varchar,true,po_id,true,varchar,,false,false,,false,true,,,
+Location,varchar,true,store_code,false,varchar,,false,false,,false,true,,,
+Receipt_Date,varchar,true,date,false,date,"PARSE_DATE('%Y%m%d', Receipt_Date)",false,false,,false,true,,,
+FISCAL_YEAR,int8,true,fiscal_year,false,int8,,true,false,,true,false,,,
+FISCAL_WEEK,int8,true,fiscal_week,false,int8,,true,false,,true,false,,,
+STORE_TYPE,varchar,true,store_type,false,varchar,,true,false,,true,false,,,
+CHANNEL,varchar,true,channel,false,varchar,,true,false,,true,false,,,
+Units,int8,true,rcvd_quantity,false,int8,,true,false,,true,false,,,
+STORE_BANNER,varchar,true,store_banner,false,varchar,,true,false,,true,false,,,
+PRODUCT_BANNER,varchar,true,product_banner,false,varchar,,true,false,,true,false,,,

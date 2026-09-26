@@ -1,0 +1,376 @@
+@function pxToRem($value) {
+  @return #{$value / 16}rem;
+}
+.listing_views {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  min-width: fit-content;
+  gap: 4px;
+  flex-shrink: 0;
+  overflow: visible;
+}
+
+.view_label {
+  font-size: 12px;
+  font-weight: 400;
+  color: #758490;
+  padding-right: 8px;
+}
+.current_view_container {
+  cursor: pointer;
+  border-radius: 8px;
+  display: inline-flex;
+  gap: 8px;
+  width: auto;
+  min-width: 225px;
+  max-width: 400px;
+  box-sizing: border-box;
+  align-items: center;
+
+  &.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+
+.current_view {
+  display: flex;
+  height: 32px;
+  padding: 0 12px;
+  align-items: center;
+  gap: 12px;
+  align-self: stretch;
+  border-radius: 8px;
+  border: 1px solid #c3c8d4;
+  background: #fff;
+  width: 100%;
+  box-sizing: border-box;
+  justify-content: space-between;
+}
+
+.current_view_icon {
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+}
+
+.truncated-view-name {
+  font-family: Manrope;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  white-space: nowrap;
+}
+
+.listing_views_popover {
+  .MuiPopover-paper {
+    border-radius: 12px !important;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15) !important;
+    border: 1px solid #e5e7eb !important;
+    overflow: hidden;
+    min-width: 280px;
+    width: 280px;
+    padding: 10px 0px;
+    transform: translateY(5px) !important;
+  }
+}
+
+.listing_views_container {
+  overflow-y: hidden;
+  transition: max-height 0.3s ease;
+  padding-left: 6px;
+  padding-right: 6px;
+
+  &.expanded {
+    overflow-y: auto;
+    max-height: pxToRem(544);
+  }
+
+  .listing_views_preference {
+    padding: 5px 15px 15px 15px;
+
+    .header-row {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      gap: 8px;
+    }
+
+    .saved-views-title,
+    .default-badge {
+      flex-shrink: 0;
+      white-space: nowrap;
+    }
+
+    .saved-views-title {
+      color: #60697d;
+      font-family: Manrope;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 125%;
+    }
+
+    .default-badge {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      color: #7a8294;
+      font-size: 14px;
+      font-weight: 500;
+      font-family: Manrope;
+      font-style: normal;
+      line-height: 20px;
+
+      svg {
+        width: 14px;
+        height: 14px;
+        flex-shrink: 0;
+      }
+
+      svg path {
+        fill: #e1bc29;
+      }
+    }
+
+    .matrix-listing-views-type.ia-radioGroup-wrapper {
+      flex-direction: row;
+      align-items: center;
+      gap: 0;
+    }
+
+    .matrix-listing-views-type .MuiFormGroup-root.ia-radioGroup.orientation-row,
+    .matrix-listing-views-type .MuiFormGroup-root.orientation-row {
+      display: flex;
+      flex-direction: row !important;
+      flex-wrap: nowrap;
+      gap: 16px;
+      padding-left: 0;
+    }
+
+    .matrix-listing-views-type .ia-radioButton {
+      margin: 0 !important;
+    }
+  }
+  ul li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 400;
+    padding: 8px 16px;
+    color: #394960;
+    &:not(.recently-used-label, .default-view):hover {
+      cursor: pointer;
+      background-color: #eceefd;
+      border-radius: 8px;
+      color: #1f2b4d;
+      font-family: Manrope;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 20px;
+    }
+  }
+  ul.top-list-view li {
+    gap: 8px;
+
+    svg {
+      flex-shrink: 0;
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  ul.top-list-view li.default-view-selectable {
+    cursor: pointer;
+
+    &:hover {
+      background-color: #eceefd;
+      border-radius: 8px;
+      color: #1f2b4d;
+
+      .truncated-view-name {
+        font-weight: 500;
+      }
+    }
+  }
+
+  ul li.default-view span {
+    color: #b4bac7;
+    font-size: 12px;
+    font-weight: 400;
+  }
+
+  ul li span.default-view-label {
+    color: #ff832b;
+    font-style: italic;
+  }
+  ul li span.active-view-label {
+    font-family: Manrope;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  .recently-used-label {
+    color: #b4bac7;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 20px;
+    font-family: Manrope;
+    font-style: normal;
+    padding: 8px 16px;
+  }
+
+  ul li .view-actions {
+    display: none;
+  }
+
+  ul li .disable-actions {
+    display: none;
+  }
+
+  ul li:hover .view-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  ul li .view-save-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-left: 15px;
+  }
+
+  .impact_inputbox_container .MuiInputBase-root input.MuiInputBase-input {
+    min-width: 0px;
+  }
+
+  .toggle-lists-cta {
+    padding-left: 15px;
+    padding-top: 10px;
+    font-family: Manrope;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    color: #3649c6;
+    cursor: pointer;
+  }
+}
+
+.active-view {
+  background-color: #eceefd;
+  border-radius: 8px;
+}
+
+.active-view-label {
+  font-family: Manrope;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  color: #1f2b4d;
+}
+
+.default-button {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.listing-view-star-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  line-height: 0;
+  border-radius: 4px;
+
+  &:hover:not(:disabled) {
+    background-color: rgba(225, 188, 41, 0.12);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  svg path {
+    fill: #e1bc29 !important;
+  }
+}
+
+.view_placeholder {
+  color: #b4bac7;
+  font-family: Manrope;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.viewHorizontalDivider {
+  border: none;
+  border-top: 1px solid #d4d4d4;
+  margin: 5px 0;
+}
+
+.viewListItemAction {
+  height: 16px;
+  width: 16px;
+  fill: #b2b2b2;
+  cursor: pointer;
+}
+
+.viewListItemEdit:hover {
+  fill: #4259ee;
+}
+.viewListItemDelete:hover {
+  fill: #c64746;
+}
+
+.splitDivider {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin: 0 6px;
+  height: 24px;
+}
+
+.bottom-list-view {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.top-list-view {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.empty-list {
+  padding: 8px 16px;
+  color: #888;
+  font-size: 12px;
+}

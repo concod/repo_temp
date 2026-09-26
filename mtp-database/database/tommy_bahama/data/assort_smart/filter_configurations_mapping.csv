@@ -1,0 +1,115 @@
+fc_code,label,column_name,type,display_type,level,dimension,is_mandatory,is_multiple_selection,range_min,range_max,default_value,is_disabled,is_clearable,display_order,is_required,extra,is_deleted
+138,Select # of Launch/ Delivery,assort_drop_value,non-cascaded,dropdown,,plan,TRUE,FALSE,,,,FALSE,TRUE,15,FALSE,{},FALSE
+138,Season,assort_season_value,non-cascaded,dropdown,,create_plan,TRUE,FALSE,,,,FALSE,TRUE,9,FALSE,"{""dimension"": ""date_range""}",FALSE
+138,Selling Period,assort_selling_period_value,non-cascaded,rangePicker,,plan,FALSE,FALSE,,,,FALSE,TRUE,10,FALSE,"{""dimension"": ""date_range""}",FALSE
+138,Year,assort_year_value,non-cascaded,dropdown,,plan,FALSE,FALSE,,,,FALSE,TRUE,8,FALSE,{},FALSE
+138,Channel,channel,non-cascaded,dropdown,,store,TRUE,TRUE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+138,Select Cluster Plan,cluster_plan_code,non-cascaded,dropdown,,create_plan,TRUE,FALSE,,,,FALSE,TRUE,7,FALSE,{},FALSE
+138,Compare Season,compare_season_value,non-cascaded,dropdown,,create_plan,FALSE,FALSE,,,,FALSE,TRUE,14,FALSE,"{""dimension"": ""reference_data""}",FALSE
+138,Division,l1_name,cascaded,dropdown,2,product,TRUE,FALSE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+138,Department,l2_name,cascaded,dropdown,3,product,TRUE,TRUE,,,,FALSE,TRUE,5,FALSE,{},FALSE
+138,Plan Name,plan_name,non-cascaded,TextField,,create_plan,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,"{""dimension"": ""plan""}",FALSE
+138,Reference Data ,reference_data,non-cascaded,toggle,,create_plan,FALSE,FALSE,,,,FALSE,TRUE,11,FALSE,"{""dimension"": ""reference_data""}",FALSE
+138,Reference Period,reference_period,non-cascaded,toggle,,create_plan,FALSE,FALSE,,,,FALSE,TRUE,12,FALSE,"{""dimension"": ""reference_data""}",FALSE
+138,Sub channel,sub_channel,non-cascaded,dropdown,,create_plan,FALSE,TRUE,,,,FALSE,TRUE,16,FALSE,{},FALSE
+138,Compare year with,year_comparision_metric,non-cascaded,radioGroup,,create_plan,TRUE,FALSE,,,,FALSE,TRUE,13,FALSE,"{""dimension"": ""reference_data""}",FALSE
+138,Class,l3_name,cascaded,dropdown,4,product,FALSE,TRUE,,,,FALSE,TRUE,6,FALSE,{},FALSE
+138,Business Unit,s1_name,non-cascaded,dropdown,,store,TRUE,FALSE,,,,FALSE,TRUE,2,FALSE,,FALSE
+139,Category,l1_name,cascaded,dropdown,2,product,TRUE,TRUE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+139,Channel,channel,non-cascaded,dropdown,,edit_plan,TRUE,FALSE,,,,FALSE,TRUE,8,FALSE,{},FALSE
+139,Cluster Name,cluster_name,non-cascaded,TextField,,edit_plan,FALSE,FALSE,,,,TRUE,TRUE,1,FALSE,{},FALSE
+139,Reference Period,assort_selling_period_value,non-cascaded,rangePicker,,edit_plan,FALSE,FALSE,,,,TRUE,TRUE,6,FALSE,{},FALSE
+139,Sales Organisation Code,l0_name,cascaded,dropdown,1,product,TRUE,FALSE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+139,Sub Category,l2_name,cascaded,dropdown,3,product,TRUE,FALSE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+139,Sub Channel,sub_channel,non-cascaded,dropdown,,edit_plan,FALSE,FALSE,,,,FALSE,TRUE,9,FALSE,{},FALSE
+169,Channel,channel,cascaded,dropdown,,store,TRUE,FALSE,,,,FALSE,TRUE,8,FALSE,{},FALSE
+169,Sales Organisation Code,l0_name,cascaded,dropdown,1,product,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+169,Category,l1_name,cascaded,dropdown,2,product,TRUE,FALSE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+169,Sub Category,l2_name,cascaded,dropdown,3,product,FALSE,FALSE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+2000,Store Format,center_format_type,cascaded,dropdown,,store,TRUE,TRUE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+2000,Store Grade,q_str_grade,cascaded,dropdown,,store,FALSE,TRUE,,,,FALSE,TRUE,10,FALSE,{},FALSE
+2000,Center Type Detail,rtl_store_category_dsc,cascaded,dropdown,,store,FALSE,TRUE,,,,FALSE,TRUE,7,FALSE,{},FALSE
+2000,Country,s0_name,cascaded,dropdown,,store,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+2000,Season,season,non-cascaded,dropdown,,product,TRUE,TRUE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+2000,Sellable Sq. Ft.,sellable_sqft,cascaded,dropdown,,store,FALSE,TRUE,,,,FALSE,TRUE,8,FALSE,{},FALSE
+2000,Store,store_code,cascaded,dropdown,,store,FALSE,TRUE,,,,FALSE,TRUE,11,FALSE,{},FALSE
+2000,Store Format Detail,store_format_detail,cascaded,dropdown,,store,FALSE,TRUE,,,,FALSE,TRUE,5,FALSE,{},FALSE
+2000,Store Format Rollup,store_format_rollup,cascaded,dropdown,,store,FALSE,TRUE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+2000,Center Type,store_type,cascaded,dropdown,,store,FALSE,TRUE,,,,FALSE,TRUE,6,FALSE,{},FALSE
+2000,Store Volume,volume_cd,cascaded,dropdown,,store,FALSE,TRUE,,,,FALSE,TRUE,9,FALSE,{},FALSE
+323,Business Unit,s1_name,cascaded,dropdown,,store,TRUE,FALSE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+323,Channel,channel,cascaded,dropdown,,store,TRUE,TRUE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+323,Class,l3_name,cascaded,dropdown,,product,FALSE,TRUE,,,,FALSE,TRUE,6,FALSE,{},FALSE
+323,Cluster Name,cluster_name,non-cascaded,TextField,,create_plan,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,"{""dimension"": ""plan""}",FALSE
+323,Department,l2_name,cascaded,dropdown,,product,TRUE,TRUE,,,,FALSE,TRUE,5,FALSE,{},FALSE
+323,Division,l1_name,cascaded,dropdown,,product,TRUE,FALSE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+323,Reference Season,assort_season_value,non-cascaded,dropdown,,create_plan,FALSE,FALSE,,,,FALSE,TRUE,10,FALSE,"{""dimension"": ""selling_period""}",FALSE
+323,Reference Selling Period,assort_selling_period_value,non-cascaded,rangePicker,,plan,TRUE,FALSE,,,,FALSE,TRUE,11,FALSE,"{""dimension"": ""selling_period""}",FALSE
+323,Reference Year,assort_year_value,non-cascaded,dropdown,,plan,FALSE,FALSE,,,,FALSE,TRUE,9,FALSE,"{""dimension"": ""selling_period""}",FALSE
+323,Weightage,weightage,non-cascaded,IntegerField,,create_plan,TRUE,TRUE,,,,TRUE,TRUE,12,FALSE,"{""dimension"": ""selling_period""}",FALSE
+322,Division,l1_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+322,Department,l2_name,cascaded,dropdown,2,product,FALSE,TRUE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+322,Class,l3_name,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+322,Carryover,carryover,non-cascaded,dropdown,,hierarchy_filter,FALSE,FALSE,,,,FALSE,TRUE,6,FALSE,{},FALSE
+322,Channel,channel,non-cascaded,dropdown,,store,FALSE,TRUE,,,,FALSE,TRUE,6,FALSE,{},FALSE
+322,Clearance,clearance,non-cascaded,dropdown,,hierarchy_filter,FALSE,FALSE,,,,FALSE,TRUE,5,FALSE,{},FALSE
+324,Tiles,graph_levels,cascaded,dropdown,1,graph_filter,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+324,View tiles as a component of,view_tiles,cascaded,dropdown,2,graph_filter,TRUE,FALSE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+303,Size,size,non-cascaded,dropdown,1,graph_setting,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+310,Threshold,axis_threshold,non-cascaded,IntegerField,,graph_filters,TRUE,FALSE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+310,X Axis,x_axis,non-cascaded,dropdown,,graph_filters,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+311,Attributes,attribute,non-cascaded,dropdown,,graph_filters,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+311,Compare with,compare_with,non-cascaded,dropdown,,graph_filters,TRUE,FALSE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+312,Compare with,compare_with,non-cascaded,dropdown,,graph_filters,TRUE,FALSE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+312,Geographical Attribute,geographical_attribute,non-cascaded,dropdown,,graph_filters,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+313,Compare with,compare_with,non-cascaded,dropdown,,graph_filters,TRUE,FALSE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+313,X Axis,x_axis,non-cascaded,dropdown,,graph_filters,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+314,Compare with,compare_with,non-cascaded,dropdown,,graph_filters,TRUE,FALSE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+314,X Axis,x_axis,non-cascaded,dropdown,,graph_filters,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+315,X Axis,x_axis,non-cascaded,dropdown,,graph_filters,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+316,Compare with,compare_with,non-cascaded,dropdown,,graph_filters,TRUE,FALSE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+317,Channel,channel,non-cascaded,dropdown,,store,FALSE,TRUE,,,,FALSE,TRUE,6,FALSE,{},FALSE
+317,Division,l1_name,cascaded,dropdown,1,product,FALSE,TRUE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+317,Department,l2_name,cascaded,dropdown,2,product,FALSE,TRUE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+317,Class,l3_name,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+318,Primary Y Axis,y_axis,non-cascaded,dropdown,1,graph_setting,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+319,Review Metric,review_metric,non-cascaded,dropdown,,graph_filters,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+320,Clearance/Carryover,cc_attribute,non-cascaded,dropdown,,graph_settings,TRUE,FALSE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+320,Primary Y Axis,y_axis,non-cascaded,dropdown,,graph_settings,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+321,Y Axis,y_axis,non-cascaded,dropdown,,graph_filters,TRUE,FALSE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+321,Secondary Y Axis,y_axis_secondary,non-cascaded,dropdown,,graph_filters,TRUE,FALSE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+380,Bubble Color Group,bubble_color_grp,non-cascaded,dropdown,,graph_filter,TRUE,FALSE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+380,Bubble Points,bubble_points,non-cascaded,dropdown,,graph_filter,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+380,X Axis Threshold,x_axis_threshold,non-cascaded,IntegerField,,graph_filter,TRUE,FALSE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+380,Y Axis Threshold,y_axis_threshold,non-cascaded,IntegerField,,graph_filter,TRUE,FALSE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+381,Bubble Size,bubble_size,non-cascaded,dropdown,,graph_settings,TRUE,FALSE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+381,X Axis,x_axis,non-cascaded,dropdown,,graph_settings,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+381,Y Axis,y_axis,non-cascaded,dropdown,,graph_settings,TRUE,FALSE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+390,Carryover,carryover,non-cascaded,dropdown,,custom,FALSE,FALSE,,,,FALSE,TRUE,10,FALSE,"{""dimension"": ""store""}",FALSE
+390,Channel,channel,cascaded,dropdown,,store,TRUE,TRUE,,,,FALSE,TRUE,2,FALSE,"{""dimension"": ""store""}",FALSE
+390,Clearance,clearance,non-cascaded,dropdown,,custom,FALSE,FALSE,,,,FALSE,TRUE,9,FALSE,"{""dimension"": ""store""}",FALSE
+390,Division,l1_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,3,TRUE,{},FALSE
+390,Department,l2_name,cascaded,dropdown,2,product,FALSE,TRUE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+390,Class,l3_name,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,5,FALSE,{},FALSE
+390,Season,season,non-cascaded,dropdown,,custom,TRUE,FALSE,,,,FALSE,TRUE,7,FALSE,"{""dimension"": ""store""}",FALSE
+390,Selling Period,selling_period,non-cascaded,rangePicker,,custom,TRUE,FALSE,,,,FALSE,TRUE,8,FALSE,"{""dimension"": ""store""}",FALSE
+390,Year,year,non-cascaded,dropdown,,custom,TRUE,FALSE,,,,FALSE,TRUE,6,FALSE,"{""dimension"": ""store""}",FALSE
+390,Business Unit,s1_name,cascaded,dropdown,,store,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,"{""dimension"": ""store""}",FALSE
+304,Channel,channel,cascaded,dropdown,1,store,TRUE,TRUE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+304,State,s6_name,cascaded,dropdown,3,store,FALSE,TRUE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+304,Store Group Name,store_group,cascaded,dropdown,2,store,FALSE,TRUE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+306,Division,l1_name,cascaded,dropdown,3,product,TRUE,TRUE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+306,Department,l2_name,cascaded,dropdown,4,product,FALSE,TRUE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+306,Class,l3_name,cascaded,dropdown,5,product,FALSE,TRUE,,,,FALSE,TRUE,5,FALSE,{},FALSE
+306,Business Unit,s1_name,cascaded,dropdown,1,store,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+306,Channel,channel,cascaded,dropdown,2,store,TRUE,TRUE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+333,Business Unit,s1_name,cascaded,dropdown,4,store,TRUE,FALSE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+333,Channel,channel,cascaded,dropdown,5,store,TRUE,TRUE,,,,FALSE,TRUE,8,FALSE,{},FALSE
+333,Division,l1_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+333,Department,l2_name,cascaded,dropdown,2,product,FALSE,TRUE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+333,Class,l3_name,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+391,Channel,channel,cascaded,dropdown,,store,FALSE,TRUE,,,,FALSE,TRUE,2,FALSE,"{""dimension"": ""store""}",FALSE
+391,Division,l1_name,cascaded,dropdown,1,product,TRUE,TRUE,,,,FALSE,TRUE,3,TRUE,{},FALSE
+391,Department,l2_name,cascaded,dropdown,2,product,FALSE,TRUE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+391,Class,l3_name,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,5,FALSE,{},FALSE
+391,Business Unit,s1_name,cascaded,dropdown,,store,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,"{""dimension"": ""store""}",FALSE

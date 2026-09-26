@@ -1,0 +1,164 @@
+image: python:3.12.1
+
+definitions:
+  services:
+    docker:
+      memory: 7168
+  caches:
+    sonar: ~/.sonar/cache
+  steps:
+    - step: &security-scan
+        name: Security Scan
+        size: 2x
+        script:
+          - pipe: atlassian/git-secrets-scan:0.4.3
+
+    # - step: &scan-sonarcloud
+    #     name: Build, test and analyze on SonarCloud
+    #     size: 2x
+    #     caches:
+    #       - sonar
+    #     clone:
+    #       depth: full
+    #     script:
+    #       - |
+    #         if [ -z "${SONAR_TOKEN:-}" ]; then
+    #           echo "SONAR_TOKEN is not set. Add it in Bitbucket Repository variables."
+    #           exit 1
+    #         fi
+    #       - pipe: sonarsource/sonarcloud-scan:4.0.0
+    #         variables:
+    #           DEBUG: "false"
+    #           SONAR_TOKEN: "${SONAR_TOKEN}"
+    #           SONAR_ORGANIZATION: "insideinsight"
+    #           SONAR_PROJECT_KEY: "insideinsight_mtp-mfe-inventorysmart"
+    #           SONAR_HOST_URL: "https://sonarqube.us"
+    #           EXTRA_ARGS: >
+    #             -Dsonar.token=${SONAR_TOKEN}
+    #             -Dsonar.scanner.skipJreProvisioning=true
+    #             -Dsonar.qualitygate.wait=false
+    #             -Dsonar.branch.name=${BITBUCKET_BRANCH}
+    #             -Dsonar.javascript.node.maxspace=2048
+    #             -Dsonar.scm.disabled=true
+    #             -Dsonar.exclusions=**/node_modules/**,**/dist/**,**/build/**
+
+    # - step: &scan-sonarcloud-pr
+    #     name: Analyze on SonarQube Cloud (PR)
+    #     size: 2x
+    #     caches:
+    #       - sonar
+    #     clone:
+    #       depth: full
+    #     script:
+    #       - |
+    #         if [ -z "${SONAR_TOKEN:-}" ]; then
+    #           echo "SONAR_TOKEN is not set. Add it in Bitbucket Repository variables."
+    #           exit 1
+    #         fi
+    #       - pipe: sonarsource/sonarcloud-scan:4.0.0
+    #         variables:
+    #           DEBUG: "false"
+    #           SONAR_TOKEN: "${SONAR_TOKEN}"
+    #           SONAR_ORGANIZATION: "insideinsight"
+    #           SONAR_PROJECT_KEY: "insideinsight_mtp-mfe-inventorysmart"
+    #           SONAR_HOST_URL: "https://sonarqube.us"
+    #           EXTRA_ARGS: >
+    #             -Dsonar.token=${SONAR_TOKEN}
+    #             -Dsonar.scanner.skipJreProvisioning=true
+    #             -Dsonar.qualitygate.wait=false
+    #             -Dsonar.pullrequest.key=${BITBUCKET_PR_ID}
+    #             -Dsonar.pullrequest.branch=${BITBUCKET_BRANCH}
+    #             -Dsonar.pullrequest.base=${BITBUCKET_PR_DESTINATION_BRANCH}
+    #             -Dsonar.javascript.node.maxspace=2048
+    #             -Dsonar.scm.disabled=true
+    #             -Dsonar.exclusions=**/node_modules/**,**/dist/**,**/build/**
+
+    - step: &accuknox-sast
+        name: Accuknox SAST
+        size: 2x
+        services: []
+        script:
+          - pipe: accu-knox/scan:3.0.0
+            variables:
+              SCAN_TYPE: SAST
+              SOFT_FAIL: "true"
+              ACCUKNOX_TOKEN: ${ACCUKNOX_TOKEN}
+              ACCUKNOX_ENDPOINT: ${ACCUKNOX_ENDPOINT}
+              ACCUKNOX_LABEL: ${ACCUKNOX_LABEL}
+
+    - step: &accuknox-sbom
+        name: AccuKnox SBOM Scan
+        size: 2x
+        services: []
+        script:
+          - pipe: accu-knox/scan:3.0.0
+            variables:
+              SCAN_TYPE: XBOM
+              BOM_TYPE: sbom
+              SCAN_PATH: "."
+              PROJECT_NAME: inventorysmartfrontend
+              PROJECT_CLASSIFIER: application
+              ACCUKNOX_TOKEN: ${ACCUKNOX_TOKEN}
+              ACCUKNOX_ENDPOINT: ${ACCUKNOX_ENDPOINT}
+              ACCUKNOX_LABEL: ${ACCUKNOX_LABEL}
+
+    - step: &awx-job-dev
+        name: Run AWX job
+        runs-on:
+          - self.hosted
+          - linux
+          - docker
+        script:
+          - python3 -m pip install requests==2.28.1
+          - python3 deploy-cloudrun.py $awx_username $awx_password mfe-iss-inventorysmart-dev fe ver
+
+# Workflow Configuration
+
+pipelines:
+  branches:
+    develop/*:
+      - step: *awx-job-dev
+      - step: *security-scan
+      # - step: *scan-sonarcloud
+      - step: *accuknox-sast
+      - step: *accuknox-sbom
+    main:
+      - step: *security-scan
+      # - step: *scan-sonarcloud
+      - step: *accuknox-sast
+      - step: *accuknox-sbom
+
+  custom:
+    develop/*:
+      - step: *awx-job-dev
+      - step: *security-scan
+      # - step: *scan-sonarcloud
+      - step: *accuknox-sast
+      - step: *accuknox-sbom
+
+    update-core-commit:
+      - step:
+          name: Update core submodule & raise PR
+          runs-on:
+            - self.hosted
+            - linux
+            - docker
+          script:
+            - bash frontend/scripts/update-core-and-raise-pr.sh $BITBUCKET_BRANCH
+
+  pull-requests:
+    "{feature/*,bugfix/*,hotfix/*,*}":
+      - step: *security-scan
+      # - step: *scan-sonarcloud-pr
+      - step: *accuknox-sast
+      - step: *accuknox-sbom
+    develop/*:
+      - step: *security-scan
+      # - step: *scan-sonarcloud-pr
+      - step: *accuknox-sast
+      - step: *accuknox-sbom
+    master:
+      - step: *security-scan
+      # - step: *scan-sonarcloud-pr
+      - step: *accuknox-sast
+      - step: *accuknox-sbom

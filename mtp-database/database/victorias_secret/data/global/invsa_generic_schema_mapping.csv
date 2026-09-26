@@ -1,0 +1,10 @@
+source_column_name,source_column_datatype,required_in_product,is_pk,generic_column_name,generic_column_datatype,formula,is_attribute,is_hierarchy,hierarchy_level,is_null_allowed,unique_by,display_name,is_partition_col,is_clustering_col
+ALLOCATED_QTY,float8,TRUE,FALSE,allocated_qty,float8,,FALSE,FALSE,,FALSE,FALSE,,FALSE,FALSE
+VRAFORECASTCHANNELID,varchar,TRUE,FALSE,channel,varchar,,FALSE,FALSE,,FALSE,TRUE,,FALSE,FALSE
+BARCODE,int8,TRUE,FALSE,product_code,varchar,,FALSE,FALSE,,FALSE,TRUE,,FALSE,FALSE
+INVENTLOCATIONID,varchar,TRUE,FALSE,store_code,varchar,,FALSE,FALSE,,FALSE,TRUE,,FALSE,FALSE
+SYNCSTARTDATETIME,timestamp,TRUE,FALSE,syncstartdatetime,timestamp,,FALSE,FALSE,,FALSE,FALSE,,FALSE,FALSE
+available_qty,float8,TRUE,FALSE,available_qty,float8,,FALSE,TRUE,,FALSE,FALSE,,FALSE,FALSE
+DATAAREAID,varchar,TRUE,FALSE,dataareaid,varchar,,FALSE,FALSE,,FALSE,TRUE,,FALSE,FALSE
+INVENTSITEID,varchar,TRUE,FALSE,INVENTSITEID,varchar,,FALSE,FALSE,,FALSE,TRUE,,FALSE,FALSE
+INVENTSTATUSID,varchar,TRUE,FALSE,INVENTSTATUSID,varchar,,FALSE,FALSE,,FALSE,TRUE,,FALSE,FALSE

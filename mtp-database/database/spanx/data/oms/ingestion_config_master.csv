@@ -1,0 +1,49 @@
+id,config_key,config_type,category,config_value,description,version,is_active,created_at
+1,TIMEZONE,config,general,"{""value"":""America/New_York""}",Client timezone configuration,1,true,2025-01-01 00:00:00
+2,ENABLE_INCREMENTAL_LOADING,feature_flag,order_recommendation,"{""value"":false}",Enable incremental loading for order sequences,1,true,2025-01-01 00:00:00
+3,RECOMMENDATION_WEEKS_METHOD,config,order_recommendation,"{""value"":""constant""}",Method for calculating recommendation weeks,1,true,2025-01-01 00:00:00
+4,RECOMMENDATION_WEEKS,config,order_recommendation,"{""value"":26}",Number of weeks for recommendations,1,true,2025-01-01 00:00:00
+5,FULL_WEEKS_RUN_DAY,config,order_recommendation,"{""value"":""Sunday""}",Day of week for full weeks run,1,true,2025-01-01 00:00:00
+6,ADDITIONAL_DATE_COLUMNS,config,order_recommendation,"{""value"":[]}",Additional date columns to process,1,true,2025-01-01 00:00:00
+7,ADDITIONAL_REQUIRED_COLUMNS,config,order_recommendation,"{""value"":[]}",Additional required columns for validation,1,true,2025-01-01 00:00:00
+8,EXCLUDED_REQUIRED_COLUMNS,config,order_recommendation,"{""value"":[""min_order_quantity_sku"",""store_allocation_constrained_final_roq""]}",Columns to exclude from required validation,1,true,2025-01-01 00:00:00
+9,ENABLE_POSTGRES_UPLOAD,feature_flag,order_recommendation,"{""value"":false}",Enable PostgreSQL upload functionality,1,true,2025-01-01 00:00:00
+10,POSTGRES_UPLOAD_ON_FULL_WEEKS_ONLY,feature_flag,order_recommendation,"{""value"":true}",Upload to PostgreSQL only on full weeks,1,true,2025-01-01 00:00:00
+11,SET_CHANNEL_VALUE,config,order_recommendation,"{""value"":null}",Set specific channel value if needed,1,true,2025-01-01 00:00:00
+12,HANDLE_MISSING_COLUMNS,feature_flag,order_recommendation,"{""value"":false}",Handle missing columns in data,1,true,2025-01-01 00:00:00
+13,CONVERT_INT64_TO_NULLABLE,feature_flag,order_recommendation,"{""value"":false}",Convert INT64 columns to nullable type,1,true,2025-01-01 00:00:00
+14,POSTGRES_SCHEMA,config,postgres,"{""value"":""public""}",PostgreSQL schema name,1,true,2025-01-01 00:00:00
+15,POSTGRES_CONNECTION_KEY,config,postgres,"{""value"":""INGESTION""}",PostgreSQL connection key identifier,1,true,2025-01-01 00:00:00
+16,POSTGRES_TABLE_COLUMNS,config,postgres,"{""value"":[]}",Additional PostgreSQL table columns,1,true,2025-01-01 00:00:00
+17,ERROR_STDDEV_HIERARCHY_LEVELS,config,error_stddev,"{""value"":[""l4_name"",""l3_name"",""l2_name"",""l1_name"",""l0_name""]}",Hierarchy levels for error standard deviation,1,true,2025-01-01 00:00:00
+18,ERROR_STDDEV_MEAN_COLUMN,config,error_stddev,"{""value"":""total_predicted_qty""}",Column for mean quantity calculation,1,true,2025-01-01 00:00:00
+19,ERROR_STDDEV_BASE_MEAN_COLUMN,config,error_stddev,"{""value"":""total_predicted_qty""}",Column for base-level mean calculation,1,true,2025-01-01 00:00:00
+20,ERROR_STDDEV_EVENT_DETECTION_TYPE,config,error_stddev,"{""value"":""null_check""}",Event detection strategy type,1,true,2025-01-01 00:00:00
+21,ERROR_STDDEV_FERROR_COLUMNS,config,error_stddev,"{""value"":[""product_code"",""fiscal_year_week"",""total_qty"",""total_predicted_qty""]}",Columns for merging forecast errors,1,true,2025-01-01 00:00:00
+22,ERROR_STDDEV_EVENT_MERGE_KEYS,config,error_stddev,"{""value"":[""product_code"",""fiscal_year_week""]}",Keys for merging event weeks,1,true,2025-01-01 00:00:00
+23,ERROR_STDDEV_CHECK_NOTNA_IN_FALLBACK,feature_flag,error_stddev,"{""value"":true}",Check for NaN in avg_qty fallback,1,true,2025-01-01 00:00:00
+24,VENDOR_MOQ_RAW_ROQ_COLUMN,config,vendor_moq_constraint,"{""value"":""raw_roq""}",Column name for raw ROQ,1,true,2025-01-01 00:00:00
+25,VENDOR_MOQ_ROQ_UNCONSTRAINED_COLUMN,config,vendor_moq_constraint,"{""value"":""roq_unconstrained""}",Column name for unconstrained ROQ,1,true,2025-01-01 00:00:00
+26,VENDOR_MOQ_IA_SHIPMENT_ORDER_QUANTITY_COLUMN,config,vendor_moq_constraint,"{""value"":""ia_shipment_order_quantity""}",Column name for IA shipment order quantity,1,true,2025-01-01 00:00:00
+27,VENDOR_MOQ_ENABLE_STYLE_COLUMNS,feature_flag,vendor_moq_constraint,"{""value"":true}",Enable style columns processing,1,true,2025-01-01 00:00:00
+28,VENDOR_MOQ_STYLE_KEYWORD,config,vendor_moq_constraint,"{""value"":""style""}",Keyword for style identification,1,true,2025-01-01 00:00:00
+29,VENDOR_MOQ_DROP_MOQ_TOLERANCE,feature_flag,vendor_moq_constraint,"{""value"":true}",Drop MOQ tolerance column,1,true,2025-01-01 00:00:00
+30,VENDOR_MOQ_INIT_MOQ_TOLERANCE_ZERO,feature_flag,vendor_moq_constraint,"{""value"":false}",Initialize MOQ tolerance to zero,1,true,2025-01-01 00:00:00
+31,VENDOR_MOQ_DEFAULT_MIN_REPLENISHMENT_QUANTITY,constraint,vendor_moq_constraint,"{""value"":100}",Default minimum replenishment quantity,1,true,2025-01-01 00:00:00
+32,VENDOR_MOQ_DEFAULT_MAX_REPLENISHMENT_QUANTITY,constraint,vendor_moq_constraint,"{""value"":999999}",Default maximum replenishment quantity,1,true,2025-01-01 00:00:00
+33,VENDOR_MOQ_DEFAULT_ORDER_MULTIPLE,constraint,vendor_moq_constraint,"{""value"":1}",Default order multiple value,1,true,2025-01-01 00:00:00
+34,VENDOR_MOQ_DEFAULT_MOQ_TOLERANCE,constraint,vendor_moq_constraint,"{""value"":0.5}",Default MOQ tolerance value,1,true,2025-01-01 00:00:00
+35,SAFETY_STOCK_RANK_SORT_KEYS,config,safety_stock,"{""value"":[""fiscal_year_week"",""dc_id"",""product_code""]}",Sort keys for ranking safety stock,1,true,2025-01-01 00:00:00
+36,SAFETY_STOCK_RANK_GROUP_BY_KEYS,config,safety_stock,"{""value"":[""fiscal_year_week"",""dc_id""]}",Group by keys for ranking,1,true,2025-01-01 00:00:00
+37,SAFETY_STOCK_SORT_KEYS,config,safety_stock,"{""value"":[""product_code"",""channel"",""dc_id"",""fiscal_year_week""]}",Sort keys for safety stock calculation,1,true,2025-01-01 00:00:00
+38,SAFETY_STOCK_GROUP_BY_KEYS,config,safety_stock,"{""value"":[""product_code"",""channel"",""dc_id""]}",Group by keys for safety stock,1,true,2025-01-01 00:00:00
+39,SAFETY_STOCK_REQUIRED_COLUMNS,config,safety_stock,"{""value"":[""product_code"",""channel"",""dc_id"",""fiscal_year_week"",""service_level"",""eff_lead_time"",""rolling_std_dev_new"",""rolling_forecast"",""variance"",""predicted_qty"",""error_std_dev"",""safety_stock"",""ss_base"",""safety_stock_method"",""order_strategy"",""elt_fw"",""stock_unit""]}",Required columns for safety stock processing,1,true,2025-01-01 00:00:00
+40,SAFETY_STOCK_NEW_COLUMN_DICT,config,safety_stock,"{""value"":{""safety_stock"":""safety_stock_sl"",""ss_base"":""ss_base_sl"",""service_level"":""service_level_sl""}}",Column name mapping for safety stock,1,true,2025-01-01 00:00:00
+41,MAX_DC_FORECAST_INGESTION_WORKERS,config,ingestion,"{""value"":6}",Maximum number of workers for DC forecast ingestion,1,true,2025-01-01 00:00:00
+42,BATCH_ROW_SIZE,config,ingestion,"{""value"":2500000}",Batch row size for data processing,1,true,2025-01-01 00:00:00
+43,MAX_PRODUCT_CODES_PER_BATCH,config,ingestion,"{""value"":200}",Maximum product codes per batch,1,true,2025-01-01 00:00:00
+44,EMAIL_RECIPIENTS,config,notification,"{""value"":[""charan.reddy@impactanalytics.co"",""sairaghunath.k@impactanalytics.co"",""harsh.agrawal@impactanalytics.co"",""rakesh.yadav@impactanalytics.co"",""pradeep.kumar@impactanalytics.co"",""kanishka.parashar@impactanalytics.co"",""raja.duraisamy@impactanalytics.co"",""vishal.kumar@impactanalytics.co""]}",Email recipients for notifications,1,true,2025-01-01 00:00:00
+45,ORDER_RECOMMENDATION_BATCHING_ENABLED,feature_flag,order_recommendation,"{""value"":true}",Enable batching for order recommendation,1,true,2026-03-21 00:00:00
+46,ORDER_RECOMMENDATION_PREFETCH_CONCURRENCY,config,order_recommendation,"{""value"":5}",Number of concurrent prefetch operations,1,true,2026-03-27 00:00:00
+47,ORDER_RECOMMENDATION_PREFETCH_CACHE_SIZE,config,order_recommendation,"{""value"":8}",Size of prefetch cache,1,true,2026-03-27 00:00:00
+48,ORDER_RECOMMENDATION_WORKER_SPAWN_DELAY,config,order_recommendation,"{""value"":45}",Delay between worker spawns in seconds,1,true,2026-03-27 00:00:00

@@ -1,0 +1,20 @@
+qc_id,qc_name,qc_description,table_id,created_by,created_at,updated_by,updated_at,deleted_by,deleted_at,is_deleted,qc_type
+1,product_master_promo_1,cids which have mapped to more than one identifier in that hierarchy level in product_master_promo,1,1,2024-11-06T00:00:00,,,,,FALSE,REPORT
+2,product_master_mkd_2,cids which have mapped to more than one identifier in that hierarchy level in product_master_mkd,1,1,2024-11-06T00:00:01,,,,,FALSE,REPORT
+3,product_master_promo_3,duplicates in the level of data in product_master_promo,1,1,2024-11-06T00:00:02,,,,,FALSE,REPORT
+4,product_master_mkd_4,duplicates in the level of data in product_master_mkd,1,1,2024-11-06T00:00:03,,,,,FALSE,REPORT
+5,product_master_promo_5,there is no active products in product master promo,1,1,2024-11-06T00:00:04,,,,,FALSE,REPORT
+6,product_master_mkd_6,there is no active products in product master mkd,1,1,2024-11-06T00:00:05,,,,,FALSE,REPORT
+7,store_master_promo_mkd_7,duplicates in the level of data in store_master_promo_mkd,1,1,2024-11-06T00:00:06,,,,,FALSE,REPORT
+8,store_master_promo_mkd_8,there is no active stores in store_master_promo_mkd,1,1,2024-11-06T00:00:07,,,,,FALSE,REPORT
+9,latest_inventory_9,"duplicates in the level of data [date, product_id, store_id, clearance_indicator] in latest_inventory",1,1,2024-11-06T00:00:08,,,,,FALSE,REPORT
+10,latest_inventory_10,negative in total_inv: latest_inventory,1,1,2024-11-06T00:00:09,,,,,FALSE,REPORT
+11,latest_inventory_11,Has more than one date: latest_inventory,1,1,2024-11-06T00:00:10,,,,,FALSE,REPORT
+12,latest_inventory_channel_agg_12,"duplicates in the level of data [inventory_date, product_id, channel] in latest_inventory_channel_agg",1,1,2024-11-06T00:00:11,,,,,FALSE,REPORT
+13,latest_inventory_channel_agg_13,negative in total_inv: latest_inventory_channel_agg,1,1,2024-11-06T00:00:12,,,,,FALSE,REPORT
+14,latest_inventory_channel_agg_14,Has more than one date: latest_inventory_channel_agg,1,1,2024-11-06T00:00:13,,,,,FALSE,REPORT
+15,fiscal_calendar_date_mapping_15,Has less than 2 years of future dates: fiscal_calendar_date_mapping,1,1,2024-11-06T00:00:14,,,,,FALSE,REPORT
+16,fiscal_calendar_date_mapping_16,Has less than 2 years of future dates: calendar_date_mapping,1,1,2024-11-06T00:00:15,,,,,FALSE,REPORT
+17,po_data_17,"duplicates in the level of data [po_date, product_id, store_id] in po_data",1,1,2024-11-06T00:00:16,,,,,FALSE,REPORT
+18,transaction_opt_promo_18,"duplicates in the level of data [date, product_id, channel,clearance_indicator] in transaction_opt_promo",1,1,2024-11-06T00:00:17,,,,,FALSE,REPORT
+19,transaction_opt_mkd_19,"duplicates in the level of data [date, product_id, store_id,clearance_indicator] in transaction_opt_mkd",1,1,2024-11-06T00:00:18,,,,,FALSE,REPORT

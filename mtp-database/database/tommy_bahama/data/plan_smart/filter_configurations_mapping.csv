@@ -1,0 +1,92 @@
+"fc_code","label","column_name","type","display_type","level","dimension","is_mandatory","is_multiple_selection","range_min","range_max","default_value","is_disabled","is_clearable","display_order","is_required","extra","is_deleted"
+701,Plan Display Name,plan_display_name,non-cascaded,TextField,,create_plan,true,false,,,,false,false,1,true,"{""maxLengthLimit"": 50}",false
+701,Plan Stage,plan_stage,cascaded,dropdown,,plan,true,false,,,,false,true,2,false,"{""showPlaceholderWithRatio"": true}",false
+701,Business Unit,s1_name,non-cascaded,dropdown,,create_plan,true,false,,,,false,true,3,true,"{""initialData"": [""WH"", ""ATS""], ""include_in_filter_dependency"": false}",false
+701,Start Year,start_year,non-cascaded,dropdown,,plan,true,false,,,,false,true,4,true,"{}",false
+701,Start Month,start_month,non-cascaded,dropdown,,plan,true,false,,,,false,true,5,true,"{}",false
+701,End Year,end_year,cascaded,dropdown,,plan,true,false,,,,false,true,6,true,"{}",false
+701,End Month,end_month,cascaded,dropdown,,plan,true,false,,,,false,true,7,true,"{}",false
+702,Start Year,start_year,non-cascaded,dropdown,,plan,true,false,,,,false,true,1,true,"{}",false
+702,Start Month,start_month,non-cascaded,dropdown,,plan,true,false,,,,false,true,2,true,"{}",false
+702,End Year,end_year,cascaded,dropdown,,plan,true,false,,,,false,true,3,true,"{}",false
+702,End Month,end_month,cascaded,dropdown,,plan,true,false,,,,false,true,4,true,"{}",false
+702,Business Unit,s1_name,non-cascaded,dropdown,,location,true,false,,,,false,true,5,true,"{""initialData"": [""WH"", ""ATS""], ""include_in_filter_dependency"": false}",false
+702,Plan Display Name,plan_display_name,non-cascaded,TextField,,plan,true,false,,,,false,false,6,true,"{""maxLengthLimit"": 50}",false
+703,Start Year,start_year,non-cascaded,dropdown,,plan,true,false,,,,false,true,1,true,"{}",false
+703,Start Month,start_month,non-cascaded,dropdown,,plan,true,false,,,,false,true,2,true,"{}",false
+703,End Year,end_year,cascaded,dropdown,,plan,true,false,,,,false,true,3,true,"{}",false
+703,End Month,end_month,cascaded,dropdown,,plan,true,false,,,,false,true,4,true,"{}",false
+703,Business Unit,s1_name,non-cascaded,dropdown,,location,false,false,,,,false,true,5,false,"{}",false
+704,Start Year,start_year,non-cascaded,dropdown,1,plan,true,false,,,,false,true,1,true,"{}",false
+704,Start Month,start_month,cascaded,dropdown,2,plan,true,false,,,,false,true,2,true,"{}",false
+704,End Year,end_year,non-cascaded,dropdown,3,plan,false,false,,,,false,true,3,true,"{}",false
+704,End Month,end_month,cascaded,dropdown,4,plan,false,false,,,,false,true,4,true,"{}",false
+704,Business Unit,s1_name,cascaded,dropdown,5,location,false,true,,,,false,true,5,true,"",false
+704,Division,l1_name,cascaded,dropdown,6,product,false,false,,,,false,true,6,false,"",false
+704,Department,l2_name,cascaded,dropdown,7,product,false,false,,,,false,true,7,false,"",false
+704,Class,l3_name,cascaded,dropdown,8,product,false,false,,,,false,true,8,false,"",false
+705,Start Year,start_year,cascaded,dropdown,,plan,true,false,,,,false,true,1,true,"{}",false
+705,Start Month,start_month,cascaded,dropdown,,plan,true,false,,,,false,true,2,true,"{}",false
+705,End Year,end_year,cascaded,dropdown,,plan,true,false,,,,false,true,3,true,"{}",false
+705,End Month,end_month,cascaded,dropdown,,plan,true,false,,,,false,true,4,true,"{}",false
+705,Business Unit,s1_name,cascaded,dropdown,,location,true,false,,,,false,true,5,true,"",false
+705,Channel,s2_name,cascaded,dropdown,,location,false,true,,,,true,true,6,false,"",false
+705,Division,l1_name,cascaded,dropdown,,product,false,true,,,,false,true,7,false,"",false
+705,Department,l2_name,cascaded,dropdown,,store,false,true,,,,false,true,8,false,"{}",false
+705,Class,l3_name,cascaded,dropdown,,store,false,true,,,,true,true,9,false,"{}",false
+706,Plan Display Name,plan_display_name,non-cascaded,TextField,,create_plan,true,false,,,,false,false,1,true,"{""maxLengthLimit"": 50}",false
+706,Plan Stage,plan_stage,cascaded,dropdown,,plan,true,false,,,,false,true,2,false,"{""showPlaceholderWithRatio"": true}",false
+706,Start Year,start_year,cascaded,dropdown,,plan,true,false,,,,false,true,3,false,"{""showPlaceholderWithRatio"": true}",false
+706,Start Month,start_month,cascaded,dropdown,,plan,true,false,,,,false,true,4,false,"{""showPlaceholderWithRatio"": true}",false
+706,End Year,end_year,cascaded,dropdown,,plan,true,false,,,,false,true,5,false,"{""showPlaceholderWithRatio"": true}",false
+706,End Month,end_month,cascaded,dropdown,,plan,true,false,,,,false,true,6,false,"{""showPlaceholderWithRatio"": true}",false
+706,Business Unit,s1_name,cascaded,dropdown,,location,true,false,,,,false,true,7,false,"{""showPlaceholderWithRatio"": true}",false
+706,Channel,s2_name,cascaded,dropdown,,location,false,true,,,,false,true,8,false,"{""showPlaceholderWithRatio"": true}",false
+706,Division,l1_name,cascaded,dropdown,1,product,true,false,,,,false,true,9,false,"{""showPlaceholderWithRatio"": true}",false
+706,Department,l2_name,cascaded,dropdown,2,product,true,true,,,,false,true,10,false,"{""showPlaceholderWithRatio"": true}",false
+706,Class,l3_name,cascaded,dropdown,3,product,false,true,,,,false,true,11,false,"{""showPlaceholderWithRatio"": true}",false
+712,Start Year,start_year,non-cascaded,dropdown,,plan,true,false,,,,false,true,1,true,"{}",false
+712,Start Month,start_month,non-cascaded,dropdown,,plan,true,false,,,,false,true,2,true,"{}",false
+712,End Year,end_year,cascaded,dropdown,,plan,false,false,,,,false,true,3,true,"{}",false
+712,End Month,end_month,cascaded,dropdown,,plan,false,false,,,,false,true,4,true,"{}",false
+712,Business Unit,s1_name,non-cascaded,dropdown,,plan,false,true,,,,false,true,5,false,"{}",false
+750,Year,plansmart_year_value,cascaded,dropdown,,plan,true,true,,,,false,true,1,false,"{""maxLimit"": 2}",false
+750,Season,season,cascaded,dropdown,,report,true,true,,,,false,true,2,false,"{""maxLimit"": 2}",false
+750,Channel,channel,non-cascaded,dropdown,,store,true,true,,,,false,true,3,false,"{}",false
+750,Category,l1_name,cascaded,dropdown,1,product,true,true,,,,false,true,4,false,"{}",false
+750,Department,l2_name,cascaded,dropdown,2,product,false,true,,,,false,true,5,false,"{}",false
+750,Version,version,non-cascaded,dropdown,,report,true,true,,,,false,true,6,false,"{}",false
+751,Start Year,start_year,cascaded,dropdown,,report,true,false,,,,false,true,1,false,"{}",false
+751,Start Month,start_month,cascaded,dropdown,,report,true,false,,,,false,true,2,false,"{}",false
+751,End Year,end_year,cascaded,dropdown,,report,true,false,,,,false,true,3,false,"{}",false
+751,End Month,end_month,cascaded,dropdown,,report,true,false,,,,false,true,4,false,"{}",false
+751,Business Unit,s1_name,cascaded,dropdown,,location,true,false,,,,false,true,5,false,"{}",false
+751,Channel,s2_name,cascaded,dropdown,,location,false,true,,,,true,false,6,false,"{}",false
+751,Division,l1_name,cascaded,dropdown,,product,true,true,,,,false,true,7,false,"{}",false
+751,Department,l2_name,cascaded,dropdown,2,product,false,true,,,,false,true,8,false,"{}",false
+751,Class,l3_name,cascaded,dropdown,3,product,false,true,,,,false,true,9,false,"{}",false
+752,Start Year,start_year,cascaded,dropdown,,report,true,false,,,,false,true,1,false,"{}",false
+752,Start Month,start_month,cascaded,dropdown,,report,true,false,,,,false,true,2,false,"{}",false
+752,End Year,end_year,cascaded,dropdown,,report,true,false,,,,false,true,3,false,"{}",false
+752,End Month,end_month,cascaded,dropdown,,report,true,false,,,,false,true,4,false,"{}",false
+752,Business Unit,s1_name,cascaded,dropdown,,location,true,false,,,,false,true,5,false,"{}",false
+752,Channel,s2_name,cascaded,dropdown,,location,false,true,,,,true,true,6,false,"{}",false
+752,Division,l1_name,cascaded,dropdown,,product,true,true,,,,false,true,7,false,"{}",false
+752,Department,l2_name,cascaded,dropdown,2,product,false,true,,,,false,true,8,false,"{}",false
+752,Class,l3_name,cascaded,dropdown,3,product,false,true,,,,false,true,9,false,"{}",false
+753,Report Type,plansmart_report_type,non-cascaded,dropdown,,plan,true,false,,,product_hierarchy,false,false,,false,"{}",false
+754,Start Year,start_year,cascaded,dropdown,,report,true,false,,,,false,true,1,false,"{}",false
+754,Start Month,start_month,cascaded,dropdown,,report,true,false,,,,false,true,2,false,"{}",false
+754,End Year,end_year,cascaded,dropdown,,report,true,false,,,,false,true,3,false,"{}",false
+754,End Month,end_month,cascaded,dropdown,,report,true,false,,,,false,true,4,false,"{}",false
+754,Business Unit,s1_name,cascaded,dropdown,,location,true,false,,,,false,true,5,false,"{}",false
+754,Group By,group_by_kpi,cascaded,dropdown,,location,true,false,,,,false,true,7,false,"{}",false
+755,Start Year,start_year,cascaded,dropdown,,report,true,false,,,,false,true,1,false,"{}",false
+755,Start Month,start_month,cascaded,dropdown,,report,true,false,,,,false,true,2,false,"{}",false
+755,End Year,end_year,cascaded,dropdown,,report,true,false,,,,false,true,3,false,"{}",false
+755,End Month,end_month,cascaded,dropdown,,report,true,false,,,,false,true,4,false,"{}",false
+755,Business Unit,s1_name,cascaded,dropdown,,location,true,false,,,,false,true,5,false,"{}",false
+755,Division,l1_name,cascaded,dropdown,,product,true,true,,,,false,true,7,false,"{}",false
+755,Department,l2_name,cascaded,dropdown,2,product,false,true,,,,false,true,8,false,"{}",false
+755,Channel,s2_name,cascaded,dropdown,,location,true,true,,,,false,true,6,false,"{}",false
+754,Division,l1_name,cascaded,dropdown,,product,true,false,,,,false,true,6,false,"{}",false

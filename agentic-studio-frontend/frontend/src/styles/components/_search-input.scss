@@ -1,0 +1,142 @@
+.search-input {
+  height: 32px;
+  width: 172px;
+  flex-shrink: 0;
+
+  &.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  .search-input-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    border: 1px solid var(--greys-700);
+    background: var(--greys-1000);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+    .search-icon {
+      position: absolute;
+      left: 10px;
+      z-index: 1;
+      pointer-events: none;
+      color: #4B5767;
+      width: 16px;
+      height: 16px;
+    }
+
+    .search-input-field {
+      width: 100%;
+      height: 100%;
+      padding: 8px 10px 8px 36px; // Left padding to make room for icon
+      font-size: 14px;
+      border: none;
+      border-radius: 8px;
+      color: var(--greys-100);
+      transition: all 0.2s ease;
+
+      &::placeholder {
+        color: var(--greys-400);
+      }
+
+      &:focus {
+        outline: none;
+      }
+
+      &:disabled {
+        cursor: not-allowed;
+        color: var(--greys-600);
+        
+        &::placeholder {
+          color: var(--greys-600);
+        }
+      }
+    }
+
+    &:focus-within {
+      border-color: var(--maincolor-100, #A93BFF);
+      box-shadow: 0 0 0 2px rgba(169, 59, 255, 0.1);
+    }
+
+    &:hover:not(:focus-within) {
+      border-color: var(--greys-600);
+    }
+  }
+
+  // Size variants for different use cases
+  &.small {
+    height: 32px;
+    width: 140px;
+
+    .search-input-wrapper .search-input-field {
+      padding: 8px 8px 8px 32px;
+      font-size: 12px;
+    }
+
+    .search-input-wrapper .search-icon {
+      left: 8px;
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  &.large {
+    height: 44px;
+    width: 200px;
+
+    .search-input-wrapper .search-input-field {
+      padding: 12px 12px 12px 40px;
+      font-size: 16px;
+    }
+
+    .search-input-wrapper .search-icon {
+      left: 12px;
+      width: 18px;
+      height: 18px;
+    }
+  }
+}
+
+// Dark mode support
+@media (prefers-color-scheme: dark) {
+  .search-input .search-input-wrapper {
+    background: var(--greys-900, #1F2937);
+    border-color: var(--greys-600, #4B5563);
+
+    .search-input-field {
+      color: var(--greys-100, #F9FAFB);
+
+      &::placeholder {
+        color: var(--greys-500, #6B7280);
+      }
+    }
+
+    .search-icon {
+      color: var(--greys-500, #6B7280);
+    }
+  }
+}
+
+// High contrast mode support
+@media (prefers-contrast: high) {
+  .search-input .search-input-wrapper {
+    border-width: 2px;
+    
+    &:focus-within {
+      border-width: 3px;
+    }
+  }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  .search-input .search-input-wrapper,
+  .search-input .search-input-wrapper .search-input-field {
+    transition: none;
+  }
+}

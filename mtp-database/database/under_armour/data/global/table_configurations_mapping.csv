@@ -1,0 +1,252 @@
+tc_code,label,column_name,dimension,type,is_frozen,is_editable,is_aggregated,order_of_display,is_hidden,is_required,tc_mapping_code,child_tc_mapping_code,aggregate_type,formatter,is_row_span,footer,is_searchable,extra,is_sortable,width,is_deleted,is_master_group
+3,Product Group Name,name,store,str,TRUE,FALSE,FALSE,1,FALSE,FALSE,30101,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+3,# Products,product_count,store,int,FALSE,FALSE,FALSE,2,FALSE,FALSE,30102,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+3,Definitions,product_group_definitions,store,str,FALSE,FALSE,FALSE,3,FALSE,FALSE,30103,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+3,Group Type,special_classification,store,str,FALSE,FALSE,FALSE,4,FALSE,FALSE,30104,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+3,Created At,created_at,store,DateTimeField,FALSE,FALSE,FALSE,5,FALSE,FALSE,30105,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+3,Updated At,updated_at,store,DateTimeField,FALSE,FALSE,FALSE,6,FALSE,FALSE,30106,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+3,Created By,created_by,store,str,FALSE,FALSE,FALSE,7,FALSE,FALSE,30107,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+3,Updated By,updated_by,store,str,FALSE,FALSE,FALSE,8,FALSE,FALSE,30108,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+4,Definition Name,name,product,str,FALSE,FALSE,FALSE,1,FALSE,FALSE,40001,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+4,Definition,pseudo_code,product,str,FALSE,FALSE,FALSE,2,FALSE,FALSE,40002,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+5,SKU ID,product_code,store,str,TRUE,FALSE,FALSE,1,FALSE,FALSE,50001,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+5,Description,product_description,store,str,FALSE,FALSE,FALSE,2,FALSE,FALSE,50002,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+5,Category,l1_name,store,str,FALSE,FALSE,FALSE,3,FALSE,FALSE,50003,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+5,Sub Category,l2_name,store,str,FALSE,FALSE,FALSE,4,FALSE,FALSE,50005,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+5,Brand,l3_name,store,str,FALSE,FALSE,FALSE,5,FALSE,FALSE,50006,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+5,Merchandise Category,l4_name,store,str,FALSE,FALSE,FALSE,6,FALSE,FALSE,50007,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+5,Color,color,store,str,FALSE,FALSE,FALSE,7,FALSE,FALSE,50008,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+5,Generic Article ID,l5_name,store,str,FALSE,FALSE,FALSE,8,FALSE,FALSE,50009,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+7,Store Group Name,name,store,str,TRUE,FALSE,FALSE,1,FALSE,FALSE,70001,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+7,# Stores,store_count,store,int,FALSE,FALSE,FALSE,2,FALSE,FALSE,70002,,,,FALSE,,FALSE,"{""isRangeFilter"": true}",TRUE,200,FALSE,FALSE
+7,Group Type,special_classification,store,str,FALSE,FALSE,FALSE,3,FALSE,FALSE,70003,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+7,Created At,created_at,store,DateTimeField,FALSE,FALSE,FALSE,4,FALSE,FALSE,70004,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+7,Updated At,updated_at,store,DateTimeField,FALSE,FALSE,FALSE,5,FALSE,FALSE,70005,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+7,Created By,created_by,store,str,FALSE,FALSE,FALSE,6,FALSE,FALSE,70006,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+7,Updated By,updated_by,store,str,FALSE,FALSE,FALSE,7,FALSE,FALSE,70007,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+16,DC,dc_map,custom,list,FALSE,TRUE,FALSE,5,FALSE,FALSE,87,,,,FALSE,,FALSE,{},FALSE,200,FALSE,FALSE
+16,Store Information,store_information,store,str,FALSE,FALSE,FALSE,1,FALSE,FALSE,323024,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+16,Store Name,store_name,store,str,TRUE,FALSE,TRUE,1,FALSE,FALSE,28,323024,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+16,Store Code,store_code,store,str,TRUE,FALSE,TRUE,1,FALSE,FALSE,25,323024,,,FALSE,,TRUE,"{""disableCommaFormatting"": true, ""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+18,Store Information,store_information,store,str,FALSE,FALSE,FALSE,1,FALSE,FALSE,323025,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+18,Store Code,store_code,store,str,FALSE,FALSE,FALSE,1,FALSE,FALSE,18001,323025,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+18,Store Name,store_name,store,str,FALSE,FALSE,FALSE,2,FALSE,FALSE,18002,323025,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+18,Store Type,channel,store,str,FALSE,FALSE,FALSE,3,FALSE,FALSE,18003,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+18,Region Description,region_name,store,str,FALSE,FALSE,FALSE,4,FALSE,FALSE,18004,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+150,Discount Value,overall_value,Other,float,TRUE,TRUE,FALSE,2,FALSE,FALSE,5085,,,,FALSE,,FALSE,"{""ignore_in_api"": true, ""fullWidth"": true}",TRUE,200,FALSE,FALSE
+150,Drivers,drivers,Other,str,TRUE,FALSE,FALSE,1,FALSE,FALSE,5086,,,,FALSE,,TRUE,"{""fullWidth"": true}",TRUE,200,FALSE,FALSE
+153,Forecast Multiplier,forecast_multiplier,Other,str,TRUE,FALSE,FALSE,1,FALSE,FALSE,5087,,,,FALSE,,TRUE,"{""fullWidth"": true}",TRUE,200,FALSE,FALSE
+251,Action,action,Product,edit_icon,FALSE,FALSE,FALSE,5,FALSE,FALSE,251005,,,,FALSE,,FALSE,{},FALSE,200,FALSE,FALSE
+251,Store Number,store_code,Store,str,FALSE,FALSE,FALSE,1,FALSE,FALSE,251001,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+251,Sales Organisation,sales_org_name,Store,str,FALSE,FALSE,FALSE,3,FALSE,FALSE,251003,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+251,Region,region_name,store,str,FALSE,FALSE,FALSE,4,FALSE,FALSE,251004,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+251,Store Name,store_name,Store,str,FALSE,FALSE,FALSE,2,FALSE,FALSE,251002,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+258,Region,region_name,Store,str,FALSE,FALSE,FALSE,1,FALSE,TRUE,258001,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+258,Store Name,store_name,Store,str,FALSE,FALSE,FALSE,2,FALSE,TRUE,258002,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+253,Store Information,store_information,Store,str,FALSE,FALSE,FALSE,1,FALSE,FALSE,323026,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+253,Store Code,store_code,Store,str,FALSE,FALSE,FALSE,1,FALSE,FALSE,253001,323026,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+253,Store Name,store_name,Store,str,FALSE,FALSE,FALSE,2,FALSE,FALSE,253002,323026,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+253,Region,region_name,Store,str,FALSE,FALSE,FALSE,3,FALSE,FALSE,253003,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+253,From Date,from_date,Product Mapping,datetime,FALSE,FALSE,FALSE,4,FALSE,FALSE,253004,253006,,,FALSE,,FALSE,{},FALSE,200,FALSE,FALSE
+253,To Date,to_date,Product Mapping,datetime,FALSE,FALSE,FALSE,4,FALSE,FALSE,253005,253006,,,FALSE,,FALSE,{},FALSE,200,FALSE,FALSE
+253,Time Period,validity,Product Mapping,str,FALSE,FALSE,FALSE,5,FALSE,FALSE,253006,,,,FALSE,,FALSE,{},FALSE,200,FALSE,FALSE
+232,Style/Style~Size,article,Product Mapping,,FALSE,FALSE,FALSE,,,FALSE,232001,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+232,Style/Style~Size,size,Product Mapping,list,FALSE,TRUE,FALSE,1,FALSE,TRUE,232002,,,,FALSE,,FALSE,{},FALSE,200,FALSE,FALSE
+501,Closed tickets,closed,Product,link,FALSE,TRUE,FALSE,5,FALSE,FALSE,200009,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+501,Open tickets,open,Product,link,FALSE,TRUE,FALSE,4,FALSE,FALSE,200008,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+501,Requestor name,user_name,Product,str,FALSE,FALSE,FALSE,2,FALSE,FALSE,200006,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+501,Total tickets,total,Product,link,FALSE,TRUE,FALSE,3,FALSE,FALSE,200007,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+501,User id,user_id,Product,link,FALSE,TRUE,FALSE,1,FALSE,FALSE,200005,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+502,Closed on,closed_on,Product,str,FALSE,FALSE,FALSE,6,FALSE,FALSE,200015,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+502,Created on,created_on,Product,str,FALSE,FALSE,FALSE,4,FALSE,FALSE,200013,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+502,Issue Type,issue_type,Product,str,FALSE,FALSE,FALSE,9,FALSE,FALSE,200018,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+502,Module,module_type,Product,str,FALSE,FALSE,FALSE,12,FALSE,FALSE,200021,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+502,Priority,priority,Product,str,FALSE,FALSE,FALSE,3,FALSE,FALSE,200012,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+502,Status,status,Product,str,FALSE,FALSE,FALSE,2,FALSE,FALSE,200011,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+502,Ticket id,id,Product,int,FALSE,FALSE,FALSE,1,FALSE,FALSE,200010,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+502,Title,title,Product,str,FALSE,FALSE,FALSE,11,FALSE,FALSE,200020,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+502,Updated on,updated_on,Product,str,FALSE,FALSE,FALSE,5,FALSE,FALSE,200014,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+502,User Id,user_id,Product,int,FALSE,FALSE,FALSE,7,FALSE,FALSE,200016,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+502,User Name,user_name,Product,str,FALSE,FALSE,FALSE,8,FALSE,FALSE,200017,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+503,Issue Type,issue_type,Product,str,FALSE,FALSE,FALSE,8,FALSE,FALSE,200029,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+503,Module,module_type,Product,str,FALSE,FALSE,FALSE,3,FALSE,FALSE,200024,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+503,Priority,priority,Product,str,FALSE,FALSE,FALSE,2,FALSE,FALSE,200023,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+503,Recent Activity,update_details,Product,str,FALSE,FALSE,FALSE,9,FALSE,FALSE,200039,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+503,Ticket id,id,Product,int,FALSE,FALSE,FALSE,1,FALSE,FALSE,200022,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+503,Title,title,Product,str,FALSE,FALSE,FALSE,7,FALSE,FALSE,200028,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+503,Updated on,updated_on,Product,str,FALSE,FALSE,FALSE,4,FALSE,FALSE,200025,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+503,User Id,user_id,Product,int,FALSE,FALSE,FALSE,6,FALSE,FALSE,200027,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+503,User Name,user_name,Product,str,FALSE,FALSE,FALSE,5,FALSE,FALSE,200026,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+504,Created Date,created_on,Product,date,FALSE,FALSE,FALSE,8,FALSE,FALSE,200037,,,"DD-MM-YYYY, HH:mm:ss",FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+504,Last modified date,updated_on,Product,date,FALSE,FALSE,FALSE,9,FALSE,FALSE,200038,,,"DD-MM-YYYY, HH:mm:ss",FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+504,Priority,priority,Product,chip,TRUE,FALSE,FALSE,4,FALSE,FALSE,200033,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+504,Product,module_type,Product,str,FALSE,FALSE,FALSE,6,FALSE,FALSE,200035,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+504,Requestor Name,user_name,Product,str,FALSE,FALSE,FALSE,5,FALSE,FALSE,200034,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+504,Status,status,Product,chip,TRUE,FALSE,FALSE,2,FALSE,FALSE,200031,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+504,Subject,title,Product,str,TRUE,FALSE,FALSE,3,FALSE,FALSE,200032,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+504,Ticket id,id,Product,link,TRUE,TRUE,FALSE,1,FALSE,FALSE,200030,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+5000,Closed tickets,closed,Product,link,FALSE,TRUE,FALSE,5,FALSE,FALSE,200004,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+5000,Open tickets,open,Product,link,FALSE,TRUE,FALSE,4,FALSE,FALSE,200003,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+5000,Product name,module_type,Product,link,FALSE,TRUE,FALSE,1,FALSE,FALSE,200000,,,,FALSE,,TRUE,{},FALSE,200,FALSE,FALSE
+5000,Total tickets,total,Product,link,FALSE,TRUE,FALSE,3,FALSE,FALSE,200002,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+14,Product Information,product_information,store,link,FALSE,FALSE,FALSE,1,FALSE,FALSE,321021,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+14,Brand,l3_name,store,str,FALSE,FALSE,FALSE,5,FALSE,FALSE,500006,321021,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+14,Category,l1_name,store,str,FALSE,FALSE,FALSE,3,FALSE,FALSE,500003,321021,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+14,Color,color,store,str,FALSE,FALSE,FALSE,7,FALSE,FALSE,500008,321021,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+14,Description,product_description,store,str,FALSE,FALSE,FALSE,2,FALSE,FALSE,500002,321021,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+14,Generic Article ID,l6_name,store,str,FALSE,FALSE,FALSE,8,FALSE,FALSE,500009,321021,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+14,Merchandise Category,l5_name,store,str,FALSE,FALSE,FALSE,6,FALSE,FALSE,500007,321021,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+14,SKU ID,product_code,store,str,TRUE,FALSE,FALSE,1,FALSE,FALSE,500001,321021,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+14,Sub Category,l2_name,store,str,FALSE,FALSE,FALSE,4,FALSE,FALSE,500005,321021,,,FALSE,,TRUE,"{""enableColumnExpand"": true, ""columnGroupShow"": ""open""}",TRUE,200,FALSE,FALSE
+281,Product Information,product_information,Product,str,FALSE,FALSE,FALSE,1,FALSE,FALSE,323032,,,,FALSE,,TRUE,{},FALSE,200,FALSE,FALSE
+281,Brand,l3_name,Product,str,FALSE,FALSE,TRUE,6,FALSE,FALSE,281_l3_name_SBU_Product,,,,FALSE,,TRUE,"{""json_parent"" : ""rcl_dimension""}",FALSE,200,FALSE,FALSE
+281,Category,l1_name,Product,str,FALSE,FALSE,TRUE,4,FALSE,FALSE,281_l1_name_Channel_Product,,,,FALSE,,TRUE,"{""json_parent"" : ""rcl_dimension""}",FALSE,200,FALSE,FALSE
+281,From date,from_date,Product Mapping,datetime,FALSE,FALSE,FALSE,5,FALSE,TRUE,281_from_date_From date_Product Mapping,281_validity_Time Periods_Product Mapping,,,FALSE,,FALSE,{},FALSE,200,FALSE,FALSE
+281,Merchandise Category,l4_name,Product,str,TRUE,FALSE,FALSE,2,FALSE,FALSE,281_size_Size_Product,,,,FALSE,,TRUE,"{""json_parent"" : ""rcl_dimension""}",FALSE,200,FALSE,FALSE
+281,Sales Organisation Code,l0_name,Product,str,FALSE,FALSE,TRUE,3,FALSE,FALSE,281_l0_name_Country_Product,,,,FALSE,,TRUE,"{""json_parent"" : ""rcl_dimension""}",FALSE,200,FALSE,FALSE
+281,Store Information,store_information,Store,str,FALSE,FALSE,FALSE,1,FALSE,FALSE,323033,,,,FALSE,,TRUE,{},FALSE,200,FALSE,FALSE
+281,Store Code,store_code,Store,str,TRUE,FALSE,TRUE,1,FALSE,FALSE,281_psa_name_Store Code_Store,,,,FALSE,,TRUE,{},FALSE,200,FALSE,FALSE
+281,Style Color,article,Product,str,TRUE,FALSE,TRUE,1,FALSE,FALSE,281_article_Article_Product,,,,FALSE,,TRUE,"{""json_parent"" : ""rcl_dimension""}",FALSE,200,FALSE,FALSE
+281,Style Id,l5_name,Product,str,FALSE,FALSE,FALSE,1,FALSE,FALSE,281_l5_name_Collection Total_Product,,,,FALSE,,TRUE,"{""json_parent"" : ""rcl_dimension""}",FALSE,200,FALSE,FALSE
+281,Sub Category,l2_name,Product,str,FALSE,FALSE,TRUE,5,FALSE,FALSE,281_l2_name_Brand_Product,,,,FALSE,,TRUE,"{""json_parent"" : ""rcl_dimension""}",FALSE,200,FALSE,FALSE
+281,Time Periods,validity,Product Mapping,str,FALSE,FALSE,FALSE,5,FALSE,TRUE,281_validity_Time Periods_Product Mapping,,,,FALSE,,FALSE,{},FALSE,200,FALSE,FALSE
+281,To Date,to_date,Product Mapping,datetime,FALSE,FALSE,FALSE,5,FALSE,TRUE,281_to_date_To Date_Product Mapping,281_validity_Time Periods_Product Mapping,,,FALSE,,FALSE,{},FALSE,200,FALSE,FALSE
+198,Dimension,dimension,Others,str,FALSE,FALSE,FALSE,1,FALSE,FALSE,71279,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+198,Filter,column_name,Others,list,FALSE,TRUE,FALSE,2,FALSE,FALSE,71268,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+198,Label,label,Others,str,FALSE,TRUE,TRUE,3,FALSE,FALSE,71280,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+198,Multi Select,is_multiple_selection,Others,ToogleField,FALSE,TRUE,FALSE,4,FALSE,FALSE,727227,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+198,Functionality,display_type,Others,list,FALSE,TRUE,FALSE,5,FALSE,FALSE,7270,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+198,Filter Type,filter_type,Others,list,FALSE,TRUE,FALSE,6,FALSE,FALSE,7271,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+198,Mandatory,is_mandatory,Others,ToogleField,FALSE,TRUE,FALSE,7,FALSE,FALSE,7272,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+198,Display Order,display_order,Others,list,FALSE,TRUE,FALSE,8,FALSE,TRUE,71274,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+198,Clearable,is_clearable,Others,ToogleField,FALSE,TRUE,FALSE,10,FALSE,FALSE,71277,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+5008,Allocated capacity,allocated_capacity,vendor,int,false,false,false,6.0,false,false,"9f502aaf-36bb-4504-90e6-8ee4a6c32ca1",,,,false,,false,"{}",true,300,false,false
+5008,Country,country,vendor_facility,str,false,false,false,2.0,false,false,"91952009-a75a-489a-8e5a-607242304e35",,,,false,,true,"{}",true,300,false,false
+5008,Factory Name,facility_name,vendor_facility,str,false,false,false,1.0,false,false,"5e1aba1a-aec9-4931-a74e-3bb54cf56d8f",,,,false,,true,"{}",true,300,false,false
+5008,Geo-Political Risk,geo_political_risk,vendor_facility,str,false,false,false,4.0,false,false,"748cf56b-5521-4400-a9b5-2938a8d18edd",,,,false,,true,"{}",true,300,false,false
+5008,Manufacturing Region,region,vendor_facility,str,false,false,false,3.0,false,false,"8639bad4-ad74-442c-b88c-1e5a8e0a8231",,,,false,,true,"{}",true,300,false,false
+5008,Promised Capacity,promised_capacity,vendor,int,false,false,false,5.0,false,false,faa38157-f77f-498f-a326-48fa04cab009,,,,false,,false,"{}",true,300,false,false
+5009,Allocated capacity,allocated_capacity,vendor,int,false,false,false,6.0,false,false,dd76b8de-c170-44df-912c-cb7fdb03d27b,,,,false,,false,"{}",true,600,false,false
+5009,Partnership,partnership_type,vendor,str,false,false,false,2.0,false,false,"4cd5c3c8-589a-431f-ad31-919cae7b017c",,,,false,,true,"{}",true,600,false,false
+5009,Performance Score,performance_score,vendor,float,false,false,false,4.0,false,false,"9e10d2a1-e98c-4118-9bd1-ceec90521957",,,,false,,true,"{}",true,300,false,false
+5009,Promised Capacity,promised_capacity,vendor,int,false,false,false,5.0,false,false,c43ce4fc-a609-407c-ad63-aae937a26d94,,,,false,,false,"{}",false,300,false,false
+5009,Vendor Name,vendor_name,vendor,str,false,false,false,1.0,false,false,"2e297499-6ddc-49a8-ac4f-e8ad0e2629bd",,,,false,,true,"{}",true,300,false,false
+5009,Vendor Region,region,vendor,str,false,false,false,3.0,false,false,"9105abe6-1930-4aa6-8075-d085991e20ab",,,,false,,true,"{}",true,300,false,false
+5010,Allocated capacity,allocated_capacity,vendor,int,false,false,false,3.0,false,false,c42b0b5d-3d44-402f-bfd3-107fe1144de9,,,,false,,false,"{}",true,300,false,false
+5010,Promised capacity,promised_capacity,vendor,int,false,false,false,2.0,false,false,"69a81375-e25c-49a6-bc32-01f9f675f733",,,,false,,false,"{}",true,300,false,false
+5010,Sourcing class type,sourcing_class_type,vendor,str,false,false,false,1.0,false,false,"1783ea45-c30e-4a9c-885d-fd44cf3a57b0",,,,false,,true,"{}",true,300,false,false
+5012,Allocated capacity in k smv,allocated_capacity,vendor,int,false,false,false,6.0,false,false,a04467d1-7e31-45ce-9a71-7e37d0974600,,,,false,,false,"{}",true,300,false,false
+5012,Factory Country,country,vendor_facility,str,false,false,false,1.0,false,false,"617109a7-92e2-4892-84d6-ab408be1cdbb",,,,false,,true,"{}",true,300,false,false
+5012,Factory Name,facility_name,vendor_facility,str,false,false,false,1.0,false,false,"5587a44f-c69e-4b1f-b6ce-86eb98ee42ad",,,,false,,true,"{}",true,300,false,false
+5012,Manufacturing Region,region,vendor_facility,str,false,false,false,3.0,false,false,c2462485-ef74-4365-9437-a6f5e32ef68b,,,,false,,true,"{}",true,300,false,false
+5012,Performance Score,performance_score_90d,vendor_facility,str,false,false,false,2.0,false,false,"6ad261d7-b908-47d1-a968-1b24c0ca4e14",,,,false,,true,"{}",true,300,false,false
+5012,Promised Capacity in k smv,promised_capacity,vendor,int,false,false,false,5.0,false,false,c9f03506-342d-4784-8cf8-d8f82cf2e227,,,,false,,false,"{}",true,300,false,false
+5012,Risk Score,geo_political_risk,vendor_facility,str,false,false,false,4.0,false,false,bfe38b4c-04ab-4585-aed1-0ad952be033f,,,,false,,true,"{}",true,300,false,false
+5012,Vendor Group,vendor_name,vendor_facility,str,false,false,false,1.0,false,false,"4fd7ca64-83e3-4b4f-b22e-9af40097bc32",,,,false,,true,"{}",true,300,false,false
+5013,Cost,f2,ss_allocation,numeric,false,false,false,6.0,true,false,"3bb9256f-3bb2-4f8a-b3d4-8711b8f6883b",,,,false,,true,"{}",false,300,false,false
+5013,Description,description,ss_allocation,str,false,false,false,3.0,false,false,"0c9dd1ea-d1b5-4feb-8d19-a412b5e113c3",,,,false,,true,"{}",true,300,false,false
+5013,Factors,factors,ss_allocation,str,false,false,false,4.0,false,false,"48efa4c3-24f1-47d5-8c14-e7e3e77223fb",,,,false,,true,"{}",false,300,false,false
+5013,Last modified at,last_updated_at,ss_allocation,timestamptz,false,false,false,9.0,true,false,"1deb0a85-b07b-4f9a-a376-c6ac761753fa",,,,false,,true,"{}",true,300,false,false
+5013,Last modified by,last_modified_by,ss_allocation,str,false,false,false,10.0,false,false,"9f085d0b-8221-42be-9aa2-35bcc12ff74d",,,,false,,true,"{}",true,300,false,false
+5013,Lead Time,f4,ss_allocation,numeric,false,false,false,8.0,true,false,ba6ba91c-40d5-433d-a5f8-b2d3c0484d8e,,,,false,,true,"{}",false,300,false,false
+5013,Name,strategy_name,ss_allocation,str,false,false,false,2.0,false,false,"5693763f-da16-4759-bc0a-7c4e050b75b0",,,,false,,true,"{}",true,300,false,false
+5013,Performance,f1,ss_allocation,numeric,false,false,false,5.0,true,false,"78e34750-2baf-4ae9-a8eb-a50efafd1d04",,,,false,,true,"{}",false,300,false,false
+5013,Risk,f3,ss_allocation,numeric,false,false,false,7.0,true,false,"4fa6e976-4302-4da8-8dd2-a3fbd92865aa",,,,false,,true,"{}",false,300,false,false
+5013,Stickiness,f0,ss_allocation,numeric,false,false,false,4.0,true,false,b7f2dc0d-e8d5-4e56-bfbd-139bacbf01c2,,,,false,,true,"{}",false,300,false,false
+5013,Strategy ID,strategy_id,ss_allocation,str,false,false,false,1.0,true,false,e0596d4a-3b74-4d41-88de-f590cf6aeb65,,,,false,,true,"{}",true,300,false,false
+5013,Last modified,last_modified_by,ss_allocation,str,false,false,false,11.0,false,false,"9f085d0b-8221-42be-9aa2-35bcc12ff74e",,,,false,,true,"{}",true,300,false,false
+5015,Constraint ID,constraint_id,ss_allocation,str,false,false,false,1.0,true,false,b003f363-5dc0-4011-ad9b-5eaa58d15f7f,,,,false,,true,"{}",true,300,false,false
+5015,Constraints Name,constraint_name,ss_allocation,str,false,false,false,4.0,false,false,aad4c505-2f9a-491e-af62-96c133ca6738,,,,false,,true,"{}",true,300,false,false
+5015,Description,description,ss_allocation,str,false,false,false,5.0,false,false,"93e3dc59-2a8f-4527-8351-38b915c450d6",,,,false,,true,"{}",true,300,false,false
+5015,L0-Division,l0_name,ss_allocation,str,false,false,false,3.0,false,false,e8701da0-9a75-4321-868d-8930d9c02590,,,,false,,true,"{}",true,300,false,false
+5015,Season,season_name,ss_allocation,str,false,false,false,2.0,false,false,"3629ef28-b592-4f0a-8521-b77beacef161",,,,false,,true,"{}",true,300,false,false
+5015,Last modified,last_modified,ss_allocation,str,false,false,false,6.0,false,false,"3629ef28-b592-4f0a-8521-b77beacef162",,,,false,,true,"{}",false,300,false,false
+5016,Allocation Strategy,strategy_name,allocation_rules,str,false,false,false,14.0,false,false,"759cfac3-3f70-416f-95c5-8caaefe74f14",,,,false,,true,"{}",true,300,false,false
+5016,Calendar,calendar,allocation_rules,str,false,false,false,8.0,false,false,c6ff3aea-1a24-44a6-9cc3-509b6f255ed6,,,,false,,true,"{}",true,300,false,false
+5016,Deletable,is_deletable,allocation_rules,str,false,false,false,17.0,true,false,f56ba205-e2f5-4ae7-9f4b-2670a545b5d4,,,,false,,true,"{}",true,300,false,false
+5016,Deleted,is_deleted,allocation_rules,str,false,false,false,18.0,true,false,"56909f84-1f4c-4f7f-810e-c3f5ba66bc1d",,,,false,,true,"{}",true,300,false,false
+5016,Demand Region,sub_region,allocation_rules,str,false,false,false,12.0,false,false,c775eadc-1fd8-4457-8af9-beaa98856af6,,,,false,,true,"{}",true,300,false,false
+5016,Division,category,allocation_rules,str,false,false,false,6.0,false,false,d491921f-7f2d-478a-be14-815e3bdd8279,,,,false,,true,"{}",true,300,false,false
+5016,Product Team,product_team,allocation_rules,str,false,false,false,7.0,false,false,fc934980-25bc-4cc8-a94d-17a277c226cc,,,,false,,true,"{}",true,300,false,false
+5016,Expected Toolset,expected_toolset,allocation_rules,str,false,false,false,11.0,false,false,"67ecbb6e-de53-4e69-a403-7c106b359457",,,,false,,true,"{}",true,300,false,false
+5016,Forecast Version,forecast_version,allocation_rules,str,false,false,false,13.0,false,false,ad4f3549-69b1-47f7-aa62-f2e5a5e3c451,,,,false,,true,"{}",true,300,false,false
+5016,RCL ID,rcl_id,allocation_rules,str,false,false,false,4.0,false,false,ac6a100b-0f26-4b1e-a1e1-f4074cd7f921,,,,false,,true,"{}",true,300,false,false
+5016,Rule  ID,rule_id,allocation_rules,str,false,false,false,1.0,true,false,"2aec0cd2-79fb-4709-a305-90d184cbedf9",,,,false,,true,"{}",true,300,false,false
+5016,Rule level ID,rule_code,allocation_rules,str,false,false,false,2.0,false,false,"63ba88d5-ca40-47d5-b431-240ac80d0d17",,,,false,,true,"{}",true,300,false,false
+5016,Rule name,rule_name,allocation_rules,str,false,false,false,3.0,false,false,dfccb850-c668-4161-8fbd-e26f89227220,,,,false,,true,"{}",true,300,false,false
+5016,Season,season_name,allocation_rules,str,false,false,false,5.0,false,false,"78f1c71d-e08d-4eb2-9c75-79addb67391d",,,,false,,true,"{}",true,300,false,false
+5016,Sourcing Class,sourcing_class_name,allocation_rules,str,false,false,false,9.0,false,false,"36dbf107-9eeb-4535-ab43-12eed5d6389b",,,,false,,true,"{}",true,300,false,false
+5016,Sourcing Type,sourcing_mode,allocation_rules,str,false,false,false,15.0,false,false,"4954b2c5-d88c-4ec5-a5d5-459b102ac428",,,,false,,true,"{}",true,300,false,false
+5016,Subcategory,subcategory,allocation_rules,str,false,false,false,10.0,false,false,"44773aa7-ee16-4ee2-bed0-019c8f339797",,,,false,,true,"{}",true,300,false,false
+5016,Threshold,threshold,allocation_rules,str,false,false,false,16.0,false,false,"5b712eba-0d10-4ae1-abf3-7ee906f511dc",,,,false,,true,"{}",true,300,false,false
+5017,Created At,last_modified,allocation_rules,str,false,false,false,6.0,false,false,724ac846-eb9b-4056-9309-c0d7cad51a43,,,,false,,true,"{}",false,200,false,false
+5017,Lowest Level,lowest_hierarchy,allocation_rules,str,false,false,false,3.0,false,false,62df75f0-23b4-4b08-b089-709de74686b2,,,,false,,true,"{}",false,200,false,false
+5017,Priority,priority,allocation_rules,int,false,false,false,4.0,false,false,005a3667-532f-4b8b-bf01-b4f3f31da010,,,,false,,true,"{}",false,200,false,false
+5017,RCL Level ID,rcl_id,allocation_rules,int,false,false,false,1.0,false,false,83918950-398c-4fec-8a43-5231c235cfaf,,,,false,,true,"{}",false,200,false,false
+5017,Selected Level,rcl_name,allocation_rules,str,false,false,false,2.0,false,false,94bf01f9-c3e7-4caa-8e9b-c86421edd65c,,,,false,,true,"{}",false,200,false,false
+5017,Created By,updated_by,allocation_rules,str,false,false,false,5.0,false,false,c350fdb5-d40d-4e97-a0e6-1f140c201db0,,,,false,,true,"{}",false,200,false,false
+5018,Allocation Strategy,strategy_name,allocation_rules,str,false,true,false,12.0,false,false,00785331-182e-4e04-adcf-cb58e7c19ef1,,,,false,,true,"{}",false,200,false,false
+5018,Calendar,calender,allocation_rules,str,false,false,false,4.0,false,false,1d285737-2915-4c10-acd1-af62f21bdaba,,,,false,,true,"{}",false,200,false,false
+5018,Client Rule key,client_rule_key,allocation_rules,str,false,false,false,10.0,true,false,66ad0f18-38b9-449d-8212-8ba7785c52d4,,,,false,,true,"{}",false,200,false,false
+5018,Division,division,allocation_rules,str,false,false,false,2.0,false,false,70a809c9-7d6d-4b46-a283-eb9ac59b3898,,,,false,,true,"{}",false,200,false,false
+5018,Product Team,product_team,allocation_rules,str,false,false,false,3.0,false,false,1c237a97-8290-45f6-a3fc-19e464d6b02e,,,,false,,true,"{}",false,200,false,false
+5018,Expected Toolset,expected_toolset,allocation_rules,str,false,false,false,7.0,false,false,0f992e37-d5e3-4a0d-bc13-9190fea3ebdb,,,,false,,true,"{}",false,200,false,false
+5018,Forecast Version,forecast_version,allocation_rules,str,false,false,false,9.0,false,false,bd0d88dd-cfdd-4df1-8ba2-0d6a7597b980,,,,false,,true,"{}",false,200,false,false
+5018,Region,demand_region,allocation_rules,str,false,false,false,8.0,false,false,b60069e4-e411-407c-a448-c819917c3ed1,,,,false,,true,"{}",false,200,false,false
+5018,Rule Name,rule_name,allocation_rules,str,false,true,false,11.0,false,false,3b0762be-bfa2-44e0-ac2a-75dd37b05f04,,,,false,,true,"{}",false,200,false,false
+5018,Season,season_name,allocation_rules,str,false,false,false,1.0,false,false,0c5df2bf-2b93-4183-8e24-695d6e33cb6f,,,,false,,true,"{}",false,200,false,false
+5018,Sourcing Class,sourcing_class_name,allocation_rules,str,false,false,false,5.0,false,false,1941d569-bf38-4fcf-82d5-3872fcc46d78,,,,false,,true,"{}",false,200,false,false
+5018,Sourcing Type,sourcing_mode,allocation_rules,str,false,true,false,13.0,false,false,9ae34ae1-4c20-4028-9b0b-d3e9a68968e8,,,,false,,true,"{}",false,200,false,false
+5018,Sub Category,subcategory,allocation_rules,str,false,false,false,6.0,false,false,648c75bd-134a-43cb-98db-c1528a3871d3,,,,false,,true,"{}",false,200,false,false
+5018,Threshold,threshold,allocation_rules,int,false,true,false,14.0,false,false,356ba05f-f697-4c64-9573-44b4bf909239,,,,false,,true,"{}",false,200,false,false
+5019,Allocated Factories,allocated_factories_count,AllocationPlans,int,false,false,false,6.0,false,false,"9b08e4cd-db05-42d3-83d6-a876869924d2",,,,false,,false,"{}",true,300,false,false
+5019,Plan Name,plan_name,AllocationPlans,str,false,false,false,1.0,false,false,c97336b3-5982-4427-814d-a1244240639a,,,,false,,true,"{}",true,300,false,false
+5019,Created By,created_by,AllocationPlans,str,false,false,false,2.0,false,false,"31b2e9dc-95a3-4e96-9487-60161e8d37ac",,,,false,,true,"{}",true,300,false,false
+5019,Created On,created_at,AllocationPlans,timestamp,false,false,false,3.0,false,false,f3766ca7-5e36-41a4-b0fe-6181ffe38377,,,,false,,true,"{}",true,300,false,false
+5019,Status,status,AllocationPlans,str,false,false,false,4.0,false,false,f1854cfd-f3cb-4639-bb8f-32f81829c4ed,,,,false,,true,"{}",true,300,false,false
+5019,Allocation ID,allocation_id,AllocationPlans,uuid,false,false,false,8.0,true,false,"6498bb3e-a489-4785-a0fe-8d78a13af31c",,,,false,,false,"{}",false,200,false,false
+5019,Operation ID,operation_id,AllocationPlans,uuid,false,false,false,9.0,true,false,"690f5173-61cb-48b1-9532-43a7bff4b6ae",,,,false,,false,"{}",false,200,false,false
+5019,Season ID,season_id,AllocationPlans,str,false,false,false,10.0,true,false,"0784675e-e07f-4e7d-af77-8374b7255074",,,,false,,false,"{}",false,200,false,false
+5019,Season Name,season_name,AllocationPlans,str,false,false,false,11.0,true,false,"2e4c7ed2-9486-4b3d-9cf6-7fd32dfd0f11",,,,false,,false,"{}",false,200,false,false
+5019,Division,category,AllocationPlans,str,false,false,false,12.0,true,false,"51edba81-d14c-45bb-95b3-953075035e40",,,,false,,false,"{}",false,200,false,false
+5019,Forecast Version,forecast_version,AllocationPlans,str,false,false,false,13.0,true,false,e462e5c9-3f5b-4444-a192-4f481342fb9a,,,,false,,false,"{}",false,200,false,false
+5019,Workflow Step,workflow_step,AllocationPlans,int,false,false,false,14.0,true,false,"23fbd256-ac15-4180-9935-3f63406ba3ac",,,,false,,false,"{}",false,200,false,false
+5019,Is Editable,is_editable,AllocationPlans,bool,false,false,false,15.0,true,false,"90b9ccd4-13d3-436f-a87f-f72306cc92d4",,,,false,,false,"{}",false,200,false,false
+5019,Is Locked,is_locked,AllocationPlans,bool,false,false,false,16.0,true,false,"72a72921-2ba8-4a61-940f-842e0ddbcbb3",,,,false,,false,"{}",false,200,false,false
+5019,Locked By,locked_by,AllocationPlans,str,false,false,false,17.0,true,false,eea0c4ed-019d-4215-acbc-4b2e97448a8f,,,,false,,false,"{}",false,200,false,false
+5019,Lock Expires At,lock_expires_at,AllocationPlans,timestamp,false,false,false,18.0,true,false,"04d5fc86-c35f-4b58-af29-fec8bc6d56d5",,,,false,,false,"{}",false,200,false,false
+5019,Total Rules Count,total_rules_count,AllocationPlans,int,false,false,false,19.0,true,false,f99ee247-bc24-4a83-b694-8dabed5ffc65,,,,false,,false,"{}",false,200,false,false
+5019,Updated At,updated_at,AllocationPlans,timestamp,false,false,false,20.0,true,false,e59cecb6-a733-4994-828a-6db83b02530e,,,,false,,false,"{}",false,200,false,false
+5019,Updated By,updated_by,AllocationPlans,str,false,false,false,21.0,true,false,b48a7b4a-5e6f-46ea-ac16-d45a41154d74,,,,false,,false,"{}",false,200,false,false
+5019,Allocated Styles,allocated_products_count,AllocationPlans,int,false,false,false,5.0,false,false,"73acfec5-2c5e-4ea8-b28b-206727f9e565",,,,false,,false,"{}",true,300,false,false
+5019,Allocated Units,allocated_units_count,AllocationPlans,int,false,false,false,7.0,false,false,b5697e3d-2f91-4429-bf0f-09a8a55b024c,,,,false,,false,"{}",true,300,false,false
+5020,Deletable,is_deletable,allocation_plans_rules_step1,bool,false,false,false,13.0,true,false,edd5cd2b-38e2-46bd-943c-60ba421f44b8,,,,false,,true,"{}",true,300,false,false
+5020,Is Selected,is_selected,allocation_plans_rules_step1,bool,false,false,false,17.0,true,false,"6ead5cb4-13f8-46b9-b1e9-8aac491db377",,,,false,,true,"{}",true,300,false,false
+5020,Rule ID,rule_id,allocation_plans_rules_step1,int,false,false,false,1.0,true,false,"47de1ee4-b3d6-46dc-9b7c-d61444f2ad2b",,,,false,,true,"{}",true,300,false,false
+5020,Rule Code,rule_code,allocation_plans_rules_step1,str,false,false,false,2.0,false,false,"27d6e6a9-e03f-4149-bc39-ac5cdffa85a0",,,,false,,true,"{}",true,300,false,false
+5020,RCL ID,rcl_id,allocation_plans_rules_step1,int,false,false,false,3.0,false,false,"204dd671-be73-4c30-a05e-148d2d603603",,,,false,,true,"{}",true,300,false,false
+5020,Rule Name,rule_name,allocation_plans_rules_step1,str,false,false,false,4.0,false,false,"42232133-d047-4e98-9620-34dc61fe8320",,,,false,,true,"{}",true,300,false,false
+5020,Season,season_name,allocation_plans_rules_step1,str,false,false,false,5.0,false,false,a10d95fe-0ae6-4e7a-9161-80954bc92b7f,,,,false,,true,"{}",true,300,false,false
+5020,Division,category,allocation_plans_rules_step1,str,false,false,false,6.0,false,false,"10ebbe93-175e-448d-b4f5-b06cd4f86ce2",,,,false,,true,"{}",true,300,false,false
+5020,Sourcing Class,sourcing_class_name,allocation_plans_rules_step1,str,false,false,false,7.0,false,false,e54198ed-6a23-4ff2-899a-23e1d44ce903,,,,false,,true,"{}",true,300,false,false
+5020,Demand Region,sub_region,allocation_plans_rules_step1,str,false,false,false,8.0,false,false,"169a43b8-65de-4987-8b3f-8ffdbc00cf6d",,,,false,,true,"{}",true,300,false,false
+5020,Forecast Version,forecast_version,allocation_plans_rules_step1,str,false,false,false,9.0,false,false,"4f88f3cb-e00b-4921-a7d9-b3fc69145757",,,,false,,true,"{}",true,300,false,false
+5020,Sourcing Type,sourcing_mode,allocation_plans_rules_step1,str,false,false,false,10.0,false,false,f86065ab-8509-493b-aec7-d25089ca1553,,,,false,,true,"{}",true,300,false,false
+5020,Allocation Strategy,strategy_name,allocation_plans_rules_step1,str,false,false,false,11.0,false,false,ef60515d-bc49-44ce-a0c7-1d1e36feda12,,,,false,,true,"{}",true,300,false,false
+5020,Threshold,threshold,allocation_plans_rules_step1,int,false,false,false,12.0,false,false,eb72fad5-46d9-485a-953d-a9a7a4e9f08d,,,,false,,true,"{}",true,300,false,false
+5020,Subcategory,subcategory,allocation_plans_rules_step1,str,false,false,false,14.0,false,false,"2433614f-89b4-4b6d-bc08-f3487fd43274",,,,false,,true,"{}",true,300,false,false
+5020,Calender,calender,allocation_plans_rules_step1,str,false,false,false,15.0,false,false,"1eed5471-b18c-4cf7-a0ed-2153c7436451",,,,false,,true,"{}",true,300,false,false
+5020,Expected Toolset,expected_toolset,allocation_plans_rules_step1,str,false,false,false,16.0,false,false,"479f7e1d-b7b5-45e1-b8b7-c1532217c799",,,,false,,true,"{}",true,300,false,false
+5020,Allocation ID,allocation_id,allocation_plans_rules_step1,uuid,false,false,false,18.0,true,false,c8635733-5e1b-4231-8335-1d55a8bf2fe3,,,,false,,false,"{}",false,200,false,false
+5020,Operation ID,operation_id,allocation_plans_rules_step1,uuid,false,false,false,19.0,true,false,"1c85a0d3-bac5-4085-b732-90766bf5f196",,,,false,,false,"{}",false,200,false,false
+5020,Strategy ID,strategy_id,allocation_plans_rules_step1,uuid,false,false,false,20.0,true,false,"748e3eeb-7c85-4516-8a9e-71332b08491c",,,,false,,false,"{}",false,200,false,false
+5020,Is Saved,is_saved,allocation_plans_rules_step1,bool,false,false,false,21.0,true,false,"627fb2f0-416f-44f5-84af-b8bd88eb0252",,,,false,,false,"{}",false,200,false,false
+5020,Client Rule Key,client_rule_key,allocation_plans_rules_step1,str,false,false,false,22.0,true,false,"13ce1eb0-e5cc-458f-9849-a3a098dddbf6",,,,false,,false,"{}",false,200,false,false
+5020,Created By,created_by,allocation_plans_rules_step1,str,false,false,false,23.0,true,false,a5e6dffe-acf1-43ed-aabd-2d66169d25c8,,,,false,,false,"{}",false,200,false,false
+5020,Created At,created_at,allocation_plans_rules_step1,timestamp,false,false,false,24.0,true,false,"44700778-b6ce-41a5-83fa-fc62babedbf4",,,,false,,false,"{}",false,200,false,false
+5020,Last Updated At,last_updated_at,allocation_plans_rules_step1,timestamp,false,false,false,25.0,true,false,dc577bd4-4bf9-4a5c-a6b2-b42a15d3499c,,,,false,,false,"{}",false,200,false,false
+5022,Comparison Parameter,comparison_param,multi_threshold,str,false,false,false,4.0,false,false,b5dc9e57-c301-4c9b-9a4f-7ba72a34b3b4,,,,false,,true,"{}",true,200,false,false
+5022,Condition,condition,multi_threshold,str,false,false,false,3.0,false,false,8d370fd5-5dcb-400a-ae61-fd1529b0ecd6,,,,false,,true,"{}",true,200,false,false
+5022,Division,division,multi_threshold,str,false,false,false,1.0,false,false,c4a288f8-5208-4121-aa59-e798a2ad1b66,,,,false,,true,"{}",true,200,false,false
+5022,Style,style_level,multi_threshold,str,false,false,false,2.0,false,false,0a161969-a4cf-40fc-a7c1-613fab3dda81,,,,false,,true,"{}",true,200,false,false
+5022,Value,threshold_value,multi_threshold,str,false,false,false,5.0,false,false,6c26c6e0-848e-4017-a2a3-38c474453d54,,,,false,,true,"{}",true,200,false,false

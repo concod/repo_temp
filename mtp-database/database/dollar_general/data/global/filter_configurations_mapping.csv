@@ -1,0 +1,135 @@
+fc_code,label,column_name,type,display_type,level,dimension,is_mandatory,is_multiple_selection,range_min,range_max,default_value,is_disabled,is_clearable,display_order,is_required,extra,is_deleted
+179,Plan,l0_name,cascaded,dropdown,1,product_store,true,false,,,,false,true,,false,"{""dimension"": ""product_store""}",false
+179,Department,l1_name,cascaded,dropdown,2,product_store,true,false,,,,false,true,,false,"{""dimension"": ""product_store""}",false
+179,Class,l3_name,cascaded,dropdown,3,product_store,true,false,,,,false,true,,false,"{""dimension"": ""product_store""}",false
+179,Sub Class,l4_name,cascaded,dropdown,4,product_store,true,false,,,,false,true,,false,"{""dimension"": ""product_store""}",false
+179,Plan status,l0_status,non-cascaded,dropdown,5,product_store,false,true,,,,true,false,1,false,"{""dimension"": ""product_store"", ""initialData"": [""active"", ""upcoming""]}",false
+10034,Plan,l0_name,cascaded,dropdown,1,product,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+10034,Department,l1_name,cascaded,dropdown,2,product,TRUE,FALSE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+10034,Class,l3_name,cascaded,dropdown,3,product,TRUE,FALSE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+10034,Primary SKU,primary_sku,non-cascaded,dropdown,4,product,FALSE,TRUE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+10034,Plan status,l0_status,non-cascaded,dropdown,5,product,FALSE,TRUE,,,,TRUE,FALSE,1,FALSE,"{""initialData"": [""active"", ""upcoming""]}",FALSE
+74,State,state,cascaded,dropdown,1,store,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+74,Region,region,cascaded,dropdown,2,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+74,District,district,cascaded,dropdown,3,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+74,Store ID,store_code,cascaded,dropdown,4,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+74,Store Name,store_name,cascaded,dropdown,5,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+74,Store Attribute,store_attribute,cascaded,dropdown,6,store,false,true,,,,false,true,,false,"{}",false
+172,Department,l1_name,cascaded,dropdown,2,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+172,Class,l3_name,cascaded,dropdown,3,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+172,Sub Class,l4_name,cascaded,dropdown,4,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+172,Primary SKU,primary_sku,cascaded,dropdown,6,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+172,Active,active,cascaded,dropdown,21,product,false,true,,,,false,true,,false,"{""initialData"": [true, false]}",false
+168,Dc Name,dc_name,cascaded,dropdown,2,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+143,District,district,cascaded,dropdown,3,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+143,Region,region,cascaded,dropdown,4,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+143,State,state,cascaded,dropdown,5,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+143,Store ID,store_code,cascaded,dropdown,6,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+143,Store Name,store_name,cascaded,dropdown,7,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+153,Plan,l0_name,cascaded,dropdown,1,product,TRUE,FALSE,,,,FALSE,TRUE,,FALSE,{},FALSE
+153,Department,l1_name,cascaded,dropdown,2,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+153,Class,l3_name,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+153,Sub Class,l4_name,cascaded,dropdown,4,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+153,Primary SKU,primary_sku,cascaded,dropdown,5,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+153,Plan status,l0_status,non-cascaded,dropdown,5,product,FALSE,TRUE,,,,TRUE,FALSE,1,FALSE,"{""initialData"": [""active"", ""upcoming""]}",FALSE
+10153,Sub Class,l4_name,cascaded,dropdown,4,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10153,Class,l3_name,cascaded,dropdown,3,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10153,Department,l1_name,cascaded,dropdown,2,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10153,Plan ID,l0_name,cascaded,dropdown,1,product,TRUE,FALSE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10153,DC Name,dc_name,cascaded,dropdown,2,store,FALSE,FALSE,,,,FALSE,TRUE,,FALSE,{},FALSE
+10153,DC ID,dc_code,cascaded,dropdown,1,store,FALSE,FALSE,,,,FALSE,TRUE,,FALSE,{},TRUE
+10153,Date,daily-allocation-date,non-cascaded,DateTimeField,1,custom,TRUE,FALSE,,{},,FALSE,FALSE,,FALSE,{},FALSE
+149,Plan ID,l0_name,cascaded,dropdown,1,product,TRUE,FALSE,,,,FALSE,TRUE,,FALSE,{},FALSE
+149,Department,l1_name,cascaded,dropdown,2,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+149,Class,l3_name,cascaded,dropdown,3,product,TRUE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+149,Sub Class,l4_name,cascaded,dropdown,4,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+149,Primary SKU,primary_sku,cascaded,dropdown,5,product,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+149,Plan status,l0_status,non-cascaded,dropdown,5,product,FALSE,TRUE,,,,TRUE,FALSE,1,FALSE,"{""initialData"": [""active"", ""upcoming""]}",FALSE
+86,District,district,cascaded,dropdown,6,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+86,Region,region,cascaded,dropdown,5,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+86,State,state,cascaded,dropdown,4,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+86,Store ID,store_code,cascaded,dropdown,8,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+86,Store Name,store_name,cascaded,dropdown,7,store,FALSE,TRUE,,,,FALSE,TRUE,,FALSE,{},FALSE
+211,Plan Id,l0_name,cascaded,dropdown,6,product,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,"{}",FALSE
+211,Plan status,l0_status,non-cascaded,dropdown,5,product,FALSE,TRUE,,,,TRUE,FALSE,1,FALSE,"{""initialData"": [""active"", ""upcoming""]}",FALSE
+211,Department,l1_name,cascaded,dropdown,7,product,TRUE,TRUE,,,,FALSE,TRUE,2,FALSE,"{}",FALSE
+211,Class,l3_name,cascaded,dropdown,4,product,TRUE,TRUE,,,,FALSE,TRUE,4,FALSE,"{}",FALSE
+211,Sub Class,l4_name,cascaded,dropdown,1,product,FALSE,TRUE,,,,FALSE,TRUE,5,FALSE,"{}",FALSE
+212,City,city,cascaded,dropdown,5,store,false,true,,,,false,true,4,false,"{}",false
+212,Plan ID,l0_name,cascaded,dropdown,1,store,TRUE,true,,,,false,true,2,false,"{""dimension"": ""product_store""}",false
+212,Region,region,cascaded,dropdown,6,store,false,true,,,,false,true,5,false,"{}",false
+212,State,state,cascaded,dropdown,2,store,true,true,,,,false,true,1,false,"{}",false
+212,Store ID,store_code,cascaded,dropdown,4,store,false,true,,,,false,true,3,false,"{}",false
+212,Store Group,store_group_description,cascaded,dropdown,7,store,false,true,,,,false,true,2,false,"{""dimension"": ""product_store""}",false
+212,Store Name,store_name,cascaded,dropdown,3,store,false,true,,,,false,true,2,false,"{}",false
+212,Store Attribute,store_attribute,cascaded,dropdown,6,store,false,true,,,,false,true,,false,"{}",false
+213,Plan Id,l0_name,cascaded,dropdown,6,product,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+213,Department,l1_name,cascaded,dropdown,7,product,TRUE,TRUE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+213,Class,l3_name,cascaded,dropdown,4,product,FALSE,TRUE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+213,Sub Class,l4_name,cascaded,dropdown,1,product,FALSE,TRUE,,,,FALSE,TRUE,5,FALSE,{},FALSE
+214,Plan Id,l0_name,cascaded,dropdown,6,product,true,false,,,,false,true,1,false,"{""dimension"": ""product_store""}",false
+214,Department,l1_name,cascaded,dropdown,7,product,TRUE,TRUE,,,,FALSE,TRUE,2,FALSE,"{""dimension"": ""product_store""}",FALSE
+214,Class,l3_name,cascaded,dropdown,4,product,TRUE,TRUE,,,,FALSE,TRUE,4,FALSE,"{""dimension"": ""product_store""}",FALSE
+214,Sub Class,l4_name,cascaded,dropdown,1,product,FALSE,TRUE,,,,FALSE,TRUE,5,FALSE,"{""dimension"": ""product_store""}",FALSE
+214,Store Band,psa_name,cascaded,dropdown,8,store,FALSE,TRUE,,,,FALSE,TRUE,6,FALSE,"{""dimension"": ""product_store""}",FALSE
+214,Store Group,store_group_description,cascaded,dropdown,10,product,false,true,,,,false,true,7,false,"{""dimension"": ""product_store""}",false
+214,Store Attribute,store_attribute,cascaded,dropdown,1,store,false,true,,,,false,true,6,false,"{}",false
+215,Plan Id,l0_name,cascaded,dropdown,6,product,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,"{""dimension"": ""product_store""}",FALSE
+215,Plan status,l0_status,non-cascaded,dropdown,5,product,FALSE,TRUE,,,,TRUE,FALSE,1,FALSE,"{""dimensioon"": ""product_store"", ""initialData"": [""active"", ""upcoming""]}",FALSE
+215,Department,l1_name,cascaded,dropdown,7,product,TRUE,TRUE,,,,FALSE,TRUE,2,FALSE,"{""dimension"": ""product_store""}",FALSE
+215,Class,l3_name,cascaded,dropdown,4,product,TRUE,TRUE,,,,FALSE,TRUE,4,FALSE,"{""dimension"": ""product_store""}",FALSE
+215,Sub Class,l4_name,cascaded,dropdown,1,product,FALSE,TRUE,,,,FALSE,TRUE,5,FALSE,"{""dimension"": ""product_store""}",FALSE
+216,Plan Id,l0_name,cascaded,dropdown,6,product,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,"{""dimension"": ""product_store""}",FALSE
+216,Department,l1_name,cascaded,dropdown,7,product,TRUE,TRUE,,,,FALSE,TRUE,2,FALSE,"{""dimension"": ""product_store""}",FALSE
+216,Class,l3_name,cascaded,dropdown,4,product,TRUE,TRUE,,,,FALSE,TRUE,4,FALSE,"{""dimension"": ""product_store""}",FALSE
+216,Sub Class,l4_name,cascaded,dropdown,1,product,FALSE,TRUE,,,,FALSE,TRUE,5,FALSE,"{""dimension"": ""product_store""}",FALSE
+216,Plan status,l0_status,non-cascaded,dropdown,5,product,FALSE,TRUE,,,,TRUE,FALSE,1,FALSE,"{""dimension"": ""product_store"", ""initialData"": [""active"", ""upcoming""]}",FALSE
+217,Plan Id,l0_name,cascaded,dropdown,6,product,TRUE,FALSE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+217,Department,l1_name,cascaded,dropdown,7,product,TRUE,TRUE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+217,Class,l3_name,cascaded,dropdown,4,product,TRUE,TRUE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+217,Sub Class,l4_name,cascaded,dropdown,1,product,FALSE,TRUE,,,,FALSE,TRUE,5,FALSE,{},FALSE
+501,Ticket ID,id,non-cascaded,dropdown,,ticketing,false,true,,,,false,true,6,false,"{}",false
+501,Issue Type,issue_type,non-cascaded,dropdown,,ticketing,false,true,,,,false,true,2,false,"{}",false
+501,Application Name,module_type,non-cascaded,dropdown,,ticketing,false,true,,,,false,true,3,false,"{}",false
+501,Priority,priority,non-cascaded,dropdown,,ticketing,false,true,,,,false,true,4,false,"{}",false
+501,Requestor name,user_id,non-cascaded,dropdown,,ticketing,false,true,,,,false,true,5,false,"{}",false
+1300,Channel,channel,cascaded,dropdown,1,product,FALSE,TRUE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+1301,Channel,channel,cascaded,dropdown,1,Channel,FALSE,TRUE,,,,FALSE,TRUE,1,FALSE,"{""dimension"": ""store""}",FALSE
+1301,Department,l2_name,cascaded,dropdown,2,product,FALSE,TRUE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+1301,Class,l3_name,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+1301,Subclass,l4_name,cascaded,dropdown,4,product,FALSE,TRUE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+1301,Style,primary_sku,cascaded,dropdown,5,product,FALSE,TRUE,,,,FALSE,TRUE,5,FALSE,{},FALSE
+1301,Region,region,cascaded,dropdown,1,store,FALSE,TRUE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+1301,State,state,cascaded,dropdown,2,store,FALSE,TRUE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+1301,District,district,cascaded,dropdown,3,store,FALSE,TRUE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+1301,City,city,cascaded,dropdown,4,store,FALSE,TRUE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+1301,Store,store_code,cascaded,dropdown,5,store,FALSE,TRUE,,,,FALSE,TRUE,5,FALSE,{},FALSE
+1301,Division,l1_name,cascaded,dropdown,1,product,FALSE,TRUE,,,,FALSE,TRUE,1,FALSE,"{""dimension"": ""product""}",FALSE
+1302,Channel,channel,cascaded,dropdown,1,Channel,FALSE,TRUE,,,,FALSE,TRUE,1,FALSE,"{""dimension"": ""store""}",FALSE
+1302,Department,l2_name,cascaded,dropdown,2,product,FALSE,TRUE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+1302,Class,l3_name,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+1302,Subclass,l4_name,cascaded,dropdown,4,product,FALSE,TRUE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+1302,Style,primary_sku,cascaded,dropdown,5,product,FALSE,TRUE,,,,FALSE,TRUE,5,FALSE,{},FALSE
+1302,Region,region,cascaded,dropdown,1,store,FALSE,TRUE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+1302,State,state,cascaded,dropdown,2,store,FALSE,TRUE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+1302,District,district,cascaded,dropdown,3,store,FALSE,TRUE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+1302,City,city,cascaded,dropdown,4,store,FALSE,TRUE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+1302,Store,store_code,cascaded,dropdown,5,store,FALSE,TRUE,,,,FALSE,TRUE,5,FALSE,{},FALSE
+1302,Division,l1_name,cascaded,dropdown,1,product,FALSE,TRUE,,,,FALSE,TRUE,1,FALSE,"{""dimension"": ""product""}",FALSE
+1303,Product Season Collection,season,cascaded,dropdown,6,product,FALSE,TRUE,,,,FALSE,TRUE,6,FALSE,{},FALSE
+1303,Department,l4_name,cascaded,dropdown,5,product,FALSE,TRUE,,,,FALSE,TRUE,5,FALSE,{},FALSE
+1303,SBU,l3_name,cascaded,dropdown,4,product,FALSE,TRUE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+1303,Brand,l2_name,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+1303,Channel,l1_name,cascaded,dropdown,2,product,FALSE,TRUE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+1303,Country,country,cascaded,dropdown,1,product,FALSE,TRUE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+1304,Channel,channel,cascaded,dropdown,1,Channel,FALSE,TRUE,,,,FALSE,TRUE,1,FALSE,"{""dimension"": ""store""}",FALSE
+1304,Department,l2_name,cascaded,dropdown,2,product,FALSE,TRUE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+1304,Class,l3_name,cascaded,dropdown,3,product,FALSE,TRUE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+1304,Subclass,l4_name,cascaded,dropdown,4,product,FALSE,TRUE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+1304,Style,primary_sku,cascaded,dropdown,5,product,FALSE,TRUE,,,,FALSE,TRUE,5,FALSE,{},FALSE
+1304,Region,region,cascaded,dropdown,1,store,FALSE,TRUE,,,,FALSE,TRUE,1,FALSE,{},FALSE
+1304,State,state,cascaded,dropdown,2,store,FALSE,TRUE,,,,FALSE,TRUE,2,FALSE,{},FALSE
+1304,District,district,cascaded,dropdown,3,store,FALSE,TRUE,,,,FALSE,TRUE,3,FALSE,{},FALSE
+1304,City,city,cascaded,dropdown,4,store,FALSE,TRUE,,,,FALSE,TRUE,4,FALSE,{},FALSE
+1304,Store,store_code,cascaded,dropdown,5,store,FALSE,TRUE,,,,FALSE,TRUE,5,FALSE,{},FALSE
+1304,Division,l1_name,cascaded,dropdown,1,product,FALSE,TRUE,,,,FALSE,TRUE,1,FALSE,"{""dimension"": ""product""}",FALSE

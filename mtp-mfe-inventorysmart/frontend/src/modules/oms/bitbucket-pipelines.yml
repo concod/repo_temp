@@ -1,0 +1,96 @@
+image: python:3.12.1
+definitions:
+  services:
+    docker:
+      memory: 4096
+  caches:
+    sonar: ~/.sonar/cache  # Caching SonarCloud artifacts will speed up your build
+  steps:
+    - step: &security-scan
+        name: Security Scan
+        size: 2x
+        script:
+          # Run a security scan for sensitive data.
+          # See more security tools at https://bitbucket.org/product/features/pipelines/integrations?&category=security
+          - pipe: atlassian/git-secrets-scan:0.4.3
+
+    - step: &scan-sonarcloud
+        name: Analyze on SonarQube Cloud
+        size: 2x
+        caches:
+          - sonar
+        script:
+          - |
+            if [ -z "${SONAR_TOKEN:-}" ]; then
+              echo "SONAR_TOKEN is not set. Add it in Bitbucket Repository variables."
+              exit 1
+            fi
+          - pipe: sonarsource/sonarcloud-scan:4.0.0
+            variables:
+              DEBUG: "true"
+              SONAR_TOKEN: "${SONAR_TOKEN}"
+              SONAR_ORGANIZATION: "insideinsight"
+              SONAR_PROJECT_KEY: "insideinsight_mtp-mfe-ordering"
+              SONAR_HOST_URL: "https://sonarqube.us"
+              EXTRA_ARGS: >
+                -X
+                -Dsonar.token=${SONAR_TOKEN}
+                -Dsonar.scanner.skipJreProvisioning=true
+                -Dsonar.qualitygate.wait=false
+                -Dsonar.exclusions=**/*.java,backend/dataIngestion/airflow/dags/**,backend/ada/sourcing/dags/**
+                -Dsonar.branch.name=${BITBUCKET_BRANCH}
+
+    - step: &scan-sonarcloud-pr
+        name: Analyze on SonarQube Cloud (PR)
+        size: 2x
+        caches:
+          - sonar
+        script:
+          - |
+            if [ -z "${SONAR_TOKEN:-}" ]; then
+              echo "SONAR_TOKEN is not set. Add it in Bitbucket Repository variables."
+              exit 1
+            fi
+          - pipe: sonarsource/sonarcloud-scan:4.0.0
+            variables:
+              DEBUG: "true"
+              SONAR_TOKEN: "${SONAR_TOKEN}"
+              SONAR_ORGANIZATION: "insideinsight"
+              SONAR_PROJECT_KEY: "insideinsight_mtp-mfe-ordering"
+              SONAR_HOST_URL: "https://sonarqube.us"
+              EXTRA_ARGS: >
+                -X
+                -Dsonar.token=${SONAR_TOKEN}
+                -Dsonar.scanner.skipJreProvisioning=true
+                -Dsonar.qualitygate.wait=false
+                -Dsonar.pullrequest.key=${BITBUCKET_PR_ID}
+                -Dsonar.pullrequest.branch=${BITBUCKET_BRANCH}
+                -Dsonar.pullrequest.base=${BITBUCKET_PR_DESTINATION_BRANCH}
+                -Dsonar.exclusions=**/*.java,backend/dataIngestion/airflow/dags/**,backend/ada/sourcing/dags/**
+
+# Workflow Configuration
+
+pipelines:
+  branches:
+    develop/*:
+      - step: *security-scan
+      - step: *scan-sonarcloud
+    main:
+      - step: *security-scan
+      - step: *scan-sonarcloud
+
+  custom:
+    develop/*:
+      - step: *security-scan
+      - step: *scan-sonarcloud
+
+  pull-requests:
+    "{feature/*,bugfix/*,hotfix/*,*}":
+      - step: *security-scan
+      - step: *scan-sonarcloud-pr
+    develop/*:
+      - step: *security-scan
+      - step: *scan-sonarcloud-pr
+    main:
+      - step: *security-scan
+      - step: *scan-sonarcloud-pr

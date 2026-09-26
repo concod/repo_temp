@@ -1,0 +1,22 @@
+"field_id","data_source","field_label","field_type","description","field_name","is_display"
+1,transaction,SKU,string,Unique product identifier,product_code,false
+2,transaction,Article,string,Article or style identifier,article,false
+3,transaction,Store,string,Store location identifier,store_code,false
+4,transaction,Date,date,Transaction date,date,false
+5,transaction,Quantity Sold,integer,Units sold in a transaction,qty,true
+6,transaction,Unit Price,decimal,Selling price per unit,msrp,true
+7,transaction,Cost,decimal,Cost price per unit,cost_excl_tax,true
+8,transaction,Discount,decimal,Discount applied on sale,discount_amount,true
+9,inventory,SKU,string,Unique product identifier,product_code,false
+10,inventory,Article,string,Article or style identifier,article,false
+11,inventory,Store,string,Store location identifier,store_code,false
+12,inventory,Date,date,Inventory record date,date,false
+13,inventory,On Order (OO),integer,Stock on order and pending delivery,oo,true
+14,inventory,In Transit (IT),integer,Stock currently in transit,it,true
+15,forecast,SKU,string,Unique product identifier,product_code,false
+16,forecast,Article,string,Article or style identifier,article,false
+17,forecast,Store,string,Store location identifier,store_code,false
+18,forecast,Fiscal Year Week,integer,Fiscal year week,fiscal_year_week,false
+19,forecast,Forecast Qty,integer,Predicted quantity for period,final_forecast_qty,true
+21,inventory,OH,integer,Current stock available on hand,oh,true
+22,transaction,Revenue,decimal,Revenue from the Sale,revenue,true

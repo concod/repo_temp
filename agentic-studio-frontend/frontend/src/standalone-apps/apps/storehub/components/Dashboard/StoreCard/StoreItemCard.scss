@@ -1,0 +1,469 @@
+// Store Item Card Component - Reusable component for displaying store information in lists/grids
+// Note: This is different from StoreDeepDive/StoreCard which uses "store-card" classnames
+.store-item-card {
+  display: flex;
+  padding: 16px 16px 12px 16px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  border-radius: 12px;
+  border: 0.5px solid #D9DDE7;
+  background: #FFF;
+  transition: all 0.2s ease;
+
+  // Grid variant (used in PriorityActionGrid)
+  &--grid {
+    flex: 1 0 0;
+    min-width: 0;
+    height: 140px;
+    
+    @media (max-width: 768px) {
+      flex: 1 1 100%;
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      min-height: 120px;
+    }
+  }
+
+  &--modal {
+    width: 100%;
+    border-radius: 0;
+    border: none;
+    border-bottom: 1px solid #E5E7EB;
+    border-top: none !important;
+
+    &:hover {
+      border: none;
+      border-top: none !important;
+      background: #F9FAFB;
+      box-shadow: none;
+    }
+  }
+
+  &:hover {
+    border: 0.5px solid #B3BDF8;
+    box-shadow: 0 1px 6px 0 rgba(25, 51, 69, 0.10), 2px 24px 56px -12px rgba(25, 51, 69, 0.08);
+  }
+
+  &__header {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+
+    .store-item-card--modal & {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+  }
+
+  &__header-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__header-stats {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+
+  &__id-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  &__id {
+    color: #1F2B4D;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 16px;
+  }
+
+  &__name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+    color: #1F2B4D;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 16px;
+    margin: 0;
+  }
+
+  &__location {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    align-self: stretch;
+
+    svg {
+      width: 10px;
+      height: 10px;
+      flex-shrink: 0;
+    }
+
+    span {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 16px;
+      color: #7A8294;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    align-self: stretch;
+    flex: 1;
+
+    &-no-comments {
+      color: #7A8294;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 12px;
+      font-style: italic;
+      line-height: 16px;
+    }
+
+    &-comments {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      align-content: center;
+      gap: 9px 8px;
+      flex-wrap: wrap;
+
+      // Grid variant: keep Top Issue and Badge on one line
+      .store-item-card--grid & {
+        flex-wrap: nowrap;
+        overflow: hidden;
+      }
+
+      svg {
+        width: 11px;
+        height: 11px;
+        flex-shrink: 0;
+      }
+
+      &-label {
+        overflow: hidden;
+        color: var(--Colors-Neutrals-Text-icon-Body, #1F2B4D);
+        text-overflow: ellipsis;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 16px; /* 133.333% */
+      }
+
+      &-value {
+        color: #60697D;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 125%; /* 15px */
+      }
+
+      // span{
+      //   overflow: hidden;
+      //   color: var(--Colors-Neutrals-Text-icon-Body, #1F2B4D);
+      //   text-overflow: ellipsis;
+
+      //   /* Small text regular */
+      //   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      //   font-size: 12px;
+      //   font-style: normal;
+      //   font-weight: 400;
+      //   line-height: 16px; /* 133.333% */
+      // }
+
+      // &-badge {
+      //   border-radius: 116px;
+      //   background: #F5F6FA;
+      //   color: #60697D;
+      //   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      //   font-size: 12px;
+      //   font-style: normal;
+      //   font-weight: 400;
+      //   line-height: 125%; /* 15px */
+      // }
+    }
+
+    &-issue {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 16px;
+      color: #1F2B4D;
+
+      span {
+        color: #60697D;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 125%;
+      }
+    }
+
+    &-stats {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 4px;
+
+      &-label {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 16px;
+        color: #60697D;
+      }
+
+      &-value {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 16px;
+        color: #1F2B4D;
+
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+
+        svg {
+          width: 10px;
+          height: 10px;
+        }
+
+        &--low {
+          color: #AB3939; // Red for values < 2.5
+        }
+
+        &--high {
+          color: #26734B; // Green for values >= 2.5
+        }
+      }
+
+      &-divider {
+        width: 1px;
+        background-color: #D9DDE7;
+        height: 13px;
+        margin: 0 4px;
+      }
+    }
+  }
+
+  &__footer {
+    display: flex;
+    padding-top: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    align-self: stretch;
+    border-top: 0.5px solid #D9DDE7;
+
+    .store-item-card--modal & {
+      border-top: none !important;
+      padding-top: 0;
+    }
+  }
+}
+
+.store-item-card__content-comments-badge{
+  // Ensure badge text stays on one line in grid variant
+  .store-item-card--grid & {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 180px;
+  }
+
+  &-negative{
+    background-color: #FCEEEE;
+    font-size: 12px;
+    color: #AB3939;
+  }
+  &-positive{
+    background-color: #EBF7F1;
+    font-size: 12px;
+    color: #26734B;
+  }
+  &-neutral{
+    background-color: #F1F3FE;
+    font-size: 12px;
+    color: #4259EE;
+  }
+}
+
+// Mobile Responsive Design
+@media (max-width: 768px) {
+  .store-item-card {
+    padding: 12px;
+    gap: 8px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    
+    &__name {
+      font-size: 13px;
+      line-height: 15px;
+    }
+    
+    &__location {
+      span {
+        font-size: 11px;
+        line-height: 14px;
+      }
+      
+      svg {
+        width: 9px;
+        height: 9px;
+      }
+    }
+    
+    &__content {
+      gap: 6px;
+      
+      &-issue {
+        font-size: 11px;
+        line-height: 14px;
+        
+        span {
+          font-size: 11px;
+        }
+      }
+      
+      &-comments {
+        gap: 6px 4px;
+        
+        span {
+          font-size: 11px;
+          line-height: 14px;
+        }
+        
+        &-badge {
+          font-size: 10px;
+          padding: 2px 6px;
+        }
+      }
+      
+      &-stats {
+        gap: 3px;
+        flex-wrap: wrap;
+        
+        &-label {
+          font-size: 11px;
+          line-height: 14px;
+        }
+        
+        &-value {
+          font-size: 11px;
+          line-height: 14px;
+          
+          svg {
+            width: 8px;
+            height: 8px;
+          }
+        }
+        
+        &-divider {
+          height: 11px;
+          margin: 0 3px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .store-item-card {
+    padding: 10px;
+    gap: 6px;
+    
+    &__name {
+      font-size: 12px;
+      line-height: 14px;
+    }
+    
+    &__location {
+      span {
+        font-size: 10px;
+        line-height: 13px;
+      }
+    }
+    
+    &__content {
+      &-issue {
+        font-size: 10px;
+        line-height: 13px;
+      }
+      
+      &-comments {
+        span {
+          font-size: 10px;
+        }
+        
+        &-badge {
+          font-size: 9px;
+          padding: 2px 5px;
+        }
+      }
+      
+      &-stats {
+        &-label,
+        &-value {
+          font-size: 10px;
+          line-height: 13px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 360px) {
+  .store-item-card {
+    padding: 8px;
+    gap: 5px;
+    
+    &__name {
+      font-size: 11px;
+      line-height: 13px;
+    }
+    
+    &__content {
+      &-issue,
+      &-comments span,
+      &-stats-label,
+      &-stats-value {
+        font-size: 9px;
+        line-height: 12px;
+      }
+    }
+  }
+}

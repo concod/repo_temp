@@ -1,0 +1,178 @@
+.textbox-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+
+  
+  // Allow custom width to override default
+  &[style*="width"] {
+    width: auto;
+  }
+
+  // Default dimensions based on your specifications
+  .textbox-field {
+    display: flex;
+    width: 100%;
+    height: 74px;
+    padding: 16px 12px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    border: 1px solid var(--greys-700, #C3C8D4);
+    background: var(--greys-1000, #FEFEFF);
+    resize: none !important;
+
+    &::placeholder {
+      color: var(--greys-500, #9CA3AF);
+      font-weight: 400;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    // Default State
+    &.default {
+      border: 1px solid var(--greys-700, #C3C8D4);
+
+      &:hover {
+        border-color: var(--maincolor-100, #A93BFF);
+      }
+    }
+
+    // Selected/Focused State
+    &.selected {
+      border-radius: 8px;
+      border: 1px solid var(--greys-700, #C3C8D4);
+      background: var(--greys-1000, #FEFEFF);
+  
+      &::placeholder{
+        color: var(--greys-200);
+      }
+    }
+
+    // Error State
+    &.error {
+      border-radius: 8px;
+      border: 1px solid #F23131;
+      background: #FEFEFF;
+  
+      &::placeholder {
+        color: #F23131;
+        font-family: Poppins;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+    }
+
+    // Disabled State
+    &.disabled {
+      background: var(--greys-900, #F3F4F6);
+      border: 1px solid var(--greys-800, #E5E7EB);
+      color: var(--greys-600, #9CA3AF);
+      cursor: not-allowed;
+      resize: none;
+
+      &::placeholder {
+        color: var(--greys-600, #9CA3AF);
+      }
+
+      &:hover {
+        border-color: var(--greys-800, #E5E7EB);
+      }
+    }
+  }
+}
+
+.textbox-label {
+  color: var(--greys-300);
+
+  &.disabled {
+    color: var(--greys-600, #9CA3AF);
+  }
+}
+
+.textbox-required {
+  color: #EF4444;
+  margin-left: 2px;
+}
+
+.textbox-container {
+  position: relative;
+  width: 100%;
+}
+
+.textbox-error {
+  color: #EF4444;
+  font-size: 12px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  line-height: 1.4;
+  margin-top: 4px;
+}
+
+// Hover state for wrapper (when not focused or disabled)
+.textbox-wrapper:not(.selected):not(.disabled):not(.error) {
+  .textbox-field.default:hover {
+    border-color: var(--maincolor-100, #A93BFF);
+  }
+}
+
+// Dark mode support
+@media (prefers-color-scheme: dark) {
+  .textbox-label {
+    color: var(--greys-100, #F9FAFB);
+
+    &.disabled {
+      color: var(--greys-600, #4B5563);
+    }
+  }
+
+  .textbox-field {
+    background: var(--greys-900, #111827);
+    color: var(--greys-100, #F9FAFB);
+
+    &.default {
+      border-color: var(--greys-600, #4B5563);
+    }
+
+    &.disabled {
+      background: var(--greys-800, #1F2937);
+      border-color: var(--greys-700, #374151);
+      color: var(--greys-600, #4B5563);
+    }
+
+    &::placeholder {
+      color: var(--greys-500, #6B7280);
+    }
+  }
+
+  .textbox-error {
+    color: #F87171;
+  }
+}
+
+// High contrast mode support
+@media (prefers-contrast: high) {
+  .textbox-field {
+    border-width: 2px;
+
+    &.selected {
+      border-width: 3px;
+    }
+
+    &.error {
+      border-width: 3px;
+    }
+  }
+}
+
+// Reduced motion support
+@media (prefers-reduced-motion: reduce) {
+  .textbox-field {
+    transition: none;
+  }
+}

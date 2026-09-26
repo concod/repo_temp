@@ -1,0 +1,87 @@
+// Issue with v3 select component. Quick fix to render the dropdown options on top of page
+.modal-top {
+  z-index: 1300;
+}
+
+.view-management-select__option--is-selected {
+  background-color: #edf0ff !important;
+  color: #1f2b4d !important;
+  border-radius: 8px;
+  margin-bottom: 2px;
+  height: 35px;
+  font-family: "Manrope", sans-serif;
+  font-weight: 500;
+}
+
+.ia-select-button-text {
+  color: #AFAFAF;
+  font-weight: 400;
+  line-height: 21px;
+}
+
+.plan-css-13cymwt-control{
+  display: none !important;
+}
+.view-count{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #E4F8FC;
+  border-radius: 8px;
+  height: 26px;
+  color:  #04A2BE;
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.ia_modalPopover.ia_modal_small {
+  height: 453px;
+  width: 367px;
+}
+.ia_modalPopover .ia_modalHeader{
+  background-color: #535B63 ;
+}
+
+.ia_modalPopover .ia_modalHeader .ia_modalHeading{
+  color:  #FFFFFF;
+  font-weight: 600;
+
+  
+}
+.ia_modalPopover .ia_modalBody{
+  padding: 14px 20px;
+}
+.modal-body-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+}
+
+.divider-text {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  position: relative;
+}
+
+.divider-text::before,
+.divider-text::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid  #C7C7C7;
+  position: relative;
+  margin: 0 -16px;
+}
+
+.divider-text span {
+  margin: 0 14px;
+  padding: 0 10px; /* Add padding around text */
+  font-weight: 400; 
+  font-size: 12px;
+  line-height: 15px;
+  color: #C7C7C7;
+  ;
+}
+

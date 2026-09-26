@@ -1,0 +1,11 @@
+source_column_name,source_column_datatype,required_in_product,generic_column_name,is_pk,generic_column_datatype,formula,is_attribute,is_hierarchy,hierarchy_level,is_null_allowed,unique_by,display_name,is_partition_col,is_clustering_col
+product_code,STRING,true,product_code,false,varchar,,false,false,,false,true,,false,
+article,STRING,true,article,false,varchar,,false,false,,false,false,,false,
+dc_code,INTEGER,true,dc_code,false,int,,false,false,,false,true,,false,
+pack_type,STRING,true,pack_type,false,varchar,,false,false,,false,false,,false,
+oh_pack_qty,FLOAT,true,oh_pack_qty,false,float,,false,false,,false,false,,false,
+oo_pack_qty,INTEGER,true,oo_pack_qty,false,int,,false,false,,false,false,,false,
+it_pack_qty,INTEGER,true,it_pack_qty,false,int,,false,false,,false,false,,false,
+channel,STRING,true,channel,false,varchar,,false,false,,false,false,,false,
+size,STRING,true,size,false,varchar,,false,false,,false,false,,false,
+pack_type_id,STRING,true,pack_type_id,false,varchar,,false,false,,false,true,,false,

@@ -1,0 +1,40 @@
+.left-section {
+  width: 100%;
+  // min-width: 540px; //calc(100% - 300px);
+  position: relative;
+  display: block;
+  padding: 8px 0 8px 18px;
+  .ia-styles.ia-btn.ia-btn-link {
+    float: right;
+    line-height: 21px !important;
+    font-weight: 500 !important;
+    padding: 0;
+    height: 21px;
+    position: absolute;
+    right: 18px;
+    z-index: 7;
+    svg path {
+      fill: #60697d !important;
+    }
+  }
+  .date-chip {
+    position: sticky;
+    top: 5px;
+    text-align: center;
+    margin: 0px 0px -24px;
+  }
+  .all-msg-container {
+    overflow: hidden auto;
+    max-height: calc(100% - 85px);
+    width: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 30px;
+    min-height: calc(100vh - 124px);
+    .date-wise-messages {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+  }
+}

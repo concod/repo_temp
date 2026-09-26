@@ -1,0 +1,57 @@
+--liquibase formatted sql
+--changeset sreevathsa.sp:tb_transaction_promo_mkd_combined_20251223 stripComments:false splitStatements:false context:Release_1_0 labels:tb_transaction_promo_mkd_combined
+--comment: Create tb_transaction_promo_mkd_combined table
+
+CREATE TABLE IF NOT EXISTS price_promo_opt.tb_transaction_promo_mkd_combined (
+	product_id int4 NOT NULL,
+	store_id int4 NOT NULL,
+	date_id date NOT NULL,
+	currency text NOT NULL,
+	currency_id int4 NOT NULL,
+	store_reco_level text NOT NULL,
+	promo_no_of_txn numeric NULL,
+	promo_cost numeric NULL,
+	promo_base_price numeric NULL,
+	promo_quantity numeric NULL,
+	promo_revenue numeric NULL,
+	promo_margin numeric NULL,
+	promo_selling_price numeric NULL,
+	promo_spend numeric NULL,
+	promo_discount numeric NULL,
+	promo_price_spend numeric NULL,
+	promo_price_discount numeric NULL,
+	promo_coupon_spend numeric NULL,
+	promo_coupon_discount numeric NULL,
+	promo_aur numeric NULL,
+	promo_aum numeric NULL,
+	promo_clearance_indicator int4 NULL,
+	promo_inventory int4 NULL,
+	mkd_no_of_txn numeric NULL,
+	mkd_cost numeric NULL,
+	mkd_retail_price numeric NULL,
+	mkd_gross_quantity numeric NULL,
+	mkd_gross_revenue numeric NULL,
+	mkd_gross_margin numeric NULL,
+	mkd_selling_price numeric NULL,
+	mkd_dis_amount numeric NULL,
+	mkd_dis_perc numeric NULL,
+	mkd_final_discount_percent numeric NULL,
+	mkd_final_amount numeric NULL,
+	mkd_promo_spend numeric NULL,
+	mkd_promo_discount numeric NULL,
+	mkd_coupon_amount numeric NULL,
+	mkd_coupon_discount numeric NULL,
+	mkd_aur numeric NULL,
+	mkd_aum numeric NULL,
+	mkd_total_inv int4 NULL,
+	mkd_clearance_indicator int4 NULL,
+	mkd_retail_price_with_vat numeric NULL,
+	mkd_gross_revenue_with_vat numeric NULL,
+	mkd_gross_margin_with_vat numeric NULL,
+	mkd_selling_price_with_vat numeric NULL,
+	mkd_final_amount_with_vat numeric NULL,
+	CONSTRAINT tb_transaction_promo_mkd_combined_uk UNIQUE (product_id, store_id, date_id)
+);
+
+CREATE INDEX IF NOT EXISTS idx_tb_transaction_promo_mkd_combined_keys 
+	ON price_promo_opt.tb_transaction_promo_mkd_combined USING btree (product_id, store_id, date_id);

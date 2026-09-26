@@ -1,0 +1,61 @@
+--liquibase formatted sql
+--changeset durgaprasad.tulugu@impactanalytics.co:fn_v3_upload_strategy_sku_store_mapping_3 runOnChange:true stripComments:false splitStatements:false context:Release_1_0 labels:liquibase_project_start
+--comment: initial changeset for price_markdown.fn_v3_upload_strategy_sku_store_mapping_3
+
+DROP FUNCTION if exists price_markdown.fn_v3_upload_strategy_sku_store_mapping;
+
+
+CREATE OR REPLACE FUNCTION price_markdown.fn_v3_upload_strategy_sku_store_mapping(p_strategy_id integer, p_product_store_mapping text[], p_delimiter character varying, p_include_inactive integer, p_allow_only_with_inv boolean, p_user_id integer)
+ RETURNS integer
+ LANGUAGE plpgsql
+AS $function$
+	declare
+        _strategy_object price_markdown.tb_strategy_master%ROWTYPE;
+        _sku_store_record_object RECORD;
+	begin
+
+    select * into _strategy_object from price_markdown.tb_strategy_master
+    where strategy_id = p_strategy_id;
+
+    with user_sku_stores as (
+        select
+            split_part(sku_store_mapping, p_delimiter, 1) as l5_id,
+            split_part(sku_store_mapping, p_delimiter, 2) as store_id
+        from
+            unnest(p_product_store_mapping) sku_store_mapping
+    )
+    select
+        jsonb_agg(
+            jsonb_build_object(
+                'product_id',pm.product_id,
+                'store_id',sm.store_id
+            )
+        ) as sku_store_mapping,
+        array_agg(pm.product_id) as product_ids,
+        array_agg(sm.store_id) as store_ids
+    from
+        user_sku_stores as ss
+        inner join price_markdown.product_master pm on pm.l5_id :: text = ss.l5_id
+        inner join price_markdown.tb_store_master sm on sm.store_id :: text = ss.store_id
+    where pm.is_active in (1, p_include_inactive)
+    and pm.clearance_indicator = 0
+    and sm.is_active = 1
+    into _sku_store_record_object;
+
+    return price_markdown.fn_v3_edit_strategy_step_1(
+        p_strategy_id,
+        _sku_store_record_object.product_ids,
+        _sku_store_record_object.store_ids,
+        false,
+        _sku_store_record_object.sku_store_mapping,
+        null::jsonb,
+       	true,
+		array[]::int[],
+        array[]::int[],
+		p_allow_only_with_inv,
+        p_user_id
+    );
+
+	END;
+$function$
+;

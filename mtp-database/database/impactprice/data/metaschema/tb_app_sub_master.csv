@@ -1,0 +1,78 @@
+"id","master_id","name","sequence","remarks","sub_parent","is_default","display_name","is_active"
+1,1,Advertised,0,Advertised,0,1,Advertised,1
+2,2,bxgx_percent_off,0,None,1,0,BXGX % Off,1
+3,2,bundle_offer,0,None,1,1,Bundle Offer Buy,0
+3,2,buy_x_units_get_y_percent_off,0,None,32,0,BMSM % Off,1
+4,2,buy_x_units_get_y_extra_amount_off,0,None,32,0,BMSM $ Off,1
+5,-1,bxgx_$,0,Advertised Offers type,3,0,At Price $,1
+5,2,buy_x_units_at_amount_y,0,None,32,0,BMSM Fixed Price,1
+6,2,buy_x_amount_get_y_percent_off,0,None,32,0,BM$M % Off,1
+6,-1,bxgx_$,0,Unadvertised Offer type,4,0,At Price $,1
+7,2,buy_x_amount_get_y_extra_amount_off,0,None,32,0,BM$M $ Off,1
+7,-1,Buy X Get X,0,Advertised Offers type,3,0,"",0
+8,-1,Buy X Get X,0,Unadvertised Offer type,4,0,"",0
+9,-1,Buy X  Get  $X Off,0,Advertised Offers type,3,0,"",0
+10,-1,pcd_buffer,0,"0 days",0,0,"",1
+10,-1,Buy X  Get  $X Off,0,Unadvertised Offer type,4,0,"",0
+11,-1,Buy X  Get  % X Off,0,Advertised Offers type,3,0,"",0
+12,-1,Buy X  Get  % X Off,0,Unadvertised Offer type,4,0,"",0
+13,2,extra_amount_off,0,None,1,0,$ Off,1
+14,2,upto_x_percent_off,0,None,1,0,UPTO X % Off,1
+15,2,percent_off,0,None,1,0,% Off,1
+17,2,fixed_price,0,None,1,0,PP,1
+19,2,reg_price,0,None,1,0,Reg Price,1
+21,2,reg_price_cv,0,None,1,0,Reg Price CV,0
+22,3,Ecom Only,0,Event Channel Type Addition,0,0,Ecom Only,1
+23,3,Omni Channel,0,Event Channel Type Addition,0,1,Omni,1
+27,2,bxgx,0,None,1,0,BXGX,1
+28,4,IA,0,recommendation_type,0,0,"",0
+29,4,scenario,0,recommendation_type,0,0,"",0
+30,4,resimulation,0,recommendation_type,0,0,"",1
+31,4,optimise,0,recommendation_type,0,0,"",1
+32,2,bmsm,0,None,1,0,BMSM,0
+34,-1,bmsm_$,0,Advertised Offers type,32,0,& Save $,1
+35,-1,bmsm_$,0,Unadvertised Offer type,33,0,& Save $,1
+36,-2,Maintenance,0,Api Server Maintenance,0,0,"",0
+37,5,Appversion,0,"1.0.1",0,0,"",1
+38,7,sales_units,0,Markdown Obective,0,0,Sales Units,1
+39,7,gm_dollar,0,Markdown Obective,0,0,Gross Margin $,1
+40,7,gm_percent,0,Markdown Obective,0,1,Gross Margin %,1
+41,7,revenue,0,Markdown Obective,0,0,Revenue,1
+42,8,min_max_percent,0,Markdown Rule,0,0,Min Max Discount %,1
+43,8,step_size_percent,0,Markdown Rule,0,0,Step Size %,1
+44,8,ending_rule,0,Markdown Rule,0,0,Ending Rules,1
+45,8,no_of_markdown,0,Markdown Rule,0,0,No of Markdown,1
+46,8,min_week_pp,0,Markdown Rule,0,0,Min PCDs on same PP,1
+47,8,applicable_discount_percent,0,Markdown Rule,0,0,Applicable Discount %,1
+48,7,st_percent,0,Markdown Obective,0,1,Sell Through %,1
+49,-2,markdown_maintenance,0,Markdown api server maintenance,0,0,"",0
+50,-2,enable_cache,0,enable cache in application server,0,0,"",1
+51,8,first_markdown_percent,0,Markdown Rule,0,0,First Markdown Discount %,1
+52,5,markdown_version,0,"1.0.1",0,0,"",1
+53,9,Custom,1,calendar config screen PCD Type filter Custom,0,0,Custom,1
+54,9,Frequency,2,calendar config screen PCD Type filter Frequency,0,0,Frequency,1
+55,10,Sunday,1,calendar config screen Repeat/Start Day filter Sunday,0,0,Sunday,1
+56,10,Monday,2,calendar config screen Repeat/Start Day filter Monday,0,0,Monday,1
+57,10,Tuesday,3,calendar config screen Repeat/Start Day filter Tuesday,0,0,Tuesday,1
+58,10,Wednesday,4,calendar config screen Repeat/Start Day filter Wednesday,0,0,Wednesday,1
+59,10,Thursday,5,calendar config screen Repeat/Start Day filter Thursday,0,0,Thursday,1
+60,10,Friday,6,calendar config screen Repeat/Start Day filter Friday,0,0,Friday,1
+61,10,Saturday,7,calendar config screen Repeat/Start Day filter Saturday,0,0,Saturday,1
+62,-2,min_allowed_duration_to_start_a_strategy_in_days,0,"1",0,0,"",1
+63,-2,client_timezone,0,US/Eastern,0,0,"",1
+64,-2,max_allowed_duration_to_end_a_strategy_in_months,0,"7",0,0,"",1
+65,2,tiered_offer,0,None,1,0,Tier,1
+66,-2,automatic_archive_threshold_days,0,"0",0,0,"",1
+67,-2,automatic_strategy_creation_alert_threshold_days,0,"7",0,0,"",1
+68,-1,pcd_buffer_alerts,0,"0 days",0,0,"",1
+69,-1,strategy_delete_buffer,0,"0",0,0,"",1
+70,-2,stacked_offers_eligibility,0,"{4,8}",0,0,"",1
+71,11,use_events,0,FALSE,0,1,"",1
+72,2,special_offer_type,0,None,1,0,Special Offer,1
+73,1,Unadvertised,0,Un-Advertised,0,0,Unadvertised,1
+74,2,kit_offer,0,None,1,0,Kit offer,1
+75,2,bxgy_offer,0,None,1,0,BXGY,1
+76,2,bmsm_fixed_quantity,0,Quantity-based offers (Buy X Units),1,0,Fixed Quantity,1
+77,2,bmsm_transaction_discount,0,Spend-based offers (Spend $X),1,0,Transaction Discount,1
+78,-2,approval_alerts_durations,0,"{7,14}",0,0,"",1
+79,7,markdown_budget,0,Markdown Objective,0,0,Markdown Budget,1

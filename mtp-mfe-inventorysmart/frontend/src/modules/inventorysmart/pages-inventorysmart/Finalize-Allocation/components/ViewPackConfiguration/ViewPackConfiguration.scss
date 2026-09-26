@@ -1,0 +1,65 @@
+.pack-item {
+  border: 1px solid #EFF2FA;
+  border-radius: 8px;
+  padding: 8px 16px;
+  .pack-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    .pack-header-name {
+      font-family: Manrope;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+      color: #0D152C;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      .pack-icon {
+        height: 32px;
+        width: 32px;
+        background-color: #F5F6FA;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        svg path {
+          fill: #60697D
+        }
+      }
+    }
+    .pack-total {
+      height: 20px;
+      opacity: 1;
+      padding: 2px 8px;
+      gap: 10px;
+      border-radius: 100px;
+      background-color: #F2F3F4;
+      color: #5F6673;
+    }
+  }
+}
+
+.chip-container {
+  margin-left: 45px;
+  margin-top: 12px;
+  .chip-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    .chip {
+      height: 20px;
+      max-width: 164px;
+      padding: 2px 8px;
+      gap: 4px;
+      border-radius: 12px;
+      border: 1px solid #D9DDE7;
+      display: flex;
+      .chip-count {
+        color: #1F2B4D;
+      }
+    }
+  }
+}

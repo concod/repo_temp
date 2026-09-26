@@ -1,0 +1,138 @@
+{
+    "CASCADE": {
+        "exclusions": [
+            "database/victorias_secret/schemas/inventory_smart/functions/eval_rule_ast.sql",
+            "database/victorias_secret/schemas/inventory_smart/functions/eval_rule_ast_safe.sql",
+            "database/victorias_secret/schemas/inventory_smart/functions/generate_rcl_constraint_data.sql",
+            "database/victorias_secret/schemas/public/procedures/backup_maintainance.sql",
+            "database/victorias_secret/schemas/public/procedures/sync_product_dc_mapping.sql",
+            "database/victorias_secret/schemas/public/procedures/sync_product_supersession.sql"
+        ]
+    },
+    "DROP COLUMN": {
+        "exclusions": [
+            "database/victorias_secret/schemas/global/tables/new_store_data.sql",
+            "database/victorias_secret/schemas/global/tables/product_store_attributes_filter.sql",
+            "database/victorias_secret/schemas/global/tables/product_store_hierarchy_mapping.sql",
+            "database/victorias_secret/schemas/global/tables/sse_grading_generic_schema_mapping.sql",
+            "database/victorias_secret/schemas/global/tables/supersession_generic_schema_mapping.sql",
+            "database/victorias_secret/schemas/inventory_smart/tables/alerts_product_level.sql",
+            "database/victorias_secret/schemas/inventory_smart/tables/alerts_product_store_level.sql",
+            "database/victorias_secret/schemas/inventory_smart/tables/article_inventory_dashboard.sql",
+            "database/victorias_secret/schemas/inventory_smart/tables/asn_to_allocate_alert.sql",
+            "database/victorias_secret/schemas/inventory_smart/tables/dc_transit_time_mapping.sql",
+            "database/victorias_secret/schemas/inventory_smart/tables/instock_kpi_table.sql",
+            "database/victorias_secret/schemas/inventory_smart/tables/intermediate_delta_inventory.sql",
+            "database/victorias_secret/schemas/inventory_smart/tables/preallocate_to_new_stores_alert.sql",
+            "database/victorias_secret/schemas/oms/tables/oms_constraints_order_policy.sql"
+        ]
+    },
+    "DROP CONSTRAINT": {
+        "exclusions": [
+            "database/victorias_secret/schemas/global/functions/create_drop_index_list_ingestion.sql",
+            "database/victorias_secret/schemas/global/tables/new_store_attributes.sql",
+            "database/victorias_secret/schemas/global/tables/new_store_mapping.sql",
+            "database/victorias_secret/schemas/global/tables/new_store_reserve.sql",
+            "database/victorias_secret/schemas/global/tables/product_store_attributes_filter.sql",
+            "database/victorias_secret/schemas/global/tables/product_store_hierarchy_mapping.sql",
+            "database/victorias_secret/schemas/inventory_smart/tables/article_inventory_dashboard.sql",
+            "database/victorias_secret/schemas/inventory_smart/tables/asn_to_allocate_alert.sql",
+            "database/victorias_secret/schemas/inventory_smart/tables/excess_units.sql",
+            "database/victorias_secret/schemas/inventory_smart/tables/instock_kpi_table.sql",
+            "database/victorias_secret/schemas/inventory_smart/tables/intermediate_delta_inventory.sql",
+            "database/victorias_secret/schemas/inventory_smart/tables/loss_units.sql",
+            "database/victorias_secret/schemas/oms/tables/oms_orders_approval_hist.sql",
+            "database/victorias_secret/schemas/oms/tables/oms_orders_approved.sql",
+            "database/victorias_secret/schemas/oms/tables/oms_po_master.sql",
+            "database/victorias_secret/schemas/oms/tables/po_master_por.sql"
+        ]
+    },
+    "DROP INDEX": {
+        "exclusions": [
+            "database/victorias_secret/schemas/global/functions/create_drop_index_list_ingestion.sql",
+            "database/victorias_secret/schemas/global/tables/product_attributes_filter.sql",
+            "database/victorias_secret/schemas/inventory_smart/tables/excess_units.sql",
+            "database/victorias_secret/schemas/public/procedures/generate_rcl_week_level_constraint_data.sql"
+        ]
+    },
+    "DROP MATERIALIZED VIEW": {
+        "exclusions": []
+    },
+    "DROP SEQUENCE": {
+        "exclusions": []
+    },
+    "DROP TABLE": {
+        "exclusions": [
+            "database/victorias_secret/schemas/inventory_smart/functions/generate_rcl_oms_constraint_data.sql",
+            "database/victorias_secret/schemas/inventory_smart/procedures/build_product_profile_attributes_filter.sql",
+            "database/victorias_secret/schemas/public/procedures/generate_all_week_level_rcl_constraint_data.sql",
+            "database/victorias_secret/schemas/public/procedures/sync_dc_split_ratio.sql"
+        ]
+    },
+    "DROP TRIGGER": {
+        "exclusions": []
+    },
+    "DROP TYPE": {
+        "exclusions": []
+    },
+    "DROP VIEW": {
+        "exclusions": []
+    },
+    "INHERITS": {
+        "exclusions": []
+    },
+    "ONLY": {
+        "exclusions": [
+            "database/victorias_secret/schemas/global/functions/create_drop_index_list_ingestion.sql",
+            "database/victorias_secret/schemas/public/procedures/sync_oms_recommended_orders.sql"
+        ]
+    },
+    "RENAME": {
+        "exclusions": [
+            "database/victorias_secret/schemas/global/tables/new_store_attributes.sql",
+            "database/victorias_secret/schemas/global/tables/product_attributes_filter.sql",
+            "database/victorias_secret/schemas/global/tables/remodel_effective_date.sql",
+            "database/victorias_secret/schemas/inventory_smart/tables/alerts_product_channel_level.sql",
+            "database/victorias_secret/schemas/inventory_smart/tables/alerts_product_level.sql",
+            "database/victorias_secret/schemas/inventory_smart/tables/alerts_product_store_level.sql",
+            "database/victorias_secret/schemas/inventory_smart/tables/article_inventory_dashboard.sql",
+            "database/victorias_secret/schemas/inventory_smart/tables/asn_to_allocate_alert.sql",
+            "database/victorias_secret/schemas/inventory_smart/tables/auto_allocation_input.sql",
+            "database/victorias_secret/schemas/inventory_smart/tables/dc_pack_reserve_quantity_derived_table.sql",
+            "database/victorias_secret/schemas/inventory_smart/tables/dc_transit_time_mapping.sql",
+            "database/victorias_secret/schemas/inventory_smart/tables/instock_kpi_table.sql",
+            "database/victorias_secret/schemas/inventory_smart/tables/intermediate_oms_cyclic_inventory.sql",
+            "database/victorias_secret/schemas/inventory_smart/tables/latest_inventory.sql",
+            "database/victorias_secret/schemas/inventory_smart/tables/preallocate_to_new_stores_alert.sql",
+            "database/victorias_secret/schemas/inventory_smart/tables/ship_mode_master.sql",
+            "database/victorias_secret/schemas/inventory_smart/tables/store_reserve.sql",
+            "database/victorias_secret/schemas/oms/tables/oms_alerts.sql"
+        ]
+    },
+    "RESET": {
+        "exclusions": [
+            "database/victorias_secret/schemas/inventory_smart/functions/generate_rcl_constraint_data.sql"
+        ]
+    },
+    "STORAGE": {
+        "exclusions": []
+    },
+    "TEMPORARY": {
+        "exclusions": []
+    },
+    "TRUNCATE": {
+        "exclusions": [
+            "database/victorias_secret/schemas/public/procedures/backup_maintainance.sql",
+            "database/victorias_secret/schemas/public/procedures/generate_all_rcl_constraint_data.sql"
+        ]
+    },
+    "WITHOUT": {
+        "exclusions": [
+            "database/victorias_secret/schemas/inventory_smart/functions/auto_allocation_input_articles.sql",
+            "database/victorias_secret/schemas/inventory_smart/functions/sku_asn_allocated_units.sql",
+            "database/victorias_secret/schemas/inventory_smart/functions/sku_dc_allocated_units.sql",
+            "database/victorias_secret/schemas/inventory_smart/views/sku_asn_allocated_units.sql",
+            "database/victorias_secret/schemas/inventory_smart/views/sku_dc_allocated_units.sql"
+        ]
+    }
+}

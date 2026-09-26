@@ -1,0 +1,93 @@
+{% include "header.html" %}
+<div class="pagetitle">
+	<h1>Roles</h1>
+</div>
+
+<section class="section">
+	<div class="row">
+		<a href='/create_default_roles' style='float:right; display: block; padding: 10px; margin: 20px; text-decoration:none;'>Create Default Roles</a>
+		<div class="col-lg-12">
+			<div class="card">
+				<div class="card-body">
+					<!--h5 class="card-title">DataBases</h5>
+					<p>Choose a database from list to manage.</p-->
+
+					<!-- Table with stripped rows -->
+					<table class="table table-striped datatable table-hover">
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Super</th>
+								<th>Inherit</th>
+								<th>C-Role</th>
+								<th>C-DB</th>
+								<th>Login</th>
+								<th>Valid Until</th>
+								<th>Member Of</th>
+								<th>Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for row in roles %}
+								<tr class="{{ 'table-danger' if row['rolsuper'] or not row['rolinherit'] or row['rolcreaterole'] or row['rolcreatedb'] or not row['rolcanlogin'] or 'mtp-admin' in row['memberof'] or 'super' in str(row['memberof']) else ('#FFEB00' if 'mtp-backend' in row['memberof'] else ('#FFFF00' if 'custom' in str(row['memberof']) else '#90EE91')) }}">
+									<td>{{row['rolname']}}</td>
+									<td>
+										<input class="form-check-input" type="checkbox" disabled name="rolsuper" {{ 'checked' if row['rolsuper'] else '' }} />
+										<!-- {{ row['rolsuper'] }} -->
+									</td>
+									<td>
+										<input class="form-check-input" type="checkbox" disabled name="rolinherit" value="True" {{ 'checked' if row['rolinherit'] else '' }} />
+										<!-- {{row['rolinherit']}} -->
+									</td>
+									<td>
+										<input class="form-check-input" style="cursor: pointer;" onclick="return confirm('Want to proceed ?') && (location.href='/table-op/{{ row['rolname'] }}/rolcreaterole|' + this.checked)" type="checkbox" name="rolcreaterole" value="True" {{ 'checked' if row['rolcreaterole'] else '' }} />
+										<!-- {{row['rolcreaterole']}} -->
+									</td>
+									<td>
+										<input class="form-check-input" style="cursor: pointer;" onclick="return confirm('Want to proceed ?') && (location.href='/table-op/{{ row['rolname'] }}/rolcreatedb|' + this.checked)" type="checkbox" name="rolcreatedb" value="True" {{ 'checked' if row['rolcreatedb'] else '' }} />
+										<!-- {{row['rolcreatedb']}} -->
+									</td>
+									<td>
+										<input class="form-check-input" type="checkbox" disabled name="rolcanlogin" value="True" {{ 'checked' if row['rolcanlogin'] else '' }} />
+										<!-- {{row['rolcanlogin']}} -->
+									</td>
+									<td>{{row['rolvaliduntil']}}</td>
+									<td><pre>{{ "\n".join(row['memberof']) }}</pre></td>
+									<td>
+										<a href="/table-op/{{ row['rolname'] }}/droprole" onclick="return confirm('Drop action will drop the role without backup.\nWant to proceed ?') && add_loader()">
+											<span class="badge bg-danger">Drop</span>
+										</a>
+									</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+					<!-- End Table with stripped rows -->
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+		<div class="container" style='width: 100%;'>
+			{% if prevs %}
+			<h1>Error 1:</h1>
+			<table border='1' width='100%'>
+				<tr>
+					<th>Table</th>
+					<th>Grantor</th>
+					<th>Grantee</th>
+					<th>Type</th>
+				</tr>
+				{% for row in prevs %}
+				<tr>
+					<td>{{row['tbl']}}</td>
+					<td>{{row['grantor']}}</td>
+					<td>{{row['grantee']}}</td>
+					<td>{{row['privilege_type']}}</td>
+				</tr>
+				{% endfor %}
+			</table>
+			{% endif %}
+		</div>
+{% include "footer.html" %}

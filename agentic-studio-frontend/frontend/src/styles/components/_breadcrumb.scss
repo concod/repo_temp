@@ -1,0 +1,67 @@
+// Breadcrumb Component Styles
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+
+  &__list {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+  }
+
+  &__link {
+
+color:  #A93BFF;
+/* Body/Medium 2 */
+font-family: Poppins;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+  }
+
+  &__current {
+    color: #04112B;
+    /* Body/Medium 2 */
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+
+  }
+
+  &__separator {
+    display: flex;
+    align-items: center;
+    color: var(--greys-300, #d1d5db);
+    font-size: 12px;
+    
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__home-icon {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #A93BFF;
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+}

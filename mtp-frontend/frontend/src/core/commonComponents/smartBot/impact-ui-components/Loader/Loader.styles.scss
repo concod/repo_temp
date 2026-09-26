@@ -1,0 +1,90 @@
+@import "../styles/index.scss";
+
+.ia-styles.ia-loader-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 99999;
+
+  .ia-loader-outer {
+    border-style: solid;
+    border-radius: 50%;
+    position: relative;
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    animation: spin 1s linear infinite;
+
+    .ia-loader-inner {
+      border-radius: 50%;
+      background-color: white;
+      position: absolute;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      font-family: Manrope, sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 16.39px;
+      text-align: center;
+
+      animation: spin 1s linear infinite;
+      animation-direction: reverse;
+    }
+
+    &.ia-loader-small {
+      height: 24px;
+      width: 24px;
+      .ia-loader-inner {
+        height: 20px;
+        width: 20px;
+        top: 2px;
+        left: 2px;
+      }
+    }
+    &.ia-loader-medium {
+      height: 48px;
+      width: 48px;
+      .ia-loader-inner {
+        height: 40px;
+        width: 40px;
+        top: 4px;
+        left: 4px;
+      }
+    }
+    &.ia-loader-large {
+      height: 72px;
+      width: 72px;
+      .ia-loader-inner {
+        height: 60px;
+        width: 60px;
+        top: 6px;
+        left: 6px;
+      }
+    }
+
+    background: conic-gradient(
+      from 180deg at 50% 50%,
+      rgba(66, 89, 238, 0) 0deg,
+      $primaryColor 360deg
+    );
+  }
+
+  .ia-loaderText {
+    font-family: Manrope, sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16.39px;
+    text-align: left;
+    margin-top: 4px;
+  }
+}

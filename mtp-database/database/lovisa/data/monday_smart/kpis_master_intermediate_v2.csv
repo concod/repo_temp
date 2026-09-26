@@ -1,0 +1,198 @@
+"ic_code","intermediate_column","formula","table_name","template"
+1,sum_rev,SUM(sales),mondaysmart_sales_subset_daily,
+2,sum_qty,SUM(quantity),mondaysmart_sales_subset_daily,
+5,trans_count,"",,"SELECT
+    {{ agg_cols | join_list_with_prefix('''') }}
+    {% if agg_cols %},
+    {% endif %}
+    COUNT(DISTINCT transaction_id) AS trans_count
+  FROM
+    {{ project_id }}.{{ dataset_id }}.mondaysmart_sales_subset_daily,
+    UNNEST(SPLIT(transactionid,'$')) AS transaction_id
+  WHERE
+    {{ timeline_where_clause }}
+    {% if where_clause %}
+    AND {% endif %} {{ where_clause}}
+    {% if agg_cols %}
+     GROUP BY
+    {{ agg_cols | join_list_with_prefix('''') }}
+    {% endif %}"
+6,msrp,avg(msrp),mondaysmart_sales_subset_daily,
+9,sum_oh_cost,SUM(oh_cost),mondaysmart_inventory_subset_daily,
+10,oh_eop,,mondaysmart_inventory_subset_daily,"SELECT
+{% if agg_cols %}  {{ agg_cols | join_list_with_prefix('inv') }}, {% endif %}
+ eop_agg,
+ SUM(oh) AS oh_eop,
+ SUM(it) AS it_eop,
+ SUM(oo) AS oo_eop
+FROM {{ project_id }}.{{ dataset_id }}.mondaysmart_inventory_subset_daily AS inv
+INNER JOIN (
+ SELECT
+{% if component  in ['linechart', 'store-history-inventory-area']  %}  {% if agg_cols %}  {{ agg_cols | join_list_with_prefix('''') }}, {% endif %} {% endif %}    MAX(date_id) AS eop_agg
+ FROM {{ project_id }}.{{ dataset_id }}.mondaysmart_fiscal_mapping_dl
+ WHERE {{ timeline_where_clause }}
+{% if component  in ['linechart', 'store-history-inventory-area']  %}  {% if agg_cols %} GROUP BY {{ agg_cols | join_list_with_prefix('''') }} {% endif %} {% endif %}) AS f
+ON f.eop_agg = inv.date_id
+{% if component == 'store-history-inventory-area' and agg_cols %}
+ {% for col in agg_cols %}
+   AND f.{{ col }} = inv.{{ col }}
+ {% endfor %}
+{% endif %}
+WHERE {{ timeline_where_clause.replace(""week_id"", ""inv.week_id"").replace(""date_id"", ""inv.date_id"") }}
+{% if where_clause %}  AND {{ where_clause }}{% endif %}
+{% if agg_cols %} GROUP BY {{ agg_cols | join_list_with_prefix('inv') }}, eop_agg{% else %} GROUP BY eop_agg{% endif %}
+"
+11,msrp_inv,,mondaysmart_inventory_subset_daily,"SELECT
+{% if agg_cols %}  {{ agg_cols | join_list_with_prefix('inv') }}, {% endif %}
+ eop_agg,
+ avg(msrp) as msrp_inv
+FROM {{ project_id }}.{{ dataset_id }}.mondaysmart_sales_subset_daily AS inv
+INNER JOIN (
+ SELECT
+{% if component  in ['linechart', 'store-history-inventory-area']  %}  {% if agg_cols %}  {{ agg_cols | join_list_with_prefix('''') }}, {% endif %} {% endif %}    MAX(date_id) AS eop_agg
+ FROM {{ project_id }}.{{ dataset_id }}.mondaysmart_fiscal_mapping_dl
+ WHERE {{ timeline_where_clause }}
+{% if component  in ['linechart', 'store-history-inventory-area']  %}  {% if agg_cols %} GROUP BY {{ agg_cols | join_list_with_prefix('''') }} {% endif %} {% endif %}) AS f
+ON f.eop_agg = inv.date_id
+{% if component == 'store-history-inventory-area' and agg_cols %}
+ {% for col in agg_cols %}
+   AND f.{{ col }} = inv.{{ col }}
+ {% endfor %}
+{% endif %}
+WHERE {{ timeline_where_clause.replace(""week_id"", ""inv.week_id"").replace(""date_id"", ""inv.date_id"") }}
+{% if where_clause %}  AND {{ where_clause }}{% endif %}
+{% if agg_cols %} GROUP BY {{ agg_cols | join_list_with_prefix('inv') }}, eop_agg{% else %} GROUP BY eop_agg{% endif %}
+"
+4,avg_disc_per,SUM(CASE WHEN discount_flag = 'Discount' THEN discount_numerator ELSE 0 END) ,mondaysmart_sales_subset_daily,
+12,sum_mrgn,sum(margin),mondaysmart_sales_subset_daily,
+13,planned_sales,sum(planned_sales),mondaysmart_planned_subset_daily,
+7,inv_eop,,,"SELECT
+{% if agg_cols %}  {{ agg_cols | join_list_with_prefix('inv') }}, {% endif %}
+  eop_agg,
+  SUM(oh+it+oo) AS inv_eop
+FROM {{ project_id }}.{{ dataset_id }}.mondaysmart_inventory_subset_daily AS inv
+INNER JOIN (
+  SELECT
+{% if component == 'linechart' %}  {% if agg_cols %}  {{ agg_cols | join_list_with_prefix('''') }}, {% endif %} {% endif %}    MAX(date_id) AS eop_agg
+  FROM {{ project_id }}.{{ dataset_id }}.mondaysmart_fiscal_mapping_dl
+  WHERE {{ timeline_where_clause }}
+{% if component == 'linechart' %}  {% if agg_cols %} GROUP BY {{ agg_cols | join_list_with_prefix('''') }} {% endif %} {% endif %}) AS f
+ON f.eop_agg = inv.date_id
+WHERE {{ timeline_where_clause.replace(""week_id"", ""inv.week_id"").replace(""date_id"", ""inv.date_id"") }}
+{% if where_clause %}  AND {{ where_clause }}{% endif %}
+{% if agg_cols %} GROUP BY {{ agg_cols | join_list_with_prefix('inv') }}, eop_agg{% else %} GROUP BY eop_agg{% endif %}"
+8,markdown_spend,SUM(CASE WHEN markdown_flag= true THEN sales ELSE 0 END),mondaysmart_sales_subset_daily,
+8,freshness,"SAFE_DIVIDE(SUM(CASE WHEN style_type = 'new_style' then oh else 0 end), SUM(oh))",mondaysmart_inventory_subset_daily,
+14,it_eop,,mondaysmart_inventory_subset_daily,"SELECT
+{% if agg_cols %}  {{ agg_cols | join_list_with_prefix('inv') }}, {% endif %}
+ eop_agg,
+ SUM(oh) AS oh_eop,
+ SUM(it) AS it_eop,
+ SUM(oo) AS oo_eop
+FROM {{ project_id }}.{{ dataset_id }}.mondaysmart_inventory_subset_daily AS inv
+INNER JOIN (
+ SELECT
+{% if component  in ['linechart', 'store-history-inventory-area']  %}  {% if agg_cols %}  {{ agg_cols | join_list_with_prefix('''') }}, {% endif %} {% endif %}    MAX(date_id) AS eop_agg
+ FROM {{ project_id }}.{{ dataset_id }}.mondaysmart_fiscal_mapping_dl
+ WHERE {{ timeline_where_clause }}
+{% if component  in ['linechart', 'store-history-inventory-area']  %}  {% if agg_cols %} GROUP BY {{ agg_cols | join_list_with_prefix('''') }} {% endif %} {% endif %}) AS f
+ON f.eop_agg = inv.date_id
+{% if component == 'store-history-inventory-area' and agg_cols %}
+ {% for col in agg_cols %}
+   AND f.{{ col }} = inv.{{ col }}
+ {% endfor %}
+{% endif %}
+WHERE {{ timeline_where_clause.replace(""week_id"", ""inv.week_id"").replace(""date_id"", ""inv.date_id"") }}
+{% if where_clause %}  AND {{ where_clause }}{% endif %}
+{% if agg_cols %} GROUP BY {{ agg_cols | join_list_with_prefix('inv') }}, eop_agg{% else %} GROUP BY eop_agg{% endif %}
+"
+15,oo_eop,,mondaysmart_inventory_subset_daily,"SELECT
+{% if agg_cols %}  {{ agg_cols | join_list_with_prefix('inv') }}, {% endif %}
+ eop_agg,
+ SUM(oh) AS oh_eop,
+ SUM(it) AS it_eop,
+ SUM(oo) AS oo_eop
+FROM {{ project_id }}.{{ dataset_id }}.mondaysmart_inventory_subset_daily AS inv
+INNER JOIN (
+ SELECT
+{% if component  in ['linechart', 'store-history-inventory-area']  %}  {% if agg_cols %}  {{ agg_cols | join_list_with_prefix('''') }}, {% endif %} {% endif %}    MAX(date_id) AS eop_agg
+ FROM {{ project_id }}.{{ dataset_id }}.mondaysmart_fiscal_mapping_dl
+ WHERE {{ timeline_where_clause }}
+{% if component  in ['linechart', 'store-history-inventory-area']  %}  {% if agg_cols %} GROUP BY {{ agg_cols | join_list_with_prefix('''') }} {% endif %} {% endif %}) AS f
+ON f.eop_agg = inv.date_id
+{% if component == 'store-history-inventory-area' and agg_cols %}
+ {% for col in agg_cols %}
+   AND f.{{ col }} = inv.{{ col }}
+ {% endfor %}
+{% endif %}
+WHERE {{ timeline_where_clause.replace(""week_id"", ""inv.week_id"").replace(""date_id"", ""inv.date_id"") }}
+{% if where_clause %}  AND {{ where_clause }}{% endif %}
+{% if agg_cols %} GROUP BY {{ agg_cols | join_list_with_prefix('inv') }}, eop_agg{% else %} GROUP BY eop_agg{% endif %}
+"
+16,planned_mrgn,sum(planned_margin),mondaysmart_planned_subset_daily,
+17,planned_qty,sum(planned_quantity),mondaysmart_planned_subset_daily,
+18,planned_eoh,sum(planned_eoh),mondaysmart_planned_subset_daily,
+19,oh_bop,,,"SELECT
+{% if agg_cols %}  {{ agg_cols | join_list_with_prefix('inv') }}, {% endif %}
+ eop_agg,
+ SUM(oh) AS oh_bop,
+ SUM(it) AS it_bop,
+ SUM(oo) AS oo_bop
+FROM {{ project_id }}.{{ dataset_id }}.mondaysmart_inventory_subset_daily AS inv
+INNER JOIN (
+ SELECT
+{% if component  in ['linechart', 'store-history-inventory-area']  %}  {% if agg_cols %}  {{ agg_cols | join_list_with_prefix('''') }}, {% endif %} {% endif %}    MIN(date_id) AS eop_agg
+ FROM {{ project_id }}.{{ dataset_id }}.mondaysmart_fiscal_mapping_dl
+ WHERE {{ timeline_where_clause }}
+{% if component  in ['linechart', 'store-history-inventory-area']  %}  {% if agg_cols %} GROUP BY {{ agg_cols | join_list_with_prefix('''') }} {% endif %} {% endif %}) AS f
+ON f.eop_agg = inv.date_id
+{% if component == 'store-history-inventory-area' and agg_cols %}
+ {% for col in agg_cols %}
+   AND f.{{ col }} = inv.{{ col }}
+ {% endfor %}
+{% endif %}
+WHERE {{ timeline_where_clause.replace(""week_id"", ""inv.week_id"").replace(""date_id"", ""inv.date_id"") }}
+{% if where_clause %}  AND {{ where_clause }}{% endif %}
+{% if agg_cols %} GROUP BY {{ agg_cols | join_list_with_prefix('inv') }}, eop_agg{% else %} GROUP BY eop_agg{% endif %}
+"
+20,conversion_val,,,"SELECT
+  {% if agg_cols -%}
+  {{ agg_cols | join_list_with_prefix('a') }},
+  {%- endif %}
+  AVG(conversion_val) AS conversion_val
+FROM `{{ project_id }}.{{ dataset_id }}.mondaysmart_currency_conversion` c
+
+{% if """".join(agg_cols).strip().__len__() > 0 -%}
+CROSS JOIN (
+    SELECT {{ agg_cols | join_list_with_prefix('') }}
+    FROM `{{ project_id }}.{{ dataset_id }}.mondaysmart_sales_subset_daily`
+    WHERE {{ timeline_where_clause }}
+      {% if where_clause %} AND {{ where_clause }} {% endif %}
+      AND {{ agg_cols[0] }} IS NOT NULL
+
+    UNION DISTINCT
+
+    SELECT {{ agg_cols | join_list_with_prefix('') }}
+    FROM `{{ project_id }}.{{ dataset_id }}.mondaysmart_inventory_subset_daily`
+    WHERE {{ timeline_where_clause }}
+      {% if where_clause %} AND {{ where_clause }} {% endif %}
+      AND {{ agg_cols[0] }} IS NOT NULL
+
+    UNION DISTINCT
+
+    SELECT {{ agg_cols | join_list_with_prefix('') }}
+    FROM `{{ project_id }}.{{ dataset_id }}.mondaysmart_planned_subset_daily`
+    WHERE {{ timeline_where_clause }}
+      {% if where_clause %} AND {{ where_clause }} {% endif %}
+      AND {{ agg_cols[0] }} IS NOT NULL
+) AS a 
+{%- endif %}
+
+WHERE {{ timeline_where_clause.replace(""week_id"", ""c.week_id"").replace(""date_id"", ""c.date_id"") }}
+{% if currency_code %}
+  AND currency_code = '{{ currency_code }}'
+{% endif %} 
+
+{% if agg_cols -%}
+GROUP BY {{ agg_cols | join_list_with_prefix('a') }}
+{%- endif %}"

@@ -1,0 +1,186 @@
+"column_name","entity","data_type","source","is_feature","feature_type","feature_encoding","unique_by","aggregation_func","gbq_formula"
+day_inventory,impute_features,float,master_table,false,inventory,"",false,"",""
+discount_percentage,impute_features,float,master_table,false,"","",false,"",""
+final_price_per_unit,impute_features,float,master_table,false,discount,"",false,"",""
+qty_without_returns,impute_features,float,master_table,false,qty,"",false,"",""
+retail_price_per_unit,impute_features,float,master_table,false,price,"",false,"",original_price
+total_discount_amount,impute_features,float,master_table,false,discount,"",false,"",""
+active_stores_cutoff,lost_sales,float,"",true,numerical,"",false,"","{'US':0.5,'CA':0.5}"
+lsi_channel,lost_sales,float,"",true,numerical,"",false,"","['US','CA']"
+sell_through_cutoff,lost_sales,float,"",true,numerical,"",false,"","{'US':0.5,'CA':0.5}"
+fiscal_bi_week,master_table,int64,fiscal_date_mapping,false,"","",false,max,max( case when fiscal_week_in_year = 53 then 26 else floor((fiscal_week_in_year+1)/2) end ) as fiscal_bi_week
+fiscal_month,master_table,int64,fiscal_date_mapping,false,"","",false,max,max(fiscal_month_in_year) as fiscal_month
+fiscal_quarter,master_table,int64,fiscal_date_mapping,false,"","",false,max,max(fiscal_quarter_in_year) as fiscal_quarter
+fiscal_week,master_table,int64,fiscal_date_mapping,false,"","",false,max,max(fiscal_week_in_year) as fiscal_week
+fiscal_week_begin_date,master_table,date,fiscal_date_mapping,false,"","",false,max,max(fiscal_week_begin_date) as fiscal_week_begin_date
+fiscal_week_end_date,master_table,date,fiscal_date_mapping,false,"","",false,max,max(fiscal_week_end_date) as fiscal_week_end_date
+fiscal_year,master_table,int64,fiscal_date_mapping,false,"","",false,max,max(fiscal_year) as fiscal_year
+fiscal_year_month,master_table,int64,fiscal_date_mapping,false,"","",false,max,max(fiscal_year*100+fiscal_month_in_year) as fiscal_year_month
+fiscal_year_quarter,master_table,int64,fiscal_date_mapping,false,"","",false,max,max(fiscal_year_quarter) as fiscal_year_quarter
+channel_i,master_table,string,inventory_master,false,"","",false,max,max(channel) as channel_i
+age,master_table,int64,master_table,false,"","",false,"","date_diff(min(date) over(partition by product_code,fiscal_year_week), min(date) over(partition by product_code), week)+1 as age"
+channel,master_table,string,master_table,false,"","",false,"","coalesce(channel_t,channel_i) as channel"
+discount_amount,master_table,float,master_table,false,"","",false,"",(retail_price_per_unit - final_price_per_unit) as discount_amount
+discount_percentage,master_table,float,master_table,false,"","",false,"","safe_divide((retail_price_per_unit - final_price_per_unit), retail_price_per_unit) as discount_percentage"
+final_retail_price_per_unit,master_table,float,master_table,false,"","",false,"","coalesce(average_inv_retail, retail_price_per_unit , product_price ) as final_retail_price_per_unit"
+max_date_store_ty,master_table,date,master_table,false,"","",false,"",max(date) over(partition by store_code) as max_date_store_ty
+min_master_table_year,master_table,int64,master_table,false,"","",false,"",min(fiscal_year)over() as min_master_table_year
+percent_off,master_table,float,master_table,false,"","",false,"","safe_divide((retail_price_per_unit - final_price_per_unit), retail_price_per_unit)*100 as percent_off"
+min_week_date,master_table,date,master_table,false,"","",false,"","ifnull(min(case when qty_without_returns > 0 then date end ) over(partition by product_code,store_code,fiscal_year_week),min(date) over(partition by product_code,store_code,fiscal_year_week)) as min_week_date"
+qty_l3,master_table,float64,master_table,false,"","",false,max,"sum(qty_without_returns) over(partition by channel_t,l0_name,l1_name,l2_name,l3_name,fiscal_year_week) as qty_l3"
+total_discount_amount,master_table,float,master_table,false,"","",false,"",(retail_price_per_unit - final_price_per_unit)*quantity_sold as total_discount_amount
+margin,master_table,float64,master_table,false,"","",false,sum,"(ifnull(price,0)-ifnull(cost,0))*ifnull(quantity_sold,0) as margin"
+is_deleted,master_table,boolean,master_table,true,"","",false,"","ifnull(intr_deleted,TRUE) as is_deleted"
+article,master_table,string,product_master,false,"","",false,max,max(article) as article
+color,master_table,string,product_master,false,"","",false,max,max(color) as color_code
+custom_unique_key,master_table,string,product_master,false,"","",false,max,"max(concat(channel,'-',l1_id,'-',l3_id,'-',style,'-',color)) as custom_unique_key"
+l0_name,master_table,string,product_master,false,"","",false,max,max(l0_name) as l0_name
+l1_name,master_table,string,product_master,false,"","",false,max,max(l1_name) as l1_name
+it,master_table,float,inventory_master,false,"","",false,sum,"sum(coalesce(it,0)) as it"
+oh,master_table,float,inventory_master,false,"","",false,sum,"sum(coalesce(oh,total_units)) as oh"
+oh_cost,master_table,float,inventory_master,false,"","",false,sum,sum(invcost) as oh_cost
+oh_retail,master_table,float,inventory_master,false,"","",false,sum,sum(invretail) as oh_retail
+average_inv_retail,master_table,float,inventory_master,false,"","",false,sum,"safe_divide(sum(invretail),sum(coalesce(oh,total_units))) as average_inv_retail"
+oo,master_table,float,inventory_master,false,"","",false,sum,"sum(coalesce(oo,0)) as oo"
+l2_name,master_table,string,product_master,false,"","",false,max,max(l2_name) as l2_name
+l3_name,master_table,string,product_master,false,"","",false,max,max(l3_name) as l3_name
+product_description,master_table,string,product_master,false,"","",false,max,max(product_description) as product_description
+product_price,master_table,string,product_master,false,"","",false,max,max(original_price) as product_price
+size,master_table,string,product_master,false,"","",false,max,max(size) as size
+style,master_table,string,product_master,false,"","",false,max,max(style) as style
+l0_id,master_table,string,product_master,false,"","",false,max,max(l0_id) as l0_id
+l1_id,master_table,string,product_master,false,"","",false,max,max(l1_id) as l1_id
+l2_id,master_table,string,product_master,false,"","",false,max,max(l2_id) as l2_id
+l3_id,master_table,string,product_master,false,"","",false,max,max(l3_id) as l3_id
+product_name,master_table,string,product_master,false,"","",false,max,max(product_name) as product_name
+business_segment,master_table,string,product_master,false,"","",false,max,max(business_segment) as business_segment
+original_price,master_table,string,product_master,false,"","",false,max,max(original_price) as original_price
+edlp_price,master_table,string,product_master,false,"","",false,max,max(edlp_price) as edlip_price
+receipt_date,master_table,string,product_master,false,"","",false,max,max(receipt_date) as receipt_date
+launch_date,master_table,string,product_master,false,"","",false,max,max(launch_date)as launch_date
+style_family,master_table,string,product_master,false,"","",false,max,max(style_family)as style_family
+fabric,master_table,string,product_master,false,"","",false,max,max(fabric)as fabric
+fit,master_table,string,product_master,false,"","",false,max,max(fit) as fit
+lifestyle,master_table,string,product_master,false,"","",false,max,max(lifestyle)as lifestyle
+logo,master_table,string,product_master,false,"","",false,max,max(logo)as logo
+silhouette,master_table,string,product_master,false,"","",false,max,max(silhouette)as silhouette
+sleevelength,master_table,string,product_master,false,"","",false,max,max(sleevelength)as sleevelength
+treatment,master_table,string,product_master,false,"","",false,max,max(treatment)as treatment
+class_name,master_table,string,product_master,false,"","",false,max,max(class_name)as class_name
+climate,master_table,string,store_master,false,"","",false,max,"max(ifnull(climate,'NA')) as climate"
+close_date,master_table,date,store_master,false,"","",false,max,max(close_date) as close_date
+open_date,master_table,date,store_master,false,"","",false,max,max(open_date) as open_date
+s0_name,master_table,string,store_master,false,"","",false,max,max(s0_name) as s0_name
+s1_name,master_table,string,store_master,false,"","",false,max,max(s1_name) as s1_name
+s2_name,master_table,string,store_master,false,"","",false,max,max(s2_name) as s2_name
+s3_name,master_table,string,store_master,false,"","",false,max,max(s3_name) as s3_name
+s4_name,master_table,string,store_master,false,"","",false,max,max(s4_name) as s4_name
+store_name,master_table,string,store_master,false,"","",false,max,max(store_name) as store_name
+s5_name,master_table,string,store_master,false,"","",false,max,max(zipcode) as s5_name
+selling_square_feet,master_table,string,store_master,false,"","",false,max,max(selling_square_feet) as selling_square_feet
+backroom_square_feet,master_table,string,store_master,false,"","",false,max,max( backroom_square_feet) as  backroom_square_feet
+location_type,master_table,string,store_master,false,"","",false,max,max(location_type) as location_type
+sub_channel,master_table,string,store_master,false,"","",false,max,max(sub_channel) sub_channel
+time_zone,master_table,string,store_master,false,"","",false,max,max(time_zone) as time_zone
+store_description,master_table,string,store_master,false,"","",false,max,max(store_name) as store_description
+store_type,master_table,string,store_master,false,"","",false,max,max( store_type) as store_type
+state_description,master_table,string,store_master,false,"","",false,max,max(state_description) as state_description
+store_active_ms,master_table,boolean,store_master,false,"","",false,max,max(active_ms) as store_active_ms
+store_size,master_table,int64,store_master,false,"","",false,max,max(store_size) as store_size
+channel_t,master_table,string,transaction_master,false,"","",false,max,max(channel) as channel_t
+total_cost,master_table,float,transaction_master,false,"","",false,sum,sum(cost ) as total_cost
+cost_price_per_unit,master_table,float,transaction_master,false,"","",false,sum,"safe_divide(sum(case when qty > 0 then Cost end),sum(case when qty > 0  then qty end)) as cost_price_per_unit"
+coupon_discount,master_table,float,transaction_master,false,"","",false,sum,sum(case when coupon_discount<0 then -coupon_discount else 0 end) as coupon_discount
+final_price_per_unit,master_table,float,transaction_master,false,"","",false,sum,"safe_divide(sum(case when  qty > 0 then Revenue end),sum(case when qty> 0 then qty end)) as final_price_per_unit"
+max_date_lly,master_table,date,transaction_master,false,"","",false,max,"date_sub(max(date), INTERVAL 24 month) as max_date_lly"
+max_date_ly,master_table,date,transaction_master,false,"","",false,max,"date_sub(max(date), INTERVAL 12 month) as max_date_ly"
+promo_discount,master_table,float,transaction_master,false,"","",false,sum,sum(case when promo_discount< 0 then -promo_discount else 0 end) as promo_disocunt
+promo_type,master_table,string,transaction_master,false,"","",false,"",'percent_off' as promo_type
+qty_returns,master_table,float,transaction_master,false,"","",false,sum,sum(case when qty<0 then (-1)*qty else 0 end) as qty_returns
+qty_without_returns,master_table,float,transaction_master,false,"","",false,sum,sum(case when qty>0 then qty else 0 end) as qty_without_returns
+quantity_sold,master_table,int64,transaction_master,false,"","",false,sum,sum(qty) as quantity_sold
+intr_deleted,master_table,boolean,transaction_master,false,"","",false,max,max(is_deleted) as intr_deleted
+qty,master_table,int64,master_table,false,"","",false,"","ifnull(quantity_sold,0) as qty"
+store_active,master_table,boolean,store_master,false,"","",false,max,max(active) as store_active
+retail_price_per_unit,master_table,float,transaction_master,false,"","",false,sum,"safe_divide(sum(case when revenue > 0 and ifnull(promo_discount,0) <= 0 and ifnull(coupon_discount,0) <= 0 then revenue + abs(promo_discount) + abs(coupon_discount) end ), sum(case when revenue > 0 and ifnull(promo_discount,0) <= 0 and ifnull(coupon_discount,0) <= 0 then qty end ) ) as retail_price_per_unit"
+revenue,master_table,float,transaction_master,false,"","",false,sum,sum(revenue) as revenue
+revenue_returns,master_table,float,transaction_master,false,"","",false,sum,sum(case when qty < 0 then -revenue end) as revenue_returns
+revenue_without_returns,master_table,float,transaction_master,false,"","",false,sum,sum(case when qty > 0 then revenue end) as revenue_without_returns
+txn_count,master_table,int64,transaction_master,false,"","",false,count,count(distinct transaction_code) as txn_count
+clearance,master_table,boolean,transaction_master,false,"","",false,max,max(case when discount_percentage>0.75 then True else False end) as clearance
+price,master_table,float,transaction_master,false,"","",false,sum,"SAFE_DIVIDE(SUM(revenue),SUM(qty)) AS price"
+cost,master_table,float,transaction_master,false,"","",false,sum,"SAFE_DIVIDE(SUM(cost),SUM(qty)) AS cost"
+christmas,master_table,float,event_master,false,"","",false,max,max(christmas) as christmas
+columbus_day,master_table,float,event_master,false,"","",false,max,max(columbus_day) as columbus_day
+easter,master_table,float,event_master,false,"","",false,max,max(easter) as easter
+fathers_day,master_table,float,event_master,false,"","",false,max,max(fathers_day) as fathers_day
+good_friday,master_table,float,event_master,false,"","",false,max,max(good_friday) as good_friday
+halloween,master_table,float,event_master,false,"","",false,max,max(halloween) as halloween
+independence_day,master_table,float,event_master,false,"","",false,max,max(independence_day) as independence_day
+labor_day,master_table,float,event_master,false,"","",false,max,max(labor_day) as labor_day
+mlk_day,master_table,float,event_master,false,"","",false,max,max(mlk_day) as mlk_day
+memorial_day,master_table,float,event_master,false,"","",false,max,max(memorial_day) as memorial_day
+mothers_day,master_table,float,event_master,false,"","",false,max,max(mothers_day) as mothers_day
+new_year,master_table,float,event_master,false,"","",false,max,max(new_year) as new_year
+presidents_day,master_table,float,event_master,false,"","",false,max,max(presidents_day) as presidents_day
+st_patricks_day,master_table,float,event_master,false,"","",false,max,max(st_patricks_day) as st_patricks_day
+thanks_giving,master_table,float,event_master,false,"","",false,max,max(thanks_giving) as thanks_giving
+valentines_day,master_table,float,event_master,false,"","",false,max,max(valentines_day) as valentines_day
+winter_warm_up,master_table,float,event_master,false,"","",false,max,max(winter_warm_up) as winter_warm_up
+pre_thanks_giving,master_table,float,event_master,false,"","",false,max,max(pre_thanks_giving) as pre_thanks_giving
+event_2020,master_table,float,event_master,false,"","",false,max,max(event_2020) as event_2020
+trend,master_table,float,event_master,false,"","",false,max,max(trend) as trend
+season_1,master_table,float,event_master,false,"","",false,max,max(season_1) as season_1
+season_2,master_table,float,event_master,false,"","",false,max,max(season_2) as season_2
+season_3,master_table,float,event_master,false,"","",false,max,max(season_3) as season_3
+season_4,master_table,float,event_master,false,"","",false,max,max(season_4) as season_4
+season_5,master_table,float,event_master,false,"","",false,max,max(season_5) as season_5
+season_6,master_table,float,event_master,false,"","",false,max,max(season_6) as season_6
+season_7,master_table,float,event_master,false,"","",false,max,max(season_7) as season_7
+season_8,master_table,float,event_master,false,"","",false,max,max(season_8) as season_8
+season_9,master_table,float,event_master,false,"","",false,max,max(season_9) as season_9
+dropship_flag,master_table,string,product_master,false,"","",false,max,max(dropship_flag) as dropship_flag
+receipts_cost,master_table,float,receipt_master,false,"","",false,max,"ifnull(max(receipts_cost),0) as receipts_cost"
+receipts_quantity,master_table,float,receipt_master,false,"","",false,max,"ifnull(max(quantity),0) as receipts_quantity"
+promo_year_week,master_table,int64,fiscal_date_mapping,false,"","",false,max,max(fiscal_year_promo*100+fiscal_week_promo) as promo_year_week
+avg_inventory,sc__CA,float64,master_table,false,"","",false,avg,avg(day_inventory) as avg_inventory
+product_count,sc__CA,int64,master_table,false,"","",false,count,count(distinct product_code) as product_count
+quantity_sold,sc__CA,int64,master_table,true,"","",false,sum,sum(quantity_sold) as quantity_sold
+store_age,sc__CA,int64,master_table,false,"","",false,max,"date_diff(max(max_date_store_ty),max(open_date),day) as store_age"
+total_margin,sc__CA,float64,master_table,false,"","",false,sum,sum((final_price_per_unit - cost_price_per_unit)*qty_without_returns) as total_margin
+total_revenue,sc__CA,float64,master_table,true,"","",false,sum,sum(revenue) as total_revenue
+avg_price,sc__CA,float64,master_table,true,"","",false,sum,"safe_divide(sum(final_price_per_unit*qty_without_returns),sum(qty_without_returns)) as avg_price"
+avg_cost,sc__CA,float64,master_table,false,"","",false,avg,"safe_divide(sum(cost_price_per_unit*qty_without_returns),sum(qty_without_returns)) as avg_cost"
+total_txn_count,sc__CA,int64,master_table,false,"","",false,sum,sum(txn_count) as total_txn_count
+avg_sell_through,sc__CA,float64,master_table,false,"","",false,avg,"avg(safe_divide(case when qty_without_returns is not null then qty_without_returns end,case when day_inventory is not null then day_inventory end)) as avg_sell_through"
+avg_inventory,sc__US,float64,master_table,false,"","",false,avg,avg(day_inventory) as avg_inventory
+product_count,sc__US,int64,master_table,false,"","",false,count,count(distinct product_code) as product_count
+quantity_sold,sc__US,int64,master_table,true,"","",false,sum,sum(quantity_sold) as quantity_sold
+store_age,sc__US,int64,master_table,false,"","",false,max,"date_diff(max(max_date_store_ty),max(open_date),day) as store_age"
+total_margin,sc__US,float64,master_table,false,"","",false,sum,sum((final_price_per_unit - cost_price_per_unit)*qty_without_returns) as total_margin
+total_revenue,sc__US,float64,master_table,true,"","",false,sum,sum(revenue) as total_revenue
+total_txn_count,sc__US,int64,master_table,false,"","",false,sum,sum(txn_count) as total_txn_count
+avg_sell_through,sc__US,float64,master_table,false,"","",false,avg,"avg(safe_divide(case when qty_without_returns is not null then qty_without_returns end,case when day_inventory is not null then day_inventory end)) as avg_sell_through"
+avg_price,sc__US,float64,master_table,true,"","",false,sum,"safe_divide(sum(final_price_per_unit*qty_without_returns),sum(qty_without_returns)) as avg_price"
+avg_cost,sc__US,float64,master_table,false,"","",false,avg,"safe_divide(sum(cost_price_per_unit*qty_without_returns),sum(qty_without_returns)) as avg_cost"
+receipts_price,master_table,float,receipt_master,false,"","",false,max,"ifnull(max(receipts_price),0) as receipts_price"
+fiscal_year_week,master_table,int64,fiscal_date_mapping,false,"","",false,max,max(fiscal_year_week) as fiscal_year_week
+min_week_date_promo,master_table,date,master_table,false,"","",false,"","min(date)over(partition by product_code,store_code,promo_year_week) as min_week_date_promo"
+product_clearance,master_table,string,product_master,false,"","",false,max,max(clearance) as product_clearance
+day_inventory,master_table,int64,master_table,false,"","",false,""," ifnull(abs(oh) + abs(it) + abs(oo),0) as day_inventory"
+class_code,master_table,string,product_master,false,"","",false,max,max(class_code) as class_code
+promo_year,master_table,int64,fiscal_date_mapping,false,"","",false,max,max(fiscal_year_promo) as promo_year
+promo_week,master_table,int64,fiscal_date_mapping,false,"","",false,max,max(fiscal_week_promo) as promo_week
+promo_month,master_table,int64,fiscal_date_mapping,false,"","",false,max,max(fiscal_month_promo) as promo_month
+promo_quarter,master_table,int64,fiscal_date_mapping,false,"","",false,max,max(fiscal_quarter_promo) as promo_quarter
+promo_bi_week,master_table,int64,fiscal_date_mapping,false,"","",false,max,max(fiscal_bi_week_promo) as promo_bi_week
+product_cost,master_table,string,product_master,false,"","",false,max,max(product_cost) as product_cost
+cost_price_per_unit,impute_features,float,master_table,false,price,"",false,"",cost
+longitude,sc__CA,float64,master_table,false,"","",false,max,max(longitude) as longitude
+longitude,sc__US,float64,master_table,false,"","",false,max,max(longitude) as longitude
+latitude,sc__CA,float64,master_table,false,"","",false,max,max(latitude) as latitude
+latitude,sc__US,float64,master_table,false,"","",false,max,max(latitude) as latitude
+latitude,master_table,float,store_master,false,"","",false,max,"max(ifnull(latitude,0)) as latitude"
+longitude,master_table,string,store_master,false,"","",false,max,"max(ifnull(longitude,0)) as longitude"
+__where_clause,sc__CA,string,master_table,false,"","",false,"",quantity_sold > 0
+__where_clause,sc__US,string,master_table,false,"","",false,"",quantity_sold > 0

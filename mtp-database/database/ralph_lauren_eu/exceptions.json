@@ -1,0 +1,72 @@
+{
+    "DROP TRIGGER": {
+        "regex": "(?i)\\bDROP\\s+TRIGGER\\b",
+        "exclusions": []
+    },
+    "DROP CONSTRAINT": {
+        "regex": "(?i)\\bDROP\\s+CONSTRAINT\\b",
+        "exclusions": []
+    },
+    "DROP COLUMN": {
+        "regex": "(?i)\\bDROP\\s+COLUMN\\b",
+        "exclusions": []
+    },
+    "DROP VIEW": {
+        "regex": "(?i)\\bDROP\\s+VIEW\\b",
+        "exclusions": []
+    },
+    "DROP TABLE": {
+        "regex": "\\bDROP\\s+TABLE\\s+(?:IF\\s+EXISTS\\s+)?(?:[\"\\']?\\w+[\"\\']?\\.)[\"\\']?\\w+[\"\\']?",
+        "exclusions": []
+    },
+    "DROP MATERIALIZED VIEW": {
+        "regex": "(?i)\\bDROP\\s+MATERIALIZED\\s+VIEW\\b",
+        "exclusions": []
+    },
+    "DROP INDEX": {
+        "regex": "(?i)\\bDROP\\s+INDEX\\b",
+        "exclusions": []
+    },
+    "DROP TYPE": {
+        "regex": "(?i)\\bDROP\\s+TYPE\\b",
+        "exclusions": []
+    },
+    "DROP SEQUENCE": {
+        "regex": "(?i)\\bDROP\\s+SEQUENCE\\b",
+        "exclusions": []
+    },
+    "RENAME": {
+        "regex": "(?i)\\bRENAME\\b",
+        "exclusions": []
+    },
+    "CASCADE": {
+        "regex": "(?i)\\bCASCADE\\b",
+        "exclusions": []
+    },
+    "ONLY": {
+        "regex": "(?i)\\bONLY\\b",
+        "exclusions": [
+            "database/ralph_lauren_eu/schemas/inventory_smart/functions/article_selection_list.sql"
+        ]
+    },
+    "TRUNCATE": {
+        "regex": "(?i)\\bTRUNCATE\\s+(?:TABLE\\s+)?(?:[\\\"']?\\w+[\\\"']?\\.)\\w+",
+        "exclusions": []
+    },
+    "TEMPORARY": {
+        "regex": "(?i)\\b(TEMPORARY|TEMP)\\b",
+        "exclusions": []
+    },
+    "INHERITS": {
+        "regex": "(?i)\\bINHERITS\\b",
+        "exclusions": []
+    },
+    "STORAGE": {
+        "regex": "(?i)\\bSTORAGE\\b",
+        "exclusions": []
+    },
+    "WITHOUT": {
+        "regex": "(?i)\\bWITHOUT\\b",
+        "exclusions": []
+    }
+}

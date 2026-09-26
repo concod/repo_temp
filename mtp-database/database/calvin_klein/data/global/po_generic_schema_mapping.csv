@@ -1,0 +1,12 @@
+"source_column_name","source_column_datatype","required_in_product","generic_column_name","is_pk","generic_column_datatype","formula","is_attribute","is_hierarchy","hierarchy_level","is_null_allowed","unique_by","display_name","is_partition_col","is_clustering_col"
+DEPARTMENTNAME,varchar,true,l1_name,true,varchar,,false,true,2,false,true,"",false,
+OUTSTANDINGQUANTITY,int8,true,outstanding_quantity,false,int8,,false,false,,false,false,"",false,
+ORDERQUANTITY,int8,true,purchqty,false,int8,,false,false,,false,false,"",false,
+RECEIVEDQUANTITY,int8,true,qtyreceived,false,int8,,false,false,,false,false,"",false,
+ANTICIPATED,date,true,deliverydate,true,date,,false,false,,false,true,"",false,
+CHANNEL,varchar,true,channel,true,varchar,,false,false,,false,true,"",false,
+DIVISIONNAME,varchar,true,l0_name,true,varchar,,false,true,1,false,true,"",false,
+ITEMDESCRIPTION,varchar,true,item_description,true,varchar,,false,false,,false,true,"",false,
+PROGRAMTAG,varchar,true,program_name,true,varchar,,false,true,3,false,true,"",false,
+style,varchar,true,style,true,varchar,,false,true,4,false,true,"",false,
+color,varchar,true,color,true,varchar,,false,true,5,false,true,"",false,

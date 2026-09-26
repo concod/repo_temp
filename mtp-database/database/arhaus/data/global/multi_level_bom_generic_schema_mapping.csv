@@ -1,0 +1,7 @@
+"source_column_name","source_column_datatype","required_in_product","generic_column_name","is_pk","generic_column_datatype","formula","is_attribute","is_hierarchy","hierarchy_level","is_null_allowed","unique_by","display_name","is_partition_col","is_clustering_col"
+flag,int8,true,hard_kit_flag,false,int8,,false,false,,false,false,,,
+PURCHASE_STATUS_TYPE_CODE,varchar,true,master_purchase_status,false,varchar,,false,false,,false,false,,,
+KIT_STATUS_DESCRIPTION,varchar,true,master_kit_type,false,varchar,,false,false,,false,false,,,
+Purch_flag,int8,true,active_flag,false,int8,,false,false,,false,false,,,
+Child_ProductID,varchar,true,child_productid,true,varchar,,false,false,,false,true,,,
+Master_ProductID,varchar,true,master_productid,true,varchar,,false,false,,false,true,,,

@@ -1,0 +1,16 @@
+"control_type_id","type_code","type_name","type_description","default_config","validation_schema","is_active","created_at","updated_at"
+1,dropdown,Dropdown,Single or multi-select dropdown,"{""clearable"": true, ""searchable"": true}","{""type"": ""object"", ""properties"": {""options"": {""type"": ""array""}}}",true,2026-02-12 07:21:55.383,2026-02-12 08:10:22.897
+2,dateRange,Date Range,Date range picker,"{""format"": ""MM-DD-YYYY"", ""clearable"": true}","{""type"": ""object"", ""properties"": {""end_date"": {""type"": ""string""}, ""start_date"": {""type"": ""string""}}}",true,2026-02-12 07:21:55.383,2026-02-12 08:10:22.897
+3,text,Text Input,Text input field,"{""clearable"": true, ""placeholder"": ""Enter text""}","{""type"": ""object"", ""properties"": {""value"": {""type"": ""string""}}}",true,2026-02-12 07:21:55.383,2026-02-12 08:10:22.897
+4,numeric,Numeric Input,Numeric input field,"{""max"": 999999, ""min"": 0, ""step"": 1}","{""type"": ""object"", ""properties"": {""value"": {""type"": ""number""}}}",true,2026-02-12 07:21:55.383,2026-02-12 08:10:22.897
+5,checkbox,Checkbox,Checkbox input,"{""default_checked"": false}","{""type"": ""object"", ""properties"": {""checked"": {""type"": ""boolean""}}}",true,2026-02-12 07:21:55.383,2026-02-12 08:10:22.897
+6,radio,Radio Button,Radio button group,"{""orientation"": ""horizontal""}","{""type"": ""object"", ""properties"": {""selected"": {""type"": ""string""}}}",true,2026-02-12 07:21:55.383,2026-02-12 08:10:22.897
+7,switch,Toggle Switch,On/off toggle switch,"{""default_on"": false}","{""type"": ""object"", ""properties"": {""enabled"": {""type"": ""boolean""}}}",true,2026-02-12 07:21:55.383,2026-02-12 08:10:22.897
+8,autocomplete,Autocomplete,Autocomplete input with suggestions,"{""min_chars"": 2, ""searchable"": true}","{""type"": ""object"", ""properties"": {""value"": {""type"": ""string""}}}",true,2026-02-12 07:21:55.383,2026-02-12 08:10:22.897
+9,multiselect,Multi-Select,Multi-select list,"{""searchable"": true, ""show_count"": true}","{""type"": ""object"", ""properties"": {""selected"": {""type"": ""array""}}}",true,2026-02-12 07:21:55.383,2026-02-12 08:10:22.897
+10,slider,Slider,Range slider input,"{""max"": 100, ""min"": 0, ""step"": 1}","{""type"": ""object"", ""properties"": {""value"": {""type"": ""number""}}}",true,2026-02-12 07:21:55.383,2026-02-12 08:10:22.897
+12,rollingDateRange,Rolling Date Range,Date range with rolling/dynamic calculation support,"{}","{}",true,2026-03-05 12:32:18.324,2026-03-05 12:32:18.324
+13,savedFilters,Saved Filters,Saved filters management control with configurable CRUD endpoints,"{""enabled"": true}","{}",true,2026-03-10 12:19:23.511,2026-03-10 12:19:23.511
+14,copyPaste,Copy & Paste,TextArea with configurable action buttons for copy/paste workflows,"{""placeholder"": ""Paste values here...""}","{}",true,2026-03-27 11:17:12.143,2026-03-27 11:17:12.143
+15,file_upload,File Upload,File upload control for importing data from Excel/CSV files,"{}","{}",true,2026-04-01 15:20:04.731,2026-04-01 15:20:04.731
+16,table,Table,"Table with row selection, powered by table-renderer. Supports configurable column definitions API and row data API.","{""pageSize"": 20, ""pagination"": true, ""selectionMode"": ""multiple""}","{}",true,2026-04-05 13:47:32.857,2026-04-05 13:47:32.857

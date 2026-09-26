@@ -1,0 +1,257 @@
+"config_key","config_value","is_active","created_at","updated_at"
+columns_data,"{
+  ""data"": {
+    ""columnDefs"": [
+      {
+        ""headerName"": ""Priority"",
+        ""field"": ""priority"",
+        ""cellRenderer"": ""badge"",
+        ""sortable"": true,
+        ""filter"": true,
+        ""cellRendererParams"": {
+          ""badgeLabelField"": ""priority"",
+          ""colorField"": ""color"",
+          ""variantField"": ""variant"",
+          ""isIconField"": ""isIcon"",
+          ""iconNameField"": ""iconName""
+        }
+      },
+      {
+        ""headerName"": ""Item count"",
+        ""field"": ""itemCount"",
+        ""type"": ""number"",
+        ""sortable"": true,
+        ""filter"": true
+      },
+      {
+        ""headerName"": ""KPI Category"",
+        ""field"": ""kpiCategory"",
+        ""sortable"": true,
+        ""filter"": true
+      },
+      {
+        ""headerName"": ""Written sales (Ref. period)"",
+        ""field"": ""salesRefPeriod"",
+        ""type"": ""number"",
+        ""sortable"": true,
+        ""filter"": true,
+        ""valueFormatter"": {
+          ""type"": ""currencySymbol"",
+          ""symbol"": ""€"",
+          ""position"": ""prefix""
+        }
+      },
+      {
+        ""headerName"": ""Written Sales IAF (Ref. period)"",
+        ""field"": ""salesIafRefPeriod"",
+        ""type"": ""number"",
+        ""sortable"": true,
+        ""filter"": true,
+        ""valueFormatter"": {
+          ""type"": ""currencySymbol"",
+          ""symbol"": ""€"",
+          ""position"": ""prefix""
+        }
+      },
+      {
+        ""headerName"": ""% Var to IAF (Ref. period)"",
+        ""field"": ""varToIafRefPeriod"",
+        ""type"": ""number"",
+        ""sortable"": true,
+        ""filter"": true,
+        ""valueFormatter"": {
+          ""type"": ""percentage""
+        }
+      }
+    ],
+    ""treeConfig"": {
+      ""autoGroupColumnDef"": {
+        ""headerName"": ""Alert descriptions"",
+        ""minWidth"": 300,
+        ""type"": ""text"",
+        ""field"": ""alertDescription"",
+        ""cellRenderer"": ""link"",
+        ""cellRendererParams"": {
+          ""redirectUrl"": ""/item-smart-new/item-management/planning-page/1/${id}"",
+		""validationRules"": {
+            ""disabled"": {
+              ""operator"": ""AND"",
+              ""conditions"": [
+                {
+                  ""field"": ""itemCount"",
+                  ""condition"": ""<="",
+                  ""value"": 0
+                }
+              ]
+            }
+          },
+          ""rightSideContent"": {
+            ""items"": [
+              {
+                ""type"": ""icon"",
+                ""icon"": {
+                  ""icon"": ""info"",
+                  ""tooltipField"": ""infoTooltip"",
+                  ""showOnHover"": true
+                }
+              }
+            ]
+          }
+        }
+      },
+      ""getDataPathField"": ""hierarchy""
+    }
+  }
+}",true,2025-12-30 13:39:15,2025-12-30 13:39:15
+filters_mapping,"{""required_filters"":{""product"":[""l0_name"",""l1_name"",""l2_name"",""l3_name"",""l4_name"",""l5_name"",""l6_name""],""channels"":[""channels"",""sub_channels""],""plan_period"":[""custom"",""seasonal""]},""to_column_mapping"":{""l0_name"":""l0_name"",""l1_name"":""l1_name"",""l2_name"":""l2_name"",""l3_name"":""l3_name"",""l4_name"":""l4_name"",""l5_name"":""l5_name"",""l6_name"":""l6_name"",""channels"":""channel_name"",""sub_channels"":""subchannel_name"",""start"":""start_date"",""end"":""end_date""}}",true,2025-12-12 20:50:57,2025-12-12 20:50:57
+hierarchy_to_table_mapping,"{""mappings"":[{""l0_name"":""NON-FOOD"",""table_name"":""kik_dev.kpi_calculated_nonfood""},{""l0_name"":""TEXTIL"",""table_name"":""kik_dev.kpi_calculated_textil""}]}",true,2025-12-12 20:51:25,2025-12-12 20:51:25
+row_data,"{
+    ""rowdata"": [
+        {
+            ""alert_type"": ""{alert_group}"",
+            ""info_tooltip"": ""{alert_description}"",
+            ""badge_label"": ""{alert_group}"",
+            ""priority"": ""{priority}"",
+            ""kpiCategory"": ""{kpi_category}"",
+            ""color"": ""{color}"",
+            ""formulas"": {
+                ""itemCount"": {
+                    ""steps"": [
+                        {
+                            ""logic"": ""WITH all_data AS (SELECT hierarchy_code, l0_name, l1_name, l2_name, l3_name, l4_name, channel_name, subchannel_name, current_week, fiscal_year_month, {metric_field}, '{comparison_source_type}' as source_type FROM {wp_table_name} WHERE {metric_field} IS NOT NULL {payload_filters} UNION ALL SELECT hierarchy_code, l0_name, l1_name, l2_name, l3_name, l4_name, channel_name, subchannel_name, current_week, fiscal_year_month, {metric_field}, 'iaf' as source_type FROM {others_table_name} WHERE {metric_field} IS NOT NULL {payload_filters}), pivoted_data AS (SELECT hierarchy_code, l0_name, l1_name, l2_name, l3_name, l4_name, channel_name, subchannel_name, current_week, fiscal_year_month, MAX(CASE WHEN source_type = '{comparison_source_type}' THEN {metric_field} ELSE 0 END) as wp_metric, MAX(CASE WHEN source_type = 'iaf' THEN {metric_field} ELSE 0 END) as iaf_metric FROM all_data GROUP BY hierarchy_code, l0_name, l1_name, l2_name, l3_name, l4_name, channel_name, subchannel_name, current_week, fiscal_year_month) SELECT COUNT(distinct CONCAT(hierarchy_code, '_', fiscal_year_month)) as itemCount FROM pivoted_data WHERE iaf_metric > 0 AND {variance_formula} {threshold_operator} {threshold_value} {additional_filters}"",
+                            ""where"": {
+                                ""conditions"": [
+                                    {
+                                        ""column"": null,
+                                        ""operator"": null,
+                                        ""value"": null
+                                    }
+                                ]
+                            },
+                            ""group_by"": [""{alert_id}"", ""{alert_name}"", ""{alert_group_variation}""],
+                            ""having"": null,
+                            ""order_by"": null,
+                            ""limit"": null,
+                            ""offset"": null
+                        }
+                    ]
+                },
+                ""writtenSalesRefPeriod"": {
+                    ""steps"": [
+                        {
+                            ""logic"": ""WITH all_data AS (SELECT hierarchy_code, l0_name, l1_name, l2_name, l3_name, l4_name, channel_name, subchannel_name, current_week, fiscal_year_month, {metric_field}, '{comparison_source_type}' as source_type FROM {wp_table_name} WHERE {metric_field} IS NOT NULL {payload_filters} UNION ALL SELECT hierarchy_code, l0_name, l1_name, l2_name, l3_name, l4_name, channel_name, subchannel_name, current_week, fiscal_year_month, {metric_field}, 'iaf' as source_type FROM {others_table_name} WHERE {metric_field} IS NOT NULL {payload_filters}), pivoted_data AS (SELECT hierarchy_code, l0_name, l1_name, l2_name, l3_name, l4_name, channel_name, subchannel_name, current_week, fiscal_year_month, MAX(CASE WHEN source_type = '{comparison_source_type}' THEN {metric_field} ELSE 0 END) as wp_metric, MAX(CASE WHEN source_type = 'iaf' THEN {metric_field} ELSE 0 END) as iaf_metric FROM all_data GROUP BY hierarchy_code, l0_name, l1_name, l2_name, l3_name, l4_name, channel_name, subchannel_name, current_week, fiscal_year_month) SELECT SUM(wp_metric) as writtenSalesRefPeriod FROM pivoted_data WHERE iaf_metric > 0 AND {variance_formula} {threshold_operator} {threshold_value} {additional_filters}"",
+                            ""where"": {
+                                ""conditions"": [
+                                    {
+                                        ""column"": null,
+                                        ""operator"": null,
+                                        ""value"": null
+                                    }
+                                ]
+                            },
+                            ""group_by"": [""{alert_id}"", ""{alert_name}"", ""{alert_group_variation}""],
+                            ""having"": null,
+                            ""order_by"": null,
+                            ""limit"": null,
+                            ""offset"": null
+                        }
+                    ]
+                },
+                ""writtenSalesIAFRefPeriod"": {
+                    ""steps"": [
+                        {
+                            ""logic"": ""WITH all_data AS (SELECT hierarchy_code, l0_name, l1_name, l2_name, l3_name, l4_name, channel_name, subchannel_name, current_week, fiscal_year_month, {metric_field}, '{comparison_source_type}' as source_type FROM {wp_table_name} WHERE {metric_field} IS NOT NULL {payload_filters} UNION ALL SELECT hierarchy_code, l0_name, l1_name, l2_name, l3_name, l4_name, channel_name, subchannel_name, current_week, fiscal_year_month, {metric_field}, 'iaf' as source_type FROM {others_table_name} WHERE {metric_field} IS NOT NULL {payload_filters}), pivoted_data AS (SELECT hierarchy_code, l0_name, l1_name, l2_name, l3_name, l4_name, channel_name, subchannel_name, current_week, fiscal_year_month, MAX(CASE WHEN source_type = '{comparison_source_type}' THEN {metric_field} ELSE 0 END) as wp_metric, MAX(CASE WHEN source_type = 'iaf' THEN {metric_field} ELSE 0 END) as iaf_metric FROM all_data GROUP BY hierarchy_code, l0_name, l1_name, l2_name, l3_name, l4_name, channel_name, subchannel_name, current_week, fiscal_year_month) SELECT SUM(iaf_metric) as writtenSalesIAFRefPeriod FROM pivoted_data WHERE iaf_metric > 0 AND {variance_formula} {threshold_operator} {threshold_value} {additional_filters}"",
+                            ""where"": {
+                                ""conditions"": [
+                                    {
+                                        ""column"": null,
+                                        ""operator"": null,
+                                        ""value"": null
+                                    }
+                                ]
+                            },
+                            ""group_by"": [""{alert_id}"", ""{alert_name}"", ""{alert_group_variation}""],
+                            ""having"": null,
+                            ""order_by"": null,
+                            ""limit"": null,
+                            ""offset"": null
+                        }
+                    ]
+                },
+                ""varToIAFRefPeriod"": ""(({writtenSalesRefPeriod}) - {writtenSalesIAFRefPeriod}) / NULLIF({writtenSalesIAFRefPeriod}, 0) * 100"",
+                ""customMetrics"": {
+                    ""template"": {
+                        ""steps"": [
+                            {
+                                ""logic"": ""{metric_formula}"",
+                                ""where"": {
+                                    ""conditions"": [
+                                        {
+                                            ""column"": null,
+                                            ""operator"": null,
+                                            ""value"": null
+                                        }
+                                    ]
+                                },
+                                ""group_by"": [""{alert_id}"", ""{alert_name}"", ""{alert_group_variation}""],
+                                ""having"": null,
+                                ""order_by"": null,
+                                ""limit"": null,
+                                ""offset"": null
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    ],
+    ""configuration_rules"": {
+        ""parameter_substitution"": {
+            ""enabled"": true,
+            ""parameters"": [
+                ""{alert_id}"",
+                ""{alert_name}"",
+                ""{alert_group}"",
+                ""{alert_group_variation}"",
+                ""{alert_description}"",
+                ""{priority}"",
+                ""{kpi_category}"",
+                ""{color}"",
+                ""{l0_name}"",
+                ""{metric_field}"",
+                ""{variance_formula}"",
+                ""{threshold_operator}"",
+                ""{threshold_value}"",
+                ""{comparison_source_type}"",
+                ""{payload_filters}"",
+                ""{additional_filters}"",
+                ""{custom_formula}"",
+                ""{metric_joins}"",
+                ""{metric_formula}""
+            ]
+        },
+        ""dynamic_alert_loading"": {
+            ""enabled"": true,
+            ""source_table"": ""kik_dev.alert_definitions"",
+            ""filter_conditions"": [
+                ""is_active = 1""
+            ],
+            ""group_by"": ""alert_group"",
+            ""field_mappings"": {
+                ""alert_id"": ""alert_id"",
+                ""alert_name"": ""alert_name"",
+                ""alert_group"": ""alert_group"",
+                ""alert_group_variation"": ""alert_group_variation"",
+                ""alert_description"": ""alert_description"",
+                ""priority"": ""priority"",
+                ""kpi_category"": ""kpi_category"",
+                ""color"": ""color"",
+                ""metric_field"": ""variance_metric"",
+                ""variance_formula"": ""variables"",
+                ""threshold_operator"": ""threshold_operator"",
+                ""threshold_value"": ""threshold_value"",
+                ""comparison_source_type"": ""comparison_source_type""
+            }
+        }
+    }
+}",true,2025-12-12 20:50:28,2025-12-12 20:50:28

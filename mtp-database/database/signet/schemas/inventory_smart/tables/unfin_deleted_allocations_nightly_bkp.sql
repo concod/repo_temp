@@ -1,0 +1,8 @@
+--liquibase formatted sql
+--changeset himansh.bhardwaj@impactanalytics.co:inventory_smart.unfin_deleted_allocations_nightly_bkp stripComments:false splitStatements:false context:Release_2_1 labels:inventory_smart.unfin_deleted_allocations_nightly_bkp
+--comment: create table statment for inventory_smart.unfin_deleted_allocations_nightly_bkp 
+CREATE TABLE IF NOT EXISTS inventory_smart.unfin_deleted_allocations_nightly_bkp (LIKE inventory_smart.create_allocation_result_flat_gurobi INCLUDING ALL,SYNCSTARTDATETIME DATE DEFAULT CURRENT_DATE);
+
+--changeset himansh.bhardwaj@impactanalytics.co:alter statement for inventory_smart.unfin_deleted_allocations_nightly_bkp stripComments:false splitStatements:false context:Release_2_2 labels:inventory_smart.unfin_deleted_allocations_nightly_bkp
+--comment: alter table statment for inventory_smart.unfin_deleted_allocations_nightly_bkp
+ALTER TABLE inventory_smart.unfin_deleted_allocations_nightly_bkp ADD COLUMN IF NOT EXISTS syncstartdatetime DATE DEFAULT (CURRENT_DATE);

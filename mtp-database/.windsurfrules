@@ -1,0 +1,28 @@
+# Swarm-Agents Rules — mtp-database
+
+## MANDATORY WORKFLOW
+1. **ALWAYS** call `swarm-auto-route` before starting any coding task.
+2. **NEVER** skip the routing step — it ensures proper agent selection and context persistence.
+3. **ALWAYS** call `swarm_context_load` at the start of any task to load relevant context.
+4. **ALWAYS** call `swarm_workflow_complete` after the last agent finishes.
+
+## AGENT ROUTING
+- Use `@architect` for schema design changes and migration planning.
+- Use `@coder-backend` for SQL function/procedure/table changes.
+- Use `@qa` for validating SQL correctness and exception configs.
+- Use `@reviewer` for code review and PR preparation.
+
+## PROJECT CONTEXT
+- **Product:** InventorySmart (multi-tenant)
+- **Database:** PostgreSQL
+- **Structure:** `database/{tenant}/schemas/{schema}/{type}/{object}.sql`
+- **Tenants:** pacsun, crackerbarrel, victoriassecret, and others
+- **Schemas:** global, inventory_smart, oms, base_pricing, meta_schema, data_platform
+- **Config Files:** `exceptions.json`, `table_configurations_mapping.csv`, `data/` CSVs
+
+## CODE STANDARDS
+- All SQL must use parameterized queries where applicable.
+- Follow existing naming conventions: `sp_` for procedures, `fn_` for functions.
+- Always update `exceptions.json` when adding new SQL files with restricted keywords.
+- Test SQL changes against a staging database before PR.
+- Maintain backward compatibility — no breaking schema changes without migration plan.

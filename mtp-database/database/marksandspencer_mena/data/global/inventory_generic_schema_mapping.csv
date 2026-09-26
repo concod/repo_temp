@@ -1,0 +1,15 @@
+source_column_name,source_column_datatype,required_in_product,generic_column_name,is_pk,generic_column_datatype,formula,is_attribute,is_hierarchy,hierarchy_level,is_null_allowed,unique_by,display_name,is_partition_col,is_clustering_col
+Article_Number,varchar,TRUE,article,TRUE,varchar,,FALSE,FALSE,,FALSE,TRUE,,FALSE,
+Store_ID,varchar,TRUE,store_code,TRUE,varchar,,FALSE,FALSE,,FALSE,TRUE,,FALSE,1
+Calendar_Day,date,TRUE,date,TRUE,date,,FALSE,FALSE,,FALSE,TRUE,,TRUE,
+Wastage_Qty,int8,TRUE,wastage_qty,FALSE,int8,,FALSE,FALSE,,TRUE,FALSE,,FALSE,
+Inventory_Write_Off,int8,TRUE,inventory_write_off,FALSE,int8,,FALSE,FALSE,,TRUE,FALSE,,FALSE,
+SOD,float8,TRUE,boh,FALSE,float8,,FALSE,FALSE,,TRUE,FALSE,,FALSE,
+EOD,float8,TRUE,eoh,FALSE,float8,,FALSE,FALSE,,TRUE,FALSE,,FALSE,
+country,varchar,TRUE,country,FALSE,varchar,,FALSE,FALSE,,TRUE,FALSE,,FALSE,
+market,varchar,TRUE,market,FALSE,varchar,,FALSE,FALSE,,FALSE,FALSE,,FALSE,
+product_code,varchar,TRUE,product_code,TRUE,varchar,,FALSE,FALSE,,FALSE,TRUE,,FALSE,
+IT,float8,TRUE,running_it,FALSE,float8,,FALSE,FALSE,,TRUE,FALSE,,FALSE,
+point_it,float8,TRUE,it,FALSE,float8,,FALSE,FALSE,,TRUE,FALSE,,FALSE,
+fulfilment_store_code,varchar,TRUE,fulfilment_store_code,FALSE,varchar,,FALSE,FALSE,,FALSE,FALSE,,FALSE,
+Fiscal_Year_Week,int8,TRUE,fiscal_year_week,FALSE,int8,,FALSE,FALSE,,FALSE,FALSE,,FALSE,

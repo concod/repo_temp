@@ -1,0 +1,7 @@
+"source_table","source_level","generic_mapping_table","destination_table","destination_level","to_be_ingested","is_required_in_master","persist_attributes_table","persist_hierarchies_table","cross_validations","pull_type","persist_to_postgres","data_loss_threshold"
+store_intermediate,,store_generic_schema_mapping,store_master,,true,true,true,true,,full,true,100
+inventory_intermediate,,inventory_generic_schema_mapping,inventory_master,,true,true,false,false,"[""product_master"", ""store_master""]",incremental,false,100
+transaction_intermediate,,transaction_generic_schema_mapping,transaction_master,,true,true,false,false,"[""product_master"", ""store_master""]",incremental,false,100
+product_intermediate,,product_generic_schema_mapping,product_master,,true,true,true,true,,full,true,100
+fiscal_intermediate,,fiscal_generic_schema_mapping,fiscal_date_mapping,,true,true,false,false,,full,true,100
+plan_intermediate,,plan_generic_schema_mapping,plan_master,,true,true,false,false,,incremental,false,100

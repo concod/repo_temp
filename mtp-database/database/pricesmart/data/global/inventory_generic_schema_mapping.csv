@@ -1,0 +1,17 @@
+﻿source_column_name,source_column_datatype,required_in_product,generic_column_name,is_pk,generic_column_datatype,formula,is_attribute,is_hierarchy,hierarchy_level,is_null_allowed,unique_by,display_name,is_partition_col,is_clustering_col
+STORE_NUM,varchar,TRUE,store_code,TRUE,varchar,,FALSE,FALSE,,FALSE,TRUE,,FALSE,
+SKU_NBR,varchar,TRUE,product_code,TRUE,varchar,,FALSE,FALSE,,FALSE,TRUE,,FALSE,
+INVENTORYBUCKETEFFDT,date,TRUE,date,TRUE,date,,FALSE,FALSE,,FALSE,TRUE,,TRUE,
+ON_HAND_QTY,integer,TRUE,oh,FALSE,integer,,FALSE,FALSE,,TRUE,FALSE,,FALSE,
+IN_TRANSIT_QTY,integer,TRUE,it,FALSE,integer,,FALSE,FALSE,,TRUE,FALSE,,FALSE,
+ON_ORDER_QTY,integer,TRUE,oo,FALSE,integer,,FALSE,FALSE,,TRUE,FALSE,,FALSE,
+LAUNCH_PRICE,float8,TRUE,launch_price,FALSE,float8,,FALSE,FALSE,,TRUE,FALSE,,FALSE,
+ORGID,integer,FALSE,org_id,FALSE,integer,,FALSE,FALSE,,TRUE,FALSE,,FALSE,
+ITEMCOST,float8,TRUE,cost,FALSE,float8,,FALSE,FALSE,,TRUE,FALSE,,FALSE,
+Type,varchar,TRUE,type,FALSE,varchar,,FALSE,FALSE,,TRUE,FALSE,,FALSE,
+Vendor_QTY,integer,TRUE,vendor_oo,FALSE,integer,,FALSE,FALSE,,TRUE,FALSE,,FALSE,
+SYNCSTARTDATETIME,datetime,FALSE,syncstartdatetime,FALSE,datetime,,FALSE,FALSE,,FALSE,FALSE,,FALSE,
+,,TRUE,total_qty,FALSE,integer,ON_HAND_QTY + IN_TRANSIT_QTY + ON_ORDER_QTY + Vendor_QTY,FALSE,FALSE,,TRUE,FALSE,,FALSE,
+INVPRICETYPEID,integer,TRUE,clearance_indicator,FALSE,integer,case when INVPRICETYPEID= 1 THEN 0 ELSE 1 END ,FALSE,FALSE,,TRUE,FALSE,,FALSE,
+CHANNEL_ID,varchar,TRUE,channel,FALSE,varchar,,FALSE,FALSE,,FALSE,FALSE,,FALSE,2
+country,varchar,TRUE,country,FALSE,varchar,,FALSE,FALSE,,TRUE,FALSE,,FALSE,1

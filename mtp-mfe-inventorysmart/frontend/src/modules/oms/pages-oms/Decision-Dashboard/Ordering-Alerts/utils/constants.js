@@ -1,0 +1,13 @@
+export const REDIRECT_TO_OMS = "Order Management";
+export const REDIRECT_TO_MATRIX_SUMMARY = "Matrix Summary";
+export const REDIRECT_TO_STYLE_ORDER_SUMMARY = "Style Order Summary";
+export const REDIRECT_TO_DEEP_DIVE = "Deep Dive";
+export const REDIRECT_TO_CREATE_NEW_ORDER = "Create New Order";
+export const REDIRECT_TO_CONFIGURATION = "Configuration";
+export const APPROVAL_FLOW = "Approval Flow";
+export const REDIRECT_TO_ORDER_REPOSITORY = "Order Repository";
+export const REDIRECT_TO_EXPEDITE_ORDERS = "Expedite Orders";
+export const REDIRECT_TO_PO_REBALANCE = "PO Rebalance";
+export const SELECT_STRATEGY_AND_APPROVE = "Select Strategy And Approve";
+export const REDIRECT_TO_PRODUCT_DETAILS_APPROVE = "Product Details Approve";
+export const REDIRECT_TO_PRODUCT_DETAILS_REVIEW = "Product Details Review";

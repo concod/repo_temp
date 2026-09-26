@@ -1,0 +1,102 @@
+--liquibase formatted sql
+--changeset gauri.nair:article_inventory_dashboard_v4 runOnChange:true stripComments:false splitStatements:false context:zdt-views labels:MTP-2_v4
+--comment: initial changeset for article_inventory_dashboard_v4
+--rollback: SELECT 1
+
+--No dependency handling for this mv as it is recreated daily as part of kpi config. 
+--No dependency allowed unless handled separately.	
+DROP MATERIALIZED VIEW IF EXISTS inventory_smart.article_inventory_dashboard CASCADE;
+CREATE MATERIALIZED VIEW inventory_smart.article_inventory_dashboard as
+SELECT version_code,
+    article,
+    aid.style_name,
+    store_code,
+    grade,
+    channel,
+    aid.product_description,
+    oh,
+    it,
+    oo,
+    tot_inv,
+    lw_units,
+    lw_revenue,
+    lw_margin,
+    lw_margin_percentage,
+    promo_percentage,
+    average_discount,
+    wos,
+    wos_oh,
+    wos_oh_it,
+    dc_oh_oo_it_wos,
+    dc_oh_wos,
+    dc_oh_oo_wos,
+    store_level_prediction,
+    si,
+    si_oh_it,
+    si_oh_oo_it,
+    excess,
+    normal,
+    shortfall,
+    stockout,
+    available_stores_percentage,
+    week_to_date_sales,
+    last_day_sales,
+    oh_dc,
+    oo_dc,
+    dc_oo_po,
+    it_dc,
+    sales_1_ago,
+    sales_2_ago,
+    sales_3_ago,
+    sales_4_ago,
+    sales_5_ago,
+    sales_6_ago,
+    sales_7_ago,
+    sales_8_ago,
+    aur,
+    sell_through_rate,
+    style_color_status,
+    product_type,
+    in_stock_count,
+    total_count,
+    aid.price,
+    store_name,
+    aid.l0_name,
+    aid.l1_name,
+    aid.l2_name,
+    aid.l3_name,
+    aid.l4_name,
+    ata,
+    twos,
+    po_comments,
+    ecom_po_quantity,
+    ecom_po_flag,
+    dc_instock_percentage,
+    product_tag,
+    in_stock,
+    reorder_flag,
+	color_id_name,
+	style_color_desc,
+	silhouette,
+	price_status,
+	brand,
+	vendor,
+	comments,
+	product_status,
+	city,
+	state,
+	store_category,
+	geo_region,
+	channel_id_name,
+	region_id_name,
+	district_id_name,
+   launch_date
+   FROM inventory_smart.article_inventory_dashboard_version aid
+--    left join (select distinct article,l4_name from  global.product_attributes_filter) paf using(article)
+   WHERE version_code = global.get_table_version('inventory_smart.article_inventory_dashboard_version'::text);
+
+
+--changeset linu.nazil:article_inventory_dashboard_v5 runOnChange:true stripComments:false splitStatements:false context:zdt-views labels:MTP-2_v5
+--comment: initial changeset for article_inventory_dashboard_v5
+CREATE UNIQUE INDEX IF NOT EXISTS article_inventory_dashboard_unique_idx ON inventory_smart.article_inventory_dashboard
+USING btree (article, store_code);

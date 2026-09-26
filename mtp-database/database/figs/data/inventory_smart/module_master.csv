@@ -1,0 +1,79 @@
+"module_code","application_code","screen_code","module_name","level","dependant_modules","is_hidden","module_description"
+1,1,51,Forecast KPI,4,{43},true,""
+2,1,51,Forecast Alert,4,"{1,43}",true,''
+3,1,51,Store Inventory KPI,1,,false,"JSON:{""label"":""Displays information required for effective inventory management. This Module is divided into Forecast, Store Inventory, and DC Replenishment."",""order"":38,""tags"":[""Dashboard""]}"
+4,1,51,Store Inventory Alert,4,"{1,7}",true,''
+5,1,51,View Plan,4,"{10,11,12,13,14}",true,''
+6,1,51,Article Details,3,"{1,7}",false,"JSON:{""label"":""This module enables manual, session-only allocation overrides, allowing temporary constraint adjustments that automatically revert afterward."",""order"":25,""tags"":[""Create New Allocation""]}"
+7,1,55,Create Allocation Article Table,3,"{10009,10010,10008,42,26,27}",false,"JSON:{""label"":""This module enables manual, session-only allocation overrides, allowing temporary constraint adjustments that automatically revert afterward."",""order"":25,""tags"":[""Create New Allocation""]}"
+8,1,55,Create Allocation Store Table,3,{7},false,"JSON:{""label"":""Review Store and DC"",""order"":26,""tags"":[""Create New Allocation""]}"
+9,1,55,Create Allocation Inventory Table,3,{7},false,''
+10,1,55,Finalise Store View,4,"{7,8,9}",false,''
+11,1,55,Finalise Store View Summary,4,"{7,8,9}",false,''
+12,1,55,Finalise Product View,4,"{7,8,9}",false,''
+13,1,55,Finalise Product View Summary,4,"{7,8,9}",false,''
+14,1,55,Finalise Product Store View,4,"{7,8,9}",false,''
+15,1,63,Inventorysmart View Past Allocations,6,"{10,11,12,13,14,15}",false,"JSON:{""label"":""A read-only repository for reviewing finalized past allocations filtered by time period and business area"",""order"":30,""tags"":[""Create New Allocation""]}"
+16,1,73,Inventorysmart Configurations,1,,true,''
+17,1,5,Product Status,1,,false,"JSON:{""label"":""Manages date-effective \""Active/Inactive\"" tags to automate Product visibility in the system"",""order"":1,""tags"":[""Configuration""]}"
+19,1,7,Store Status,1,,false,"JSON:{""label"":""Manages date-effective \""Active/Inactive\"" tags to automate Store visibility in the system"",""order"":5,""tags"":[""Configuration""]}"
+20,1,6,Store Mapping,1,,false,"JSON:{""label"":""Configuration module for viewing and managing the relationships between Store and DCs"",""order"":6,""tags"":[""Configuration""]}"
+21,1,12,DC Status,1,,false,"JSON:{""label"":""Manages date-effective \""Active/Inactive\"" tags to automate DC visibility in the system"",""order"":8,""tags"":[""Configuration""]}"
+23,1,316,Store Constraints,1,,true,''
+26,1,49,IA Recommended Product Profile,1,,true,''
+27,1,49,User Created Product Profile,1,,true,''
+28,1,49,IA Recommended Store Size Contribution,1,,true,''
+29,1,49,User Created Store Size Contribution,1,,true,''
+30,1,49,User Created Style Description,1,,true,''
+31,1,50,Create Product Profile Form,1,,true,''
+32,1,50,Create Product Profile Style Description,1,,true,''
+33,1,50,Create Product Profile Store Size Contribution,1,,true,''
+36,1,71,Inventorysmart Store Stock Drill Down,1,,false,"JSON:{""label"":""A reporting module for monitoring store-style performance through metrics like DC/store inventory and last-week sales, alongside automated status tags for shortfall, excess, and stockouts"",""order"":34,""tags"":[""Report""]}"
+37,1,321,Report Lost Sales,1,,false,"JSON:{""label"":""A reporting module quantifying the unit and revenue impact of store-level style unavailability or under-stocking over a rolling 52-week period."",""order"":32,""tags"":[""Report""]}"
+38,1,80,Daily Allocation Summary Store View,1,,true,''
+39,1,80,Daily Allocation Summary Report,1,,false,"JSON:{""label"":""Provides a detailed view of the allocation metrics like units allocated, units remaining to allocate, and the reserved units at an allocation plan level."",""order"":36,""tags"":[""Report""]}"
+40,1,62,Forecast Reports,,,true,''
+41,1,8,Product Grouping,1,,false,"JSON:{""label"":""Module for creating filtered product clusters to streamline workflows and apply bulk default settings across specific hierarchies or attributes."",""order"":14,""tags"":[""Grouping""]}"
+42,1,9,Store Grouping,1,,false,"JSON:{""label"":""Module for creating, editing, or deleting Store Groups used to drive targeted allocation and forecasting."",""order"":13,""tags"":[""Grouping""]}"
+44,1,77,New Store,1,,false,"JSON:{""label"":""Enables retail organizations to manage store information, set up new stores, and define relationships between stores through sister store mapping."",""order"":7,""tags"":[""Configuration""]}"
+49,1,61,Order Batching,5,"{10,11,12,13,14}",false,"JSON:{""label"":""A module for updating and reviewing existing allocation plans through three core components: KPIs, Current Allocations Summary, and Current Allocations."",""order"":31,""tags"":[""Create New Allocation""]}"
+53,1,64,User Created List Product Profile,1,,true,''
+56,1,86,Product Supersession Dashboard,1,,false,"JSON:{""label"":""Consolidates data across replacement or similar styles using one-to-one or many-to-one chains to streamline the allocation process"",""order"":4,""tags"":[""Configuration""]}"
+62,1,322,Add Exception Products Filter,1,{},true,''
+63,1,320,Add Exception Store Filter,1,{},true,''
+70,1,325,Dc Store Policy Strategy,2,"{10009,10010,10008,42,26,27}",false,"JSON:{""label"":""A unified interface for creating and editing the core parameters of allocation, including store groupings, product profiles, and DC-to-store strategy rules"",""order"":9,""tags"":[""Configuration""]}"
+101,1,251,Product Mapping,1,,false,"JSON:{""label"":""Configuration module for viewing and managing the granular relationships between Products and Store"",""order"":2,""tags"":[""Configuration""]}"
+106,1,72,Inventorysmart Grouping,1,,true,''
+170,1,316,Rules Constraints,1,,true,''
+171,1,317,Inventorysmart Exception Constraints,1,,true,''
+194,1,4,Product to DC/FC Mapping,1,,false,"JSON:{""label"":""Configuration module for viewing and managing the relationships between Products and DCs"",""order"":3,""tags"":[""Configuration""]}"
+195,1,6,Store to DC/FC Mapping,1,,false,"JSON:{""label"":""Configuration module for viewing and managing the relationships between Store and DCs"",""order"":6,""tags"":[""Configuration""]}"
+1076,1,1076,In Stock Report,1,,true,''
+2000,1,2000,Chatbot Upload,,,true,''
+2010,1,49,Product Profile,1,{},false,"JSON:{""label"":""Module for creating Size curves or viewing IA-recommended size curves at the store level to drive granular allocation."",""order"":19,""tags"":[""Product Profile""]}"
+7000,1,51,DD-CONFIGS,4,,true,''
+7004,1,56,Inventorysmart Constraints,1,,false,"JSON:{""label"":""A management interface for configuring Min, Max, and WOS parameters to optimize inventory distribution recommendations."",""order"":21,""tags"":[""Constraints""]}"
+8001,1,4007,New Store Performance Tracking,1,,true,''
+8100,1,62,Inventorysmart Reportings,1,,true,''
+10000,1,62,Report Deep Dive Allocation,1,,false,"JSON:{""label"":""A report provides a detailed view of the important allocation metrics like the number of allocations released, the number of units allocated, quantity match %, and size match %"",""order"":37,""tags"":[""Report""]}"
+10003,1,4004,DC Store Policy,2,"{10009,10010,10008,42,26,27}",true,''
+10008,1,10604,Dc Store Policy Strategy Rules,1,,false,"JSON:{""label"":""A rule-based engine that defines execution priorities (e.g., Mins-only vs. Demand-first) and demand calculation methodology."",""order"":12,""tags"":[""Configuration""]}"
+10009,1,10602,Auto Allocation Rules,1,,false,"JSON:{""label"":""A rule-based engine for configuring automated inventory triggers and approval workflows based on specific WOS thresholds, DC safety stock levels, and minimum inventory constraints."",""order"":10,""tags"":[""Configuration""]}"
+10010,1,10603,Allocation Scheduler,1,,false,"JSON:{""label"":""Auto Allocation Scheduler"",""order"":11,""tags"":[""Configuration""]}"
+10011,1,83,User Reserve,2,{194},false,"JSON:{""label"":""A module for temporarily blocking DC inventory - by units or percentage - until a specified release date to exclude it from available allocation."",""order"":9,""tags"":[""Constraints""]}"
+10014,1,4005,Inventorysmart Add Exception Constraints,1,,true,''
+10015,1,4006,Inventorysmart Create Rules Constraints,1,,true,''
+10018,1,324,Forecast Accuracy Report,1,,true,''
+10019,1,326,Readiness Report,1,,true,''
+10022,1,329,DC Outbound Projection Report,2,,true,''
+10056,1,86,Inventorysmart Configurations Product Supersession,1,,,''
+10071,1,323,Excess Inventory Report Filters,1,,false,"JSON:{""label"":""This report provides a detailed view of the over-stocking patterns across stores over the last 52 weeks."",""order"":33,""tags"":[""Report""]}"
+10072,1,10071,Shortfall Alert,4,{7},false,''
+10073,1,10073,Stockout Alert,4,{7},false,''
+10074,1,10074,Recent deviation for newly launched Alert,4,{7},false,''
+10075,1,10075,Carry Over exceptions Alert,4,{7},false,''
+10076,1,10076,Core exceptions Alert,4,{7},false,''
+10500,1,51,InventoryDashboard,4,,true,''
+11003,1,330,File Upload Validation,,,true,''
+31000,1,50,Create Product Profile,1,,true,''
+44000,1,77,Inventorysmart Configurations New Store,2,,true,''

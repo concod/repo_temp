@@ -1,0 +1,76 @@
+--liquibase formatted sql
+--changeset durgaprasad.tulugu@impactanalytics.co:fn_get_invalid_and_inactive_sku_store_mapping_2 runOnChange:true stripComments:false splitStatements:false context:Release_1_0 labels:liquibase_project_start
+--comment: fn_get_invalid_and_inactive_sku_store_mapping_2
+
+drop function if exists price_markdown.fn_get_invalid_and_inactive_sku_store_mapping;
+CREATE OR REPLACE FUNCTION price_markdown.fn_get_invalid_and_inactive_sku_store_mapping(
+    p_product_store_mapping text[],
+    p_delimiter varchar
+)
+ RETURNS jsonb
+ LANGUAGE plpgsql
+AS $function$
+DECLARE
+    final_response jsonb;
+
+begin
+    with user_sku_stores as (
+        select
+            s.*
+        from (
+            select
+                split_part(sku_store_mapping,p_delimiter,1) as product_cuq,
+                split_part(sku_store_mapping,p_delimiter,2) as store_id
+            from
+                unnest(p_product_store_mapping) sku_store_mapping
+        ) s
+    ),
+    sku_store_data as (
+        select
+            ss.product_cuq || '_' || ss.store_id as sku_map_id,
+            pm.is_active as product_is_active,
+			ss.product_cuq,
+            case
+                when pm.product_id is null
+                or sm.store_id is null then 'invalid'
+                when pm.is_active = 0
+                or sm.is_active = 0 then 'inactive'
+                when pm.clearance_indicator = 1 then 'Already in Clearance'
+                else 'valid'
+            end as validity,
+            coalesce (sm.store_id :: text, ss.store_id) as store_id,
+            sm.is_active as store_is_active
+        from
+            user_sku_stores as ss
+            left join price_markdown.product_master pm on pm.product_cuq = ss.product_cuq
+            left join price_markdown.tb_store_master sm on sm.store_id :: text = ss.store_id
+    ),
+    response_cte as (
+        select
+        validity,
+        array_agg(
+                json_build_object(
+                    'sku_map_id',sku_map_id,
+                    'status',validity,
+					'product_name',product_cuq,
+                    'store_id',store_id,
+                    'product_is_active',product_is_active,
+                    'store_is_active',store_is_active
+                )
+        ) as response_data
+        from sku_store_data
+        where validity != 'valid'
+        group by validity
+    )
+    select jsonb_build_object(
+        'inactive', coalesce((select response_data from response_cte where validity = 'inactive'),array[]::json[]),
+        'invalid', coalesce((select response_data from response_cte where validity = 'invalid'),array[]::json[]),
+        'already_in_clearance', coalesce((select response_data from response_cte where validity = 'Already in Clearance'),array[]::json[])
+
+    ) into final_response;
+
+    return final_response;
+
+END;
+$function$
+;

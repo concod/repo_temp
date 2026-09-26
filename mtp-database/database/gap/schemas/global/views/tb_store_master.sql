@@ -1,0 +1,55 @@
+--liquibase formatted sql
+--changeset sreevathsa.sp@impactanalytics.co:tb_store_master_v1 runAlways:true stripComments:false splitStatements:false context:tb_store_master labels:tb_store_master
+--comment: tb_store_master view
+--rollback: SELECT 1
+DROP VIEW IF EXISTS "global".tb_store_master;
+CREATE OR REPLACE VIEW "global".tb_store_master
+AS SELECT s0_id,
+    s0_name,
+    s0_cid,
+    s1_id,
+    s1_name,
+    s2_id,
+    s2_name,
+    s3_id,
+    s3_name,
+    s4_id,
+    s4_name,
+    s5_id,
+    s5_name,
+    store_code,
+    store_name,
+    store_status,
+    type,
+    store_open_flag,
+    active,
+    special_classification,
+    climate_area,
+    latitude,
+    longitude,
+    open_date,
+    close_date,
+    is_active,
+    store_id,
+    country,
+    city,
+    address,
+    address_2,
+    closed,
+    compqualify_date,
+    county,
+    dma,
+    state,
+    store_name_heading,
+    loyalty_scheme,
+    store_model_id,
+    store_model_cid,
+    store_model,
+    store_type_id,
+    store_type_cid,
+    store_type,
+    store_reco_level,
+    hierarchy_id
+   FROM "global".tb_store_master_version t1
+  WHERE version_code = global.get_table_version('global.tb_store_master_version'::text);
+  

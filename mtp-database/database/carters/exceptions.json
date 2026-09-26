@@ -1,0 +1,159 @@
+{
+    "CASCADE": {
+        "exclusions": [
+            "database/carters/schemas/public/procedures/sync_item_smart_derived_tables.sql",
+            "database/carters/schemas/public/procedures/sync_product_supersession.sql",
+            "database/carters/schemas/source_smart/materialized_views/allocation_filter_facility_eligibility_mv.sql",
+            "database/carters/schemas/source_smart/triggers/refresh_allocation_rule_facility_eligibility_mv.sql",
+            "database/carters/schemas/source_smart/triggers/refresh_allocation_rule_mv.sql"
+        ]
+    },
+    "DROP COLUMN": {
+        "exclusions": [
+            "database/carters/schemas/assort_smart/tables/line_plan_kpi_cards.sql",
+            "database/carters/schemas/assort_smart/tables/plan_budget_master_iap.sql",
+            "database/carters/schemas/assort_smart/tables/plan_budget_master_sp.sql",
+            "database/carters/schemas/assort_smart/tables/plan_cluster_aps_iap.sql",
+            "database/carters/schemas/assort_smart/tables/plan_cluster_aps_sp.sql",
+            "database/carters/schemas/assort_smart/tables/plan_cluster_aps_wp.sql",
+            "database/carters/schemas/assort_smart/tables/plan_cluster_depth_choice_iap.sql",
+            "database/carters/schemas/assort_smart/tables/plan_cluster_depth_choice_sp.sql",
+            "database/carters/schemas/assort_smart/tables/plan_cluster_depth_choice_wp.sql",
+            "database/carters/schemas/assort_smart/tables/plan_cluster_opt_attribute_iap.sql",
+            "database/carters/schemas/assort_smart/tables/plan_cluster_opt_attribute_sp.sql",
+            "database/carters/schemas/assort_smart/tables/plan_cluster_opt_attribute_wp.sql",
+            "database/carters/schemas/assort_smart/tables/plan_cluster_opt_master_iap.sql",
+            "database/carters/schemas/assort_smart/tables/plan_cluster_opt_master_sp.sql",
+            "database/carters/schemas/assort_smart/tables/plan_cluster_opt_master_wp.sql",
+            "database/carters/schemas/assort_smart/tables/plan_hierarchy_aps_iap.sql",
+            "database/carters/schemas/assort_smart/tables/plan_hierarchy_aps_sp.sql",
+            "database/carters/schemas/assort_smart/tables/plan_hierarchy_aps_wp.sql",
+            "database/carters/schemas/assort_smart/tables/plan_hierarchy_budget_opt_master_iap.sql",
+            "database/carters/schemas/assort_smart/tables/plan_hierarchy_budget_opt_master_sp.sql",
+            "database/carters/schemas/assort_smart/tables/plan_hierarchy_budget_opt_master_wp.sql",
+            "database/carters/schemas/global/tables/new_store_mapping.sql",
+            "database/carters/schemas/global/tables/product_attributes_filter.sql",
+            "database/carters/schemas/inventory_smart/tables/alerts_product_level.sql",
+            "database/carters/schemas/inventory_smart/tables/asn_master.sql",
+            "database/carters/schemas/inventory_smart/tables/latest_inventory.sql",
+            "database/carters/schemas/item_smart/tables/new_skus.sql",
+            "database/carters/schemas/oms/tables/oms_alerts.sql",
+            "database/carters/schemas/oms/tables/oms_constraints_status.sql",
+            "database/carters/schemas/oms/tables/ingestion_config_master.sql"
+        ]
+    },
+    "DROP CONSTRAINT": {
+        "exclusions": [
+            "database/carters/schemas/assort_smart/tables/launch_delivery_records_mapping.sql",
+            "database/carters/schemas/assort_smart/tables/plan_budget_master_iap.sql",
+            "database/carters/schemas/assort_smart/tables/plan_budget_master_sp.sql",
+            "database/carters/schemas/assort_smart/tables/plan_cluster_opt_attribute_iap.sql",
+            "database/carters/schemas/assort_smart/tables/plan_cluster_opt_attribute_sp.sql",
+            "database/carters/schemas/assort_smart/tables/plan_cluster_opt_attribute_wp.sql",
+            "database/carters/schemas/assort_smart/tables/step_records_mapping.sql",
+            "database/carters/schemas/global/tables/filter_user_configurations_mapping.sql",
+            "database/carters/schemas/global/tables/new_store_mapping.sql",
+            "database/carters/schemas/inventory_smart/tables/dc_pack_reserve_quantity.sql",
+            "database/carters/schemas/inventory_smart/tables/sub_sku_allocated_units.sql",
+            "database/carters/schemas/item_smart/tables/alerts.sql",
+            "database/carters/schemas/oms/tables/oms_alerts.sql",
+            "database/carters/schemas/oms/tables/oms_constraints_order_policy.sql",
+            "database/carters/schemas/oms/tables/oms_constraints_status.sql",
+            "database/carters/schemas/oms/tables/oms_deep_dive_base.sql",
+            "database/carters/schemas/oms/tables/oms_orders_approval_hist.sql",
+            "database/carters/schemas/source_smart/tables/allocation_rule.sql",
+            "database/carters/schemas/source_smart/tables/allocation_rules_mapping.sql",
+            "database/carters/schemas/space_smart/tables/space_constraints.sql"
+        ]
+    },
+    "DROP INDEX": {
+        "exclusions": [
+            "database/carters/schemas/global/tables/product_attributes_filter.sql",
+            "database/carters/schemas/oms/tables/oms_kpi.sql",
+            "database/carters/schemas/oms/tables/oms_orders_approved.sql",
+            "database/carters/schemas/oms/tables/oms_orders_recommended.sql"
+        ]
+    },
+    "DROP MATERIALIZED VIEW": {
+        "exclusions": []
+    },
+    "DROP SEQUENCE": {
+        "exclusions": []
+    },
+    "DROP TABLE": {
+        "exclusions": [
+            "database/carters/schemas/assort_smart/tables/depth_multiplier.sql",
+            "database/carters/schemas/inventory_smart/procedures/build_product_profile_attributes_filter.sql",
+            "database/carters/schemas/item_smart/procedures/create_alerts.sql",
+            "database/carters/schemas/item_smart/procedures/create_new_sku.sql",
+            "database/carters/schemas/item_smart/procedures/create_oms_tbl_ord_approved_recomnd.sql",
+            "database/carters/schemas/item_smart/procedures/create_product_hierarchies_filter.sql",
+            "database/carters/schemas/oms/functions/generate_rcl_oms_constraint_data.sql",
+            "database/carters/schemas/space_smart/tables/store_metrics_actualized_age.sql",
+            "database/carters/schemas/space_smart/tables/store_optimized_report_age.sql"
+        ]
+    },
+    "DROP TRIGGER": {
+        "exclusions": []
+    },
+    "DROP TYPE": {
+        "exclusions": []
+    },
+    "DROP VIEW": {
+        "exclusions": []
+    },
+    "INHERITS": {
+        "exclusions": []
+    },
+    "ONLY": {
+        "exclusions": [
+            "database/carters/schemas/item_smart/procedures/populate_alerts.sql"
+        ]
+    },
+    "RENAME": {
+        "exclusions": [
+            "database/carters/schemas/assort_smart/tables/plan_hierarchy_budget_opt_master_sp.sql",
+            "database/carters/schemas/global/tables/new_store_attributes.sql",
+            "database/carters/schemas/inventory_smart/tables/alerts_product_level.sql",
+            "database/carters/schemas/inventory_smart/tables/auto_allocation_input.sql",
+            "database/carters/schemas/inventory_smart/tables/dc_pack_reserve_quantity.sql",
+            "database/carters/schemas/item_smart/procedures/rename_colnames.sql",
+            "database/carters/schemas/item_smart/tables/alerts.sql",
+            "database/carters/schemas/item_smart/tables/iaf_master.sql",
+            "database/carters/schemas/item_smart/tables/itemfact_sku.sql",
+            "database/carters/schemas/item_smart/tables/itemfact_sku_week.sql",
+            "database/carters/schemas/item_smart/tables/lf_master.sql",
+            "database/carters/schemas/item_smart/tables/lly_master.sql",
+            "database/carters/schemas/item_smart/tables/ly_master.sql",
+            "database/carters/schemas/item_smart/tables/op_master.sql",
+            "database/carters/schemas/item_smart/tables/product_attribute_hierarchy_mapping.sql",
+            "database/carters/schemas/item_smart/tables/ty_master.sql",
+            "database/carters/schemas/item_smart/tables/wp_master.sql",
+            "database/carters/schemas/space_smart/tables/store_metrics.sql"
+        ]
+    },
+    "RESET": {
+        "exclusions": []
+    },
+    "STORAGE": {
+        "exclusions": []
+    },
+    "TEMPORARY": {
+        "exclusions": []
+    },
+    "TRUNCATE": {
+        "exclusions": [
+            "database/carters/schemas/item_smart/procedures/buy_dashboard_update.sql",
+            "database/carters/schemas/item_smart/procedures/populate_alerts.sql",
+            "database/carters/schemas/item_smart/procedures/update_itemfact_sku.sql",
+            "database/carters/schemas/item_smart/procedures/update_itemfact_sku_week.sql",
+            "database/carters/schemas/public/procedures/generate_all_rcl_constraint_data.sql"
+        ]
+    },
+    "WITHOUT": {
+        "exclusions": [
+            "database/carters/schemas/inventory_smart/functions/auto_allocation_input_articles.sql",
+            "database/carters/schemas/item_smart/functions/master_plan_dashboard_view.sql"
+        ]
+    }
+}

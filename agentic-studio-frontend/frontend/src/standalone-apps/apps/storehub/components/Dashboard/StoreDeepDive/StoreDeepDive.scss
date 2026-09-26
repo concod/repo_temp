@@ -1,0 +1,868 @@
+// Store Deep Dive Styles
+
+// Store Deep Dive Header
+.store-deep-dive-header {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    .store-filter {
+      position: relative;
+      display: flex;
+      align-items: center;
+
+      .store-dropdown-loading,
+      .store-dropdown-error {
+        padding: 8px 12px;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        font-size: 14px;
+        border-radius: 8px;
+        color: #60697D;
+      }
+
+      .store-dropdown-error {
+        color: #EF4444;
+        background: rgba(239, 68, 68, 0.1);
+        border: 1px solid rgba(239, 68, 68, 0.3);
+      }
+    }
+
+    .dashboard-title {
+      color: #60697D;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 30px;
+
+      &-name{
+        color: #0D152C;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 30px; 
+      }
+    }
+  }
+}
+
+// Store Deep Dive Tabs Container
+.store-deep-dive-tabs-container {
+  width: 100%;
+  
+  @media (max-width: 768px) {
+    margin-bottom: 100px; // Space for floating input bar
+  }
+  
+  @media (max-width: 480px) {
+    margin-bottom: 90px;
+  }
+  
+  @media (max-width: 360px) {
+    margin-bottom: 80px;
+  }
+}
+
+// Tabs Navigation
+.store-deep-dive-tabs {
+  display: flex;
+  align-items: flex-start;
+  align-self: stretch;
+  margin-bottom:16px;
+}
+
+.store-deep-dive-tab {
+  display: flex;
+  height: 38px;
+  padding: 6px 32px;
+  justify-content: center;
+  align-items: center;
+  gap: 106px;
+  // border: none;
+  // background: transparent;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 16px;
+  color: #60697D;
+  cursor: pointer;
+  // position: relative;
+  // transition: all 0.2s ease;
+  // border-bottom: 2px solid transparent;
+  // margin-bottom: -1px;
+
+  &:hover {
+    color: #0D152C;
+    border-bottom: 2px solid #0D152C;
+  }
+
+  &.active {
+    color: #0D152C;
+    border-bottom: 2px solid #0D152C;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 16px;
+  }
+}
+
+// Tab Content - Two Column Layout
+.store-deep-dive-tab-content {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 24px;
+  align-items: start;
+
+  &.full-width {
+    grid-template-columns: 1fr;
+  }
+}
+
+.store-deep-dive-content-left {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.store-deep-dive-content-right {
+  width: 100%;
+  position: sticky;
+  top: 0;
+  align-self: flex-start;
+}
+
+.tab-content-placeholder {
+  padding: 40px;
+  text-align: center;
+  color: #60697D;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 14px;
+  background: #FFF;
+  border-radius: 16px;
+  border: 1px solid #E0E0E0;
+}
+
+// Store Deep Dive Grid (kept for backward compatibility if needed)
+.store-deep-dive-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 16px;
+  margin-bottom: 32px;
+  align-items: stretch;
+
+  // Ensure panels in the same row have equal heights
+  .nrr-audit-panel {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .revv-panel {
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  .inventory-panel {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .synthesis-panel {
+    grid-column: 2;
+    grid-row: 2;
+  }
+}
+
+// Panel Base Styles
+.panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  box-shadow: var(--shadow-light);
+  overflow: hidden;
+
+  .panel-header {
+    padding: 20px 24px 16px;
+    border-bottom: 1px solid var(--color-border);
+
+    .panel-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      margin: 0;
+    }
+  }
+
+  .panel-content {
+    padding: 20px 24px 24px;
+  }
+}
+
+// NRR Audit Panel
+.nrr-audit-panel {
+  .audit-metrics {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .audit-metric {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 16px;
+    background: var(--color-background);
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+
+    .metric-main {
+      flex: 1;
+
+      .metric-label {
+        font-size: 12px;
+        color: var(--color-text-secondary);
+        font-weight: 500;
+        margin-bottom: 4px;
+      }
+
+      .metric-value {
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--color-text-primary);
+        line-height: 1;
+        margin-bottom: 2px;
+      }
+
+      .metric-subtitle {
+        font-size: 12px;
+        color: var(--color-text-secondary);
+        font-weight: 500;
+      }
+    }
+
+    .metric-source {
+      font-size: 10px;
+      color: var(--color-text-secondary);
+      background: var(--color-surface);
+      padding: 4px 8px;
+      border-radius: 4px;
+      border: 1px solid var(--color-border);
+      white-space: nowrap;
+    }
+  }
+}
+
+// Inventory Panel
+.inventory-panel {
+  .panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    .missed-dfio-value {
+      text-align: right;
+
+      .dfio-label {
+        font-size: 12px;
+        color: var(--color-text-secondary);
+        font-weight: 500;
+        margin-bottom: 4px;
+      }
+
+      .dfio-value {
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--color-text-primary);
+      }
+    }
+  }
+
+  .inventory-chart {
+    margin-bottom: 24px;
+
+    .chart-legend {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 16px;
+
+      .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 12px;
+        color: var(--color-text-secondary);
+
+        .legend-color {
+          width: 12px;
+          height: 3px;
+          border-radius: 2px;
+
+          &.inventory-line {
+            background: #007bff;
+          }
+
+          &.dfio-line {
+            background: #fd7e14;
+          }
+        }
+      }
+    }
+
+    .dual-axis-chart {
+      .chart-svg {
+        width: 100%;
+        height: 200px;
+
+        .axis-label {
+          font-size: 10px;
+          fill: var(--color-text-secondary);
+        }
+
+        .data-point {
+          transition: all var(--transition-duration) ease;
+          cursor: pointer;
+
+          &:hover {
+            stroke: var(--color-text-primary);
+            stroke-width: 2;
+          }
+        }
+      }
+    }
+  }
+
+  .narrative-summary {
+    h4 {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-text-primary);
+      margin: 0 0 8px 0;
+    }
+
+    p {
+      font-size: 12px;
+      color: var(--color-text-secondary);
+      line-height: 1.4;
+      margin: 0;
+    }
+  }
+}
+
+// REVV Panel
+.revv-panel {
+  .team-mention-tally {
+    margin-bottom: 15px;
+
+    .tally-header {
+      h4 {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--color-text-primary);
+        margin: 0 0 12px 0;
+      }
+
+      .sentiment-split {
+        display: flex;
+        gap: 24px;
+
+        .sentiment-item {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+
+          .sentiment-label {
+            font-size: 12px;
+            color: var(--color-text-secondary);
+            font-weight: 500;
+          }
+
+          .sentiment-value {
+            font-size: 18px;
+            font-weight: 700;
+          }
+
+          &.positive .sentiment-value {
+            color: var(--color-success);
+          }
+
+          &.negative .sentiment-value {
+            color: var(--color-danger);
+          }
+        }
+      }
+    }
+  }
+
+  .correlation-section {
+    .correlation-text {
+      font-size: 12px;
+      color: var(--color-text-secondary);
+      line-height: 1.4;
+      margin: 0;
+      padding: 12px;
+      background: var(--color-background);
+      border-radius: 8px;
+      border: 1px solid var(--color-border);
+    }
+  }
+}
+
+// Synthesis Panel
+.synthesis-panel {
+  .synthesis-section {
+    .opportunities-takeaways {
+      margin-bottom: 20px;
+
+      h4 {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--color-text-primary);
+        margin: 0;
+      }
+    }
+
+    .section-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin: 0 0 12px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      &.success-title {
+        color: var(--color-success);
+
+        i {
+          color: var(--color-success);
+        }
+      }
+    }
+
+    .success-list,
+    .opportunity-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .success-item,
+    .opportunity-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 12px;
+      line-height: 1.4;
+      padding: 8px 0;
+
+      .success-icon {
+        color: var(--color-success);
+        font-size: 10px;
+        margin-top: 2px;
+        flex-shrink: 0;
+      }
+
+      .opportunity-icon {
+        color: var(--color-warning);
+        font-size: 10px;
+        margin-top: 2px;
+        flex-shrink: 0;
+      }
+    }
+
+    .success-item {
+      color: var(--color-text-secondary);
+    }
+
+    .opportunity-item {
+      color: var(--color-text-secondary);
+    }
+
+    .success-section {
+      margin-bottom: 20px;
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .store-deep-dive-header {
+    .header-content {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+      width: 100%;
+
+      .dashboard-title {
+        font-size: 16px;
+        line-height: 22px;
+        width: 100%;
+        word-wrap: break-word;
+
+        &-name {
+          font-size: 16px;
+          line-height: 22px;
+        }
+      }
+
+      .store-filter {
+        width: 100%;
+        
+        .store-dropdown {
+          min-width: 100%;
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .store-deep-dive-tabs-container {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .store-deep-dive-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 8px;
+    margin-bottom: 12px;
+    padding-bottom: 4px;
+    -webkit-overflow-scrolling: touch;
+    
+    &::-webkit-scrollbar {
+      height: 4px;
+    }
+    
+    &::-webkit-scrollbar-track {
+      background: #F5F6FA;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      background: #C3C8D4;
+      border-radius: 2px;
+    }
+  }
+
+  .store-deep-dive-tab {
+    padding: 6px 16px;
+    font-size: 12px;
+    line-height: 16px;
+    height: 32px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .store-deep-dive-tab-content {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .store-deep-dive-content-left,
+  .store-deep-dive-content-right {
+    width: 100%;
+    height: auto;
+    min-height: auto;
+    position: relative;
+  }
+
+  .store-deep-dive-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto;
+    gap: 12px;
+
+    .nrr-audit-panel {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    .revv-panel {
+      grid-column: 1;
+      grid-row: 2;
+    }
+
+    .inventory-panel {
+      grid-column: 1;
+      grid-row: 3;
+    }
+
+    .synthesis-panel {
+      grid-column: 1;
+      grid-row: 4;
+    }
+  }
+
+  .panel {
+    .panel-header {
+      padding: 12px 16px 10px;
+      
+      .panel-title {
+        font-size: 14px;
+      }
+    }
+
+    .panel-content {
+      padding: 12px 16px 16px;
+    }
+  }
+
+  .inventory-panel {
+    .panel-header {
+      flex-direction: column;
+      gap: 10px;
+      align-items: flex-start;
+
+      .missed-dfio-value {
+        text-align: left;
+        
+        .dfio-label {
+          font-size: 11px;
+        }
+        
+        .dfio-value {
+          font-size: 16px;
+        }
+      }
+    }
+
+    .inventory-chart {
+      .chart-legend {
+        flex-direction: column;
+        gap: 6px;
+        margin-bottom: 12px;
+      }
+    }
+  }
+
+  .revv-panel .team-mention-tally .tally-header {
+    h4 {
+      font-size: 12px;
+    }
+    
+    .sentiment-split {
+      flex-direction: column;
+      gap: 10px;
+      
+      .sentiment-item {
+        .sentiment-label {
+          font-size: 11px;
+        }
+        
+        .sentiment-value {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+
+  .tab-content-placeholder {
+    padding: 24px 16px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .store-deep-dive-header {
+    .header-content {
+      gap: 10px;
+
+      .dashboard-title {
+        font-size: 14px;
+        line-height: 20px;
+
+        &-name {
+          font-size: 14px;
+          line-height: 20px;
+        }
+      }
+    }
+  }
+
+  .store-deep-dive-tabs {
+    gap: 6px;
+    margin-bottom: 10px;
+  }
+
+  .store-deep-dive-tab {
+    padding: 5px 12px;
+    font-size: 11px;
+    line-height: 14px;
+    height: 28px;
+  }
+
+  .store-deep-dive-tab-content {
+    gap: 12px;
+  }
+
+  .store-deep-dive-content-left,
+  .store-deep-dive-content-right {
+    min-height: auto;
+  }
+
+  .panel {
+    .panel-header {
+      padding: 10px 12px 8px;
+      
+      .panel-title {
+        font-size: 13px;
+      }
+    }
+
+    .panel-content {
+      padding: 10px 12px 12px;
+    }
+  }
+}
+
+@media (max-width: 360px) {
+  .store-deep-dive-header {
+    .header-content {
+      gap: 8px;
+
+      .dashboard-title {
+        font-size: 13px;
+        line-height: 18px;
+
+        &-name {
+          font-size: 13px;
+          line-height: 18px;
+        }
+      }
+    }
+  }
+
+  .store-deep-dive-tabs {
+    gap: 4px;
+    margin-bottom: 8px;
+  }
+
+  .store-deep-dive-tab {
+    padding: 4px 10px;
+    font-size: 10px;
+    line-height: 12px;
+    height: 26px;
+  }
+
+  .store-deep-dive-tab-content {
+    gap: 10px;
+  }
+
+  .store-deep-dive-content-left,
+  .store-deep-dive-content-right {
+    min-height: auto;
+  }
+}
+
+.low{
+  background: #F1F3FE;
+  color: #4259EE;
+  width: fit-content;
+}
+
+.medium{
+  background: #FDFAE9;
+  color: #8C6F06;
+  width: fit-content;
+}
+
+.high{
+  background: #FCEEEE;
+  color: #AB3939;
+  width: fit-content;
+}
+.store-table__score, .store-table__audit-date, .store-table__header-score, .store-table__header-audit-date, .store-table__header-status, .store-table__header-severity{
+  text-align: right;
+}
+
+.store-table__category, .store-table__header-category{
+  text-align: left;
+}
+
+
+.store-table__status, .store-table__severity{
+  display: flex;
+  justify-content: flex-end;
+}
+
+// Mobile table adjustments
+@media (max-width: 768px) {
+  .store-table__score, 
+  .store-table__audit-date, 
+  .store-table__header-score, 
+  .store-table__header-audit-date, 
+  .store-table__header-status, 
+  .store-table__header-severity {
+    font-size: 11px;
+    padding: 8px 10px;
+  }
+
+  .store-table__category, 
+  .store-table__header-category {
+    font-size: 11px;
+    padding: 8px 10px;
+  }
+
+  .store-table__status, 
+  .store-table__severity {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .store-table__score, 
+  .store-table__audit-date, 
+  .store-table__header-score, 
+  .store-table__header-audit-date, 
+  .store-table__header-status, 
+  .store-table__header-severity {
+    font-size: 10px;
+    padding: 6px 8px;
+  }
+
+  .store-table__category, 
+  .store-table__header-category {
+    font-size: 10px;
+    padding: 6px 8px;
+  }
+
+  .store-table__status, 
+  .store-table__severity {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 360px) {
+  .store-table__score, 
+  .store-table__audit-date, 
+  .store-table__header-score, 
+  .store-table__header-audit-date, 
+  .store-table__header-status, 
+  .store-table__header-severity {
+    font-size: 9px;
+    padding: 5px 6px;
+  }
+
+  .store-table__category, 
+  .store-table__header-category {
+    font-size: 9px;
+    padding: 5px 6px;
+  }
+
+  .store-table__status, 
+  .store-table__severity {
+    font-size: 9px;
+  }
+}
+

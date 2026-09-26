@@ -1,0 +1,6 @@
+source_column_name,source_column_datatype,required_in_product,generic_column_name,is_pk,generic_column_datatype,formula,is_attribute,is_hierarchy,hierarchy_level,is_null_allowed,unique_by,display_name,is_partition_col,is_clustering_col
+fulfilment_store_code,varchar,TRUE,fulfilment_store_code,FALSE,varchar,,FALSE,FALSE,,FALSE,FALSE,,FALSE,
+Store_ID,varchar,TRUE,store_code,TRUE,varchar,,FALSE,FALSE,,FALSE,TRUE,,FALSE,
+Start_Date,date,TRUE,start_date,TRUE,date,,FALSE,FALSE,,FALSE,TRUE,,FALSE,
+End_Date,date,TRUE,end_date,FALSE,date,,FALSE,FALSE,,FALSE,FALSE,,FALSE,
+country,varchar,TRUE,country,FALSE,varchar,,FALSE,FALSE,,TRUE,FALSE,,FALSE,

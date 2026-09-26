@@ -1,0 +1,9 @@
+"source_column_name","source_column_datatype","required_in_product","generic_column_name","is_pk","generic_column_datatype","formula","is_attribute","is_hierarchy","hierarchy_level","is_null_allowed","unique_by","display_name","is_partition_col","is_clustering_col"
+channel,varchar,true,channel,false,varchar,,false,false,,false,false,,false,
+date,date,true,date,true,date,,false,false,,false,true,,false,
+product_code,varchar,true,product_code,true,varchar,,false,false,,false,true,,false,
+quantity,float8,true,quantity,false,float8,,false,false,,false,false,,false,
+sub_channel,varchar,true,sub_channel,false,varchar,,false,false,,false,false,,false,
+store_code,varchar,true,store_code,true,varchar,,false,false,,false,true,,false,
+Price,float8,true,receipts_cost,false,float8,,false,false,,true,false,,false,
+Cost,float8,true,receipts_price,false,float8,,false,false,,true,false,,false,

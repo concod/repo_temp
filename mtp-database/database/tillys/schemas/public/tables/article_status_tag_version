@@ -1,0 +1,28 @@
+--liquibase formatted sql
+--changeset anish.a@impactanalytics.co:article_status_tag stripComments:false splitStatements:false context:Release_1_0 labels:liquibase_project_starts 
+--comment: initial changeset for article_status_tag
+
+
+CREATE TABLE inventory_smart.article_status_tag_version (
+    version_code INT4 NOT NULL,
+    product_code VARCHAR NOT NULL,
+    channel VARCHAR NOT NULL,
+    article_status_tag VARCHAR NOT NULL,
+    "size" VARCHAR NOT NULL,
+    new_size VARCHAR NOT NULL,
+    "order" INT2 NULL,
+
+    CONSTRAINT article_status_tag_version_pk
+        PRIMARY KEY (product_code, channel, version_code),
+
+    CONSTRAINT article_status_tag_version_product_fk
+        FOREIGN KEY (product_code)
+        REFERENCES "global".product_master(product_code)
+        ON DELETE CASCADE,
+
+    CONSTRAINT article_status_tag_version_fk
+        FOREIGN KEY (version_code)
+        REFERENCES "global".versioning(version_code)
+        ON DELETE CASCADE
+)
+PARTITION BY LIST (version_code);

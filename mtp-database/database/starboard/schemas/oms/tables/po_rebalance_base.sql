@@ -1,0 +1,23 @@
+--liquibase formatted sql
+--changeset bhavya.visaria@impactanalytics.co:po_rebalance_base stripComments:false splitStatements:false context:Release_1_0 labels:liquibase_project_start
+--comment: initial version of po_rebalance_base 
+
+CREATE TABLE IF NOT EXISTS oms.po_rebalance_base (
+	product_code varchar NULL,
+	loc_code varchar NULL,
+	channel varchar NULL,
+	fiscal_year_week int4 NULL,
+	dc_inv_bop_post_allocation float4 NULL,
+	po_inbound float4 NULL,
+	total_store_forecast float4 NULL,
+	total_store_wos_demand int4 NULL,
+	total_target_store_inv float4 NULL,
+	store_allocation_unconstrained float4 NULL,
+	l4w_ss float4 NULL,
+	lw_ss float4 NULL,
+	total_store_bop_inv float4 NULL,
+	safety_stock float4 NULL,
+	dc_inv_wos float4 NULL,
+	store_inv_wos float4 NULL,
+	CONSTRAINT pk_po_rebalance_base PRIMARY KEY (product_code, loc_code, fiscal_year_week)
+);

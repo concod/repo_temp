@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>   
+<databaseChangeLog
+   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd
+      http://www.liquibase.org/xml/ns/pro 
+      http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd">  
+   <changeSet id="action-master.csv" author="subhash.pophale@impactanalytics.co" dbms="postgresql" context="Release_1_0" labels="liquibase_start" runOnChange="true">
+   <preConditions onErrorMessage="Failed Pre Conditions for table" onFail="HALT"> 
+      <and>
+      <tableExists schemaName="global" tableName="action_master" />
+      <sqlCheck expectedResult ="1">SELECT 1 </sqlCheck>
+      </and>
+   </preConditions>
+   <comment>Adding Data...</comment>
+   <sql>
+      drop table if exists tmp_action_master;
+   </sql>
+   <sql>
+      create table tmp_action_master as select * from global.action_master where 1=2;
+   </sql>
+   <loadUpdateData
+      encoding="UTF-8"
+      file="database/data/global/action_master.csv"
+      primaryKey="action_code"
+      schemaName="public"
+      separator=","
+      quotchar='"'
+      tableName="tmp_action_master">
+      <column name="action_code" type="Numeric" />
+      <column name="action" type="String"/>
+   </loadUpdateData>
+   <sql>
+     insert into "global".action_master(action_code,action)
+     select action_code ,action from tmp_action_master
+     on conflict ON constraint action_master_pk do update 
+     set action  = excluded.action;
+   </sql>
+   <sql>
+     delete 
+     from "global".action_master tgt 
+     where not exists (select null from tmp_action_master tmp where tmp.action_code = tgt.action_code);
+   </sql>
+   <sql>
+     drop table tmp_action_master;
+   </sql>
+   </changeSet>
+</databaseChangeLog>

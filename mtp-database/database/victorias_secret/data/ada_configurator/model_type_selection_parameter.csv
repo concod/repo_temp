@@ -1,0 +1,10 @@
+"model_type_parameter_id","model_selection_id","label_name","parameter_name","start_range","end_range","list_value","default_value","display_flag","input_type"
+1,2,Break Type,break_type,,,"{Known,Unknown}",Known,true,Dropdown
+2,2,Number of Breaks,number_of_breaks,0,10,,"0",true,InputField
+3,2,Test to be used,test_to_be_used,,,"{Qlr,Chow,Dynp,BottomUp,Winseg,KernelCPD}",Qlr,true,Dropdown
+4,3,Drift detection,drift_detection,,,"{Yes,No}",Yes,true,Dropdown
+5,3,Drift Methods,drift_methods,,,"{ADWIN,PageHinkley,KSWIN}",ADWIN,true,Dropdown
+6,3,Drift Correction,drift_correction,,,"{Yes,No}",Yes,true,Dropdown
+8,113,Min_Cluster,min_cluster,,,"{1,2,3,4,5,6,7,8,9,10,NA}","2",true,Dropdown
+9,113,Max_Cluster,max_cluster,,,"{1,2,3,4,5,6,7,8,9,10,NA}","6",true,Dropdown
+7,3,Drift Correction Methods,drift_correction_methods,,,"{New,Update}",New,true,Dropdown

@@ -1,0 +1,86 @@
+--liquibase formatted sql
+--changeset shaik.azmathulla@impactanalytics.co:store_attributes_filter stripComments:false splitStatements:false context:Release_1_0 labels:store_attributes_filter
+--comment: adding new column to saf table.
+
+CREATE TABLE IF NOT EXISTS global.store_attributes_filter
+(
+    store_code character varying  NOT NULL,
+    store_name character varying  NOT NULL,
+    store_description text ,
+    active boolean NOT NULL,
+    special_classification character varying ,
+    created_at timestamp with time zone,
+    updated_at timestamp with time zone,
+    created_by integer,
+    updated_by integer,
+    dc_code integer,
+    fc_code integer,
+    is_deleted boolean,
+    s0_name character varying ,
+    s1_name character varying ,
+    s2_name character varying ,
+    s3_name character varying ,
+    s4_name character varying ,
+    s5_name character varying ,
+    s6_name character varying ,
+    s7_name character varying ,
+    account_type character varying ,
+    active_flag character varying ,
+    business_unit character varying ,
+    business_unit_desc character varying ,
+    channel character varying ,
+    channel_desc character varying ,
+    climate character varying ,
+    close_date date,
+    comp_date date,
+    comp_status character varying ,
+    facility_type character varying ,
+    home_capacity_rating character varying ,
+    home_cc_capacity character varying ,
+    home_unit_capacity character varying ,
+    latitude character varying ,
+    like_store_id character varying ,
+    location_type character varying ,
+    longitude character varying ,
+    management_district character varying ,
+    management_region character varying ,
+    mens_acc_fw_capacity_rating character varying ,
+    mens_acc_fw_cc_capacity character varying ,
+    mens_acc_fw_unit_capacity character varying ,
+    mens_apparel_capacity_rating character varying ,
+    mens_apparel_cc_capacity character varying ,
+    mens_apparel_unit_capacity character varying ,
+    old_customer_id character varying ,
+    open_date date,
+    store_characteristic character varying ,
+    store_concept character varying ,
+    store_lifestyle character varying ,
+    store_reopen_date date,
+    store_selling_area double precision,
+    store_status character varying ,
+    store_type character varying ,
+    total_store_area double precision,
+    traffic character varying ,
+    unique_channel character varying ,
+    unique_store_code character varying  NOT NULL,
+    womens_acc_fw_capacity_rating character varying ,
+    womens_acc_fw_cc_capacity character varying ,
+    womens_acc_fw_unit_capacity character varying ,
+    womens_apparel_capacity_rating character varying ,
+    womens_apparel_cc_capacity character varying ,
+    womens_apparel_unit_capacity character varying ,
+    womens_swim_capacity_rating character varying ,
+    womens_swim_cc_capacity character varying ,
+    womens_swim_unit_capacity character varying ,
+    zipcode character varying ,
+    CONSTRAINT store_attributes_filter_pk PRIMARY KEY (store_code),
+    CONSTRAINT store_attributes_filter_fk FOREIGN KEY (store_code)
+    REFERENCES global.store_master (store_code) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE CASCADE
+);
+
+--changeset shaik.azmathulla@impactanalytics.co:store_id_name stripComments:false splitStatements:false context:Release_2_0 labels:store_id_name
+--comment: addition of columns in store_attributes_filter
+
+ALTER TABLE global.store_attributes_filter ADD COLUMN IF NOT EXISTS store_id_name character varying ;

@@ -1,0 +1,13 @@
+source_column_name,source_column_datatype,required_in_product,generic_column_name,is_pk,generic_column_datatype,formula,is_attribute,is_hierarchy,hierarchy_level,is_null_allowed,unique_by,display_name,is_partition_col,is_clustering_col
+,,TRUE,supersession_key,TRUE,varchar,"concat(country ,'-' ,  channel ,'-' ,  supersessionid ,'-' ,  substyleid ,'-' ,  subproductcode )",FALSE,FALSE,,FALSE,TRUE,,FALSE,
+country,string,TRUE,country,FALSE,varchar,,FALSE,FALSE,,FALSE,FALSE,,FALSE,1
+channel,string,TRUE,channel,FALSE,varchar,,FALSE,FALSE,,FALSE,FALSE,,FALSE,2
+supersessionid,string,TRUE,supersessionid,FALSE,varchar,,FALSE,FALSE,,TRUE,FALSE,,FALSE,
+substyleid,string,TRUE,substyleid,FALSE,varchar,,FALSE,FALSE,,TRUE,FALSE,,FALSE,3
+mainstyleid,string,TRUE,mainstyleid,FALSE,varchar,,FALSE,FALSE,,TRUE,FALSE,,FALSE,
+subproductcode,string,TRUE,subproductcode,FALSE,varchar,,FALSE,FALSE,,TRUE,FALSE,,FALSE,
+mainproductcode,string,TRUE,mainproductcode,FALSE,varchar,,FALSE,FALSE,,TRUE,FALSE,,FALSE,
+validfromdate,date,TRUE,validfromdate,FALSE,date,,FALSE,FALSE,,TRUE,FALSE,,FALSE,
+validtodate,date,TRUE,validtodate,FALSE,date,,FALSE,FALSE,,TRUE,FALSE,,FALSE,
+active,string,TRUE,active,FALSE,varchar,,FALSE,FALSE,,TRUE,FALSE,,FALSE,
+prioritynumber,integer,TRUE,prioritynumber,FALSE,int8,,FALSE,FALSE,,TRUE,FALSE,,FALSE,

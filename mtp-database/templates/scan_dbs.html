@@ -1,0 +1,103 @@
+{% include "header.html" %}
+<div class="pagetitle">
+	<h1>Test Case - {{ msg }}</h1>
+</div>
+
+<section class="section">
+	<table border='1' width='100%'>
+		<tr>
+			<td>
+				<form action="" method="post" onsubmit='add_loader();'>
+					<table width='100%'>
+						<tr>
+							<td>
+								<select style='width:100%;' onchange='add_loader(); window.location.href = "/scan_dbs/" + this.value;'>
+									<option value='na'> --------------- Select a pre-defined test --------------- </option>
+									{% for pdt in pre_defined_tests %}
+										{% if pdt['is_selected'] %}
+											<option selected value="{{ pdt['test_case_name'] }}">{{ pdt['test_case_name'] }}</option>
+										{% else %}
+											<option value="{{ pdt['test_case_name'] }}">{{ pdt['test_case_name'] }}</option>
+										{% endif %}
+									{% endfor %}
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input type='text' style='width:100%;' name='test_case_name' id='test_case_name' placeholder='Put test case name' required value="{{ test_case_name }}" />
+							</td>
+						</tr>
+						<tr>
+							<td colspan='2'>
+								<textarea style='width:100%; height: 300px; resize:none;' name='test_case' id='test_case' placeholder='Put test case query ....' required>{{ test_case }}</textarea>
+							</td>
+						</tr>
+						<tr>
+							<td width='50%'>
+								<b>Clients:</b>
+								<br/>
+								{% for cc in combine_clients|sort %}
+									<input type='checkbox' value="{{ cc }}" id="{{ cc }}" name="combine_clients" checked /> <label style='text-transform: capitalize;' for="{{ cc }}">{{ cc.replace('_', ' ') }}</label>
+									<br/>
+								{% endfor %}
+							</td>
+							<td>
+								<b>Schemas:</b>
+								<br/>
+								{% for cs in combine_schemas|sort %}
+									{% if cs == 'global' %}
+										<input type='radio' value="{{ cs }}" id="{{ cs }}" name="combine_schemas" checked /> <label style='text-transform: capitalize;' for="{{ cs }}">{{ cs.replace('_', ' ') }}</label>
+										<br/>
+									{% else %}
+										<input type='radio' value="{{ cs }}" id="{{ cs }}" name="combine_schemas" /> <label style='text-transform: capitalize;' for="{{ cs }}">{{ cs.replace('_', ' ') }}</label>
+										<br/>
+									{% endif %}
+								{% endfor %}
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<button type='submit' name='action' value='run_test_case' onclick="return !!(document.getElementById('test_case').value)">Run Test Case</button>
+								<button type='submit' name='action' value='execute_command' onclick="return !!(document.getElementById('test_case').value)">Execute command</button>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</td>
+		</tr>
+	</table>
+</section>
+<br/><br/>
+<section class="section">
+	<div class="card">
+		<div class="card-body">
+			<!--h5 class="card-title">DataBases</h5>
+			<p>Choose a database from list to manage.</p-->
+
+			<!-- Table with stripped rows -->
+			{% if clear_report|length > 0 %}
+				<table class="table datatable table-hover">
+					<thead>
+						<tr>
+							{% for k in clear_report[0].keys() %}
+								<th style='text-transform:uppercase;'>{{k.replace('_', ' ')}}</th>
+							{% endfor %}
+						</tr>
+					</thead>
+					<tbody>
+						{% for cr in clear_report %}
+							<tr>
+								{% for k in clear_report[0].keys() %}
+									<td>{{cr[k]}}</td>
+								{% endfor %}
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			{% endif %}
+			<!-- End Table with stripped rows -->
+		</div>
+	</div>
+</section>
+{% include "footer.html" %}

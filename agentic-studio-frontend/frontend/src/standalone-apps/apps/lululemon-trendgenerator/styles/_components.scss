@@ -1,0 +1,223 @@
+/* Lululemon Trend Generator Components (Black-Grey-White) */
+@use 'variables';
+
+:root {
+  --background-color: #ffffff;
+  --user-message-bg: #000000; /* user bubble in black */
+}
+
+.dark-mode {
+  --background-color: #121212;
+}
+
+/* App Root */
+.lululemon-trend-app {
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Welcome Screen */
+.lululemon-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  position: relative;
+}
+
+.lululemon-top-avatar {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 10;
+}
+
+.header-button {
+  background: none;
+  border: 1px solid rgba(0,0,0,0.12);
+  color: var(--text-color);
+  font-size: 18px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.header-button:hover { background-color: rgba(0,0,0,0.06); }
+.dark-mode .header-button { border-color: rgba(255,255,255,0.2); }
+.dark-mode .header-button:hover { background-color: rgba(255,255,255,0.08); }
+
+.avatar-container { position: relative; display: flex; align-items: center; }
+.avatar-dropdown {
+  position: absolute;
+  top: 100%; right: 0; margin-top: 8px;
+  background: #ffffff; color: #111;
+  border-radius: 12px; min-width: 180px;
+  border: 1px solid #e5e5e5; box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  overflow: hidden; z-index: 20;
+}
+.dark-mode .avatar-dropdown { background: #1e1e1e; color: #eaeaea; border-color: #333; box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
+.dropdown-arrow { position: absolute; top: -6px; right: 16px; width: 12px; height: 12px; background: inherit; border-left: inherit; border-top: inherit; transform: rotate(45deg); }
+.dropdown-content { padding: 6px 0; display: flex; flex-direction: column; }
+.dropdown-item { display: flex; align-items: center; gap: 10px; padding: 10px 14px; cursor: pointer; font-size: 14px; }
+.dropdown-item:hover { background: rgba(0,0,0,0.04); }
+.dark-mode .dropdown-item:hover { background: rgba(255,255,255,0.06); }
+
+.lululemon-main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 48px 16px; }
+.welcome-content { text-align: center; max-width: 900px; width: 100%; }
+.welcome-logo { margin-bottom: 24px; display: flex; justify-content: center; }
+.welcome-logo img { width: 120px; height: 120px; object-fit: contain; }
+.welcome-title { font-size: 2.2rem; font-weight: 700; color: var(--text-color); margin-bottom: 8px; letter-spacing: 0.4px; }
+.welcome-subtitle { font-size: 1rem; color: #666; margin-bottom: 28px; }
+.dark-mode .welcome-subtitle { color: #b5b5b5; }
+
+/* Chat Layout */
+.lululemon-chat-layout { min-height: 100vh; display: flex; background-color: var(--background-color); color: var(--text-color); }
+.lululemon-sidenav { width: 64px; border-right: 1px solid rgba(0,0,0,0.08); display: flex; flex-direction: column; align-items: center; padding: 16px 0; }
+.dark-mode .lululemon-sidenav { border-right: 1px solid rgba(255,255,255,0.12); }
+.sidenav-content { display: flex; flex-direction: column; gap: 12px; width: 100%; align-items: center; }
+.sidenav-items { display: flex; flex-direction: column; gap: 10px; align-items: center; }
+.sidenav-button { background: none; border: 1px solid rgba(0,0,0,0.12); color: var(--text-color); width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s ease; }
+.sidenav-button:hover { background-color: rgba(0,0,0,0.06); }
+.dark-mode .sidenav-button { border-color: rgba(255,255,255,0.2); }
+.dark-mode .sidenav-button:hover { background-color: rgba(255,255,255,0.08); }
+
+/* Main Content */
+.lululemon-main-content { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+.lululemon-chat-header { padding: 14px 20px; border-bottom: 1px solid rgba(0,0,0,0.08); display: flex; align-items: center; justify-content: space-between; }
+.dark-mode .lululemon-chat-header { border-bottom: 1px solid rgba(255,255,255,0.12); }
+.chat-header-title h1 { font-size: 18px; font-weight: 600; margin: 0; color: var(--text-color); }
+
+/* Messages */
+.lululemon-chat-area { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+.lululemon-messages { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 14px; padding: 20px; max-width: min(980px, 100vw - 40px); margin: 0 auto; width: 100%; box-sizing: border-box; }
+.lululemon-messages::-webkit-scrollbar { width: 8px; }
+.lululemon-messages::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.2); border-radius: 4px; }
+.dark-mode .lululemon-messages::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.25); }
+
+.lululemon-message { display: flex; max-width: min(90%, calc(100vw - 80px)); width: fit-content; }
+.lululemon-message.user-message { align-self: flex-end; flex-direction: row-reverse; }
+.lululemon-message.bot-message { align-self: flex-start; }
+
+.message-avatar { margin: 0 10px; align-self: flex-end; }
+.avatar-icon { width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; background: var(--secondary-color); box-shadow: 0 2px 5px rgba(0,0,0,0.12); }
+.lululemon-message.user-message .avatar-icon { background: #000; }
+
+.message-content { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+.message-text { padding: 12px 16px; border-radius: 16px; line-height: 1.5; font-size: 15px; box-shadow: var(--message-shadow); max-width: 100%; word-wrap: break-word; background: var(--bot-message-bg); color: var(--text-color); }
+.lululemon-message.user-message .message-text { background: var(--user-message-bg); color: #fff; border-bottom-right-radius: 4px; }
+.lululemon-message.bot-message .message-text { border-bottom-left-radius: 4px; }
+
+.message-time { margin-top: 6px; font-size: 11px; color: #888; }
+.dark-mode .message-time { color: #aaa; }
+
+/* Sources */
+.message-sources { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 8px; }
+.source-number-button { display: inline-flex; align-items: center; gap: 6px; background: #f3f3f3; border: 1px solid #e5e5e5; border-radius: 18px; padding: 6px 10px; color: #444; font-size: 12px; }
+.source-number { background: #000; color: #fff; border-radius: 50%; width: 16px; height: 16px; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 600; }
+.dark-mode .source-number-button { background: #2a2a2a; border-color: #3a3a3a; color: #ddd; }
+
+/* Typing / Processing */
+.processing-indicator { display: flex; align-items: flex-start; max-width: 90%; margin: 12px 0; align-self: flex-start; }
+.processing-avatar .avatar-icon { background: var(--secondary-color); }
+.processing-content { flex: 1; display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 16px; background: var(--bot-message-bg); box-shadow: var(--message-shadow); }
+.spinner { width: 16px; height: 16px; border: 2px solid rgba(0,0,0,0.2); border-top-color: #000; border-radius: 50%; animation: spin 0.8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Input Bar */
+.lululemon-input-container { padding: 16px; background: var(--background-color); }
+.lululemon-chat-input { max-width: 980px; margin: 0 auto; display: flex; gap: 12px; align-items: flex-end; padding: 14px; border-radius: 20px; background: #f7f7f7; border: 1px solid #e5e5e5; box-shadow: 0 3px 12px rgba(0,0,0,0.06); }
+.dark-mode .lululemon-chat-input { background: #1d1d1d; border-color: #333; box-shadow: 0 3px 12px rgba(0,0,0,0.4); }
+.message-input { flex: 1; border: none; outline: none; background: #fff; color: var(--text-color); border-radius: 12px; padding: 12px 14px; font-size: 15px; max-height: 180px; min-height: 60px; resize: none; }
+.dark-mode .message-input { background: #2a2a2a; color: #eaeaea; }
+.send-button { width: 46px; height: 46px; border-radius: 50%; border: none; background: #000; color: #fff; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 14px rgba(0,0,0,0.2); cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.send-button:hover { transform: translateY(-1px); box-shadow: 0 6px 18px rgba(0,0,0,0.25); }
+.send-button:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* HTML Content Styling */
+.html-content {
+  h1, h2, h3, h4, h5, h6 { 
+    margin: 16px 0 8px; 
+    font-weight: 600; 
+    color: var(--text-color);
+  }
+  h1 { font-size: 1.5em; }
+  h2 { font-size: 1.3em; }
+  h3 { font-size: 1.15em; }
+  h4 { font-size: 1.05em; }
+  
+  p { margin: 8px 0; line-height: 1.6; }
+  
+  ul, ol { margin: 10px 0; padding-left: 20px; line-height: 1.6; }
+  li { margin: 4px 0; }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 14px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    border-radius: 8px;
+    overflow: hidden;
+    table-layout: fixed; /* Prevent overflow by distributing width */
+  }
+  
+  th {
+    background: #000;
+    color: #fff;
+    padding: 12px 10px;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 2px solid #333;
+    word-wrap: break-word;
+    overflow-wrap: anywhere;
+  }
+  
+  td {
+    padding: 10px;
+    border-bottom: 1px solid #e5e5e5;
+    color: var(--text-color);
+    word-wrap: break-word; /* Wrap long URLs */
+    overflow-wrap: anywhere; /* Allow breaking anywhere for very long strings */
+    white-space: normal; /* Ensure content wraps */
+  }
+
+  a {
+    color: #0a66c2; /* clear, accessible link color */
+    text-decoration: underline;
+    word-break: break-all;
+  }
+  
+  tr:last-child td {
+    border-bottom: none;
+  }
+  
+  tr:nth-child(even) {
+    background: rgba(0,0,0,0.02);
+  }
+  
+  .dark-mode & {
+    table { box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+    th { background: #1a1a1a; color: #eaeaea; border-bottom-color: #444; }
+    td { border-bottom-color: #333; }
+    tr:nth-child(even) { background: rgba(255,255,255,0.02); }
+  }
+  
+  strong, b { font-weight: 600; }
+  em, i { font-style: italic; }
+  
+  br { line-height: 1.8; }
+}
+
+

@@ -1,0 +1,216 @@
+// Priority Action Grid Component Styles
+.priority-action-grid {
+  display: flex;
+  padding: 16px 12px 12px 12px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  align-self: stretch;
+  border-radius: 16px;
+  background: #FFF;
+  box-shadow: 1px 5px 24px 0 rgba(134, 144, 156, 0.07);
+
+  .grid-header {
+    display: flex;
+    height: 20px;
+    align-items: center;
+    gap: 8px;
+    align-self: stretch;
+
+    .grid-title-section {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex: 1 0 0;
+
+      .grid-title-icon {
+        height: 18px;
+        width: 18px;
+      }
+
+      .grid-title-text {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+
+        .grid-title {
+          font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 600;
+          line-height: 16px;
+          color: #0D152C;
+        }
+
+        .grid-subtitle {
+          font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+          font-size: 12px;
+          color: #EF4444;
+          font-weight: 500;
+          line-height: 1.3;
+        }
+      }
+    }
+
+    
+  }
+
+  .grid-content {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    align-self: stretch;
+
+    .no-stores {
+      text-align: center;
+      padding: 40px 20px;
+      color: #6B7280;
+      font-size: 14px;
+    }
+
+    .stores-grid {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      align-self: stretch;
+      width: 100%;
+    }
+  }
+  
+  // Mobile Responsive Design
+  @media (max-width: 768px) {
+    padding: 12px;
+    gap: 12px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    
+    .grid-header {
+      height: auto;
+      min-height: 20px;
+      
+      .grid-title-section {
+        .grid-title-text {
+          .grid-title {
+            font-size: 13px;
+            line-height: 15px;
+          }
+        }
+      }
+    }
+    
+    .grid-actions {
+      gap: 6px;
+      
+      &__button {
+        font-size: 12px;
+        padding: 5px 10px;
+        min-width: 50px;
+        max-height: 30px;
+      }
+    }
+    
+    .grid-content {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 12px;
+      
+      .no-stores {
+        padding: 30px 16px;
+        font-size: 13px;
+      }
+      
+      .stores-grid {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+        width: 100%;
+      }
+    }
+  }
+  
+  @media (max-width: 480px) {
+    padding: 10px;
+    gap: 10px;
+    
+    .grid-header {
+      .grid-title-section {
+        .grid-title-text {
+          .grid-title {
+            font-size: 12px;
+            line-height: 14px;
+          }
+        }
+      }
+    }
+    
+    .grid-actions {
+      &__button {
+        font-size: 11px;
+        padding: 4px 8px;
+        min-width: 45px;
+        max-height: 28px;
+      }
+    }
+    
+    .grid-content {
+      gap: 10px;
+      
+      .stores-grid {
+        gap: 10px;
+      }
+    }
+  }
+  
+  @media (max-width: 360px) {
+    padding: 8px;
+    gap: 8px;
+    
+    .grid-header {
+      .grid-title-section {
+        .grid-title-text {
+          .grid-title {
+            font-size: 11px;
+            line-height: 13px;
+          }
+        }
+      }
+    }
+    
+    .grid-content {
+      gap: 8px;
+      
+      .stores-grid {
+        gap: 8px;
+      }
+    }
+  }
+}
+
+.grid-actions{
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &__button{
+    display: flex;
+    min-width: 56px;
+    max-height: 32px;
+    padding: var(--Button-V-Padding, 6px) var(--Button-H-Padding, 12px);
+    justify-content: center;
+    align-items: center;
+    gap: var(--Button-Spacing, 4px);
+    border-radius: var(--Button-radius, 8px);
+    border: 0.5px solid var(--Colors-Neutrals-Border-Default, #C3C8D4);
+    background: var(--Colors-Greys-0, #FFF);
+
+    color:  #1F2B4D;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+  }
+
+}

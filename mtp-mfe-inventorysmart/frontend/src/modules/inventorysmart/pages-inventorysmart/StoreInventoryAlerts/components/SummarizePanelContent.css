@@ -1,0 +1,116 @@
+
+.spc-root {
+  min-height: auto !important;
+  max-height: none !important;
+  overflow-y: visible !important;
+  padding: 16px 12px !important;
+  display: flex;
+  flex-direction: column;
+}
+
+.spc-metrics-section {
+  margin-bottom: 24px;
+}
+
+.spc-metrics-grid {
+  display: grid;
+  gap: 12px;
+  padding: 26px 12px 24px 12px !important;
+}
+
+.spc-metric-card {
+  padding: 14px 12px;
+  text-align: center;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.spc-metric-label {
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+
+.spc-metric-value {
+  font-family: "Manrope", sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.spc-metric-detail {
+  font-size: 11px;
+  margin-top: 6px;
+  opacity: 0.85;
+}
+
+.spc-insights-section {
+  margin-bottom: 20px;
+}
+
+.spc-insights-body {
+  padding-left: 16px;
+}
+
+.spc-insights-item {
+  margin-bottom: 20px;
+  margin-top: 24px;
+}
+
+.spc-insights-title {
+  font-size: 14px !important;
+  margin-bottom: 8px !important;
+}
+
+.spc-insights-list {
+  margin: 0;
+}
+
+.spc-qc-section {
+  margin-bottom: 24px;
+}
+
+.spc-table-section {
+  margin-bottom: 40px;
+}
+
+/* ── Tooltip (info button hover panel) ───────────────────────────────────── */
+
+.spc-tooltip-no-data {
+  padding: 8px;
+  color: #6c757d;
+}
+
+.spc-tooltip-container {
+  min-width: 250px;
+  max-width: 400px;
+  font-family: "Manrope", sans-serif;
+}
+
+.spc-tooltip-header {
+  font-weight: 600;
+  font-size: 12px;
+  padding: 8px 12px;
+  border-bottom: 1px solid #e5e7eb;
+  color: #0d152c;
+}
+
+.spc-tooltip-body {
+  max-height: 200px;
+  overflow-y: auto;
+  padding: 8px 12px;
+  font-size: 12px;
+  color: #1f2b4d;
+}
+
+.spc-tooltip-entry {
+  margin-bottom: 6px;
+}
+
+.spc-tooltip-key {
+  font-weight: 600;
+}
+
+.spc-tooltip-value {
+  margin-left: 12px;
+}

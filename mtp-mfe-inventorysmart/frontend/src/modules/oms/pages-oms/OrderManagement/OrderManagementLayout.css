@@ -1,0 +1,145 @@
+.wrapper:has(.oms-pivot-layout) {
+  overflow-y: hidden !important;
+}
+
+.oms-pivot-layout {
+  display: flex;
+  flex-direction: row;
+  /* Explicit height rather than flex:1 because intermediate wrappers
+     (CoreComponentScreen's paddingHorizonal24 div, Loader) are plain*/
+  height: calc(100vh - 204px);
+  min-height: 480px;
+  width: 100%;
+  overflow: hidden;
+  /* Small top gap between filter chips and the card — mirrors the 12 px gap above Matrix Summary. */
+  margin-top: 12px;
+}
+
+.oms-pivot-table-pane {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  align-self: stretch;
+  background: #fff;
+  border: 1px solid #eceefd;
+  border-radius: 12px;
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.06);
+}
+
+.oms-pivot-column {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 0;
+  max-width: 0;
+  min-width: 0;
+  margin-left: 0;
+  overflow: hidden;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  transition: none;
+}
+
+.oms-pivot-layout--panelOpen .oms-pivot-column {
+  flex-basis: 687px;
+  max-width: 687px;
+  margin-left: 12px;
+}
+
+/* Ensure the PivotPanel card fills the full column height (mirrors Matrix Summary). */
+.oms-pivot-column .pivotPanelInline.planningScreenPivotPane {
+  height: 100%;
+  min-height: 0;
+}
+
+/* Strip the double-border that appears when the Table's internal header sits
+   inside the already-bordered oms-pivot-table-pane card. */
+.oms-pivot-table-pane .ag-header {
+  border-top: none;
+}
+
+/* Pinned grand-total row — matches edit-hierarchy forecast (#F4F1F9 band). */
+.oms-pivot-table-pane .ag-row-pinned .ag-cell {
+  background-color: #f4f1f9;
+  font-weight: 600;
+}
+
+.oms-pivot-table-pane .ag-row-pinned [col-id="Selection"] {
+  visibility: hidden;
+}
+
+.oms-pivot-table-pane .ag-row-pinned .ag-selection-checkbox,
+.oms-pivot-table-pane .ag-row-pinned .ag-checkbox-input-wrapper {
+  visibility: hidden;
+}
+
+/* Prevent the main-content background (#EFF2FA) from bleeding through below
+   the table card when the browser scrolls past the calc height. */
+.main-content:has(.oms-pivot-layout) {
+  overflow-y: hidden;
+}
+
+/* ── Toolbar: Auto-Saved / Saving status chip (Figma 4290:374044 / 4290:378200) ── */
+.oms-save-status-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #60697d;
+  white-space: nowrap;
+}
+
+.oms-save-status-chip svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.oms-save-status-chip--saving svg {
+  animation: oms-save-status-spin 1s linear infinite;
+}
+
+@keyframes oms-save-status-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ── Cell-level auto-save loading overlay (Figma 4290:365774 "loading" cell
+   state — lavender cell background + white input pill + a bar). Replaces
+   the in-cell value entirely instead of stacking, which was causing a
+   layout gap against the real cell content underneath. The bar itself is
+   an MUI <Skeleton animation="wave"> rendered inline in
+   OrderQtyCellRenderer.jsx (no CSS keyframes needed here). ── */
+.oms-cell-loading-overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 3px;
+  background-color: #eceefd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.oms-cell-loading-overlay__pill {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 8px;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-sizing: border-box;
+}

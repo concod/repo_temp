@@ -1,0 +1,286 @@
+$primary-background: linear-gradient(135deg, #F8FAFC 0%, #EFF6FF 50%, #EEF2FF 100%), #FFF;
+$login-border-gradient: linear-gradient(90deg, rgba(179, 59, 235, 0.2) 0%, rgba(163, 161, 255, 0.2) 100%);
+
+.login {
+  width: 100%;
+  height: 100vh;
+  background: $primary-background;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.login__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 33.4375rem;
+  height: 37.4375rem;
+  padding: 4.0625rem 2.5625rem;
+  align-items: center;
+  gap: 1.5rem;
+  border-radius: 1.25rem;
+  background: rgba(255, 255, 255, 0.80);
+  box-shadow: 0 0 1.125rem 0.3125rem rgba(0, 0, 0, 0.06);
+
+  // Gradient border using pseudo-element
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 1.25rem;
+    padding: 1px;
+    background: $login-border-gradient;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: xor;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    pointer-events: none;
+  }
+}
+
+.login__bg-gradient{
+    position: fixed;
+    width: 24rem;
+    height: 24rem;
+    border-radius: 624.9375rem;
+    background: linear-gradient(#E9D5FF33,#FBCFE833);
+    // opacity: 0.4;
+    filter: blur(77.5px);
+
+    &--left{
+        left: 10%;
+        top:15%;
+    }
+    &--right{
+        right: 10%;
+        bottom:23%;
+    }
+}
+
+.login__logo{
+    width: 16.8125rem; //updated as per the new logo
+    height: 2.8125rem;
+    aspect-ratio: 25/9;
+}
+
+.login__text{
+    color: var(--greys-300);
+    text-align: center;
+}
+
+.login__heading{
+    color: var(--greys-100);
+    text-align: center;
+}
+
+.login__content, .login__content-error{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.login__retry-button,.login__signin-button{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login__divider-line{
+    position: absolute;
+    height: 1px;
+    flex-shrink: 0;
+    background: var(--greys-800);
+    width: 85%;
+    z-index: 1;
+}
+.login__divider{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login__divider-text{
+    display: inline-flex;
+    padding: 3px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 0.625rem;
+    color: var(--greys-300);
+    text-align: center;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.80);
+}
+
+// Login-specific feature badge layout (follows BEM: login__feature-badges)
+.login__feature-badges{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    align-self: stretch;
+}
+
+.login__feature-badge-item{
+    display: flex;
+    flex-direction: column;
+    padding: 0 1.9375rem;
+    align-items: center;
+    gap: 0.625rem;
+}
+
+.login__policy-container{
+    display: flex;
+    padding: 1rem 0;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.625rem;
+    border-top: 1px solid #F1F5F9;
+}
+
+.login__policy-text{
+    color: var(--greys-300);
+    text-align: center;
+}
+
+.login__policy-link{
+    color: #A93BFF;
+    text-align: center;
+}
+
+.login__footer{
+    position: relative;
+    display: flex;
+    width: 33.4375rem;
+    padding: 1.375rem;
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 1.25rem;
+    background: rgba(255, 255, 255, 0.70);
+    box-shadow: 0 0 18px 5px rgba(0, 0, 0, 0.06);
+
+    // Gradient border using pseudo-element
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 1.25rem;
+        padding: 1px;
+        background: $login-border-gradient;
+        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        mask-composite: xor;
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        pointer-events: none;
+    }
+}
+
+.login__footer-text{
+    display: inline-flex;
+    height: 2.3125rem;
+    justify-content: center;
+    align-self: stretch;
+}
+
+.login__footer-features{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.login__feature-icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 8px;
+    height: 8px;
+    border-radius: 9999px;
+    &--uptime{
+        background: rgba(34, 197, 94, 0.50);
+    }
+    &--enterprise{
+        background: rgba(139, 194, 252, 0.50);
+    }
+    &--support{
+        background: rgba(217, 137, 255, 0.50);
+    }
+}
+
+.login__feature-text{
+    color: #4B5767;
+    text-align: center;
+}
+
+.login__feature-item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: stretch;
+    height: 2.3125rem;
+    gap: 0.5rem;
+}
+
+.login__error-container{
+    display: flex;
+    width: 453px;
+    padding: 6px 16px;
+    align-items: flex-start;
+    gap: 12px;
+    border-radius: 8px;
+    border: 1px solid #FC9797;
+    background: rgba(255, 188, 192, 0.20);
+}
+
+
+.error__heading, .error__text{
+    color: #CA0D0D;
+}
+
+.error__content{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.login__contactus-button {
+    display: flex !important;
+    height: 38px !important;
+    padding: 8px 153px !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 10px !important;
+    align-self: stretch !important;
+    border-radius: 8px !important;
+    border: 1px solid #C3C8D4 !important;
+    
+    .btn__text {
+        font-family: Poppins !important;
+        font-size: 14px !important;
+        font-style: normal !important;
+        font-weight: 500 !important;
+        line-height: normal !important;
+    }
+}
+
+// Text styling for Retry with Google button
+.login__retry-button {
+    .btn--google__text {
+        font-family: Poppins !important;
+        font-size: 14px !important;
+        font-style: normal !important;
+        font-weight: 500 !important;
+        line-height: normal !important;
+    }
+}

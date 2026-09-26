@@ -1,0 +1,9 @@
+"source_column_name","source_column_datatype","required_in_product","generic_column_name","is_pk","generic_column_datatype","formula","is_attribute","is_hierarchy","hierarchy_level","is_null_allowed","unique_by","display_name","is_partition_col","is_clustering_col"
+country,string,true,country,false,varchar,,false,false,,false,false,,false,1
+Style,string,true,style,false,varchar,,false,false,,true,false,,false,
+Min_Replenishment_Quantity,integer,true,min_replenishment_quantity,false,int8,,false,false,,true,false,,false,
+Max_Replenishment_Quantity,integer,true,max_replenishment_quantity,false,int8,,false,false,,true,false,,false,
+MOQ_Tolerance,float,true,moq_tolerance,false,float8,,false,false,,true,false,,false,
+MOQ_Interval,string,true,moq_interval,false,varchar,,false,false,,true,false,,false,
+MOQ_Start_Month,string,true,moq_start_month,false,varchar,,false,false,,true,false,,false,
+,,true,moq_key,true,varchar,"concat(country ,'-' ,  style )",false,false,,false,true,,false,

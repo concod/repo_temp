@@ -1,0 +1,17 @@
+"source_column_name","source_column_datatype","required_in_product","generic_column_name","is_pk","generic_column_datatype","formula","is_attribute","is_hierarchy","hierarchy_level","is_null_allowed"
+active,bool,true,active,false,bool,"",false,false,,false
+"","",false,store_grade_ac,false,varchar,"",true,false,,true
+"","",false,store_grade_ft,false,varchar,"",true,false,,true
+"","",false,store_grade_ap,false,varchar,"",true,false,,true
+Zip Code,varchar,true,zipcode,false,varchar,"",true,true,1,true
+Address Longitude,float,true,longitude,false,varchar,"",true,false,,true
+Address Latitude,float,true,latitude,false,varchar,"",true,false,,true
+Store Square Footage,float,true,size,false,varchar,"",true,false,,true
+Avg Daily Traffic Fall 2019,float,true,daily_traffic,false,varchar,"",true,false,,true
+Region,varchar,true,region,false,varchar,"",true,true,2,true
+Store Number,int,true,store_code,true,varchar,"",false,false,,false
+Store Type,varchar,true,channel,false,varchar,"",true,false,,true
+Store Name,varchar,true,store_name,true,varchar,"",false,false,,true
+dc_name,varchar,false,dc_name,false,varchar,"",true,false,,true
+Store open date,date,false,open_date,false,date,"",true,false,,true
+Store close date,date,false,close_date,false,date,"",true,false,,true

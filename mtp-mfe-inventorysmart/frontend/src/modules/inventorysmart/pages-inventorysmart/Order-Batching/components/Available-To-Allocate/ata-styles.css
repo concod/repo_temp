@@ -1,0 +1,32 @@
+.ata-bottom-sheet.ia_modalPopover {
+  height: auto !important;
+}
+
+.ata-bottom-sheet.ia_modalPopover .ia_modalHeader {
+  border-radius: 16px 16px 0 0;
+}
+
+.ata-bottom-sheet.ia_modalPopover .ia_modalBody {
+  position: relative;
+  top: unset;
+  bottom: unset;
+  padding: 12px 16px 0;
+  overflow: visible;
+}
+
+/* Remove extra bottom padding from tab panels inside the ATA sheet */
+.ata-bottom-sheet .ia-tabPanel {
+  padding-bottom: 0 !important;
+}
+
+/* Fix stroke badge height — library has !important on 24px, override for small badges */
+.ata-bottom-sheet .MuiChip-root.impact_badges_only_label_stroke.small-badge {
+  height: 20px !important;
+  min-height: 20px;
+}
+
+/* Fix subtle badge height for tab count badges */
+.ata-bottom-sheet .MuiChip-root.impact_badges_only_label_subtle.small-badge {
+  height: 20px !important;
+  min-height: 20px;
+}

@@ -1,0 +1,35 @@
+--liquibase formatted sql
+--changeset liquibase:generic_master_mapping stripComments:false splitStatements:false context:Release_1_0 labels:liquibase_project_start
+--comment: initial changeset for generic_master_mapping
+CREATE TABLE "global".generic_master_mapping (
+	source_table varchar NULL,
+	source_level varchar NULL,
+	generic_mapping_table varchar NULL,
+	destination_table varchar NULL,
+	destination_level varchar NULL,
+	to_be_ingested bool NULL,
+	is_required_in_master bool NULL,
+	persist_attributes_table bool NULL,
+	persist_hierarchies_table bool NULL,
+	cross_validations varchar NULL,
+	pull_type varchar NULL,
+	persist_to_postgres bool NULL
+);
+
+--changeset Raj:generic_master_mapping stripComments:false splitStatements:false context:Release_1_0 labels:liquibase_project_start
+--comment: generic_master_mapping changes to global table
+ALTER TABLE "global".generic_master_mapping ADD column data_loss_threshold int2 NULL DEFAULT 100;
+
+--changeset ashish:generic_master_mapping_pk stripComments:false splitStatements:false context:Release_1_0 labels:liquibase_project_start
+--comment: initial changeset for generic_master_mapping
+ALTER TABLE global.generic_master_mapping ADD COLUMN id serial4 PRIMARY KEY;
+
+--changeset hisham.mohammed@impactanalytics.co:add_filter_column stripComments:false splitStatements:false context:Release_1_0 labels:liquibase_project_start
+--comment: added filter_column column to generic_master_mapping table
+ALTER TABLE "global".generic_master_mapping ADD column if not exists filter_column varchar NULL DEFAULT NULL;
+
+--changeset himani.sharma@impactanalytics.co:generic_master_mapping stripComments:false splitStatements:false context:Release_1_1 labels:clickhouse_integration
+--comment: added clickhouse_integration column to generic_master_mapping table
+ALTER TABLE "global".generic_master_mapping ADD column if not exists db_type varchar NULL DEFAULT 'postgresql';
+ALTER TABLE "global".generic_master_mapping ADD column if not exists product_name varchar NULL DEFAULT 'common';
+ALTER TABLE "global".generic_master_mapping RENAME COLUMN persist_to_postgres TO persist_to_db;

@@ -1,0 +1,323 @@
+// Top Comments Component Styles
+
+.top-comments {
+  width: 100%;
+  background: #FFFFFF;
+  border-radius: 16px;
+  border: 1px solid #E0E0E0;
+  // border-top: 2px dashed #E85E3B;
+  padding: 20px;
+  margin-top: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+  &__loading,
+  &__empty {
+    padding: 40px;
+    text-align: center;
+    color: #60697D;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 14px;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  &__title-section {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__title-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  &__title {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #0D152C;
+    line-height: 20px;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__filters {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    background: #F5F6FA;
+    border-radius: 8px;
+    padding: 4px;
+  }
+
+  &__filter-btn {
+    padding: 6px 16px;
+    border: none;
+    background: transparent;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: #60697D;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+
+    &:hover {
+      color: #0D152C;
+    }
+
+    &--active {
+      background: #1BA971;
+      color: #FFFFFF;
+
+      &:hover {
+        color: #FFFFFF;
+        background: #169962;
+      }
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  &__card {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 16px 0;
+    border-bottom: 1px solid #F0F1F5;
+    gap: 16px;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &--positive {
+      .top-comments__sentiment-icon {
+        filter: none;
+      }
+    }
+
+    &--negative {
+      .top-comments__sentiment-icon {
+        filter: none;
+      }
+    }
+
+    &--neutral {
+      .top-comments__sentiment-icon {
+        opacity: 0.7;
+      }
+    }
+  }
+
+  &__card-content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__comment-text {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #0D152C;
+    line-height: 20px;
+    margin: 0 0 8px 0;
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  &__date {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    color: #9CA3AF;
+  }
+
+  &__sentiment {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+  }
+
+  &__sentiment-icon {
+    width: 20px;
+    height: 20px;
+
+    &--neutral {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__more {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #F0F1F5;
+    text-align: center;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 12px;
+    color: #60697D;
+  }
+}
+
+// Responsive styles
+@media (max-width: 768px) {
+  .top-comments {
+    padding: 16px;
+    border-radius: 12px;
+
+    &__header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    &__actions {
+      width: 100%;
+      justify-content: space-between;
+    }
+
+    &__filters {
+      flex: 1;
+    }
+
+    &__filter-btn {
+      padding: 5px 12px;
+      font-size: 11px;
+      flex: 1;
+      text-align: center;
+    }
+
+    &__card {
+      padding: 12px 0;
+    }
+
+    &__comment-text {
+      font-size: 13px;
+      line-height: 18px;
+    }
+
+    &__meta {
+      gap: 4px;
+    }
+
+    &__date {
+      font-size: 11px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .top-comments {
+    padding: 12px;
+    border-radius: 10px;
+    margin-top: 12px;
+
+    &__title {
+      font-size: 13px;
+    }
+
+    &__title-icon {
+      width: 18px;
+      height: 18px;
+    }
+
+    &__filter-btn {
+      padding: 4px 10px;
+      font-size: 10px;
+    }
+
+    &__card {
+      padding: 10px 0;
+      gap: 12px;
+    }
+
+    &__comment-text {
+      font-size: 12px;
+      line-height: 17px;
+    }
+
+    &__date {
+      font-size: 10px;
+    }
+
+    &__sentiment {
+      width: 20px;
+      height: 20px;
+    }
+
+    &__sentiment-icon {
+      width: 16px;
+      height: 16px;
+
+      &--neutral {
+        width: 14px;
+        height: 14px;
+      }
+    }
+  }
+}
+
+@media (max-width: 360px) {
+  .top-comments {
+    padding: 10px;
+    margin-top: 10px;
+
+    &__header {
+      margin-bottom: 12px;
+    }
+
+    &__title {
+      font-size: 12px;
+    }
+
+    &__filter-btn {
+      padding: 3px 8px;
+      font-size: 9px;
+    }
+
+    &__card {
+      padding: 8px 0;
+      gap: 10px;
+    }
+
+    &__comment-text {
+      font-size: 11px;
+      line-height: 16px;
+      margin-bottom: 6px;
+    }
+
+    &__date {
+      font-size: 9px;
+    }
+
+    &__more {
+      font-size: 10px;
+    }
+  }
+}
+

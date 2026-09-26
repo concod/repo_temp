@@ -1,0 +1,1223 @@
+/* =========================================================
+   Design tokens (scoped)
+   ========================================================= */
+
+.tokens {
+  --space-8: 0.5rem;
+  --space-10: 0.625rem;
+  --space-12: 0.75rem;
+  --space-16: 1rem;
+  --space-24: 1.5rem;
+  --space-30: 1.875rem;
+  --space-32: 2rem;
+
+  --font-12: 0.75rem;
+  --font-16: 1rem;
+  --font-24: 1.5rem;
+  --font-32: 2rem;
+
+  --radius-4: 0.25rem;
+  --radius-8: 0.5rem;
+  --radius-12: 0.75rem;
+  --radius-16: 1rem;
+
+  /* Sticky footer height - calculated from actual button dimensions */
+  /* Footer padding top: 16px (1rem) + Button height: 24px (1.5rem) + Footer padding bottom: 16px (1rem) + Border: 1px = 57px (3.5625rem) */
+  --sticky-footer-height: 3.625rem; /* 58px - rounded up with small buffer for safety */
+
+  font-family: "Manrope", sans-serif;
+  font-size: 4px;
+  line-height: 1.5;
+  box-sizing: border-box;
+}
+
+
+
+/* Ensure children inherit variables */
+.tokens *,
+.tokens *::before,
+.tokens *::after {
+  box-sizing: inherit;
+}
+
+/* =========================================================
+   Typography
+   ========================================================= */
+
+/* Font Size (All use Manrope) */
+.text10 { font-family: "Manrope", sans-serif; font-size: 0.625rem; } /* 10px */
+.text12 { font-family: "Manrope", sans-serif; font-size: var(--font-12); } /* 12px */
+.text14 { font-family: "Manrope", sans-serif; font-size: 0.875rem; } /* 14px */
+.text16 { font-family: "Manrope", sans-serif; font-size: var(--font-16); } /* 16px */
+.text18 { font-family: "Manrope", sans-serif; font-size: 1.125rem; } /* 18px */
+.text20 { font-family: "Manrope", sans-serif; font-size: 1.25rem; } /* 20px */
+.text24 { font-family: "Manrope", sans-serif; font-size: var(--font-24); } /* 24px */
+.text28 { font-family: "Manrope", sans-serif; font-size: 1.75rem; } /* 28px */
+.text32 { font-family: "Manrope", sans-serif; font-size: var(--font-32); } /* 32px */
+.text36 { font-family: "Manrope", sans-serif; font-size: 2.25rem; } /* 36px */
+.text40 { font-family: "Manrope", sans-serif; font-size: 2.5rem; } /* 40px */
+.text48 { font-family: "Manrope", sans-serif; font-size: 3rem; } /* 48px */
+
+/* Line Height */
+.lhTight { line-height: 1.25; }
+.lhNormal { line-height: 1.5; }
+.lhLoose { line-height: 1.75; }
+.lh1 { line-height: 1; }
+.lh1_2 { line-height: 1.2; }
+.lh1_3 { line-height: 1.3; }
+.lh1_4 { line-height: 1.4; }
+.lh1_6 { line-height: 1.6; }
+.lh2 { line-height: 2; }
+
+/* Text Alignment */
+.textLeft { text-align: left; }
+.textCenter { text-align: center; }
+.textRight { text-align: right; }
+.textJustify { text-align: justify; }
+
+/* Font Weight (All use Manrope) */
+.fontThin { font-family: "Manrope", sans-serif; font-weight: 100; }
+.fontLight { font-family: "Manrope", sans-serif; font-weight: 300; }
+.fontNormal { font-family: "Manrope", sans-serif; font-weight: 400; }
+.fontMedium { font-family: "Manrope", sans-serif; font-weight: 500; }
+.fontSemibold { font-family: "Manrope", sans-serif; font-weight: 600; }
+.fontBold { font-family: "Manrope", sans-serif; font-weight: 700; }
+.fontExtrabold { font-family: "Manrope", sans-serif; font-weight: 800; }
+.font800 { font-family: "Manrope", sans-serif; font-weight: 800; }
+.fontBlack { font-family: "Manrope", sans-serif; font-weight: 900; }
+
+/* Text Transform */
+.uppercase { text-transform: uppercase; }
+.lowercase { text-transform: lowercase; }
+.capitalize { text-transform: capitalize; }
+.normalCase { text-transform: none; }
+
+/* Text Decoration */
+.underline { text-decoration: underline; }
+.lineThrough { text-decoration: line-through; }
+.noUnderline { text-decoration: none; }
+
+/* Font Family - Manrope is default, but kept for explicit use */
+.fontManrope { font-family: "Manrope", sans-serif; }
+
+/* Text Overflow */
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.textEllipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* =========================================================
+   Font Style Combinations (All use Manrope font)
+   ========================================================= */
+
+/* Font Size + Weight 800 Combinations */
+.text12_800 { font-family: "Manrope", sans-serif; font-size: var(--font-12); font-weight: 800; }
+.text14_800 { font-family: "Manrope", sans-serif; font-size: 0.875rem; font-weight: 800; }
+.text16_800 { font-family: "Manrope", sans-serif; font-size: var(--font-16); font-weight: 800; }
+.text18_800 { font-family: "Manrope", sans-serif; font-size: 1.125rem; font-weight: 800; }
+.text20_800 { font-family: "Manrope", sans-serif; font-size: 1.25rem; font-weight: 800; }
+.text24_800 { font-family: "Manrope", sans-serif; font-size: var(--font-24); font-weight: 800; }
+.text32_800 { font-family: "Manrope", sans-serif; font-size: var(--font-32); font-weight: 800; }
+
+/* Font Size + Line Height Combinations */
+.text12_lh1_2 { font-family: "Manrope", sans-serif; font-size: var(--font-12); line-height: 1.2; }
+.text12_lh1_5 { font-family: "Manrope", sans-serif; font-size: var(--font-12); line-height: 1.5; }
+.text14_lh1_2 { font-family: "Manrope", sans-serif; font-size: 0.875rem; line-height: 1.2; }
+.text14_lh1_5 { font-family: "Manrope", sans-serif; font-size: 0.875rem; line-height: 1.5; }
+.text16_lh1_2 { font-family: "Manrope", sans-serif; font-size: var(--font-16); line-height: 1.2; }
+.text16_lh1_5 { font-family: "Manrope", sans-serif; font-size: var(--font-16); line-height: 1.5; }
+.text18_lh1_2 { font-family: "Manrope", sans-serif; font-size: 1.125rem; line-height: 1.2; }
+.text18_lh1_5 { font-family: "Manrope", sans-serif; font-size: 1.125rem; line-height: 1.5; }
+.text20_lh1_2 { font-family: "Manrope", sans-serif; font-size: 1.25rem; line-height: 1.2; }
+.text20_lh1_5 { font-family: "Manrope", sans-serif; font-size: 1.25rem; line-height: 1.5; }
+.text24_lh1_2 { font-family: "Manrope", sans-serif; font-size: var(--font-24); line-height: 1.2; }
+.text24_lh1_5 { font-family: "Manrope", sans-serif; font-size: var(--font-24); line-height: 1.5; }
+.text32_lh1_2 { font-family: "Manrope", sans-serif; font-size: var(--font-32); line-height: 1.2; }
+.text32_lh1_5 { font-family: "Manrope", sans-serif; font-size: var(--font-32); line-height: 1.5; }
+
+/* Complete Combinations (Size + Weight 800 + Line Height) */
+.text12_800_lh1_2 { font-family: "Manrope", sans-serif; font-size: var(--font-12); font-weight: 800; line-height: 1.2; }
+.text12_800_lh1_5 { font-family: "Manrope", sans-serif; font-size: var(--font-12); font-weight: 800; line-height: 1.5; }
+.text14_800_lh1_2 { font-family: "Manrope", sans-serif; font-size: 0.875rem; font-weight: 800; line-height: 1.2; }
+.text14_800_lh1_5 { font-family: "Manrope", sans-serif; font-size: 0.875rem; font-weight: 800; line-height: 1.5; }
+.text16_800_lh1_2 { font-family: "Manrope", sans-serif; font-size: var(--font-16); font-weight: 800; line-height: 1.2; }
+.text16_800_lh1_5 { font-family: "Manrope", sans-serif; font-size: var(--font-16); font-weight: 800; line-height: 1.5; }
+.text18_800_lh1_2 { font-family: "Manrope", sans-serif; font-size: 1.125rem; font-weight: 800; line-height: 1.2; }
+.text18_800_lh1_5 { font-family: "Manrope", sans-serif; font-size: 1.125rem; font-weight: 800; line-height: 1.5; }
+.text20_800_lh1_2 { font-family: "Manrope", sans-serif; font-size: 1.25rem; font-weight: 800; line-height: 1.2; }
+.text20_800_lh1_5 { font-family: "Manrope", sans-serif; font-size: 1.25rem; font-weight: 800; line-height: 1.5; }
+.text24_800_lh1_2 { font-family: "Manrope", sans-serif; font-size: var(--font-24); font-weight: 800; line-height: 1.2; }
+.text24_800_lh1_5 { font-family: "Manrope", sans-serif; font-size: var(--font-24); font-weight: 800; line-height: 1.5; }
+.text32_800_lh1_2 { font-family: "Manrope", sans-serif; font-size: var(--font-32); font-weight: 800; line-height: 1.2; }
+.text32_800_lh1_5 { font-family: "Manrope", sans-serif; font-size: var(--font-32); font-weight: 800; line-height: 1.5; }
+
+/* =========================================================
+   Spacing
+   ========================================================= */
+
+/* Margin - All sides */
+.m0  { margin: 0; }
+.m8  { margin: var(--space-8); }
+.m12 { margin: var(--space-12); }
+.m16 { margin: var(--space-16); }
+.m24 { margin: var(--space-24); }
+.m32 { margin: var(--space-32); }
+
+/* Margin - Directional */
+.mt0  { margin-top: 0; }
+.mt8  { margin-top: var(--space-8); }
+.mt12 { margin-top: var(--space-12); }
+.mt16 { margin-top: var(--space-16); }
+.mt24 { margin-top: var(--space-24); }
+.mt32 { margin-top: var(--space-32); }
+
+.mr0  { margin-right: 0; }
+.mr8  { margin-right: var(--space-8); }
+.mr12 { margin-right: var(--space-12); }
+.mr16 { margin-right: var(--space-16); }
+.mr24 { margin-right: var(--space-24); }
+.mr32 { margin-right: var(--space-32); }
+
+.mb0  { margin-bottom: 0; }
+.mb8  { margin-bottom: var(--space-8); }
+.mb12 { margin-bottom: var(--space-12); }
+.mb16 { margin-bottom: var(--space-16); }
+.mb24 { margin-bottom: var(--space-24); }
+.mb32 { margin-bottom: var(--space-32); }
+
+.ml0  { margin-left: 0; }
+.ml8  { margin-left: var(--space-8); }
+.ml12 { margin-left: var(--space-12); }
+.ml16 { margin-left: var(--space-16); }
+.ml24 { margin-left: var(--space-24); }
+.ml32 { margin-left: var(--space-32); }
+
+/* Margin - Horizontal/Vertical */
+.mx0  { margin-left: 0; margin-right: 0; }
+.mx8  { margin-left: var(--space-8); margin-right: var(--space-8); }
+.mx12 { margin-left: var(--space-12); margin-right: var(--space-12); }
+.mx16 { margin-left: var(--space-16); margin-right: var(--space-16); }
+.mx24 { margin-left: var(--space-24); margin-right: var(--space-24); }
+.mx32 { margin-left: var(--space-32); margin-right: var(--space-32); }
+
+.my0  { margin-top: 0; margin-bottom: 0; }
+.my8  { margin-top: var(--space-8); margin-bottom: var(--space-8); }
+.my12 { margin-top: var(--space-12); margin-bottom: var(--space-12); }
+.my16 { margin-top: var(--space-16); margin-bottom: var(--space-16); }
+.my24 { margin-top: var(--space-24); margin-bottom: var(--space-24); }
+.my32 { margin-top: var(--space-32); margin-bottom: var(--space-32); }
+
+.mxAuto { margin-left: auto; margin-right: auto; }
+.myAuto { margin-top: auto; margin-bottom: auto; }
+.mtAuto { margin-top: auto; }
+.mrAuto { margin-right: auto; }
+.mbAuto { margin-bottom: auto; }
+.mlAuto { margin-left: auto; }
+
+/* Padding - All sides */
+.p0  { padding: 0; }
+.p8  { padding: var(--space-8); }
+.p12 { padding: var(--space-12); }
+.p16 { padding: var(--space-16); }
+.p24 { padding: var(--space-24); }
+.p32 { padding: var(--space-32); }
+
+/* Padding - Directional */
+.pt0  { padding-top: 0; }
+.pt8  { padding-top: var(--space-8); }
+.pt12 { padding-top: var(--space-12); }
+.pt16 { padding-top: var(--space-16); }
+.pt24 { padding-top: var(--space-24); }
+.pt32 { padding-top: var(--space-32); }
+
+.pr0  { padding-right: 0; }
+.pr8  { padding-right: var(--space-8); }
+.pr12 { padding-right: var(--space-12); }
+.pr16 { padding-right: var(--space-16); }
+.pr24 { padding-right: var(--space-24); }
+.pr32 { padding-right: var(--space-32); }
+
+.pb0  { padding-bottom: 0; }
+.pb8  { padding-bottom: var(--space-8); }
+.pb12 { padding-bottom: var(--space-12); }
+.pb16 { padding-bottom: var(--space-16); }
+.pb24 { padding-bottom: var(--space-24); }
+.pb30 { padding-bottom: var(--space-30); }
+.pb32 { padding-bottom: var(--space-32); }
+
+.pl0  { padding-left: 0; }
+.pl8  { padding-left: var(--space-8); }
+.pl12 { padding-left: var(--space-12); }
+.pl16 { padding-left: var(--space-16); }
+.pl24 { padding-left: var(--space-24); }
+.pl32 { padding-left: var(--space-32); }
+
+/* Padding - Horizontal/Vertical */
+.px0  { padding-left: 0; padding-right: 0; }
+.px8  { padding-left: var(--space-8); padding-right: var(--space-8); }
+.px12 { padding-left: var(--space-12); padding-right: var(--space-12); }
+.px16 { padding-left: var(--space-16); padding-right: var(--space-16); }
+.px24 { padding-left: var(--space-24); padding-right: var(--space-24); }
+.px32 { padding-left: var(--space-32); padding-right: var(--space-32); }
+
+.py0  { padding-top: 0; padding-bottom: 0; }
+.py8  { padding-top: var(--space-8); padding-bottom: var(--space-8); }
+.py12 { padding-top: var(--space-12); padding-bottom: var(--space-12); }
+.py16 { padding-top: var(--space-16); padding-bottom: var(--space-16); }
+.py24 { padding-top: var(--space-24); padding-bottom: var(--space-24); }
+.py32 { padding-top: var(--space-32); padding-bottom: var(--space-32); }
+
+/* =========================================================
+   Layout
+   ========================================================= */
+
+/* Display */
+.block { display: block; }
+.inlineBlock { display: inline-block; }
+.inline { display: inline; }
+.flex { display: flex; }
+.grid { display: grid; }
+.none { display: none; }
+.hidden { display: none; }
+
+/* Flexbox - Direction */
+.flexRow { flex-direction: row; }
+.flexRowReverse { flex-direction: row-reverse; }
+.flexCol { flex-direction: column; }
+.flexColReverse { flex-direction: column-reverse; }
+
+/* Flexbox - Justify Content */
+.justifyStart { justify-content: flex-start; }
+.justifyEnd { justify-content: flex-end; }
+.justifyCenter { justify-content: center; }
+.justifyBetween { justify-content: space-between; }
+.justifyAround { justify-content: space-around; }
+.justifyEvenly { justify-content: space-evenly; }
+
+/* Flexbox - Align Items */
+.itemsStart { align-items: flex-start; }
+.itemsEnd { align-items: flex-end; }
+.itemsCenter { align-items: center; }
+.itemsBaseline { align-items: baseline; }
+.itemsStretch { align-items: stretch; }
+
+/* Flexbox - Align Self */
+.selfStart { align-self: flex-start; }
+.selfEnd { align-self: flex-end; }
+.selfCenter { align-self: center; }
+.selfBaseline { align-self: baseline; }
+.selfStretch { align-self: stretch; }
+
+/* Flexbox - Wrap */
+.flexWrap { flex-wrap: wrap; }
+.flexNowrap { flex-wrap: nowrap; }
+.flexWrapReverse { flex-wrap: wrap-reverse; }
+
+/* Flexbox - Grow/Shrink */
+.flexGrow { flex-grow: 1; }
+.flexGrow0 { flex-grow: 0; }
+.flexShrink { flex-shrink: 1; }
+.flexShrink0 { flex-shrink: 0; }
+
+/* Flexbox - Basis */
+.flex1 { flex: 1 1 0%; }
+.flexAuto { flex: 1 1 auto; }
+.flexNone { flex: none; }
+
+/* Grid - Gap */
+.gap0  { gap: 0; }
+.gap4  { gap: 0.25rem; } /* 4px */
+.gap8  { gap: var(--space-8); }
+.gap10 { gap: var(--space-10); }
+.gap12 { gap: var(--space-12); }
+.gap16 { gap: var(--space-16); }
+.gap24 { gap: var(--space-24); }
+.gap32 { gap: var(--space-32); }
+
+/* Grid - Column Gap */
+.colGap0  { column-gap: 0; }
+.colGap8  { column-gap: var(--space-8); }
+.colGap12 { column-gap: var(--space-12); }
+.colGap16 { column-gap: var(--space-16); }
+.colGap24 { column-gap: var(--space-24); }
+.colGap32 { column-gap: var(--space-32); }
+
+/* Grid - Row Gap */
+.rowGap0  { row-gap: 0; }
+.rowGap8  { row-gap: var(--space-8); }
+.rowGap12 { row-gap: var(--space-12); }
+.rowGap16 { row-gap: var(--space-16); }
+.rowGap24 { row-gap: var(--space-24); }
+.rowGap32 { row-gap: var(--space-32); }
+
+/* Grid - Template Columns */
+.gridCols1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+.gridCols2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.gridCols3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.gridCols4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.gridCols5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.gridCols6 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+.gridCols12 { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+.gridColsAuto { grid-template-columns: auto; }
+.gridColsNone { grid-template-columns: none; }
+
+/* Grid - Column Span */
+.colSpan1 { grid-column: span 1 / span 1; }
+.colSpan2 { grid-column: span 2 / span 2; }
+.colSpan3 { grid-column: span 3 / span 3; }
+.colSpan4 { grid-column: span 4 / span 4; }
+.colSpan5 { grid-column: span 5 / span 5; }
+.colSpan6 { grid-column: span 6 / span 6; }
+.colSpanFull { grid-column: 1 / -1; }
+
+/* Grid - Template Rows */
+.gridRows1 { grid-template-rows: repeat(1, minmax(0, 1fr)); }
+.gridRows2 { grid-template-rows: repeat(2, minmax(0, 1fr)); }
+.gridRows3 { grid-template-rows: repeat(3, minmax(0, 1fr)); }
+.gridRows4 { grid-template-rows: repeat(4, minmax(0, 1fr)); }
+.gridRowsAuto { grid-template-rows: auto; }
+.gridRowsNone { grid-template-rows: none; }
+
+/* Grid - Row Span */
+.rowSpan1 { grid-row: span 1 / span 1; }
+.rowSpan2 { grid-row: span 2 / span 2; }
+.rowSpan3 { grid-row: span 3 / span 3; }
+.rowSpanFull { grid-row: 1 / -1; }
+
+/* =========================================================
+   Positioning
+   ========================================================= */
+
+.relative { position: relative; }
+.absolute { position: absolute; }
+.fixed { position: fixed; }
+.sticky { position: sticky; }
+.static { position: static; }
+
+/* Position Values */
+.top0 { top: 0; }
+.right0 { right: 0; }
+.bottom0 { bottom: 0; }
+.left0 { left: 0; }
+
+.inset0 { top: 0; right: 0; bottom: 0; left: 0; }
+
+/* Z-Index */
+.z0 { z-index: 0; }
+.z10 { z-index: 10; }
+.z20 { z-index: 20; }
+.z30 { z-index: 30; }
+.z40 { z-index: 40; }
+.z50 { z-index: 50; }
+.zAuto { z-index: auto; }
+
+/* =========================================================
+   Width & Height
+   ========================================================= */
+
+/* Width */
+.wFull { width: 100%; }
+.wAuto { width: auto; }
+.wFit { width: fit-content; }
+.wMax { width: max-content; }
+.wMin { width: min-content; }
+
+.wScreen { width: 100vw; }
+.wHalf { width: 50%; }
+.wThird { width: 33.333333%; }
+.wQuarter { width: 25%; }
+.wFifth { width: 20%; }
+
+/* Min Width */
+.minW0 { min-width: 0; }
+.minWFull { min-width: 100%; }
+.minWFit { min-width: fit-content; }
+
+/* Max Width */
+.maxWFull { max-width: 100%; }
+.maxWNone { max-width: none; }
+.maxWScreen { max-width: 100vw; }
+
+/* Height */
+.hFull { height: 100%; }
+.hAuto { height: auto; }
+.hFit { height: fit-content; }
+.hMax { height: max-content; }
+.hMin { height: min-content; }
+
+.hScreen { height: 100vh; }
+.hHalf { height: 50%; }
+.hThird { height: 33.333333%; }
+.hQuarter { height: 25%; }
+
+/* Min Height */
+.minH0 { min-height: 0; }
+.minHFull { min-height: 100%; }
+.minHFit { min-height: fit-content; }
+.minHScreen { min-height: 100vh; }
+
+/* Max Height */
+.maxHFull { max-height: 100%; }
+.maxHNone { max-height: none; }
+.maxHScreen { max-height: 100vh; }
+
+/* =========================================================
+   Overflow
+   ========================================================= */
+
+.overflowAuto { overflow: auto; }
+.overflowHidden { overflow: hidden; }
+.overflowVisible { overflow: visible; }
+.overflowScroll { overflow: scroll; }
+
+.overflowXAuto { overflow-x: auto; }
+.overflowXHidden { overflow-x: hidden; }
+.overflowXVisible { overflow-x: visible; }
+.overflowXScroll { overflow-x: scroll; }
+
+.overflowYAuto { overflow-y: auto; }
+.overflowYHidden { overflow-y: hidden; }
+.overflowYVisible { overflow-y: visible; }
+.overflowYScroll { overflow-y: scroll; }
+
+/* =========================================================
+   Borders
+   ========================================================= */
+
+.border0 { border-width: 0; }
+.border { border-width: 1px; }
+.border2 { border-width: 2px; }
+.border4 { border-width: 4px; }
+
+.borderT { border-top-width: 1px; }
+.borderR { border-right-width: 1px; }
+.borderB { border-bottom-width: 1px; }
+.borderL { border-left-width: 1px; }
+
+.borderT0 { border-top-width: 0; }
+.borderR0 { border-right-width: 0; }
+.borderB0 { border-bottom-width: 0; }
+.borderL0 { border-left-width: 0; }
+
+.borderSolid { border-style: solid; }
+.borderDashed { border-style: dashed; }
+.borderDotted { border-style: dotted; }
+.borderNone { border-style: none; }
+
+.roundedNone { border-radius: 0; }
+.rounded4 { border-radius: var(--radius-4); }
+.rounded8 { border-radius: var(--radius-8); }
+.rounded12 { border-radius: var(--radius-12); }
+.rounded16 { border-radius: var(--radius-16); }
+.roundedFull { border-radius: 9999px; }
+
+.roundedT8 { border-top-left-radius: var(--radius-8); border-top-right-radius: var(--radius-8); }
+.roundedR8 { border-top-right-radius: var(--radius-8); border-bottom-right-radius: var(--radius-8); }
+.roundedB8 { border-bottom-left-radius: var(--radius-8); border-bottom-right-radius: var(--radius-8); }
+.roundedL8 { border-top-left-radius: var(--radius-8); border-bottom-left-radius: var(--radius-8); }
+
+.roundedT12 { border-top-left-radius: var(--radius-12); border-top-right-radius: var(--radius-12); }
+.roundedR12 { border-top-right-radius: var(--radius-12); border-bottom-right-radius: var(--radius-12); }
+.roundedB12 { border-bottom-left-radius: var(--radius-12); border-bottom-right-radius: var(--radius-12); }
+.roundedL12 { border-top-left-radius: var(--radius-12); border-bottom-left-radius: var(--radius-12); }
+
+/* =========================================================
+   Shadows
+   ========================================================= */
+
+.shadowNone { box-shadow: none; }
+.shadowSm {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+.shadow {
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+.shadowMd {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+.shadowLg {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+.shadowXl {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* =========================================================
+   Cursor
+   ========================================================= */
+
+.cursorAuto { cursor: auto; }
+.cursorDefault { cursor: default; }
+.cursorPointer { cursor: pointer; }
+.cursorWait { cursor: wait; }
+.cursorText { cursor: text; }
+.cursorMove { cursor: move; }
+.cursorNotAllowed { cursor: not-allowed; }
+.cursorGrab { cursor: grab; }
+.cursorGrabbing { cursor: grabbing; }
+
+/* =========================================================
+   User Select
+   ========================================================= */
+
+.selectNone { user-select: none; }
+.selectText { user-select: text; }
+.selectAll { user-select: all; }
+.selectAuto { user-select: auto; }
+
+/* =========================================================
+   Pointer Events
+   ========================================================= */
+
+.pointerEventsNone { pointer-events: none; }
+.pointerEventsAuto { pointer-events: auto; }
+
+/* =========================================================
+   Visibility
+   ========================================================= */
+
+.visible { visibility: visible; }
+.invisible { visibility: hidden; }
+
+/* =========================================================
+   Opacity
+   ========================================================= */
+
+.opacity0 { opacity: 0; }
+.opacity25 { opacity: 0.25; }
+.opacity50 { opacity: 0.5; }
+.opacity75 { opacity: 0.75; }
+.opacity100 { opacity: 1; }
+
+/* =========================================================
+   Aspect Ratio
+   ========================================================= */
+
+.aspectAuto { aspect-ratio: auto; }
+.aspectSquare { aspect-ratio: 1 / 1; }
+.aspectVideo { aspect-ratio: 16 / 9; }
+.aspect43 { aspect-ratio: 4 / 3; }
+.aspect32 { aspect-ratio: 3 / 2; }
+.aspect21 { aspect-ratio: 2 / 1; }
+
+/* =========================================================
+   Object Fit
+   ========================================================= */
+
+.objectContain { object-fit: contain; }
+.objectCover { object-fit: cover; }
+.objectFill { object-fit: fill; }
+.objectNone { object-fit: none; }
+.objectScaleDown { object-fit: scale-down; }
+
+/* =========================================================
+   Object Position
+   ========================================================= */
+
+.objectCenter { object-position: center; }
+.objectTop { object-position: top; }
+.objectRight { object-position: right; }
+.objectBottom { object-position: bottom; }
+.objectLeft { object-position: left; }
+
+/* =========================================================
+   White Space
+   ========================================================= */
+
+.whitespaceNormal { white-space: normal; }
+.whitespaceNowrap { white-space: nowrap; }
+.whitespacePre { white-space: pre; }
+.whitespacePreLine { white-space: pre-line; }
+.whitespacePreWrap { white-space: pre-wrap; }
+
+/* =========================================================
+   Word Break
+   ========================================================= */
+
+.breakNormal { word-break: normal; overflow-wrap: normal; }
+.breakWords { overflow-wrap: break-word; }
+.breakAll { word-break: break-all; }
+.breakKeep { word-break: keep-all; }
+
+/* =========================================================
+   Flex Layout Combinations (from globalStyles)
+   ========================================================= */
+
+/* Center alignment - flex container with centered content */
+.centerAlign {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Flex row with space-between and center alignment */
+.flexAlignBetweenCenter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Layout align between center (without display: flex, assumes parent is flex) */
+.layoutAlignBetweenCenter {
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Layout align between stretch */
+.layoutAlignBetweenStretch {
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+/* Layout align space between */
+.layoutAlignSpaceBetween {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Layout align end */
+.layoutAlignEnd {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Layout align start */
+.layoutAlignStart {
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* Layout align center (without display: flex) */
+.layoutAlignCenter {
+  justify-content: center;
+  align-items: center;
+}
+
+/* Vertical align center (align-items: center) */
+.verticalAlignCenter {
+  align-items: center;
+}
+
+/* Vertical align baseline */
+.verticalAlignBaseline {
+  align-items: baseline;
+}
+
+/* Vertical align end */
+.verticalAlignEnd {
+  align-items: flex-end;
+}
+
+/* Vertical align start */
+.verticalAlignStart {
+  align-items: flex-start;
+}
+
+/* Flex basis half */
+.flexBasisHalf {
+  flex-basis: 50%;
+}
+
+/* =========================================================
+   Common Combined Patterns
+   ========================================================= */
+
+/* Card with shadow */
+.cardShadow {
+  padding: var(--space-16);
+  border-radius: var(--radius-12);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+/* Card with border */
+.cardBorder {
+  padding: var(--space-16);
+  border-radius: var(--radius-12);
+  border: 1px solid;
+}
+
+/* Scrollable container */
+.scrollableContainer {
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 100%;
+}
+
+/* Scrollable container horizontal */
+.scrollableContainerX {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+}
+
+/* Full height flex column */
+.flexColumnFull {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Full width flex row */
+.flexRowFull {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+/* Centered content container */
+.centeredContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* Space between with full width */
+.spaceBetweenFull {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+/* Sticky header */
+.stickyHeader {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: inherit;
+}
+
+/* Sticky footer */
+.stickyFooter {
+  position: fixed;
+  bottom: 0;
+  background-color: white;
+  left: 60px;
+  width: calc(100% - 60px);
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  border-top: 1px solid #E0E0E0;
+  z-index: 10;
+  padding: 1rem 1.5rem !important; /* 16px top/bottom, 24px left/right - using !important to ensure it applies */
+}
+
+/* Icon button base */
+.iconButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-8);
+  border-radius: var(--radius-8);
+  cursor: pointer;
+  border: none;
+  background: transparent;
+}
+
+/* Icon button with hover area */
+.iconButtonHover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-8);
+  border-radius: var(--radius-8);
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  min-width: 2.5rem;
+  min-height: 2.5rem;
+}
+
+/* Input-like container */
+.inputContainer {
+  padding: var(--space-8) var(--space-12);
+  border: 1px solid;
+  border-radius: var(--radius-8);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Form group */
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  width: 100%;
+}
+
+/* Form row (horizontal form fields) */
+.formRow {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-16);
+  width: 100%;
+  align-items: flex-start;
+}
+
+/* Divider/separator */
+.divider {
+  width: 100%;
+  height: 1px;
+  border: none;
+  border-top: 1px solid;
+  margin: var(--space-16) 0;
+}
+
+/* Divider vertical */
+.dividerVertical {
+  width: 0.1px;
+  height: auto;
+  border: 0.1px solid lightgray;
+}
+
+/* Badge/Pill base */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-8) var(--space-12);
+  border-radius: var(--radius-16);
+  font-size: var(--font-12);
+  font-weight: 500;
+  line-height: 1;
+}
+
+/* List item base */
+.listItem {
+  display: flex;
+  align-items: center;
+  padding: var(--space-12) var(--space-16);
+  gap: var(--space-12);
+  width: 100%;
+}
+
+/* List item hover */
+.listItemHover {
+  display: flex;
+  align-items: center;
+  padding: var(--space-12) var(--space-16);
+  gap: var(--space-12);
+  width: 100%;
+  cursor: pointer;
+  border-radius: var(--radius-8);
+}
+
+/* Empty state container */
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-32);
+  text-align: center;
+  width: 100%;
+}
+
+/* Toolbar/Action bar */
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-12) var(--space-16);
+  gap: var(--space-12);
+  width: 100%;
+  border-bottom: 1px solid;
+}
+
+/* Sidebar container */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  overflow-y: auto;
+}
+
+/* Sidebar header */
+.sidebarHeader {
+  padding: var(--space-16);
+  border-bottom: 1px solid;
+  flex-shrink: 0;
+}
+
+/* Sidebar content */
+.sidebarContent {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-16);
+}
+
+/* Sidebar footer */
+.sidebarFooter {
+  padding: var(--space-16);
+  border-top: 1px solid;
+  flex-shrink: 0;
+}
+
+/* Modal/Dialog container */
+.modalContainer {
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh;
+  max-width: 90vw;
+  border-radius: var(--radius-12);
+  overflow: hidden;
+}
+
+/* Modal header */
+.modalHeader {
+  padding: var(--space-16) var(--space-24);
+  border-bottom: 1px solid;
+  flex-shrink: 0;
+}
+
+/* Modal body */
+.modalBody {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-24);
+}
+
+/* Modal footer */
+.modalFooter {
+  padding: var(--space-16) var(--space-24);
+  border-top: 1px solid;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-12);
+}
+
+/* Table container */
+.tableContainer {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: var(--radius-8);
+}
+
+/* Table row */
+.tableRow {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: var(--space-12) var(--space-16);
+  border-bottom: 1px solid;
+}
+
+/* Table cell */
+.tableCell {
+  flex: 1;
+  padding: 0 var(--space-8);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Loading skeleton base */
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s ease-in-out infinite;
+  border-radius: var(--radius-8);
+}
+
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Clickable area */
+.clickable {
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Clickable with hover feedback */
+.clickableHover {
+  cursor: pointer;
+  user-select: none;
+  transition: opacity 0.2s ease;
+}
+
+.clickableHover:hover {
+  opacity: 0.7;
+}
+
+/* Disabled state */
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Focusable element */
+.focusable {
+  outline: none;
+}
+
+.focusable:focus-visible {
+  outline: 2px solid;
+  outline-offset: 2px;
+}
+
+/* Truncate text with max width */
+.truncateMax {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+/* Multi-line truncate (2 lines) */
+.truncate2Lines {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-clamp: 2;
+}
+
+/* Multi-line truncate (3 lines) */
+.truncate3Lines {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-clamp: 3;
+}
+
+/* Responsive container */
+.responsiveContainer {
+  width: 100%;
+  max-width: 100%;
+  margin-inline: auto;
+  padding-inline: var(--space-16);
+}
+
+/* Centered container with max width */
+.centeredContainer {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: var(--space-24);
+}
+
+/* Stack layout (vertical spacing) */
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+}
+
+.stackSm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.stackLg {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-24);
+}
+
+/* Inline stack (horizontal spacing) */
+.inlineStack {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-16);
+  align-items: center;
+}
+
+.inlineStackSm {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-8);
+  align-items: center;
+}
+
+.inlineStackLg {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-24);
+  align-items: center;
+}
+
+/* =========================================================
+   Components
+   ========================================================= */
+
+.card {
+  padding: var(--space-16);
+  border-radius: var(--radius-12);
+}
+
+.button {
+  border: none;
+  border-radius: var(--radius-12);
+  cursor: pointer;
+  font: inherit;
+}
+
+.buttonSm {
+  padding: var(--space-8) var(--space-12);
+  font-size: var(--font-12);
+}
+
+.buttonMd {
+  padding: var(--space-12) var(--space-16);
+  font-size: var(--font-16);
+}
+
+.buttonLg {
+  padding: var(--space-16) var(--space-24);
+  font-size: var(--font-24);
+}
+
+/* =========================================================
+   Containers
+   ========================================================= */
+
+.container1920 {
+  max-width: 120rem; /* 1920px / 16 */
+  margin-inline: auto;
+  padding-inline: var(--space-24);
+}
+
+.main_page_alignment {
+  padding-top: 0.75rem; /* 12px */
+  padding-right: 1.5rem; /* 24px */
+  padding-left: 1.5rem; /* 24px */
+}
+
+/* Content spacer for sticky footer - adds bottom spacing for gap */
+/* Gap: 24px (1.5rem) - container height already accounts for footer */
+.contentWithStickyFooter {
+  padding-bottom: 1.5rem; /* 24px - gap between content and footer */
+  margin-bottom: 0;
+}
+.lightBlueBg{
+  background-color: #F5F6FA;
+}
+.groupVisibilityLabel {
+  font-family: "Manrope", sans-serif;
+  font-size: 0.75rem; /* 12px */
+  font-weight: 500;
+  line-height: 1.125rem; /* 18px */
+  color: #60697d;
+}
+
+.container {
+  padding-top: 12px;
+}

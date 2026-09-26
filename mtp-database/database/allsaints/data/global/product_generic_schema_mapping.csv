@@ -1,0 +1,40 @@
+"source_column_name","source_column_datatype","required_in_product","generic_column_name","is_pk","generic_column_datatype","formula","is_attribute","is_hierarchy","hierarchy_level","is_null_allowed","unique_by"
+,int8,true,is_active,false,bool,Active=1,false,false,,true,false
+sub_class,varchar,true,sub_class,false,varchar,,true,false,,true,false
+Selling_Collection,varchar,true,selling_collection,false,varchar,,true,false,,true,false
+Marketing_Color_Name,varchar,true,color,false,varchar,,true,false,,true,false
+Merchant_Pyramid_Colorway,varchar,true,merchant_pyramid,false,varchar,,true,false,,true,false
+Parent_Style,varchar,true,parent_style_id,false,varchar,,true,false,,true,false
+Parent_Style_Description,varchar,true,parent_style_description,false,varchar,,true,false,,true,false
+Pillar,varchar,true,pillar,false,varchar,,true,false,,true,false
+Primary_Fabrication,varchar,true,fabrication,false,varchar,,true,false,,true,false
+PLM_Standard_Cost,float8,true,product_cost,false,float8,,false,false,,true,false
+SKU_Initial_Launch_Date,date,true,launch_date,false,date,,false,false,,true,false
+PS_Wholesale_Price,float8,true,wholesale_price,false,float8,,false,false,,true,false
+Retailer_Markup,float8,true,retailer_markup,false,float8,,false,false,,true,false
+Size_Description,varchar,true,size_description,false,varchar,,false,false,,true,false
+Size_ID,varchar,true,size,false,varchar,,true,false,,true,false
+Style,varchar,true,style,false,varchar,,true,false,,true,false
+Style_Color,varchar,true,article,false,varchar,,true,false,,true,false
+Style_Description,varchar,true,style_description,false,varchar,,true,false,,true,false
+Product_Name,varchar,true,product_description,false,varchar,,false,false,,true,false
+SKU_Planned_Clearance_Date,date,true,clearance_start_date,false,date,,false,false,,true,false
+Direct_IMU_Target,float8,true,direct_imu_target,false,float8,,true,false,,true,false
+Indirect_IMU_Target,float8,true,indirect_imu_target,false,float8,,true,false,,true,false
+PS_Suggested_Retail_Price,float8,true,original_price,false,float8,,false,false,,true,false
+PS_Suggested_Retail_Price,float8,true,product_price,false,float8,,false,false,,true,false
+Clearance,varchar,true,clearance,false,bool,clearance=1,false,false,,true,false
+,,true,clearance_end_date,false,date, date('2099-12-31'),false,false,,true,false
+,,true,end_date,false,date, date('2099-12-31'),false,false,,true,false
+SKU,varchar,true,sku,false,varchar,,false,false,,false,false
+Product_Name,varchar,true,product_name,false,varchar,,false,false,,true,false
+Business Category,varchar,false,l0_id,false,varchar,,true,false,,false,false
+Class,varchar,false,l2_id,false,varchar,,true,false,,false,false
+Department,varchar,false,l1_id,false,varchar,,true,false,,false,false
+,,false,l3_id,false,varchar,"coalesce(price_band,'NotAvailable')",true,false,,false,false
+Style,varchar,true,l4_name,false,varchar,,true,true,5,false,false
+SKU_UPC,varchar,true,product_code,true,varchar,,false,false,6,false,true
+Price Band,,true,l3_name,false,varchar,"coalesce(price_band,'NotAvailable')",true,true,4,false,false
+Merch Business Category,varchar,true,l0_name,false,varchar,,true,true,1,false,false
+Merch Class,varchar,true,l2_name,false,varchar,,true,true,3,false,false
+Merch Department,varchar,true,l1_name,false,varchar,,true,true,2,false,false

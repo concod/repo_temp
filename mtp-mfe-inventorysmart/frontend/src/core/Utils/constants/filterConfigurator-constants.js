@@ -1,0 +1,1 @@
+export const GLOBAL_ATTRIBUTE_LEVELS_MAPPING = ['Create Plan form builder'];

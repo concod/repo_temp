@@ -1,0 +1,81 @@
+.starred-msg-container {
+  width: 100%;
+  padding-top: 8px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  .ia-styles.ia-avatar.ia-avatar-small {
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 18px;
+    height: 25px;
+    width: 25px;
+    text-transform: capitalize;
+    background: #da1e28;
+    color: white;
+  }
+}
+.starred-msg-card {
+  padding: 6px 12px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  &:hover {
+    background: #eceefd;
+    .starred-icon {
+      display: block;
+    }
+    .date {
+      display: none;
+    }
+  }
+  .starred-icon {
+    display: none;
+  }
+  .MuiSvgIcon-root {
+    height: 16px;
+    color: #dcdc81;
+  }
+  .right-side-starred {
+    display: flex;
+  }
+  .msg-details {
+    margin-left: 25px;
+    .user-name {
+      font-size: 16px;
+      font-weight: 800;
+      line-height: 24px;
+      color: #1d1d1d;
+      text-transform: capitalize;
+    }
+    .user-msg {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 20px;
+      color: #1d1d1d;
+      margin-top: 2px;
+      white-space: break-spaces;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .highlight {
+      display: inline;
+      color: #00008b;
+      cursor: pointer;
+      font-size: 1em;
+      font-weight: 500;
+      line-height: 1.25rem;
+      word-break: break-word;
+      background: #59afe880;
+    }
+  }
+  .date {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 15px;
+    color: #758490;
+  }
+}

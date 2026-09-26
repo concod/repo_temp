@@ -1,0 +1,39 @@
+"data_source_id","data_source_code","data_source_name","data_source_type","database_object","query_text","schema_name","api_endpoint","api_method","api_headers","api_timeout_seconds","value_field","label_field","additional_fields","filter_conditions","required_params","optional_params","default_params","default_sort_field","default_sort_direction","enable_caching","cache_ttl_seconds","max_records","description","is_active","created_at","updated_at","created_by","updated_by"
+1,ds_departments,Department List,table,dim_departments,,public,,GET,"{}",30,dept_id,dept_name,"[""dept_code"", ""is_active""]",WHERE is_active = true,"{}","{}","{}",dept_name,ASC,true,3600,1000,List of all active departments from dim_departments table,true,2026-02-12 07:22:26.326,2026-02-12 07:22:26.326,,
+2,ds_subdepartments,Sub-Department List (Filtered by Department),query,,"SELECT subdept_id, subdept_name, dept_id, subdept_code
+     FROM dim_subdepartments
+     WHERE dept_id = ANY(:department_ids)
+     AND is_active = true",public,,GET,"{}",30,subdept_id,subdept_name,"[""subdept_code"", ""dept_id""]",,"[""department_ids""]","{}","{}",subdept_name,ASC,true,1800,1000,Sub-departments filtered by selected department IDs (parameterized query),true,2026-02-12 07:22:26.626,2026-02-12 07:22:26.626,,
+3,ds_categories,Category List (Filtered by Sub-Department),query,,"SELECT category_id, category_name, subdept_id, category_code
+     FROM dim_categories
+     WHERE subdept_id = ANY(:subdept_ids)
+     AND is_active = true",public,,GET,"{}",30,category_id,category_name,"[""category_code"", ""subdept_id""]",,"[""subdept_ids""]","{}","{}",category_name,ASC,true,1800,1000,Categories filtered by selected sub-department IDs,true,2026-02-12 07:22:26.919,2026-02-12 07:22:26.919,,
+4,ds_stores,Store List,table,dim_stores,,public,,GET,"{}",30,store_id,store_name,"[""store_code"", ""region"", ""city"", ""is_active""]",WHERE is_active = true,"{}","{}","{}",store_name,ASC,true,3600,1000,List of all active stores,true,2026-02-12 07:22:27.304,2026-02-12 07:22:27.304,,
+5,ds_date_ranges,Predefined Date Ranges,query,,"SELECT
+        period_code as value,
+        period_label as label,
+        start_date,
+        end_date
+     FROM (
+        VALUES
+            ('today', 'Today', CURRENT_DATE, CURRENT_DATE),
+            ('yesterday', 'Yesterday', CURRENT_DATE - 1, CURRENT_DATE - 1),
+            ('last_7_days', 'Last 7 Days', CURRENT_DATE - 7, CURRENT_DATE),
+            ('last_30_days', 'Last 30 Days', CURRENT_DATE - 30, CURRENT_DATE),
+            ('this_month', 'This Month', DATE_TRUNC('month', CURRENT_DATE), CURRENT_DATE),
+            ('last_month', 'Last Month', DATE_TRUNC('month', CURRENT_DATE - INTERVAL '1 month'), DATE_TRUNC('month', CURRENT_DATE) - 1)
+     ) AS periods(period_code, period_label, start_date, end_date)",public,,GET,"{}",30,value,label,"{}",,"{}", "{}","{}",,ASC,true,86400,1000,Predefined date range options,true,2026-02-12 07:22:27.613,2026-02-12 07:22:27.613,,
+6,ds_promo_status,Promotion Status Options,query,,"SELECT
+        status_code as value,
+        status_label as label,
+        display_color
+     FROM (
+        VALUES
+            ('draft', 'Draft', 'gray'),
+            ('active', 'Active', 'green'),
+            ('scheduled', 'Scheduled', 'blue'),
+            ('completed', 'Completed', 'purple'),
+            ('cancelled', 'Cancelled', 'red')
+     ) AS statuses(status_code, status_label, display_color)",public,,GET,"{}",30,value,label,"{}",,"{}", "{}","{}",,ASC,true,86400,1000,Promotion status filter options,true,2026-02-12 07:22:27.907,2026-02-12 07:22:27.907,,
+7,ds_active_products,Active Products View,view,vw_active_products,,public,,GET,"{}",30,product_id,product_name,"[""product_code"", ""category_name"", ""price""]",WHERE 1=1,"{}","{}","{}",product_name,ASC,true,1800,1000,Active products from view with category information,true,2026-02-12 07:22:28.217,2026-02-12 07:22:28.217,,
+8,ds_stores_by_region,Stores by Region (Function),function,fn_get_stores_by_region,,public,,GET,"{}",30,store_id,store_name,"{}",,"[""region_ids""]","{}","{}",,ASC,true,1800,1000,Stores filtered by region using database function,true,2026-02-12 07:22:28.511,2026-02-12 07:22:28.511,,

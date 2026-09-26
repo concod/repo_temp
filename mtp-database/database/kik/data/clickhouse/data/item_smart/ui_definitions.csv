@@ -1,0 +1,1407 @@
+"screen_name","config","version","updated_at","is_active"
+item-management,"{
+  ""filterId"": ""item-management"",
+  ""title"": ""Item Filters"",
+  ""dimensions"": [
+    {
+      ""id"": ""product"",
+      ""label"": ""Product"",
+      ""icon"": ""shapes"",
+      ""disabled"": false,
+      ""actions"": {
+        ""clearAll"": true
+      },
+      ""sections"": [
+        {
+          ""order"": 1,
+          ""id"": ""custom_filter"",
+          ""label"": ""Custom Filter"",
+          ""columns"": 1,
+          ""gapBetweenFields"": 6,
+          ""fields"": [
+            {
+              ""id"": ""product_selection_method"",
+              ""label"": ""How you want to select the product?"",
+              ""type"": ""button_group"",
+              ""isRequired"": true,
+              ""doNotIncludeInSubmit"": true,
+              ""defaultSelectedValue"": ""hierarchy"",
+              ""options"": [
+                {
+                  ""value"": ""hierarchy"",
+                  ""label"": ""Product Hierarchy"",
+                  ""icon"": ""box""
+                },
+                {
+                  ""value"": ""upload"",
+                  ""label"": ""Upload Excel"",
+                  ""icon"": ""upload""
+                },
+                {
+                  ""value"": ""copy_paste"",
+                  ""label"": ""Copy & Paste"",
+                  ""icon"": ""copy""
+                }
+              ]
+            }
+          ]
+        },
+        {
+          ""order"": 2,
+          ""id"": ""product_details"",
+          ""label"": ""Product"",
+          ""columns"": 2,
+          ""gapBetweenFields"": 6,
+          ""isCascading"": true,
+          ""fields"": [
+            {
+              ""id"": ""l0_name"",
+              ""label"": ""Division"",
+              ""type"": ""select"",
+              ""placeholder"": ""Select Division"",
+              ""isRequired"": true,
+              ""visibilityDependency"": [
+                {
+                  ""fieldId"": ""product_selection_method"",
+                  ""value"": ""hierarchy""
+                }
+              ],
+              ""apiConfig"": {
+                ""apiEndpoint"": ""hierarchy-filter"",
+                ""method"": ""POST""
+              },
+              ""options"": []
+            },
+            {
+              ""id"": ""l1_name"",
+              ""label"": ""EKB"",
+              ""type"": ""select"",
+              ""isRequired"": true,
+              ""isMultiSelect"": true,
+              ""apiConfig"": {
+                ""apiEndpoint"": ""hierarchy-filter"",
+                ""method"": ""POST""
+              },
+              ""placeholder"": ""Select EKB"",
+              ""visibilityDependency"": [
+                {
+                  ""fieldId"": ""product_selection_method"",
+                  ""value"": ""hierarchy""
+                }
+              ],
+              ""options"": []
+            },
+            {
+              ""id"": ""l2_name"",
+              ""label"": ""WOGR"",
+              ""type"": ""select"",
+              ""isRequired"": false,
+              ""isMultiSelect"": true,
+              ""apiConfig"": {
+                ""apiEndpoint"": ""hierarchy-filter"",
+                ""method"": ""POST""
+              },
+              ""placeholder"": ""Select WOGR"",
+              ""visibilityDependency"": [
+                {
+                  ""fieldId"": ""product_selection_method"",
+                  ""value"": ""hierarchy""
+                }
+              ],
+              ""options"": []
+            },
+            {
+              ""id"": ""l3_name"",
+              ""label"": ""Warrengruppe"",
+              ""type"": ""select"",
+              ""isRequired"": false,
+              ""isMultiSelect"": true,
+              ""apiConfig"": {
+                ""apiEndpoint"": ""hierarchy-filter"",
+                ""method"": ""POST""
+              },
+              ""placeholder"": ""Select Warrengruppe"",
+              ""visibilityDependency"": [
+                {
+                  ""fieldId"": ""product_selection_method"",
+                  ""value"": ""hierarchy""
+                }
+              ],
+              ""options"": []
+            },
+            {
+              ""id"": ""l4_name"",
+              ""label"": ""ArticleKlammer"",
+              ""type"": ""select"",
+              ""isRequired"": false,
+              ""isMultiSelect"": true,
+              ""apiConfig"": {
+                ""apiEndpoint"": ""hierarchy-filter"",
+                ""method"": ""POST""
+              },
+              ""placeholder"": ""Select ArticleKlammer"",
+              ""visibilityDependency"": [
+                {
+                  ""fieldId"": ""product_selection_method"",
+                  ""value"": ""hierarchy""
+                }
+              ],
+              ""options"": []
+            }
+          ]
+        },
+        {
+          ""order"": 3,
+          ""id"": ""attributes"",
+          ""label"": ""Attribute"",
+          ""columns"": 2,
+          ""gapBetweenFields"": 6,
+          ""showDividerOnTop"": true,
+          ""isCascading"": true,
+          ""fields"": [
+            {
+              ""id"": ""color_family_name"",
+              ""label"": ""Color Family"",
+              ""type"": ""select"",
+              ""isRequired"": false,
+              ""isMultiSelect"": true,
+              ""apiConfig"": {
+                ""apiEndpoint"": ""hierarchy-filter"",
+                ""method"": ""POST""
+              },
+              ""placeholder"": ""Select"",
+              ""visibilityDependency"": [
+                {
+                  ""fieldId"": ""product_selection_method"",
+                  ""value"": ""hierarchy""
+                }
+              ],
+              ""options"": []
+            },
+            {
+              ""id"": ""brand"",
+              ""label"": ""Brand"",
+              ""type"": ""select"",
+              ""isMultiSelect"": true,
+              ""isRequired"": false,
+              ""placeholder"": ""Select"",
+              ""apiConfig"": {
+                ""apiEndpoint"": ""hierarchy-filter"",
+                ""method"": ""POST""
+              },
+              ""visibilityDependency"": [
+                {
+                  ""fieldId"": ""product_selection_method"",
+                  ""value"": ""hierarchy""
+                }
+              ],
+              ""options"": []
+            },
+            {
+              ""id"": ""fashion_grade"",
+              ""label"": ""Fashion Grade"",
+              ""type"": ""select"",
+              ""isMultiSelect"": true,
+              ""isRequired"": false,
+              ""placeholder"": ""Select"",
+              ""apiConfig"": {
+                ""apiEndpoint"": ""hierarchy-filter"",
+                ""method"": ""POST""
+              },
+              ""visibilityDependency"": [
+                {
+                  ""fieldId"": ""product_selection_method"",
+                  ""value"": ""hierarchy""
+                }
+              ],
+              ""options"": []
+            }
+          ]
+        },
+        {
+          ""order"": 3,
+          ""id"": ""upload_section"",
+          ""fields"": [
+            {
+              ""id"": ""upload_file"",
+              ""type"": ""fill_form_by_file_upload"",
+              ""doNotIncludeInSubmit"": true,
+              ""supportedFileTypes"": [
+                {
+                  ""fileType"": ""xls"",
+                  ""templateUrl"": ""https://www.google.com"",
+                  ""typeOverride"": false
+                }
+              ],
+              ""maxFileSize"": 1048576,
+              ""validationConfig"": {
+                ""apiEndpoint"": ""hierarchy-filter/validate/excel""
+              },
+              ""visibilityDependency"": [
+                {
+                  ""fieldId"": ""product_selection_method"",
+                  ""value"": ""upload""
+                }
+              ]
+            }
+          ]
+        },
+        {
+          ""order"": 4,
+          ""id"": ""copy_paste_section"",
+          ""columns"": 1,
+          ""fields"": [
+            {
+              ""id"": ""copy_paste"",
+              ""type"": ""fill_form_by_paste"",
+              ""doNotIncludeInSubmit"": true,
+              ""placeholder"": ""Enter product IDs separated by commas or new lines"",
+              ""selectFieldConfig"": {
+                ""selectFieldLabel"": ""Select Field"",
+                ""selectFieldPlaceholder"": ""Choose a field to update"",
+                ""selectFieldOptions"": [
+                  { ""label"": ""Division"", ""value"": ""l0_name"" },
+                  { ""label"": ""EKB"", ""value"": ""l1_name"" },
+                  { ""label"": ""WOGR"", ""value"": ""l2_name"" },
+                  { ""label"": ""Warrengruppe"", ""value"": ""l3_name"" },
+                  { ""label"": ""ArticleKlammer"", ""value"": ""l4_name"" }
+                ]
+              },
+              ""validationConfig"": {
+                ""apiEndpoint"": ""hierarchy-filter/validate/paste""
+              },
+              ""visibilityDependency"": [
+                {
+                  ""fieldId"": ""product_selection_method"",
+                  ""value"": ""copy_paste""
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      ""id"": ""channels"",
+      ""label"": ""Channels"",
+      ""icon"": ""store"",
+      ""disabled"": false,
+      ""actions"": {
+        ""clearAll"": true
+      },
+      ""sections"": [
+        {
+          ""order"": 1,
+          ""id"": ""channel_selection"",
+          ""label"": ""Channel"",
+          ""columns"": 2,
+          ""isCascading"": true,
+          ""gapBetweenFields"": 6,
+          ""fields"": [
+            {
+              ""id"": ""channels"",
+              ""label"": ""Channel"",
+              ""type"": ""select"",
+              ""isRequired"": true,
+              ""isMultiSelect"": true,
+              ""placeholder"": ""Select"",
+              ""apiConfig"": {
+                ""apiEndpoint"": ""hierarchy-channels"",
+                ""method"": ""POST""
+              },
+              ""options"": []
+            },
+            {
+              ""id"": ""sub_channels"",
+              ""label"": ""Sub Channel"",
+              ""type"": ""select"",
+              ""isRequired"": false,
+              ""isMultiSelect"": true,
+              ""apiConfig"": {
+                ""apiEndpoint"": ""hierarchy-channels"",
+                ""method"": ""POST""
+              },
+              ""placeholder"": ""Select"",
+              ""options"": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      ""id"": ""plan_period"",
+      ""label"": ""Plan Period"",
+      ""icon"": ""calendar"",
+      ""disabled"": false,
+      ""sections"": [
+        {
+          ""order"": 1,
+          ""id"": ""period_section"",
+          ""label"": ""Plan Period"",
+          ""gapBetweenFields"": 6,
+          ""columns"": 2,
+          ""fields"": [
+            {
+              ""id"": ""custom"",
+              ""label"": ""Select Date Range"",
+              ""type"": ""date_range"",
+              ""isRequired"": true,
+              ""placeholder"": ""Select Date Range"",
+              ""defaultRange"": {
+                ""start"": ""01/2023"",
+                ""end"": ""01/2023""
+              },
+              ""dateFormat"": ""MM-DD-YYYY""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      ""id"": ""landing_screen"",
+      ""label"": ""Landing Screen"",
+      ""icon"": ""rocket"",
+      ""actions"": {
+        ""clearAll"": false
+      },
+      ""sections"": [
+        {
+          ""order"": 1,
+          ""id"": ""landing_screen_section"",
+          ""label"": ""Landing Screen"",
+          ""fields"": [
+            {
+              ""id"": ""landing_screen"",
+              ""type"": ""radio"",
+              ""isRequired"": false,
+              ""orientation"": ""row"",
+              ""defaultSelectedValue"": ""dashboard"",
+              ""doNotIncludeInStrip"": true,
+              ""options"": [
+                {
+                  ""value"": ""dashboard"",
+                  ""label"": ""Dashboard""
+                },
+                {
+                  ""value"": ""planning_grid"",
+                  ""label"": ""Planning grid""
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  ""savedFiltersConfig"": {
+    ""saveFilterConfig"": {
+      ""formId"": ""item-management"",
+      ""columns"": 2,
+      ""gapBetweenFields"": 4,
+      ""fields"": [
+        {
+          ""id"": ""name"",
+          ""label"": ""Filter Name"",
+          ""fieldType"": ""text_with_backend_validation"",
+          ""validationConfig"": {
+            ""apiEndpoint"": ""user-filter-preferences/validate"",
+            ""fieldValuesToIncludeInApiRequest"": [""type""]
+          },
+          ""isRequired"": true,
+          ""disableDependency"": [
+            {
+              ""fieldId"": ""id"",
+              ""value"": null
+            }
+          ]
+        },
+        {
+          ""id"": ""description"",
+          ""colSpan"": 2,
+          ""label"": ""Description"",
+          ""fieldType"": ""text_area"",
+          ""maxRows"": 5,
+          ""characterLimit"": 500
+        },
+        {
+          ""id"": ""type"",
+          ""label"": ""Save filter as"",
+          ""fieldType"": ""radio"",
+          ""orientation"": ""row"",
+          ""colSpan"": 2,
+          ""options"": [
+            {
+              ""label"": ""Personal"",
+              ""value"": ""personal""
+            },
+            {
+              ""label"": ""Global"",
+              ""value"": ""global""
+            }
+          ],
+          ""isRequired"": true,
+          ""defaultSelectedValue"": ""personal""
+        },
+        {
+          ""id"": ""default"",
+          ""label"": ""Make filter as default"",
+          ""fieldType"": ""switch"",
+          ""leftLabel"": ""No"",
+          ""rightLabel"": ""Yes""
+        }
+      ]
+    },
+    ""getSavedFiltersListEndpoint"": ""user-filter-preferences"",
+    ""saveFilterEndpoint"": ""user-filter-preferences"",
+    ""getSavedFilterEndpoint"": ""user-filter-preferences"",
+    ""deleteFilterEndpoint"": ""user-filter-preferences"",
+    ""updateFilterEndpoint"": ""user-filter-preferences"",
+    ""getAvailableFilterNamesEndpoint"": ""user-filter-preferences/validate""
+  },
+  ""actions"": {
+    ""clearAll"": true,
+    ""saveFilter"": true,
+    ""applyFilters"": true,
+    ""cancel"": true
+  }
+}
+
+","1.0.0",2025-12-09 20:38:56,true
+item-management-1,"{
+  ""filterId"": ""item-management"",
+  ""title"": ""Item Filters"",
+  ""dimensions"": [
+    {
+      ""id"": ""product"",
+      ""label"": ""Product"",
+      ""icon"": ""shapes"",
+      ""disabled"": false,
+      ""actions"": {
+        ""clearAll"": true
+      },
+      ""sections"": [
+        {
+          ""order"": 1,
+          ""id"": ""custom_filter"",
+          ""label"": ""Custom Filter"",
+          ""columns"": 1,
+          ""gapBetweenFields"": 6,
+          ""fields"": [
+            {
+              ""id"": ""product_selection_method"",
+              ""label"": ""How you want to select the product?"",
+              ""type"": ""button_group"",
+              ""isRequired"": true,
+              ""doNotIncludeInSubmit"": true,
+              ""defaultSelectedValue"": ""hierarchy"",
+              ""options"": [
+                {
+                  ""value"": ""hierarchy"",
+                  ""label"": ""Product Hierarchy"",
+                  ""icon"": ""box""
+                },
+                {
+                  ""value"": ""upload"",
+                  ""label"": ""Upload Excel"",
+                  ""icon"": ""upload""
+                },
+                {
+                  ""value"": ""copy_paste"",
+                  ""label"": ""Copy & Paste"",
+                  ""icon"": ""copy""
+                }
+              ]
+            }
+          ]
+        },
+        {
+          ""order"": 2,
+          ""id"": ""product_details"",
+          ""label"": ""Product"",
+          ""columns"": 2,
+          ""gapBetweenFields"": 6,
+          ""isCascading"": true,
+          ""fields"": [
+            {
+              ""id"": ""l0_name"",
+              ""label"": ""Division"",
+              ""type"": ""select"",
+              ""placeholder"": ""Select Division"",
+              ""isRequired"": true,
+              ""visibilityDependency"": [
+                {
+                  ""fieldId"": ""product_selection_method"",
+                  ""value"": ""hierarchy""
+                }
+              ],
+              ""apiConfig"": {
+                ""apiEndpoint"": ""hierarchy-filter"",
+                ""method"": ""POST""
+              },
+              ""options"": []
+            },
+            {
+              ""id"": ""l1_name"",
+              ""label"": ""EKB"",
+              ""type"": ""select"",
+              ""isRequired"": true,
+              ""isMultiSelect"": true,
+              ""apiConfig"": {
+                ""apiEndpoint"": ""hierarchy-filter"",
+                ""method"": ""POST""
+              },
+              ""placeholder"": ""Select EKB"",
+              ""visibilityDependency"": [
+                {
+                  ""fieldId"": ""product_selection_method"",
+                  ""value"": ""hierarchy""
+                }
+              ],
+              ""options"": []
+            },
+            {
+              ""id"": ""l2_name"",
+              ""label"": ""WOGR"",
+              ""type"": ""select"",
+              ""isRequired"": false,
+              ""isMultiSelect"": true,
+              ""apiConfig"": {
+                ""apiEndpoint"": ""hierarchy-filter"",
+                ""method"": ""POST""
+              },
+              ""placeholder"": ""Select WOGR"",
+              ""visibilityDependency"": [
+                {
+                  ""fieldId"": ""product_selection_method"",
+                  ""value"": ""hierarchy""
+                }
+              ],
+              ""options"": []
+            },
+            {
+              ""id"": ""l3_name"",
+              ""label"": ""Warrengruppe"",
+              ""type"": ""select"",
+              ""isRequired"": false,
+              ""isMultiSelect"": true,
+              ""apiConfig"": {
+                ""apiEndpoint"": ""hierarchy-filter"",
+                ""method"": ""POST""
+              },
+              ""placeholder"": ""Select Warrengruppe"",
+              ""visibilityDependency"": [
+                {
+                  ""fieldId"": ""product_selection_method"",
+                  ""value"": ""hierarchy""
+                }
+              ],
+              ""options"": []
+            },
+            {
+              ""id"": ""l4_name"",
+              ""label"": ""ArticleKlammer"",
+              ""type"": ""select"",
+              ""isRequired"": false,
+              ""isMultiSelect"": true,
+              ""apiConfig"": {
+                ""apiEndpoint"": ""hierarchy-filter"",
+                ""method"": ""POST""
+              },
+              ""placeholder"": ""Select ArticleKlammer"",
+              ""visibilityDependency"": [
+                {
+                  ""fieldId"": ""product_selection_method"",
+                  ""value"": ""hierarchy""
+                }
+              ],
+              ""options"": []
+            }
+          ]
+        },
+        {
+          ""order"": 3,
+          ""id"": ""attributes"",
+          ""label"": ""Attribute"",
+          ""columns"": 2,
+          ""gapBetweenFields"": 6,
+          ""showDividerOnTop"": true,
+          ""isCascading"": true,
+          ""fields"": [
+            {
+              ""id"": ""color_family_name"",
+              ""label"": ""Color Family"",
+              ""type"": ""select"",
+              ""isRequired"": false,
+              ""isMultiSelect"": true,
+              ""apiConfig"": {
+                ""apiEndpoint"": ""hierarchy-filter"",
+                ""method"": ""POST""
+              },
+              ""placeholder"": ""Select"",
+              ""visibilityDependency"": [
+                {
+                  ""fieldId"": ""product_selection_method"",
+                  ""value"": ""hierarchy""
+                }
+              ],
+              ""options"": []
+            },
+            {
+              ""id"": ""brand"",
+              ""label"": ""Brand"",
+              ""type"": ""select"",
+              ""isMultiSelect"": true,
+              ""isRequired"": false,
+              ""placeholder"": ""Select"",
+              ""apiConfig"": {
+                ""apiEndpoint"": ""hierarchy-filter"",
+                ""method"": ""POST""
+              },
+              ""visibilityDependency"": [
+                {
+                  ""fieldId"": ""product_selection_method"",
+                  ""value"": ""hierarchy""
+                }
+              ],
+              ""options"": []
+            },
+            {
+              ""id"": ""fashion_grade"",
+              ""label"": ""Fashion Grade"",
+              ""type"": ""select"",
+              ""isMultiSelect"": true,
+              ""isRequired"": false,
+              ""placeholder"": ""Select"",
+              ""apiConfig"": {
+                ""apiEndpoint"": ""hierarchy-filter"",
+                ""method"": ""POST""
+              },
+              ""visibilityDependency"": [
+                {
+                  ""fieldId"": ""product_selection_method"",
+                  ""value"": ""hierarchy""
+                }
+              ],
+              ""options"": []
+            }
+          ]
+        },
+        {
+          ""order"": 3,
+          ""id"": ""upload_section"",
+          ""fields"": [
+            {
+              ""id"": ""upload_file"",
+              ""type"": ""fill_form_by_file_upload"",
+              ""doNotIncludeInSubmit"": true,
+              ""supportedFileTypes"": [
+                {
+                  ""fileType"": ""xls"",
+                  ""templateUrl"": ""https://www.google.com"",
+                  ""typeOverride"": false
+                }
+              ],
+              ""maxFileSize"": 1048576,
+              ""validationConfig"": {
+                ""apiEndpoint"": ""hierarchy-filter/validate/excel""
+              },
+              ""visibilityDependency"": [
+                {
+                  ""fieldId"": ""product_selection_method"",
+                  ""value"": ""upload""
+                }
+              ]
+            }
+          ]
+        },
+        {
+          ""order"": 4,
+          ""id"": ""copy_paste_section"",
+          ""columns"": 1,
+          ""fields"": [
+            {
+              ""id"": ""copy_paste"",
+              ""type"": ""fill_form_by_paste"",
+              ""doNotIncludeInSubmit"": true,
+              ""placeholder"": ""Enter product IDs separated by commas or new lines"",
+              ""selectFieldConfig"": {
+                ""selectFieldLabel"": ""Select Field"",
+                ""selectFieldPlaceholder"": ""Choose a field to update"",
+                ""selectFieldOptions"": [
+                  { ""label"": ""Division"", ""value"": ""l0_name"" },
+                  { ""label"": ""EKB"", ""value"": ""l1_name"" },
+                  { ""label"": ""WOGR"", ""value"": ""l2_name"" },
+                  { ""label"": ""Warrengruppe"", ""value"": ""l3_name"" },
+                  { ""label"": ""ArticleKlammer"", ""value"": ""l4_name"" }
+                ]
+              },
+              ""validationConfig"": {
+                ""apiEndpoint"": ""hierarchy-filter/validate/paste""
+              },
+              ""visibilityDependency"": [
+                {
+                  ""fieldId"": ""product_selection_method"",
+                  ""value"": ""copy_paste""
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      ""id"": ""channels"",
+      ""label"": ""Channels"",
+      ""icon"": ""store"",
+      ""disabled"": false,
+      ""actions"": {
+        ""clearAll"": true
+      },
+      ""sections"": [
+        {
+          ""order"": 1,
+          ""id"": ""channel_selection"",
+          ""label"": ""Channel"",
+          ""columns"": 2,
+          ""isCascading"": true,
+          ""gapBetweenFields"": 6,
+          ""fields"": [
+            {
+              ""id"": ""channels"",
+              ""label"": ""Channel"",
+              ""type"": ""select"",
+              ""isRequired"": true,
+              ""isMultiSelect"": true,
+              ""placeholder"": ""Select"",
+              ""apiConfig"": {
+                ""apiEndpoint"": ""hierarchy-channels"",
+                ""method"": ""POST""
+              },
+              ""options"": []
+            },
+            {
+              ""id"": ""sub_channels"",
+              ""label"": ""Sub Channel"",
+              ""type"": ""select"",
+              ""isRequired"": false,
+              ""isMultiSelect"": true,
+              ""apiConfig"": {
+                ""apiEndpoint"": ""hierarchy-channels"",
+                ""method"": ""POST""
+              },
+              ""placeholder"": ""Select"",
+              ""options"": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      ""id"": ""plan_period"",
+      ""label"": ""Plan Period"",
+      ""icon"": ""calendar"",
+      ""disabled"": false,
+      ""sections"": [
+        {
+          ""order"": 1,
+          ""id"": ""period_section"",
+          ""label"": ""Plan Period"",
+          ""gapBetweenFields"": 6,
+          ""columns"": 2,
+          ""fields"": [
+            {
+              ""id"": ""custom"",
+              ""label"": ""Select Date Range"",
+              ""type"": ""date_range"",
+              ""isRequired"": true,
+              ""placeholder"": ""Select Date Range"",
+              ""defaultRange"": {
+                ""start"": ""01/2023"",
+                ""end"": ""01/2023""
+              },
+              ""dateFormat"": ""MM-DD-YYYY""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      ""id"": ""landing_screen"",
+      ""label"": ""Landing Screen"",
+      ""icon"": ""rocket"",
+      ""actions"": {
+        ""clearAll"": false
+      },
+      ""sections"": [
+        {
+          ""order"": 1,
+          ""id"": ""landing_screen_section"",
+          ""label"": ""Landing Screen"",
+          ""fields"": [
+            {
+              ""id"": ""landing_screen"",
+              ""type"": ""radio"",
+              ""isRequired"": false,
+              ""orientation"": ""row"",
+              ""defaultSelectedValue"": ""dashboard"",
+              ""doNotIncludeInStrip"": true,
+              ""options"": [
+                {
+                  ""value"": ""dashboard"",
+                  ""label"": ""Dashboard""
+                },
+                {
+                  ""value"": ""planning_grid"",
+                  ""label"": ""Planning grid""
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  ""savedFiltersConfig"": {
+    ""saveFilterConfig"": {
+      ""formId"": ""item-management"",
+      ""columns"": 2,
+      ""gapBetweenFields"": 4,
+      ""fields"": [
+        {
+          ""id"": ""name"",
+          ""label"": ""Filter Name"",
+          ""fieldType"": ""text_with_backend_validation"",
+          ""validationConfig"": {
+            ""apiEndpoint"": ""user-filter-preferences/validate"",
+            ""fieldValuesToIncludeInApiRequest"": [""type""]
+          },
+          ""isRequired"": true,
+          ""disableDependency"": [
+            {
+              ""fieldId"": ""id"",
+              ""value"": null
+            }
+          ]
+        },
+        {
+          ""id"": ""description"",
+          ""colSpan"": 2,
+          ""label"": ""Description"",
+          ""fieldType"": ""text_area"",
+          ""maxRows"": 5,
+          ""characterLimit"": 500
+        },
+        {
+          ""id"": ""type"",
+          ""label"": ""Save filter as"",
+          ""fieldType"": ""radio"",
+          ""orientation"": ""row"",
+          ""colSpan"": 2,
+          ""options"": [
+            {
+              ""label"": ""Personal"",
+              ""value"": ""personal""
+            },
+            {
+              ""label"": ""Global"",
+              ""value"": ""global""
+            }
+          ],
+          ""isRequired"": true,
+          ""defaultSelectedValue"": ""personal""
+        },
+        {
+          ""id"": ""default"",
+          ""label"": ""Make filter as default"",
+          ""fieldType"": ""switch"",
+          ""leftLabel"": ""No"",
+          ""rightLabel"": ""Yes""
+        }
+      ]
+    },
+    ""getSavedFiltersListEndpoint"": ""user-filter-preferences"",
+    ""saveFilterEndpoint"": ""user-filter-preferences"",
+    ""getSavedFilterEndpoint"": ""user-filter-preferences"",
+    ""deleteFilterEndpoint"": ""user-filter-preferences"",
+    ""updateFilterEndpoint"": ""user-filter-preferences"",
+    ""getAvailableFilterNamesEndpoint"": ""user-filter-preferences/validate""
+  },
+  ""actions"": {
+    ""clearAll"": true,
+    ""saveFilter"": true,
+    ""applyFilters"": true,
+    ""cancel"": true
+  }
+}
+
+","1.0.0",2025-12-09 20:38:56,true
+product-configuration,"{
+  ""filterId"": ""product-configuration"",
+  ""title"": ""Product Filters"",
+  ""dimensions"": [
+    {
+      ""id"": ""product"",
+      ""label"": ""Product"",
+      ""icon"": ""shapes"",
+      ""disabled"": false,
+      ""actions"": {
+        ""clearAll"": true
+      },
+      ""sections"": [
+        {
+          ""order"": 1,
+          ""id"": ""custom_filter"",
+          ""label"": ""Custom Filter"",
+          ""columns"": 1,
+          ""gapBetweenFields"": 6,
+          ""fields"": [
+            {
+              ""id"": ""product_selection_method"",
+              ""label"": ""How you want to select the products?"",
+              ""type"": ""button_group"",
+              ""isRequired"": true,
+              ""doNotIncludeInSubmit"": true,
+              ""defaultSelectedValue"": ""hierarchy"",
+              ""options"": [
+                {
+                  ""value"": ""hierarchy"",
+                  ""label"": ""Product Hierarchy"",
+                  ""icon"": ""box""
+                },
+                {
+                  ""value"": ""upload"",
+                  ""label"": ""Upload Excel"",
+                  ""icon"": ""upload""
+                },
+                {
+                  ""value"": ""copy_paste"",
+                  ""label"": ""Copy & Paste"",
+                  ""icon"": ""copy""
+                }
+              ]
+            }
+          ]
+        },
+        {
+          ""order"": 2,
+          ""id"": ""product_details"",
+          ""label"": ""Product"",
+          ""columns"": 2,
+          ""gapBetweenFields"": 6,
+          ""isCascading"": true,
+          ""fields"": [
+            {
+              ""id"": ""l0_name"",
+              ""label"": ""Division"",
+              ""type"": ""select"",
+              ""placeholder"": ""Select Division"",
+              ""isRequired"": true,
+              ""visibilityDependency"": [
+                {
+                  ""fieldId"": ""product_selection_method"",
+                  ""value"": ""hierarchy""
+                }
+              ],
+              ""apiConfig"": {
+                ""apiEndpoint"": ""hierarchy-filter"",
+                ""method"": ""POST""
+              },
+              ""options"": []
+            },
+            {
+              ""id"": ""l1_name"",
+              ""label"": ""EKB"",
+              ""type"": ""select"",
+              ""isRequired"": true,
+              ""isMultiSelect"": true,
+              ""apiConfig"": {
+                ""apiEndpoint"": ""hierarchy-filter"",
+                ""method"": ""POST""
+              },
+              ""placeholder"": ""Select EKB"",
+              ""visibilityDependency"": [
+                {
+                  ""fieldId"": ""product_selection_method"",
+                  ""value"": ""hierarchy""
+                }
+              ],
+              ""options"": []
+            },
+            {
+              ""id"": ""l2_name"",
+              ""label"": ""WOGR"",
+              ""type"": ""select"",
+              ""isRequired"": false,
+              ""isMultiSelect"": true,
+              ""apiConfig"": {
+                ""apiEndpoint"": ""hierarchy-filter"",
+                ""method"": ""POST""
+              },
+              ""placeholder"": ""Select WOGR"",
+              ""visibilityDependency"": [
+                {
+                  ""fieldId"": ""product_selection_method"",
+                  ""value"": ""hierarchy""
+                }
+              ],
+              ""options"": []
+            },
+            {
+              ""id"": ""l3_name"",
+              ""label"": ""Warrengruppe"",
+              ""type"": ""select"",
+              ""isRequired"": false,
+              ""isMultiSelect"": true,
+              ""apiConfig"": {
+                ""apiEndpoint"": ""hierarchy-filter"",
+                ""method"": ""POST"",
+                ""doNotIncludeSectionFormStateInApiRequest"": true
+              },
+              ""placeholder"": ""Select Warrengruppe"",
+              ""visibilityDependency"": [
+                {
+                  ""fieldId"": ""product_selection_method"",
+                  ""value"": ""hierarchy""
+                }
+              ],
+              ""options"": []
+            },
+            {
+              ""id"": ""l4_name"",
+              ""label"": ""ArticleKlammer"",
+              ""type"": ""select"",
+              ""isRequired"": false,
+              ""isMultiSelect"": true,
+              ""apiConfig"": {
+                ""apiEndpoint"": ""hierarchy-filter"",
+                ""method"": ""POST"",
+                ""doNotIncludeSectionFormStateInApiRequest"": true
+              },
+              ""placeholder"": ""Select ArticleKlammer"",
+              ""visibilityDependency"": [
+                {
+                  ""fieldId"": ""product_selection_method"",
+                  ""value"": ""hierarchy""
+                }
+              ],
+              ""options"": []
+            }
+          ]
+        },
+        {
+          ""order"": 3,
+          ""id"": ""attributes"",
+          ""label"": ""Attribute"",
+          ""columns"": 2,
+          ""gapBetweenFields"": 6,
+          ""showDividerOnTop"": true,
+          ""fields"": [
+            {
+              ""id"": ""color"",
+              ""label"": ""Color"",
+              ""type"": ""select"",
+              ""isRequired"": false,
+              ""isMultiSelect"": false,
+              ""placeholder"": ""Select"",
+              ""visibilityDependency"": [
+                {
+                  ""fieldId"": ""product_selection_method"",
+                  ""value"": ""hierarchy""
+                }
+              ],
+              ""options"": [
+                { ""value"": ""red"", ""label"": ""Red"" },
+                { ""value"": ""blue"", ""label"": ""Blue"" },
+                { ""value"": ""green"", ""label"": ""Green"" },
+                { ""value"": ""yellow"", ""label"": ""Yellow"" },
+                { ""value"": ""black"", ""label"": ""Black"" },
+                { ""value"": ""white"", ""label"": ""White"" },
+                { ""value"": ""brown"", ""label"": ""Brown"" },
+                { ""value"": ""gray"", ""label"": ""Gray"" }
+              ]
+            },
+            {
+              ""id"": ""shape"",
+              ""label"": ""Shape"",
+              ""type"": ""select"",
+              ""isMultiSelect"": true,
+              ""isRequired"": false,
+              ""placeholder"": ""Select"",
+              ""visibilityDependency"": [
+                {
+                  ""fieldId"": ""product_selection_method"",
+                  ""value"": ""hierarchy""
+                }
+              ],
+              ""options"": [
+                { ""value"": ""round"", ""label"": ""Round"" },
+                { ""value"": ""square"", ""label"": ""Square"" },
+                { ""value"": ""rectangular"", ""label"": ""Rectangular"" },
+                { ""value"": ""oval"", ""label"": ""Oval"" },
+                { ""value"": ""irregular"", ""label"": ""Irregular"" }
+              ]
+            },
+            {
+              ""id"": ""dropship"",
+              ""label"": ""Dropship"",
+              ""type"": ""select"",
+              ""isMultiSelect"": true,
+              ""isRequired"": false,
+              ""placeholder"": ""Select"",
+              ""visibilityDependency"": [
+                {
+                  ""fieldId"": ""product_selection_method"",
+                  ""value"": ""hierarchy""
+                }
+              ],
+              ""options"": [
+                { ""value"": ""yes"", ""label"": ""Yes"" },
+                { ""value"": ""no"", ""label"": ""No"" },
+                { ""value"": ""conditional"", ""label"": ""Conditional"" }
+              ]
+            },
+            {
+              ""id"": ""vendor"",
+              ""label"": ""Vendor"",
+              ""type"": ""select"",
+              ""isMultiSelect"": true,
+              ""isRequired"": false,
+              ""placeholder"": ""Select"",
+              ""visibilityDependency"": [
+                {
+                  ""fieldId"": ""product_selection_method"",
+                  ""value"": ""hierarchy""
+                }
+              ],
+              ""options"": [
+                { ""value"": ""vendor1"", ""label"": ""Vendor A"" },
+                { ""value"": ""vendor2"", ""label"": ""Vendor B"" },
+                { ""value"": ""vendor3"", ""label"": ""Vendor C"" },
+                { ""value"": ""vendor4"", ""label"": ""Vendor D"" }
+              ]
+            },
+            {
+              ""id"": ""size"",
+              ""label"": ""Size"",
+              ""type"": ""select"",
+              ""isMultiSelect"": true,
+              ""isRequired"": false,
+              ""placeholder"": ""Select"",
+              ""visibilityDependency"": [
+                {
+                  ""fieldId"": ""product_selection_method"",
+                  ""value"": ""hierarchy""
+                }
+              ],
+              ""options"": [
+                { ""value"": ""small"", ""label"": ""Small"" },
+                { ""value"": ""medium"", ""label"": ""Medium"" },
+                { ""value"": ""large"", ""label"": ""Large"" },
+                { ""value"": ""xlarge"", ""label"": ""Extra Large"" }
+              ]
+            },
+            {
+              ""id"": ""light_type"",
+              ""label"": ""Light Type"",
+              ""type"": ""select"",
+              ""isMultiSelect"": true,
+              ""isRequired"": false,
+              ""placeholder"": ""Select"",
+              ""visibilityDependency"": [
+                {
+                  ""fieldId"": ""product_selection_method"",
+                  ""value"": ""hierarchy""
+                }
+              ],
+              ""options"": [
+                { ""value"": ""led"", ""label"": ""LED"" },
+                { ""value"": ""incandescent"", ""label"": ""Incandescent"" },
+                { ""value"": ""fluorescent"", ""label"": ""Fluorescent"" },
+                { ""value"": ""halogen"", ""label"": ""Halogen"" }
+              ]
+            }
+          ]
+        },
+        {
+          ""order"": 3,
+          ""id"": ""upload_section"",
+          ""fields"": [
+            {
+              ""id"": ""upload_file"",
+              ""type"": ""fill_form_by_file_upload"",
+              ""doNotIncludeInSubmit"": true,
+              ""supportedFileTypes"": [
+                {
+                  ""fileType"": ""xls"",
+                  ""templateUrl"": ""https://www.google.com"",
+                  ""typeOverride"": false
+                }
+              ],
+              ""maxFileSize"": 1048576,
+              ""validationConfig"": {
+                ""apiEndpoint"": ""hierarchy-filter/validate/excel""
+              },
+              ""visibilityDependency"": [
+                {
+                  ""fieldId"": ""product_selection_method"",
+                  ""value"": ""upload""
+                }
+              ]
+            }
+          ]
+        },
+        {
+          ""order"": 4,
+          ""id"": ""copy_paste_section"",
+          ""columns"": 1,
+          ""fields"": [
+            {
+              ""id"": ""copy_paste"",
+              ""type"": ""fill_form_by_paste"",
+              ""doNotIncludeInSubmit"": true,
+              ""placeholder"": ""Enter product IDs separated by commas or new lines"",
+              ""selectFieldConfig"": {
+                ""selectFieldLabel"": ""Select Field"",
+                ""selectFieldPlaceholder"": ""Choose a field to update"",
+                ""selectFieldOptions"": [
+                  { ""label"": ""Division"", ""value"": ""l0_name"" },
+                  { ""label"": ""EKB"", ""value"": ""l1_name"" },
+                  { ""label"": ""WOGR"", ""value"": ""l2_name"" },
+                  { ""label"": ""Warrengruppe"", ""value"": ""l3_name"" },
+                  { ""label"": ""ArticleKlammer"", ""value"": ""l4_name"" }
+                ]
+              },
+              ""validationConfig"": {
+                ""apiEndpoint"": ""hierarchy-filter/validate/paste""
+              },
+              ""visibilityDependency"": [
+                {
+                  ""fieldId"": ""product_selection_method"",
+                  ""value"": ""copy_paste""
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      ""id"": ""channels"",
+      ""label"": ""Channels"",
+      ""icon"": ""store"",
+      ""disabled"": false,
+      ""actions"": {
+        ""clearAll"": true
+      },
+      ""sections"": [
+        {
+          ""order"": 1,
+          ""id"": ""channel_selection"",
+          ""label"": ""Channel"",
+          ""columns"": 2,
+          ""isCascading"": true,
+          ""gapBetweenFields"": 6,
+          ""fields"": [
+            {
+              ""id"": ""channels"",
+              ""label"": ""Channel"",
+              ""type"": ""select"",
+              ""isRequired"": true,
+              ""isMultiSelect"": true,
+              ""placeholder"": ""Select"",
+              ""apiConfig"": {
+                ""apiEndpoint"": ""hierarchy-channels"",
+                ""method"": ""POST""
+              },
+              ""options"": []
+            },
+            {
+              ""id"": ""sub_channels"",
+              ""label"": ""Sub Channel"",
+              ""type"": ""select"",
+              ""isRequired"": false,
+              ""isMultiSelect"": true,
+              ""apiConfig"": {
+                ""apiEndpoint"": ""hierarchy-channels"",
+                ""method"": ""POST""
+              },
+              ""placeholder"": ""Select"",
+              ""options"": []
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  ""savedFiltersConfig"": {
+    ""saveFilterConfig"": {
+      ""formId"": ""product-configuration"",
+      ""columns"": 2,
+      ""gapBetweenFields"": 4,
+      ""fields"": [
+        {
+          ""id"": ""name"",
+          ""label"": ""Filter Name"",
+          ""fieldType"": ""text_with_backend_validation"",
+          ""validationConfig"": {
+            ""apiEndpoint"": ""user-filter-preferences/validate"",
+            ""fieldValuesToIncludeInApiRequest"": [""type""]
+          },
+          ""isRequired"": true,
+          ""disableDependency"": [
+            {
+              ""fieldId"": ""id"",
+              ""value"": null
+            }
+          ]
+        },
+        {
+          ""id"": ""description"",
+          ""colSpan"": 2,
+          ""label"": ""Description"",
+          ""fieldType"": ""text_area"",
+          ""maxRows"": 5,
+          ""characterLimit"": 500
+        },
+        {
+          ""id"": ""type"",
+          ""label"": ""Save filter as"",
+          ""fieldType"": ""radio"",
+          ""orientation"": ""row"",
+          ""colSpan"": 2,
+          ""options"": [
+            {
+              ""label"": ""Personal"",
+              ""value"": ""personal""
+            },
+            {
+              ""label"": ""Global"",
+              ""value"": ""global""
+            }
+          ],
+          ""isRequired"": true,
+          ""defaultSelectedValue"": ""personal""
+        },
+        {
+          ""id"": ""default"",
+          ""label"": ""Make filter as default"",
+          ""fieldType"": ""switch"",
+          ""leftLabel"": ""No"",
+          ""rightLabel"": ""Yes""
+        }
+      ]
+    },
+    ""getSavedFiltersListEndpoint"": ""user-filter-preferences"",
+    ""saveFilterEndpoint"": ""user-filter-preferences"",
+    ""getSavedFilterEndpoint"": ""user-filter-preferences"",
+    ""deleteFilterEndpoint"": ""user-filter-preferences"",
+    ""updateFilterEndpoint"": ""user-filter-preferences"",
+    ""getAvailableFilterNamesEndpoint"": ""user-filter-preferences/validate""
+  },
+  ""actions"": {
+    ""clearAll"": true,
+    ""saveFilter"": true,
+    ""applyFilters"": true,
+    ""cancel"": true
+  }
+}","1.0.0",1970-01-01 05:30:00,true

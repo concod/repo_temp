@@ -1,0 +1,193 @@
+--liquibase formatted sql
+--changeset vaibhav.bhosale@impactanalytics.co:pc_add_actuals_stack_agg_data runOnChange:true stripComments:false splitStatements:false context:Release_1_0 labels:liquibase_project_start
+--comment: stacking changes for pc_add_actuals_stack_agg_data
+
+DROP PROCEDURE if exists price_promo_opt.pc_add_actuals_stack_agg_data;
+CREATE OR REPLACE PROCEDURE price_promo_opt.pc_add_actuals_stack_agg_data(IN var_date date)
+ LANGUAGE plpgsql
+ SECURITY DEFINER
+AS $procedure$
+
+-- Purpose – Aggregates actual data for stacked promotions (multiple promotions affecting the same product)
+-- 
+-- Example – CALL price_promo_opt.pc_add_actuals_stack_agg_data('2023-01-15');
+-- 
+-- Other Functions Used:
+-- * None directly, but creates and uses temporary tables
+-- 
+-- Tables Used:
+-- * ps_recommended_actuals_[yyyymmdd] - Contains detailed actual data for the specified date
+-- * price_promo_opt_temp.ps_reco_actuals_stack_temp - Temporary table for stacked promotion data
+-- * ps_recommended_actuals_stack_agg - Target table where stacked aggregated data is stored
+-- 
+-- Returns – No direct return value; inserts aggregated data for stacked promotions into ps_recommended_actuals_stack_agg table
+
+DECLARE
+
+    actuals_table TEXT;
+
+    query TEXT;
+
+BEGIN
+
+    -- Dynamically generate the table name for the given date
+
+    actuals_table := CONCAT('ps_recommended_actuals_', TO_CHAR(var_date, 'yyyymmdd'));
+
+
+
+    -- Create a temporary table for aggregated actuals data
+
+    EXECUTE FORMAT(
+
+        'DROP TABLE IF EXISTS price_promo_opt_temp.ps_reco_actuals_stack_temp;
+         CREATE UNLOGGED TABLE price_promo_opt_temp.ps_reco_actuals_stack_temp AS
+         SELECT
+            event_id,
+            product_id,
+           -- s0_id,
+           -- s1_id,
+            recommendation_date,
+            currency_id,
+            array_agg(distinct promo_id order by promo_id) AS promo_ids,
+            MAX(discount_level_value) AS discount_level_value,
+            MAX(effective_discount) AS effective_discount,
+            AVG(original_price) AS original_price,
+            AVG(original_cost) AS original_cost,
+            AVG(discounted_price) AS discounted_price,
+            MAX(promo_spend) AS promo_spend,
+		    MAX(coupon_amount) AS coupon_amount,
+			---- May 12 ----
+			MAX(coupon_spend) AS coupon_spend,
+			--MAX(extended_discount) AS extended_discount,
+			MAX(final_spend) AS final_spend,
+			---- May 12 ----
+            MAX(sales_units) AS sales_units,
+            MAX(baseline_sales_units) AS baseline_sales_units,
+            MAX(incremental_sales_units) AS incremental_sales_units,
+
+            MAX(revenue) AS revenue,
+            MAX(baseline_revenue) AS baseline_revenue,
+            MAX(incremental_revenue) AS incremental_revenue,
+
+            MAX(margin) AS margin,
+            MAX(baseline_margin) AS baseline_margin,
+            MAX(incremental_margin) AS incremental_margin,
+
+            AVG(aur) AS aur,
+            AVG(aum) AS aum,
+            MAX(vat_percentage) AS vat_percentage,
+            MAX(recommendation_type_id) AS recommendation_type_id,
+            MAX(created_by) AS created_by,
+            MAX(updated_by) AS updated_by,
+            MAX(created_at) AS created_at,
+            MAX(updated_at) AS updated_at,
+
+            MAX(contribution_revenue) AS contribution_revenue,
+            MAX(contribution_margin) AS contribution_margin
+
+         FROM price_promo.%I pra
+
+         GROUP BY
+            event_id,
+            product_id,
+         --   s0_id,
+         --   s1_id,
+            recommendation_date,
+            currency_id;',
+        actuals_table
+
+    );
+
+
+
+    -- Delete existing records for the given recommendation date
+
+    DELETE FROM price_promo.ps_recommended_actuals_stack_agg
+    WHERE recommendation_date = var_date;
+
+
+
+    -- Prepare the INSERT query for aggregated actuals data
+
+    query := FORMAT(
+
+        'INSERT INTO price_promo.ps_recommended_actuals_stack_agg (
+            event_id, promo_ids, recommendation_date, currency_id, vat_percentage,
+            discount_level_value, offer_type_combined_display_name,
+            effective_discount, original_price, original_cost, discounted_price, promo_spend,
+			coupon_amount,
+			----- May 12 ------
+			coupon_spend, final_spend,
+			----- May 12 ------
+            sales_units, baseline_sales_units, incremental_sales_units,
+            revenue, baseline_revenue, incremental_revenue,
+            margin, baseline_margin, incremental_margin,
+            aur, aum,
+            recommendation_type_id, created_by, updated_by, created_at, updated_at,
+            contribution_revenue, contribution_margin
+
+        ) (
+
+            SELECT
+
+                event_id,
+                promo_ids,
+                recommendation_date,
+                COALESCE(currency_id, 1) AS currency_id,
+                MAX(vat_percentage) AS vat_percentage,
+                NULL AS discount_level_value,
+                NULL AS offer_type_combined_display_name,
+                ROUND(((1 - COALESCE(SUM(discounted_price) / NULLIF(SUM(original_price), 0), 1)) * 100)::NUMERIC, 2) AS effective_discount,
+                ROUND(AVG(original_price)::NUMERIC, 2) AS original_price,
+                ROUND(AVG(original_cost)::NUMERIC, 2) AS original_cost,
+                ROUND(AVG(discounted_price)::NUMERIC, 2) AS discounted_price,
+                ROUND(SUM(promo_spend)::NUMERIC, 2) AS promo_spend,
+				ROUND(SUM(coupon_amount)::NUMERIC, 2) AS coupon_amount,
+				----- May 12 -----
+				round(sum(coupon_spend)::numeric, 2) as coupon_spend,
+				--round(sum(extended_discount)::numeric, 2) as extended_discount,
+				round(sum(final_spend)::numeric, 2) as final_spend,				
+				----- May 12 -----
+                ROUND(SUM(sales_units)::NUMERIC, 2) AS sales_units,
+                ROUND(SUM(baseline_sales_units)::NUMERIC, 2) AS baseline_sales_units,
+                ROUND(SUM(incremental_sales_units)::NUMERIC, 2) AS incremental_sales_units,
+                ROUND(SUM(revenue)::NUMERIC, 2) AS revenue,
+                ROUND(SUM(baseline_revenue)::NUMERIC, 2) AS baseline_revenue,
+                ROUND(SUM(incremental_revenue)::NUMERIC, 2) AS incremental_revenue,
+                ROUND(SUM(margin)::NUMERIC, 2) AS margin,
+                ROUND(SUM(baseline_margin)::NUMERIC, 2) AS baseline_margin,
+                ROUND(SUM(incremental_margin)::NUMERIC, 2) AS incremental_margin,
+                ROUND(COALESCE(SUM(revenue) / NULLIF(SUM(sales_units), 0), 0)::NUMERIC, 2) AS aur,
+                ROUND(COALESCE(SUM(margin) / NULLIF(SUM(sales_units), 0), 0)::NUMERIC, 2) AS aum,
+                MAX(recommendation_type_id) AS recommendation_type_id,
+                MAX(created_by) AS created_by,
+                MAX(updated_by) AS updated_by,
+                MAX(created_at) AS created_at,
+                MAX(updated_at) AS updated_at,
+                ROUND(SUM(COALESCE(contribution_revenue, 0))::NUMERIC, 2) AS contribution_revenue,
+                ROUND(SUM(COALESCE(contribution_margin, 0))::NUMERIC, 2) AS contribution_margin
+            FROM price_promo_opt_temp.ps_reco_actuals_stack_temp pra
+            GROUP BY
+                event_id,
+                promo_ids,
+                recommendation_date,
+                currency_id
+
+        );');
+
+
+
+    -- Log and execute the query
+
+    RAISE NOTICE 'Executing SQL QUERY: %', query;
+
+    EXECUTE query;
+
+END;
+
+$procedure$
+
+
+
+;

@@ -1,0 +1,41 @@
+"fc_code","label","column_name","type","display_type","level","dimension","is_mandatory","is_multiple_selection","range_min","range_max","default_value","is_disabled","is_clearable","display_order","is_required","extra","is_deleted"
+22,Entry Date,entry_date,non-cascaded,DateTimeField,,plan_period,true,false,,,,false,true,7,true,"{""views"": [""year"", ""month""], ""adjustTo"": ""startOfMonth"", ""adjustDate"": true, ""disablePast"": true}",false
+22,Exit Date,exit_date,non-cascaded,DateTimeField,,plan_period,false,false,,,,false,true,8,true,"{""views"": [""year"", ""month""], ""adjustTo"": ""endOfMonth"", ""adjustDate"": true, ""disablePast"": true}",false
+22,Country,l0_name,cascaded,dropdown,1,product,true,false,,,,false,true,1,false,"{}",false
+22,Channel,l1_name,cascaded,dropdown,2,product,true,true,,,,false,true,2,false,"{}",false
+22,Brand,l2_name,cascaded,dropdown,3,product,true,true,,,,false,true,3,false,"{}",false
+22,SBU,l3_name,cascaded,dropdown,4,product,true,true,,,,false,true,4,false,"{}",false
+22,Department,l4_name,cascaded,dropdown,5,product,true,true,,,,false,true,5,false,"{}",false
+22,Collection Total,l5_name,cascaded,dropdown,6,product,true,true,,,,false,true,6,false,"{}",false
+60,End Date,end_date,non-cascaded,DateTimeField,,plan_period,true,false,,,,false,true,8,true,"{""views"": [""year"", ""month""], ""adjustTo"": ""endOfMonth"", ""adjustDate"": true, ""disablePast"": true}",false
+60,Country,l0_name,cascaded,dropdown,1,product,true,false,,,,false,true,1,false,"{}",false
+60,Channel,l1_name,cascaded,dropdown,2,product,true,true,,,,false,true,2,false,"{}",false
+60,Brand,l2_name,cascaded,dropdown,3,product,true,true,,,,false,true,3,false,"{}",false
+60,SBU,l3_name,cascaded,dropdown,4,product,true,true,,,,false,true,4,false,"{}",false
+60,Department,l4_name,cascaded,dropdown,5,product,false,true,,,,false,true,5,false,"{}",false
+60,Collection Total,l5_name,cascaded,dropdown,6,product,false,true,,,,false,true,6,false,"{}",false
+60,Start Date,start_date,non-cascaded,DateTimeField,,plan_period,true,false,,,,false,true,7,true,"{""views"": [""year"", ""month""], ""adjustTo"": ""startOfMonth"", ""adjustDate"": true, ""disablePast"": true}",false
+60,Collection,collection,cascaded,dropdown,7,product,false,true,,,,false,true,7,false,"{}",false
+11000,Sleeve Length Desc,sleeve_length_dsc,cascaded,dropdown,,product,FALSE,FALSE,,,,FALSE,FALSE,0,FALSE,{},FALSE
+11000,Sleeve Type,sleeve_type,cascaded,dropdown,,product,FALSE,FALSE,,,,FALSE,FALSE,0,FALSE,{},FALSE
+11000,Leg Type,leg_type,cascaded,dropdown,,product,FALSE,FALSE,,,,FALSE,FALSE,0,FALSE,{},FALSE
+11000,Size,size,cascaded,dropdown,,product,FALSE,FALSE,,,,FALSE,FALSE,0,FALSE,{},FALSE
+11000,Active,active,cascaded,dropdown,,product,FALSE,FALSE,,,,FALSE,FALSE,0,FALSE,{},FALSE
+11000,Cost,cost,cascaded,IntegerField,,product,FALSE,FALSE,0,1000,,FALSE,FALSE,11,FALSE,{},FALSE
+11000,Price,price,cascaded,IntegerField,,product,FALSE,FALSE,0,100000,,FALSE,FALSE,30,FALSE,{},FALSE
+11000,Leg Length Desc,leg_length_dsc,cascaded,dropdown,,product,FALSE,FALSE,,,,FALSE,FALSE,0,FALSE,{},FALSE
+4010,Brand,l2_name,cascaded,dropdown,3,product,false,true,,,,false,true,3,true,"{}",false
+4010,SBU,l3_name,cascaded,dropdown,4,product,false,true,,,,false,true,4,true,"{}",false
+4010,Department,l4_name,cascaded,dropdown,5,product,false,true,,,,false,true,5,true,"{}",false
+4010,Collection Total,l5_name,cascaded,dropdown,6,product,false,true,,,,false,true,6,true,"{}",false
+4010,Collection,collection,cascaded,dropdown,,product,false,true,,,,false,true,7,true,"{}",false
+4010,Country,l0_name,cascaded,dropdown,1,product,true,false,,,,false,true,1,true,"{}",false
+4010,Channel,l1_name,cascaded,dropdown,2,product,false,true,,,,false,true,2,true,"{}",false
+4444,Exit Date,exit_date,non-cascaded,DateTimeField,,plan_period,false,false,,,,false,true,8,true,"{""views"": [""year"", ""month""], ""adjustTo"": ""endOfMonth"", ""adjustDate"": true, ""disablePast"": true}",false
+4444,Country,l0_name,cascaded,dropdown,1,product,true,false,,,,false,true,1,false,"{}",false
+4444,Channel,l1_name,cascaded,dropdown,2,product,true,false,,,,false,true,2,false,"{}",false
+4444,Brand,l2_name,cascaded,dropdown,3,product,true,false,,,,false,true,3,false,"{}",false
+4444,SBU,l3_name,cascaded,dropdown,4,product,true,false,,,,false,true,4,false,"{}",false
+4444,Department,l4_name,cascaded,dropdown,5,product,true,false,,,,false,true,5,false,"{}",false
+4444,Collection Total,l5_name,cascaded,dropdown,6,product,true,false,,,,false,true,6,false,"{}",false
+4444,Entry Date,entry_date,non-cascaded,DateTimeField,,plan_period,true,false,,,,false,true,7,true,"{""views"": [""year"", ""month""], ""adjustTo"": ""startOfMonth"", ""adjustDate"": true, ""disablePast"": true}",false

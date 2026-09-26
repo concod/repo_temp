@@ -1,0 +1,25 @@
+source_table,source_level,generic_mapping_table,destination_table,destination_level,to_be_ingested,is_required_in_master,persist_attributes_table,persist_hierarchies_table,cross_validations,pull_type,persist_to_postgres,data_loss_threshold,id
+store_intermediate,,store_generic_schema_mapping,store_master,,TRUE,TRUE,TRUE,TRUE,,full,TRUE,100,1
+mfp_intermediate,,mfp_generic_schema_mapping,mfp_master,,TRUE,FALSE,FALSE,FALSE,,full,FALSE,100,2
+fiscal_calendar_intermediate,,fiscal_generic_schema_mapping,fiscal_date_mapping,,TRUE,TRUE,FALSE,FALSE,,full,TRUE,100,3
+ecom_intermediate,,ecom_generic_schema_mapping,ecom_master,,TRUE,FALSE,FALSE,FALSE,,incremental,FALSE,100,4
+inventory_intermediate,,inventory_generic_schema_mapping,inventory_master,,TRUE,TRUE,FALSE,FALSE,"['product_master', 'store_master']",incremental,FALSE,100,5
+transaction_intermediate,,transaction_generic_schema_mapping,transaction_master,,TRUE,TRUE,FALSE,FALSE,"['product_master', 'store_master']",incremental,FALSE,100,6
+event_intermediate,,events_generic_schema_mapping,event_master,,FALSE,TRUE,FALSE,FALSE,,full,TRUE,100,7
+mainsubsku_intermediate,,mainsubsku_generic_schema_mapping,mainsubsku_master,,TRUE,TRUE,FALSE,FALSE,,full,FALSE,100,8
+po_intermediate,,po_generic_schema_mapping,po_master,,TRUE,FALSE,FALSE,FALSE,,incremental,FALSE,100,9
+store_group,,qc_store_group_generic_schema_mapping,,,FALSE,FALSE,FALSE,FALSE,,,FALSE,100,10
+article_store_grade,,qc_article_store_grade_generic_schema_mapping,,,FALSE,FALSE,FALSE,FALSE,,,FALSE,100,11
+dc_mrpc_kpi_table,,qc_dc_mrpc_kpi_table_generic_schema_mapping,,,FALSE,FALSE,FALSE,FALSE,,,FALSE,100,12
+discount_selection,,qc_discount_selection_generic_schema_mapping,,,FALSE,FALSE,FALSE,FALSE,,,FALSE,100,13
+latest_inventory,,qc_latest_inventory_generic_schema_mapping,,,FALSE,FALSE,FALSE,FALSE,,,FALSE,100,14
+receipt_intermediate,,receipt_generic_schema_mapping,receipts_master,,TRUE,FALSE,FALSE,FALSE,,incremental,FALSE,100,15
+lost_sales,,qc_lost_sales_generic_schema_mapping,,,FALSE,FALSE,FALSE,FALSE,,,FALSE,100,16
+model_stock,,qc_model_stock_generic_schema_mapping,,,FALSE,FALSE,FALSE,FALSE,,,FALSE,100,17
+product_profile,,qc_product_profile_generic_schema_mapping,,,FALSE,FALSE,FALSE,FALSE,,,FALSE,100,18
+sku_rule,,qc_sku_rule_generic_schema_mapping,,,FALSE,FALSE,FALSE,FALSE,,,FALSE,100,19
+productmindate_intermediate,,productmindate_generic_schema_mapping,productmindate_master,,FALSE,TRUE,FALSE,FALSE,,full,FALSE,100,20
+product_intermediate,,product_generic_schema_mapping,product_master,,TRUE,TRUE,TRUE,TRUE,,full,TRUE,100,21
+alerts_product_store_level,,qc_alerts_product_store_level_generic_schema_mapping,,,FALSE,FALSE,FALSE,FALSE,,,FALSE,100,22
+article_status_tag,,qc_article_status_tag_generic_schema_mapping,,,FALSE,FALSE,FALSE,FALSE,,,FALSE,100,23
+article_inventory_dashboard,,qc_article_inventory_dashboard_generic_schema_mapping,,,FALSE,FALSE,FALSE,FALSE,,,FALSE,100,24

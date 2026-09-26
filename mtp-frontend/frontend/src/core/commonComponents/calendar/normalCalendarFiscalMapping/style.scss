@@ -1,0 +1,48 @@
+@import "Styles/variables.scss";
+
+.fiscal-calendar__wrapper {
+  .CalendarDay {
+    position: relative;
+  }
+
+  .DateRangePickerInput {
+    position: relative;
+    border: 1px solid $silverChalice;
+    border-radius: 0.1875rem;
+    margin-top: 4px;
+  }
+
+  .CalendarDay .CalendarDayWeekNumber {
+    position: absolute;
+    left: -20px;
+    top: 12px;
+    font-size: 0.8rem;
+    display: none;
+    color: black;
+    display: block;
+  }
+
+  &.date-range-wrapper-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .date-range-label {
+    color: #65788b;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  .date-range-label-row {
+    color: #65788b;
+    text-transform: uppercase;
+    margin: 0;
+    margin-right: 1rem;
+  }
+
+  .DateInput_input {
+    // padding: 0.4rem 0 0.4rem 1.25rem;
+    line-height: unset;
+  }
+}

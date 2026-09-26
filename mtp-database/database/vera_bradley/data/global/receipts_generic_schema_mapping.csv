@@ -1,0 +1,8 @@
+"source_column_name","source_column_datatype","required_in_product","generic_column_name","is_pk","generic_column_datatype","formula","is_attribute","is_hierarchy","hierarchy_level","is_null_allowed","unique_by","display_name","is_partition_col","is_clustering_col"
+BARCODE,varchar,true,product_code,true,varchar,,false,false,,false,true,"",false,3
+INVENTLOCATIONID,varchar,true,store_code,true,varchar,,false,false,,false,true,"",false,4
+INVENTORYDT,date,true,date,true,date,,false,false,,false,true,"",true,1
+quantity,int8,true,rcvd_quantity,true,int8,,false,false,,false,false,"",false,
+PS_Suggested_Retail_Price,float8,true,price,true,float8,,false,false,,false,false,"",false,
+PLM_Standard_Cost,float8,true,cost,true,float8,,false,false,,false,false,"",false,
+DATAAREAID,varchar,true,company_code,true,varchar,,false,false,,false,true,"",false,2

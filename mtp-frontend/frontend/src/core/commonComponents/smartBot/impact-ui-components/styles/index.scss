@@ -1,0 +1,73 @@
+@import "./base/color.scss";
+@import "./base/mixin.scss";
+@import "./base/reset.scss";
+@import "./base/typography.scss";
+@import "./base/styleConfig.scss";
+
+// For Separator
+.impact-notification-separator {
+  display: inline-block;
+  height: 16px;
+  width: 1.5px;
+  background-color: #d9dde7;
+}
+
+.impact-notification-horizontal-separator {
+  display: inline-block;
+  height: 1px;
+  width: 100%;
+  background-color: #d9dde7;
+}
+
+ul.storybook-order-list {
+  padding-left: 12px;
+  list-style-type: disc;
+}
+
+ul.storybook-order-list li {
+  font-size: 12px;
+  line-height: 20px;
+  padding-bottom: 8px;
+}
+
+ul.storybook-order-list li strong {
+  font-weight: 800;
+}
+
+ul.storybook-order-child-list {
+  list-style-type: circle;
+  padding-left: 20px;
+}
+
+ul.storybook-order-child-list li {
+  font-size: 12px;
+  line-height: 20px;
+  padding-bottom: 8px;
+}
+
+ul.storybook-order-child-list li strong {
+  font-weight: 800;
+}
+
+// Custom Scrollbar style
+
+/* width */
+// ::-webkit-scrollbar {
+//   width: 4px;
+// }
+
+/* Track */
+// ::-webkit-scrollbar-track {
+//   background: transparent;
+// }
+
+/* Handle */
+// ::-webkit-scrollbar-thumb {
+//   background: #c3c8d4;
+//   border-radius: 8px;
+// }
+
+/* Handle on hover */
+// ::-webkit-scrollbar-thumb:hover {
+//   background: #c3c8d4;
+// }

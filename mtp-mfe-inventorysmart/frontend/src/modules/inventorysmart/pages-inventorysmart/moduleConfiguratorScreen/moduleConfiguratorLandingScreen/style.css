@@ -1,0 +1,301 @@
+.configurator-container {
+    display: flex;
+    flex-direction: row;
+    font-family: Poppins;
+    padding: 32px 0 0 32px;
+  }
+  
+  .configurator-description-container {
+    width: 40%;
+    min-height: 900px;
+  }
+  
+  .configurator-products-container {
+    width: 60%;
+    min-height: 700px;
+  }
+  
+  .configurator-title {
+    color: #033162;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin-bottom: 8px;
+  }
+  
+  .configurator-description {
+    color: #272c4a;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-bottom: 8px;
+  }
+  
+  .configurator-know-more-btn {
+    color: #0055af;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  
+  .configurator-level-description {
+    height: 300px;
+    padding: 32px;
+  }
+  
+  .configurator-selected-product {
+    background: #f4f9ff;
+    padding: 32px;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    height: 550px;
+  }
+  
+  .configurator-selected-product-title {
+    color: #1d1d1d;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+  
+  .configurator-selected-product-description {
+    color: #394960;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-bottom: 16px;
+  }
+  
+  .configurator-products-container {
+    background: #f4f9ff;
+    padding: 32px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    height: 850px;
+  }
+  
+  .configurator-seprator {
+    margin: 8px 0;
+    border: 1px solid #a4cbfb;
+  }
+  
+  .configurator-selected-product-benefits li {
+    color: #394960;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+  
+  .contained-btn {
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 1.56;
+    letter-spacing: 0px;
+    text-transform: none;
+    background-color: rgb(0, 85, 175);
+    color: #fff;
+    min-width: 64px;
+    padding: 6px 16px;
+    border-radius: 3px;
+  }
+  
+  .configurator-product-title {
+    color: #535b63;
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  
+  .product-cards {
+    display: grid;
+    grid-template-columns: repeat(8, 260px);
+    grid-template-rows: repeat(2, auto);
+    gap: 16px;
+    padding: 16px 0;
+    overflow: auto;
+    scroll-snap-type: x mandatory;
+  }
+  
+  .product-card {
+    width: 260px;
+    height: 350px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.12);
+    padding: 16px;
+    position: relative;
+  }
+  
+  .product-card.selected {
+    color: #fff;
+    background: linear-gradient(180deg, #158cd9 0%, #7997d3 100%);
+  }
+  
+  .product-card.not-selected {
+    color: #000;
+    background: #c1ddff;
+  }
+  
+  .product-card.not-selected:hover {
+    cursor: pointer;
+  }
+  
+  .product-card.not-selected:hover {
+    cursor: pointer;
+    color: #fff;
+    background: linear-gradient(180deg, #158cd9 0%, #7997d3 100%);
+  }
+  
+  .product-card.not-active {
+    color: #758490;
+    background: #e2e2e2;
+  }
+  
+  .product-select-star-left.selected {
+    position: absolute;
+    top: 85px;
+    left: 40px;
+    transform: rotate(150deg);
+  }
+  
+  .product-select-star-right.selected {
+    position: absolute;
+    top: 110px;
+    right: 50px;
+    transform: rotate(20deg);
+  }
+  
+  .product-select-star-text.selected {
+    position: absolute;
+    bottom: 90px;
+    left: 23px;
+    transform: rotate(60deg);
+    opacity: 1;
+  }
+  
+  .product-select-star-left {
+    position: absolute;
+    top: 85px;
+    left: 16px;
+    transform: rotate(-60deg);
+  }
+  
+  .product-select-star-right.selected {
+    position: absolute;
+    top: 110px;
+    right: 50px;
+    transform: rotate(20deg);
+  }
+  
+  .product-card.not-selected:hover .product-select-star-left {
+    animation-name: starleft;
+    animation-duration: 0.3s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+  }
+  
+  @keyframes starleft {
+    100% {
+      left: 40px;
+      transform: rotate(60deg);
+    }
+  }
+  
+  .product-select-star-right {
+    position: absolute;
+    top: 110px;
+    right: 20px;
+    transform: rotate(-20deg);
+  }
+  
+  .product-card.not-selected:hover .product-select-star-right {
+    animation-name: starright;
+    animation-duration: 0.3s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+  }
+  
+  @keyframes starright {
+    100% {
+      right: 50px;
+      transform: rotate(60deg);
+    }
+  }
+  
+  .product-select-star-text {
+    position: absolute;
+    bottom: 90px;
+    left: 10px;
+    transform: rotate(-60deg);
+    opacity: 0.5;
+  }
+  
+  .product-card.not-selected:hover .product-select-star-text {
+    animation-name: startext;
+    animation-duration: 0.3s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+  }
+  
+  @keyframes startext {
+    100% {
+      left: 23px;
+      transform: rotate(60deg);
+      opacity: 1;
+    }
+  }
+  
+  .product-select-indicator {
+    text-align: right;
+  }
+  
+  .product-select-calendar {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .product-card-bottom {
+    position: absolute;
+    bottom: 10%;
+    left: 10%;
+  }
+  
+  .product-title.selected {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+  
+  .product-title {
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+  
+  .product-card.not-selected:hover .product-title {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+  
+  .product-description {
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+  }
+  

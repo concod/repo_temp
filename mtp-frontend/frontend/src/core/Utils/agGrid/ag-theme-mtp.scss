@@ -1,0 +1,212 @@
+@import "~ag-grid-community/src/styles/ag-grid.scss";
+@import "~ag-grid-community/src/styles/ag-theme-alpine/sass/ag-theme-alpine-mixin";
+@import "Styles/variables.scss";
+@import "Styles/mixins.scss";
+
+.ag-theme-alpine {
+  // ^^^ the name of your theme here.
+  @include ag-theme-alpine(
+    (
+      alpine-active-color: $endavour,
+      foreground-color: $codGray,
+      // Headers and Subheaders
+        header-background-color: $alabaster,
+      header-height: 40px,
+      subheader-background-color: $alabaster,
+      font-size: 13px,
+      font-family: "poppins",
+      // Colours defined for rows,
+        odd-row-background-color: null,
+      row-hover-color: null,
+      selected-row-background-color: $aliceBlue,
+      // Defined for checkboxes
+        checkbox-background-color: null,
+      checkbox-checked-color: $endavour,
+      checkbox-unchecked-color: $silverChalice,
+      checkbox-indeterminate-color: ag-derived(checkbox-unchecked-color),
+    )
+  );
+  --ag-row-height: 43px;
+  .ag-cell {
+    border-right: 1px solid #dde2eb !important;
+    .MuiInputBase-input.Mui-disabled {
+      color: $codGray;
+      -webkit-text-fill-color: $codGray;
+    }
+  }
+  .ag-theme-alpine .ag-header {
+    font-family: poppins;
+  }
+  .ag-header-cell {
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .ag-theme-alpine .ag-header-cell {
+    font-size: 14px;
+  }
+  .ag-header-cell .ag-floating-filter {
+    border: none;
+  }
+  .ag-root-wrapper {
+    border: none;
+    box-shadow: 0px 0px 6px #00000029;
+  }
+
+  .ag-pinned-left-cols-container {
+    background-color: $alabaster !important;
+
+    .ag-row {
+      background-color: $alabaster !important;
+    }
+  }
+
+  .ag-selection-checkbox {
+    margin: 0 !important;
+  }
+
+  //  hiding agGrid's default sort component, this component renders if we don't use our custom component hence using this style to hide.
+  .ag-header-icon.ag-header-cell-menu-button {
+    // reverting this line of code to accomodate coumn menu on plansmart budget table.
+    // display: none;
+  }
+
+  // grid style for table body to enable embeded scroll
+  .ag-body-viewport {
+    // we will be reverting this once we find
+    max-height: 60vh;
+    overflow: auto;
+    // DO NOT UPDATE THIS STYLE!!
+    min-height: 50px;
+  }
+
+  // pagination cosmetic changes
+  .ag-paging-panel {
+    flex-direction: row-reverse;
+  }
+
+  .ag-paging-row-summary-panel {
+    color: $slateGrayLight;
+  }
+
+  .ag-paging-row-summary-panel,
+  .ag-paging-page-summary-panel {
+    margin-inline: 1rem 0;
+  }
+
+  .ag-paging-description,
+  .ag-paging-number {
+    color: $codGray;
+    margin-left: 0;
+  }
+
+  .ag-paging-button {
+    color: $slateGrayLight;
+    margin-left: 0;
+
+    &.ag-disabled {
+      color: rgba($slateGrayLight, 0.8);
+    }
+  }
+
+  .ag-paging-row-summary-panel-number,
+  .ag-paging-description,
+  .ag-paging-number {
+    @include font-size-h6();
+    font-weight: normal;
+  }
+
+  .ag-center-cols-container {
+    min-height: unset !important;
+  }
+
+  .ag-header-cell-resize::after {
+    width: 1px;
+    height: 100%;
+    top: 0;
+  }
+
+  .ag-header-group-cell-label {
+    justify-content: center;
+  }
+
+  .ag-react-container {
+    width: 100%;
+  }
+
+  //  write CSS selectors to make customisations beyond what the parameters support
+
+  .ag-side-button.tp-active {
+    background-color: $endavour;
+    color: $white;
+
+    &:hover .ag-side-button-button {
+      color: $white;
+    }
+  }
+
+  .ag-floating-filter-button {
+    display: none;
+  }
+}
+
+.show-cell {
+  background: $white;
+  border-bottom: 1px solid #dde2eb !important;
+}
+
+.custom-header-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between; /* This aligns items at the start and end of the container */
+  align-items: center; /* This vertically centers the items */
+  cursor: pointer; /* Add cursor style to indicate interactivity */
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+  /* Additional styling as needed */
+}
+.active-header {
+  background-color: #BABFC7;
+}
+.non-active-header {
+  background-color: transparent;
+}
+.icon-div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.ag-theme-alpine .fiscal-calendar__wrapper .DateRangePickerInput,
+.ag-theme-alpine .fiscal-calendar__wrapper .DateRangePickerInput * {
+  line-height: 0;
+  background-color: transparent;
+}
+
+.fiscal-calendar__calendar-controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-right: 2rem;
+}
+
+.ag-theme-alpine .fiscal-calendar__wrapper .DateRangePickerInput {
+  &_calendarIcon {
+    padding: 0.375rem 0.125rem;
+  }
+}
+
+.ag-layout-auto-height {
+  .ag-center-cols-clipper, .ag-center-cols-container {
+      min-height: max(100%, length(pxToRem(150))) !important;
+  }
+}
+
+.bot_table_auto_height .ag-center-cols-viewport , .bot_table_auto_height .ag-layout-auto-height {
+  min-height: 45px !important;
+}
+.bot_table_auto_height .ag-overlay-no-rows-wrapper.ag-layout-auto-height {
+  padding-top: 30px;
+}

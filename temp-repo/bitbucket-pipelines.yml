@@ -1,0 +1,73 @@
+definitions:
+  services:
+    docker:
+      memory: 4096
+  caches:
+    sonar: ~/.sonar/cache  # Caching SonarCloud artifacts will speed up your build
+  steps:
+    - step: &security-scan
+        runs-on:
+          - self.hosted
+          - linux
+          - docker
+        name: Security Scan
+        script:
+          # Run a security scan for sensitive data.
+          # See more security tools at https://bitbucket.org/product/features/pipelines/integrations?&category=security
+          - pipe: atlassian/git-secrets-scan:0.4.3
+
+    - step: &scan-sonarcloud
+        runs-on:
+          - self.hosted
+          - linux
+          - docker
+        name: Build, test and analyze on SonarCloud
+        size: 2x
+        clone:
+          depth: full              # Number of commits considered for issues assignment. It should to changes to "full" to analyse the full history to assign issues properly
+        script:
+          - pipe: sonarsource/sonarcloud-scan:2.0.0
+          - pipe: sonarsource/sonarcloud-quality-gate:0.1.6
+
+    - step: &check-quality-gate-sonarcloud
+        name: Check the Quality Gate on SonarCloud
+        clone:
+          depth: full              # SonarCloud scanner needs the full history to assign issues properly
+        script:
+          - pipe: sonarsource/sonarcloud-quality-gate:0.1.4
+
+
+           
+# Workflow Configuration
+
+pipelines:
+  branches:
+    develop/dev:
+      - step:
+          name: Run AWX job
+          runs-on:
+            - self.hosted
+            - linux
+            - docker
+          script:
+            - python3 -m pip install requests==2.28.1
+            - python3 deploy-cloudrun.py $awx_username $awx_password iss-core-dev frontend ver
+    develop/test:
+      - step:
+          name: Run AWX job
+          runs-on:
+            - self.hosted
+            - linux
+            - docker
+          script:
+            - python3 -m pip install requests==2.28.1
+            - python3 deploy-cloudrun.py $awx_username $awx_password iss-core-test frontend ver
+  custom:
+    scan:
+      - step: *scan-sonarcloud
+
+  pull-requests:
+    main:
+        - step: *scan-sonarcloud
+    develop/dev:
+        - step: *scan-sonarcloud

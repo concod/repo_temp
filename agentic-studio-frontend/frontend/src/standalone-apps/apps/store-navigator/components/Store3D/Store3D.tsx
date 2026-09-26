@@ -1,0 +1,2604 @@
+import React, { useMemo, useEffect, useState, useRef, Suspense } from "react";
+import { Canvas, useThree, useFrame } from "@react-three/fiber";
+import {
+  OrbitControls,
+  Text,
+  PerspectiveCamera,
+  Environment,
+  Grid,
+  Line,
+  ContactShadows,
+  // useProgress,
+  Html,
+  Billboard,
+  // MeshReflectorMaterial,
+} from "@react-three/drei";
+import * as THREE from "three";
+import type {
+  StoreConfig,
+  PathNode,
+  Bay,
+  Shelf,
+} from "../../types/store.types";
+import {
+  getAllBays,
+  findBayById,
+  getAisleIdForBay,
+  getAisleColor,
+  getAisleBounds,
+} from "../../utils/storeHelpers";
+// import { soundManager } from "../utils/sounds";
+import type { Product } from "../ProductCard/ProductCard";
+
+interface Store3DProps {
+  config: StoreConfig;
+  targetProduct: Product | null;
+  path: PathNode[];
+  currentFloor: number;
+  allProducts?: Product[];
+  showAllProducts?: boolean;
+  showLabels?: boolean;
+  targetDepartmentId?: string | null;
+  targetAisleId?: string | null;
+  targetShelfId?: string | null;
+  disableFocus?: boolean;
+}
+
+const Loader = () => {
+  return <Html center></Html>;
+};
+
+// Custom OrbitControls with zoom-to-mouse-pointer functionality and boundary constraints
+const ZoomToPointerControls: React.FC<{
+  minDistance?: number;
+  maxDistance?: number;
+  maxPolarAngle?: number;
+  storeConfig?: StoreConfig;
+}> = ({
+  minDistance = 3,
+  maxDistance = 300,
+  maxPolarAngle = Math.PI / 2.2,
+  storeConfig,
+}) => {
+  const { camera, gl, raycaster } = useThree();
+  const controlsRef = useRef<React.ComponentRef<typeof OrbitControls>>(null);
+  const mouseRef = useRef({ x: 0, y: 0 });
+  const isZoomingRef = useRef(false);
+
+  // Calculate store boundaries with padding (accounting for scene offset)
+  const storeBounds = useMemo(() => {
+    if (!storeConfig) return null;
+    const padding = 5; // Padding outside store boundaries
+    const centerX = storeConfig.gridSize.width / 2;
+    const centerZ = storeConfig.gridSize.depth / 2;
+    // Scene is offset by [-centerX, 0, -centerZ], so adjust world coordinates
+    return {
+      minX: -centerX - padding,
+      maxX: storeConfig.gridSize.width - centerX + padding,
+      minZ: -centerZ - padding,
+      maxZ: storeConfig.gridSize.depth - centerZ + padding,
+    };
+  }, [storeConfig]);
+
+  useEffect(() => {
+    const handleMouseMove = (event: MouseEvent) => {
+      // Normalize mouse coordinates to -1 to 1
+      const rect = gl.domElement.getBoundingClientRect();
+      mouseRef.current.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+      mouseRef.current.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+    };
+
+    gl.domElement.addEventListener("mousemove", handleMouseMove);
+    return () =>
+      gl.domElement.removeEventListener("mousemove", handleMouseMove);
+  }, [gl]);
+
+  useEffect(() => {
+    if (!controlsRef.current) return;
+
+    const controls = controlsRef.current;
+
+    // Override the zoom behavior
+    const handleWheel = (event: WheelEvent) => {
+      if (!controls.enabled) return;
+
+      event.preventDefault();
+      isZoomingRef.current = true;
+
+      // Get mouse position in normalized device coordinates
+      const mouse = new THREE.Vector2(mouseRef.current.x, mouseRef.current.y);
+
+      // Create a raycaster from the camera through the mouse position
+      raycaster.setFromCamera(mouse, camera);
+
+      // Intersect with a plane at y=0 (ground level)
+      const plane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
+      const intersectionPoint = new THREE.Vector3();
+      const hasIntersection = raycaster.ray.intersectPlane(
+        plane,
+        intersectionPoint
+      );
+
+      if (hasIntersection) {
+        // Calculate zoom delta
+        const delta = event.deltaY * 0.01;
+        const zoomFactor = 1 + delta;
+
+        // Get current camera position and target
+        const currentTarget = controls.target.clone();
+        const currentPosition = camera.position.clone();
+        const currentDistance = currentPosition.distanceTo(currentTarget);
+
+        // Calculate new distance after zoom
+        const newDistance = Math.max(
+          minDistance,
+          Math.min(maxDistance, currentDistance * zoomFactor)
+        );
+
+        // Check if intersection point is outside store boundary
+        // If outside, use store center (0, 0, 0 in centered coordinates) as zoom target
+        let zoomTargetPoint = intersectionPoint;
+        if (storeBounds) {
+          const isOutsideBounds =
+            intersectionPoint.x < storeBounds.minX ||
+            intersectionPoint.x > storeBounds.maxX ||
+            intersectionPoint.z < storeBounds.minZ ||
+            intersectionPoint.z > storeBounds.maxZ;
+
+          if (isOutsideBounds) {
+            // Use store center as zoom target (center is at 0,0,0 in centered coordinate system)
+            zoomTargetPoint = new THREE.Vector3(0, 0, 0);
+          }
+        }
+
+        // Calculate how much to adjust target based on mouse position
+        // When mouse is at center, don't adjust. When at edge, adjust more.
+        const mouseDistanceFromCenter = Math.sqrt(
+          mouse.x * mouse.x + mouse.y * mouse.y
+        );
+        const adjustStrength = Math.min(1, mouseDistanceFromCenter * 0.5);
+
+        // Calculate the offset from current target to zoom target point
+        const targetOffset = zoomTargetPoint.clone().sub(currentTarget);
+
+        // Adjust target towards zoom target point (more adjustment = more zoom towards pointer/center)
+        const adjustedTarget = currentTarget
+          .clone()
+          .add(targetOffset.multiplyScalar(adjustStrength * 0.2));
+
+        // Clamp target to store boundaries
+        if (storeBounds) {
+          adjustedTarget.x = Math.max(
+            storeBounds.minX,
+            Math.min(storeBounds.maxX, adjustedTarget.x)
+          );
+          adjustedTarget.z = Math.max(
+            storeBounds.minZ,
+            Math.min(storeBounds.maxZ, adjustedTarget.z)
+          );
+        }
+
+        // Calculate new camera position
+        const direction = currentPosition
+          .clone()
+          .sub(adjustedTarget)
+          .normalize();
+        const newPosition = adjustedTarget
+          .clone()
+          .add(direction.multiplyScalar(newDistance));
+
+        // Clamp camera position to ensure it doesn't go too far outside bounds
+        if (storeBounds) {
+          const maxCameraDistance =
+            Math.max(
+              storeBounds.maxX - storeBounds.minX,
+              storeBounds.maxZ - storeBounds.minZ
+            ) * 0.8;
+          const cameraBounds = {
+            minX: storeBounds.minX - maxCameraDistance,
+            maxX: storeBounds.maxX + maxCameraDistance,
+            minZ: storeBounds.minZ - maxCameraDistance,
+            maxZ: storeBounds.maxZ + maxCameraDistance,
+          };
+          newPosition.x = Math.max(
+            cameraBounds.minX,
+            Math.min(cameraBounds.maxX, newPosition.x)
+          );
+          newPosition.z = Math.max(
+            cameraBounds.minZ,
+            Math.min(cameraBounds.maxZ, newPosition.z)
+          );
+        }
+
+        // Apply the changes
+        controls.target.copy(adjustedTarget);
+        camera.position.copy(newPosition);
+        controls.update();
+      } else {
+        // Fallback to normal zoom behavior if no intersection
+        const delta = event.deltaY * 0.01;
+        const zoomFactor = 1 + delta;
+        const currentDistance = camera.position.distanceTo(controls.target);
+        const newDistance = Math.max(
+          minDistance,
+          Math.min(maxDistance, currentDistance * zoomFactor)
+        );
+
+        const direction = camera.position
+          .clone()
+          .sub(controls.target)
+          .normalize();
+        const newPosition = controls.target
+          .clone()
+          .add(direction.multiplyScalar(newDistance));
+
+        // Clamp camera position to boundaries
+        if (storeBounds) {
+          const maxCameraDistance =
+            Math.max(
+              storeBounds.maxX - storeBounds.minX,
+              storeBounds.maxZ - storeBounds.minZ
+            ) * 0.8;
+          const cameraBounds = {
+            minX: storeBounds.minX - maxCameraDistance,
+            maxX: storeBounds.maxX + maxCameraDistance,
+            minZ: storeBounds.minZ - maxCameraDistance,
+            maxZ: storeBounds.maxZ + maxCameraDistance,
+          };
+          newPosition.x = Math.max(
+            cameraBounds.minX,
+            Math.min(cameraBounds.maxX, newPosition.x)
+          );
+          newPosition.z = Math.max(
+            cameraBounds.minZ,
+            Math.min(cameraBounds.maxZ, newPosition.z)
+          );
+        }
+
+        camera.position.copy(newPosition);
+        controls.update();
+      }
+
+      // Reset zoom flag after a short delay
+      setTimeout(() => {
+        isZoomingRef.current = false;
+      }, 100);
+    };
+
+    gl.domElement.addEventListener("wheel", handleWheel, { passive: false });
+
+    return () => {
+      gl.domElement.removeEventListener("wheel", handleWheel);
+    };
+  }, [camera, gl, raycaster, minDistance, maxDistance, storeBounds]);
+
+  // Continuously clamp camera and target to boundaries for smooth constraint
+  useFrame(() => {
+    if (!controlsRef.current || !storeBounds) return;
+
+    const controls = controlsRef.current;
+    const target = controls.target;
+    const position = camera.position;
+
+    // Smoothly clamp target to boundaries
+    const targetClamped = new THREE.Vector3(
+      Math.max(storeBounds.minX, Math.min(storeBounds.maxX, target.x)),
+      target.y,
+      Math.max(storeBounds.minZ, Math.min(storeBounds.maxZ, target.z))
+    );
+
+    // Only update if there's a significant difference to avoid jitter
+    if (target.distanceTo(targetClamped) > 0.01) {
+      target.lerp(targetClamped, 0.1);
+      controls.update();
+    }
+
+    // Clamp camera position to reasonable bounds
+    const maxCameraDistance =
+      Math.max(
+        storeBounds.maxX - storeBounds.minX,
+        storeBounds.maxZ - storeBounds.minZ
+      ) * 0.8;
+    const cameraBounds = {
+      minX: storeBounds.minX - maxCameraDistance,
+      maxX: storeBounds.maxX + maxCameraDistance,
+      minZ: storeBounds.minZ - maxCameraDistance,
+      maxZ: storeBounds.maxZ + maxCameraDistance,
+    };
+
+    const positionClamped = new THREE.Vector3(
+      Math.max(cameraBounds.minX, Math.min(cameraBounds.maxX, position.x)),
+      position.y,
+      Math.max(cameraBounds.minZ, Math.min(cameraBounds.maxZ, position.z))
+    );
+
+    if (position.distanceTo(positionClamped) > 0.01) {
+      position.lerp(positionClamped, 0.1);
+    }
+  });
+
+  return (
+    <OrbitControls
+      ref={controlsRef}
+      makeDefault
+      minDistance={minDistance}
+      maxDistance={maxDistance}
+      maxPolarAngle={maxPolarAngle}
+      enableDamping={true}
+      dampingFactor={0.08}
+      enablePan={true}
+      panSpeed={0.8}
+      rotateSpeed={0.5}
+      zoomSpeed={0.8}
+    />
+  );
+};
+
+const Door: React.FC<{ position: [number, number, number] }> = ({
+  position,
+}) => (
+  <group position={position}>
+    <mesh position={[0, 1.25, 0]} castShadow>
+      <boxGeometry args={[3.2, 2.5, 0.2]} />
+      <meshStandardMaterial color="#0f172a" metalness={0.8} roughness={0.2} />
+    </mesh>
+    <mesh position={[0, 1.15, 0]} castShadow>
+      <boxGeometry args={[2.8, 2.2, 0.1]} />
+      <meshStandardMaterial
+        color="#94a3b8"
+        transparent
+        opacity={0.5}
+        metalness={1}
+        roughness={0}
+      />
+    </mesh>
+  </group>
+);
+
+const Elevator: React.FC<{
+  position: [number, number, number];
+  avatarPosition?: THREE.Vector3 | null;
+  isPathStarting?: boolean;
+}> = ({ position, avatarPosition, isPathStarting }) => {
+  const leftDoorRef = useRef<THREE.Group>(null);
+  const rightDoorRef = useRef<THREE.Group>(null);
+  const doorOpenProgressRef = useRef(0);
+  const doorStateRef = useRef<"closed" | "opening" | "open" | "closing">(
+    "closed"
+  );
+  const lastCloseTimeRef = useRef(0);
+  //   const lastSoundTimeRef = useRef(0);
+  const elevatorPos = useMemo(
+    () => new THREE.Vector3(position[0], 0, position[2]),
+    [position]
+  );
+
+  // Realistic elevator door animation with constant speed
+  useFrame((state, delta) => {
+    if (!leftDoorRef.current || !rightDoorRef.current) return;
+
+    const DOOR_OPEN_DISTANCE = 3.5; // Distance at which doors start opening
+    const DOOR_CLOSE_DISTANCE = 4.5; // Distance at which doors start closing
+    const ELEVATOR_WIDTH = 4.0; // Elevator block width (extends from -2 to +2)
+    const ELEVATOR_BOUNDARY = ELEVATOR_WIDTH / 2; // 2.0 - the boundary position
+    // Maximum door offset: doors slide until their outer edge reaches elevator boundary
+    // Left door: mesh at -0.6 relative to group, width 1.2, so right edge at 0 relative to group
+    // When group moves to x = -2, door right edge is at -2 (elevator left boundary)
+    // Right door: mesh at 0.6 relative to group, width 1.2, so left edge at 0 relative to group
+    // When group moves to x = +2, door left edge is at +2 (elevator right boundary)
+    const MAX_DOOR_OFFSET = ELEVATOR_BOUNDARY; // 2.0 - doors slide until groups reach boundaries
+    const DOOR_SPEED = 2.0; // Units per second (constant speed like real elevators)
+    const DOOR_CLOSE_DELAY = 1.0; // Seconds to wait before closing after avatar leaves
+
+    let shouldOpen = false;
+    let shouldClose = false;
+
+    // Determine if doors should open or close based on avatar position
+    if (isPathStarting) {
+      // If path is starting, open doors immediately
+      shouldOpen = true;
+      shouldClose = false;
+    } else if (avatarPosition) {
+      const distance = avatarPosition.distanceTo(elevatorPos);
+
+      if (distance < DOOR_OPEN_DISTANCE) {
+        // Avatar is approaching or inside - open doors
+        shouldOpen = true;
+        shouldClose = false;
+        lastCloseTimeRef.current = state.clock.elapsedTime;
+      } else if (distance > DOOR_CLOSE_DISTANCE) {
+        // Avatar has left - wait a bit then close
+        const timeSinceLeft =
+          state.clock.elapsedTime - lastCloseTimeRef.current;
+        if (timeSinceLeft > DOOR_CLOSE_DELAY) {
+          shouldOpen = false;
+          shouldClose = true;
+        } else {
+          // Keep doors open during delay
+          shouldOpen = doorOpenProgressRef.current > 0.1;
+          shouldClose = false;
+        }
+      } else {
+        // Transition zone - maintain current state
+        shouldOpen = doorOpenProgressRef.current > 0.5;
+        shouldClose = !shouldOpen;
+        if (shouldOpen) {
+          lastCloseTimeRef.current = state.clock.elapsedTime;
+        }
+      }
+    } else {
+      // No avatar - close doors after delay
+      const timeSinceLeft = state.clock.elapsedTime - lastCloseTimeRef.current;
+      if (timeSinceLeft > DOOR_CLOSE_DELAY) {
+        shouldOpen = false;
+        shouldClose = true;
+      }
+    }
+
+    // Update door state with realistic constant-speed movement
+    const currentProgress = doorOpenProgressRef.current;
+    let newProgress = currentProgress;
+
+    if (shouldOpen && currentProgress < 1.0) {
+      // Opening: constant speed with slight acceleration at start
+      //   const prevState = doorStateRef.current;
+      doorStateRef.current = "opening";
+      const acceleration = currentProgress < 0.1 ? 0.7 : 1.0; // Slight slow start
+      newProgress = Math.min(
+        1.0,
+        currentProgress + DOOR_SPEED * delta * acceleration
+      );
+
+      // Play opening sound when starting to open
+      //   if (prevState !== "opening" && currentProgress < 0.1) {
+      //     soundManager.playElevatorOpen();
+      //   }
+    } else if (shouldClose && currentProgress > 0.0) {
+      // Closing: constant speed with slight deceleration at end
+      //   const prevState = doorStateRef.current;
+      doorStateRef.current = "closing";
+      const deceleration = currentProgress < 0.1 ? 0.7 : 1.0; // Slight slow at end
+      newProgress = Math.max(
+        0.0,
+        currentProgress - DOOR_SPEED * delta * deceleration
+      );
+
+      // Play closing sound when starting to close
+      //   if (prevState !== "closing" && currentProgress > 0.9) {
+      //     soundManager.playElevatorClose();
+      //   }
+    } else if (currentProgress >= 1.0) {
+      doorStateRef.current = "open";
+    } else if (currentProgress <= 0.0) {
+      doorStateRef.current = "closed";
+    }
+
+    doorOpenProgressRef.current = newProgress;
+
+    // Apply door positions - constrained to stay within elevator boundaries
+    // Doors slide outward but cannot exceed elevator block width
+    const doorOffset = newProgress * MAX_DOOR_OFFSET;
+    const ELEVATOR_LEFT_BOUNDARY = -ELEVATOR_BOUNDARY; // -2.0
+    const ELEVATOR_RIGHT_BOUNDARY = ELEVATOR_BOUNDARY; // +2.0
+
+    if (leftDoorRef.current) {
+      // Left door slides left: group moves from 0 to -2
+      // Door mesh is at -0.6 relative to group, so door right edge is at group.x + 0
+      // Constrain: door right edge should not go beyond -2 (elevator left boundary)
+      const targetX = -doorOffset;
+      leftDoorRef.current.position.x = Math.max(
+        ELEVATOR_LEFT_BOUNDARY,
+        targetX
+      );
+    }
+    if (rightDoorRef.current) {
+      // Right door slides right: group moves from 0 to +2
+      // Door mesh is at 0.6 relative to group, so door left edge is at group.x + 0
+      // Constrain: door left edge should not go beyond +2 (elevator right boundary)
+      const targetX = doorOffset;
+      rightDoorRef.current.position.x = Math.min(
+        ELEVATOR_RIGHT_BOUNDARY,
+        targetX
+      );
+    }
+  });
+
+  return (
+    <group position={position}>
+      {/* Elevator shaft */}
+      <mesh position={[0, 1.25, 0]} castShadow receiveShadow>
+        <boxGeometry args={[4, 2.5, 4]} />
+        <meshStandardMaterial color="#334155" metalness={0.9} roughness={0.1} />
+      </mesh>
+
+      {/* Elevator interior back wall */}
+      <mesh position={[0, 1.25, -1.95]} castShadow receiveShadow>
+        <boxGeometry args={[3.6, 2.2, 0.1]} />
+        <meshStandardMaterial color="#475569" metalness={0.8} roughness={0.3} />
+      </mesh>
+
+      {/* Left door */}
+      <group ref={leftDoorRef} position={[0, 0, 0]}>
+        <mesh position={[-0.6, 1.25, 2.05]} castShadow>
+          <boxGeometry args={[1.2, 2.2, 0.1]} />
+          <meshStandardMaterial color="#94a3b8" metalness={1} roughness={0.2} />
+        </mesh>
+        {/* Door handle */}
+        <mesh position={[-0.6, 1.25, 2.11]} castShadow>
+          <boxGeometry args={[0.05, 0.3, 0.05]} />
+          <meshStandardMaterial
+            color="#1e293b"
+            metalness={0.9}
+            roughness={0.1}
+          />
+        </mesh>
+      </group>
+
+      {/* Right door */}
+      <group ref={rightDoorRef} position={[0, 0, 0]}>
+        <mesh position={[0.6, 1.25, 2.05]} castShadow>
+          <boxGeometry args={[1.2, 2.2, 0.1]} />
+          <meshStandardMaterial color="#94a3b8" metalness={1} roughness={0.2} />
+        </mesh>
+        {/* Door handle */}
+        <mesh position={[0.6, 1.25, 2.11]} castShadow>
+          <boxGeometry args={[0.05, 0.3, 0.05]} />
+          <meshStandardMaterial
+            color="#1e293b"
+            metalness={0.9}
+            roughness={0.1}
+          />
+        </mesh>
+      </group>
+
+      {/* Elevator label */}
+      <Billboard position={[0, 2.6, 2.1]}>
+        <Text
+          fontSize={0.5}
+          color="#1e40af"
+          fontWeight="black"
+          outlineWidth={0.03}
+          outlineColor="#ffffff"
+        >
+          ELEVATOR
+        </Text>
+      </Billboard>
+    </group>
+  );
+};
+
+// Generate product texture with vertical and horizontal lines
+const generateProductTexture = (baseColor: string): THREE.CanvasTexture => {
+  const canvas = document.createElement("canvas");
+  canvas.width = 512;
+  canvas.height = 512;
+  const ctx = canvas.getContext("2d")!;
+
+  // Base color fill
+  ctx.fillStyle = baseColor;
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  // Vertical lines - evenly spaced
+  ctx.strokeStyle = `rgba(0, 0, 0, 0.15)`;
+  ctx.lineWidth = 1;
+  const verticalSpacing = 32;
+  for (let x = 0; x <= canvas.width; x += verticalSpacing) {
+    ctx.beginPath();
+    ctx.moveTo(x, 0);
+    ctx.lineTo(x, canvas.height);
+    ctx.stroke();
+  }
+
+  // Horizontal lines - evenly spaced
+  ctx.strokeStyle = `rgba(0, 0, 0, 0.15)`;
+  ctx.lineWidth = 1;
+  const horizontalSpacing = 32;
+  for (let y = 0; y <= canvas.height; y += horizontalSpacing) {
+    ctx.beginPath();
+    ctx.moveTo(0, y);
+    ctx.lineTo(canvas.width, y);
+    ctx.stroke();
+  }
+
+  // Subtle gradient for depth
+  const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+  gradient.addColorStop(0, `rgba(255, 255, 255, 0.05)`);
+  gradient.addColorStop(0.5, `rgba(0, 0, 0, 0)`);
+  gradient.addColorStop(1, `rgba(0, 0, 0, 0.05)`);
+  ctx.fillStyle = gradient;
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.magFilter = THREE.LinearFilter;
+  texture.minFilter = THREE.LinearFilter;
+  texture.wrapS = THREE.RepeatWrapping;
+  texture.wrapT = THREE.RepeatWrapping;
+  return texture;
+};
+
+// Generate glass tile texture for walls with enhanced visibility
+const generateGlassTileTexture = (): THREE.CanvasTexture => {
+  const canvas = document.createElement("canvas");
+  canvas.width = 512;
+  canvas.height = 512;
+  const ctx = canvas.getContext("2d")!;
+
+  // Clear canvas
+  ctx.clearRect(0, 0, 512, 512);
+
+  const tileSize = 64;
+  const numTiles = 512 / tileSize;
+
+  for (let i = 0; i < numTiles; i++) {
+    for (let j = 0; j < numTiles; j++) {
+      const x = i * tileSize;
+      const y = j * tileSize;
+
+      // Tile background - slightly more opaque and blue-tinted for visibility
+      const gradient = ctx.createLinearGradient(
+        x,
+        y,
+        x + tileSize,
+        y + tileSize
+      );
+      gradient.addColorStop(0, "rgba(230, 240, 255, 0.5)"); // More opaque
+      gradient.addColorStop(1, "rgba(180, 200, 230, 0.3)");
+
+      ctx.fillStyle = gradient;
+      ctx.fillRect(x + 2, y + 2, tileSize - 4, tileSize - 4);
+
+      // Pronounced tile borders
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.8)";
+      ctx.lineWidth = 1.5;
+      ctx.strokeRect(x + 2, y + 2, tileSize - 4, tileSize - 4);
+
+      // Bottom/right shadow for tiles to give depth
+      ctx.strokeStyle = "rgba(0, 0, 0, 0.15)";
+      ctx.beginPath();
+      ctx.moveTo(x + tileSize - 2, y + 2);
+      ctx.lineTo(x + tileSize - 2, y + tileSize - 2);
+      ctx.lineTo(x + 2, y + tileSize - 2);
+      ctx.stroke();
+
+      // Reflective highlight streaks
+      ctx.strokeStyle = "rgba(255, 255, 255, 0.4)";
+      ctx.beginPath();
+      ctx.moveTo(x + 10, y + 10);
+      ctx.lineTo(x + tileSize - 10, y + tileSize - 10);
+      ctx.stroke();
+    }
+  }
+
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+  texture.anisotropy = 16;
+  return texture;
+};
+
+// Component to show label only on camera-facing side
+const CameraFacingLabel: React.FC<{
+  shelfName: string;
+  width: number;
+  depth: number;
+  height: number;
+  closedSides?: ("left" | "right" | "front" | "back")[];
+  isTarget?: boolean;
+}> = ({ shelfName, width, depth, height, closedSides, isTarget }) => {
+  const { camera } = useThree();
+  const groupRef = useRef<THREE.Group>(null);
+  const [visibleSide, setVisibleSide] = useState<
+    "front" | "back" | "left" | "right" | null
+  >(null);
+
+  useFrame(() => {
+    if (!groupRef.current) return;
+
+    // Get camera world position
+    const cameraWorldPos = new THREE.Vector3();
+    camera.getWorldPosition(cameraWorldPos);
+
+    // Get shelf center world position
+    const shelfWorldPos = new THREE.Vector3();
+    groupRef.current.getWorldPosition(shelfWorldPos);
+
+    // Calculate direction from shelf to camera
+    const directionToCamera = cameraWorldPos
+      .clone()
+      .sub(shelfWorldPos)
+      .normalize();
+
+    // Get shelf's world rotation to transform normals
+    const shelfWorldQuat = new THREE.Quaternion();
+    groupRef.current.getWorldQuaternion(shelfWorldQuat);
+
+    // Calculate which side is most facing the camera
+    const sides: Array<{
+      name: "front" | "back" | "left" | "right";
+      normal: THREE.Vector3;
+      isOpen: boolean;
+    }> = [
+      {
+        name: "front",
+        normal: new THREE.Vector3(0, 0, 1),
+        isOpen: !closedSides?.includes("front"),
+      },
+      {
+        name: "back",
+        normal: new THREE.Vector3(0, 0, -1),
+        isOpen: !(
+          closedSides === undefined ||
+          (closedSides.length > 0 && closedSides.includes("back"))
+        ),
+      },
+      {
+        name: "left",
+        normal: new THREE.Vector3(-1, 0, 0),
+        isOpen: !closedSides?.includes("left"),
+      },
+      {
+        name: "right",
+        normal: new THREE.Vector3(1, 0, 0),
+        isOpen: !closedSides?.includes("right"),
+      },
+    ];
+
+    // Transform normals to world space
+    sides.forEach((side) => {
+      side.normal.applyQuaternion(shelfWorldQuat);
+    });
+
+    // Find the open side with highest dot product (most facing camera)
+    let bestSide: "front" | "back" | "left" | "right" | null = null;
+    let bestDot = -Infinity;
+
+    for (const side of sides) {
+      if (side.isOpen) {
+        const dot = directionToCamera.dot(side.normal);
+        if (dot > bestDot) {
+          bestDot = dot;
+          bestSide = side.name;
+        }
+      }
+    }
+
+    setVisibleSide(bestSide);
+  });
+
+  const UNIT_HEIGHT = height;
+  const labelY = UNIT_HEIGHT / 2 + 0.3;
+
+  return (
+    <group ref={groupRef}>
+      {visibleSide === "front" && (
+        <group position={[0, labelY, depth / 2 - 0.6]}>
+          <Text
+            fontSize={0.3}
+            color="#ffffff"
+            fontWeight="black"
+            outlineWidth={0.03}
+            outlineColor="#000000"
+            material-depthTest={!isTarget}
+            renderOrder={isTarget ? 100 : 0}
+          >
+            {shelfName}
+          </Text>
+        </group>
+      )}
+      {visibleSide === "back" && (
+        <group
+          position={[0, labelY, -depth / 2 + 0.6]}
+          rotation={[0, Math.PI, 0]}
+        >
+          <Text
+            fontSize={0.3}
+            color="#ffffff"
+            fontWeight="black"
+            outlineWidth={0.03}
+            outlineColor="#000000"
+            material-depthTest={!isTarget}
+            renderOrder={isTarget ? 100 : 0}
+          >
+            {shelfName}
+          </Text>
+        </group>
+      )}
+      {visibleSide === "left" && (
+        <group
+          position={[-width / 2 + 0.6, labelY, 0]}
+          rotation={[0, -Math.PI / 2, 0]}
+        >
+          <Text
+            fontSize={0.3}
+            color="#ffffff"
+            fontWeight="black"
+            outlineWidth={0.03}
+            outlineColor="#000000"
+            material-depthTest={!isTarget}
+            renderOrder={isTarget ? 100 : 0}
+          >
+            {shelfName}
+          </Text>
+        </group>
+      )}
+      {visibleSide === "right" && (
+        <group
+          position={[width / 2 - 0.6, labelY, 0]}
+          rotation={[0, Math.PI / 2, 0]}
+        >
+          <Text
+            fontSize={0.3}
+            color="#ffffff"
+            fontWeight="black"
+            outlineWidth={0.03}
+            outlineColor="#000000"
+            material-depthTest={!isTarget}
+            renderOrder={isTarget ? 100 : 0}
+          >
+            {shelfName}
+          </Text>
+        </group>
+      )}
+    </group>
+  );
+};
+
+const AnimatedProductRow: React.FC<{
+  position: [number, number, number];
+  args: [number, number, number];
+  color: string;
+  isHighlight: boolean;
+}> = ({ position, args, color, isHighlight }) => {
+  const meshRef = useRef<THREE.Mesh>(null);
+  const materialRef = useRef<THREE.MeshStandardMaterial>(null);
+  const startColor = useMemo(() => new THREE.Color(color), [color]);
+  const highlightColor = useMemo(() => new THREE.Color("#fbbf24"), []); // Amber Highlight
+
+  // Generate texture with seed based on color for consistency
+  const texture = useMemo(() => {
+    // const seed = color.charCodeAt(0) + color.charCodeAt(color.length - 1);
+    return generateProductTexture(color);
+  }, [color]);
+
+  useFrame((state) => {
+    if (isHighlight && materialRef.current) {
+      const t = (Math.sin(state.clock.elapsedTime * 8) + 1) / 2; // 0 to 1
+      materialRef.current.color.lerpColors(startColor, highlightColor, t);
+      materialRef.current.emissive.set(highlightColor);
+      materialRef.current.emissiveIntensity = t * 0.8;
+    } else if (materialRef.current) {
+      materialRef.current.color.copy(startColor);
+      materialRef.current.emissiveIntensity = 0;
+    }
+  });
+
+  return (
+    <mesh position={position} ref={meshRef} castShadow>
+      <boxGeometry args={args} />
+      <meshStandardMaterial
+        ref={materialRef}
+        color={color}
+        map={texture}
+        roughness={0.7}
+        metalness={0.1}
+        side={THREE.FrontSide}
+        transparent={true}
+        opacity={0.75}
+      />
+    </mesh>
+  );
+};
+
+const DetailedShelfUnit: React.FC<{
+  width: number;
+  height: number;
+  depth: number;
+  frontConfig?: {
+    color: string;
+    isTarget: boolean;
+    targetLevels?: number[];
+    name: string;
+    levelCount: number;
+  };
+  backConfig?: {
+    color: string;
+    isTarget: boolean;
+    targetLevels?: number[];
+    name: string;
+    levelCount: number;
+  };
+  closedSides?: ("left" | "right" | "front" | "back")[];
+}> = ({ width, height, depth, frontConfig, closedSides }) => {
+  const shelfCount = frontConfig?.levelCount || 5;
+  const shelfThickness = 0.05;
+  const shelfSpacing = (height - 0.2) / shelfCount;
+
+  // By default, back side is closed. Other sides are open unless specified in closedSides
+  // If closedSides is undefined, back is closed by default (default state)
+  // If closedSides is an empty array [], it means user explicitly unchecked back (all open)
+  // If closedSides includes a side, that side has a panel
+  const showLeftSide = closedSides?.includes("left") || false;
+  const showRightSide = closedSides?.includes("right") || false;
+  const showFrontSide = closedSides?.includes("front") || false;
+  // Back is closed by default (when undefined) or when explicitly included
+  // If closedSides is an empty array [], it means user explicitly set all sides open
+  const showBackSide =
+    closedSides === undefined ||
+    (closedSides.length > 0 && closedSides.includes("back"));
+
+  return (
+    <group>
+      {/* Left Side */}
+      {showLeftSide && (
+        <mesh position={[-width / 2, 0, 0]} castShadow receiveShadow>
+          <boxGeometry args={[0.08, height, depth]} />
+          <meshStandardMaterial
+            color="#334155"
+            metalness={0.6}
+            roughness={0.4}
+          />
+        </mesh>
+      )}
+
+      {/* Right Side */}
+      {showRightSide && (
+        <mesh position={[width / 2, 0, 0]} castShadow receiveShadow>
+          <boxGeometry args={[0.08, height, depth]} />
+          <meshStandardMaterial
+            color="#334155"
+            metalness={0.6}
+            roughness={0.4}
+          />
+        </mesh>
+      )}
+
+      {/* Front Side */}
+      {showFrontSide && (
+        <mesh position={[0, 0, depth / 2]} castShadow receiveShadow>
+          <boxGeometry args={[width, height, 0.08]} />
+          <meshStandardMaterial
+            color="#334155"
+            metalness={0.6}
+            roughness={0.4}
+          />
+        </mesh>
+      )}
+
+      {/* Back Side */}
+      {showBackSide && (
+        <mesh position={[0, 0, -depth / 2]} castShadow receiveShadow>
+          <boxGeometry args={[width, height, 0.08]} />
+          <meshStandardMaterial
+            color="#334155"
+            metalness={0.6}
+            roughness={0.4}
+          />
+        </mesh>
+      )}
+
+      {/* Horizontal Shelves & Products */}
+      {Array.from({ length: shelfCount }).map((_, i) => {
+        const y = -height / 2 + 0.2 + i * shelfSpacing;
+
+        const showFront = frontConfig && i < frontConfig.levelCount;
+        // Highlight if it's the target shelf - blink rows that match the product's levels
+        // If targetLevels is provided and not empty, only highlight those specific levels
+        // If targetLevels is undefined/null/empty, highlight all levels on target shelf
+        const frontHighlight =
+          showFront &&
+          frontConfig.isTarget &&
+          (!frontConfig.targetLevels ||
+            frontConfig.targetLevels.length === 0 ||
+            frontConfig.targetLevels.includes(i));
+
+        // Debug logging for blinking - log for any target product
+        // if (frontConfig?.isTarget && i < 3) {
+        //   console.log(`Row ${i} highlight check for ${frontConfig.name}:`, {
+        //     showFront,
+        //     isTarget: frontConfig.isTarget,
+        //     targetLevels: frontConfig.targetLevels,
+        //     levelIndex: i,
+        //     shouldHighlight: frontHighlight,
+        //     levelCount: frontConfig.levelCount,
+        //   });
+        // }
+
+        return (
+          <group key={i} position={[0, y, 0]}>
+            {/* Shelf Board */}
+            <mesh receiveShadow castShadow>
+              <boxGeometry args={[width - 0.04, shelfThickness, depth]} />
+              <meshStandardMaterial
+                color="#475569"
+                metalness={0.1}
+                roughness={0.8}
+              />
+            </mesh>
+
+            {/* Front Products */}
+            {showFront && (
+              <group>
+                <AnimatedProductRow
+                  position={[0, 0.2, 0]}
+                  args={[width - 0.2, 0.35, depth - 0.3]}
+                  color={frontConfig.color}
+                  isHighlight={!!frontHighlight}
+                />
+              </group>
+            )}
+          </group>
+        );
+      })}
+
+      {/* Highlight Frame */}
+      {frontConfig?.isTarget && (
+        <group>
+          <mesh position={[0, 0, 0]}>
+            <boxGeometry args={[width + 0.2, height + 0.2, depth + 0.2]} />
+            <meshStandardMaterial
+              color="#3b82f6"
+              transparent
+              opacity={0.1}
+              side={THREE.DoubleSide}
+              depthWrite={false}
+            />
+          </mesh>
+          <lineSegments>
+            <edgesGeometry
+              args={[
+                new THREE.BoxGeometry(width + 0.2, height + 0.2, depth + 0.2),
+              ]}
+            />
+            <lineBasicMaterial
+              color="#3b82f6"
+              linewidth={2}
+              transparent
+              opacity={0.6}
+            />
+          </lineSegments>
+        </group>
+      )}
+    </group>
+  );
+};
+
+// Aisle Highlight Component - renders a floor highlight for the entire aisle
+const AisleHighlight: React.FC<{
+  aisleId: string;
+  config: StoreConfig;
+  currentFloor: number;
+}> = ({ aisleId, config, currentFloor }) => {
+  const bounds = getAisleBounds(config, aisleId);
+  if (!bounds || bounds.floor !== currentFloor) return null;
+
+  const aisleColor = getAisleColor(aisleId);
+  const centerX = (bounds.minX + bounds.maxX) / 2;
+  const centerZ = (bounds.minZ + bounds.maxZ) / 2;
+  const width = bounds.maxX - bounds.minX;
+  const depth = bounds.maxZ - bounds.minZ;
+
+  return (
+    <group position={[centerX, -0.65, centerZ]}>
+      {/* Semi-transparent floor highlight */}
+      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.01, 0]}>
+        <planeGeometry args={[width, depth]} />
+        <meshStandardMaterial
+          color={aisleColor}
+          transparent
+          opacity={0.15}
+          side={THREE.DoubleSide}
+        />
+      </mesh>
+
+      {/* Thick boundary outline around entire aisle */}
+      <Line
+        points={[
+          [-width / 2, 0.02, -depth / 2],
+          [width / 2, 0.02, -depth / 2],
+          [width / 2, 0.02, depth / 2],
+          [-width / 2, 0.02, depth / 2],
+          [-width / 2, 0.02, -depth / 2],
+        ]}
+        color={aisleColor}
+        lineWidth={12}
+      />
+    </group>
+  );
+};
+
+// Helper function to render bay support base based on shape
+const renderBaySupport = (
+  shape: string,
+  width: number,
+  depth: number
+): React.ReactElement => {
+  const baseHeight = 0.1;
+  const baseY = -0.7;
+
+  switch (shape) {
+    case "circle": {
+      const radius = Math.min(width, depth) / 2;
+      return (
+        <mesh castShadow receiveShadow position={[0, baseY, 0]}>
+          <cylinderGeometry args={[radius, radius, baseHeight, 32]} />
+          <meshStandardMaterial
+            color="#1e293b"
+            metalness={0.8}
+            roughness={0.2}
+          />
+        </mesh>
+      );
+    }
+    case "rectangle":
+    default: {
+      return (
+        <mesh castShadow receiveShadow position={[0, baseY, 0]}>
+          <boxGeometry args={[width, baseHeight, depth]} />
+          <meshStandardMaterial
+            color="#1e293b"
+            metalness={0.8}
+            roughness={0.2}
+          />
+        </mesh>
+      );
+    }
+  }
+};
+
+// Helper function to calculate shelf positions based on bay shape
+const calculateShelfPositions = (
+  shape: string,
+  numShelves: number,
+  width: number,
+  depth: number,
+  shelfSpacing: number
+): Array<{
+  x: number;
+  z: number;
+  rotation: number;
+  shelfWidth: number;
+  shelfDepth: number;
+}> => {
+  if (numShelves === 0) return [];
+
+  const positions: Array<{
+    x: number;
+    z: number;
+    rotation: number;
+    shelfWidth: number;
+    shelfDepth: number;
+  }> = [];
+
+  switch (shape) {
+    case "circle": {
+      // Circular arrangement: shelves arranged in a circle, facing outward
+      const radius = Math.min(width, depth) / 2 - 1; // Leave margin for shelf depth
+      const angleStep = (Math.PI * 2) / numShelves;
+      // Calculate optimal shelf width based on circumference
+      const circumference = 2 * Math.PI * radius;
+      const shelfWidth = Math.max(
+        1.5,
+        Math.min(3, circumference / numShelves - 0.5)
+      );
+      const shelfDepth = Math.min(width, depth) * 0.35; // Shallow depth for circular display
+
+      for (let i = 0; i < numShelves; i++) {
+        const angle = i * angleStep;
+        const x = Math.cos(angle) * radius * 0.7;
+        const z = Math.sin(angle) * radius * 0.7;
+        const rotation = angle + Math.PI / 2; // Face outward (tangent to circle)
+        positions.push({
+          x,
+          z,
+          rotation,
+          shelfWidth: shelfWidth,
+          shelfDepth: shelfDepth,
+        });
+      }
+      break;
+    }
+    case "rectangle":
+    default: {
+      // Original rectangular layout: linear arrangement
+      const totalSpacing = shelfSpacing * Math.max(0, numShelves - 1);
+      const availableWidth = width - totalSpacing;
+      const unitWidth = numShelves > 0 ? availableWidth / numShelves : width;
+
+      for (let i = 0; i < numShelves; i++) {
+        const x = -width / 2 + unitWidth / 2 + i * (unitWidth + shelfSpacing);
+        positions.push({
+          x,
+          z: 0,
+          rotation: 0, // Face forward
+          shelfWidth: Math.max(1, unitWidth - 0.4),
+          shelfDepth: depth - 0.5,
+        });
+      }
+      break;
+    }
+  }
+
+  return positions;
+};
+
+const BayComponent: React.FC<{
+  bay: Bay;
+  aisleId: string | null;
+  isTarget: boolean;
+  targetProduct?: Product | null;
+  disableFocus?: boolean;
+}> = ({ bay, aisleId, isTarget, targetProduct }) => {
+  const shelfSpacing = bay.shelfSpacing ?? 0; // Default spacing is 0
+  const numShelves = bay.shelves.length;
+  const bayShape = bay.shape || "rectangle"; // Default to rectangle
+  const UNIT_HEIGHT = 2.2;
+  const Y_SHIFT = 0.35;
+
+  // Calculate shelf positions based on shape
+  const shelfPositions = calculateShelfPositions(
+    bayShape,
+    numShelves,
+    bay.width,
+    bay.depth,
+    shelfSpacing
+  );
+
+  // Use aisle color for all shelves in this bay
+  const aisleColor = aisleId ? getAisleColor(aisleId) : "#64748b";
+
+  const getShelfConfig = (shelf: Shelf) => {
+    // If the product's shelfId is missing in this bay, fallback to highlight all shelves in the target bay
+    const shelfExistsInBay = bay.shelves.some(
+      (s) => s.id === targetProduct?.shelfId
+    );
+    const isTargetShelf =
+      isTarget &&
+      (shelfExistsInBay ? targetProduct?.shelfId === shelf.id : true);
+    // Use aisle color instead of bay hash color - all shelves in same aisle have same color
+    const config = {
+      color: aisleColor,
+      isTarget: isTargetShelf,
+      targetLevels:
+        isTargetShelf && targetProduct?.levels
+          ? targetProduct.levels
+          : undefined,
+      name: shelf.name,
+      levelCount: shelf.levelCount || 5,
+    };
+
+    // Debug logging for blinking - log for any target product
+    // if (isTargetShelf && targetProduct) {
+    //   console.log(`Shelf config for ${targetProduct.name}:`, {
+    //     shelfId: shelf.id,
+    //     productShelfId: targetProduct.shelfId,
+    //     isTarget: config.isTarget,
+    //     targetLevels: config.targetLevels,
+    //     productLevels: targetProduct.levels,
+    //     levelCount: config.levelCount,
+    //   });
+    // }
+
+    return config;
+  };
+
+  return (
+    <group
+      position={[bay.column + bay.width / 2, 0.75, bay.row + bay.depth / 2]}
+    >
+      {/* Render bay support base based on shape */}
+      {renderBaySupport(bayShape, bay.width, bay.depth)}
+
+      {/* Render shelves at calculated positions */}
+      {bay.shelves.map((shelf, idx) => {
+        const position = shelfPositions[idx] ||
+          shelfPositions[0] || {
+            x: 0,
+            z: 0,
+            rotation: 0,
+            shelfWidth: bay.width,
+            shelfDepth: bay.depth,
+          };
+        const frontConfig = getShelfConfig(shelf);
+
+        // For circle bays, force all sides to be open (empty array)
+        const shelfClosedSides = bayShape === "circle" ? [] : shelf.closedSides;
+
+        return (
+          <group
+            key={shelf.id}
+            position={[position.x, Y_SHIFT, position.z]}
+            rotation={[0, position.rotation, 0]}
+          >
+            <DetailedShelfUnit
+              width={position.shelfWidth}
+              height={UNIT_HEIGHT}
+              depth={position.shelfDepth}
+              frontConfig={frontConfig}
+              backConfig={undefined}
+              closedSides={shelfClosedSides}
+            />
+
+            {/* Label - Show only on camera-facing side */}
+            {frontConfig && (
+              <CameraFacingLabel
+                shelfName={frontConfig.name}
+                width={position.shelfWidth}
+                depth={position.shelfDepth}
+                height={UNIT_HEIGHT}
+                closedSides={shelfClosedSides}
+                isTarget={frontConfig.isTarget}
+              />
+            )}
+          </group>
+        );
+      })}
+      {/* Bay Name Label - Raised higher */}
+      <Billboard position={[0, 2.8, 0]}>
+        <Text
+          fontSize={0.6}
+          color="#1e293b"
+          fontWeight="black"
+          anchorY="bottom"
+          outlineWidth={0.08}
+          outlineColor="#ffffff"
+        >
+          {bay.name.toUpperCase()}
+        </Text>
+      </Billboard>
+    </group>
+  );
+};
+
+const PathLine: React.FC<{ points: PathNode[]; currentFloor: number }> = ({
+  points,
+  currentFloor,
+}) => {
+  const [progress, setProgress] = useState(0);
+  const hasPlayedSoundRef = useRef(false);
+
+  useEffect(() => {
+    setProgress(0);
+    hasPlayedSoundRef.current = false;
+    const start = Date.now();
+    const duration = 2500; // Slower path drawing (2.5 seconds)
+
+    // Play happy sound when path starts drawing
+    if (points.length > 0 && !hasPlayedSoundRef.current) {
+      //   soundManager.playPathStart();
+      hasPlayedSoundRef.current = true;
+    }
+
+    const animate = () => {
+      const elapsed = Date.now() - start;
+      const nextProgress = Math.min(1, elapsed / duration);
+      setProgress(nextProgress);
+      if (nextProgress < 1) requestAnimationFrame(animate);
+    };
+    requestAnimationFrame(animate);
+  }, [points, currentFloor]);
+
+  const animatedPoints = useMemo(() => {
+    const floorPoints = points.filter((p) => p.floor === currentFloor);
+    // Debug logging for path display
+    // if (points.length > 0 && floorPoints.length < 2) {
+    //   console.log("PathLine: Points exist but not on current floor", {
+    //     totalPoints: points.length,
+    //     floorPoints: floorPoints.length,
+    //     currentFloor,
+    //     pointFloors: [...new Set(points.map((p) => p.floor))],
+    //   });
+    // }
+    if (floorPoints.length < 2) return [];
+    const currentCount = Math.max(2, Math.floor(floorPoints.length * progress));
+    return floorPoints
+      .slice(0, currentCount)
+      .map((p) => new THREE.Vector3(p.x, 0.02, p.z));
+  }, [points, progress, currentFloor]);
+
+  if (animatedPoints.length < 2) return null;
+  return (
+    <group>
+      <Line
+        points={animatedPoints}
+        color="#3b82f6"
+        lineWidth={6}
+        transparent
+        opacity={0.9}
+      />
+      <Line
+        points={animatedPoints}
+        color="#93c5fd"
+        lineWidth={12}
+        transparent
+        opacity={0.25}
+      />
+    </group>
+  );
+};
+
+const WalkingAvatar: React.FC<{
+  points: PathNode[];
+  currentFloor: number;
+  config: StoreConfig;
+  onPositionUpdate?: (position: THREE.Vector3 | null) => void;
+  onLoopRestart?: () => void;
+  onStatusChange?: (isWaiting: boolean, forward: THREE.Vector3) => void;
+}> = ({
+  points,
+  currentFloor,
+  config,
+  onPositionUpdate,
+  onLoopRestart,
+  onStatusChange,
+}) => {
+  const group = useRef<THREE.Group>(null);
+  const leftLeg = useRef<THREE.Group>(null);
+  const rightLeg = useRef<THREE.Group>(null);
+  const leftArm = useRef<THREE.Group>(null);
+  const rightArm = useRef<THREE.Group>(null);
+  const avatarPositionRef = useRef<THREE.Vector3 | null>(null);
+  const lastFootstepTimeRef = useRef(0);
+  const lastCycleRef = useRef(-1);
+  const wasWaitingRef = useRef(false);
+
+  const floorPoints = useMemo(
+    () => points.filter((p) => p.floor === currentFloor),
+    [points, currentFloor]
+  );
+
+  // Check if path starts at an elevator
+  const startsAtElevator = useMemo(() => {
+    if (floorPoints.length === 0) return false;
+    const firstPoint = floorPoints[0];
+    return config.elevators.some((elev) => {
+      const dist = Math.hypot(elev.x - firstPoint.x, elev.z - firstPoint.z);
+      return dist < 2.5; // Within elevator radius
+    });
+  }, [floorPoints, config.elevators]);
+
+  useFrame((state) => {
+    if (!group.current || floorPoints.length < 2) return;
+
+    // Looping walking path (12s walk + 3s wait) = 15s cycle
+    const cycleTime = 15;
+    const currentCycle = Math.floor(state.clock.elapsedTime / cycleTime);
+
+    // Detect loop restart
+    if (lastCycleRef.current !== -1 && currentCycle > lastCycleRef.current) {
+      if (onLoopRestart) onLoopRestart();
+      if (onStatusChange) onStatusChange(false, new THREE.Vector3(0, 0, 1)); // Reset status
+      wasWaitingRef.current = false;
+    }
+    lastCycleRef.current = currentCycle;
+
+    const t = (state.clock.elapsedTime % cycleTime) / cycleTime;
+    const walkDurationRatio = 12 / 15; // 0.8
+    const walkProgress = Math.min(1, t / walkDurationRatio); // Walk for first 12s
+
+    const totalPoints = floorPoints.length;
+    const pathTotalDist = totalPoints - 1;
+
+    // Find index, but cap it so we stop ~1.2 units before the final "touching" point
+    const stopOffset = totalPoints > 5 ? 1.2 / pathTotalDist : 0.1;
+    const cappedT = walkProgress * (1 - stopOffset);
+
+    const exactIndex = cappedT * pathTotalDist;
+    const index = Math.floor(exactIndex);
+    const nextIndex = Math.min(index + 1, totalPoints - 1);
+    const alpha = exactIndex - index;
+
+    const p1 = floorPoints[index];
+    const p2 = floorPoints[nextIndex];
+
+    if (p1 && p2) {
+      let currentPos = new THREE.Vector3(
+        p1.x + (p2.x - p1.x) * alpha,
+        0,
+        p1.z + (p2.z - p1.z) * alpha
+      );
+
+      // If starting at elevator, position avatar inside elevator until it moves forward
+      if (startsAtElevator && index === 0 && alpha < 0.3) {
+        const elevator = config.elevators.find((elev) => {
+          const dist = Math.hypot(elev.x - p1.x, elev.z - p1.z);
+          return dist < 2.5;
+        });
+        if (elevator) {
+          // Position avatar well inside elevator (towards back, away from doors)
+          // Elevator doors are at z=2.05 relative to elevator center
+          // Position avatar at center/back of elevator to avoid door overlap
+          currentPos = new THREE.Vector3(elevator.x, 0, elevator.z - 1.2);
+        }
+      }
+
+      group.current.position.copy(currentPos);
+      avatarPositionRef.current = currentPos;
+
+      // Notify parent of position update
+      if (onPositionUpdate) {
+        onPositionUpdate(currentPos);
+      }
+
+      // Check walking status
+      const isWaiting = walkProgress >= 1;
+      if (isWaiting !== wasWaitingRef.current) {
+        wasWaitingRef.current = isWaiting;
+        if (onStatusChange) {
+          // Calculate forward vector from last segment
+          const lastP = floorPoints[floorPoints.length - 1];
+          const prevP = floorPoints[floorPoints.length - 2];
+          const forward = new THREE.Vector3(
+            lastP.x - prevP.x,
+            0,
+            lastP.z - prevP.z
+          ).normalize();
+          onStatusChange(isWaiting, forward);
+        }
+      }
+
+      const lookTarget =
+        walkProgress < 1
+          ? new THREE.Vector3(p2.x, 0, p2.z)
+          : new THREE.Vector3(
+              floorPoints[totalPoints - 1].x,
+              0,
+              floorPoints[totalPoints - 1].z
+            );
+      if (group.current.position.distanceTo(lookTarget) > 0.05) {
+        const targetRotation = new THREE.Matrix4().lookAt(
+          lookTarget,
+          currentPos,
+          new THREE.Vector3(0, 1, 0)
+        );
+        const q = new THREE.Quaternion().setFromRotationMatrix(targetRotation);
+        group.current.quaternion.slerp(q, 0.1);
+      }
+    }
+
+    // Walking animation cycle (only while walking)
+    const isWalking = walkProgress < 1 && walkProgress > 0;
+    const speedMultiplier = 4.0;
+    const swingFactor = isWalking
+      ? Math.sin(state.clock.elapsedTime * speedMultiplier)
+      : 0;
+    const legSwing = swingFactor * 0.4;
+    const armSwing = -swingFactor * 0.35;
+    const bounce = isWalking
+      ? Math.abs(Math.cos(state.clock.elapsedTime * speedMultiplier)) * 0.05
+      : 0;
+
+    // Play footstep sounds while walking
+    if (isWalking) {
+      const footstepInterval = 0.5; // Play footstep every 0.5 seconds
+      const timeSinceLastFootstep =
+        state.clock.elapsedTime - lastFootstepTimeRef.current;
+      if (timeSinceLastFootstep >= footstepInterval) {
+        // soundManager.playFootstep();
+        lastFootstepTimeRef.current = state.clock.elapsedTime;
+      }
+    }
+
+    if (leftLeg.current) leftLeg.current.rotation.x = legSwing;
+    if (rightLeg.current) rightLeg.current.rotation.x = -legSwing;
+    if (leftArm.current) leftArm.current.rotation.x = armSwing;
+    if (rightArm.current) rightArm.current.rotation.x = -armSwing;
+
+    if (group.current.children[0]) {
+      // Apply bounce to the torso/head
+      group.current.children[0].position.y = bounce;
+      // Subtract bounce from legs to keep them grounded (pivot stays at 0.95 world height)
+      if (leftLeg.current) leftLeg.current.position.y = 0.95 - bounce;
+      if (rightLeg.current) rightLeg.current.position.y = 0.95 - bounce;
+      // Slight side-to-side sway
+      group.current.children[0].rotation.z = swingFactor * 0.02;
+    }
+  });
+
+  if (floorPoints.length < 2) return null;
+
+  return (
+    <group ref={group}>
+      <group>
+        {/* Torso - Shirt */}
+        <mesh position={[0, 1.25, 0]} castShadow>
+          <boxGeometry args={[0.38, 0.55, 0.22]} />
+          <meshStandardMaterial color="#334155" roughness={0.7} />
+        </mesh>
+        {/* Logo 'A' - positioned on the front of the shirt */}
+        <group position={[0, 1.35, 0.111]}>
+          <Text
+            fontSize={0.1}
+            color="#fbbf24"
+            fontWeight="black"
+            anchorX="center"
+            anchorY="middle"
+            fillOpacity={0.7}
+          >
+            A
+          </Text>
+          {/* Circular border around the letter */}
+          <mesh>
+            <ringGeometry args={[0.07, 0.075, 32]} />
+            <meshStandardMaterial
+              color="#fbbf24"
+              transparent
+              opacity={0.4}
+              side={THREE.DoubleSide}
+            />
+          </mesh>
+          {/* Very faint background disk */}
+          <mesh position={[0, 0, -0.001]}>
+            <circleGeometry args={[0.075, 32]} />
+            <meshStandardMaterial
+              color="#fbbf24"
+              transparent
+              opacity={0.1}
+              side={THREE.DoubleSide}
+            />
+          </mesh>
+        </group>
+        {/* Head & Neck */}
+        <group position={[0, 1.6, 0]}>
+          <mesh position={[0, 0.05, 0]} castShadow>
+            <sphereGeometry args={[0.15, 16, 16]} />
+            <meshStandardMaterial color="#fbbf24" roughness={0.8} />
+          </mesh>
+          <mesh position={[0, -0.12, 0]} castShadow>
+            <cylinderGeometry args={[0.04, 0.04, 0.08, 8]} />
+            <meshStandardMaterial color="#fbbf24" />
+          </mesh>
+        </group>
+        {/* Legs - Pants */}
+        <group ref={leftLeg} position={[-0.11, 0.95, 0]}>
+          <mesh position={[0, -0.45, 0]} castShadow>
+            <boxGeometry args={[0.16, 0.9, 0.16]} />
+            <meshStandardMaterial color="#0f172a" />
+          </mesh>
+          <mesh position={[0, -0.9, 0.06]} castShadow>
+            <boxGeometry args={[0.17, 0.1, 0.28]} />
+            <meshStandardMaterial color="#000000" />
+          </mesh>
+        </group>
+        <group ref={rightLeg} position={[0.11, 0.95, 0]}>
+          <mesh position={[0, -0.45, 0]} castShadow>
+            <boxGeometry args={[0.16, 0.9, 0.16]} />
+            <meshStandardMaterial color="#0f172a" />
+          </mesh>
+          <mesh position={[0, -0.9, 0.06]} castShadow>
+            <boxGeometry args={[0.17, 0.1, 0.28]} />
+            <meshStandardMaterial color="#000000" />
+          </mesh>
+        </group>
+        {/* Arms */}
+        <group ref={leftArm} position={[-0.26, 1.45, 0]}>
+          <mesh position={[0, -0.25, 0]} castShadow>
+            <boxGeometry args={[0.12, 0.5, 0.12]} />
+            <meshStandardMaterial color="#334155" />
+          </mesh>
+          <mesh position={[0, -0.55, 0]} castShadow>
+            <sphereGeometry args={[0.07, 8, 8]} />
+            <meshStandardMaterial color="#fbbf24" />
+          </mesh>
+        </group>
+        <group ref={rightArm} position={[0.26, 1.45, 0]}>
+          <mesh position={[0, -0.25, 0]} castShadow>
+            <boxGeometry args={[0.12, 0.5, 0.12]} />
+            <meshStandardMaterial color="#334155" />
+          </mesh>
+          <mesh position={[0, -0.55, 0]} castShadow>
+            <sphereGeometry args={[0.07, 8, 8]} />
+            <meshStandardMaterial color="#fbbf24" />
+          </mesh>
+        </group>
+      </group>
+      <ContactShadows opacity={0.8} scale={4} blur={2.8} far={1} />
+    </group>
+  );
+};
+
+const ProductMarker: React.FC<{
+  product: Product;
+  bay: Bay;
+  type?: "default" | "ai";
+  showLabel?: boolean;
+}> = ({ product, bay, type = "default", showLabel = false }) => {
+  const markerColor = type === "ai" ? "#6366f1" : "#facc15";
+  const pos = useMemo(() => {
+    const shelfIndex = bay.shelves.findIndex((s) => s.id === product.shelfId);
+    const validShelfIndex = shelfIndex === -1 ? 0 : shelfIndex;
+
+    const bayShape = bay.shape || "rectangle";
+    const shelfSpacing = bay.shelfSpacing ?? 0;
+
+    // Use the same shelf position calculation as BayComponent
+    const shelfPositions = calculateShelfPositions(
+      bayShape,
+      bay.shelves.length,
+      bay.width,
+      bay.depth,
+      shelfSpacing
+    );
+    const shelfPosition = shelfPositions[validShelfIndex] ||
+      shelfPositions[0] || {
+        x: 0,
+        z: 0,
+        rotation: 0,
+        shelfWidth: bay.width,
+        shelfDepth: bay.depth,
+      };
+
+    // Calculate product position on the shelf
+    // Products are displayed on the front side of each shelf
+    // For rotated shelves, we need to account for the rotation
+    const bayCenterX = bay.column + bay.width / 2;
+    const bayCenterZ = bay.row + bay.depth / 2;
+
+    // Shelf position relative to bay center
+    const shelfX = shelfPosition.x;
+    const shelfZ = shelfPosition.z;
+
+    // Product offset from shelf center (on the front face)
+    // Front face is at +shelfDepth/2 in shelf's local space
+    const productOffsetX =
+      Math.sin(shelfPosition.rotation) * (shelfPosition.shelfDepth / 2 - 0.25);
+    const productOffsetZ =
+      Math.cos(shelfPosition.rotation) * (shelfPosition.shelfDepth / 2 - 0.25);
+
+    // Absolute position
+    const offsetX = bayCenterX + shelfX + productOffsetX;
+    const offsetZ = bayCenterZ + shelfZ + productOffsetZ;
+
+    return { x: offsetX, z: offsetZ };
+  }, [bay, product]);
+
+  return (
+    <group position={[pos.x, 0.5, pos.z]}>
+      <mesh position={[0, 0.5, 0]} castShadow>
+        <cylinderGeometry args={[0.02, 0.02, 1, 8]} />
+        <meshStandardMaterial color={markerColor} />
+      </mesh>
+      <mesh position={[0, 1, 0]} castShadow>
+        <sphereGeometry args={[type === "ai" ? 0.25 : 0.15, 16, 16]} />
+        <meshStandardMaterial
+          color={markerColor}
+          emissive={markerColor}
+          emissiveIntensity={1}
+        />
+      </mesh>
+      {showLabel && (
+        <Billboard position={[0, 1.4, 0]}>
+          <Text
+            fontSize={0.35}
+            color={markerColor}
+            fontWeight="black"
+            anchorY="bottom"
+            outlineWidth={0.05}
+            outlineColor="#000000"
+          >
+            {type === "ai" ? `✨ ${product.name}` : product.name}
+          </Text>
+        </Billboard>
+      )}
+    </group>
+  );
+};
+
+const CameraController: React.FC<{
+  config: StoreConfig;
+  targetPoint: THREE.Vector3 | null;
+  avatarPosition: THREE.Vector3 | null;
+  loopRestartTrigger: number;
+  avatarStatus: { isWaiting: boolean; forward: THREE.Vector3 };
+}> = ({
+  config,
+  targetPoint,
+  avatarPosition,
+  loopRestartTrigger,
+  avatarStatus,
+}) => {
+  const { camera, controls } = useThree();
+  const centerX = config.gridSize.width / 2;
+  const centerZ = config.gridSize.depth / 2;
+
+  const lastTargetKeyRef = useRef<string | null>(null);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const userInteractingRef = useRef(false);
+  const hasUserInteractedRef = useRef(false);
+  const interactionTimeoutRef = useRef<number | null>(null);
+  const targetPointRef = useRef<THREE.Vector3>(new THREE.Vector3());
+  const lastInteractionTimeRef = useRef(Date.now()); // Start with 3s delay on load
+  const isResettingRef = useRef(true); // Smooth reset on load
+  const prevTriggerRef = useRef(loopRestartTrigger);
+
+  const defaultTarget = useMemo(() => new THREE.Vector3(0, 0, 0), []);
+  const defaultPosition = useMemo(() => {
+    const size = Math.max(config.gridSize.width, config.gridSize.depth);
+    return new THREE.Vector3(0, size * 1.2, size * 1.2);
+  }, [config.gridSize]);
+
+  useEffect(() => {
+    if (!controls) return;
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const orbitControls = controls as any;
+
+    // Track user interaction
+    const onStart = () => {
+      userInteractingRef.current = true;
+      hasUserInteractedRef.current = true;
+      setIsAnimating(false); // Stop auto-animation when user interacts
+      if (interactionTimeoutRef.current) {
+        clearTimeout(interactionTimeoutRef.current);
+      }
+    };
+
+    const onEnd = () => {
+      // Wait a bit after user stops interacting before allowing auto-animation again
+      if (interactionTimeoutRef.current) {
+        clearTimeout(interactionTimeoutRef.current);
+      }
+      interactionTimeoutRef.current = setTimeout(() => {
+        userInteractingRef.current = false;
+        lastInteractionTimeRef.current = Date.now();
+      }, 2000) as unknown as number; // 2 second delay after user stops interacting
+    };
+
+    orbitControls.addEventListener("start", onStart);
+    orbitControls.addEventListener("end", onEnd);
+
+    return () => {
+      orbitControls.removeEventListener("start", onStart);
+      orbitControls.removeEventListener("end", onEnd);
+      if (interactionTimeoutRef.current) {
+        clearTimeout(interactionTimeoutRef.current);
+      }
+    };
+  }, [controls]);
+
+  useEffect(() => {
+    // Only animate if user is not interacting
+    if (userInteractingRef.current) return;
+
+    const targetKey = targetPoint
+      ? `${targetPoint.x},${targetPoint.y},${targetPoint.z}`
+      : "default";
+    if (targetKey !== lastTargetKeyRef.current) {
+      lastTargetKeyRef.current = targetKey;
+      setIsAnimating(true);
+      if (targetPoint) targetPointRef.current.copy(targetPoint);
+      else targetPointRef.current.copy(defaultTarget);
+    }
+  }, [targetPoint, defaultTarget]);
+
+  // Handle loop restart trigger - smooth reset to default view
+  useEffect(() => {
+    if (loopRestartTrigger !== prevTriggerRef.current) {
+      isResettingRef.current = true;
+      // hasUserInteractedRef.current remains true if it was set - do NOT clear it
+      lastInteractionTimeRef.current = Date.now(); // Reset idle timer
+      prevTriggerRef.current = loopRestartTrigger;
+    }
+  }, [loopRestartTrigger]);
+
+  useFrame(() => {
+    if (!controls || userInteractingRef.current) return;
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const orbitControls = controls as any;
+
+    // Priority 0: Reset to default view (on load or loop restart)
+    // ONLY if user has NOT interacted yet. If they have, we respect their manual view.
+    if (isResettingRef.current && !hasUserInteractedRef.current) {
+      orbitControls.target.lerp(defaultTarget, 0.05);
+      camera.position.lerp(defaultPosition, 0.05);
+      orbitControls.update();
+
+      if (
+        camera.position.distanceTo(defaultPosition) < 0.5 &&
+        orbitControls.target.distanceTo(defaultTarget) < 0.5
+      ) {
+        isResettingRef.current = false;
+      }
+      return;
+    } else if (isResettingRef.current && hasUserInteractedRef.current) {
+      // If we flagged for reset but user interacted, cancel the reset flag
+      isResettingRef.current = false;
+    }
+
+    const timeSinceInteraction = Date.now() - lastInteractionTimeRef.current;
+    const isIdle = timeSinceInteraction > 3000; // 3 seconds idle
+
+    // Priority 1: Animate to specific target point (product/shelf)
+    if (isAnimating) {
+      const target = targetPoint ? targetPointRef.current : defaultTarget;
+      const posTarget = targetPoint
+        ? new THREE.Vector3(targetPoint.x, targetPoint.y + 8, targetPoint.z + 8)
+        : defaultPosition;
+
+      orbitControls.target.lerp(target, 0.1);
+      camera.position.lerp(posTarget, 0.1);
+      orbitControls.update();
+
+      if (
+        camera.position.distanceTo(posTarget) < 0.1 &&
+        orbitControls.target.distanceTo(target) < 0.1
+      ) {
+        setIsAnimating(false);
+        lastInteractionTimeRef.current = Date.now(); // Reset idle timer after reaching target
+      }
+    }
+    // Priority 2: Follow avatar when idle - BUT ONLY IF USER HAS NEVER INTERACTED
+    else if (isIdle && avatarPosition && !hasUserInteractedRef.current) {
+      // Convert avatar position (store coords) to world coords
+      const worldAvatarPos = new THREE.Vector3(
+        avatarPosition.x - centerX,
+        avatarPosition.y,
+        avatarPosition.z - centerZ
+      );
+
+      // Focus on upper body for a natural view
+      const target = new THREE.Vector3(
+        worldAvatarPos.x,
+        worldAvatarPos.y + 1.5,
+        worldAvatarPos.z
+      );
+      // Ideally positioned slightly above head level and behind - "perfect" immersive view
+      let posTarget = new THREE.Vector3(
+        worldAvatarPos.x,
+        worldAvatarPos.y + 2.8,
+        worldAvatarPos.z + 5
+      );
+
+      // If reached destination, rotate camera to align with avatar facing direction
+      if (avatarStatus.isWaiting && !isResettingRef.current) {
+        // Position behind avatar (-forward)
+        // Adjust for world rotation (if store is rotated? assuming world aligned)
+        // Store coordinates are already world aligned in this scene logic (just offsets)
+        // avatarStatus.forward is from store coordinates, so direction is same in world relative space
+
+        const distance = 4.5;
+        const height = 2.0;
+
+        posTarget = new THREE.Vector3(
+          worldAvatarPos.x - avatarStatus.forward.x * distance,
+          worldAvatarPos.y + height,
+          worldAvatarPos.z - avatarStatus.forward.z * distance
+        );
+      }
+
+      // Smooth, slow cinematic transition
+      orbitControls.target.lerp(target, 0.02);
+      camera.position.lerp(posTarget, 0.02);
+      orbitControls.update();
+    }
+  });
+
+  return null;
+};
+
+// Lower Shadow Quality for Mobile
+const shadowSize =
+  typeof window !== "undefined" && window.innerWidth < 768 ? 1024 : 2048;
+
+const StoreScene: React.FC<Store3DProps> = ({
+  config,
+  targetProduct,
+  path,
+  currentFloor,
+  allProducts = [],
+  showAllProducts = false,
+  showLabels = false,
+  targetDepartmentId,
+  targetAisleId,
+  targetShelfId,
+  disableFocus,
+}) => {
+  const centerX = config.gridSize.width / 2;
+  const centerZ = config.gridSize.depth / 2;
+  const [avatarPosition, setAvatarPosition] = useState<THREE.Vector3 | null>(
+    null
+  );
+
+  const glassTileTextureWidth = useMemo(() => {
+    const tex = generateGlassTileTexture();
+    tex.repeat.set(config.gridSize.width / 1.0, 8); // Denser tiles for better visibility
+    return tex;
+  }, [config.gridSize.width]);
+
+  const glassTileTextureDepth = useMemo(() => {
+    const tex = generateGlassTileTexture();
+    tex.repeat.set(config.gridSize.depth / 1.0, 8); // Denser tiles for better visibility
+    return tex;
+  }, [config.gridSize.depth]);
+
+  // Reset avatar position when path changes
+  useEffect(() => {
+    setAvatarPosition(null);
+  }, [path, currentFloor]);
+
+  // Check if path starts at an elevator
+  const pathStartsAtElevator = useMemo(() => {
+    if (path.length === 0) return false;
+    const firstPoint = path[0];
+    if (firstPoint.floor !== currentFloor) return false;
+    return config.elevators.some((elev) => {
+      const dist = Math.hypot(elev.x - firstPoint.x, elev.z - firstPoint.z);
+      return dist < 2.5; // Within elevator radius
+    });
+  }, [path, currentFloor, config.elevators]);
+
+  const selectedBay = useMemo(
+    () =>
+      targetDepartmentId ? findBayById(config, targetDepartmentId) : undefined,
+    [config, targetDepartmentId]
+  );
+  const targetBay = useMemo(() => {
+    if (!targetProduct) return undefined;
+    // Support both new (bayId) and legacy (departmentId) product references
+    return findBayById(
+      config,
+      targetProduct.bayId || targetProduct.departmentId || ""
+    );
+  }, [config, targetProduct]);
+
+  const shelfBay = useMemo(() => {
+    if (!targetShelfId) return null;
+    // Find the bay that contains this shelf
+    const allBaysList = getAllBays(config);
+    return (
+      allBaysList.find((bay) =>
+        bay.shelves.some((s) => s.id === targetShelfId)
+      ) || null
+    );
+  }, [config, targetShelfId]);
+
+  const cameraTargetPoint = useMemo(() => {
+    let point: THREE.Vector3 | null = null;
+
+    // Priority: Shelf > Bay > Aisle > Product
+    if (targetShelfId && (selectedBay || shelfBay)) {
+      // Focus on specific shelf within bay
+      const bay = selectedBay || shelfBay;
+      if (bay) {
+        const shelfIdx = bay.shelves.findIndex((s) => s.id === targetShelfId);
+        const validIdx = shelfIdx === -1 ? 0 : shelfIdx;
+
+        const bayShape = bay.shape || "rectangle";
+        const shelfSpacing = bay.shelfSpacing ?? 0;
+        const shelfPositions = calculateShelfPositions(
+          bayShape,
+          bay.shelves.length,
+          bay.width,
+          bay.depth,
+          shelfSpacing
+        );
+        const shelfPosition = shelfPositions[validIdx] ||
+          shelfPositions[0] || {
+            x: 0,
+            z: 0,
+            rotation: 0,
+            shelfWidth: bay.width,
+            shelfDepth: bay.depth,
+          };
+
+        const bayCenterX = bay.column + bay.width / 2;
+        const bayCenterZ = bay.row + bay.depth / 2;
+        const x = bayCenterX + shelfPosition.x;
+        const z = bayCenterZ + shelfPosition.z;
+        point = new THREE.Vector3(x, 0, z);
+      }
+    } else if (selectedBay) {
+      // Focus on bay center
+      point = new THREE.Vector3(
+        selectedBay.column + selectedBay.width / 2,
+        0,
+        selectedBay.row + selectedBay.depth / 2
+      );
+    } else if (targetAisleId) {
+      // Focus on aisle center
+      const bounds = getAisleBounds(config, targetAisleId);
+      if (bounds && bounds.floor === currentFloor) {
+        const centerX = (bounds.minX + bounds.maxX) / 2;
+        const centerZ = (bounds.minZ + bounds.maxZ) / 2;
+        point = new THREE.Vector3(centerX, 0, centerZ);
+      }
+    } else if (targetProduct && targetBay) {
+      // Focus on product shelf - use same calculation as ProductMarker
+      const idx = targetBay.shelves.findIndex(
+        (s) => s.id === targetProduct.shelfId
+      );
+      const validIdx = idx === -1 ? 0 : idx;
+
+      const bayShape = targetBay.shape || "rectangle";
+      const shelfSpacing = targetBay.shelfSpacing ?? 0;
+      const shelfPositions = calculateShelfPositions(
+        bayShape,
+        targetBay.shelves.length,
+        targetBay.width,
+        targetBay.depth,
+        shelfSpacing
+      );
+      const shelfPosition = shelfPositions[validIdx] ||
+        shelfPositions[0] || {
+          x: 0,
+          z: 0,
+          rotation: 0,
+          shelfWidth: targetBay.width,
+          shelfDepth: targetBay.depth,
+        };
+
+      const bayCenterX = targetBay.column + targetBay.width / 2;
+      const bayCenterZ = targetBay.row + targetBay.depth / 2;
+
+      // Product offset from shelf center (on the front face)
+      const productOffsetX =
+        Math.sin(shelfPosition.rotation) *
+        (shelfPosition.shelfDepth / 2 - 0.25);
+      const productOffsetZ =
+        Math.cos(shelfPosition.rotation) *
+        (shelfPosition.shelfDepth / 2 - 0.25);
+
+      const x = bayCenterX + shelfPosition.x + productOffsetX;
+      const z = bayCenterZ + shelfPosition.z + productOffsetZ + 0.3;
+
+      point = new THREE.Vector3(x, 0, z);
+    }
+
+    if (point) {
+      // Convert to world coordinates (centered)
+      return new THREE.Vector3(point.x - centerX, 0, point.z - centerZ);
+    }
+    return null;
+  }, [
+    targetProduct,
+    targetBay,
+    selectedBay,
+    targetAisleId,
+    targetShelfId,
+    shelfBay,
+    config,
+    currentFloor,
+    centerX,
+    centerZ,
+  ]);
+
+  const floorProducts = useMemo(() => {
+    if (!showAllProducts) return [];
+    return allProducts.filter((p) => {
+      const bayId = p.bayId || p.departmentId;
+      const bay = bayId ? findBayById(config, bayId) : undefined;
+      return bay && bay.floor === currentFloor && p.id !== targetProduct?.id;
+    });
+  }, [allProducts, showAllProducts, config, currentFloor, targetProduct]);
+
+  const [restartTrigger, setRestartTrigger] = useState(0);
+  const [avatarStatus, setAvatarStatus] = useState({
+    isWaiting: false,
+    forward: new THREE.Vector3(0, 0, 1),
+  });
+
+  const handleLoopRestart = () => {
+    setRestartTrigger((prev) => prev + 1);
+    setAvatarStatus({ isWaiting: false, forward: new THREE.Vector3(0, 0, 1) });
+  };
+
+  const handleStatusChange = (isWaiting: boolean, forward: THREE.Vector3) => {
+    setAvatarStatus({ isWaiting, forward });
+  };
+
+  return (
+    <>
+      <PerspectiveCamera makeDefault fov={window.innerWidth < 768 ? 80 : 40} />
+      <ZoomToPointerControls
+        minDistance={3}
+        maxDistance={300}
+        maxPolarAngle={Math.PI / 2.1} // Standard angle constraint
+        storeConfig={config}
+      />
+      <CameraController
+        config={config}
+        targetPoint={disableFocus ? null : cameraTargetPoint}
+        avatarPosition={avatarPosition}
+        loopRestartTrigger={restartTrigger}
+        avatarStatus={avatarStatus}
+      />
+      <ambientLight intensity={0.2} />
+      {/* <pointLight
+        position={[0, 20, 0]}
+        intensity={5000}
+        castShadow
+        shadow-mapSize-width={4096}
+        shadow-mapSize-height={4096}
+        shadow-camera-far={200}
+        shadow-bias={-0.0001}
+        decay={2}
+        distance={200}
+      /> */}
+      <pointLight
+        position={[0, 20, 0]}
+        intensity={5000}
+        castShadow
+        shadow-mapSize-width={shadowSize} // Use the reduced size
+        shadow-mapSize-height={shadowSize}
+        shadow-camera-far={150}
+        shadow-bias={-0.001} // Adjusted to prevent shadow acne at lower res
+      />
+      <Suspense fallback={<Loader />}>
+        <Environment preset="city" />
+
+        <group position={[-centerX, 0, -centerZ]}>
+          {/* Extended floor area (non-reflective) */}
+          <mesh
+            rotation={[-Math.PI / 2, 0, 0]}
+            position={[centerX, -0.1, centerZ]}
+          >
+            <planeGeometry
+              args={[config.gridSize.width + 500, config.gridSize.depth + 500]}
+            />
+            <meshStandardMaterial color="#f8fafc" roughness={0.8} />
+          </mesh>
+
+          {/* Store floor (reflective - only within store boundaries) */}
+          <mesh
+            rotation={[-Math.PI / 2, 0, 0]}
+            position={[centerX, 0, centerZ]}
+            receiveShadow
+          >
+            <planeGeometry
+              args={[config.gridSize.width, config.gridSize.depth]}
+            />
+            {/* <MeshReflectorMaterial
+              blur={[400, 100]}
+              resolution={1024}
+              mixBlur={1}
+              mixStrength={0.8}
+              roughness={0.3}
+              depthScale={1}
+              minDepthThreshold={0.2}
+              maxDepthThreshold={1.2}
+              color="#e2e8f0"
+              metalness={0.5}
+              mirror={0.7}
+            /> */}
+            <meshStandardMaterial
+              color="#e2e8f0"
+              roughness={0.4}
+              metalness={0.2}
+            />
+          </mesh>
+
+          <Grid
+            position={[centerX, 0.01, centerZ]}
+            args={[config.gridSize.width, config.gridSize.depth]}
+            cellSize={1}
+            sectionSize={5}
+            sectionColor="#cbd5e1"
+            cellColor="#e2e8f0"
+            infiniteGrid={false}
+          />
+
+          {/* Store Boundary Line - Visible border around store perimeter */}
+          <Line
+            points={[
+              [0, 0.02, 0],
+              [config.gridSize.width, 0.02, 0],
+              [config.gridSize.width, 0.02, config.gridSize.depth],
+              [0, 0.02, config.gridSize.depth],
+              [0, 0.02, 0],
+            ]}
+            color="#1e40af"
+            lineWidth={8}
+          />
+          <Line
+            points={[
+              [0, 0.02, 0],
+              [config.gridSize.width, 0.02, 0],
+              [config.gridSize.width, 0.02, config.gridSize.depth],
+              [0, 0.02, config.gridSize.depth],
+              [0, 0.02, 0],
+            ]}
+            color="#3b82f6"
+            lineWidth={4}
+            transparent
+            opacity={0.8}
+          />
+          {/* Subtle glow effect */}
+          <Line
+            points={[
+              [0, 0.015, 0],
+              [config.gridSize.width, 0.015, 0],
+              [config.gridSize.width, 0.015, config.gridSize.depth],
+              [0, 0.015, config.gridSize.depth],
+              [0, 0.015, 0],
+            ]}
+            color="#60a5fa"
+            lineWidth={2}
+            transparent
+            opacity={0.4}
+          />
+
+          {/* Glass tile walls at store boundary - only visible from inside */}
+          <group>
+            {/* Structural base frame for walls (makes them feel grounded and visible) */}
+            <mesh position={[centerX, 0.25, 0]}>
+              <boxGeometry args={[config.gridSize.width, 0.5, 0.4]} />
+              <meshStandardMaterial
+                color="#334155"
+                metalness={0.8}
+                roughness={0.2}
+              />
+            </mesh>
+            <mesh position={[centerX, 0.25, config.gridSize.depth]}>
+              <boxGeometry args={[config.gridSize.width, 0.5, 0.4]} />
+              <meshStandardMaterial
+                color="#334155"
+                metalness={0.8}
+                roughness={0.2}
+              />
+            </mesh>
+            <mesh position={[0, 0.25, centerZ]}>
+              <boxGeometry args={[0.4, 0.5, config.gridSize.depth]} />
+              <meshStandardMaterial
+                color="#334155"
+                metalness={0.8}
+                roughness={0.2}
+              />
+            </mesh>
+            <mesh position={[config.gridSize.width, 0.25, centerZ]}>
+              <boxGeometry args={[0.4, 0.5, config.gridSize.depth]} />
+              <meshStandardMaterial
+                color="#334155"
+                metalness={0.8}
+                roughness={0.2}
+              />
+            </mesh>
+
+            {/* Left wall (at x=0) */}
+            <mesh
+              position={[0, 6, config.gridSize.depth / 2]}
+              rotation={[0, -Math.PI / 2, 0]}
+            >
+              <planeGeometry args={[config.gridSize.depth, 12]} />
+              <meshStandardMaterial
+                map={glassTileTextureDepth}
+                color="#f8fafc"
+                transparent
+                opacity={0.65}
+                side={THREE.BackSide}
+                roughness={0.01}
+                metalness={0.6}
+                envMapIntensity={2}
+                depthWrite={false}
+              />
+            </mesh>
+
+            {/* Right wall (at x=width) */}
+            <mesh
+              position={[config.gridSize.width, 6, config.gridSize.depth / 2]}
+              rotation={[0, Math.PI / 2, 0]}
+            >
+              <planeGeometry args={[config.gridSize.depth, 12]} />
+              <meshStandardMaterial
+                map={glassTileTextureDepth}
+                color="#f8fafc"
+                transparent
+                opacity={0.65}
+                side={THREE.BackSide}
+                roughness={0.01}
+                metalness={0.6}
+                envMapIntensity={2}
+                depthWrite={false}
+              />
+            </mesh>
+
+            {/* Back wall (at z=0) */}
+            <mesh
+              position={[config.gridSize.width / 2, 6, 0]}
+              rotation={[0, Math.PI, 0]}
+            >
+              <planeGeometry args={[config.gridSize.width, 12]} />
+              <meshStandardMaterial
+                map={glassTileTextureWidth}
+                color="#f8fafc"
+                transparent
+                opacity={0.65}
+                side={THREE.BackSide}
+                roughness={0.01}
+                metalness={0.6}
+                envMapIntensity={2}
+                depthWrite={false}
+              />
+            </mesh>
+
+            {/* Front wall (at z=depth) */}
+            <mesh
+              position={[config.gridSize.width / 2, 6, config.gridSize.depth]}
+              rotation={[0, 0, 0]}
+            >
+              <planeGeometry args={[config.gridSize.width, 12]} />
+              <meshStandardMaterial
+                map={glassTileTextureWidth}
+                color="#f8fafc"
+                transparent
+                opacity={0.65}
+                side={THREE.BackSide}
+                roughness={0.01}
+                metalness={0.6}
+                envMapIntensity={2}
+                depthWrite={false}
+              />
+            </mesh>
+          </group>
+
+          {config.entrance.floor === currentFloor && (
+            <group position={[config.entrance.x, 0, config.entrance.z]}>
+              <Door position={[0, 0, 0]} />
+              <Billboard position={[0, 2.8, 0]}>
+                <Text fontSize={0.6} color="#166534" fontWeight="black">
+                  ENTRANCE
+                </Text>
+              </Billboard>
+            </group>
+          )}
+
+          {config.elevators.map((e, idx) => {
+            // Check if this elevator is where the path starts
+            const isPathStarting =
+              pathStartsAtElevator &&
+              path.length > 0 &&
+              path[0].floor === currentFloor &&
+              Math.hypot(e.x - path[0].x, e.z - path[0].z) < 2.5;
+            return (
+              <Elevator
+                key={`elevator-${idx}`}
+                position={[e.x, 0, e.z]}
+                avatarPosition={avatarPosition}
+                isPathStarting={isPathStarting}
+              />
+            );
+          })}
+
+          {/* Render aisle highlights first (behind bays) - shows the entire aisle area */}
+          {(() => {
+            const aisleIds = new Set<string>();
+            getAllBays(config)
+              .filter((b) => b.floor === currentFloor)
+              .forEach((b) => {
+                const aid = getAisleIdForBay(config, b.id);
+                if (aid) aisleIds.add(aid);
+              });
+            return Array.from(aisleIds).map((aisleId) => (
+              <AisleHighlight
+                key={aisleId}
+                aisleId={aisleId}
+                config={config}
+                currentFloor={currentFloor}
+              />
+            ));
+          })()}
+
+          {/* Render bays */}
+          {getAllBays(config)
+            .filter((b) => b.floor === currentFloor)
+            .map((b) => {
+              const aisleId = getAisleIdForBay(config, b.id);
+              return (
+                <BayComponent
+                  key={b.id}
+                  bay={b}
+                  aisleId={aisleId}
+                  isTarget={
+                    (targetProduct?.bayId || targetProduct?.departmentId) ===
+                      b.id || targetDepartmentId === b.id
+                  }
+                  targetProduct={targetProduct}
+                  disableFocus={disableFocus}
+                />
+              );
+            })}
+
+          <PathLine points={path} currentFloor={currentFloor} />
+          <WalkingAvatar
+            points={path}
+            currentFloor={currentFloor}
+            config={config}
+            onPositionUpdate={setAvatarPosition}
+            onLoopRestart={handleLoopRestart}
+            onStatusChange={handleStatusChange}
+          />
+
+          {floorProducts.map((p) => {
+            const bayId = p.bayId || p.departmentId;
+            const bay = bayId ? findBayById(config, bayId) : undefined;
+            return bay ? (
+              <ProductMarker
+                key={p.id}
+                product={p}
+                bay={bay}
+                type="ai"
+                showLabel={showLabels}
+              />
+            ) : null;
+          })}
+
+          {targetBay &&
+            targetProduct &&
+            targetBay.floor === currentFloor &&
+            cameraTargetPoint && (
+              <group
+                position={[
+                  cameraTargetPoint.x + centerX,
+                  0,
+                  cameraTargetPoint.z + centerZ,
+                ]}
+              >
+                <mesh position={[0, 2, 0]} castShadow>
+                  <cylinderGeometry args={[0.05, 0.05, 4, 8]} />
+                  <meshStandardMaterial
+                    color="#ef4444"
+                    transparent
+                    opacity={0.3}
+                  />
+                </mesh>
+                <group position={[0, 4, 0]}>
+                  <mesh rotation={[Math.PI, 0, 0]} castShadow>
+                    <coneGeometry args={[0.6, 1.2, 4]} />
+                    <meshStandardMaterial
+                      color="#ef4444"
+                      emissive="#ef4444"
+                      emissiveIntensity={3}
+                    />
+                  </mesh>
+                  <Billboard position={[0, 1.5, 0]}>
+                    <Text
+                      fontSize={1}
+                      color="#dc2626"
+                      fontWeight="black"
+                      outlineWidth={0.05}
+                      outlineColor="#ffffff"
+                      material-depthTest={false}
+                      renderOrder={200}
+                    >
+                      {targetProduct.name.toUpperCase()}
+                    </Text>
+                  </Billboard>
+                </group>
+              </group>
+            )}
+        </group>
+      </Suspense>
+    </>
+  );
+};
+
+const Store3D: React.FC<Store3DProps> = (props) => (
+  <div
+    style={{
+      width: "100%",
+      height: "100%",
+      overflow: "hidden",
+      position: "relative",
+      backgroundColor: "#f1f5f9",
+    }}
+  >
+    <Canvas
+      shadows
+      // dpr={[1, 2]}
+      dpr={Math.min(window.devicePixelRatio, 2)}
+      gl={{
+        antialias: true,
+        stencil: false,
+        depth: true,
+        powerPreference: "high-performance",
+      }}
+      // gl={{
+      //   antialias: false, // Turn off for mobile performance boost
+      //   powerPreference: "high-performance",
+      //   alpha: true, // Save memory if you don't need transparency to the HTML background
+      // }}
+    >
+      <StoreScene {...props} />
+    </Canvas>
+  </div>
+);
+
+export default Store3D;

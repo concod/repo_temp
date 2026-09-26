@@ -1,0 +1,105 @@
+{
+    "CASCADE": {
+        "exclusions": []
+    },
+    "DROP COLUMN": {
+        "exclusions": [
+            "database/arhaus/schemas/global/tables/product_attributes_filter.sql",
+            "database/arhaus/schemas/item_smart/tables/lly_components.sql",
+            "database/arhaus/schemas/item_smart/tables/lly_master.sql",
+            "database/arhaus/schemas/meta_schema/tables/tb_applications.sql",
+            "database/arhaus/schemas/meta_schema/tables/tb_editableflow_master.sql",
+            "database/arhaus/schemas/meta_schema/tables/tb_formula_master.sql",
+            "database/arhaus/schemas/meta_schema/tables/tb_kpi_config.sql",
+            "database/arhaus/schemas/meta_schema/tables/tb_kpi_master.sql",
+            "database/arhaus/schemas/meta_schema/tables/tb_table_columns_mst.sql"
+        ]
+    },
+    "DROP CONSTRAINT": {
+        "exclusions": [
+            "database/arhaus/schemas/item_smart/tables/w2d_contribution_basedata.sql",
+            "database/arhaus/schemas/meta_schema/tables/tb_applications.sql",
+            "database/arhaus/schemas/meta_schema/tables/tb_kpi_config.sql",
+            "database/arhaus/schemas/meta_schema/tables/tb_table_columns_mst.sql",
+            "database/arhaus/schemas/plan_smart/tables/w2d_contribution_basedata.sql"
+        ]
+    },
+    "DROP INDEX": {
+        "exclusions": []
+    },
+    "DROP MATERIALIZED VIEW": {
+        "exclusions": []
+    },
+    "DROP SEQUENCE": {
+        "exclusions": []
+    },
+    "DROP TABLE": {
+        "exclusions": [
+            "database/arhaus/schemas/item_smart/procedures/create_new_sku.sql"
+        ]
+    },
+    "DROP TRIGGER": {
+        "exclusions": []
+    },
+    "DROP TYPE": {
+        "exclusions": []
+    },
+    "DROP VIEW": {
+        "exclusions": []
+    },
+    "INHERITS": {
+        "exclusions": []
+    },
+    "ONLY": {
+        "exclusions": []
+    },
+    "RENAME": {
+        "exclusions": [
+            "database/arhaus/schemas/item_smart/tables/iaf_components.sql",
+            "database/arhaus/schemas/item_smart/tables/iaf_master.sql",
+            "database/arhaus/schemas/item_smart/tables/lf_components.sql",
+            "database/arhaus/schemas/item_smart/tables/lf_master.sql",
+            "database/arhaus/schemas/item_smart/tables/lly_components.sql",
+            "database/arhaus/schemas/item_smart/tables/lly_master.sql",
+            "database/arhaus/schemas/item_smart/tables/ly_components.sql",
+            "database/arhaus/schemas/item_smart/tables/ly_master.sql",
+            "database/arhaus/schemas/item_smart/tables/op_components.sql",
+            "database/arhaus/schemas/item_smart/tables/op_master.sql",
+            "database/arhaus/schemas/item_smart/tables/placeholders_info.sql",
+            "database/arhaus/schemas/item_smart/tables/ty_components.sql",
+            "database/arhaus/schemas/item_smart/tables/ty_master.sql",
+            "database/arhaus/schemas/item_smart/tables/wp_components.sql",
+            "database/arhaus/schemas/item_smart/tables/wp_master.sql",
+            "database/arhaus/schemas/plan_smart/tables/view_management.sql",
+            "database/arhaus/schemas/global/tables/generic_master_mapping.sql",
+            "database/arhaus/schemas/data_platform/tables/rule_master.sql",
+            "database/arhaus/schemas/data_platform/tables/kpi_master.sql"
+        ]
+    },
+    "RESET": {
+        "exclusions": []
+    },
+    "STORAGE": {
+        "exclusions": []
+    },
+    "TEMPORARY": {
+        "exclusions": []
+    },
+    "TRUNCATE": {
+        "exclusions": [
+            "database/arhaus/schemas/item_smart/procedures/create_w2d_contribution_basedata.sql",
+            "database/arhaus/schemas/item_smart/procedures/populate_alerts.sql",
+            "database/arhaus/schemas/item_smart/procedures/update_itemfact_assortment_tier_week.sql",
+            "database/arhaus/schemas/item_smart/procedures/update_itemfact_sku.sql",
+            "database/arhaus/schemas/item_smart/procedures/update_itemfact_sku_week.sql",
+            "database/arhaus/schemas/item_smart/procedures/update_new_skus.sql",
+            "database/arhaus/schemas/item_smart/procedures/update_placeholders_info.sql"
+        ]
+    },
+    "WITHOUT": {
+        "exclusions": [
+            "database/arhaus/schemas/item_smart/functions/get_new_skus.sql",
+            "database/arhaus/schemas/item_smart/functions/master_plan_dashboard_view.sql"
+        ]
+    }
+}

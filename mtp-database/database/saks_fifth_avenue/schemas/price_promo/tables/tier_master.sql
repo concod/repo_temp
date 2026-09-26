@@ -1,0 +1,32 @@
+--liquibase formatted sql
+--changeset abhishek.singh@impactanalytics.co:tier_master stripComments:false splitStatements:false context:Release_1_0 labels:liquibase_project_start
+--comment: Initial changeset for creating the price_promo.tier_master table
+
+
+-- Create the table
+CREATE TABLE price_promo.tier_master (
+    promo_id int4 NOT NULL,
+    tier_id serial4 NOT NULL,
+    tier_name varchar(255) NOT NULL,
+    offer_type_id int4 NOT NULL,
+    offer_type varchar(255) NOT NULL,
+    sub_tier_count int4 DEFAULT 0 NULL,
+    CONSTRAINT tier_master_pkey PRIMARY KEY (tier_id)
+);
+
+-- Add foreign key constraint
+ALTER TABLE price_promo.tier_master
+    ADD CONSTRAINT fk_tier_master_promo_id
+    FOREIGN KEY (promo_id)
+    REFERENCES price_promo.promo_master (promo_id)
+    ON DELETE CASCADE;
+
+-- Create index on tier_id
+CREATE INDEX idx_tier_master_tier_id 
+    ON price_promo.tier_master USING btree (tier_id);
+
+
+
+--changeset liquibase:altered_column_tier_name_1 stripComments:false splitStatements:false context:Release_1_0 labels:liquibase_project_start
+--comment: altered tier_name column, type set to text.
+ALTER TABLE price_promo.tier_master ALTER COLUMN tier_name TYPE text;

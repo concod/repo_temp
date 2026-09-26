@@ -1,0 +1,30 @@
+"kpi_code","kc_code","name","description","formula","variables","type","formula_description","identifier","display_name","sort_order","format","min_thres","max_thres"
+26,5,planned_sales,Planned sales,SUM(planned_sales),{planned_sales},Plan,"",Planned Metrics,Planned Gross Revenue,,"",,
+27,5,planned_margin,Planned margin,SUM(planned_margin),{planned_margin},Plan,"",Planned Metrics,Planned Margin,,"",,
+28,5,planned_aur,Planned aur,"SAFE_DIVIDE(SUM(planned_sales), SUM(planned_quantity))","{planned_sales,planned_quantity}",Plan,"",Planned Metrics,Planned AUR,,"",,
+29,5,planned_aum,Planned aum,"SAFE_DIVIDE(SUM(planned_margin), SUM(planned_quantity))","{planned_margin,planned_quantity}",Plan,"",Planned Metrics,Planned AUM,,"",,
+5,1,quantity,Quantity of products sold during the selected time period,SUM(quantity),{quantity},simple,"",Financial Performance Metrics,Sales Units,2,"0.0a",-0.02,0.02
+6,1,sales,Gross revenue that was generated from sales during the selected time period ,SUM(sales),{sales},simple,"",Financial Performance Metrics,Gross Revenue,1,$0.0a,-0.02,0.02
+8,1,aum,Average gross margin per unit sold by the business in the selected time period,"SAFE_DIVIDE(SUM(margin), SUM(quantity))","{margin,quantity}",simple,"",Financial Performance Metrics,AUM,5,$0.0a,-0.02,0.02
+15,2,freshness,Index for % articles that have been introduced in the product mix in the last 28 days,freshness,{freshness},inventory,"",Inventory KPIs,Freshness,15,"0.00%",-0.02,0.02
+17,4,forecast_qty,The time period for which the forecasting data is present .,sum(forecast_qty),{forecast_qty},Forecasting,"",Forecasting KPIs,Forecast_quantity,,"0.0a",-0.02,0.02
+30,5,planned_gross_margin_perc,Planned Gross Margin Percent,"SAFE_DIVIDE(SUM(planned_margin), SUM(planned_sales)) * 100","{planned_margin,planned_sales}",Plan,,Planned Metrics,Planned Gross Margin%,,,,
+31,5,planned_eoh,Planned end of period inventory.,planned_eoh,{planned_eoh},Plan,,Planned Metrics,Planned Inventory end,,,,
+14,2,inv_eop,Inventory remaining at the end of the selected time period,eoh,{eoh},inventory,"",Inventory KPIs,Inventory (EOP),14,"0.0a",-0.02,-0.02
+18,2,oo,Order placed for the number of units of all the products in the time period selected by the user,eoo,{eoo},inventory,,,,,"0.0a",-0.02,-0.02
+19,2,it,Number of units of all the products on the way from the warehouse to the store in the time period selected by the user.,eit,{eit},inventory,,,,,"0.0a",-0.02,-0.02
+21,2,oh,Number of units of all the products present at the store in the time period selected by the user.,eoh,{eoh},inventory,,,,,"0.0a",-0.02,-0.02
+25,5,planned_quantity,Planned sales units,SUM(planned_quantity),{planned_quantity},Plan,"",Planned Metrics,Planned Quantity,,,,
+4,1,margin,Gross margin generated from the sales in the selected time period,SUM(margin),{margin},simple,"",Financial Performance Metrics,Margin,4,$0.0a,-0.02,0.02
+9,1,aur,Average revenue generated per unit sold,"SAFE_DIVIDE(SUM(sales), SUM(quantity))","{sales,quantity}",simple,"",Financial Performance Metrics,ASP,3,$0.0a,-0.02,0.02
+12,1,avg_basket_size,Average number of units sold per transaction,"SAFE_DIVIDE(sum(quantity), min(transaction_count))","{transactionid,quantity}",simple,"",Transaction and Basket Metrics,Basket Size,12,"0.0a",-0.02,0.02
+13,1,avg_basket_value,Revenue generated per transaction during the selected time period,"SAFE_DIVIDE(sum(sales), min(transaction_count))","{sales,transactionid}",simple,"",Transaction and Basket Metrics,Basket Value,11,$0.0a,-0.02,0.02
+10,1,avg_discount_perc,Average percentage discount applied on products sold during the selected time period,"(SAFE_DIVIDE(SUM(CASE WHEN discount_flag = 'Discount' THEN discount_numerator ELSE 0 END), SUM(quantity)))*100 ","{quantity,discount_flag,discount_numerator}",simple,"",Discount Metrics,Overall Discount %,8,"0.00%",-0.02,0.02
+7,1,gross_margin_perc,Gross Margin percentage earned on the total sales in the selected time period,"SAFE_DIVIDE(SUM(margin), SUM(sales)) * 100","{margin,sales}",simple,"",Financial Performance Metrics,Gross Margin%,7,"0.00%",-0.02,0.02
+33,1,markdown_spend,Total cost of price reductions,SUM(margin),{margin},simple,"",Discount Metrics,Markdown Spend,9,$0.0a,-0.02,0.02
+34,1,selling_price,Average revenue generated per unit sold,SUM(sales),{sales},simple,"",,,,$0.0a,-0.02,0.02
+35,2,inv_cost,"The total cost incurred to acquire and hold inventory, including purchase and carrying costs.",eoh,{eoh},inventory,"",Inventory KPIs,Inventory Cost,16,"0.0a",-0.02,-0.02
+32,2,inv_value,"Total value of inventory available on hand in stores at full retail price, at the end of the selected time period",oh_eop * msrp_inv,"{oh_eop,msrp_inv}",inventory,"",Inventory KPIs,Inventory Value,17,"0.0a",-0.02,-0.02
+16,1,msrp,Average MSRP of units sold,avg(msrp),{msrp},simple,"",Transaction and Basket Metrics,MSRP,13,$0.0a,-0.02,-0.02
+36,2,stock_turn,Number of times inventory is sold and replaced over a rolling 52-week window,"SAFE_DIVIDE((sum_qty*2),(oh_eop+oh_bop))","{sum_qty,oh_eop,oh_bop}",inventory,,Inventory KPIs,Stock Turn,19,"0.0a",-0.02,-0.02
+11,1,transactions,Total number of transactions in the selected timeframe,min(transaction_count),{transactionid},simple,"",Transaction and Basket Metrics,Transactions,10,"0.0a",-0.02,0.02

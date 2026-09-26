@@ -1,0 +1,15 @@
+id,sl_no,schema_name,table_name,cleanup_strategy,cleanup_frequency,cleanup_condition,last_cleanup_time
+1,1,inventory_smart,rcl_constraint_master,Cold Storage,14 days,upper(validity) < CURRENT_DATE - INTERVAL '30 days',2025-06-13 14:07:50.367
+3,2,inventory_smart,create_allocation_result_flat_gurobi,Data Purging,14 days,allocation_code IN (SELECT plan_code FROM inventory_smart.plan_master WHERE status = 0  and created_at < NOW() - INTERVAL '14 days'),2025-06-13 14:07:50.367
+4,3,inventory_smart,plan_draft,Data Purging,14 days,allocation_id in (select plan_code from inventory_smart.plan_master where status = 0  and created_at < NOW() - INTERVAL '14 days'),2025-06-13 14:07:50.367
+5,4,inventory_smart,plan_attributes,Data Purging,14 days,plan_code in (select plan_code from inventory_smart.plan_master where status = 0  and created_at < NOW() - INTERVAL '14 days'),2025-06-13 14:07:50.367
+2,5,inventory_smart,plan_master,Data Purging,14 days,status = 0  and created_at < NOW() - INTERVAL '14 days',2025-06-13 14:07:50.367
+7,6,inventory_smart,create_allocation_result_flat_gurobi,Data Purging,7 days,allocation_code IN (SELECT plan_code FROM inventory_smart.plan_master WHERE status = 1  and created_at < NOW() - INTERVAL '7 days'),2025-06-13 14:07:50.367
+8,7,inventory_smart,plan_attributes,Data Purging,7 days,plan_code in (select plan_code from inventory_smart.plan_master where status = 1  and created_at < NOW() - INTERVAL '7 days'),2025-06-13 14:07:50.367
+6,8,inventory_smart,plan_master,Data Purging,7 days,status = 1  and created_at < NOW() - INTERVAL '7 days',2025-06-13 14:07:50.367
+10,9,inventory_smart,create_allocation_result_flat_gurobi,Cold Storage,90 days,allocation_code IN (SELECT plan_code FROM inventory_smart.plan_master WHERE status = 3  and created_at < NOW() - INTERVAL '90 days'),2025-06-13 14:07:50.367
+11,10,inventory_smart,plan_attributes,Cold Storage,90 days,plan_code in (select plan_code from inventory_smart.plan_master where status = 3  and created_at < NOW() - INTERVAL '90 days' ),2025-06-13 14:07:50.367
+9,11,inventory_smart,plan_master,Cold Storage,90 days,status = 3 and created_at < NOW() - INTERVAL '90 days',2025-06-13 14:07:50.367
+12,12,inventory_smart,rcl_constraint_master_archive,Data Purging,30 days,upper(validity) < CURRENT_DATE - INTERVAL '30 days',2025-06-13 14:07:50.367
+13,13,inventory_smart,rcl_dc_store_policy_archive,Data Purging,30 days,upper(validity) < CURRENT_DATE - INTERVAL '30 days',2025-06-13 14:07:50.367
+14,14,inventory_smart,duplicate_downstream_data,Data Purging,14 days,created_at < NOW() - INTERVAL '14 days',2026-01-29 14:07:50.367

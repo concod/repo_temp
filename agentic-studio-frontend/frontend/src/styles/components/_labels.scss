@@ -1,0 +1,122 @@
+
+// ================================
+// Label Component Styles
+// ================================
+
+.label {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  // ================================
+  // VARIANTS
+  // ================================
+
+  // Default variant (outlined)
+  &--default {
+    display: inline-flex;
+    padding: 4px 8px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 8px;
+    background: linear-gradient(90deg,#F1F6FF 1.61%, #FAF4FF 95.97%);
+    white-space: nowrap;
+    min-width: fit-content;
+    flex-shrink: 0;
+
+    &.label--stroke {
+      border: 1px solid #A3A1FF;
+    }
+  }
+
+  // Subtle Purple variant
+  &--subtle-purple {
+    background: rgba(169, 59, 255, 0.1);
+    color: #7C3AED;
+    border: 1px solid transparent;
+  }
+
+  // Subtle Orange variant  
+  &--subtle-orange {
+    display: flex;
+    height: 20px;
+    padding: 2px 12px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 8px;
+    background: #FFF6E5;
+    color: #FC9797;
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+  }
+
+  // Subtle Green variant
+  &--subtle-green {
+    display: flex;
+    height: 20px;
+    padding: 2px 12px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 8px;
+    background: rgba(210, 246, 234, 0.30);
+    color: #228C54;
+    font-family: Poppins;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+
+  }
+
+  // Miscellaneous variant (custom shape)
+  &--miscellaneous {
+    background: rgba(236, 72, 153, 0.1);
+    color: #DB2777;
+    border: 1px solid transparent;
+    border-radius: 20px 4px 20px 4px; // Custom shape
+  }
+
+  // ================================
+  // STROKE MODIFIER
+  // ================================
+  
+  &--stroke {
+    border-width: 1px;
+    border-style: solid;
+  }
+
+  // ================================
+  // ICON SUPPORT
+  // ================================
+
+  &--with-icon {
+    .label__icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  &__icon {
+    display: none;
+    flex-shrink: 0;
+  }
+
+  &__text {
+    display: flex;
+    align-items: center;
+  }
+
+  // Show icon when with-icon modifier is present
+  &--with-icon &__icon {
+    display: flex;
+  }
+}

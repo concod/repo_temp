@@ -1,0 +1,1321 @@
+image: python:3.8
+
+x-deployment-mode: &deployment-mode
+  - FULL
+  - INVENTORY
+  - NON_INVENTORY
+
+x-script-type: &script-type
+  - ON_BOARD
+  - COMPLETE_DEPLOY
+  - MAINTENANCE
+
+x-application-list: &application-list
+  - item_smart
+  - plan_smart
+  - inventory_smart
+
+x-replication-type: &replication-type
+  - product
+  - user
+  - store
+  - others
+  - mapping
+  - gsm
+  - csv_sync
+
+x-replication-client-list: &replication-client-list
+#  - briscoes
+  - carters
+
+x-deployment-target-list: &deployment-target-list
+  - PRIMARY
+  - REPLICATION
+
+x-client-list: &client-list
+  - allsaints
+  - arhaus
+  - arhaus_pivot
+  - aritzia
+  - biglots
+  - balsam
+  - bealls
+  - briscoes
+  - cna
+  - coach_na
+  - crackerbarrel
+  - dollar_general
+  - data_platform_qa
+  - figs
+  - footlocker
+  - gap
+  - homedepot
+  - impactprice
+  - kik
+  - levis_us
+  - levi_ama 
+  - levi_lse
+  - lovisa
+  - leslies
+  - lululemon 
+  - marksandspencer
+  - marksandspencer_mena
+# - party_city
+# - party_city_new
+  - primark
+  - pacsun
+  - patagonia
+  - peter_millar
+  - pricesmart
+  - psp
+  - ralph_lauren_eu_is
+  - ralph_lauren_eu_erp
+  - ralph_lauren_na
+  - ralph_lauren_apac
+  - saks_fifth_avenue
+  - scarpe
+  - signet
+  - spanx
+  - starboard
+  - stevemadden
+  - toryburch
+  - tommy_bahama
+  - tapestry
+  - tillys
+  - under_armour
+  - victorias_secret
+  - victorias_secret_international
+  - vuori
+#  - vera_bradley
+
+x-client-list-with-all: &client-list-with-all
+  - ALL
+  - arhaus
+  - arhaus_pivot
+  - aritzia
+  - biglots
+  - balsam
+  - bealls
+  - briscoes
+  - carters
+  - coach_na
+  - crackerbarrel
+  - dollar_general
+  - data_platform_qa
+  - figs
+  - gap
+  - homedepot
+  - impactprice
+  - levis_us
+  - levi_lse
+  - lovisa
+  - leslies
+  - lululemon 
+  - marksandspencer
+  - marksandspencer_mena
+  - primark
+  - pacsun
+  - patagonia
+  - peter_millar
+#  - pricesmart
+  - psp
+  - ralph_lauren_eu_is
+  - ralph_lauren_eu_erp
+  - ralph_lauren_na
+  - ralph_lauren_apac
+  - saks_fifth_avenue
+  - scarpe
+  - signet
+  - spanx
+  - starboard
+  - stevemadden
+  - tommy_bahama
+  - tapestry
+  - tillys
+  - victorias_secret
+  - victorias_secret_international
+
+# Define a template for the syncing steps
+templates:
+  - &data-sync-template
+    runs-on:
+      - self.hosted
+      - linux.shell
+      - mtp.database
+    name: Data/Config Syncing
+    caches:
+      - pip
+    script:
+      - ./data_sync.sh
+
+  - &clickhouse-sync-template
+    runs-on:
+      - self.hosted
+      - linux.shell
+      - mtp.database
+    name: ClickHouse Data Syncing
+    caches:
+      - pip
+    script:
+      - ./clickhouse_sync.sh
+
+  - &runner-template
+    runs-on:
+      - self.hosted
+      - linux.shell
+      - mtp.database
+
+  - &db-sync-validate-template
+    runs-on:
+      - self.hosted
+      - linux
+      - docker
+    name: Data/Config Syncing
+    caches:
+      - pip
+
+definitions:
+  services:
+    docker:
+      memory: 4096
+  steps:
+    - step: &security-scan
+        name: Security Scan
+        size: 2x
+        script:
+          # Run a security scan for sensitive data.
+          # See more security tools at https://bitbucket.org/product/features/pipelines/integrations?&category=security
+          - pipe: atlassian/git-secrets-scan:0.4.3
+
+    - step: &validate-db-sync
+        name: Validate data before db sync
+        <<: *db-sync-validate-template
+        script:
+          - cd database
+#          - python3.8 -m venv env
+#          - source ./env/bin/activate
+#          - if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          - python3.8 run.py data_sync_check client env
+
+pipelines:
+  custom:
+    test_data_sync:
+      - variables:
+        - name: CLIENT
+          default: biglots
+          allowed-values: *client-list
+      - step:
+          <<: *data-sync-template
+          <<: *runner-template
+
+    clickhouse_test_data_sync:
+      - variables:
+        - name: APPLICATION
+          default: item_smart
+          allowed-values: *application-list
+        - name: CLIENT
+          default: biglots
+          allowed-values: *client-list
+      - step:
+          <<: *clickhouse-sync-template
+          <<: *runner-template
+
+    multi_client_data_sync_dropdown:
+      - variables:
+          - name: CLIENT_1
+            default: biglots
+            allowed-values: *client-list
+          - name: CLIENT_2
+            default: gap
+            allowed-values: *client-list
+          - name: CLIENT_3
+            default: arhaus
+            allowed-values: *client-list
+          - name: CLIENT_4
+            default: homedepot
+            allowed-values: *client-list
+          - name: CLIENT_5
+            default: aritzia
+            allowed-values: *client-list
+      - step:
+          <<: *data-sync-template
+          name: Multiple Client Sync
+          script:
+            - >
+              echo "Selected clients: $CLIENT_1 $CLIENT_2 $CLIENT_3 $CLIENT_4 $CLIENT_5" &&
+              UNIQUE_CLIENTS=$(echo "$CLIENT_1 $CLIENT_2 $CLIENT_3 $CLIENT_4 $CLIENT_5" | tr ' ' '\n' | sort -u | tr '\n' ' ') &&
+              echo "Distinct clients to sync: $UNIQUE_CLIENTS" &&
+              echo "Starting parallel syncs..." &&
+              for client in $UNIQUE_CLIENTS; do
+                echo "Launching sync for $client";
+                ( CLIENT="$client" ./data_sync.sh ) &
+              done &&
+              echo "Waiting for all syncs to finish..." &&
+              wait &&
+              echo "All syncs completed."
+
+
+    test_data_sync_non_inventory:
+      - variables:
+        - name: CLIENT
+          default: carters
+          allowed-values: *replication-client-list
+      - step:
+          <<: *data-sync-template
+          <<: *runner-template
+          script:
+            - REPLICATION_VALUE=non_inventory ./data_sync.sh
+    
+    test_data_sync_inventory:
+      - variables:
+        - name: CLIENT
+          default: carters
+          allowed-values: *replication-client-list
+      - step:
+          <<: *data-sync-template
+          <<: *runner-template
+          script:
+            - REPLICATION_VALUE=inventory ./data_sync.sh
+
+    complete_deploy:
+      - variables:
+        - name: CLIENT
+          default: biglots
+          allowed-values: *client-list
+      - step:
+          name: Build + Deploy
+          <<: *runner-template
+          script:
+            - ./complete_deploy.sh
+
+    complete_deploy_inventory:
+      - variables:
+        - name: CLIENT
+          default: biglots
+          allowed-values: *client-list
+      - step:
+          name: Build + Deploy
+          <<: *runner-template
+          script:
+            - DEPLOYMENT_MODE=INVENTORY ./complete_deploy.sh
+
+    complete_deploy_non_inventory:
+      - variables:
+        - name: CLIENT
+          default: biglots
+          allowed-values: *client-list
+      - step:
+          name: Build + Deploy
+          <<: *runner-template
+          script:
+            - DEPLOYMENT_MODE=NON_INVENTORY ./complete_deploy.sh
+
+    complete_deploy_replication:
+      - variables:
+        - name: CLIENT
+          default: carters
+          allowed-values: *replication-client-list
+      - step:
+          name: Build + Deploy
+          <<: *runner-template
+          script:
+            - DEPLOYMENT_TARGET=REPLICATION DEPLOYMENT_MODE=NON_INVENTORY ./complete_deploy.sh
+            - DEPLOYMENT_MODE=INVENTORY ./complete_deploy.sh
+            - ./replication_setup.sh
+
+    manual-replication:
+      - variables:
+        - name: CLIENT
+          default: carters
+          allowed-values: *replication-client-list
+        - name: REPLICATION_TYPE
+          default: user
+          allowed-values: *replication-type
+      - step:
+          name: Manual_Replication
+          <<: *runner-template
+          script:
+             - ./manual_replication.sh
+
+    on_board:
+      - variables:
+        - name: CLIENT
+          default: biglots
+          allowed-values: *client-list
+      - step:
+          name: Build + Deploy
+          <<: *runner-template
+          script:
+            - ./on_board.sh
+
+    on_board_replication:
+      - variables:
+        - name: CLIENT
+          default: carters
+          allowed-values: *replication-client-list
+      - step:
+          name: Build + Deploy
+          <<: *runner-template
+          script:
+            - DEPLOYMENT_TARGET=REPLICATION DEPLOYMENT_MODE=NON_INVENTORY ./on_board.sh
+            - DEPLOYMENT_MODE=INVENTORY ./on_board.sh
+            - ./replication_setup.sh
+
+    custom_migration_deploy_replication:
+      - variables:
+        - name: CLIENT
+          default: carters
+          allowed-values: *replication-client-list
+        - name: DEPLOYMENT_TARGET
+          default: PRIMARY
+          allowed-values: *deployment-target-list
+      - step:
+          name: Custom Migration Deploy
+          <<: *runner-template
+          script:
+            - ./custom_migration_deploy.sh
+
+    custom_migration_deploy:
+      - variables:
+        - name: CLIENT
+          default: biglots
+          allowed-values: *client-list
+      - step:
+          name: Custom Migration Deploy
+          <<: *runner-template
+          script:
+            - ./custom_migration_deploy.sh
+
+    db_maintenance:
+      - variables:
+        - name: CLIENT
+          default: biglots
+          allowed-values: *client-list
+      - step:
+          name: DB Maintenance
+          <<: *runner-template
+          script:
+            - ./maintenance.sh
+
+    db_maintenance_aggressive:
+      - variables:
+        - name: CLIENT
+          default: biglots
+          allowed-values: *client-list
+      - step:
+          name: DB Maintenance Aggressive
+          <<: *runner-template
+          script:
+            - MAINTENANCE_TYPE=aggressive ./maintenance.sh
+
+    monitoring_alert:
+      - step:
+          name: Monitoring Alert Pipeline
+          <<: *runner-template
+          script:
+            - CLIENTS=carters ENV=test ./monitoring_pipeline.sh
+
+    all_clients_data_sync_validator:
+      - step:
+          name: All clients data sync validator
+          <<: *runner-template
+          script:
+            - python3 database/pipeline_csv_validator_entrypoint_all_client.py
+
+    all_clients_complete_deploy:
+      - variables:
+        - name: DEPLOYMENT_MODE
+          default: INVENTORY
+          allowed-values: *deployment-mode
+        - name: SCRIPT_TYPE
+          default: COMPLETE_DEPLOY
+          allowed-values: *script-type
+      - parallel:
+          - step:
+              name: Build + Deploy for arhaus
+              <<: *runner-template
+              script:
+                - CLIENT=arhaus ./run_script.sh
+
+          - step:
+              name: Build + Deploy for arhaus_pivot
+              <<: *runner-template
+              script:
+                - CLIENT=arhaus_pivot ./run_script.sh
+
+          - step:
+              name: Build + Deploy for aritzia
+              <<: *runner-template
+              script:
+                - CLIENT=aritzia ./run_script.sh
+
+#          - step:
+#              name: Build + Deploy for biglots
+#              <<: *runner-template
+#              script:
+#                - CLIENT=biglots ./run_script.sh
+
+          - step:
+              name: Build + Deploy for balsam
+              <<: *runner-template
+              script:
+                - CLIENT=balsam ./run_script.sh
+
+          - step:
+              name: Build + Deploy for coach_na
+              <<: *runner-template
+              script:
+                - CLIENT=coach_na ./run_script.sh
+
+          - step:
+              name: Build + Deploy for crackerbarrel
+              <<: *runner-template
+              script:
+                - CLIENT=crackerbarrel ./run_script.sh
+
+          - step:
+              name: Build + Deploy for dollar_general
+              <<: *runner-template
+              script:
+                - CLIENT=dollar_general ./run_script.sh
+
+          - step:
+              name: Build + Deploy for data_platform_qa
+              <<: *runner-template
+              script:
+                - CLIENT=data_platform_qa ./run_script.sh
+
+          - step:
+              name: Build + Deploy for figs
+              <<: *runner-template
+              script:
+                - CLIENT=figs ./run_script.sh
+
+          - step:
+              name: Build + Deploy for gap
+              <<: *runner-template
+              script:
+                - CLIENT=gap ./run_script.sh
+
+          - step:
+              name: Build + Deploy for kik
+              <<: *runner-template
+              script:
+                - CLIENT=kik ./run_script.sh
+
+          - step:
+              name: Build + Deploy for levi_ama
+              <<: *runner-template
+              script:
+                - CLIENT=levi_ama ./run_script.sh
+
+          - step:
+              name: Build + Deploy for levis_us
+              <<: *runner-template
+              script:
+                - CLIENT=levis_us ./run_script.sh
+
+          - step:
+              name: Build + Deploy for leslies
+              <<: *runner-template
+              script:
+                - CLIENT=leslies ./run_script.sh
+
+          - step:
+              name: Build + Deploy for homedepot
+              <<: *runner-template
+              script:
+                - CLIENT=homedepot ./run_script.sh
+
+          - step:
+              name: Build + Deploy for impactprice
+              <<: *runner-template
+              script:
+                - CLIENT=impactprice ./run_script.sh
+
+          - step:
+              name: Build + Deploy for lululemon
+              <<: *runner-template
+              script:
+                - CLIENT=lululemon ./run_script.sh
+
+          - step:
+              name: Build + Deploy for marksandspencer
+              <<: *runner-template
+              script:
+                - CLIENT=marksandspencer ./run_script.sh
+
+          - step:
+              name: Build + Deploy for marksandspencer_mena
+              <<: *runner-template
+              script:
+                - CLIENT=marksandspencer_mena ./run_script.sh
+
+          - step:
+              name: Build + Deploy for levi_lse
+              <<: *runner-template
+              script:
+                - CLIENT=levi_lse ./run_script.sh
+
+          - step:
+              name: Build + Deploy for lovisa
+              <<: *runner-template
+              script:
+                - CLIENT=lovisa ./run_script.sh      
+
+          - step:
+              name: Build + Deploy for peter_millar
+              <<: *runner-template
+              script:
+                - CLIENT=peter_millar ./run_script.sh
+
+#          - step:
+#              name: Build + Deploy for pricesmart
+#              <<: *runner-template
+#              script:
+#                - CLIENT=pricesmart ./run_script.sh
+
+          - step:
+              name: Build + Deploy for primark
+              <<: *runner-template
+              script:
+                - CLIENT=primark ./run_script.sh
+
+          - step:
+              name: Build + Deploy for pacsun
+              <<: *runner-template
+              script:
+                - CLIENT=pacsun ./run_script.sh
+
+          - step:
+              name: Build + Deploy for patagonia
+              <<: *runner-template
+              script:
+                - CLIENT=patagonia ./run_script.sh
+
+          - step:
+              name: Build + Deploy for psp
+              <<: *runner-template
+              script:
+                - CLIENT=psp ./run_script.sh
+
+          - step:
+              name: Build + Deploy for ralph_lauren_eu_is
+              <<: *runner-template
+              script:
+                - CLIENT=ralph_lauren_eu_is ./run_script.sh
+
+          - step:
+              name: Build + Deploy for ralph_lauren_na
+              <<: *runner-template
+              script:
+                - CLIENT=ralph_lauren_na ./run_script.sh
+
+          - step:
+              name: Build + Deploy for bealls
+              <<: *runner-template
+              script:
+                - CLIENT=bealls ./run_script.sh
+
+          - step:
+              name: Build + Deploy for saks_fifth_avenue
+              <<: *runner-template
+              script:
+                - CLIENT=saks_fifth_avenue ./run_script.sh
+
+          - step:
+              name: Build + Deploy for scarpe
+              <<: *runner-template
+              script:
+                - CLIENT=scarpe ./run_script.sh
+
+          - step:
+              name: Build + Deploy for signet
+              <<: *runner-template
+              script:
+                - CLIENT=signet ./run_script.sh
+
+          - step:
+              name: Build + Deploy for spanx
+              <<: *runner-template
+              script:
+                - CLIENT=spanx ./run_script.sh
+
+          - step:
+              name: Build + Deploy for starboard
+              <<: *runner-template
+              script:
+                - CLIENT=starboard ./run_script.sh
+
+          - step:
+              name: Build + Deploy for ralph_lauren_apac
+              <<: *runner-template
+              script:
+                - CLIENT=ralph_lauren_apac ./run_script.sh
+
+          - step:
+              name: Build + Deploy for ralph_lauren_eu_erp
+              <<: *runner-template
+              script:
+                - CLIENT=ralph_lauren_eu_erp ./run_script.sh
+
+          - step:
+              name: Build + Deploy for stevemadden
+              <<: *runner-template
+              script:
+                - CLIENT=stevemadden ./run_script.sh
+
+          - step:
+              name: Build + Deploy for toryburch
+              <<: *runner-template
+              script:
+                - CLIENT=toryburch ./run_script.sh
+
+          - step:
+              name: Build + Deploy for tommy_bahama
+              <<: *runner-template
+              script:
+                - CLIENT=tommy_bahama ./run_script.sh
+
+          - step:
+              name: Build + Deploy for tapestry
+              <<: *runner-template
+              script:
+                - CLIENT=tapestry ./run_script.sh
+
+          - step:
+              name: Build + Deploy for tillys
+              <<: *runner-template
+              script:
+                - CLIENT=tillys ./run_script.sh
+
+          - step:
+              name: Build + Deploy for under_armour
+              <<: *runner-template
+              script:
+                - CLIENT=under_armour ./run_script.sh
+
+          - step:
+              name: Build + Deploy for victorias_secret
+              <<: *runner-template
+              script:
+                - CLIENT=victorias_secret ./run_script.sh
+
+          - step:
+              name: Build + Deploy for victorias_secret_international
+              <<: *runner-template
+              script:
+                - CLIENT=victorias_secret_international ./run_script.sh
+
+
+          - step:
+              name: Build + Deploy for cna
+              <<: *runner-template
+              script:
+                - CLIENT=cna ./run_script.sh
+
+
+          - step:
+              name: Build + Deploy for footlocker
+              <<: *runner-template
+              script:
+                - CLIENT=footlocker ./run_script.sh
+
+
+          - step:
+              name: Build + Deploy for vuori
+              <<: *runner-template
+              script:
+                - CLIENT=vuori ./run_script.sh
+
+
+          - step:
+              name: Build + Deploy for allsaints
+              <<: *runner-template
+              script:
+                - CLIENT=allsaints ./run_script.sh
+
+    db_maintenance_signet:
+      - step:
+          name: Maintenance Signet
+          <<: *runner-template
+          script:
+            - CLIENT=signet timeout 115m ./maintenance.sh
+            - echo $? > exit_code
+          after-script:
+            - CLIENT=signet ./unlock_db.sh
+
+    db_maintenance_alo_yoga:
+      - step:
+          name: Maintenance alo_yoga
+          <<: *runner-template
+          script:
+            - CLIENT=alo_yoga timeout 115m ./maintenance.sh
+            - echo $? > exit_code
+          after-script:
+            - CLIENT=alo_yoga ./unlock_db.sh
+
+    db_maintenance_arhaus:
+      - step:
+          name: Maintenance arhaus
+          <<: *runner-template
+          script:
+            - CLIENT=arhaus timeout 115m ./maintenance.sh
+            - echo $? > exit_code
+          after-script:
+            - CLIENT=arhaus ./unlock_db.sh
+
+    db_maintenance_arhaus_pivot:
+      - step:
+          name: Maintenance arhaus_pivot
+          <<: *runner-template
+          script:
+            - CLIENT=arhaus_pivot timeout 115m ./maintenance.sh
+            - echo $? > exit_code
+          after-script:
+            - CLIENT=arhaus_pivot ./unlock_db.sh
+
+    db_maintenance_aritzia:
+      - step:
+          name: Maintenance aritzia
+          <<: *runner-template
+          script:
+            - CLIENT=aritzia timeout 115m ./maintenance.sh
+            - echo $? > exit_code
+          after-script:
+            - CLIENT=aritzia ./unlock_db.sh
+
+    db_maintenance_bealls:
+      - step:
+          name: Maintenance bealls
+          <<: *runner-template
+          script:
+            - CLIENT=bealls timeout 115m ./maintenance.sh
+            - echo $? > exit_code
+          after-script:
+            - CLIENT=bealls ./unlock_db.sh
+
+    db_maintenance_psp:
+      - step:
+          name: Maintenance psp
+          <<: *runner-template
+          script:
+            - CLIENT=psp timeout 115m ./maintenance.sh
+            - echo $? > exit_code
+          after-script:
+            - CLIENT=psp ./unlock_db.sh
+
+    db_maintenance_biglots:
+      - step:
+          name: Maintenance biglots
+          <<: *runner-template
+          script:
+            - CLIENT=biglots timeout 115m ./maintenance.sh
+            - echo $? > exit_code
+          after-script:
+            - CLIENT=biglots ./unlock_db.sh
+
+    db_maintenance_bjs:
+      - step:
+          name: Maintenance bjs
+          <<: *runner-template
+          script:
+            - CLIENT=bjs timeout 115m ./maintenance.sh
+            - echo $? > exit_code
+          after-script:
+            - CLIENT=bjs ./unlock_db.sh
+
+    db_maintenance_briscoes:
+      - step:
+          name: Maintenance briscoes
+          <<: *runner-template
+          script:
+            - CLIENT=briscoes timeout 115m ./maintenance.sh
+            - echo $? > exit_code
+          after-script:
+            - CLIENT=briscoes ./unlock_db.sh
+
+    db_maintenance_balsam:
+      - step:
+          name: Maintenance balsam
+          <<: *runner-template
+          script:
+            - CLIENT=balsam timeout 115m ./maintenance.sh
+            - echo $? > exit_code
+          after-script:
+            - CLIENT=balsam ./unlock_db.sh
+
+    db_maintenance_dollar_general:
+      - step:
+          name: Maintenance dollar_general
+          <<: *runner-template
+          script:
+            - CLIENT=dollar_general timeout 115m ./maintenance.sh
+            - echo $? > exit_code
+          after-script:
+            - CLIENT=dollar_general ./unlock_db.sh
+    
+
+#    db_maintenance_carters:
+#      - step:
+#          name: Maintenance Carters
+#          <<: *runner-template
+#          script:
+#            - CLIENT=carters ./maintenance.sh
+
+    db_maintenance_coach_na:
+      - step:
+          name: Maintenance coach_na
+          <<: *runner-template
+          script:
+            - CLIENT=coach_na timeout 115m ./maintenance.sh
+            - echo $? > exit_code
+          after-script:
+            - CLIENT=coach_na ./unlock_db.sh
+
+    db_maintenance_scarpe:
+      - step:
+          name: Maintenance scarpe
+          <<: *runner-template
+          script:
+            - CLIENT=scarpe timeout 115m ./maintenance.sh
+            - echo $? > exit_code
+          after-script:
+            - CLIENT=scarpe ./unlock_db.sh
+
+    db_maintenance_levi_lse:
+      - step:
+          name: Maintenance levi_lse
+          <<: *runner-template
+          script:
+            - CLIENT=levi_lse timeout 115m ./maintenance.sh
+            - echo $? > exit_code
+          after-script:
+            - CLIENT=levi_lse ./unlock_db.sh
+
+    db_maintenance_lovisa:
+      - step:
+          name: Maintenance lovisa
+          <<: *runner-template
+          script:
+            - CLIENT=lovisa timeout 115m ./maintenance.sh
+            - echo $? > exit_code
+          after-script:
+            - CLIENT=lovisa ./unlock_db.sh
+
+    db_maintenance_data_platform_qa:
+      - step:
+          name: Maintenance data_platform_qa
+          <<: *runner-template
+          script:
+            - CLIENT=data_platform_qa timeout 115m ./maintenance.sh
+            - echo $? > exit_code
+          after-script:
+            - CLIENT=data_platform_qa ./unlock_db.sh
+
+    db_maintenance_crackerbarrel:
+      - step:
+          name: Maintenance crackerbarrel
+          <<: *runner-template
+          script:
+            - CLIENT=crackerbarrel timeout 115m ./maintenance.sh
+            - echo $? > exit_code
+          after-script:
+            - CLIENT=crackerbarrel ./unlock_db.sh
+
+    db_maintenance_fit:
+      - step:
+          name: Maintenance fit
+          <<: *runner-template
+          script:
+            - CLIENT=fit timeout 115m ./maintenance.sh
+            - echo $? > exit_code
+          after-script:
+            - CLIENT=fit ./unlock_db.sh
+
+    db_maintenance_figs:
+      - step:
+          name: Maintenance figs
+          <<: *runner-template
+          script:
+            - CLIENT=figs timeout 115m ./maintenance.sh
+            - echo $? > exit_code
+          after-script:
+            - CLIENT=figs ./unlock_db.sh
+    
+    db_maintenance_gap:
+      - step:
+          name: Maintenance gap
+          <<: *runner-template
+          script:
+            - CLIENT=gap timeout 115m ./maintenance.sh
+            - echo $? > exit_code
+          after-script:
+            - CLIENT=gap ./unlock_db.sh
+
+    db_maintenance_heritage:
+      - step:
+          name: Maintenance heritage
+          <<: *runner-template
+          script:
+            - CLIENT=heritage timeout 115m ./maintenance.sh
+            - echo $? > exit_code
+          after-script:
+            - CLIENT=heritage ./unlock_db.sh
+
+    db_maintenance_homedepot:
+      - step:
+          name: Maintenance homedepot
+          <<: *runner-template
+          script:
+            - CLIENT=homedepot timeout 115m ./maintenance.sh
+            - echo $? > exit_code
+          after-script:
+            - CLIENT=homedepot ./unlock_db.sh
+
+    db_maintenance_impactprice:
+      - step:
+          name: Maintenance impactprice
+          <<: *runner-template
+          script:
+            - CLIENT=impactprice timeout 115m ./maintenance.sh
+            - echo $? > exit_code
+          after-script:
+            - CLIENT=impactprice ./unlock_db.sh      
+
+    db_maintenance_joann:
+      - step:
+          name: Maintenance joann
+          <<: *runner-template
+          script:
+            - CLIENT=joann timeout 115m ./maintenance.sh
+            - echo $? > exit_code
+          after-script:
+            - CLIENT=joann ./unlock_db.sh
+
+    db_maintenance_leslies:
+      - step:
+          name: Maintenance leslies
+          <<: *runner-template
+          script:
+            - CLIENT=leslies timeout 115m ./maintenance.sh
+            - echo $? > exit_code
+          after-script:
+            - CLIENT=leslies ./unlock_db.sh
+
+    db_maintenance_levis_us:
+      - step:
+          name: Maintenance levis_us
+          <<: *runner-template
+          script:
+            - CLIENT=levis_us timeout 115m ./maintenance.sh
+            - echo $? > exit_code
+          after-script:
+            - CLIENT=levis_us ./unlock_db.sh
+
+    db_maintenance_stevemadden:
+      - step:
+          name: Maintenance stevemadden
+          <<: *runner-template
+          script:
+            - CLIENT=stevemadden timeout 115m ./maintenance.sh
+            - echo $? > exit_code
+          after-script:
+            - CLIENT=stevemadden ./unlock_db.sh
+
+    db_maintenance_toryburch:
+      - step:
+          name: Maintenance toryburch
+          <<: *runner-template
+          script:
+            - CLIENT=toryburch timeout 115m ./maintenance.sh
+            - echo $? > exit_code
+          after-script:
+            - CLIENT=toryburch ./unlock_db.sh
+
+    db_maintenance_marksandspencer:
+      - step:
+          name: Maintenance marksandspencer
+          <<: *runner-template
+          script:
+            - CLIENT=marksandspencer timeout 115m ./maintenance.sh
+            - echo $? > exit_code
+          after-script:
+            - CLIENT=marksandspencer ./unlock_db.sh
+
+    db_maintenance_marksandspencer_mena:
+      - step:
+          name: Maintenance marksandspencer_mena
+          <<: *runner-template
+          script:
+            - CLIENT=marksandspencer_mena timeout 115m ./maintenance.sh
+            - echo $? > exit_code
+          after-script:
+            - CLIENT=marksandspencer_mena ./unlock_db.sh
+
+    db_maintenance_ootb_plansmart:
+      - step:
+          name: Maintenance ootb_plansmart
+          <<: *runner-template
+          script:
+            - CLIENT=ootb_plansmart timeout 115m ./maintenance.sh
+            - echo $? > exit_code
+          after-script:
+            - CLIENT=ootb_plansmart ./unlock_db.sh
+    
+#    db_maintenance_party_city:
+#      - step:
+#          name: Maintenance party_city
+#          <<: *runner-template
+#          script:
+#            - CLIENT=party_city ./maintenance.sh
+
+#    db_maintenance_party_city_new:
+#      - step:
+#          name: Maintenance party_city_new
+#          <<: *runner-template
+#          script:
+#            - CLIENT=party_city_new ./maintenance.sh
+
+    db_maintenance_peter_millar:
+      - step:
+          name: Maintenance peter_millar
+          <<: *runner-template
+          script:
+            - CLIENT=peter_millar timeout 115m ./maintenance.sh
+            - echo $? > exit_code
+          after-script:
+            - CLIENT=peter_millar ./unlock_db.sh
+
+#    db_maintenance_pricesmart:
+#      - step:
+#          name: Maintenance pricesmart
+#          <<: *runner-template
+#          script:
+#            - CLIENT=pricesmart timeout 115m ./maintenance.sh
+#            - echo $? > exit_code
+#          after-script:
+#            - CLIENT=pricesmart ./unlock_db.sh
+
+    db_maintenance_patagonia:
+      - step:
+          name: Maintenance patagonia
+          <<: *runner-template
+          script:
+            - CLIENT=patagonia timeout 115m ./maintenance.sh
+            - echo $? > exit_code
+          after-script:
+            - CLIENT=patagonia ./unlock_db.sh
+
+    db_maintenance_primark:
+      - step:
+          name: Maintenance primark
+          <<: *runner-template
+          script:
+            - CLIENT=primark timeout 115m ./maintenance.sh
+            - echo $? > exit_code
+          after-script:
+            - CLIENT=primark ./unlock_db.sh
+
+    db_maintenance_pacsun:
+      - step:
+          name: Maintenance pacsun
+          <<: *runner-template
+          script:
+            - CLIENT=pacsun timeout 115m ./maintenance.sh
+            - echo $? > exit_code
+          after-script:
+            - CLIENT=pacsun ./unlock_db.sh
+    
+#    db_maintenance_ralph_lauren_eu:
+#      - step:
+#          name: Maintenance ralph_lauren_eu
+#          <<: *runner-template
+#          script:
+#            - CLIENT=ralph_lauren_eu ./maintenance.sh
+    
+    db_maintenance_ralph_lauren_eu_is:
+      - step:
+          name: Maintenance ralph_lauren_eu_is
+          <<: *runner-template
+          script:
+            - CLIENT=ralph_lauren_eu_is timeout 115m ./maintenance.sh
+            - echo $? > exit_code
+          after-script:
+            - CLIENT=ralph_lauren_eu_is ./unlock_db.sh
+
+    db_maintenance_ralph_lauren_na:
+      - step:
+          name: Maintenance ralph_lauren_na
+          <<: *runner-template
+          script:
+            - CLIENT=ralph_lauren_na timeout 115m ./maintenance.sh
+            - echo $? > exit_code
+          after-script:
+            - CLIENT=ralph_lauren_na ./unlock_db.sh
+
+    db_maintenance_ralph_lauren_apac:
+      - step:
+          name: Maintenance ralph_lauren_apac
+          <<: *runner-template
+          script:
+            - CLIENT=ralph_lauren_apac timeout 115m ./maintenance.sh
+            - echo $? > exit_code
+          after-script:
+            - CLIENT=ralph_lauren_apac ./unlock_db.sh
+
+    db_maintenance_saks_fifth_avenue:
+      - step:
+          name: Maintenance saks_fifth_avenue
+          <<: *runner-template
+          script:
+            - CLIENT=saks_fifth_avenue timeout 115m ./maintenance.sh
+            - echo $? > exit_code
+          after-script:
+            - CLIENT=saks_fifth_avenue ./unlock_db.sh
+
+    db_maintenance_spanx:
+      - step:
+          name: Maintenance spanx
+          <<: *runner-template
+          script:
+            - CLIENT=spanx timeout 115m ./maintenance.sh
+            - echo $? > exit_code
+          after-script:
+            - CLIENT=spanx ./unlock_db.sh
+
+    db_maintenance_starboard:
+      - step:
+          name: Maintenance starboard
+          <<: *runner-template
+          script:
+            - CLIENT=starboard timeout 115m ./maintenance.sh
+            - echo $? > exit_code
+          after-script:
+            - CLIENT=starboard ./unlock_db.sh
+
+    db_maintenance_tapestry:
+      - step:
+          name: Maintenance tapestry
+          <<: *runner-template
+          script:
+            - CLIENT=tapestry timeout 115m ./maintenance.sh
+            - echo $? > exit_code
+          after-script:
+            - CLIENT=tapestry ./unlock_db.sh
+
+    db_maintenance_tillys:
+      - step:
+          name: Maintenance tillys
+          <<: *runner-template
+          script:
+            - CLIENT=tillys timeout 115m ./maintenance.sh
+            - echo $? > exit_code
+          after-script:
+            - CLIENT=tillys ./unlock_db.sh
+
+    db_maintenance_tommy_bahama:
+      - step:
+          name: Maintenance tommy_bahama
+          <<: *runner-template
+          script:
+            - CLIENT=tommy_bahama timeout 115m ./maintenance.sh
+            - echo $? > exit_code
+          after-script:
+            - CLIENT=tommy_bahama ./unlock_db.sh
+
+    db_maintenance_tsc:
+      - step:
+          name: Maintenance tsc
+          <<: *runner-template
+          script:
+            - CLIENT=tsc timeout 115m ./maintenance.sh
+            - echo $? > exit_code
+          after-script:
+            - CLIENT=tsc ./unlock_db.sh
+
+    db_maintenance_victorias_secret:
+      - step:
+          name: Maintenance victorias_secret
+          <<: *runner-template
+          script:
+            - CLIENT=victorias_secret timeout 115m ./maintenance.sh
+            - echo $? > exit_code
+          after-script:
+            - CLIENT=victorias_secret ./unlock_db.sh
+
+    db_maintenance_victorias_secret_international:
+      - step:
+          name: Maintenance victorias_secret_international
+          <<: *runner-template
+          script:
+            - CLIENT=victorias_secret_international timeout 115m ./maintenance.sh
+            - echo $? > exit_code
+          after-script:
+            - CLIENT=victorias_secret_international ./unlock_db.sh
+    
+#    db_maintenance_vera_bradley:
+#      - step:
+#          name: Maintenance vera_bradley
+#          <<: *runner-template
+#          script:
+#            - CLIENT=vera_bradley ./maintenance.sh
+    
+    db_maintenance_dba_dummy:
+      - step:
+          name: Maintenance dba_dummy
+          <<: *runner-template
+          script:
+            - CLIENT=dba_dummy timeout 115m ./maintenance.sh
+            - echo $? > exit_code
+          after-script:
+            - CLIENT=dba_dummy ./unlock_db.sh
+
+    cross_schema_validation:
+      - variables:
+        - name: CLIENT
+          default: carters
+          allowed-values: *client-list-with-all
+      - step:
+          name: Cross_Schema_Validation
+          <<: *runner-template
+          script:
+            - |
+              if [ "$CLIENT" = "ALL" ]; then
+                echo "Scanning all clients in the repository..."
+                python3 cross_schema_validation.py
+              else
+                echo "Scanning client: $CLIENT"
+                python3 cross_schema_validation.py --client $CLIENT
+              fi
+
+  pull-requests:
+    '**':
+      - parallel:
+          - step:
+              name: Validate PR
+              <<: *runner-template
+              script:
+                - ./validate_pr.sh
+          - step:
+              name: CSV Validator
+              <<: *runner-template
+              script:
+                - python3 database/pipeline_csv_validator_entrypoint.py
+
+  branches:
+    develop/test:
+      - step:
+          name: Auto Deploy
+          <<: *runner-template
+          script:
+            - ./auto_deploy.sh
+#      - step:
+#          name: DB approver checks
+#          <<: *runner-template
+#          caches:
+#            - pip
+#          script:
+#            - echo "Running script for develop/dev branch update"
+#            - pip install -r requirements.txt
+#            - python check_approvers.py

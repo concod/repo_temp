@@ -1,0 +1,27 @@
+.search-conversation {
+  .impact-input-wrapper {
+    min-width: 175px;
+    width: 175px;
+  }
+  .ia-styles.ia-btn.ia-btn-outlined {
+    border-color: #d9dde7;
+    color: #60697d;
+    svg path {
+      fill: #60697d !important;
+    }
+  }
+  &.chat-hover-btn {
+    .impact-input-wrapper {
+      min-width: 32px;
+      width: 32px;
+      padding: 0px;
+      .chat-search {
+        width: 4px;
+      }
+      .right-input-icon {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+}

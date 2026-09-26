@@ -1,0 +1,154 @@
+.psp-sop-input-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    // padding: 10px 5px 0px 5px;
+
+    .psp-sop-chat-input {
+        width: 100%;
+        max-width: 720px;
+
+        display: flex;
+        align-items: flex-end;
+        gap: 8px;
+
+        padding: 10px 12px;
+        position: relative;
+
+        background-color: var(--card-bg-color);
+        border-radius: 14px;
+
+        box-shadow: var(--message-shadow);
+        transition: var(--transition);
+        border: 1px solid lightgray;
+
+        &:focus-within {
+            box-shadow:
+                0 0 0 2px var(--accent-color),
+                var(--shadow);
+            border: 1px solid white;
+        }
+
+        .message-input {
+            flex: 1;
+            resize: none;
+            border: none;
+            outline: none;
+
+            padding: 10px 12px;
+            max-height: 160px;
+
+            font-size: 14px;
+            line-height: 1.5;
+
+            color: var(--text-color);
+            background: transparent;
+
+            overflow-y: auto;
+
+            &::placeholder {
+                color: rgba(0, 0, 0, 0.4);
+            }
+        }
+
+        /* Dark placeholder */
+        .dark-mode & {
+            .message-input::placeholder {
+                color: rgba(255, 255, 255, 0.4);
+            }
+        }
+
+        .mic-button,
+        .send-button {
+            width: 38px;
+            height: 38px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+
+            font-size: 14px;
+            transition: var(--transition);
+
+            flex-shrink: 0;
+        }
+
+        /* Mic */
+        .mic-button {
+            background-color: var(--tertiary-color);
+            color: var(--primary-color);
+
+            .dark-mode & {
+                color: white;
+            }
+
+            &:hover {
+                background-color: var(--accent-color);
+                color: var(--primary-color);
+            }
+        }
+
+        /* Send */
+        .send-button {
+            background: linear-gradient(135deg,
+                    var(--primary-color),
+                    var(--secondary-color));
+            color: var(--text-light);
+
+            &:not(:disabled):hover {
+                box-shadow: 0 6px 18px rgba(66, 89, 238, 0.35);
+            }
+
+            &:disabled {
+                opacity: 0.4;
+                cursor: not-allowed;
+            }
+        }
+    }
+
+    .psp-sop-copyright {
+        font-size: 12px;
+        text-align: center;
+        color: rgba(0, 0, 0, 0.45);
+
+        a {
+            color: var(--primary-color);
+            font-weight: 500;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    /* Dark footer */
+    .dark-mode & {
+        .psp-sop-copyright {
+            color: rgba(255, 255, 255, 0.45);
+        }
+    }
+}
+
+/* =========================
+   Tablet (≥ 768px)
+========================= */
+
+@media (min-width: 768px) {
+
+    .psp-sop-input-container {
+        .psp-sop-chat-input {
+            padding: 12px 14px;
+
+            .message-input {
+                font-size: 15px;
+            }
+        }
+    }
+}

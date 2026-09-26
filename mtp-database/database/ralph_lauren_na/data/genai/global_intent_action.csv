@@ -1,0 +1,5 @@
+"id","name","attribute_value","application_code","prompt","status"
+1,ENTITY_EXTRACTION_CONFIG,"{""value"": {""api_url"": ""http://34.23.32.119:8000/v1/completions"", ""model_name"": ""llm_mapper_ralph-lauren""}}",3,"You are an expert in extracting keyword from query and map to right keys. Following is the query,\nQUERY:",true
+2,ENTITY_ACTION_MAP,"{""value"": {""apply_filter"": ""apply-filter-action"", ""reset_filter"": ""reset-filter-action"", ""search_table"": ""search-table-action"", ""freeze_column"": ""freeze-column-action"", ""unfreeze_column"": ""unfreeze-column-action"", ""autoadjust_column"": ""autoadjust-column-action""}}",3,,true
+3,ACTION_LISTS,"{""value"": [""apply_filter"", ""reset_filter"", ""search_table"", ""freeze_column"", ""unfreeze_column"", ""autoadjust_column""]}",3,,true
+4,INTENTS_ACTIONS_MAP,"{""value"": {""apply_filter"": [{""intent"": ""filter-selection-action"", ""entities"": [""l0_name"", ""channel"", ""product_channel_name""]}, {""intent"": ""apply-filter-action"", ""entities"": []}]}}",3,,true

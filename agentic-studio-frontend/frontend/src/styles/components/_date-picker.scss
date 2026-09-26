@@ -1,0 +1,211 @@
+// ================================
+// Date Picker Component Styles
+// ================================
+
+.drp-shell {
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  color: #172033;
+}
+
+.drp-picker-wrapper {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  z-index: 1000;
+  margin-top: 8px;
+}
+
+.drp-picker {
+  width: 700px;
+  max-width: 90vw;
+  border-radius: 8px;
+  background: white;
+  box-shadow: 0 6px 18px rgba(14, 30, 37, 0.12);
+  overflow: hidden;
+}
+
+.header-bar {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 20px 0 20px;
+  font-size: 15px;
+  color: #4b5563;
+  position: relative;
+}
+
+.selector {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-size: 14px;
+
+  .caret {
+    opacity: 0.45;
+    font-size: 10px;
+  }
+}
+
+.arrow {
+  cursor: pointer;
+  padding: 3px 6px;
+  user-select: none;
+  font-size: 16px;
+}
+
+.month-dropdown,
+.year-dropdown {
+  position: absolute;
+  background: white;
+  border: 1px solid #e6e9ee;
+  border-radius: 6px;
+  padding: 4px 0;
+  box-shadow: 0 6px 18px rgba(14, 30, 37, 0.06);
+  z-index: 40;
+  min-width: 120px;
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.month-option,
+.year-option {
+  padding: 6px 12px;
+  cursor: pointer;
+  white-space: nowrap;
+  font-size: 13px;
+
+  &:hover {
+    background: #f1ecff;
+  }
+
+  &.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+.months {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  padding: 16px 20px 6px 20px;
+  margin-top: 4px;
+}
+
+.month-panel {
+  flex: 1;
+  min-width: 240px;
+  max-width: 300px;
+}
+
+.weekday-row {
+  display: flex;
+  margin-left: 36px;
+  gap: 0;
+  color: #6b7280;
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.weekday {
+  width: 32px;
+  text-align: center;
+}
+
+.week-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+  gap: 0;
+
+  &.hidden-week {
+    visibility: hidden;
+  }
+}
+
+.week-num {
+  width: 36px;
+  color: #6b7280;
+  font-size: 11px;
+  padding-left: 0;
+}
+
+.day-cell {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+
+  &.muted {
+    color: transparent;
+    cursor: default;
+    pointer-events: none;
+  }
+
+  &.disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  &.in-range {
+    background: rgba(159, 90, 246, 0.12);
+    border-radius: 0;
+  }
+
+  &.day-start,
+  &.day-end {
+    background: #9f5af6;
+    color: white;
+    border-radius: 8px;
+  }
+}
+
+.drp-footer {
+  border-top: 1px solid #e6e9ee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+}
+
+.reset-link {
+  color: #9f5af6;
+  cursor: pointer;
+  font-weight: 600;
+  border: none;
+  background: transparent;
+  font-size: 13px;
+}
+
+.btn-outline {
+  border: 2px solid #9f5af6;
+  padding: 8px 16px;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.btn-primary {
+  background: linear-gradient(180deg, #b83af5, #9f5af6);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+

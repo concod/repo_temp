@@ -1,0 +1,96 @@
+//api constants
+
+// Dashboard API URLs
+export const ADA_DASHBOARD_TABLE_DATA = "/";
+export const ADA_DASHBOARD_CHART_DATA = "/ada-visual/graph/forecast";
+export const ADA_FORECAST_ATTRIBUTES_DATA =
+  "ada-visual/table/forecast-attributes";
+export const ADA_HISTORIC_FORECAST_ATTRIBUTES_DATA =
+  "ada-visual/table/forecast-attributes-historical";
+export const ADA_ACTUALS_FORECAST_ATTRIBUTES_DATA =
+  "ada-visual/table/actuals-quantity";
+export const ADA_DASHBOARD_PRODUCT_DATA =
+  "/ada-visual/timeline/graph-sku-dropdown";
+
+export const ADA_DASHBOARD_GET_DRIVER_SIGNIFICANCE_RANK_DATA =
+  "/ada-visual/table/drivers-significance-new";
+
+export const ADA_DASHBOARD_GET_DRIVER_SIGNIFICANCE_RANK_DATA_NEW =
+  "/ada-visual/table/drivers-significance-rank";
+
+export const ADA_DASHBOARD_GET_DRIVER_SIGNIFICANCE_CHANNEL_DETAIL_TABLE_DATA =
+  "/ada-visual/table/drivers-significance-channel-level";
+
+export const ADA_DASHBOARD_GET_DRIVER_SIGNIFICANCE_AGG_LEVEL_DATA =
+  "/ada-visual/table/drivers-significance-agg-level";
+
+export const ADA_DASHBOARD_FILTER_CONFIG = "ada-visual";
+export const ADA_DASHBOARD_FISCAL_WEEKS = "/ada-visual/timeline/date-range";
+export const ADA_DASHBOARD_HISTORICAL_WEEKS =
+  "/ada-visual/timeline/historical-snapshot-weeks-dynamic-dropdown";
+export const ADA_DASHBOARD_TENANT_FILTERS = "/ada-visual/graph/tenant-filters";
+export const ADA_DASHBOARD_COMPARE_FISCAL_WEEKS =
+  "/ada-visual/timeline/comparison-data";
+export const ADA_DASHBOARD_GET_FISCAL_CALENDAR =
+  "/ada-visual/timeline/cal-to-fiscal";
+export const ADA_DASHBOARD_GET_FISCAL_WEEKS_MONTH =
+  "/ada-visual/timeline/fsweeks-fsmonths";
+
+export const ADA_DASHBOARD_GET_DRIVER_FORECAST_DATA =
+  "/ada-visual/table/drivers-forecast";
+
+export const ADA_DASHBOARD_GET_DRIVER_SIGNIFICANCE_DATA =
+  "/ada-visual/table/drivers-significance";
+
+export const ADA_DASHBOARD_COLUMNS = "/ada-visual/table/table-columns";
+export const ADA_DASHBOARD_ALL_COLUMNS = "/ada-visual/table/all-table-columns";
+export const ADA_DASHBOARD_GET_FORECAST_MULTIPLIER_DATA =
+  "/ada-visual/table/forecast-multiplier";
+
+export const get_status_check_for_user_level_update =
+  "/ada-visual/table/status-check-for-user-level-updates";
+
+export const ADA_DASHBOARD_AGGREGATION_LEVEL_DATA =
+  "/ada-visual/table/aggregation-level-forecast";
+
+export const ADA_DASHBOARD_AGGREGATION_LEVEL_DATA_WITH_COMPARE =
+  "/ada-visual/table/aggregation-level-detail";
+
+export const ADA_SAVE_DETAILED_FORECAST =
+  "ada-visual/table/update-detail-level-forecast";
+export const ADA_SAVE_DRIVER_FORECAST =
+  "ada-visual/table/update-drivers-forecast";
+export const ADA_SAVE_MULTIPLIER =
+  "ada-visual/table/update-forecast-multiplier";
+export const ADA_HISTORIC_YEARS = "ada-visual/timeline/last-years-dropdown";
+export const DOWNLOAD_ADA_FORECAST_REPORT =
+  "ada-visual/table/download-detail-level-forecast-cloud-v2";
+export const CHECK_LENGTH_DOWNLOAD_ADA_VISUAL_TABLE =
+  "ada-visual/table/download-row-count";
+export const ADA_CLIENT_CONFIG =
+  "/core/tenant-config/11?attribute_name=ada_visual_detail_config";
+export const ADA_DB_UPDATED_STATUS = "ada-visual/table/get-db-update-status";
+
+// Forecast related ada config details
+export const FORECASTSMART_ADA_CLIENT_CONFIG =
+  "/core/tenant-config/11?attribute_name=ada_visual_detail_forecastsmart_config";
+
+export const ADA_USER_CONFIG =
+  "/master/user-management/module-hierarchy?app=ADA&module=Ada%20Visual%20Screen";
+
+export const ADA_GET_FORECAST_AXIS_DATA =
+  "/ada-visual/timeline/fiscal-ids-graph-xaxis";
+
+export const ADA_GET_GRAPH_KPI_DATA = "ada-visual/graph/kpis";
+
+export const ADA_UPLOAD_DRIVERS_FORECAST_BULK_DATA = "ada-visual/upload";
+
+//MFP
+export const ADA_DEMAND_SELECTION_TABLE_DATA = "ada-visual/table/mfp-data";
+export const ADA_DEMAND_SELECTION_UPDATE_MFP_DATA =
+  "ada-visual/update/mfp-data";
+
+export const FILTERED_PRODUCT_STORE_CODE =
+  "ada-visual/get-filtered-product-store-codes";
+
+export const COMBINED_CROSS_DIMENSIONAL_API_V3 = "/core/cross-filter-v3";

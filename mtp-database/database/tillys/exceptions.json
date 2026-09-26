@@ -1,0 +1,120 @@
+{
+    "CASCADE": {
+        "exclusions": [
+            "database/tillys/schemas/global/views/product_store_attributes_filter.sql",
+            "database/tillys/schemas/inventory_smart/views/dc_pack_configuration.sql",
+            "database/tillys/schemas/inventory_smart/views/article_status_tag.sql",
+            "database/tillys/schemas/inventory_smart/views/dc_pack_inventory.sql",
+            "database/schemas/inventory_smart/functions/create_asl_rcl_psm_temp_tables_test.sql",
+            "database/tillys/schemas/inventory_smart/views/latest_inventory.sql",
+            "database/tillys/schemas/inventory_smart/materialized_views/ph_master.sql",
+            "database/tillys/schemas/global/tables/product_store_attributes_filter_version.sql",
+            "database/tillys/schemas/inventory_smart/views/asn_master.sql",
+            "database/tillys/schemas/inventory_smart/views/asn_to_allocate_alert.sql",
+            "database/tillys/schemas/inventory_smart/views/forecast_alerts.sql",
+            "database/tillys/schemas/inventory_smart/materialized_views/alerts_product_level.sql",
+            "database/tillys/schemas/inventory_smart/materialized_views/alerts_product_store_level.sql",
+            "database/tillys/schemas/inventory_smart/views/sample_table_transaction.sql",
+            "database/tillys/schemas/inventory_smart/views/sample_table_inventory.sql",
+            "database/tillys/schemas/inventory_smart/views/sample_table_forecast.sql"
+        ]
+    },
+    "DROP COLUMN": {
+        "exclusions": [
+            "database/tillys/schemas/global/tables/store_attributes_filter.sql",
+            "database/tillys/schemas/global/tables/product_store_hierarchy_mapping.sql",
+           "database/tillys/schemas/global/tables/product_store_attributes_filter_version.sql",
+           "database/tillys/schemas/inventory_smart/tables/rcl_psa_config_table.sql",
+           "database/tillys/schemas/inventory_smart/tables/article_status_tag_version.sql"
+        ]
+    },
+    "DROP CONSTRAINT": {
+        "exclusions": [
+            "database/tillys/schemas/global/tables/product_store_hierarchy_mapping.sql",
+            "database/tillys/schemas/global/tables/product_store_attributes_filter_version.sql"
+        ]
+    },
+    "DROP INDEX": {
+        "exclusions": []
+    },
+    "DROP MATERIALIZED VIEW": {
+        "exclusions": [
+            "database/tillys/schemas/inventory_smart/materialized_views/ph_master.sql",
+            "database/tillys/schemas/inventory_smart/materialized_views/alerts_product_level.sql",
+            "database/tillys/schemas/inventory_smart/materialized_views/alerts_product_store_level.sql"
+        ]
+    },
+    "DROP SEQUENCE": {
+        "exclusions": []
+    },
+    "DROP TABLE": {
+        "exclusions": [
+            "database/tillys/schemas/global/views/product_store_attributes_filter.sql",
+            "database/tillys/schemas/inventory_smart/views/dc_pack_configuration.sql",
+            "database/tillys/schemas/inventory_smart/views/article_status_tag.sql",
+            "database/tillys/schemas/global/views/product_store_attributes_filter_store_code.sql",
+            "database/tillys/schemas/inventory_smart/views/dc_pack_inventory.sql",
+            "database/tillys/schemas/inventory_smart/views/latest_inventory.sql",
+            "database/tillys/schemas/inventory_smart/views/article_store_grade.sql",
+           "database/tillys/schemas/inventory_smart/views/po_master.sql",
+           "database/tillys/schemas/inventory_smart/views/alerts_product_level.sql",
+           "database/tillys/schemas/inventory_smart/views/article_inventory_dashboard.sql",
+           "database/tillys/schemas/inventory_smart/views/uom.sql",
+          "database/tillys/schemas/global/views/new_store_data.sql",
+          "database/tillys/schemas/inventory_smart/views/alerts_product_store_level.sql",
+          "database/tillys/schemas/inventory_smart/views/asn_master.sql",
+          "database/tillys/schemas/inventory_smart/views/asn_to_allocate_alert.sql",
+          "database/tillys/schemas/inventory_smart/views/fwos_sku_store_table.sql",
+          "database/tillys/schemas/inventory_smart/views/forecast_alerts.sql",
+          "database/tillys/schemas/inventory_smart/views/sample_table_transaction.sql",
+          "database/tillys/schemas/inventory_smart/views/sample_table_inventory.sql",
+          "database/tillys/schemas/inventory_smart/views/sample_table_forecast.sql"
+
+        ]
+    },
+    "DROP TRIGGER": {
+        "exclusions": []
+    },
+    "DROP TYPE": {
+        "exclusions": []
+    },
+    "DROP VIEW": {
+        "exclusions": []
+    },
+    "INHERITS": {
+        "exclusions": []
+    },
+    "ONLY": {
+        "exclusions": []
+    },
+    "RENAME": {
+        "exclusions": [
+           "database/tillys/schemas/global/tables/product_store_attributes_filter_version.sql",
+           "database/tillys/schemas/inventory_smart/tables/rcl_psa_config_table.sql",
+           "database/tillys/schemas/inventory_smart/tables/article_inventory_dashboard_version.sql",
+           "database/tillys/schemas/inventory_smart/tables/forecast_alerts_version.sql",
+           "database/tillys/schemas/inventory_smart/tables/sample_table_transaction_version.sql"
+        ]
+    },
+    "RESET": {
+        "exclusions": []
+    },
+    "STORAGE": {
+        "exclusions": []
+    },
+    "TEMPORARY": {
+        "exclusions": []
+    },
+    "TRUNCATE": {
+        "exclusions": [
+            "database/tillys/schemas/public/procedures/generate_all_rcl_constraint_data.sql"
+        ]
+    },
+    "WITHOUT": {
+        "exclusions": [
+            "database/tillys/schemas/inventory_smart/views/sku_asn_allocated_units.sql",
+            "database/tillys/schemas/inventory_smart/functions/sku_asn_allocated_units.sql",
+            "database/tillys/schemas/inventory_smart/functions/auto_allocation_input_articles.sql"
+        ]
+    }
+}

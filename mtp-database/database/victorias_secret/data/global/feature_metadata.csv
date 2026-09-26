@@ -1,0 +1,255 @@
+column_name,entity,data_type,source,is_feature,feature_type,feature_encoding,unique_by,aggregation_func,gbq_formula,feature_metadata_code
+zipcode,master_table,string,store_master,FALSE,,,FALSE,max,max(zipcode) as zipcode,1
+workstream_concat,master_table,string,master_table,FALSE,,,FALSE,concat,"concat(brand_p,'_',location_attrib_category_2,'_',geography_t,'_',ws_channel) as workstream_concat",2
+trend,master_table,int64,master_table,FALSE,,,FALSE,rank,dense_rank() over (partition by workstream order by fiscal_year asc ) as trend,3
+time_idx,master_table,int64,master_table,FALSE,,,FALSE,,"date_diff(date, min(date) over(), week) as time_idx",4
+subbrand_description,master_table,string,product_master,FALSE,,,FALSE,max,max(subbrand_description) as subbrand_description,5
+subbrand_code,master_table,int64,product_master,FALSE,,,FALSE,max,max(subbrand_code) as subbrand_code,6
+store_type,master_table,string,store_master,FALSE,,,FALSE,max,max(store_type) as store_type,7
+store_name,master_table,string,store_master,FALSE,,,FALSE,max,max(store_name) as store_name,8
+store_format_code,master_table,string,store_master,FALSE,,,FALSE,max,max(store_format_code) as store_format_code,9
+store_category,master_table,string,store_master,FALSE,,,FALSE,max,max(store_category) as store_category,10
+special_classification,master_table,string,store_master,FALSE,,,FALSE,max,max(special_classification) as special_classification,11
+size2,master_table,string,product_master,FALSE,,,FALSE,max,max(size2) as size2,12
+size1,master_table,string,product_master,FALSE,,,FALSE,max,max(size1) as size1,13
+size,master_table,string,product_master,FALSE,,,FALSE,max,max(size) as size,14
+s4_name,master_table,string,store_master,FALSE,,,FALSE,max,max(s4_name) as s4_name,15
+s3_name,master_table,string,store_master,FALSE,,,FALSE,max,max(s3_name) as s3_name,16
+s2_name,master_table,string,store_master,FALSE,,,FALSE,max,max(s2_name) as s2_name,17
+s1_name,master_table,string,store_master,FALSE,,,FALSE,max,max(s1_name) as s1_name,18
+s0_name,master_table,string,store_master,FALSE,,,FALSE,max,max(s0_name) as s0_name,19
+revenue,master_table,float64,transaction_master,FALSE,,,FALSE,sum,sum(case when qty<0 then 0 else revenue end) as revenue,20
+quantity_sold,master_table,int64,transaction_master,FALSE,,,FALSE,sum,sum(qty) as quantity_sold,21
+qty_without_returns,master_table,int64,transaction_master,FALSE,,,FALSE,sum,SUM(case when qty<0 then 0 else qty end) as qty_without_returns,22
+qty_without_returns,impute_features,float,master_table,FALSE,qty,,FALSE,,,23
+qty_returns,master_table,int64,transaction_master,FALSE,,,FALSE,sum,SUM(case when qty<0 then (-1)*qty else 0 end) as qty_returns,24
+product_min_date,master_table,date,master_table,FALSE,,,FALSE,min,"min(date) over(partition by workstream, product_code) as product_min_date",25
+product_max_date,master_table,date,master_table,FALSE,,,FALSE,max,"max(date) over(partition by workstream,product_code,fiscal_year_week) as product_max_date",26
+product_lifecycle,master_table,string,product_master,FALSE,,,FALSE,max,max(product_lifecycle) as product_lifecycle,27
+product_hierarchy,master_table,string,product_master,FALSE,,,FALSE,max,max(product_hierarchy) as product_hierarchy,28
+product_description,master_table,string,product_master,FALSE,,,FALSE,max,max(product_description) as product_description,29
+product_channel,master_table,string,product_master,FALSE,,,FALSE,max,max(product_channel) as product_channel,30
+price,master_table,float64,transaction_master,FALSE,,,FALSE,avg,"safe_divide(sum(price*case when qty>0 then qty else 0 end),sum(case when qty>0 then qty else 0 end)) as price",31
+percent_off,master_table,float64,transaction_master,FALSE,,,FALSE,avg,"safe_divide(sum(case when qty<0 then 0 else total_discount_amount end ),sum(msrp *case when qty<0 then 0 else qty end )) as percent_off",32
+open_date,master_table,date,store_master,FALSE,,,FALSE,max,max(open_date) as open_date,33
+oo,master_table,int64,inventory_master,FALSE,,,FALSE,sum,sum(case when oo>=0 then oo else 0 end) as oo,34
+oh,master_table,int64,inventory_master,FALSE,,,FALSE,sum,sum(case when oh>=0 then oh else 0 end) as oh,35
+msrp,master_table,float64,transaction_master,FALSE,,,FALSE,avg,"safe_divide(sum(msrp*case when qty>0 then qty else 0 end),sum(case when qty>0 then qty else 0 end)) as msrp",36
+msrp,impute_features,float,master_table,FALSE,price,,FALSE,,,37
+masterstyle_descr,master_table,string,product_master,FALSE,,,FALSE,max,max(masterstyle_descr) as masterstyle_descr,38
+masterstyle,master_table,string,product_master,FALSE,,,FALSE,max,max(masterstyle) as masterstyle,39
+longitude,master_table,float64,store_master,FALSE,,,FALSE,max,max(longitude) as longitude,40
+location_number,master_table,string,store_master,FALSE,,,FALSE,max,max(location_number) as location_number,41
+location_attrib_squareft,master_table,float64,store_master,FALSE,,,FALSE,max,max(location_attrib_squareft) as location_attrib_squareft,42
+location_attrib_category,master_table,string,store_master,FALSE,,,FALSE,max,max(location_attrib_category) as location_attrib_category,43
+launch_price,master_table,float64,transaction_master,FALSE,,,FALSE,avg,"safe_divide(sum(launch_price*case when qty>0 then qty else 0 end),sum(case when qty>0 then qty else 0 end)) as launch_price",44
+latitude,master_table,float64,store_master,FALSE,,,FALSE,max,max(latitude) as latitude,45
+l6_name,master_table,string,product_master,FALSE,,,FALSE,max,max(l6_name) as l6_name,46
+l6_id,master_table,string,product_master,FALSE,,,FALSE,max,max(l6_id) as l6_id,47
+l5_name,master_table,string,product_master,FALSE,,,FALSE,max,max(l5_name) as l5_name,48
+l5_id,master_table,string,product_master,FALSE,,,FALSE,max,max(l5_id) as l5_id,49
+l4_name,master_table,string,product_master,FALSE,,,FALSE,max,max(l4_name) as l4_name,50
+l4_id,master_table,string,product_master,FALSE,,,FALSE,max,max(l4_id) as l4_id,51
+l3_name,master_table,string,product_master,FALSE,,,FALSE,max,max(l3_name) as l3_name,52
+l3_id,master_table,string,product_master,FALSE,,,FALSE,max,max(l3_id) as l3_id,53
+l2_name,master_table,string,product_master,FALSE,,,FALSE,max,max(l2_name) as l2_name,54
+l2_id,master_table,string,product_master,FALSE,,,FALSE,max,max(l2_id) as l2_id,55
+l1_name,master_table,string,product_master,FALSE,,,FALSE,max,max(l1_name) as l1_name,56
+l1_id,master_table,string,product_master,FALSE,,,FALSE,max,max(l1_id) as l1_id,57
+l0_name,master_table,string,product_master,FALSE,,,FALSE,max,max(l0_name) as l0_name,58
+l0_id,master_table,string,product_master,FALSE,,,FALSE,max,max(l0_id) as l0_id,59
+it,master_table,int64,inventory_master,FALSE,,,FALSE,sum,sum(case when it>=0 then it else 0 end) as it,60
+inventory_type,master_table,string,inventory_master,FALSE,,,FALSE,max,max(inventory_type) as inventory_type,61
+geography_s,master_table,string,store_master,FALSE,,,FALSE,max,max(geography) as geography_s,62
+gender,master_table,string,product_master,FALSE,,,FALSE,max,max(gender) as gender,63
+fiscal_year_week,master_table,int64,fiscal_date_mapping,FALSE,,,FALSE,max,max(fiscal_year_week) as fiscal_year_week,64
+fiscal_year_month,master_table,int64,fiscal_date_mapping,FALSE,,,FALSE,max,max(fiscal_year_month) as fiscal_year_month,65
+fiscal_year,master_table,int64,fiscal_date_mapping,FALSE,,,FALSE,max,max(fiscal_year) as fiscal_year,66
+fiscal_week,master_table,int64,fiscal_date_mapping,FALSE,,,FALSE,max,max(fiscal_week) as fiscal_week,67
+fiscal_quarter,master_table,int64,fiscal_date_mapping,FALSE,,,FALSE,max,max(fiscal_quarter) as fiscal_quarter,68
+fiscal_month,master_table,int64,fiscal_date_mapping,FALSE,,,FALSE,max,max(fiscal_month) as fiscal_month,69
+fiscal_bi_week,master_table,int64,fiscal_date_mapping,FALSE,,,FALSE,max,max(fiscal_bi_week) as fiscal_bi_week,70
+price,impute_features,float,master_table,FALSE,discount,,FALSE,,,71
+fabric_family,master_table,string,product_master,FALSE,,,FALSE,max,max(fabric_family) as fabric_family,72
+emotional_space_descr_new,master_table,string,product_master,FALSE,,,FALSE,max,max(emotional_space_descr_new) as emotional_space_descr_new,73
+emotional_space_code,master_table,int64,product_master,FALSE,,,FALSE,max,max(emotional_space_code) as emotional_space_code,74
+emotional_space,master_table,string,product_master,FALSE,,,FALSE,max,max(emotional_space) as emotional_space,75
+percent_off,impute_features,float,master_table,FALSE,discount,,FALSE,,,76
+discount_amount,master_table,float64,transaction_master,FALSE,,,FALSE,sum,sum(case when qty<0 then 0 else unit_discount_amount end) as discount_amount,77
+date_inventory,impute_features,float,master_table,FALSE,inventory,,FALSE,,,78
+created_at,master_table,date,product_master,FALSE,,,FALSE,max,max(created_at) as created_at,79
+cost,impute_features,float,master_table,FALSE,price,,FALSE,,,80
+cost,master_table,float64,transaction_master,FALSE,,,FALSE,sum,"safe_divide(sum(cost*case when qty>0 then qty else 0 end),sum(case when qty>0 then qty else 0 end)) as cost_price_per_unit",81
+company_name,master_table,string,store_master,FALSE,,,FALSE,max,max(company_name) as company_name,82
+company_code,master_table,string,store_master,FALSE,,,FALSE,max,max(company_code) as company_code,83
+colorfamily,master_table,string,product_master,FALSE,,,FALSE,max,max(colorfamily) as colorfamily,84
+color_marketing_name,master_table,string,product_master,FALSE,,,FALSE,max,max(color_marketing_name) as color_marketing_name,85
+color_description,master_table,string,product_master,FALSE,,,FALSE,max,max(color_description) as color_description,86
+color,master_table,string,product_master,FALSE,,,FALSE,max,max(color) as color,87
+collection,master_table,string,product_master,FALSE,,,FALSE,max,max(collection) as collection,88
+close_date,master_table,date,store_master,FALSE,,,FALSE,max,max(close_date) as close_date,89
+choice_family,master_table,string,product_master,FALSE,,,FALSE,max,max(choice_family) as choice_family,90
+channel_t,master_table,string,transaction_master,FALSE,,,FALSE,max,max(channel) as channel_t,91
+channel_s,master_table,string,store_master,FALSE,,,FALSE,max,max(channel) as channel_s,92
+channel_code_t,master_table,int64,transaction_master,FALSE,,,FALSE,max,max(channel_code) as channel_code_t,93
+channel_code_s,master_table,int64,store_master,FALSE,,,FALSE,max,max(channel_code) as channel_code_s,94
+brand_t,master_table,string,transaction_master,FALSE,,,FALSE,max,max(brand) as brand_t,95
+brand_p,master_table,string,product_master,FALSE,,,FALSE,max,max(brand) as brand_p,96
+brand_i,master_table,string,inventory_master,FALSE,,,FALSE,max,max(brand) as brand_i,97
+article_type,master_table,string,product_master,FALSE,,,FALSE,max,max(article_type) as article_type,98
+article_status,master_table,string,product_master,FALSE,,,FALSE,max,max(article_status) as article_status,99
+active,master_table,bool,store_master,FALSE,,,FALSE,max,max(active) as active,100
+ws_channel,master_table,string,transaction_master,FALSE,,,FALSE,max,max(ws_channel) as ws_channel,101
+geography_t,master_table,string,transaction_master,FALSE,,,FALSE,max,max(geography) as geography_t,102
+store_contribution,master_table,float64,transaction_master,FALSE,,,FALSE,max,max(store_contribution) as store_contribution,103
+clr_qty,master_table,float64,transaction_master,FALSE,,,FALSE,sum,SUM(case when clearance=True AND qty>0 then qty else 0 end) as clr_qty,104
+non_clr_qty,master_table,float64,transaction_master,FALSE,,,FALSE,sum,SUM(case when clearance!=True AND qty>0 then qty else 0 end) as non_clr_qty,105
+workstream,master_table,string,transaction_master,FALSE,,,TRUE,,,106
+location_attrib_category_2,master_table,string,store_master,FALSE,,,FALSE,max,max(case when lower(location_attrib_category) like '%full%' then 'FullPrice' else 'Clearance' end) as location_attrib_category_2,107
+sell_through_cutoff,lost_sales,float,,TRUE,numerical,,FALSE,,"{'Victoria Secret_FullPrice_CA_BNM':0.3,'VS-Beauty_FullPrice_MEA_BNM':0.3,'VS-Beauty_FullPrice_NA_BNM':0.3,'PINK_FullPrice_SA_BNM':0.3,'PINK_FullPrice_NA_BNM':0.3,'VS-Beauty_Clearance_NA_BNM':0.3,'VS-Beauty_FullPrice_SA_BNM':0.3,'Victoria Secret_FullPrice_EU_BNM':0.3,'Victoria Secret_FullPrice_APAC_BNM':0.3,'Victoria Secret_Clearance_NA_BNM':0.3,'VS-Beauty_FullPrice_EU_BNM':0.3,'PINK_FullPrice_APAC_BNM':0.3,'Victoria Secret_FullPrice_NA_BNM':0.3,'PINK_Clearance_NA_BNM':0.3,'VS-Beauty_FullPrice_APAC_BNM':0.3,'PINK_FullPrice_CA_BNM':0.3,'VS-Beauty_FullPrice_CA_BNM':0.3,'Victoria Secret_FullPrice_MEA_BNM':0.3,'Victoria Secret_FullPrice_SA_BNM':0.3,'PINK_FullPrice_MEA_BNM':0.3,'PINK_FullPrice_EU_BNM':0.3}",108
+lsi_channel,lost_sales,float,,TRUE,numerical,,FALSE,,"['Victoria Secret_FullPrice_CA_BNM','VS-Beauty_FullPrice_MEA_BNM','VS-Beauty_FullPrice_NA_BNM','PINK_FullPrice_SA_BNM','PINK_FullPrice_NA_BNM','VS-Beauty_Clearance_NA_BNM','VS-Beauty_FullPrice_SA_BNM','Victoria Secret_FullPrice_EU_BNM','Victoria Secret_FullPrice_APAC_BNM','Victoria Secret_Clearance_NA_BNM','VS-Beauty_FullPrice_EU_BNM','PINK_FullPrice_APAC_BNM','Victoria Secret_FullPrice_NA_BNM','PINK_Clearance_NA_BNM','VS-Beauty_FullPrice_APAC_BNM','PINK_FullPrice_CA_BNM','VS-Beauty_FullPrice_CA_BNM','Victoria Secret_FullPrice_MEA_BNM','Victoria Secret_FullPrice_SA_BNM','PINK_FullPrice_MEA_BNM','PINK_FullPrice_EU_BNM']",109
+fiscal_quarter,agg__master_aggregate__l4_name,int64,master_table,FALSE,,,TRUE,,,110
+fiscal_week,agg__master_aggregate__l4_name,int64,master_table,FALSE,,,TRUE,,,111
+fiscal_year,agg__master_aggregate__l4_name,int64,master_table,FALSE,,,TRUE,,,112
+active_stores_cutoff,lost_sales,float,,TRUE,numerical,,FALSE,,"{'Victoria Secret_FullPrice_CA_BNM':0.3,'VS-Beauty_FullPrice_MEA_BNM':0.3,'VS-Beauty_FullPrice_NA_BNM':0.3,'PINK_FullPrice_SA_BNM':0.3,'PINK_FullPrice_NA_BNM':0.3,'VS-Beauty_Clearance_NA_BNM':0.3,'VS-Beauty_FullPrice_SA_BNM':0.3,'Victoria Secret_FullPrice_EU_BNM':0.3,'Victoria Secret_FullPrice_APAC_BNM':0.3,'Victoria Secret_Clearance_NA_BNM':0.3,'VS-Beauty_FullPrice_EU_BNM':0.3,'PINK_FullPrice_APAC_BNM':0.3,'Victoria Secret_FullPrice_NA_BNM':0.3,'PINK_Clearance_NA_BNM':0.3,'VS-Beauty_FullPrice_APAC_BNM':0.3,'PINK_FullPrice_CA_BNM':0.3,'VS-Beauty_FullPrice_CA_BNM':0.3,'Victoria Secret_FullPrice_MEA_BNM':0.3,'Victoria Secret_FullPrice_SA_BNM':0.3,'PINK_FullPrice_MEA_BNM':0.3,'PINK_FullPrice_EU_BNM':0.3}",113
+discount_amount,impute_features,float,master_table,FALSE,discount,,FALSE,,,114
+__where_clause,agg__master_aggregate__l4_name,string,master_table,FALSE,,,FALSE,max,where workstream is not null,115
+cost,agg__master_aggregate__l4_name,float64,master_table,TRUE,,,FALSE,avg,"case when sum(oh) = 0 then avg(cost_price_per_unit_imputed) else safe_divide(sum(cost_price_per_unit_imputed*oh),sum(oh)) end as cost",116
+fiscal_bi_week,agg__master_aggregate__l4_name,int64,master_table,FALSE,,,TRUE,,,117
+fiscal_month,agg__master_aggregate__l4_name,int64,master_table,FALSE,,,TRUE,,,118
+__algorithms,sc__PINK_FullPrice_NA_BNM,,master_table,FALSE,numerical,,FALSE,sum,"[""kmeans"",""faiss""]",119
+__algorithms,sc__VS-Beauty_FullPrice_NA_BNM,,master_table,FALSE,numerical,,FALSE,sum,"[""kmeans"",""faiss""]",120
+__algorithms,sc__Victoria Secret_FullPrice_NA_BNM,,master_table,FALSE,numerical,,FALSE,sum,"[""kmeans"",""faiss""]",121
+__no_of_clusters,sc__Victoria Secret_FullPrice_NA_BNM,,master_table,FALSE,numerical,,FALSE,sum,"[4,5,6,7,8,9,10]",122
+__no_of_clusters,sc__VS-Beauty_FullPrice_NA_BNM,,master_table,FALSE,numerical,,FALSE,sum,"[4,5,6,7,8,9,10]",123
+__no_of_clusters,sc__PINK_FullPrice_NA_BNM,,master_table,FALSE,numerical,,FALSE,sum,"[4,5,6,7,8,9,10]",124
+aur,sc__VS-Beauty_FullPrice_NA_BNM,float64,master_table,TRUE,numerical,,FALSE,sum,"safe_divide(sum(case when fiscal_year*100+fiscal_quarter in (202304, 202401) then price*qty_without_returns else 0 end),sum(case when fiscal_year*100+fiscal_quarter in (202304, 202401) then qty_without_returns else 0 end)) as aur",125
+aur,sc__PINK_FullPrice_NA_BNM,float64,master_table,TRUE,numerical,,FALSE,sum,"safe_divide(sum(case when fiscal_year*100+fiscal_quarter in (202304, 202401) then price*qty_without_returns else 0 end),sum(case when fiscal_year*100+fiscal_quarter in (202304, 202401) then qty_without_returns else 0 end)) as aur",126
+aur,sc__VS-Beauty_Clearance_NA_BNM,float64,master_table,TRUE,numerical,,FALSE,sum,"safe_divide(sum(case when fiscal_year*100+fiscal_quarter in (202304, 202401) then price*qty_without_returns else 0 end),sum(case when fiscal_year*100+fiscal_quarter in (202304, 202401) then qty_without_returns else 0 end)) as aur",127
+aur,sc__Victoria Secret_FullPrice_NA_BNM,float64,master_table,TRUE,numerical,,FALSE,sum,"safe_divide(sum(case when fiscal_year*100+fiscal_quarter in (202304, 202401) then price*qty_without_returns else 0 end),sum(case when fiscal_year*100+fiscal_quarter in (202304, 202401) then qty_without_returns else 0 end)) as aur",128
+aur,sc__PINK_Clearance_NA_BNM,float64,master_table,TRUE,numerical,,FALSE,sum,"safe_divide(sum(case when fiscal_year*100+fiscal_quarter in (202304, 202401) then price*qty_without_returns else 0 end),sum(case when fiscal_year*100+fiscal_quarter in (202304, 202401) then qty_without_returns else 0 end)) as aur",129
+aur,sc__Victoria Secret_Clearance_NA_BNM,float64,master_table,TRUE,numerical,,FALSE,sum,"safe_divide(sum(case when fiscal_year*100+fiscal_quarter in (202304, 202401) then price*qty_without_returns else 0 end),sum(case when fiscal_year*100+fiscal_quarter in (202304, 202401) then qty_without_returns else 0 end)) as aur",130
+quantity_sold,sc__Victoria Secret_FullPrice_NA_BNM,int64,master_table,TRUE,numerical,,FALSE,sum,"sum(case when fiscal_year*100+fiscal_quarter in (202304, 202401) then qty_without_returns else 0 end) as quantity_sold",131
+quantity_sold,sc__PINK_Clearance_NA_BNM,int64,master_table,TRUE,numerical,,FALSE,sum,"sum(case when fiscal_year*100+fiscal_quarter in (202304, 202401) then qty_without_returns else 0 end) as quantity_sold",132
+quantity_sold,sc__PINK_FullPrice_NA_BNM,int64,master_table,TRUE,numerical,,FALSE,sum,"sum(case when fiscal_year*100+fiscal_quarter in (202304, 202401) then qty_without_returns else 0 end) as quantity_sold",133
+fiscal_year_month,agg__master_aggregate__l4_name,int64,master_table,FALSE,,,TRUE,,,134
+fiscal_year_week,agg__master_aggregate__l4_name,int64,master_table,FALSE,,,TRUE,,,135
+l0_name,agg__master_aggregate__l4_name,string,master_table,FALSE,,,TRUE,,,136
+l1_name,agg__master_aggregate__l4_name,string,master_table,FALSE,,,TRUE,,,137
+l2_name,agg__master_aggregate__l4_name,string,master_table,FALSE,,,TRUE,,,138
+l3_name,agg__master_aggregate__l4_name,string,master_table,FALSE,,,TRUE,,,139
+l4_name,agg__master_aggregate__l4_name,string,master_table,FALSE,,,TRUE,,,140
+msrp,agg__master_aggregate__l4_name,float64,master_table,TRUE,,,FALSE,avg,"case when sum(oh) = 0 then avg(msrp_imputed) else safe_divide(sum(msrp_imputed*oh),sum(oh)) end as msrp",141
+oh,agg__master_aggregate__l4_name,int64,master_table,TRUE,,,FALSE,sum,"ifnull(sum(case when extract(dayofweek from date)=1 then oh else 0 end),0) as oh",142
+percent_off,agg__master_aggregate__l4_name,float64,master_table,TRUE,,,FALSE,avg,"case when sum(date_inventory) = 0 then avg(percent_off_imputed) else safe_divide(sum(qty_without_returns_imputed*msrp_imputed*percent_off_imputed),sum(msrp_imputed*qty_without_returns_imputed)) end as percent_off",143
+price,agg__master_aggregate__l4_name,float64,master_table,FALSE,,,FALSE,avg,"case when sum(oh) = 0 then avg(price_imputed) else safe_divide(sum(price_imputed*oh),sum(oh)) end as price",144
+qty,agg__master_aggregate__l4_name,int64,master_table,TRUE,,,FALSE,sum,sum(qty_without_returns_imputed) as qty,145
+sku_count,agg__master_aggregate__l4_name,int64,master_table,TRUE,,,FALSE,count,count(distinct product_code) as sku_count,146
+sku_store_count,agg__master_aggregate__l4_name,int64,master_table,TRUE,,,FALSE,count,"count(distinct concat(store_code, product_code)) as sku_store_count",147
+store_count,agg__master_aggregate__l4_name,int64,master_table,TRUE,,,FALSE,count,count(distinct store_code) as store_count,148
+trend,agg__master_aggregate__l4_name,string,master_table,FALSE,,,FALSE,max,max(trend) as trend,149
+workstream,agg__master_aggregate__l4_name,string,master_table,TRUE,,,TRUE,,,150
+age,agg__master_aggregate__l4_name,int64,master_table,FALSE,,,FALSE,max,"max(date_diff(product_max_date,product_min_date,week)+1) as age",151
+time_idx,agg__master_aggregate__l4_name,int64,master_table,TRUE,,,FALSE,max,max(max(time_idx)) over(partition by fiscal_year_week) as time_idx,152
+sales_idx,agg__master_aggregate__l4_name,int64,master_table,FALSE,,,FALSE,max,"max(safe_divide(avg(qty_without_returns_imputed) over(partition by workstream, fiscal_week), avg(qty_without_returns_imputed) over(partition by fiscal_week),0)) as sales_idx",153
+store_penetration,agg__master_aggregate__l4_name,int64,master_table,TRUE,,,FALSE,sum,sum(store_contribution) as store_penetration,154
+__where_clause,agg__master_aggregate__l5_name,string,master_table,FALSE,,,FALSE,max,where workstream is not null,155
+cost,agg__master_aggregate__l5_name,float64,master_table,TRUE,,,FALSE,avg,"case when sum(oh) = 0 then avg(cost_price_per_unit_imputed) else safe_divide(sum(cost_price_per_unit_imputed*oh),sum(oh)) end as cost",156
+fiscal_bi_week,agg__master_aggregate__l5_name,int64,master_table,FALSE,,,TRUE,,,157
+fiscal_month,agg__master_aggregate__l5_name,int64,master_table,FALSE,,,TRUE,,,158
+fiscal_quarter,agg__master_aggregate__l5_name,int64,master_table,FALSE,,,TRUE,,,159
+fiscal_week,agg__master_aggregate__l5_name,int64,master_table,FALSE,,,TRUE,,,160
+fiscal_year,agg__master_aggregate__l5_name,int64,master_table,FALSE,,,TRUE,,,161
+fiscal_year_month,agg__master_aggregate__l5_name,int64,master_table,FALSE,,,TRUE,,,162
+fiscal_year_week,agg__master_aggregate__l5_name,int64,master_table,FALSE,,,TRUE,,,163
+l0_name,agg__master_aggregate__l5_name,string,master_table,FALSE,,,TRUE,,,164
+l1_name,agg__master_aggregate__l5_name,string,master_table,FALSE,,,TRUE,,,165
+l2_name,agg__master_aggregate__l5_name,string,master_table,FALSE,,,TRUE,,,166
+l3_name,agg__master_aggregate__l5_name,string,master_table,FALSE,,,TRUE,,,167
+l4_name,agg__master_aggregate__l5_name,string,master_table,FALSE,,,TRUE,,,168
+l5_name,agg__master_aggregate__l5_name,string,master_table,FALSE,,,TRUE,,,169
+msrp,agg__master_aggregate__l5_name,float64,master_table,TRUE,,,FALSE,avg,"case when sum(oh) = 0 then avg(msrp_imputed) else safe_divide(sum(msrp_imputed*oh),sum(oh)) end as msrp",170
+oh,agg__master_aggregate__l5_name,int64,master_table,TRUE,,,FALSE,sum,"ifnull(sum(case when extract(dayofweek from date)=1 then oh else 0 end),0) as oh",171
+percent_off,agg__master_aggregate__l5_name,float64,master_table,TRUE,,,FALSE,avg,"case when sum(date_inventory) = 0 then avg(percent_off_imputed) else safe_divide(sum(qty_without_returns_imputed*msrp_imputed*percent_off_imputed),sum(msrp_imputed*qty_without_returns_imputed)) end as percent_off",172
+price,agg__master_aggregate__l5_name,float64,master_table,FALSE,,,FALSE,avg,"case when sum(oh) = 0 then avg(price_imputed) else safe_divide(sum(price_imputed*oh),sum(oh)) end as price",173
+qty,agg__master_aggregate__l5_name,int64,master_table,TRUE,,,FALSE,sum,sum(qty_without_returns_imputed) as qty,174
+sku_count,agg__master_aggregate__l5_name,int64,master_table,TRUE,,,FALSE,count,count(distinct product_code) as sku_count,175
+sku_store_count,agg__master_aggregate__l5_name,int64,master_table,TRUE,,,FALSE,count,"count(distinct concat(store_code, product_code)) as sku_store_count",176
+store_count,agg__master_aggregate__l5_name,int64,master_table,TRUE,,,FALSE,count,count(distinct store_code) as store_count,177
+trend,agg__master_aggregate__l5_name,string,master_table,FALSE,,,FALSE,max,max(trend) as trend,178
+workstream,agg__master_aggregate__l5_name,string,master_table,TRUE,,,TRUE,,,179
+age,agg__master_aggregate__l5_name,int64,master_table,FALSE,,,FALSE,max,"max(date_diff(product_max_date,product_min_date,week)+1) as age",180
+time_idx,agg__master_aggregate__l5_name,int64,master_table,TRUE,,,FALSE,max,max(max(time_idx)) over(partition by fiscal_year_week) as time_idx,181
+sales_idx,agg__master_aggregate__l5_name,int64,master_table,FALSE,,,FALSE,max,"max(safe_divide(avg(qty_without_returns_imputed) over(partition by workstream, fiscal_week), avg(qty_without_returns_imputed) over(partition by fiscal_week),0)) as sales_idx",182
+store_penetration,agg__master_aggregate__l5_name,int64,master_table,TRUE,,,FALSE,sum,sum(store_contribution) as store_penetration,183
+__where_clause,agg__master_aggregate__l6_name,string,master_table,FALSE,,,FALSE,max,where workstream is not null,184
+cost,agg__master_aggregate__l6_name,float64,master_table,TRUE,,,FALSE,avg,"case when sum(oh) = 0 then avg(cost_price_per_unit_imputed) else safe_divide(sum(cost_price_per_unit_imputed*oh),sum(oh)) end as cost",185
+fiscal_bi_week,agg__master_aggregate__l6_name,int64,master_table,FALSE,,,TRUE,,,186
+fiscal_month,agg__master_aggregate__l6_name,int64,master_table,FALSE,,,TRUE,,,187
+fiscal_quarter,agg__master_aggregate__l6_name,int64,master_table,FALSE,,,TRUE,,,188
+fiscal_week,agg__master_aggregate__l6_name,int64,master_table,FALSE,,,TRUE,,,189
+fiscal_year,agg__master_aggregate__l6_name,int64,master_table,FALSE,,,TRUE,,,190
+fiscal_year_month,agg__master_aggregate__l6_name,int64,master_table,FALSE,,,TRUE,,,191
+fiscal_year_week,agg__master_aggregate__l6_name,int64,master_table,FALSE,,,TRUE,,,192
+l0_name,agg__master_aggregate__l6_name,string,master_table,FALSE,,,TRUE,,,193
+l1_name,agg__master_aggregate__l6_name,string,master_table,FALSE,,,TRUE,,,194
+l2_name,agg__master_aggregate__l6_name,string,master_table,FALSE,,,TRUE,,,195
+l3_name,agg__master_aggregate__l6_name,string,master_table,FALSE,,,TRUE,,,196
+l4_name,agg__master_aggregate__l6_name,string,master_table,FALSE,,,TRUE,,,197
+l5_name,agg__master_aggregate__l6_name,string,master_table,FALSE,,,TRUE,,,198
+l6_name,agg__master_aggregate__l6_name,string,master_table,FALSE,,,TRUE,,,199
+msrp,agg__master_aggregate__l6_name,float64,master_table,TRUE,,,FALSE,avg,"case when sum(oh) = 0 then avg(msrp_imputed) else safe_divide(sum(msrp_imputed*oh),sum(oh)) end as msrp",200
+oh,agg__master_aggregate__l6_name,int64,master_table,TRUE,,,FALSE,sum,"ifnull(sum(case when extract(dayofweek from date)=1 then oh else 0 end),0) as oh",201
+percent_off,agg__master_aggregate__l6_name,float64,master_table,TRUE,,,FALSE,avg,"case when sum(date_inventory) = 0 then avg(percent_off_imputed) else safe_divide(sum(qty_without_returns_imputed*msrp_imputed*percent_off_imputed),sum(msrp_imputed*qty_without_returns_imputed)) end as percent_off",202
+price,agg__master_aggregate__l6_name,float64,master_table,FALSE,,,FALSE,avg,"case when sum(oh) = 0 then avg(price_imputed) else safe_divide(sum(price_imputed*oh),sum(oh)) end as price",203
+qty,agg__master_aggregate__l6_name,int64,master_table,TRUE,,,FALSE,sum,sum(qty_without_returns_imputed) as qty,204
+sku_count,agg__master_aggregate__l6_name,int64,master_table,TRUE,,,FALSE,count,count(distinct product_code) as sku_count,205
+sku_store_count,agg__master_aggregate__l6_name,int64,master_table,TRUE,,,FALSE,count,"count(distinct concat(store_code, product_code)) as sku_store_count",206
+store_count,agg__master_aggregate__l6_name,int64,master_table,TRUE,,,FALSE,count,count(distinct store_code) as store_count,207
+trend,agg__master_aggregate__l6_name,string,master_table,FALSE,,,FALSE,max,max(trend) as trend,208
+workstream,agg__master_aggregate__l6_name,string,master_table,TRUE,,,TRUE,,,209
+age,agg__master_aggregate__l6_name,int64,master_table,FALSE,,,FALSE,max,"max(date_diff(product_max_date,product_min_date,week)+1) as age",210
+time_idx,agg__master_aggregate__l6_name,int64,master_table,TRUE,,,FALSE,max,max(max(time_idx)) over(partition by fiscal_year_week) as time_idx,211
+sales_idx,agg__master_aggregate__l6_name,int64,master_table,FALSE,,,FALSE,max,"max(safe_divide(avg(qty_without_returns_imputed) over(partition by workstream, fiscal_week), avg(qty_without_returns_imputed) over(partition by fiscal_week),0)) as sales_idx",212
+store_penetration,agg__master_aggregate__l6_name,int64,master_table,TRUE,,,FALSE,sum,sum(store_contribution) as store_penetration,213
+__where_clause,agg__master_aggregate__product_code,string,master_table,FALSE,,,FALSE,max,where workstream is not null,214
+cost,agg__master_aggregate__product_code,float64,master_table,TRUE,,,FALSE,avg,"case when sum(oh) = 0 then avg(cost_price_per_unit_imputed) else safe_divide(sum(cost_price_per_unit_imputed*oh),sum(oh)) end as cost",215
+fiscal_bi_week,agg__master_aggregate__product_code,int64,master_table,FALSE,,,TRUE,,,216
+fiscal_month,agg__master_aggregate__product_code,int64,master_table,FALSE,,,TRUE,,,217
+fiscal_quarter,agg__master_aggregate__product_code,int64,master_table,FALSE,,,TRUE,,,218
+fiscal_week,agg__master_aggregate__product_code,int64,master_table,FALSE,,,TRUE,,,219
+fiscal_year,agg__master_aggregate__product_code,int64,master_table,FALSE,,,TRUE,,,220
+fiscal_year_month,agg__master_aggregate__product_code,int64,master_table,FALSE,,,TRUE,,,221
+fiscal_year_week,agg__master_aggregate__product_code,int64,master_table,FALSE,,,TRUE,,,222
+l0_name,agg__master_aggregate__product_code,string,master_table,FALSE,,,TRUE,,,223
+l1_name,agg__master_aggregate__product_code,string,master_table,FALSE,,,TRUE,,,224
+l2_name,agg__master_aggregate__product_code,string,master_table,FALSE,,,TRUE,,,225
+l3_name,agg__master_aggregate__product_code,string,master_table,FALSE,,,TRUE,,,226
+l4_name,agg__master_aggregate__product_code,string,master_table,FALSE,,,TRUE,,,227
+l5_name,agg__master_aggregate__product_code,string,master_table,FALSE,,,TRUE,,,228
+l6_name,agg__master_aggregate__product_code,string,master_table,FALSE,,,TRUE,,,229
+product_code,agg__master_aggregate__product_code,string,master_table,FALSE,,,TRUE,,,230
+msrp,agg__master_aggregate__product_code,float64,master_table,TRUE,,,FALSE,avg,"case when sum(oh) = 0 then avg(msrp_imputed) else safe_divide(sum(msrp_imputed*oh),sum(oh)) end as msrp",231
+oh,agg__master_aggregate__product_code,int64,master_table,TRUE,,,FALSE,sum,"ifnull(sum(case when extract(dayofweek from date)=1 then oh else 0 end),0) as oh",232
+percent_off,agg__master_aggregate__product_code,float64,master_table,TRUE,,,FALSE,avg,"case when sum(date_inventory) = 0 then avg(percent_off_imputed) else safe_divide(sum(qty_without_returns_imputed*msrp_imputed*percent_off_imputed),sum(msrp_imputed*qty_without_returns_imputed)) end as percent_off",233
+price,agg__master_aggregate__product_code,float64,master_table,FALSE,,,FALSE,avg,"case when sum(oh) = 0 then avg(price_imputed) else safe_divide(sum(price_imputed*oh),sum(oh)) end as price",234
+qty,agg__master_aggregate__product_code,int64,master_table,TRUE,,,FALSE,sum,sum(qty_without_returns_imputed) as qty,235
+sku_count,agg__master_aggregate__product_code,int64,master_table,TRUE,,,FALSE,count,count(distinct product_code) as sku_count,236
+sku_store_count,agg__master_aggregate__product_code,int64,master_table,TRUE,,,FALSE,count,"count(distinct concat(store_code, product_code)) as sku_store_count",237
+store_count,agg__master_aggregate__product_code,int64,master_table,TRUE,,,FALSE,count,count(distinct store_code) as store_count,238
+trend,agg__master_aggregate__product_code,string,master_table,FALSE,,,FALSE,max,max(trend) as trend,239
+workstream,agg__master_aggregate__product_code,string,master_table,TRUE,,,TRUE,,,240
+age,agg__master_aggregate__product_code,int64,master_table,FALSE,,,FALSE,max,"max(date_diff(product_max_date,product_min_date,week)+1) as age",241
+time_idx,agg__master_aggregate__product_code,int64,master_table,TRUE,,,FALSE,max,max(max(time_idx)) over(partition by fiscal_year_week) as time_idx,242
+sales_idx,agg__master_aggregate__product_code,int64,master_table,FALSE,,,FALSE,max,"max(safe_divide(avg(qty_without_returns_imputed) over(partition by workstream, fiscal_week), avg(qty_without_returns_imputed) over(partition by fiscal_week),0)) as sales_idx",243
+store_penetration,agg__master_aggregate__product_code,int64,master_table,TRUE,,,FALSE,sum,sum(store_contribution) as store_penetration,244
+quantity_sold,sc__VS-Beauty_Clearance_NA_BNM,int64,master_table,TRUE,numerical,,FALSE,sum,"sum(case when fiscal_year*100+fiscal_quarter in (202304, 202401) then qty_without_returns else 0 end) as quantity_sold",245
+qty_ratio,agg__master_aggregate__product_code,int64,master_table,TRUE,,,FALSE,sum,"ifnull(safe_divide(sum(qty_without_returns_imputed),(sum(sum(qty_without_returns_imputed)) over (partition by workstream,l0_name,l1_name,l2_name,l3_name,l4_name,fiscal_year_week))),0) as qty_ratio",246
+quantity_sold,sc__VS-Beauty_FullPrice_NA_BNM,int64,master_table,TRUE,numerical,,FALSE,sum,"sum(case when fiscal_year*100+fiscal_quarter in (202304, 202401) then qty_without_returns else 0 end) as quantity_sold",247
+quantity_sold,sc__Victoria Secret_Clearance_NA_BNM,int64,master_table,TRUE,numerical,,FALSE,sum,"sum(case when fiscal_year*100+fiscal_quarter in (202304, 202401) then qty_without_returns else 0 end) as quantity_sold",248
+revenue,sc__VS-Beauty_FullPrice_NA_BNM,float64,master_table,TRUE,numerical,,FALSE,sum,"sum(case when fiscal_year*100+fiscal_quarter in (202304, 202401) then revenue else 0 end) as revenue",249
+revenue,sc__PINK_FullPrice_NA_BNM,float64,master_table,TRUE,numerical,,FALSE,sum,"sum(case when fiscal_year*100+fiscal_quarter in (202304, 202401) then revenue else 0 end) as revenue",250
+revenue,sc__VS-Beauty_Clearance_NA_BNM,float64,master_table,TRUE,numerical,,FALSE,sum,"sum(case when fiscal_year*100+fiscal_quarter in (202304, 202401) then revenue else 0 end) as revenue",251
+revenue,sc__Victoria Secret_Clearance_NA_BNM,float64,master_table,TRUE,numerical,,FALSE,sum,"sum(case when fiscal_year*100+fiscal_quarter in (202304, 202401) then revenue else 0 end) as revenue",252
+revenue,sc__Victoria Secret_FullPrice_NA_BNM,float64,master_table,TRUE,numerical,,FALSE,sum,"sum(case when fiscal_year*100+fiscal_quarter in (202304, 202401) then revenue else 0 end) as revenue",253
+revenue,sc__PINK_Clearance_NA_BNM,float64,master_table,TRUE,numerical,,FALSE,sum,"sum(case when fiscal_year*100+fiscal_quarter in (202304, 202401) then revenue else 0 end) as revenue",254

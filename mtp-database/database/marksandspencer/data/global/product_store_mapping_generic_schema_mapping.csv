@@ -1,0 +1,8 @@
+"source_column_name","source_column_datatype","required_in_product","generic_column_name","is_pk","generic_column_datatype","formula","is_attribute","is_hierarchy","hierarchy_level","is_null_allowed","unique_by","display_name","is_partition_col","is_clustering_col"
+mapping_type,STRING,true,mapping_type,false,varchar,'product_store',false,false,,false,true,,,
+is_active,BOOLEAN,true,is_active,false,bool,,false,false,,false,false,,,
+product_code,STRING,true,product_code,false,varchar,,false,false,,false,true,,,
+store_code,STRING,true,store_code,false,varchar,,false,false,,false,true,,,
+mapping_code,INTEGER,true,mapping_code,false,int4,,false,false,,true,false,,,
+validity_start_date,date,true,validity_start_date,false,date,,false,false,,false,false,,,
+validity_end_date,date,true,validity_end_date,false,date,,false,false,,false,false,,,

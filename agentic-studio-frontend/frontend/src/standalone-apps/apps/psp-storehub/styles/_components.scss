@@ -1,0 +1,1605 @@
+/* PSP-StoreHub App Layout */
+.psp-storehub-app {
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  &.dark-mode {
+    background-color: var(--background-color);
+  }
+}
+
+/* PSP-StoreHub Container */
+.psp-storehub-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  position: relative;
+}
+
+/* Top Right Avatar */
+.psp-storehub-top-avatar {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 1000;
+
+  .header-button {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    &:active {
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  .dark-mode & .header-button {
+    color: var(--text-color);
+    
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    &:active {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+  }
+
+  /* Avatar Dropdown Styles */
+  .avatar-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    .avatar-button {
+      position: relative;
+    }
+
+    .avatar-dropdown {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      margin-top: 8px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      min-width: 200px;
+      z-index: 1001;
+      overflow: hidden;
+
+
+      .dropdown-arrow {
+        position: absolute;
+        top: -6px;
+        right: 16px;
+        width: 12px;
+        height: 12px;
+        background: white;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-bottom: none;
+        border-right: none;
+        transform: rotate(45deg);
+
+      }
+
+      .dropdown-content {
+        padding: 8px 0;
+        display: flex;
+        flex-direction: column;
+
+        .dropdown-item {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 12px;
+          padding: 12px 16px;
+          font-size: 14px;
+          cursor: pointer;
+          transition: background-color 0.2s ease;
+
+          i {
+            font-size: 12px;
+            width: 16px;
+            text-align: center;
+            flex-shrink: 0;
+          }
+
+          span {
+            font-weight: 500;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            flex: 1;
+          }
+
+          &.user-email-item {
+            color: #333;
+            border-bottom: 1px solid #f0f0f0;
+            cursor: default;
+
+
+            i {
+              color: #666;
+
+            }
+          }
+
+          &.logout-item {
+            color: #dc2626;
+
+            &:hover {
+              background-color: #fef2f2;
+            }
+
+          }
+        }
+      }
+    }
+  }
+
+  /* Dark mode styles for dropdown */
+  .dark-mode & {
+    .avatar-dropdown {
+      background: #2a2a2a;
+      border-color: #444;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+
+      .dropdown-arrow {
+        background: #2a2a2a;
+        border-color: #444;
+      }
+
+      .dropdown-content {
+        .dropdown-item {
+          &.user-email-item {
+            color: #e0e0e0;
+            border-color: #444;
+
+            i {
+              color: #aaa;
+            }
+          }
+
+          &.logout-item {
+            color: #ff6b6b;
+
+            &:hover {
+              background-color: rgba(239, 68, 68, 0.1);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Chat Layout with Side Navigation */
+.psp-storehub-chat-layout {
+  height: 100vh;
+  display: flex;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+
+/* Main Content Area */
+.psp-storehub-main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Chat Header */
+.psp-storehub-chat-header {
+  background-color: var(--background-color);
+  // border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 64px;
+
+  .dark-mode & {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .chat-header-title {
+    h1 {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--primary-color);
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+  }
+
+  .chat-header-avatar {
+    .avatar-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+
+      .header-button {
+        background: none;
+        border: none;
+        color: var(--text-color);
+        font-size: 20px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.2s ease;
+
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        &:active {
+          background-color: rgba(0, 0, 0, 0.2);
+        }
+      }
+
+      .avatar-dropdown {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        margin-top: 8px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        min-width: 200px;
+        z-index: 1001;
+        overflow: hidden;
+
+        .dropdown-arrow {
+          position: absolute;
+          top: -6px;
+          right: 16px;
+          width: 12px;
+          height: 12px;
+          background: white;
+          border: 1px solid rgba(0, 0, 0, 0.1);
+          border-bottom: none;
+          border-right: none;
+          transform: rotate(45deg);
+        }
+
+        .dropdown-content {
+          padding: 8px 0;
+          display: flex;
+          flex-direction: column;
+
+          .dropdown-item {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+
+            i {
+              font-size: 12px;
+              width: 16px;
+              text-align: center;
+              flex-shrink: 0;
+            }
+
+            span {
+              font-weight: 500;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              flex: 1;
+            }
+
+            &.user-email-item {
+              color: #333;
+              border-bottom: 1px solid #f0f0f0;
+              cursor: default;
+
+              i {
+                color: #666;
+              }
+            }
+
+            &.logout-item {
+              color: #dc2626;
+
+              &:hover {
+                background-color: #fef2f2;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .dark-mode & .chat-header-avatar {
+    .header-button {
+      color: var(--text-color);
+      
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+
+      &:active {
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+    }
+
+    .avatar-dropdown {
+      background: #2a2a2a;
+      border-color: #444;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+
+      .dropdown-arrow {
+        background: #2a2a2a;
+        border-color: #444;
+      }
+
+      .dropdown-content {
+        .dropdown-item {
+          &.user-email-item {
+            color: #e0e0e0;
+            border-color: #444;
+
+            i {
+              color: #aaa;
+            }
+          }
+
+          &.logout-item {
+            color: #ff6b6b;
+
+            &:hover {
+              background-color: rgba(239, 68, 68, 0.1);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/* Chat Area */
+.psp-storehub-chat-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* App Header */
+.psp-storehub-header {
+  background: var(--background-color);
+  color: var(--text-color);
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+
+  .dark-mode & {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      .logo-image {
+        height: 40px;
+    width: auto;
+    display: block;
+    background: #fff8f5;
+    border-radius: 20px;
+    padding: 6px;
+      }
+
+      .logo-text {
+        font-size: 22px;
+        font-weight: 600;
+        letter-spacing: 0.2px;
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        line-height: 1.2;
+        color: var(--text-color);
+      }
+    }
+
+    h1 {
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      line-height: 1.2;
+      color: var(--text-color);
+    }
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .header-button {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    &:active {
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    .dark-mode & {
+      color: var(--text-color);
+      
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+
+      &:active {
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+    }
+  }
+
+}
+
+/* Main Content */
+.psp-storehub-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Welcome Screen */
+.psp-storehub-welcome {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+
+  .welcome-content {
+    text-align: center;
+    max-width: 900px;
+    width: 100%;
+
+    .welcome-logo {
+      margin-bottom: 26px;
+      display: flex;
+      justify-content: center;
+
+      img {
+        width: 120px;
+        height: 120px;
+        object-fit: contain;
+      }
+    }
+
+    .welcome-title {
+      color: #0D152C;
+      text-align: center;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 30px;
+      margin-bottom: 10px;
+    }
+
+    .welcome-subtitle {
+      color: #60697D;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 16px;
+      margin-bottom: 26px;
+    }
+
+    // .welcome-chat-input {
+      // border-radius: 16px;
+      // border: 1px solid rgba(217, 221, 231, 0.40);
+      // background: #FFFFFF;
+      // box-shadow: 1px 2px 6px 0 rgba(25, 51, 69, 0.08), 4px 20px 32px -12px rgba(25, 51, 69, 0.06);
+    // }
+
+    .dark-mode & .welcome-subtitle {
+      color: #ccc;
+    }
+  }
+}
+
+/* Chat Messages */
+.psp-storehub-messages {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  scroll-behavior: smooth;
+  padding: 20px;
+  max-width: min(1000px, 100vw - 40px);
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+
+  /* Hide scrollbars */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Message Bubble */
+.psp-storehub-message {
+  display: flex;
+  max-width: min(90%, calc(100vw - 80px));
+  border-radius: 18px;
+  width: fit-content;
+
+  &.user-message {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+
+
+    .message-text {
+      display: flex;
+      max-width: 900px;
+      // padding: 16px 16px 8px 16px;
+      align-items: flex-start;
+      gap: 10px;
+      border-radius: 12px;
+      background: #D6F5E2;
+    }
+  }
+
+  &.bot-message {
+    align-self: flex-start;
+
+    .message-text {
+      display: flex;
+      max-width: 900px;
+      // padding: 16px 16px 8px 16px;
+      align-items: flex-start;
+      gap: 10px;
+      align-self: stretch;
+      border-radius: 12px;
+      background: #FFF;
+      padding: 0px !important;
+
+      // Apply styles to all content inside message-text (regardless of nested divs)
+      // Use > * to target direct children and ensure styles cascade
+      > * {
+        font-size: 15px;
+        line-height: 1.7;
+        color: #2d3748;
+        width: 100%;
+      }
+
+      // Typography styling - applies to all nested elements
+      h1, h2, h3, h4, h5, h6 {
+        margin: 24px 0 12px 0;
+        color: #1a202c;
+        font-weight: 700;
+        
+        &:first-child {
+          margin-top: 0;
+        }
+        
+        strong {
+          font-weight: 800;
+          color: #1a202c;
+        }
+      }
+      
+      h1 { 
+        font-size: 28px; 
+        border-bottom: 2px solid #e2e8f0;
+        padding-bottom: 8px;
+      }
+      h2 { 
+        font-size: 24px; 
+        border-bottom: 1px solid #e2e8f0;
+        padding-bottom: 6px;
+      }
+      h3 { 
+        font-size: 20px; 
+        color: #2d3748;
+      }
+      h4 { 
+        font-size: 18px; 
+        color: #4a5568;
+      }
+      h5 { 
+        font-size: 16px; 
+        color: #718096;
+      }
+      h6 { 
+        font-size: 14px; 
+        color: #718096;
+      }
+      
+      p {
+        margin: 12px 0;
+        color: #4a5568;
+      }
+      
+      ul, ol {
+        margin: 16px 0;
+        padding-left: 24px;
+        
+        li {
+          margin: 8px 0;
+          line-height: 1.7;
+          color: #4a5568;
+          
+          strong {
+            color: #2d3748;
+            font-weight: 600;
+          }
+          
+          em {
+            font-style: italic;
+            color: #4a5568;
+          }
+        }
+        
+        /* Nested lists */
+        ul, ol {
+          margin: 8px 0;
+          padding-left: 20px;
+        }
+      }
+      
+      /* Strong and emphasis styling */
+      strong {
+        font-weight: 600;
+        color: #2d3748;
+      }
+      
+      em {
+        font-style: italic;
+        color: #4a5568;
+      }
+      
+      a {
+        color: #8834FF;
+        text-decoration: none;
+        font-weight: 500;
+        
+        &:hover {
+          text-decoration: underline;
+          color: #2c5aa0;
+        }
+      }
+      
+      code {
+        background: #f7fafc;
+        color: #e53e3e;
+        padding: 3px 6px;
+        border-radius: 4px;
+        font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+        font-size: 13px;
+        border: 1px solid #e2e8f0;
+      }
+      
+      pre {
+        background: #f7fafc;
+        border: 1px solid #e2e8f0;
+        padding: 16px;
+        border-radius: 8px;
+        overflow-x: auto;
+        margin: 16px 0;
+        
+        code {
+          background: none;
+          color: #2d3748;
+          padding: 0;
+          border: none;
+          font-size: 14px;
+        }
+      }
+      
+      blockquote {
+        border-left: 4px solid #8834FF;
+        margin: 16px 0;
+        padding: 12px 16px;
+        background: #f7fafc;
+        color: #4a5568;
+        font-style: italic;
+      }
+      
+      hr {
+        margin: 20px 0;
+        border: none;
+        border-top: 1px solid #e2e8f0;
+      }
+      
+      /* Table styling for data tables - now applies to all tables inside message-text */
+      /* Using !important to override inline styles from API HTML */
+      table {
+        width: 100% !important;
+        border-collapse: collapse !important;
+
+        font-size: 14px !important;
+        background: #ffffff !important;
+        border-radius: 8px !important;
+        overflow: hidden !important;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+        border: 1px solid #e2e8f0 !important;
+        
+        &.dataframe, &.table {
+          border: 1px solid #e2e8f0 !important;
+        }
+      }
+      
+      thead {
+        background: #f8fafc !important;
+      }
+      
+      th, td {
+        padding: 12px 16px !important;
+        text-align: left !important;
+        border-bottom: 1px solid #e2e8f0 !important;
+        vertical-align: top !important;
+        border: 1px solid #e2e8f0 !important;
+        
+        &:not(:last-child) {
+          border-right: 1px solid #f1f5f9 !important;
+        }
+      }
+      
+      th {
+        background: #f8fafc !important;
+        font-weight: 600 !important;
+        color: #2d3748 !important;
+        font-size: 13px !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.05em !important;
+      }
+      
+      td {
+        color: #4a5568 !important;
+        
+        a {
+          color: #8834FF !important;
+          text-decoration: none !important;
+          font-weight: 500 !important;
+          
+          &:hover {
+            text-decoration: underline !important;
+            color: #6b21a8 !important;
+          }
+        }
+      }
+      
+      tr {
+        &:hover {
+          background: #f8fafc !important;
+        }
+        
+        &:last-child {
+          td {
+            border-bottom: 1px solid #e2e8f0 !important;
+          }
+        }
+      }
+      
+      /* Scrollable table container */
+      div[style*="overflow-x:auto"] {
+        border-radius: 8px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        margin: 16px 0;
+        
+        table {
+          margin: 0;
+          box-shadow: none;
+          border-radius: 0;
+        }
+      }
+    }
+  }
+
+  .message-avatar {
+    margin-right: 12px;
+    align-self: flex-end;
+
+    .avatar-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      background: var(--primary-color);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      margin-bottom: 8px;
+    }
+  }
+
+  .bot-message .avatar-icon {
+    background: var(--secondary-color);
+  }
+
+  .message-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding-right: 10px;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .message-text {
+    padding: 12px 18px;
+    border-radius: 18px;
+    line-height: 1.5;
+    font-size: 15px;
+    box-shadow: var(--message-shadow);
+    min-height: 24px;
+    max-width: 100%;
+    word-wrap: break-word;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+
+    
+  }
+
+  .message-time {
+    display: none;
+  }
+}
+
+/* Input Container */
+.psp-storehub-input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 20px;
+
+  /* Remove border and padding when inside welcome screen */
+  .psp-storehub-welcome & {
+    padding: 0;
+    border-top: none;
+    background-color: transparent;
+  }
+}
+
+/* Language Selector */
+.psp-storehub-language-selector {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  padding: 5px;
+  border-radius: 8px;
+
+  .form-check-inline {
+    margin-right: 20px;
+  }
+
+  .form-check-input {
+    cursor: pointer;
+  }
+
+  .form-check-label {
+    cursor: pointer;
+    font-size: 14px;
+    color: #495057;
+
+    .dark-mode & {
+      color: #e9ecef;
+    }
+  }
+}
+
+/* Chat Input Area */
+.psp-storehub-chat-input {
+  max-width: 1000px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 18px 20px;
+  display: flex;
+  transition: all 0.2s ease;
+  border-radius: 16px;
+  border: 1px solid rgba(217, 221, 231, 0.40);
+  background: #FFF !important;
+  box-shadow: 1px 2px 6px 0 rgba(25, 51, 69, 0.08), 4px 20px 32px -12px rgba(25, 51, 69, 0.06);
+  width: 771px;
+  height: 130px;
+  padding: 16px;
+  align-items: flex-end;
+  gap: 10px;
+  flex-shrink: 0;
+
+  &.compact-input {
+    height: 50px;
+    width: 100%;
+    // max-width: 771px;
+    border-radius: 100px;
+    border: 1px solid var(--linear-stroke-card, rgba(217, 221, 231, 0.40));
+    background: #FFF;
+    box-shadow: 1px 2px 6px 0 rgba(25, 51, 69, 0.08), 4px 20px 32px -12px rgba(25, 51, 69, 0.06);
+    padding: 4px 4px 4px 16px; // Reduced padding, left padding for icon/textarea
+    align-items: center; // Center vertically instead of flex-end
+    
+    // Ensure textarea and button are aligned
+    .message-input {
+      min-height: 0 !important; // Remove min-height constraint
+      height: 20px !important; // Fixed height for compact mode
+      line-height: 20px; // Single line height
+      padding: 0; // No padding, container handles spacing
+      overflow: hidden; // Hide overflow in compact mode
+    }
+    
+    .send-button {
+      width: 36px;
+      height: 36px;
+      flex-shrink: 0;
+      margin-left: 8px;
+      padding: 0; // Remove default padding to ensure proper sizing
+    }
+  }
+
+  // .dark-mode & {
+  //   background-color: #2a2a2a;
+  //   border: 1px solid rgba(255, 255, 255, 0.25);
+  //   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+
+  //   &:focus-within {
+  //     border-color: rgba(255, 255, 255, 0.4);
+  //     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+  //   }
+  // }
+
+  .message-input {
+    flex: 1;
+    border: none;
+    // border-radius: 14px;
+    // padding: 14px 18px;
+    font-size: 15px;
+    resize: none;
+    max-height: 180px;
+    min-height: 70px;
+    outline: none;
+    background-color: #ffffff;
+    color: var(--text-color);
+    transition: background-color 0.3s;
+    height: 100% !important;
+
+    &::placeholder {
+      color: #999;
+      opacity: 1;
+    }
+
+    .dark-mode & {
+      background-color: #2a2a2a;
+      color: #e0e0e0;
+
+      &:focus {
+        background-color: #333;
+      }
+
+      &::placeholder {
+        color: #aaa;
+        opacity: 1;
+      }
+    }
+  }
+
+  .send-button {
+    display: flex;
+    padding: 7px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 80px;
+    background: #1F2B4D;
+
+    &:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(9, 120, 5, 0.3);
+    }
+
+    &:active {
+      transform: translateY(0);
+      box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    i {
+      font-size: 18px;
+    }
+  }
+}
+
+/* Copyright */
+.psp-storehub-copyright {
+  color: #60697D;
+  margin-top: 16px;
+
+/* Small text regular */
+font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+font-size: 12px;
+font-style: normal;
+font-weight: 400;
+line-height: 16px; /* 133.333% */
+display: flex;
+justify-content: center;
+gap: 4px;
+
+  a {
+    color: #60697D;
+font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+font-size: 12px;
+font-style: normal;
+font-weight: 400;
+line-height: 16px;
+text-decoration-line: underline;
+text-decoration-style: solid;
+text-decoration-skip-ink: none;
+text-decoration-thickness: auto;
+text-underline-offset: auto;
+text-underline-position: from-font;
+  }
+
+  .dark-mode & {
+    color: #aaa;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .psp-storehub-top-avatar {
+    top: 16px;
+    right: 16px;
+    gap: 8px;
+  }
+
+  .psp-storehub-welcome {
+    padding: 20px 16px;
+
+    .welcome-content {
+      .welcome-logo {
+        margin-bottom: 20px;
+
+        img {
+          width: 80px;
+          height: 80px;
+        }
+      }
+
+      .welcome-title {
+        font-size: 18px;
+        line-height: 24px;
+        margin-bottom: 8px;
+      }
+
+      .welcome-subtitle {
+        font-size: 13px;
+        line-height: 18px;
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+
+  .psp-storehub-chat-header {
+    padding: 12px 16px;
+
+    .chat-header-title h1 {
+      font-size: 18px;
+    }
+  }
+
+  .psp-storehub-messages {
+    padding: 12px 12px 100px 12px;
+    gap: 12px;
+    max-width: 100%;
+  }
+
+  .psp-storehub-chat-input {
+    max-width: calc(100vw - 32px);
+    
+    &.compact-input {
+      max-width: calc(100vw - 64px); // Account for container padding
+    }
+  }
+
+  .psp-storehub-input-container {
+    padding: 12px 12px 20px 12px;
+  }
+
+  .psp-storehub-language-selector {
+    .form-check-inline {
+      margin-right: 15px;
+    }
+
+    .form-check-label {
+      font-size: 13px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .psp-storehub-top-avatar {
+    top: 12px;
+    right: 12px;
+    gap: 6px;
+  }
+
+  .psp-storehub-welcome {
+    .welcome-content {
+      padding: 0 16px;
+
+      .welcome-logo {
+        margin-bottom: 20px;
+
+        img {
+          width: 80px;
+          height: 80px;
+        }
+      }
+
+      .welcome-title {
+        font-size: 1.8rem;
+      }
+
+      .welcome-subtitle {
+        font-size: 0.95rem;
+      }
+    }
+  }
+
+
+  .psp-storehub-chat-header {
+    padding: 10px 12px;
+
+    .chat-header-title h1 {
+      font-size: 16px;
+    }
+  }
+
+  .psp-storehub-messages {
+    padding: 10px 10px 90px 10px;
+    gap: 10px;
+    max-width: 100%;
+  }
+
+  .psp-storehub-chat-input {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .psp-storehub-message {
+    max-width: calc(100% - 20px);
+    font-size: 12px;
+    
+    .message-avatar {
+      margin-right: 6px;
+      
+      .avatar-icon {
+        width: 24px;
+        height: 24px;
+        margin-bottom: 3px;
+      }
+    }
+    
+    .message-content {
+      padding-right: 4px;
+    }
+    
+    .message-text {
+      padding: 8px 12px;
+      font-size: 12px;
+      line-height: 1.4;
+      border-radius: 10px;
+      
+      h1 {
+        font-size: 18px;
+        margin: 12px 0 6px 0;
+        padding-bottom: 4px;
+      }
+      
+      h2 {
+        font-size: 16px;
+        margin: 10px 0 5px 0;
+        padding-bottom: 3px;
+      }
+      
+      h3 {
+        font-size: 15px;
+        margin: 8px 0 4px 0;
+      }
+      
+      h4 {
+        font-size: 14px;
+        margin: 6px 0 3px 0;
+      }
+      
+      h5 {
+        font-size: 13px;
+        margin: 4px 0 2px 0;
+      }
+      
+      h6 {
+        font-size: 12px;
+        margin: 3px 0 1px 0;
+      }
+      
+      p {
+        margin: 6px 0;
+        font-size: 12px;
+      }
+      
+      ul, ol {
+        margin: 8px 0;
+        padding-left: 16px;
+        
+        li {
+          margin: 3px 0;
+          font-size: 12px;
+        }
+      }
+      
+      table {
+        font-size: 10px !important;
+      }
+      
+      th, td {
+        padding: 6px 8px !important;
+        font-size: 10px !important;
+      }
+      
+      code {
+        font-size: 10px;
+        padding: 2px 3px;
+      }
+      
+      pre {
+        padding: 8px;
+        font-size: 10px;
+        margin: 8px 0;
+      }
+    }
+    
+    &.bot-message {
+      .message-text {
+        > * {
+          font-size: 12px;
+          line-height: 1.5;
+        }
+      }
+    }
+  }
+
+  .psp-storehub-input-container {
+    padding: 12px 12px 20px 12px;
+    margin-bottom: 0;
+  }
+
+  .psp-storehub-chat-input {
+    padding: 10px 12px;
+    height: auto;
+    min-height: 48px;
+    
+    &.compact-input {
+      height: 42px;
+      padding: 2px 2px 2px 10px;
+      
+      .message-input {
+        height: 16px !important;
+        line-height: 16px;
+        font-size: 13px;
+      }
+      
+      .send-button {
+        width: 30px;
+        height: 30px;
+        margin-left: 5px;
+        
+        svg {
+          width: 14px;
+          height: 14px;
+        }
+      }
+    }
+    
+    .message-input {
+      font-size: 13px;
+      min-height: 48px;
+      max-height: 100px;
+    }
+    
+    .send-button {
+      width: 30px;
+      height: 30px;
+      padding: 5px;
+      
+      svg {
+        width: 14px;
+        height: 14px;
+      }
+    }
+  }
+  
+  .psp-storehub-input-container {
+    padding: 10px 10px 16px 10px;
+    
+    .psp-storehub-copyright {
+      font-size: 10px;
+      line-height: 14px;
+      margin-top: 12px;
+      
+      a {
+        font-size: 10px;
+        line-height: 14px;
+      }
+    }
+  }
+}
+
+@media (max-width: 360px) {
+  .psp-storehub-welcome {
+    padding: 12px 10px;
+
+    .welcome-content {
+      .welcome-logo {
+        margin-bottom: 12px;
+
+        img {
+          width: 60px;
+          height: 60px;
+        }
+      }
+
+      .welcome-title {
+        font-size: 14px;
+        line-height: 20px;
+        margin-bottom: 4px;
+      }
+
+      .welcome-subtitle {
+        font-size: 11px;
+        line-height: 14px;
+        margin-bottom: 12px;
+      }
+    }
+  }
+
+  .psp-storehub-messages {
+    padding: 8px 8px 80px 8px;
+    gap: 8px;
+  }
+
+  .psp-storehub-message {
+    max-width: calc(100% - 16px);
+    font-size: 11px;
+    
+    .message-avatar {
+      margin-right: 5px;
+      
+      .avatar-icon {
+        width: 22px;
+        height: 22px;
+        margin-bottom: 2px;
+      }
+    }
+    
+    .message-content {
+      padding-right: 3px;
+    }
+    
+    .message-text {
+      padding: 6px 10px;
+      font-size: 11px;
+      line-height: 1.3;
+      border-radius: 8px;
+      
+      h1 {
+        font-size: 16px;
+        margin: 10px 0 5px 0;
+        padding-bottom: 3px;
+      }
+      
+      h2 {
+        font-size: 15px;
+        margin: 8px 0 4px 0;
+        padding-bottom: 2px;
+      }
+      
+      h3 {
+        font-size: 14px;
+        margin: 6px 0 3px 0;
+      }
+      
+      h4 {
+        font-size: 13px;
+        margin: 5px 0 2px 0;
+      }
+      
+      h5 {
+        font-size: 12px;
+        margin: 4px 0 2px 0;
+      }
+      
+      h6 {
+        font-size: 11px;
+        margin: 3px 0 1px 0;
+      }
+      
+      p {
+        margin: 5px 0;
+        font-size: 11px;
+      }
+      
+      ul, ol {
+        margin: 6px 0;
+        padding-left: 14px;
+        
+        li {
+          margin: 2px 0;
+          font-size: 11px;
+        }
+      }
+      
+      table {
+        font-size: 9px !important;
+      }
+      
+      th, td {
+        padding: 5px 6px !important;
+        font-size: 9px !important;
+      }
+      
+      code {
+        font-size: 9px;
+        padding: 1px 2px;
+      }
+      
+      pre {
+        padding: 6px;
+        font-size: 9px;
+        margin: 6px 0;
+      }
+    }
+    
+    &.bot-message {
+      .message-text {
+        > * {
+          font-size: 11px;
+          line-height: 1.4;
+        }
+      }
+    }
+  }
+
+  .psp-storehub-chat-input {
+    padding: 8px 10px;
+    height: auto;
+    min-height: 44px;
+    
+    &.compact-input {
+      height: 40px;
+      padding: 2px 2px 2px 8px;
+      
+      .message-input {
+        height: 14px !important;
+        line-height: 14px;
+        font-size: 12px;
+      }
+      
+      .send-button {
+        width: 28px;
+        height: 28px;
+        margin-left: 4px;
+        
+        svg {
+          width: 12px;
+          height: 12px;
+        }
+      }
+    }
+    
+    .message-input {
+      font-size: 12px;
+      min-height: 44px;
+      max-height: 90px;
+    }
+    
+    .send-button {
+      width: 28px;
+      height: 28px;
+      padding: 4px;
+      
+      svg {
+        width: 12px;
+        height: 12px;
+      }
+    }
+  }
+  
+  .psp-storehub-input-container {
+    padding: 8px 8px 14px 8px;
+    
+    .psp-storehub-copyright {
+      font-size: 9px;
+      line-height: 12px;
+      margin-top: 10px;
+      
+      a {
+        font-size: 9px;
+        line-height: 12px;
+      }
+    }
+  }
+}

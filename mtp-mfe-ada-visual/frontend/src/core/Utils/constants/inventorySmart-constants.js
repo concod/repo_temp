@@ -1,0 +1,49 @@
+export const INVENTORY_SUBMODULES_NAMES = {
+  INVENTORY_DASHBOARD_FORECAST_KPI: "Forecast KPI",
+  INVENTORY_DASHBOARD_FORECAST_ALERTS: "Forecast Alert",
+  INVENTORY_DASHBOARD_STORE_INVENTORY_KPI: "Store Inventory KPI",
+  INVENTORY_DASHBOARD_STORE_INVENTORY_ALERTS: "Store Inventory Alert",
+  INVENTORY_DASHBOARD_ORDER_INVENTORY_KPI: "Order Inventory KPI",
+  INVENTORY_DASHBOARD_ORDER_INVENTORY_ALERTS: "Order Inventory Alert",
+  INVENTORY_DASHBOARD_VIEW_PLANS: "View Plan",
+  INVENTORY_DASHBOARD_ARTICLE_DETAILS: "Article Details",
+  INVENTORY_CREATE_ALLOCATION_STORE_TABLE: "Create Allocation Store Table",
+  INVENTORY_FINALIZE_PRODUCT_STORE_TABLE: "Finalise Product Store View",
+  INVENTORY_FINALIZE_STORE_TABLE: "Finalise Store View",
+  INVENTORY_IA_RECOMMENDED_PRODUCT_PROFILE: "IA Recommended Product Profile",
+  INVENTORY_USER_CREATED_PRODUCT_PROFILE: "User Created Product Profile",
+  INVENTORY_IA_RECOMMENDED_STORE_SIZE_CONTRIBUTION:
+    "IA Recommended Store Size Contribution",
+  INVENTORY_USER_CREATED_STORE_SIZE_CONTRIBUTION:
+    "User Created Store SIze Contribution",
+  INVENTORY_CREATED_STYLE_DESCRIPTION: "User Created Style Description",
+  INVENTORY_CREATE_PRODUCT_PROFILE_FORM: "Create Product Profile Form",
+  INVENTORY_CREATE_PRODUCT_PROFILE_STYLE_DESCRIPTION:
+    "Create Product Profile Style Description",
+  INVENTORY_CREATE_PRODUCT_PROFILE_STORE_SIZE_CONTRIBUTION:
+    "Create Product Profile STore Size Contribution",
+  INVENTORY_STORE_CONSTRAINTS: "Store Constraints",
+  INVENTORY_STORE_GRADE_CONSTRAINTS: "Store Grade Constraints",
+  INVENTORY_STORE_GROUP_CONSTRAINTS: "Store Group Constraints",
+  INVENTORY_PRODUCT_RULES: "Product Rules",
+  INVENTORY_PRODUCT_STATUS: "Product Status",
+  INVENTORY_PRODUCT_MAPPING: "Product Mapping",
+  INVENTORY_STORE_STATUS: "Store Status",
+  INVENTORY_STORE_MAPPING: "Store Mapping",
+  INVENTORY_DC_STATUS: "DC Status",
+  INVENTORY_DC_MAPPING: "DC Mapping",
+  INVENTORY_STORE_GROUPING: "Store Grouping",
+  INVENTORY_PRODUCT_GROUPING: "Product Grouping",
+  INVENTORY_NEW_STORE_SETUP: "New Store", // TO ADD THIS IN DB
+  INVENTORY_STORE_MAPPING_STORE_DC_FC: "Store to DC/FC Mapping",
+  INVENTORY_PRODUCT_MAPPING_PRODUCT_DC_FC: "Product to DC/FC Mapping",
+  INVENTORY_DC_MAPPING_DC_PRODUCT: "Dc to Product Mapping",
+  INVENTORY_DC_MAPPING_DC_STORE: "Dc to Store Mapping",
+};
+export const productMappingTableArticleFilter = {
+  filter_type: "cascaded",
+  attribute_name: "product_code",
+  operator: "in",
+  dimension: "Product",
+  values: [],
+};

@@ -1,0 +1,84 @@
+image: python:3.12.1
+definitions:
+  services:
+    docker:
+      memory: 4096
+  caches:
+    sonar: ~/.sonar/cache  # Caching SonarCloud artifacts will speed up your build
+  steps:
+    - step: &security-scan
+        runs-on:
+          - self.hosted
+          - linux
+          - docker
+        name: Security Scan
+        script:
+          # Run a security scan for sensitive data.
+          # See more security tools at https://bitbucket.org/product/features/pipelines/integrations?&category=security
+          - pipe: atlassian/git-secrets-scan:0.4.3
+
+    - step: &scan-sonarcloud
+        runs-on:
+          - self.hosted
+          - linux
+          - docker
+        name: Build, test and analyze on SonarCloud
+        size: 2x
+        clone:
+          depth: full              # Number of commits considered for issues assignment. It should to changes to "full" to analyse the full history to assign issues properly
+        script:
+          - pipe: sonarsource/sonarcloud-scan:2.0.0
+          - pipe: sonarsource/sonarcloud-quality-gate:0.1.6
+
+    - step: &check-quality-gate-sonarcloud
+        name: Check the Quality Gate on SonarCloud
+        clone:
+          depth: full              # SonarCloud scanner needs the full history to assign issues properly
+        script:
+          - pipe: sonarsource/sonarcloud-quality-gate:0.1.4
+
+
+           
+# Workflow Configuration
+
+pipelines:
+  branches:
+    develop/dev:
+      - step:
+          name: Run npm test
+          runs-on:
+            - self.hosted
+            - linux
+            - docker
+          script:
+            - cd frontend 
+            - apt-get update -y
+            - curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+            - source /root/.bashrc && nvm install 17
+            - npm i --legacy-peer-deps
+            - npm test || { echo "Tests failed"; exit 1; }
+            - cd ..
+            - python3 -m pip install requests==2.28.1
+            - python3 deploy-cloudrun.py $awx_username $awx_password mfe-iss-plansmart-dev fe ver
+    develop/test:
+      - step:
+          name: Run AWX job
+          runs-on:
+            - self.hosted
+            - linux
+            - docker
+          script:
+            - python3 -m pip install requests==2.28.1
+            - python3 deploy-cloudrun.py $awx_username $awx_password iss-core-test frontend ver
+  custom:
+    scan:
+      - step: *scan-sonarcloud
+
+  pull-requests:
+    "{feature/*,bugfix/*,hotfix/*,*}":
+      - parallel:
+        - step: *scan-sonarcloud
+    main:
+        - step: *scan-sonarcloud
+    develop/dev:
+        - step: *scan-sonarcloud

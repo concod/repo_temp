@@ -1,0 +1,74 @@
+fc_code,label,column_name,type,display_type,level,dimension,is_mandatory,is_multiple_selection,range_min,range_max,default_value,is_disabled,is_clearable,display_order,is_required,extra,is_deleted
+4002,Back Type,back_type,cascaded,dropdown,,product,FALSE,FALSE,,,,FALSE,FALSE,5,FALSE,{},FALSE
+4002,Back Type Name,back_type_name,cascaded,dropdown,,product,FALSE,FALSE,,,,FALSE,FALSE,6,FALSE,{},FALSE
+4002,Bust Type,bust_type,cascaded,dropdown,,product,FALSE,FALSE,,,,FALSE,FALSE,7,FALSE,{},FALSE
+4002,Bust Type Name,bust_type_name,cascaded,dropdown,,product,FALSE,FALSE,,,,FALSE,FALSE,8,FALSE,{},FALSE
+4002,Closure Type,closure_type,cascaded,dropdown,,product,FALSE,FALSE,,,,FALSE,FALSE,9,FALSE,{},FALSE
+4002,Color,color,cascaded,dropdown,,product,FALSE,TRUE,,,,FALSE,TRUE,10,FALSE,{},FALSE
+4002,Cost,cost,cascaded,IntegerField,,product,FALSE,FALSE,0,1000,,FALSE,FALSE,4003,FALSE,{},FALSE
+4002,Coverage Bra,coverage_bra,cascaded,dropdown,,product,FALSE,FALSE,,,,FALSE,FALSE,12,FALSE,{},FALSE
+4002,Coverage Bra Name,coverage_bra_name,cascaded,dropdown,,product,FALSE,FALSE,,,,FALSE,FALSE,13,FALSE,{},FALSE
+4002,Fit,fit,cascaded,dropdown,,product,FALSE,FALSE,,,,FALSE,FALSE,14,FALSE,{},FALSE
+4002,Fit Name,fit_name,cascaded,dropdown,,product,FALSE,FALSE,,,,FALSE,FALSE,15,FALSE,{},FALSE
+4002,Height,height,cascaded,dropdown,,product,FALSE,FALSE,,,,FALSE,FALSE,16,FALSE,{},FALSE
+4002,Height Name,height_name,cascaded,dropdown,,product,FALSE,FALSE,,,,FALSE,FALSE,17,FALSE,{},FALSE
+4002,Impact Level,impact_level,cascaded,dropdown,,product,FALSE,FALSE,,,,FALSE,FALSE,18,FALSE,{},FALSE
+4002,Impact Level Name,impact_level_name,cascaded,dropdown,,product,FALSE,FALSE,,,,FALSE,FALSE,19,FALSE,{},FALSE
+4002,Inseam,inseam,cascaded,IntegerField,,product,FALSE,FALSE,0,50,,FALSE,FALSE,20,FALSE,{},FALSE
+4002,Inseam Name,inseam_name,cascaded,dropdown,,product,FALSE,FALSE,,,,FALSE,FALSE,21,FALSE,{},FALSE
+4002,Brand,l0_name,cascaded,dropdown,,product,FALSE,FALSE,,,,FALSE,FALSE,1,FALSE,{},FALSE
+4002,Category,l1_name,cascaded,dropdown,,product,FALSE,FALSE,,,,FALSE,FALSE,2,FALSE,{},FALSE
+4002,Collection,l2_name,cascaded,dropdown,,product,FALSE,FALSE,,,,FALSE,FALSE,3,FALSE,{},FALSE
+4002,Length Description,length_description,cascaded,dropdown,,product,FALSE,FALSE,,,,FALSE,FALSE,22,FALSE,{},FALSE
+4002,Length Description Name,length_description_name,cascaded,dropdown,,product,FALSE,FALSE,,,,FALSE,FALSE,23,FALSE,{},FALSE
+4002,Lining Bra,lining_bra,cascaded,dropdown,,product,FALSE,FALSE,,,,FALSE,FALSE,24,FALSE,{},FALSE
+4002,Lining Bra Name,lining_bra_name,cascaded,dropdown,,product,FALSE,FALSE,,,,FALSE,FALSE,25,FALSE,{},FALSE
+4002,Longline Bra,longline_bra,cascaded,dropdown,,product,FALSE,FALSE,,,,FALSE,FALSE,26,FALSE,{},FALSE
+4002,Neckline,neckline,cascaded,dropdown,,product,FALSE,FALSE,,,,FALSE,FALSE,27,FALSE,{},FALSE
+4002,Neckline Name,neckline_name,cascaded,dropdown,,product,FALSE,FALSE,,,,FALSE,FALSE,28,FALSE,{},FALSE
+4002,Pocket Quantity,pocket_quantity,cascaded,IntegerField,,product,FALSE,FALSE,0,10,,FALSE,FALSE,29,FALSE,{},FALSE
+4002,Price,price,cascaded,IntegerField,,product,FALSE,FALSE,0,100000,,FALSE,FALSE,30,FALSE,{},FALSE
+4002,Product Description,product_description,cascaded,dropdown,,product,FALSE,FALSE,,,,FALSE,FALSE,31,FALSE,{},FALSE
+4002,Product Details,product_details_en_us,cascaded,dropdown,,product,FALSE,FALSE,,,,FALSE,FALSE,32,FALSE,{},FALSE
+4002,Product Type,product_type,cascaded,dropdown,,product,FALSE,FALSE,,,,FALSE,FALSE,0,FALSE,{},FALSE
+4002,Sheerness,sheerness,cascaded,dropdown,,product,FALSE,FALSE,,,,FALSE,FALSE,33,FALSE,{},FALSE
+4002,Sheerness Name,sheerness_name,cascaded,dropdown,,product,FALSE,FALSE,,,,FALSE,FALSE,34,FALSE,{},FALSE
+4002,Silhouette Name,silhouette_name,cascaded,dropdown,,product,FALSE,FALSE,,,,FALSE,FALSE,35,FALSE,{},FALSE
+4002,Sleeve Length,sleeve_length,cascaded,dropdown,,product,FALSE,FALSE,,,,FALSE,FALSE,36,FALSE,{},FALSE
+4002,Sleeve Length Name,sleeve_length_name,cascaded,dropdown,,product,FALSE,FALSE,,,,FALSE,FALSE,37,FALSE,{},FALSE
+4002,Strap Type,strap_type,cascaded,dropdown,,product,FALSE,FALSE,,,,FALSE,FALSE,38,FALSE,{},FALSE
+4002,Strap Type Name,strap_type_name,cascaded,dropdown,,product,FALSE,FALSE,,,,FALSE,FALSE,39,FALSE,{},FALSE
+4002,Super Style Color,super_style_color_code,cascaded,dropdown,,product,FALSE,FALSE,,,,FALSE,FALSE,4,FALSE,{},FALSE
+4002,Wash,wash,cascaded,dropdown,,product,FALSE,FALSE,,,,FALSE,FALSE,40,FALSE,{},FALSE
+4002,Wash Name,wash_name,cascaded,dropdown,,product,FALSE,FALSE,,,,FALSE,FALSE,41,FALSE,{},FALSE
+4004,Entry Date,entry_date,non-cascaded,DateTimeField,,plan_period,TRUE,FALSE,,,,FALSE,TRUE,5,TRUE,"{""views"": [""year"", ""month""], ""adjustTo"": ""startOfMonth"", ""adjustDate"": true, ""disablePast"": true}",FALSE
+4004,Exit Date,exit_date,non-cascaded,DateTimeField,,plan_period,FALSE,FALSE,,,,FALSE,TRUE,6,TRUE,"{""views"": [""year"", ""month""], ""adjustTo"": ""endOfMonth"", ""adjustDate"": true, ""disablePast"": true}",FALSE
+4004,Brand,l0_name,cascaded,dropdown,1,product,TRUE,FALSE,,,,FALSE,TRUE,1,TRUE,{},FALSE
+4004,Class,l2_name,cascaded,dropdown,3,product,TRUE,FALSE,,,,FALSE,TRUE,3,TRUE,{},FALSE
+4004,Sub-Class,l3_name,cascaded,dropdown,4,product,TRUE,TRUE,,,,FALSE,TRUE,4,TRUE,{},FALSE
+4004,Category,l1_name,cascaded,dropdown,2,product,TRUE,TRUE,,,,FALSE,TRUE,2,TRUE,{},FALSE
+4003,Brand,l0_name,cascaded,dropdown,1,product,true,false,,,,false,true,5,true,"{}",false
+4003,Category,l1_name,cascaded,dropdown,2,product,true,false,,,,false,true,6,true,"{}",false
+4003,Class,l2_name,cascaded,dropdown,3,product,false,true,,,,false,true,7,true,"{}",false
+4003,Sub-Class,l3_name,cascaded,dropdown,4,product,false,true,,,,false,true,8,true,"{}",false
+4003,Start Date,start_date,non-cascaded,DateTimeField,,plan_period,true,false,,,,false,true,1,true,"{""views"": [""year"", ""month""], ""adjustTo"": ""startOfMonth"", ""adjustDate"": true, ""disablePast"": true}",false
+4003,End Date,end_date,non-cascaded,DateTimeField,,plan_period,true,false,,,,false,true,2,true,"{""views"": [""year"", ""month""], ""adjustTo"": ""endOfMonth"", ""adjustDate"": true, ""disablePast"": true}",false
+4003,Channel,channel,non-cascaded,dropdown,1,channel,true,true,,,,false,true,3,true,"{}",false
+4003,Customer Group,sub_channel,non-cascaded,dropdown,2,channel,false,true,,,,false,true,4,true,"{}",false
+4444,Entry Date,entry_date,non-cascaded,DateTimeField,,plan_period,true,false,,,,false,true,6,true,"{""views"": [""year"", ""month""], ""adjustTo"": ""startOfMonth"", ""adjustDate"": true, ""disablePast"": true}",false
+4444,Exit Date,exit_date,non-cascaded,DateTimeField,,plan_period,true,false,,,,false,true,7,true,"{""views"": [""year"", ""month""], ""adjustTo"": ""endOfMonth"", ""adjustDate"": true, ""disablePast"": true}",false
+4444,Brand,l0_name,cascaded,dropdown,1,product,true,false,,,,false,true,1,true,"{}",false
+4444,Category,l1_name,cascaded,dropdown,2,product,true,false,,,,false,true,2,true,"{}",false
+4444,Class,l3_name,cascaded,dropdown,3,product,TRUE,FALSE,,,,FALSE,TRUE,2,TRUE,{},FALSE
+4444,Sub-Class,l4_name,cascaded,dropdown,4,product,TRUE,TRUE,,,,FALSE,TRUE,3,TRUE,{},FALSE
+4051,Channel,channel,non-cascaded,dropdown,1,channel,true,true,"","","",false,true,9,true,"{}",false
+4051,End Date,end_date,non-cascaded,DateTimeField,,plan_period,true,false,"","","",false,true,8,true,"{""views"": [""year"", ""month""], ""adjustTo"": ""endOfMonth"", ""adjustDate"": true, ""disablePast"": true}",false
+4051,Grouping Level,grouping_level,non-cascaded,dropdown,1,grouping_level,true,false,"","","",false,true,11,true,"{}",false
+4051,Brand,l0_name,cascaded,dropdown,1,product,true,true,"","","",false,true,1,true,"{}",false
+4051,Category,l1_name,cascaded,dropdown,2,product,false,true,"","","",false,true,2,true,"{}",false
+4051,Class,l2_name,cascaded,dropdown,3,product,false,true,"","","",false,true,3,true,"{}",false
+4051,Sub-Class,l3_name,cascaded,dropdown,4,product,false,true,"","","",false,true,4,true,"{}",false
+4051,Start Date,start_date,non-cascaded,DateTimeField,,plan_period,true,false,"","","",false,true,7,true,"{""views"": [""year"", ""month""], ""adjustTo"": ""startOfMonth"", ""adjustDate"": true, ""disablePast"": true}",false
+4051,Customer Group,sub_channel,non-cascaded,dropdown,2,channel,false,true,"","","",false,true,10,true,"{}",false
+4051,Time Dimension,time_dimension,non-cascaded,dropdown,4,grouping_level,true,false,"","","",false,true,12,true,"{}",false
+4051,Version,version,non-cascaded,dropdown,4,grouping_level,true,false,"","","",false,true,13,true,"{}",false

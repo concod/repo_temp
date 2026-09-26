@@ -1,0 +1,123 @@
+.banner{
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 8px;
+    border-radius: 10px;
+    margin-bottom: 32px;
+    border: 0.5px solid rgba(160, 220, 188, 0.70);
+    background: linear-gradient(90deg, rgba(244, 247, 187, 0.15) 0.05%, rgba(160, 220, 188, 0.30) 49.33%, rgba(160, 220, 188, 0.70) 92.78%);
+    overflow: hidden;
+
+    &-content{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        padding: 12px 16px;
+        flex: 1;
+        min-width: 0;
+    }
+    &-image{
+        flex-shrink: 0;
+        display: flex;
+        align-items: stretch;
+        
+        img {
+            width: auto;
+            height: 100%;
+            object-fit: cover;
+            object-position: right center;
+            display: block;
+        }
+    }
+
+    &-title{
+        color: #1F2B4D;
+        font-family: Inter;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 16.8px;
+        word-wrap: break-word;
+    }
+
+    &-description{
+        color:  #60697D;
+        font-family: Inter;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 16.8px;
+        word-wrap: break-word;
+    }
+    
+    // Mobile Responsive Design
+    @media (max-width: 768px) {
+        margin-bottom: 20px;
+        flex-direction: column;
+        gap: 0;
+        
+        &-content {
+            padding: 12px;
+            gap: 6px;
+            width: 100%;
+        }
+        
+        &-image {
+            display: none; // Hide image on mobile for better space usage
+        }
+        
+        &-title {
+            font-size: 13px;
+            line-height: 15.6px;
+        }
+        
+        &-description {
+            font-size: 12px;
+            line-height: 14.4px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        margin-bottom: 16px;
+        border-radius: 8px;
+        
+        &-content {
+            padding: 10px;
+            gap: 5px;
+        }
+        
+        &-title {
+            font-size: 12px;
+            line-height: 14.4px;
+        }
+        
+        &-description {
+            font-size: 11px;
+            line-height: 13.2px;
+        }
+    }
+    
+    @media (max-width: 360px) {
+        margin-bottom: 12px;
+        
+        &-content {
+            padding: 8px;
+            gap: 4px;
+        }
+        
+        &-title {
+            font-size: 11px;
+            line-height: 13.2px;
+        }
+        
+        &-description {
+            font-size: 10px;
+            line-height: 12px;
+        }
+    }
+}

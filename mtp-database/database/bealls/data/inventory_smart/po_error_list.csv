@@ -1,0 +1,39 @@
+"error_message","error_condition","error_code"
+Line Item Maximum is less than Line Item Minimum,The Line Item Max is < Line Item Min,1
+Header Maximum is less than Header Minimum,The Header Item Max value is < Header Item Min,2
+Header Maximum is less than Line Item Minimum,The Header Max value is < Line Item Min,3
+Line Item or Header Maximum cannot be 0,The Line Item Max value = 0 or Header Max = 0,4
+Allocation Multiple is 0,Allocation Multiple is 0,5
+Pack size is 0 for Simplex or Complex case pack,Pack size is 0 for Simplex or Complex case pack,6
+For Split Po Master Pack Size is 0,For Split Po Master Pack Size is 0,7
+SKU in the PO Table is not present in the Product Master,SKU in the PO Table is not present in the Product Master,8
+Eligibility Override is enabled but Store Group is missing,Null in store group column when Eligibility Override Flag is sent as Yes / 1,9
+SKU in the PO Table is not active in the Product Master,SKU in the PO Table is not active in the Product Master,10
+Allocation Quantity does not match Ordered Quantity,"If the final Allocation Quantity number does not equal the Ordered Quantity on the thing to allocate for a SKU, an error must be thrown",11
+Mandatory Minimum Constraint Violated,"Mandatory min flag set as 1, but post-optimization minimum constraints are violated",12
+Merch Base Level Need is Zero,"If merch base level need is 0, throw an error as allocated qty will not be same as ordered qty (applies at merch base level for product level)",13
+Mandatory Minimum Flag Enabled but Ordered Quantity is Insufficient (Line Item),"If the Mandatory min flag is true, but ordered quantity < count of stores _ line item min, the PO should throw an error",14
+Mandatory Minimum Flag Enabled but Ordered Quantity is Insufficient (Header),"If the Mandatory min flag is true, but ordered quantity < count of stores _ header min, the PO should throw an error",15
+"No Common Stores Found Between DC Mapping, Store Groups and Product-Store Mapping (Eligibility Override = FALSE)","When eligibility_override_indicator = FALSE, no intersection exists between Store Groups and DC-mapped stores and Product-Store Mapping",16
+No Common Stores Found Between DC Mapping and Store Groups (Eligibility Override = TRUE),"When eligibility_override_indicator = TRUE, no intersection exists between Store Group stores and DC-mapped stores",17
+Apply Ratio Error - Subsequent SKU Store Count Mismatch,"Subsequent SKUs compared to the highest ordered qty SKU have a different store count, causing an error",18
+Apply Ratio Error - Subsequent SKU Store Mismatch,"Subsequent SKUs compared to the highest ordered qty SKU have different stores, causing an error",19
+Apply Ratio Error - Subsequent SKU Store Mismatch,"Subsequent SKUs compared to the highest ordered qty SKU have different stores, causing an error",20
+Ordered Quantity is not a multiple of Allocation Multiple,Ordered qty has to be a multiple of AM,21
+Header Maximum is less than the Pack Size for case pack,Header Maximum is less than the Pack Size for case pack,22
+Sum of Allocation Multiple is not divisible by Pack Size,Sum of Allocation Multiple not divisible by the pack size,23
+Pack Size is not divisible by the Master Pack Size in Split Po,Pack Size is not divisible by the Master Pack Size in Split Po,24
+Stores in new PO does not have matching store in the old PO in Prior Distro ,Stores in new PO does not have matching store in the old PO in Prior Distro ,25
+Line Item Maximum is less than the Allocation Multiple,Line Item Maximum is less than the Allocation Multiple,26
+Invalid Attribute Level for PO Type,"If PO_Type = 'OTS' _ acceptable values: brand / brandlevel
+   If PO_Type = 'F' _ acceptable values: brand / brandlevel
+   If PO_Type = 'H' _ not considered for history (no acceptable values)
+   Default (Null) means attribute should not be considered",27
+Mandatory Field Missing,Null value on the thing to allocate for one of the mandatory columns,28
+Sum of Ordered Quantity is not divisible by Pack Size,Sum of Ordered Quantity not divisible by pack size,29
+Sum of Ordered Quantity is not divisible by Master Pack Size for Split-Po,Sum of Ordered qty has to be a multiple of Master pack size for Split POs only,30
+Invalid Merch Base Level for PO Type,"If PO_Type = 'OTS' _ acceptable values: dept or class
+   If PO_Type = 'F' _ acceptable values: div / dept / class / subclass / style / sku
+   If PO_Type = 'H' _ acceptable values: div / dept / class / subclass / style / sku
+   Default (Null) is major class",31
+Total Need is coming Zero,When the Sum of the Need is coming 0,32

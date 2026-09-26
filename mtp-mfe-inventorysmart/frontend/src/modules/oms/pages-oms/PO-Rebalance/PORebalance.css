@@ -1,0 +1,81 @@
+.poRebalanceBadgeContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+  gap: 8px;
+  padding: 4px 0;
+}
+
+.poRebalanceBadge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.poRebalanceVisibilityIcon {
+  font-size: 16px;
+  cursor: pointer;
+  color: #60697d;
+  flex-shrink: 0;
+  min-width: 20px;
+  height: 20px;
+}
+
+.poRebalanceLoaderContainer {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.poRebalanceFlex {
+  display: flex;
+  align-items: center;
+}
+
+.poRebalanceReferenceWeeksContainer {
+  background-color: #f4f1f9;
+  padding: 6px 8px;
+  width: fit-content;
+  border-radius: 4px;
+  display: flex;
+  gap: 8px;
+}
+
+.poRebalanceReferenceWeeksContainer .poRebalanceLabelDatesContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-right: 10px;
+}
+
+.poRebalanceReferenceWeeksContainer .poRebalanceLabel {
+  color: #60697d;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.poRebalanceReferenceWeeksContainer .poRebalanceLabel.poRebalanceSelectedDates {
+  color: #1f2b4d;
+}
+
+.poRebalanceAlignVerticalCenter {
+  transform: translateY(25%);
+}
+
+.poRebalanceSelectChoice {
+  transform: translateY(40%);
+}
+
+.poRebalanceLineSeparator {
+  height: 12px;
+  border: 1px solid #d4d4d4;
+  margin-left: 12px;
+}

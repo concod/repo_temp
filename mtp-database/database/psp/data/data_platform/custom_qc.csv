@@ -1,0 +1,29 @@
+qc_id,qc_name,qc_description,table_id,created_by,created_at,updated_by,updated_at,deleted_by,deleted_at,is_deleted,qc_type
+1,product_eligibility_price_null, product_eligibility_price:  Checks if any product_code is null in product_eligibility_price_validated_table,1,1,2025-09-23T00:00:00,,,,,FALSE,REPORT
+2,product_eligibility_price_duplicates, product_eligibility_price:  Checks for duplicate product_code values in product_eligibility_price_validated_table,1,1,2025-09-23T00:00:00,,,,,FALSE,REPORT
+3,product_hierarchy_ids_null, product_hierarchy_ids:  Checks if identifier or custom_id is null in product_hierarchy_ids_validated_table,2,1,2025-09-23T00:00:00,,,,,FALSE,REPORT
+4,product_hierarchy_ids_duplicates, product_hierarchy_ids:  Checks for duplicate combinations of identifier,2,1,2025-09-23T00:00:00,,,,,FALSE,REPORT
+5,store_hierarchy_ids_null, store_hierarchy_ids:  Checks if identifier or custom_id is null in store_hierarchy_ids_validated_table,3,1,2025-09-23T00:00:00,,,,,FALSE,REPORT
+6,store_hierarchy_ids_duplicates, store_hierarchy_ids:  Checks for duplicate combinations of identifier,3,1,2025-09-23T00:00:00,,,,,FALSE,REPORT
+7,product_master_promo_null, product_master_promo:  Checks if product_id is null in product_master_promo_validated_table,4,1,2025-09-23T00:00:00,,,,,FALSE,REPORT
+8,product_master_promo_hierarchy_null, product_master_promo:  Checks if hierarchy level IDs or CIDs (l0�l3) are null in product_master_promo_validated_table,4,1,2025-09-23T00:00:00,,,,,FALSE,REPORT
+9,product_master_promo_duplicates, product_master_promo:  Checks for duplicate product_id values in product_master_promo_validated_table,4,1,2025-09-23T00:00:00,,,,,FALSE,REPORT
+10,product_master_promo_price_check, product_master_promo:  Checks if promo_base_price = 0 for active records in product_master_promo_validated_table,4,1,2025-09-23T00:00:00,,,,,FALSE,REPORT
+11,product_master_promo_active_check, product_master_promo:  Checks if there are no active = true records in product_master_promo_validated_table,4,1,2025-09-23T00:00:00,,,,,FALSE,REPORT
+12,tb_product_hierarchy_combination_null, tb_product_hierarchy_combination:  Checks if hierarchy_id is null in tb_product_hierarchy_combination_validated_table,5,1,2025-09-23T00:00:00,,,,,FALSE,REPORT
+13,tb_product_hierarchy_combination_ids_null, tb_product_hierarchy_combination:  Checks if hierarchy level IDs or CIDs (l0�l3) are null in tb_product_hierarchy_combination_validated_table,5,1,2025-09-23T00:00:00,,,,,FALSE,REPORT
+14,tb_product_hierarchy_combination_duplicates_1, tb_product_hierarchy_combination:  Checks for duplicate hierarchy_id values in tb_product_hierarchy_combination_validated_table,5,1,2025-09-23T00:00:00,,,,,FALSE,REPORT
+15,tb_product_hierarchy_combination_duplicates_2, tb_product_hierarchy_combination:  Checks for duplicate hierarchy_id values in tb_product_hierarchy_combination_validated_table (same as previous check),5,1,2025-09-23T00:00:00,,,,,FALSE,REPORT
+16,tb_hierarchy_cid_mapping_null, tb_hierarchy_cid_mapping:  Checks if hierarchy_value is null in tb_hierarchy_cid_mapping_validated_table,6,1,2025-09-23T00:00:00,,,,,FALSE,REPORT
+17,tb_hierarchy_cid_mapping_duplicates, tb_hierarchy_cid_mapping:  Checks for duplicate hierarchy_value values in tb_hierarchy_cid_mapping_validated_table,6,1,2025-09-23T00:00:00,,,,,FALSE,REPORT
+18,tb_store_master_null, tb_store_master:  Checks if store_id is null in tb_store_master_validated_table,7,1,2025-09-23T00:00:00,,,,,FALSE,REPORT
+19,tb_store_master_duplicates, tb_store_master:  Checks for duplicate store_id values in tb_store_master_validated_table,7,1,2025-09-23T00:00:00,,,,,FALSE,REPORT
+20,tb_product_user_mapping_duplicates, tb_product_user_mapping:  Checks for duplicate combinations of product_id and vendor_mail_id in tb_product_user_mapping_validated_table,8,1,2025-09-23T00:00:00,,,,,FALSE,REPORT
+21,tb_simulation_day_opt_null,"tb_simulation_day_opt: Checks if product_id, date, or base_percentage is null in tb_simulation_day_opt_validated_table",9,1,2025-10-30T00:00:00,,,,,FALSE,REPORT
+22,tb_simulation_day_opt_duplicates,"tb_simulation_day_opt: Checks for duplicate combinations of product_id, date, and base_percentage in tb_simulation_day_opt_validated_table",9,1,2025-10-30T00:00:00,,,,,FALSE,REPORT
+23,tb_cannibalization_coefficient_opt_null,tb_cannibalization_coefficient_opt: Checks if victim_brand or cannibalizer_brand is null in tb_cannibalization_coefficient_opt_validated_table,10,1,2025-10-30T00:00:00,,,,,FALSE,REPORT
+24,tb_cannibalization_coefficient_opt_duplicates,tb_cannibalization_coefficient_opt: Checks for duplicate combinations of victim_brand and cannibalizer_brand in tb_cannibalization_coefficient_opt_validated_table,10,1,2025-10-30T00:00:00,,,,,FALSE,REPORT
+25,tb_halo_effect_department_factor_opt_null,tb_halo_effect_department_factor_opt: Checks if product_id or sub_dept is null in tb_halo_effect_department_factor_opt_validated_table,11,1,2025-10-30T00:00:00,,,,,FALSE,REPORT
+26,tb_halo_effect_department_factor_opt_duplicates,tb_halo_effect_department_factor_opt: Checks for duplicate combinations of product_id and sub_dept in tb_halo_effect_department_factor_opt_validated_table,11,1,2025-10-30T00:00:00,,,,,FALSE,REPORT
+27,tb_pullforward_coefficient_opt_null,tb_pullforward_coefficient_opt: Checks if product_id or lag_week_number is null in tb_pullforward_coefficient_opt_validated_table,12,1,2025-10-30T00:00:00,,,,,FALSE,REPORT
+28,tb_pullforward_coefficient_opt_duplicates,tb_pullforward_coefficient_opt: Checks for duplicate combinations of product_id and lag_week_number in tb_pullforward_coefficient_opt_validated_table,12,1,2025-10-30T00:00:00,,,,,FALSE,REPORT

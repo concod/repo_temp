@@ -1,0 +1,98 @@
+tc_code,label,column_name,dimension,type,is_frozen,is_editable,is_aggregated,order_of_display,is_hidden,is_required,tc_mapping_code,child_tc_mapping_code,aggregate_type,formatter,is_row_span,footer,is_searchable,extra,is_sortable,width,is_deleted,is_master_group
+3,Product Group Name,name,store,str,false,false,false,1.0,false,false,"30101",,,,false,,true,"{}",true,200,false,false
+3,# Products,product_count,store,int,false,false,false,2.0,false,false,"30102",,,,false,,false,"{}",true,200,false,false
+3,Definitions,product_group_definitions,store,str,false,false,false,3.0,false,false,"30103",,,,false,,false,"{}",true,200,false,false
+3,Group Type,special_classification,store,str,false,false,false,4.0,false,false,"30104",,,,false,,false,"{}",true,200,false,false
+3,Created At,created_at,store,DateTimeField,false,false,false,5.0,false,false,"30105",,,,false,,false,"{}",true,200,false,false
+3,Updated At,updated_at,store,DateTimeField,false,false,false,6.0,false,false,"30106",,,,false,,false,"{}",true,200,false,false
+3,Created By,created_by,store,str,false,false,false,7.0,false,false,"30107",,,,false,,true,"{}",true,200,false,false
+3,Updated By,updated_by,store,str,false,false,false,8.0,false,false,"30108",,,,false,,true,"{}",true,200,false,false
+4,Definition Name,name,product,str,FALSE,FALSE,FALSE,1,FALSE,FALSE,40001,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+4,Definition,pseudo_code,product,str,FALSE,FALSE,FALSE,2,FALSE,FALSE,40002,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+5,SKU ID,product_code,store,str,false,false,false,1.0,false,false,"50001",,,,false,,true,"{}",true,200,false,false
+5,Description,product_description,store,str,false,false,false,2.0,false,false,"50002",,,,false,,true,"{}",true,200,false,false
+5,Color Code,color_code,store,str,false,false,false,3.0,false,false,"112343",,,,false,,true,"{}",true,200,false,false
+5,Color Description,color_description,store,str,false,false,false,4.0,false,false,"112345",,,,false,,true,"{}",true,200,false,false
+5,Color Family,color_family,store,str,false,false,false,5.0,false,false,"112346",,,,false,,true,"{}",true,200,false,false
+5,Season Code,season_code,store,str,false,false,false,6.0,false,false,"2345624343",,,,false,,true,"{}",true,200,false,false
+5,Silhouette,silhouette,store,str,false,false,false,7.0,false,false,"2345624341",,,,false,,true,"{}",true,200,false,false
+5,Gender,gender,store,str,false,false,false,8.0,false,false,"2345624342",,,,false,,true,"{}",true,200,false,false
+5,Flex Status,flex_status,store,str,false,false,false,9.0,false,false,"2345624344",,,,false,,true,"{}",true,200,false,false
+5,Global Merch Team,global_merch_team,store,str,false,false,false,10.0,false,false,"2345624345",,,,false,,true,"{}",true,200,false,false
+5,Fit Classification,fit_classification,store,str,false,false,false,11.0,false,false,"2345624346",,,,false,,true,"{}",true,200,false,false
+5,Design Line,design_line,store,str,false,false,false,12.0,false,false,"2345624347",,,,false,,true,"{}",true,200,false,false
+5,Designed For Activity,designed_for_activity,store,str,false,false,false,13.0,false,false,"2345624348",,,,false,,true,"{}",true,200,false,false
+5,Product Line,product_line,store,str,false,false,false,14.0,false,false,"234562432345648",,,,false,,true,"{}",true,200,false,false
+5,Size Scale,size_scale,store,str,false,false,false,15.0,false,false,"11111111",,,,false,,true,"{}",true,200,false,false
+5,Product Development Pod,product_development_pod,store,str,false,false,false,16.0,false,false,"22222",,,,false,,true,"{}",true,200,false,false
+5,Product Size Definition,product_size_definition,store,str,false,false,false,17.0,false,false,"3333",,,,false,,true,"{}",true,200,false,false
+5,Global Line Segment Style Category,global_line_segment_style_category,store,str,false,false,false,18.0,false,false,"423546576",,,,false,,true,"{}",true,200,false,false
+7,Store Group Name ,name,store,str,false,false,false,1.0,,false,"700001",,,,false,,true,"{}",true,200,false,false
+7,#Store,store_count,store,int,false,false,false,2.0,,false,"23456",,,,false,,true,"{}",true,200,false,false
+7,Group Type,special_classification,store,str,false,false,false,3.0,,false,"34565",,,,false,,true,"{}",true,200,false,false
+7,Created At,created_at,store,date,false,false,false,4.0,,false,"455657686",,,,false,,true,"{}",true,200,false,false
+7,Updated At,updated_at,store,date,false,false,false,5.0,,false,"5670987",,,,false,,true,"{}",true,200,false,false
+7,Created By,created_by,store,str,false,false,false,6.0,,false,"45678908",,,,false,,true,"{}",true,200,false,false
+7,Updated By,updated_by,Product,str,false,false,false,7.0,false,false,"5468989",,,MM-DD-YYYY,false,,false,"{}",false,200,false,false
+18,Store Number,store_code,store,str,false,false,false,1.0,false,false,"18001",,,,false,,true,"{}",true,200,false,false
+18,Store Name,store_name,store,str,false,false,false,2.0,false,false,"18002",,,,false,,true,"{}",true,200,false,false
+18,Sub market Channel,s1_name,store,str,false,false,false,3.0,false,false,"18003",,,,false,,true,"{}",true,200,false,false
+18,Country,s2_name,store,str,false,false,false,4.0,false,false,"18004",,,,false,,true,"{}",true,200,false,false
+18,Postal Code,zipcode,store,str,false,false,false,5.0,false,false,"18005",,,,false,,true,"{}",true,200,false,false
+18,City,city,store,str,false,false,false,6.0,false,false,"18006",,,,false,,true,"{}",true,200,false,false
+18,State,state,store,str,false,false,false,7.0,false,false,"18007",,,,false,,true,"{}",true,200,false,false
+18,Geo Region,geography,store,str,false,false,false,8.0,false,false,"18008",,,,false,,true,"{}",true,200,false,false
+501,Closed tickets,closed,Product,link,FALSE,TRUE,FALSE,5,FALSE,FALSE,200009,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+501,Open tickets,open,Product,link,FALSE,TRUE,FALSE,4,FALSE,FALSE,200008,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+501,Requestor name,user_name,Product,str,FALSE,FALSE,FALSE,2,FALSE,FALSE,200006,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+501,Total tickets,total,Product,link,FALSE,TRUE,FALSE,3,FALSE,FALSE,200007,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+501,User id,user_id,Product,link,FALSE,TRUE,FALSE,1,FALSE,FALSE,200005,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+502,Closed on,closed_on,Product,str,FALSE,FALSE,FALSE,6,FALSE,FALSE,200015,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+502,Created on,created_on,Product,str,FALSE,FALSE,FALSE,4,FALSE,FALSE,200013,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+502,Issue Type,issue_type,Product,str,FALSE,FALSE,FALSE,9,FALSE,FALSE,200018,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+502,Module,module_type,Product,str,FALSE,FALSE,FALSE,12,FALSE,FALSE,200021,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+502,Priority,priority,Product,str,FALSE,FALSE,FALSE,3,FALSE,FALSE,200012,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+502,Status,status,Product,str,FALSE,FALSE,FALSE,2,FALSE,FALSE,200011,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+502,Ticket id,id,Product,int,FALSE,FALSE,FALSE,1,FALSE,FALSE,200010,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+502,Title,title,Product,str,FALSE,FALSE,FALSE,11,FALSE,FALSE,200020,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+502,Updated on,updated_on,Product,str,FALSE,FALSE,FALSE,5,FALSE,FALSE,200014,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+502,User Id,user_id,Product,int,FALSE,FALSE,FALSE,7,FALSE,FALSE,200016,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+502,User Name,user_name,Product,str,FALSE,FALSE,FALSE,8,FALSE,FALSE,200017,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+503,Issue Type,issue_type,Product,str,FALSE,FALSE,FALSE,8,FALSE,FALSE,200029,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+503,Module,module_type,Product,str,FALSE,FALSE,FALSE,3,FALSE,FALSE,200024,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+503,Priority,priority,Product,str,FALSE,FALSE,FALSE,2,FALSE,FALSE,200023,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+503,Recent Activity,update_details,Product,str,FALSE,FALSE,FALSE,9,FALSE,FALSE,200039,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+503,Ticket id,id,Product,int,FALSE,FALSE,FALSE,1,FALSE,FALSE,200022,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+503,Title,title,Product,str,FALSE,FALSE,FALSE,7,FALSE,FALSE,200028,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+503,Updated on,updated_on,Product,str,FALSE,FALSE,FALSE,4,FALSE,FALSE,200025,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+503,User Id,user_id,Product,int,FALSE,FALSE,FALSE,6,FALSE,FALSE,200027,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+503,User Name,user_name,Product,str,FALSE,FALSE,FALSE,5,FALSE,FALSE,200026,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+504,Created Date,created_on,Product,date,FALSE,FALSE,FALSE,8,FALSE,FALSE,200037,,,"DD-MM-YYYY, HH:mm:ss",FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+504,Last modified date,updated_on,Product,date,FALSE,FALSE,FALSE,9,FALSE,FALSE,200038,,,"DD-MM-YYYY, HH:mm:ss",FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+504,Priority,priority,Product,chip,TRUE,FALSE,FALSE,4,FALSE,FALSE,200033,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+504,Product,module_type,Product,str,FALSE,FALSE,FALSE,6,FALSE,FALSE,200035,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+504,Requestor Name,user_name,Product,str,FALSE,FALSE,FALSE,5,FALSE,FALSE,200034,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+504,Status,status,Product,chip,TRUE,FALSE,FALSE,2,FALSE,FALSE,200031,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+504,Subject,title,Product,str,TRUE,FALSE,FALSE,3,FALSE,FALSE,200032,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+504,Ticket id,id,Product,link,TRUE,TRUE,FALSE,1,FALSE,FALSE,200030,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+5000,Closed tickets,closed,Product,link,FALSE,TRUE,FALSE,5,FALSE,FALSE,200004,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+5000,Open tickets,open,Product,link,FALSE,TRUE,FALSE,4,FALSE,FALSE,200003,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+5000,Product name,module_type,Product,link,FALSE,TRUE,FALSE,1,FALSE,FALSE,200000,,,,FALSE,,TRUE,{},FALSE,200,FALSE,FALSE
+5000,Total tickets,total,Product,link,FALSE,TRUE,FALSE,3,FALSE,FALSE,200002,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+14,Brand,l3_name,store,str,FALSE,FALSE,FALSE,5,FALSE,FALSE,500006,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+14,Category,l1_name,store,str,FALSE,FALSE,FALSE,3,FALSE,FALSE,500003,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+14,Color,color,store,str,FALSE,FALSE,FALSE,7,FALSE,FALSE,500008,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+14,Description,product_description,store,str,FALSE,FALSE,FALSE,2,FALSE,FALSE,500002,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+14,Generic Article ID,l6_name,store,str,FALSE,FALSE,FALSE,8,FALSE,FALSE,500009,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+14,Merchandise Category,l5_name,store,str,FALSE,FALSE,FALSE,6,FALSE,FALSE,500007,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+14,SKU ID,product_code,store,str,TRUE,FALSE,FALSE,1,FALSE,FALSE,500001,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+14,Sub Category,l2_name,store,str,FALSE,FALSE,FALSE,4,FALSE,FALSE,500005,,,,FALSE,,TRUE,{},TRUE,200,FALSE,FALSE
+198,Dimension,dimension,Others,str,FALSE,FALSE,FALSE,1,FALSE,FALSE,71279,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+198,Filter,column_name,Others,list,FALSE,TRUE,FALSE,2,FALSE,FALSE,71268,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+198,Label,label,Others,str,FALSE,TRUE,TRUE,3,FALSE,FALSE,71280,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+198,Multi Select,is_multiple_selection,Others,ToogleField,FALSE,TRUE,FALSE,4,FALSE,FALSE,727227,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+198,Functionality,display_type,Others,list,FALSE,TRUE,FALSE,5,FALSE,FALSE,7270,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+198,Filter Type,filter_type,Others,list,FALSE,TRUE,FALSE,6,FALSE,FALSE,7271,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+198,Mandatory,is_mandatory,Others,ToogleField,FALSE,TRUE,FALSE,7,FALSE,FALSE,7272,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+198,Display Order,display_order,Others,list,FALSE,TRUE,FALSE,8,FALSE,TRUE,71274,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE
+198,Clearable,is_clearable,Others,ToogleField,FALSE,TRUE,FALSE,10,FALSE,FALSE,71277,,,,FALSE,,FALSE,{},TRUE,200,FALSE,FALSE

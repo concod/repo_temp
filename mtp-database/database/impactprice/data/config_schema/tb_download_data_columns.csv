@@ -1,0 +1,50 @@
+"id","data_table_id","column_name","column_label","aggregation","custom_aggregation_sql","data_format","conditional_formatting","display_order","is_active","is_included_by_default","created_at","updated_at","output_position"
+1,1,ia_sales_units,IA Sales Units,SUM,,"{""type"": ""number"", ""decimals"": 0}","[]",6,true,true,2026-04-01 14:51:14.877,2026-04-03 11:58:10.917,59
+2,1,fin_gm_percent,FIN GM %,CUSTOM,CASE WHEN SUM(output.fin_revenue) > 0 THEN SUM(output.fin_margin) / SUM(output.fin_revenue) ELSE 0 END,"{""type"": ""percentage"", ""decimals"": 1}","[]",20,true,true,2026-04-01 14:51:14.877,2026-04-03 11:58:10.917,73
+3,1,ia_revenue,IA Revenue,SUM,,"{""type"": ""currency"", ""decimals"": 0}","[]",7,true,true,2026-04-01 14:51:14.877,2026-04-03 11:58:10.917,60
+4,1,fin_inventory,FIN Inventory,SUM,,"{""type"": ""number"", ""decimals"": 0}","[]",18,true,false,2026-04-01 14:51:14.877,2026-04-03 11:58:10.917,71
+5,1,ia_spend,IA Spend,SUM,,"{""type"": ""currency"", ""decimals"": 0}","[]",9,true,false,2026-04-01 14:51:14.877,2026-04-03 11:58:10.917,62
+6,1,l3_name,L3 Class,NONE,,"{}","[]",1,true,false,2026-04-01 14:51:14.877,2026-04-03 11:58:10.917,54
+7,1,l3_id,L3 ID,NONE,,"{}","[]",0,true,false,2026-04-01 14:51:14.877,2026-04-07 07:36:28.437,53
+8,1,fin_discount,FIN Discount %,CUSTOM,CASE WHEN SUM(output.fin_inventory) > 0 THEN SUM(output.fin_discount * output.fin_inventory) / SUM(output.fin_inventory) ELSE 0 END,"{""type"": ""percentage"", ""decimals"": 1}","[]",13,true,true,2026-04-01 14:51:14.877,2026-04-03 11:58:10.917,66
+9,1,s1_name,Channel,NONE,,"{}","[]",3,true,false,2026-04-01 14:51:14.877,2026-04-03 11:58:10.917,56
+10,1,s1_id,S1 ID,NONE,,"{}","[]",2,true,false,2026-04-01 14:51:14.877,2026-04-03 11:58:10.917,55
+11,1,ia_margin,IA Margin,SUM,,"{""type"": ""currency"", ""decimals"": 0}","[]",8,true,true,2026-04-01 14:51:14.877,2026-04-03 11:58:10.917,61
+12,1,ia_sellthrough,IA Sell-through %,CUSTOM,CASE WHEN SUM(output.ia_inventory) > 0 THEN SUM(output.ia_sales_units) / SUM(output.ia_inventory) ELSE 0 END,"{""type"": ""percentage"", ""decimals"": 1}","[]",11,true,true,2026-04-01 14:51:14.877,2026-04-03 11:58:10.917,64
+13,1,fin_spend,FIN Spend,SUM,,"{""type"": ""currency"", ""decimals"": 0}","[]",17,true,false,2026-04-01 14:51:14.877,2026-04-03 11:58:10.917,70
+14,1,date_id,Date,NONE,,"{}","[]",4,true,false,2026-04-01 14:51:14.877,2026-04-03 11:58:10.917,57
+15,1,fin_revenue,FIN Revenue,SUM,,"{""type"": ""currency"", ""decimals"": 0}","[]",15,true,true,2026-04-01 14:51:14.877,2026-04-03 11:58:10.917,68
+16,1,fin_margin,FIN Margin,SUM,,"{""type"": ""currency"", ""decimals"": 0}","[]",16,true,true,2026-04-01 14:51:14.877,2026-04-03 11:58:10.917,69
+17,1,fin_sellthrough,FIN Sell-through %,CUSTOM,CASE WHEN SUM(output.fin_inventory) > 0 THEN SUM(output.fin_sales_units) / SUM(output.fin_inventory) ELSE 0 END,"{""type"": ""percentage"", ""decimals"": 1}","[]",19,true,true,2026-04-01 14:51:14.877,2026-04-03 11:58:10.917,72
+18,1,fin_sales_units,FIN Sales Units,SUM,,"{""type"": ""number"", ""decimals"": 0}","[]",14,true,true,2026-04-01 14:51:14.877,2026-04-03 11:58:10.917,67
+19,1,ia_discount,IA Discount %,CUSTOM,CASE WHEN SUM(output.ia_inventory) > 0 THEN SUM(output.ia_discount * output.ia_inventory) / SUM(output.ia_inventory) ELSE 0 END,"{""type"": ""percentage"", ""decimals"": 1}","[]",5,true,true,2026-04-01 14:51:14.877,2026-04-03 11:58:10.917,58
+20,1,ia_inventory,IA Inventory,SUM,,"{""type"": ""number"", ""decimals"": 0}","[]",10,true,true,2026-04-01 14:51:14.877,2026-04-07 07:36:30.135,63
+21,1,ia_gm_percent,IA GM %,CUSTOM,CASE WHEN SUM(output.ia_revenue) > 0 THEN SUM(output.ia_margin) / SUM(output.ia_revenue) ELSE 0 END,"{""type"": ""percentage"", ""decimals"": 1}","[]",12,true,true,2026-04-01 14:51:14.877,2026-04-03 11:58:10.917,65
+22,1,actuals_discount,Actuals Discount %,CUSTOM,CASE WHEN SUM(output.actuals_inventory) > 0 THEN SUM(output.actuals_discount * output.actuals_inventory) / SUM(output.actuals_inventory) ELSE 0 END,"{}","[]",21,true,false,2026-04-01 15:40:05.177,2026-04-03 11:58:10.917,74
+23,1,actuals_sales_units,Actuals Sales Units,SUM,,"{}","[]",22,true,false,2026-04-01 15:40:05.177,2026-04-03 11:58:10.917,75
+24,1,actuals_revenue,Actuals Revenue,SUM,,"{}","[]",23,true,false,2026-04-01 15:40:05.177,2026-04-03 11:58:10.917,76
+25,1,actuals_margin,Actuals Margin,SUM,,"{}","[]",24,true,false,2026-04-01 15:40:05.177,2026-04-03 11:58:10.917,77
+26,1,actuals_spend,Actuals Spend,SUM,,"{}","[]",25,true,false,2026-04-01 15:40:05.177,2026-04-03 11:58:10.917,78
+27,1,actuals_inventory,Actuals Inventory,SUM,,"{}","[]",26,true,false,2026-04-01 15:40:05.177,2026-04-03 11:58:10.917,79
+28,1,actuals_sellthrough,Actuals Sell-through %,CUSTOM,CASE WHEN SUM(output.actuals_inventory) > 0 THEN SUM(output.actuals_sales_units) / SUM(output.actuals_inventory) ELSE 0 END,"{}","[]",27,true,false,2026-04-01 15:40:05.177,2026-04-03 11:58:10.917,80
+29,1,actuals_gm_percent,Actuals GM %,CUSTOM,CASE WHEN SUM(output.actuals_revenue) > 0 THEN SUM(output.actuals_margin) / SUM(output.actuals_revenue) ELSE 0 END,"{}","[]",28,true,false,2026-04-01 15:40:05.177,2026-04-03 11:58:10.917,81
+30,1,ia_aur,IA AUR,CUSTOM,CASE WHEN SUM(output.ia_sales_units) > 0 THEN SUM(output.ia_revenue) / SUM(output.ia_sales_units) ELSE 0 END,"{}","[]",29,true,false,2026-04-01 15:48:05.968,2026-04-03 11:58:10.917,82
+31,1,ia_aum,IA AUM,CUSTOM,CASE WHEN SUM(output.ia_sales_units) > 0 THEN SUM(output.ia_margin) / SUM(output.ia_sales_units) ELSE 0 END,"{}","[]",30,true,false,2026-04-01 15:48:05.968,2026-04-03 11:58:10.917,83
+32,1,ia_bop_inventory,IA BOP Inventory,SUM,,"{}","[]",31,true,false,2026-04-01 15:48:05.968,2026-04-03 11:58:10.917,84
+33,1,ia_eop_inventory,IA EOP Inventory,SUM,,"{}","[]",32,true,false,2026-04-01 15:48:05.968,2026-04-03 11:58:10.917,85
+34,1,fin_aur,FIN AUR,CUSTOM,CASE WHEN SUM(output.fin_sales_units) > 0 THEN SUM(output.fin_revenue) / SUM(output.fin_sales_units) ELSE 0 END,"{}","[]",33,true,false,2026-04-01 15:48:05.968,2026-04-03 11:58:10.917,86
+35,1,fin_aum,FIN AUM,CUSTOM,CASE WHEN SUM(output.fin_sales_units) > 0 THEN SUM(output.fin_margin) / SUM(output.fin_sales_units) ELSE 0 END,"{}","[]",34,true,false,2026-04-01 15:48:05.968,2026-04-03 11:58:10.917,87
+36,1,fin_bop_inventory,FIN BOP Inventory,SUM,,"{}","[]",35,true,false,2026-04-01 15:48:05.968,2026-04-03 11:58:10.917,88
+37,1,fin_eop_inventory,FIN EOP Inventory,SUM,,"{}","[]",36,true,false,2026-04-01 15:48:05.968,2026-04-03 11:58:10.917,89
+38,1,actuals_aur,Actuals AUR,CUSTOM,CASE WHEN SUM(output.actuals_sales_units) > 0 THEN SUM(output.actuals_revenue) / SUM(output.actuals_sales_units) ELSE 0 END,"{}","[]",37,true,false,2026-04-01 15:48:05.968,2026-04-03 11:58:10.917,90
+39,1,actuals_aum,Actuals AUM,CUSTOM,CASE WHEN SUM(output.actuals_sales_units) > 0 THEN SUM(output.actuals_margin) / SUM(output.actuals_sales_units) ELSE 0 END,"{}","[]",38,true,false,2026-04-01 15:48:05.968,2026-04-03 11:58:10.917,91
+40,1,actuals_bop_inventory,Actuals BOP Inventory,SUM,,"{}","[]",39,true,false,2026-04-01 15:48:05.968,2026-04-03 11:58:10.917,92
+41,1,actuals_eop_inventory,Actuals EOP Inventory,SUM,,"{}","[]",40,true,false,2026-04-01 15:48:05.968,2026-04-03 11:58:10.917,93
+42,1,rt_inventory_date,Inventory Date,NONE,,"{}","[]",41,true,false,2026-04-01 15:53:27.070,2026-04-03 11:58:10.917,94
+43,1,rt_on_hand_qty,On-Hand Qty,SUM,,"{}","[]",42,true,false,2026-04-01 15:53:27.070,2026-04-03 11:58:10.917,95
+44,1,rt_in_transit_qty,In-Transit Qty,SUM,,"{}","[]",43,true,false,2026-04-01 15:53:27.070,2026-04-03 11:58:10.917,96
+45,1,rt_total_inventory,Total RT Inventory,SUM,,"{}","[]",44,true,false,2026-04-01 15:53:27.070,2026-04-03 11:58:10.917,97
+46,1,rt_cost,Cost,CUSTOM,AVG(output.rt_cost),"{}","[]",45,true,false,2026-04-01 15:53:27.070,2026-04-03 11:58:10.917,98
+47,1,rt_msrp,MSRP,CUSTOM,AVG(output.rt_msrp),"{}","[]",46,true,false,2026-04-01 15:53:27.070,2026-04-03 11:58:10.917,99
+48,1,rt_current_price,Current Price,CUSTOM,AVG(output.rt_current_price),"{}","[]",47,true,false,2026-04-01 15:53:27.070,2026-04-03 11:58:10.917,100
+49,1,rt_current_price_vat,Current Price+VAT,CUSTOM,AVG(output.rt_current_price_vat),"{}","[]",48,true,false,2026-04-01 15:53:27.070,2026-04-03 11:58:10.917,101

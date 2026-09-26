@@ -1,0 +1,478 @@
+"id","module","config_name","config_value","config_value_type","is_used_by_fe"
+1,promo,primary,deal,text,true
+2,event,allow_promo_finalize_after_event_lock,false,boolean,false
+3,event,allow_promo_approval_after_event_lock,false,boolean,false
+4,promo,expanded,deal,text,true
+5,event,allow_promo_delete_after_event_lock,false,boolean,false
+6,event,allow_promo_execution_after_event_lock,false,boolean,false
+7,product,hierarchy_filters,"{
+  ""l0_ids"": {
+    ""id_column"": ""l0_cid"",
+    ""value_column"": ""l0_cuq"",
+    ""id"": 0,
+    ""is_linked_to_event"": true,
+    ""is_linked_to_promo"": true,
+    ""is_linked_to_downloads"": true,
+    ""is_linked_to_product_group"": true,
+    ""is_linked_to_simulation_results"": true,
+    ""is_hierarchy"": true,
+    ""label"": ""Department"",
+    ""mvw_pg_column"": ""l0_ids"",
+    ""name_column"": ""l0_name""
+  },
+  ""l1_ids"": {
+    ""id_column"": ""l1_cid"",
+    ""value_column"": ""l1_cuq"",
+    ""id"": 1,
+    ""is_linked_to_event"": true,
+    ""is_linked_to_promo"": true,
+    ""is_linked_to_downloads"": true,
+    ""is_linked_to_product_group"": true,
+    ""is_linked_to_simulation_results"": true,
+    ""is_hierarchy"": true,
+    ""label"": ""Sub Department"",
+    ""mvw_pg_column"": ""l1_ids"",
+    ""name_column"": ""l1_name""
+  },
+  ""l2_ids"": {
+    ""id_column"": ""l2_cid"",
+    ""value_column"": ""l2_cuq"",
+    ""id"": 2,
+    ""is_linked_to_event"": true,
+    ""is_linked_to_promo"": true,
+    ""is_linked_to_downloads"": true,
+    ""is_linked_to_product_group"": true,
+    ""is_linked_to_simulation_results"": true,
+    ""is_hierarchy"": true,
+    ""label"": ""Class"",
+    ""mvw_pg_column"": ""l2_ids"",
+    ""name_column"": ""l2_name""
+  },
+  ""l3_ids"": {
+    ""id_column"": ""l3_cid"",
+    ""value_column"": ""l3_cuq"",
+    ""id"": 3,
+    ""is_linked_to_event"": true,
+    ""is_linked_to_promo"": true,
+    ""is_linked_to_downloads"": true,
+    ""is_linked_to_product_group"": true,
+    ""is_linked_to_simulation_results"": true,
+    ""is_hierarchy"": true,
+    ""label"": ""Sub Class"",
+    ""mvw_pg_column"": ""l3_ids"",
+    ""name_column"": ""l3_name""
+  },
+  ""l4_ids"": {
+    ""id_column"": ""product_id"",
+    ""value_column"": ""product_name"",
+    ""id"": 5,
+    ""is_linked_to_event"": false,
+    ""is_linked_to_promo"": false,
+    ""is_linked_to_downloads"": true,
+    ""is_linked_to_product_group"": false,
+    ""is_linked_to_simulation_results"": true,
+    ""is_hierarchy"": false,
+    ""label"": ""SKU Code"",
+    ""mvw_pg_column"": null,
+    ""name_column"": ""product_name""
+  },
+  ""manufacturer_ids"": {
+    ""id_column"": ""manufacturer_id"",
+    ""value_column"": ""manufacturer_name"",
+    ""id"": -3,
+    ""is_linked_to_event"": true,
+    ""is_linked_to_promo"": true,
+    ""is_linked_to_downloads"": true,
+    ""is_linked_to_product_group"": true,
+    ""is_linked_to_simulation_results"": true,
+    ""is_hierarchy"": true,
+    ""label"": ""Manufacturer"",
+    ""mvw_pg_column"": ""manufacturer_ids"",
+    ""name_column"": ""manufacturer_name""
+  },
+  ""product_status_ids"": {
+    ""id_column"": ""product_status_cid"",
+    ""value_column"": ""product_status"",
+    ""id"": -4,
+    ""is_linked_to_event"": true,
+    ""is_linked_to_promo"": true,
+    ""is_linked_to_downloads"": true,
+    ""is_linked_to_product_group"": true,
+    ""is_hierarchy"": true,
+    ""label"": ""Status Code"",
+    ""mvw_pg_column"": ""product_status_ids"",
+    ""name_column"": ""product_status""
+  },
+  ""map_flag_ids"": {
+    ""id_column"": ""map_flag"",
+    ""value_column"": ""map_flag"",
+    ""id"": -5,
+    ""is_linked_to_event"": true,
+    ""is_linked_to_promo"": true,
+    ""is_linked_to_downloads"": true,
+    ""is_linked_to_product_group"": true,
+    ""is_hierarchy"": false,
+    ""label"": ""Map Flag"",
+    ""mvw_pg_column"": ""map_flag_ids"",
+    ""name_column"": ""map_flag""
+  },
+  ""clearance_ids"": {
+    ""id_column"": ""clearance_cid"",
+    ""value_column"": ""clearance"",
+    ""id"": -6,
+    ""is_linked_to_event"": true,
+    ""is_linked_to_promo"": true,
+    ""is_linked_to_downloads"": true,
+    ""is_linked_to_product_group"": true,
+    ""is_hierarchy"": false,
+    ""label"": ""Clearance Flag"",
+    ""mvw_pg_column"": ""clearance_ids"",
+    ""name_column"": ""clearance""
+  },
+  ""kvc_store_res_ids"": {
+    ""id_column"": ""kvc_store_res_id"",
+    ""value_column"": ""kvc_store_res"",
+    ""id"": -7,
+    ""is_linked_to_event"": true,
+    ""is_linked_to_promo"": true,
+    ""is_linked_to_downloads"": true,
+    ""is_linked_to_product_group"": true,
+    ""is_hierarchy"": false,
+    ""label"": ""KVC - Residential x Store"",
+    ""mvw_pg_column"": ""kvc_store_res_ids"",
+    ""name_column"": ""kvc_store_res""
+  },
+  ""kvi_store_res_ids"": {
+    ""id_column"": ""kvi_store_res_id"",
+    ""value_column"": ""kvi_store_res"",
+    ""id"": -8,
+    ""is_linked_to_event"": true,
+    ""is_linked_to_promo"": true,
+    ""is_linked_to_downloads"": true,
+    ""is_linked_to_product_group"": true,
+    ""is_hierarchy"": false,
+    ""label"": ""KVI - Residential x Store"",
+    ""mvw_pg_column"": ""kvi_store_res_ids"",
+    ""name_column"": ""kvi_store_res""
+  },
+  ""kvc_les_res_ids"": {
+    ""id_column"": ""kvc_les_res_id"",
+    ""value_column"": ""kvc_les_res"",
+    ""id"": -9,
+    ""is_linked_to_event"": true,
+    ""is_linked_to_promo"": true,
+    ""is_linked_to_downloads"": true,
+    ""is_linked_to_product_group"": true,
+    ""is_hierarchy"": false,
+    ""label"": ""KVC - Residential x Lesliespool.com"",
+    ""mvw_pg_column"": ""kvc_les_res_ids"",
+    ""name_column"": ""kvc_les_res""
+  },
+  ""kvi_les_res_ids"": {
+    ""id_column"": ""kvi_les_res_id"",
+    ""value_column"": ""kvi_les_res"",
+    ""id"": -10,
+    ""is_linked_to_event"": true,
+    ""is_linked_to_promo"": true,
+    ""is_linked_to_downloads"": true,
+    ""is_linked_to_product_group"": true,
+    ""is_hierarchy"": false,
+    ""label"": ""KVI - Residential x Lesliespool.com"",
+    ""mvw_pg_column"": ""kvi_les_res_ids"",
+    ""name_column"": ""kvi_les_res""
+  },
+  ""kvc_its_res_ids"": {
+    ""id_column"": ""kvc_its_res_id"",
+    ""value_column"": ""kvc_its_res"",
+    ""id"": -11,
+    ""is_linked_to_event"": true,
+    ""is_linked_to_promo"": true,
+    ""is_linked_to_downloads"": true,
+    ""is_linked_to_product_group"": true,
+    ""is_hierarchy"": false,
+    ""label"": ""KVC - Residential x ITS"",
+    ""mvw_pg_column"": ""kvc_its_res_ids"",
+    ""name_column"": ""kvc_its_res""
+  },
+  ""kvi_its_res_ids"": {
+    ""id_column"": ""kvi_its_res_id"",
+    ""value_column"": ""kvi_its_res"",
+    ""id"": -12,
+    ""is_linked_to_event"": true,
+    ""is_linked_to_promo"": true,
+    ""is_linked_to_downloads"": true,
+    ""is_linked_to_product_group"": true,
+    ""is_hierarchy"": false,
+    ""label"": ""KVI - Residential x ITS"",
+    ""mvw_pg_column"": ""kvi_its_res_ids"",
+    ""name_column"": ""kvi_its_res""
+  },
+  ""kvc_com_com_ids"": {
+    ""id_column"": ""kvc_com_com_id"",
+    ""value_column"": ""kvc_com_com"",
+    ""id"": -13,
+    ""is_linked_to_event"": true,
+    ""is_linked_to_promo"": true,
+    ""is_linked_to_downloads"": true,
+    ""is_linked_to_product_group"": true,
+    ""is_hierarchy"": false,
+    ""label"": ""KVC - Commercial"",
+    ""mvw_pg_column"": ""kvc_com_com_ids"",
+    ""name_column"": ""kvc_com_com""
+  },
+  ""kvi_com_com_ids"": {
+    ""id_column"": ""kvi_com_com_id"",
+    ""value_column"": ""kvi_com_com"",
+    ""id"": -14,
+    ""is_linked_to_event"": true,
+    ""is_linked_to_promo"": true,
+    ""is_linked_to_downloads"": true,
+    ""is_linked_to_product_group"": true,
+    ""is_hierarchy"": false,
+    ""label"": ""KVI - Commercial"",
+    ""mvw_pg_column"": ""kvi_com_com_ids"",
+    ""name_column"": ""kvi_com_com""
+  }
+}",json,false
+8,event,allow_event_delete_after_event_lock,false,boolean,false
+9,promo,standard,deal,text,true
+10,promo,plural,deals,text,true
+11,promo,standard_plural,deals,text,true
+12,event,primary,promo,text,true
+13,event,expanded,promo,text,true
+14,event,standard,promo,text,true
+15,event,plural,promos,text,true
+16,event,use_event,true,boolean,true
+17,event,alias,promo,text,true
+18,event,identifier,Promo,text,true
+19,promo,use_vendor_funding,false,boolean,true
+20,promo,alias_plural,deals,text,true
+21,event,alias_plural,promos,text,true
+22,event,standard_plural,promos,text,true
+23,product,client_product_id_key,product_id,text,false
+24,promo,alias,deal,text,true
+25,promo,identifier,Promotion testt,text,true
+26,product,discount_level_sku_additional_columns,"[
+  {
+      ""key"": ""price"",
+      ""db_column"": ""current_price"",
+      ""display_name"": ""Price""
+  }
+]",json,false
+27,store,excel_uplod_configuration,"{
+  ""store id"": {
+    ""value_column"": ""store_id"",
+    ""order"": 0
+  }
+}",json,false
+28,product,excel_uplod_configuration,"{
+  ""sku code"": {
+    ""value_column"": ""l4_id"",
+    ""order"": 0,
+    ""display_name"": ""client_product_id""
+  }
+}",json,false
+29,store,hierarchy_filters,"{
+  ""s0_ids"": {
+    ""id_column"": ""s0_id"",
+    ""value_column"": ""s0_name"",
+    ""linked_upload_value_column"": ""s0_name"",
+    ""id"": 0,
+    ""is_linked_to_event"": true,
+    ""is_linked_to_promo"": true,
+    ""is_linked_to_downloads"": true,
+    ""dependent_column_value"": ""c0_ids"",
+    ""dependent_module"": ""customer"",
+    ""is_linked_to_store_group"": true,
+    ""label"": ""Channel"",
+    ""name_column"": ""s0_name""
+  },
+  ""s1_ids"": {
+    ""id_column"": ""s1_id"",
+    ""value_column"": ""s1_name"",
+    ""id"": 1,
+    ""is_linked_to_event"": true,
+    ""is_linked_to_promo"": true,
+    ""is_linked_to_downloads"": false,
+    ""is_linked_to_store_group"": true,
+    ""label"": ""Region"",
+    ""dependent_column_value"": null,
+    ""name_column"": ""s1_name""
+  },
+  ""s2_ids"": {
+    ""id_column"": ""s2_id"",
+    ""value_column"": ""s2_name"",
+    ""id"": 2,
+    ""is_linked_to_event"": true,
+    ""is_linked_to_promo"": false,
+    ""is_linked_to_downloads"": false,
+    ""is_linked_to_store_group"": true,
+    ""dependent_column_value"": null,
+    ""label"": ""State"",
+    ""name_column"": ""s2_name""
+  },
+  ""s3_ids"": {
+    ""id_column"": ""s3_id"",
+    ""value_column"": ""s3_name"",
+    ""id"": 3,
+    ""is_linked_to_event"": true,
+    ""is_linked_to_promo"": false,
+    ""is_linked_to_downloads"": true,
+    ""is_linked_to_store_group"": true,
+    ""dependent_column_value"": null,
+    ""label"": ""Zone"",
+    ""name_column"": ""s3_name""
+  },
+  ""s4_ids"": {
+    ""id_column"": ""s4_id"",
+    ""value_column"": ""s4_name"",
+    ""id"": 4,
+    ""is_linked_to_event"": true,
+    ""is_linked_to_promo"": false,
+    ""is_linked_to_downloads"": false,
+    ""is_linked_to_store_group"": true,
+    ""dependent_column_value"": null,
+    ""label"": ""City"",
+    ""name_column"": ""s4_name""
+  },
+  ""s5_ids"": {
+    ""id_column"": ""s5_id"",
+    ""value_column"": ""s5_name"",
+    ""id"": 5,
+    ""is_linked_to_event"": true,
+    ""is_linked_to_promo"": false,
+    ""is_linked_to_downloads"": false,
+    ""is_linked_to_store_group"": true,
+    ""dependent_column_value"": null,
+    ""label"": ""District"",
+    ""name_column"": ""s5_name""
+  },
+  ""market_ids"": {
+    ""id_column"": ""market_id"",
+    ""value_column"": ""market_name"",
+    ""id"": 6,
+    ""is_linked_to_event"": true,
+    ""is_linked_to_promo"": false,
+    ""is_linked_to_downloads"": false,
+    ""is_linked_to_store_group"": true,
+    ""dependent_column_value"": null,
+    ""label"": ""Market"",
+    ""name_column"": ""market_name""
+  },
+  ""store_ids"": {
+    ""id_column"": ""store_id"",
+    ""value_column"": ""store_name"",
+    ""id"": 7,
+    ""is_linked_to_event"": false,
+    ""is_linked_to_promo"": false,
+    ""is_linked_to_downloads"": false,
+    ""is_linked_to_store_group"": false,
+    ""dependent_column_value"": null,
+    ""label"": ""Store"",
+    ""name_column"": ""store_name""
+  },
+  ""active_flag"": {
+    ""id_column"": ""is_active"",
+    ""value_column"": ""is_active_value"",
+    ""id"": 8,
+    ""is_linked_to_event"": false,
+    ""is_linked_to_promo"": false,
+    ""is_linked_to_downloads"": false,
+    ""is_linked_to_store_group"": true,
+    ""dependent_column_value"": null,
+	  ""label"": ""Active Flag"",
+    ""name_column"": ""is_active_value""
+  }
+}",json,false
+30,store,discount_level_store_additional_columns,[],json,false
+31,customer,hierarchy_filters,"{
+  ""c0_ids"": {
+    ""id_column"": ""c0_id"",
+    ""value_column"": ""c0_name"",
+    ""id"": 0,
+    ""label"": ""customer type"",
+    ""is_linked_to_event"": true,
+    ""is_linked_to_downloads"": true,
+    ""name_column"": ""c0_name""
+  },
+  ""c1_ids"": {
+    ""id_column"": ""c1_id"",
+    ""value_column"": ""c1_name"",
+    ""id"": 1,
+    ""label"": ""customer segment"",
+    ""is_linked_to_event"": true,
+    ""is_linked_to_downloads"": true,
+    ""name_column"": ""c1_name""
+  },
+  ""c2_ids"": {
+    ""id_column"": ""customer_id"",
+    ""value_column"": ""customer_name"",
+    ""id"": 2,
+    ""label"": ""customer tier"",
+    ""is_linked_to_event"": true,
+    ""is_linked_to_downloads"": true,
+    ""name_column"": ""customer_name""
+  }
+}",json,false
+32,product,exclusion_upload_configuration,"{
+  ""division id"": {
+    ""id_column"": ""l0_id"",
+    ""cid_column"": ""l0_cid"",
+    ""value_column"": ""l0_cuq"",
+    ""order"": 0
+  },
+  ""group id"": {
+    ""id_column"": ""l1_id"",
+    ""cid_column"": ""l1_cid"",
+    ""value_column"": ""l1_cuq"",
+    ""order"": 1
+  },
+  ""department id"": {
+    ""id_column"": ""l2_id"",
+    ""cid_column"": ""l2_cid"",
+    ""value_column"": ""l2_cuq"",
+    ""order"": 2
+  },
+  ""class id"": {
+    ""id_column"": ""l3_id"",
+    ""cid_column"": ""l3_cid"",
+    ""value_column"": ""l3_cuq"",
+    ""order"": 3
+  },
+  ""subclass id"": {
+    ""id_column"": ""l4_id"",
+    ""cid_column"": ""l4_cid"",
+    ""value_column"": ""l4_cuq"",
+    ""order"": 4
+  },
+  ""svs id"": {
+    ""id_column"": ""l5_id"",
+    ""cid_column"": ""product_id"",
+    ""value_column"": ""l5_cuq"",
+    ""order"": 5
+  },
+  ""mfg id"": {
+    ""id_column"": ""mfg_no"",
+    ""cid_column"": ""brand"",
+    ""value_column"": ""mfg_name"",
+    ""order"": 6
+  }
+}",json,false
+33,event,show_events_buffer_days,"0",integer,false
+34,event,manual_unlocking_buffer_days,"0",integer,false
+35,event,final_lock_buffer_days,"0",integer,false
+36,event,first_lock_buffer_days,"0",integer,false
+37,reporting,product_filter,"{""0"":[{""column"":""l0_name"",""display"":""Department"",""type"":""text""}],""1"":[{""column"":""l1_name"",""display"":""Sub Department"", ""type"":""text""}],""2"":[{""column"":""l2_name"",""display"":""Class"",""type"":""text""}],""3"":[{""column"":""l3_name"",""display"":""Sub Class"",""type"":""text""}],""5"":[{""column"":""l4_cid"",""display"":""SKU Code"",""type"":""integer""},{""column"":""product_name"",""display"":""SKU Description"",""type"":""text""}],""-3"":[{""column"":""manufacturer_name"",""display"":""Manufacturer"",""type"":""text""}]}",json,true
+38,reporting,store_filter,"{""0"": [{""column"": ""s0_name"", ""display"": ""Channel""}], 
+""3"": [{""column"": ""s3_name"", ""display"": ""Zone""}]}",json,true
+39,store,store_downloads_select_columns,"distinct s0_id, s0_name, s3_id, s3_name",text,false
+40,filter,global_filter_write_eligible_role_codes,"[6,23,43]",json,false
+41,reporting,customer_filter,"{""0"": [{""column"": ""c0_name"", ""display"": ""Customer Type""}], 
+		""1"": [{""column"": ""c1_name"", ""display"": ""Customer Segment""}],
+		""2"": [{""column"": ""c2_name"", ""display"": ""Customer Tier""}]}",json,true
+42,promo,scenario_data_refresh_date_buffer_x,"30",integer,false
+43,promo,scenario_data_refresh_date_buffer_y,"150",integer,false
+44,promo,eligible_promo_status_for_promo_refresh,"[0,2,4]",json,false
+45,promo,should_simulate_after_scenario_discounts_refresh,true,boolean,false
+46,promo,should_optimise_after_scenario_discounts_refresh,true,boolean,false
+47,promo,eligible_status_for_deletion,"[-1,0,2]",json,true

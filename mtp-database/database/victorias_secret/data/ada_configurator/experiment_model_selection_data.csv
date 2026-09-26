@@ -1,0 +1,70 @@
+"model_selection_data_id","data_type","ui_label","method_key","display_flag","model_type","default_flag"
+1,ModelType,Normal,normal,true,High,false
+2,ModelType,Regime,regime,true,High,false
+3,ModelType,Drift,drift,true,High,false
+4,KPIErrorMethod,Wape,WAPE,true,High,false
+5,KPIErrorMethod,Mape,MAPE,true,High,false
+6,KPIErrorMethod,MASE,MASE,false,High,false
+7,KPIErrorMethod,RMSE,RMSE,false,High,false
+8,KPIErrorMethod,MAE,MAE,true,High,false
+9,KPIErrorMethod,SMAPE,SMAPE,false,High,false
+10,KPIErrorMethod,Mean Error,Mean_Error,true,High,false
+11,KPIErrorMethod,Wape Delta,WAPE_Delta,true,High,false
+12,KPIErrorMethod,Adj R Squared,AdjR_square,true,High,false
+13,SelectionCriteria,Intersection,Intersection,true,High,true
+14,SelectionCriteria,Union,Union,true,High,false
+15,EnsemblingTechnique,Voting Regressor,Voting Regressor,true,High,true
+16,EnsemblingTechnique,Stacking,Stacking,true,High,false
+17,DataPointsMin,Data Points,data_points,true,High,false
+18,KPIErrorMethod,MSE,MSE,true,High,false
+21,TrainTest,Linear Time Based Split,linear_split,true,High,false
+22,TrainTest,Randomized Sampling,random_sampling,false,High,false
+23,TrainTest,Stratified Randomized Sampling,stratified_sampling,false,High,false
+24,TrainTest,K Fold Cross Validation,kfold_cv,false,High,false
+25,TrainTest,Time Series Cross Validation,time_series_cv,false,High,false
+30,EliminationMethod,VIF Elimination,vif,true,High,false
+31,EliminationMethod,GBM Feature Selection,gbm,true,High,false
+32,EliminationMethod,Correlation Feature Elimination,correlation,true,High,false
+33,EliminationMethod,Predictive Power Score Elimination,predictive_power,true,High,false
+34,EnsemblingRequired,Yes,Yes,true,High,true
+35,EnsemblingRequired,No,Yes,true,High,false
+101,EliminationMethod,Zero variance based,variance,true,Clustering,false
+102,EliminationMethod,Perfect Colliniarity based,colliniarity,true,Clustering,false
+103,EliminationMethod,VIF Elimination,VIF cutoff,true,Clustering,false
+104,EliminationMethod,P_value based,significance level,true,Clustering,false
+105,EliminationPCA,PCA_variance_threshold,pca_variance_threshold,true,Clustering,false
+106,SelectionCriteria,Intersection,intersection,true,Clustering,true
+107,SelectionCriteria,Union,union,true,Clustering,false
+108,PCASelectionCriteria,Yes,yes,true,Clustering,true
+109,PCASelectionCriteria,No,no,true,Clustering,false
+110,KPIErrorMethod,silhouette_score,silhouette_score,true,Clustering,false
+111,KPIErrorMethod,davies_bouldin_score,davies_bouldin_score,true,Clustering,false
+112,KPIErrorMethod,calinski_harabasz_score,calinski_harabasz_score,true,Clustering,false
+113,ModelType,Common Parameter,common_parameter,true,Clustering,false
+114,EliminationMethod,VIF Elimination,vif,true,Lower,false
+115,EliminationMethod,GBM Feature Selection,gbm,true,Lower,false
+116,EliminationMethod,Correlation Feature Elimination,correlation,true,Lower,false
+117,EliminationMethod,Predictive Power Score Elimination,predictive_power,true,Lower,false
+118,SelectionCriteria,Intersection,intersection,true,Lower,true
+119,SelectionCriteria,Union,union,true,Lower,false
+120,ModelType,Common Parameter,common_parameter,true,Lower,false
+121,KPIErrorMethod,Wape,WAPE,true,Lower,false
+122,KPIErrorMethod,Mape,MAPE,true,Lower,false
+123,KPIErrorMethod,MASE,MASE,false,Lower,false
+124,KPIErrorMethod,RMSE,RMSE,false,Lower,false
+125,KPIErrorMethod,MAE,MAE,true,Lower,false
+126,KPIErrorMethod,SMAPE,SMAPE,false,Lower,false
+127,KPIErrorMethod,Mean Error,Mean_Error,true,Lower,false
+128,KPIErrorMethod,Wape Delta,WAPE_Delta,true,Lower,false
+129,KPIErrorMethod,Adj R Squared,AdjR_square,true,Lower,false
+130,EnsemblingTechnique,Voting Regressor,Voting Regressor,true,Lower,true
+132,EnsemblingTechnique,Stacking,Stacking,true,Lower,false
+133,DataPointsMin,Data Points,data_points,true,Lower,false
+134,KPIErrorMethod,MSE,MSE,true,Lower,false
+135,TrainTest,Linear Time Based Split,linear_split,true,Lower,false
+136,TrainTest,Randomized Sampling,random_sampling,false,Lower,false
+137,TrainTest,Stratified Randomized Sampling,stratified_sampling,false,Lower,false
+138,TrainTest,K Fold Cross Validation,kfold_cv,false,Lower,false
+139,TrainTest,Time Series Cross Validation,time_series_cv,false,Lower,false
+140,EnsemblingRequired,Yes,Yes,true,Lower,true
+141,EnsemblingRequired,No,Yes,true,Lower,false

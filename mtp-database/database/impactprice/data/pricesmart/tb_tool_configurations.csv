@@ -1,0 +1,27 @@
+"id","module","config_name","config_value","config_value_type","is_used_by_fe"
+1,filter,cascading_source_config,"{
+  ""product"": {
+    ""module"": ""product"",
+    ""config_key"": "" l0_cid, l1_cid "",
+    ""table"": ""pricesmart.product_master"",
+    ""where_key"": ""product_where_condition"",
+    ""filter_attr"": ""product"",
+    ""cte_name"": ""product_cte""
+  },
+  ""store"": {
+    ""module"": ""store"",
+    ""config_key"": "" s0_id "",
+    ""table"": ""pricesmart.tb_store_master"",
+    ""where_key"": ""store_where_condition"",
+    ""filter_attr"": ""store"",
+    ""cte_name"": ""store_cte""
+  },
+  ""customer"": {
+    ""module"": ""customer"",
+    ""config_key"": "" c2_id "",
+    ""table"": ""pricesmart.customer_master"",
+    ""where_key"": ""customer_where_condition"",
+    ""filter_attr"": ""customer"",
+    ""cte_name"": ""customer_cte""
+  }
+}",json,false

@@ -1,0 +1,450 @@
+--liquibase formatted sql
+--changeset liquibase:scenario_product_store_timezone_carfg_filter runOnChange:true stripComments:false splitStatements:false context:MTP-85634 labels:MTP-85634
+--comment: MTP-93374 | Enhanced scenario product store with multi-allocation type support (normal/PO/new store), fwos logic and allocation comparison. Fixed allocation_category support.
+--rollback: SELECT 1
+DROP FUNCTION IF EXISTS inventory_smart.scenario_product_store(refcursor, varchar, varchar, varchar, varchar, varchar);
+
+CREATE OR REPLACE FUNCTION inventory_smart.scenario_product_store(input refcursor, character varying, character varying, character varying, character varying, character varying)
+ RETURNS refcursor
+ LANGUAGE plpgsql
+AS $function$
+ /* 
+  * Function/Procedure name: inventory_smart.scenario_product_store
+  * Created by: Manohara G
+  * Created at: 02-July-2024
+  * No of input parameter: 6
+  * Parameter Description : $1 = refcursor name
+  *                         $2 = Allocation Code (scenario allocation code)
+  *                         $3 = Store code filter
+  *                         $4 = Article code/SKU code filter
+  *                         $5 = Ignore allocation code
+  *                         $6 = Type ('allocated' or other)
+  * Purpose: 
+  * Enhanced scenario product store view with multi-allocation type support and FWOS calculations
+  * 
+  * Features:
+  * - Supports multiple allocation types: Normal (0,2), PO (4), New Store (5)
+  * - Dynamically adapts data sources based on allocation type from plan_master
+  * - Store-level allocation analysis with detailed pack information and scenario comparison
+  * - Future weeks of supply (FWOS) calculations
+  * 
+  * Calling Statement:
+     
+     begin;
+     select * from inventory_smart.scenario_product_store
+         ('my_cur',
+          '6_105_USA_20250702T1053452513111660_SCENARIO_1_88',
+         '',
+        '1S530110-USA-Brick __ia_char_13 Mortar',
+        '',
+        '');
+      FETCH ALL IN "my_cur";
+     commit;
+ 
+  *
+  * if any modification done in same function/procedure please record the changes in below format
+  *
+  * Updated_by       Updated_on      Purpose
+  * ----------       -----------     --------
+  *
+  */
+ declare
+    _query_combine text;
+    _store_filter1 text;
+    _store_filter2 text;
+    _article_filter text;
+    _final_inv_query text;
+    _priority_allocation text;
+	vl_textQuery text;
+	start_time timestamp;
+	end_time timestamp;
+	v_gen_random_uuid text  := gen_random_uuid()::varchar;
+	_pm_date date;
+	_query text;
+	_timezone text;
+    _alloc_code text;
+    _original_allocation_code text;
+    _allocation_type integer;
+    _other_allocations_query text;
+    _other_allocations_join text;
+
+    begin
+        -- Extract original allocation code by splitting on '_SCENARIO'
+        _original_allocation_code := SPLIT_PART($2, '_SCENARIO', 1);
+        
+        -- Get allocation type from plan_master
+        raise notice 'Querying plan_master for allocation_code: %', _original_allocation_code;
+        
+        SELECT "type"::integer INTO _allocation_type 
+        FROM inventory_smart.plan_master 
+        WHERE plan_code = _original_allocation_code 
+        LIMIT 1;
+        
+        -- Default to type 0 if not found
+        _allocation_type := COALESCE(_allocation_type, 0);
+        
+        -- fetch timezone from tenant_attribute_master
+        SELECT attribute_value::json->>'time_zone' INTO _timezone
+        FROM global.tenant_attribute_master
+        WHERE name = 'tenant_time_config'
+        LIMIT 1;
+        _timezone := COALESCE(_timezone, 'America/Chicago');
+        raise notice 'timezone: %', _timezone;
+        
+        if $5 = '' then
+            _alloc_code := $2;
+        else
+            _alloc_code := $5;
+        end if;
+        
+        -- Current date in tenant timezone for carfg filter (compare created_at at timezone with this date)
+        _pm_date := (NOW() AT TIME ZONE _timezone)::date;
+        raise notice 'filter date (current date at tenant TZ) for carfg: %', _pm_date;
+        
+        raise notice 'Retrieved allocation type: % for allocation_code: %', _allocation_type, _original_allocation_code;
+        _store_filter1 := '';
+        _article_filter := '';
+        _store_filter2 := '';
+        _priority_allocation := '';
+
+        if ($3 = '') IS FALSE
+            then
+                _store_filter1 := format($$WHERE store_code = '%s'$$, $3);
+                _store_filter2 := format($$WHERE a.store_code = '%s'$$, $3);
+            end if;
+        if ($4 = '') IS FALSE
+            then
+                _article_filter := format($$AND carfs.article = '%s'$$, $4);
+        end if;
+		IF ($6 = 'allocated')
+            THEN
+                _final_inv_query := $$
+				,other_allocations_pre as (
+					__OTHER_ALLOCATIONS_QUERY_PLACEHOLDER__
+			)
+        ,other_allocations as (
+            SELECT a.allocation_category, a.dc_code, a.pack_type_id, SUM(a.allocated_reserve_qty) as allocated_reserve_qty
+            FROM (
+                SELECT b.allocation_category, b.dc_code, b.article, b.pack_type_id, b.size, COALESCE(b.packs_allocated,0) as allocated_reserve_qty
+                FROM (
+                    SELECT dc_code, article, pack_type_id, size FROM packs
+                    GROUP BY 1, 2, 3, 4
+                ) am
+                join other_allocations_pre b
+                __OTHER_ALLOCATIONS_JOIN_PLACEHOLDER__
+            ) a
+            GROUP BY 1, 2, 3
+        )
+	,net_availble_count as (
+        	select a.allocation_category, a.dc_code, a.pack_type_id, a.size,
+        	avg(COALESCE(a.dc_available_packs,0)) as dc_available_packs,
+        	sum(COALESCE(a.packs_allocated_qty,0)) as packs_allocated_qty,
+        	sum(COALESCE(oa.allocated_reserve_qty,0)) as allocated_reserve_qty,
+        	(avg(COALESCE(a.dc_available_packs,0)) - sum(COALESCE(a.packs_allocated_qty,0)) - sum(COALESCE(oa.allocated_reserve_qty,0))) as dc_available,
+        	(avg(COALESCE(a.dc_available_packs,0)) - sum(COALESCE(oa.allocated_reserve_qty,0))) as bulk_dc_available
+        	from final_inv a
+        	left join (
+        		select allocation_category, dc_code, pack_type_id, sum(allocated_reserve_qty) as allocated_reserve_qty
+        		from other_allocations
+        		group by allocation_category, dc_code, pack_type_id
+        	) oa using(allocation_category, dc_code, pack_type_id)
+        	group by a.allocation_category, a.dc_code, a.pack_type_id, a.size
+        )
+		$$;
+	ELSE
+        _final_inv_query := $$
+			,net_availble_count as (
+					select f.allocation_category, f.dc_code, f.pack_type_id, f.size,
+					(COALESCE(avg(f.dc_available_packs),0) - COALESCE(sum(f.packs_allocated_qty),0)) as dc_available,
+					COALESCE(avg(f.dc_available_packs),0) as bulk_dc_available
+					from final_inv f
+					group by f.allocation_category, f.dc_code, f.pack_type_id, f.size
+				)
+				$$;
+	 END IF;
+	
+	-- Build other allocations query and join condition
+	_other_allocations_query := CASE 
+		WHEN _allocation_type = 5 THEN 
+			'SELECT ''scenario'' as allocation_category, * FROM inventory_smart.sku_ns_allocated_units( ''' || $2 || ''' )
+			UNION ALL 
+			SELECT ''original'' as allocation_category, * FROM inventory_smart.sku_ns_allocated_units( ''' || _original_allocation_code || ''' )'
+		WHEN _allocation_type = 4 THEN 
+			'SELECT ''scenario'' as allocation_category, * FROM inventory_smart.sku_po_allocated_units( ''' || $2 || ''' )
+			UNION ALL 
+			SELECT ''original'' as allocation_category, * FROM inventory_smart.sku_po_allocated_units( ''' || _original_allocation_code || ''' )'
+		ELSE 
+			'SELECT ''scenario'' as allocation_category, * FROM inventory_smart.sku_dc_allocated_units( ''' || $2 || ''' )
+			UNION ALL 
+			SELECT ''original'' as allocation_category, * FROM inventory_smart.sku_dc_allocated_units( ''' || _original_allocation_code || ''' )'
+	END;
+	
+	_other_allocations_join := CASE 
+		WHEN _allocation_type = 4 THEN 'ON (am.dc_code = b.dc_code AND am.article = b.article AND am.size = b.size AND am.pack_type_id = b.pack_type_id)'
+		ELSE 'USING (dc_code, article, size, pack_type_id)'
+	END;
+	
+        _query_combine := format($$
+            ------ PRODUCT VIEW - STORE LEVEL - TABLE DATA
+		with base_table_temp as materialized (SELECT carfs.article,carfs.delivery_dt ,
+							  carfs.allocated_total,carfs.oh,carfs.oo,carfs.it,
+							  carfs.wos, carfs.pack_dc_allocation, carfs.min, carfs.max,carfs.store store_code, carfs.updated_oh_oo_it, carfs.demand, carfs.demand_type, saf.store_name, saf.climate, saf.store_attribute_1 as store_concept,saf.state as store_format,saf.state as district,saf.state as precipitation, carfs.inventory_source, carfs.retail_size_cd as size,
+							  carfs.oh_oo_intransit,
+							  case 
+		                            when carfs.allocation_code like '%%SCENARIO%%' then 'scenario'
+		                            else 'original'
+		                       end as allocation_category
+		FROM inventory_smart.create_allocation_result_flat_gurobi carfs
+		join global.store_attributes_filter saf on saf.store_code = carfs.store
+		WHERE date(carfs.created_at AT TIME ZONE $$ || quote_literal(_timezone) || $$) = $$ || quote_literal(_pm_date) || $$ and  carfs.allocation_code in ('%1$s','%4$s') %2$s
+		)
+		,scenario_article_store as (
+        select article, store_code from base_table_temp where allocation_category='scenario' group by 1, 2
+        )
+		,base_table as (
+        select * from base_table_temp a
+        where exists (select 1 from scenario_article_store b where b.article=a.article and b.store_code=a.store_code)
+        )
+		,flat_table as (SELECT allocation_category,
+			   article,
+			   store_code,
+			   %5$s dc_code, 
+			   foo.size,
+			   oh_oo_intransit,
+			   UNNEST((TRANSLATE((js.value::jsonb->>'packs_allocated')::text, '[]', '{}'))::text[]) pack_type_id,
+			   UNNEST((TRANSLATE((js.value::jsonb->>'packs_allocated_qty')::text, '[]', '{}'))::numeric[]) packs_allocated_qty,
+			   UNNEST((TRANSLATE((js.value::jsonb->>'packs_available_qty')::text, '[]', '{}'))::numeric[]) available_qty 
+		FROM (
+			SELECT allocation_category, article, store_code, size, oh_oo_intransit, pack_dc_allocation FROM base_table 
+		) foo , JSONB_EACH(foo.pack_dc_allocation) js group by 1,2,3,4,5,6,7,8,9)
+	,packs as materialized(SELECT allocation_category,
+			   ft.article,
+			   ft.dc_code,
+			   ft.store_code,
+			   ft.pack_type_id,
+			   ft.size,
+			   dpc.pack_type,
+			   dpc.units_in_pack,
+			   ft.available_qty as available_qty_packs,
+			   ft.packs_allocated_qty,
+			   ft.available_qty * dpc.units_in_pack::double precision AS  available_qty,
+			   ft.packs_allocated_qty * dpc.units_in_pack::double precision AS total_allocated_qty,
+			   (ft.packs_allocated_qty * COALESCE(dpc.units_in_pack, 0)) + 
+                COALESCE(ft.oh_oo_intransit, 0) AS total_inventory_per_sku_store
+		FROM inventory_smart.dc_pack_configuration dpc
+		JOIN flat_table ft ON (dpc.article = ft.article AND dpc.pack_type_id = ft.pack_type_id AND dpc.size = ft.size))
+		
+		, allocation_articles as (
+		select distinct article from packs
+		)
+--		select * from packs;
+	,final_inv as (select 
+						  allocation_category,
+						  dc_code,
+						  store_code, 
+						  pack_type_id, 
+						  pack_type,
+						  size,
+						  avg(available_qty_packs) as dc_available_packs ,
+						  sum(available_qty) as available_qty,
+						  sum(total_allocated_qty) AS total_allocated_qty,
+						  avg(packs_allocated_qty) packs_allocated_qty
+					from packs p	
+					group by 1,2,3,4,5,6
+					)
+--					select * from final_inv;
+	%3$s
+    ,base_table_min_wos as  (
+			select
+				p.*, 
+				greatest(0,MIN - (updated_oh_oo_it)) as min_short,
+				greatest(0, allocated_total - greatest(0, MIN - (updated_oh_oo_it))) as wos_allocation,
+				least(allocated_total,greatest(0,MIN - (updated_oh_oo_it))) as min_allocation
+			from
+				base_table p
+			)
+			
+--			select * from base_table_min_wos
+			
+		, product_filters as (
+		select article, size, product_code from global.product_attributes_filter paf 
+            where exists (select 1 from allocation_articles b where paf.article=b.article)
+		)
+			
+	    ,fwos AS MATERIALIZED (
+            SELECT 
+                paf.article, 
+                paf.size,
+                fsst.store_code,
+                fsst.str_inv,
+                fsst.wos_oh_oo_it,
+                CASE 
+                    WHEN fsst.wos_oh_oo_it != 0 
+                    THEN ROUND(CAST(fsst.str_inv / fsst.wos_oh_oo_it AS NUMERIC), 2) 
+                    ELSE 0 
+                END AS str_wos_factor   
+            FROM inventory_smart.fwos_sku_store_table fsst 
+            JOIN product_filters paf
+            USING (product_code)
+            )
+    ,wos_metric_base AS (
+            SELECT 
+    			allocation_category,
+    			store_code, 
+                CASE 
+                    WHEN SUM(total_inventory_per_sku_store) != 0 
+                    THEN ROUND(CAST(sum(CASE 
+                        WHEN total_inventory_per_sku_store != 0 
+                        THEN (total_inventory_per_sku_store * (wos_oh_oo_it + alloc_qty_wos))
+                        ELSE NULL 
+                    END)/sum(CASE 
+                        WHEN total_inventory_per_sku_store != 0 
+                        THEN total_inventory_per_sku_store
+                        ELSE NULL 
+                    END) AS NUMERIC), 2) 
+                END AS avg_fwos_post_alloc
+            FROM (
+                SELECT 
+                    a.*, 
+                    f.str_inv,
+                    COALESCE(f.wos_oh_oo_it, 0) AS wos_oh_oo_it,
+                    f.str_wos_factor,
+                    coalesce(CASE 
+                        WHEN f.str_wos_factor != 0 
+                        THEN a.total_allocated_qty / COALESCE(str_wos_factor, 1) 
+                    end,0) as alloc_qty_wos
+                FROM packs a
+                LEFT JOIN fwos f USING (article, size) 
+            ) a
+            GROUP BY 1, 2
+        )
+--        select * from wos_metric_base
+        
+    ,store_level_base_table as (
+		SELECT allocation_category,
+			   store_code,
+			   store_name,
+			   climate,
+               size,
+			   sum(demand) as aggregated_demand,
+			   SUM(oh) as oh,
+			   SUM(oo) as oo,
+			   SUM(it) as it,
+			   round(sum(min)) as min_store,
+			   round(sum(max)) as max_store,
+			   round(avg(wos),0) as wos,
+			   SUM(allocated_total) as allocated_quantity,
+			   COALESCE(SUM(min_allocation), 0) as min_allocation,
+			   COALESCE(SUM(wos_allocation), 0) as wos_allocation,
+			COUNT( DISTINCT( CASE WHEN allocated_total > 0 THEN article END)) as style_color_cnt
+		FROM (
+			SELECT allocation_category,
+				   article,
+				   store_code,
+				   store_name,
+				   climate,
+					size,
+				   sum(demand) demand,
+				   
+				   COALESCE(sum(MIN), 0) MIN,
+				   COALESCE(sum(MAX), 0) MAX,
+				   ROUND(AVG(COALESCE(bt.wos::int,0)),0) as wos,
+				   COALESCE(SUM(min_allocation), 0) as min_allocation,
+				   COALESCE(SUM(wos_allocation), 0) as wos_allocation,
+				   COALESCE(sum(oh), 0) oh,
+				   COALESCE(sum(oo), 0) oo,
+				   COALESCE(sum(it), 0) it,
+				   COALESCE(SUM(allocated_total), 0) allocated_total
+			FROM base_table_min_wos bt
+			GROUP BY 1, 2, 3, 4, 5, 6
+		) as st
+		GROUP BY 1, 2, 3, 4, 5)
+		
+--		select * from store_level_base_table
+
+	,store_level_misc as(select  allocation_category, delivery_dt, demand_type, store_code,inventory_source, store_concept,store_format,district,precipitation,
+    						CASE 
+								WHEN inventory_source='dc' THEN 'B'
+								WHEN inventory_source='po' THEN 'L'
+								WHEN inventory_source='ns' THEN 'S'
+								ELSE '' 
+			   				END AS po_type 
+						from base_table 
+						group by 1,2,3,4,5,6,7,8,9
+	)
+	SELECT  slb.allocation_category,
+            slb.store_code,
+            slb.store_name,
+            slb.climate,
+            slb.size,
+            slb.aggregated_demand,
+            slb.oh,
+            slb.oo,
+            slb.it,
+            slb.min_store,
+            slb.max_store,
+            slb.wos,
+            slb.allocated_quantity,
+            slb.min_allocation,
+            slb.wos_allocation,
+            slb.style_color_cnt,
+            fi.dc_code, 
+            fi.pack_type_id as packs_allocated,  
+            fi.total_allocated_qty,
+            nac.dc_available,
+			nac.bulk_dc_available,
+            fi.pack_type,
+			fi.packs_allocated_qty,
+            %9$s as dc,
+			slm.delivery_dt,
+            slm.demand_type,
+            slm.po_type,
+			slm.store_concept,
+			slm.store_format,
+			slm.district,
+			slm.precipitation,
+			f.avg_fwos_post_alloc as fwos
+    FROM store_level_base_table slb
+    LEFT JOIN final_inv fi ON (slb.allocation_category = fi.allocation_category AND slb.store_code = fi.store_code AND slb.size = fi.size)
+    %8$s
+	left join store_level_misc slm ON (slb.allocation_category = slm.allocation_category AND slb.store_code = slm.store_code)
+	left join net_availble_count nac on nac.allocation_category = slb.allocation_category and nac.dc_code=fi.dc_code and nac.pack_type_id=fi.pack_type_id and nac.size=fi.size 
+	left join wos_metric_base f ON (slb.allocation_category = f.allocation_category AND slb.store_code = f.store_code)
+	$$, 
+	$2, 
+	_article_filter,
+	_final_inv_query,
+	_original_allocation_code,
+	-- Parameter 5: DC code casting (text for PO, int for others)
+	CASE 
+		WHEN _allocation_type = 4 THEN 'js.key::text'
+		ELSE 'js.key::int'
+	END,
+	-- Parameter 6: Other allocations query (placeholder, will be replaced after format)
+	'',
+	-- Parameter 7: Other allocations join condition (placeholder, will be replaced after format)
+	'',
+	-- Parameter 8: Distribution centre join (conditional for type)
+	CASE 
+		WHEN _allocation_type = 4 THEN ''
+		ELSE 'LEFT JOIN global.distribution_centres dcs using(dc_code)'
+	END,
+	-- Parameter 9: DC name field (dc_code for PO, dcs.name for others)
+	CASE 
+		WHEN _allocation_type = 4 THEN 'fi.dc_code'
+		ELSE 'dcs.name'
+	END
+	);
+	
+	-- Replace placeholders with actual values
+	IF ($6 = 'allocated') THEN
+		_query_combine := replace(_query_combine, '__OTHER_ALLOCATIONS_QUERY_PLACEHOLDER__', _other_allocations_query);
+		_query_combine := replace(_query_combine, '__OTHER_ALLOCATIONS_JOIN_PLACEHOLDER__', _other_allocations_join);
+	END IF;
+    raise notice '%', _query_combine;
+    OPEN $1 FOR execute _query_combine;  
+	perform  global.sp_log(v_gen_random_uuid, 'inventory_smart.scenario_product_store', 'Before returning function value',_query_combine,jsonb_build_object('Allocation Code',$2,'Store code',$3,'Article code/SKU code',$4,'Ignore allocation code',$5,'type',$6,'allocation_type',_allocation_type));
+    RETURN $1;
+    end
+$function$
+;

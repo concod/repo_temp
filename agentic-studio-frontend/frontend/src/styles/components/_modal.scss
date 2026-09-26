@@ -1,0 +1,163 @@
+// Modal overlay styles
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    backdrop-filter: blur(2px);
+}
+
+.api-reference-modal{
+    width: 1248px;
+    max-height: 80vh;
+    border-radius: 12px;
+    background:  #FFF;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+
+    &__header{
+        display: flex;
+        width: 1248px;
+        height: 50px;
+        padding: 0 16px;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
+        border-radius: 8px 8px 0 0;
+        background: linear-gradient(109deg, #F1F6FF 9.27%, #FAF4FF 95.79%);
+
+        &-title{
+            flex: 1 0 0;
+            color: var(--greys-100);
+        }
+
+        &-buttons{
+            display: flex;
+            width: 24px;
+            height: 24px;
+            max-height: 32px;
+            padding: 8px;
+            justify-content: center;
+            align-items: center;
+            gap: 4px;
+            flex-shrink: 0;
+            border-radius: 8px;
+        }
+    }
+
+    &__body{
+        display: flex;
+        width: 1216px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        padding: 16px;
+        overflow-y: auto;
+        flex: 1;
+
+        &-endpoint{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 16px;
+            align-self: stretch;
+
+            &-header{
+                display: flex;
+                align-items: center;
+                gap: 12px;
+
+                &-line{
+                    width: 3px;
+                    height: 16px;
+                    background: var(--greys-300);
+                }
+
+                &-title{
+                    color: var(--greys-300);
+                    display: flex;
+                    // align-items: center;
+                    // gap: 12px;
+
+                    &-copy{
+                        position: absolute;
+                        right: 32px;
+                    }
+                }
+            }
+
+            &-body > textarea{
+                display: flex;
+                width: 1200px;
+                height: 100px;
+                padding: 12px;
+                align-items: flex-start;
+                gap: 12px;
+                border-radius: 8px;
+                border: 1px solid var(--greys-700, #C3C8D4);
+                background: var(--greys-1000, #FEFEFF);
+                resize: none;
+                // font-family: 'Courier New', monospace;
+                // font-size: 12px;
+                line-height: 1.5;
+            }
+        }
+
+        &-parameters {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 16px;
+            align-self: stretch;
+
+            &-table {
+                width: 1200px;
+                border-radius: 8px;
+                border-right: 1px solid var(--greys-800, #E5E7E9);
+                border-bottom: 1px solid var(--greys-800, #E5E7E9);
+                border-left: 1px solid var(--greys-800, #E5E7E9);
+                background: var(--greys-1000, #FFF);
+
+                &-header {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr 1fr;
+                    padding: 6px 12px;
+                    align-items: center;
+                    border-radius: 8px 8px 0 0;
+                    background: linear-gradient(109deg,  #F1F6FF 9.27%,  #FAF4FF 95.79%);
+
+                    .parameter-col,
+                    .type-col,
+                    .description-col {
+                        color: var(--greys-200);
+
+                    }
+                }
+
+                &-row {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr 1fr;
+                    padding: 6px 12px;
+                    align-items: center;
+
+                    .parameter-col,
+                    .type-col,
+                    .description-col {
+                        color: var(--greys-200);
+                    }
+
+                }
+            }
+        }
+    }
+
+}

@@ -1,0 +1,304 @@
+"id","download_config_id","command_name","command_code","description","sql_template","depends_on","placeholder_schema","is_materialized","display_order","is_active","created_at","updated_at"
+1,1,cte_product_store_info,cte_product_store_info,Joins sku_store_mapping with product_master and store_master for the selected strategies. Provides product/store hierarchy columns.,"
+SELECT
+    a.strategy_id,
+    a.product_id,
+    a.store_id,
+    a.product_level_id,
+    a.store_level_id,
+    b.l0_id, b.l0_name,
+    b.l1_id, b.l1_name,
+    b.l2_id, b.l2_name,
+    b.l3_id, b.l3_name,
+    b.l4_id, b.l4_name,
+    b.l5_id, b.l5_name,
+    b.l6_id, b.l6_name,
+    c.s0_id, c.s0_name,
+    c.s1_id, c.s1_name,
+    c.s2_id, c.s2_name,
+    c.s3_id, c.s3_name,
+    c.s4_id, c.s4_name,
+    c.s5_id, c.s5_name,
+    c.s6_id, c.s6_name,
+    c.store_id AS store_leaf_id,
+    c.store_name
+FROM price_markdown.tb_strategy_sku_store_mapping a
+JOIN price_markdown.product_master b USING (product_id)
+JOIN price_markdown.tb_store_master c USING (store_id)
+WHERE a.strategy_id IN ({{strategy_ids}})
+  AND b.l0_id IN ({{l0_ids}})
+  AND b.l1_id IN ({{l1_ids}})
+  AND b.l2_id IN ({{l2_ids}})
+  AND b.l3_id IN ({{l3_ids}})
+  AND b.l4_id IN ({{l4_ids}})
+  AND b.l5_id IN ({{l5_ids}})
+  AND b.l6_id IN ({{l6_ids}})
+  AND c.s0_id IN ({{s0_ids}})
+  AND c.s1_id IN ({{s1_ids}})
+  AND c.s2_id IN ({{s2_ids}})
+  AND c.s3_id IN ({{s3_ids}})
+  AND c.s4_id IN ({{s4_ids}})
+  AND c.s5_id IN ({{s5_ids}})
+  AND c.s6_id IN ({{s6_ids}})
+","[]","[{""key"": ""strategy_ids"", ""label"": ""Strategy"", ""data_type"": ""array"", ""is_required"": false}, {""key"": ""l0_ids"", ""label"": ""Brand"", ""data_type"": ""array"", ""is_required"": false}, {""key"": ""l1_ids"", ""label"": ""Division"", ""data_type"": ""array"", ""is_required"": false}, {""key"": ""l2_ids"", ""label"": ""Department"", ""data_type"": ""array"", ""is_required"": false}, {""key"": ""l3_ids"", ""label"": ""Class"", ""data_type"": ""array"", ""is_required"": false}, {""key"": ""l4_ids"", ""label"": ""Sub Class"", ""data_type"": ""array"", ""is_required"": false}, {""key"": ""l5_ids"", ""label"": ""Style"", ""data_type"": ""array"", ""is_required"": false}, {""key"": ""l6_ids"", ""label"": ""Customer Choice"", ""data_type"": ""array"", ""is_required"": false}, {""key"": ""s0_ids"", ""label"": ""Country"", ""data_type"": ""array"", ""is_required"": false}, {""key"": ""s1_ids"", ""label"": ""Channel"", ""data_type"": ""array"", ""is_required"": false}, {""key"": ""s2_ids"", ""label"": ""Region"", ""data_type"": ""array"", ""is_required"": false}, {""key"": ""s3_ids"", ""label"": ""District"", ""data_type"": ""array"", ""is_required"": false}, {""key"": ""s4_ids"", ""label"": ""State"", ""data_type"": ""array"", ""is_required"": false}, {""key"": ""s5_ids"", ""label"": ""City"", ""data_type"": ""array"", ""is_required"": false}, {""key"": ""s6_ids"", ""label"": ""Store"", ""data_type"": ""array"", ""is_required"": false}]",false,0,true,2026-04-01 14:49:55.853,2026-04-01 14:49:55.853
+2,1,cte_dates,cte_dates,Joins fiscal_date_mapping with strategy_pcd. Filters by strategy and date range to produce pcd_id × date_id combinations.,"
+SELECT
+    a.date_id,
+    a.fiscal_day_name,
+    a.lw_date             AS week_start_date,
+    a.fiscal_week,
+    a.fiscal_year_week,
+    a.fiscal_fd_week,
+    a.fiscal_ld_week,
+    a.fiscal_month,
+    a.month_name,
+    a.fiscal_year_month,
+    a.fiscal_fd_month,
+    a.fiscal_ld_month,
+    a.fiscal_quarter,
+    a.fiscal_year_qtr,
+    a.fiscal_fd_qtr,
+    a.fiscal_ld_qtr,
+    a.fiscal_year,
+    b.strategy_id,
+    b.pcd_id,
+    b.pcd_start_date,
+    b.pcd_end_date
+FROM global.tb_fiscal_date_mapping a
+JOIN price_markdown.tb_strategy_pcd b
+  ON a.date_id BETWEEN b.pcd_start_date AND b.pcd_end_date
+ AND a.date_id BETWEEN {{date_from}}::date AND {{date_to}}::date
+ AND b.strategy_id IN ({{strategy_ids}})
+","[]","[{""key"": ""strategy_ids"", ""label"": ""Strategy IDs"", ""data_type"": ""array"", ""is_required"": false, ""default_value"": null}, {""key"": ""date_from"", ""label"": ""Date From"", ""data_type"": ""date"", ""is_required"": true, ""default_value"": null}, {""key"": ""date_to"", ""label"": ""Date To"", ""data_type"": ""date"", ""is_required"": true, ""default_value"": null}]",false,1,true,2026-04-01 14:49:55.853,2026-04-01 14:49:55.853
+3,1,cte_discount_info,cte_discount_info,Joins Product Store Info with tb_strategy_discount_ia and tb_strategy_discount to get ia_discount and fin_discount per product/store/pcd combination.,"
+SELECT
+    a.strategy_id,
+    a.product_id,
+    a.store_id,
+    a.product_level_id,
+    a.store_level_id,
+    a.l3_id,
+    a.l3_name,
+    a.s1_id,
+    a.s1_name,
+    b.pcd_id,
+    b.markdown_percentage AS ia_discount,
+    c.markdown_percentage AS fin_discount
+FROM cte_product_store_info a
+JOIN price_markdown.tb_strategy_discount_ia b
+  USING (strategy_id, product_level_id, store_level_id)
+JOIN price_markdown.tb_strategy_discount c
+  USING (strategy_id, product_level_id, store_level_id, pcd_id)
+","[""cte_product_store_info""]","[]",false,2,true,2026-04-01 14:50:19.135,2026-04-01 14:50:19.135
+4,1,cte_ia_metrics,cte_ia_metrics,Aggregates tb_ssd_ia (IA simulation output) by product/store/pcd/date. Uses inventory-weighted average for ia_discount.,"
+SELECT
+    a.product_id,
+    a.store_id,
+    a.l3_id,
+    a.l3_name,
+    a.s1_id,
+    a.s1_name,
+    a.pcd_id,
+    d.date_id,
+    CASE
+        WHEN COALESCE(SUM(COALESCE(b.rem_inv, 0) + COALESCE(b.sales_units, 0)), 0) > 0
+        THEN SUM(a.ia_discount * (COALESCE(b.rem_inv, 0) + COALESCE(b.sales_units, 0)))
+             / SUM(COALESCE(b.rem_inv, 0) + COALESCE(b.sales_units, 0))
+        ELSE AVG(a.ia_discount)
+    END                                                                               AS ia_discount,
+    COALESCE(SUM(b.sales_units), 0)                                                   AS ia_sales_units,
+    COALESCE(SUM(b.revenue), 0)                                                       AS ia_revenue,
+    COALESCE(SUM(b.margin), 0)                                                        AS ia_margin,
+    COALESCE(SUM(b.spend), 0)                                                         AS ia_spend,
+    COALESCE(SUM(COALESCE(b.rem_inv, 0) + COALESCE(b.sales_units, 0)), 0)             AS ia_inventory,
+    COALESCE(SUM(b.sales_units), 0)
+        / NULLIF(SUM(COALESCE(b.rem_inv, 0) + COALESCE(b.sales_units, 0)), 0)        AS ia_sellthrough,
+    COALESCE(SUM(b.margin), 0)
+        / NULLIF(COALESCE(SUM(b.revenue), 0), 0)                                      AS ia_gm_percent,
+    COALESCE(SUM(b.revenue), 0)
+        / NULLIF(SUM(b.sales_units), 0)                                                AS ia_aur,
+    COALESCE(SUM(b.margin), 0)
+        / NULLIF(SUM(b.sales_units), 0)                                                AS ia_aum,
+    COALESCE(SUM(COALESCE(b.rem_inv, 0) + COALESCE(b.sales_units, 0)), 0)             AS ia_bop_inventory,
+    COALESCE(SUM(b.rem_inv), 0)                                                        AS ia_eop_inventory
+FROM cte_discount_info a
+LEFT JOIN (
+    SELECT * FROM price_markdown.tb_ssd_ia
+    WHERE strategy_id IN ({{strategy_ids}})
+      AND recommendation_date BETWEEN {{date_from}}::date AND {{date_to}}::date
+) b USING(strategy_id, pcd_id, product_id, store_id)
+JOIN cte_dates d ON b.recommendation_date = d.date_id
+GROUP BY a.product_id, a.store_id, a.l3_id, a.l3_name,
+         a.s1_id, a.s1_name, a.pcd_id, d.date_id
+","[""cte_discount_info"", ""cte_dates""]","[{""key"": ""strategy_ids"", ""label"": ""Strategy IDs"", ""data_type"": ""array"", ""is_required"": false}, {""key"": ""date_from"", ""label"": ""Date From"", ""data_type"": ""date"", ""is_required"": true}, {""key"": ""date_to"", ""label"": ""Date To"", ""data_type"": ""date"", ""is_required"": true}]",false,3,true,2026-04-01 14:50:41.343,2026-04-01 14:50:41.343
+5,1,cte_fin_metrics,cte_fin_metrics,Same shape as IA Metrics but uses fin_discount (from tb_strategy_discount) for the inventory-weighted average.,"
+SELECT
+    a.product_id,
+    a.store_id,
+    a.l3_id,
+    a.l3_name,
+    a.s1_id,
+    a.s1_name,
+    a.pcd_id,
+    d.date_id,
+    CASE
+        WHEN COALESCE(SUM(COALESCE(b.rem_inv, 0) + COALESCE(b.sales_units, 0)), 0) > 0
+        THEN SUM(a.fin_discount * (COALESCE(b.rem_inv, 0) + COALESCE(b.sales_units, 0)))
+             / SUM(COALESCE(b.rem_inv, 0) + COALESCE(b.sales_units, 0))
+        ELSE AVG(a.fin_discount)
+    END                                                                               AS fin_discount,
+    COALESCE(SUM(b.sales_units), 0)                                                   AS fin_sales_units,
+    COALESCE(SUM(b.revenue), 0)                                                       AS fin_revenue,
+    COALESCE(SUM(b.margin), 0)                                                        AS fin_margin,
+    COALESCE(SUM(b.spend), 0)                                                         AS fin_spend,
+    COALESCE(SUM(COALESCE(b.rem_inv, 0) + COALESCE(b.sales_units, 0)), 0)             AS fin_inventory,
+    COALESCE(SUM(b.sales_units), 0)
+        / NULLIF(SUM(COALESCE(b.rem_inv, 0) + COALESCE(b.sales_units, 0)), 0)        AS fin_sellthrough,
+    COALESCE(SUM(b.margin), 0)
+        / NULLIF(COALESCE(SUM(b.revenue), 0), 0)                                      AS fin_gm_percent,
+    COALESCE(SUM(b.revenue), 0)
+        / NULLIF(SUM(b.sales_units), 0)                                                AS fin_aur,
+    COALESCE(SUM(b.margin), 0)
+        / NULLIF(SUM(b.sales_units), 0)                                                AS fin_aum,
+    COALESCE(SUM(COALESCE(b.rem_inv, 0) + COALESCE(b.sales_units, 0)), 0)             AS fin_bop_inventory,
+    COALESCE(SUM(b.rem_inv), 0)                                                        AS fin_eop_inventory
+FROM cte_discount_info a
+LEFT JOIN (
+    SELECT * FROM price_markdown.tb_ssd_ia
+    WHERE strategy_id IN ({{strategy_ids}})
+      AND recommendation_date BETWEEN {{date_from}}::date AND {{date_to}}::date
+) b USING(strategy_id, pcd_id, product_id, store_id)
+JOIN cte_dates d ON b.recommendation_date = d.date_id
+GROUP BY a.product_id, a.store_id, a.l3_id, a.l3_name,
+         a.s1_id, a.s1_name, a.pcd_id, d.date_id
+","[""cte_discount_info"", ""cte_dates""]","[{""key"": ""strategy_ids"", ""label"": ""Strategy IDs"", ""data_type"": ""array"", ""is_required"": false}, {""key"": ""date_from"", ""label"": ""Date From"", ""data_type"": ""date"", ""is_required"": true}, {""key"": ""date_to"", ""label"": ""Date To"", ""data_type"": ""date"", ""is_required"": true}]",false,4,true,2026-04-01 14:50:55.641,2026-04-01 14:50:55.641
+8,1,cte_actuals_metrics,cte_actuals_metrics,,"
+SELECT
+    a.product_id, a.store_id, a.l3_id, a.l3_name, a.s1_id, a.s1_name, a.pcd_id, d.date_id,
+    CASE
+        WHEN COALESCE(SUM(COALESCE(b.rem_inv, 0) + COALESCE(b.sales_units, 0)), 0) > 0
+        THEN SUM(b.recommended_offer_percentage * (COALESCE(b.rem_inv, 0) + COALESCE(b.sales_units, 0)))
+             / SUM(COALESCE(b.rem_inv, 0) + COALESCE(b.sales_units, 0))
+        ELSE AVG(b.recommended_offer_percentage)
+    END AS actuals_discount,
+    COALESCE(SUM(b.sales_units), 0) AS actuals_sales_units,
+    COALESCE(SUM(b.revenue), 0) AS actuals_revenue,
+    COALESCE(SUM(b.margin), 0) AS actuals_margin,
+    COALESCE(SUM(b.spend), 0) AS actuals_spend,
+    COALESCE(SUM(COALESCE(b.rem_inv, 0) + COALESCE(b.sales_units, 0)), 0) AS actuals_inventory,
+    COALESCE(SUM(b.sales_units), 0)
+        / NULLIF(SUM(COALESCE(b.rem_inv, 0) + COALESCE(b.sales_units, 0)), 0) AS actuals_sellthrough,
+    COALESCE(SUM(b.margin), 0)
+        / NULLIF(COALESCE(SUM(b.revenue), 0), 0) AS actuals_gm_percent,
+    COALESCE(SUM(b.revenue), 0)
+        / NULLIF(SUM(b.sales_units), 0)                                                AS actuals_aur,
+    COALESCE(SUM(b.margin), 0)
+        / NULLIF(SUM(b.sales_units), 0)                                                AS actuals_aum,
+    COALESCE(SUM(COALESCE(b.rem_inv, 0) + COALESCE(b.sales_units, 0)), 0)             AS actuals_bop_inventory,
+    COALESCE(SUM(b.rem_inv), 0)                                                        AS actuals_eop_inventory
+FROM cte_discount_info a
+LEFT JOIN price_markdown.tb_agg_actual b
+       ON b.strategy_id = a.strategy_id AND b.pcd_id = a.pcd_id
+      AND b.product_level_id = a.product_level_id AND b.store_level_id = a.store_level_id
+      AND b.recommendation_date BETWEEN {{date_from}}::date AND {{date_to}}::date
+JOIN cte_dates d ON d.date_id = b.recommendation_date AND d.pcd_id = a.pcd_id
+GROUP BY a.product_id, a.store_id, a.l3_id, a.l3_name,
+         a.s1_id, a.s1_name, a.pcd_id, d.date_id
+","[""cte_discount_info"", ""cte_dates""]","[]",false,5,true,2026-04-01 15:41:37.780,2026-04-01 15:41:37.780
+9,1,cte_ia_fin_output,cte_ia_fin_output,,"
+SELECT
+    COALESCE(ia.product_id, fin.product_id, act.product_id) AS product_id,
+    COALESCE(ia.store_id, fin.store_id, act.store_id) AS store_id,
+    COALESCE(ia.pcd_id, fin.pcd_id, act.pcd_id) AS pcd_id,
+    COALESCE(ia.date_id, fin.date_id, act.date_id) AS date_id,
+    psi.l0_id, psi.l0_name, psi.l1_id, psi.l1_name, psi.l2_id, psi.l2_name,
+    psi.l3_id, psi.l3_name, psi.l4_id, psi.l4_name, psi.l5_id, psi.l5_name,
+    psi.l6_id, psi.l6_name,
+    psi.s0_id, psi.s0_name, psi.s1_id, psi.s1_name, psi.s2_id, psi.s2_name,
+    psi.s3_id, psi.s3_name, psi.s4_id, psi.s4_name, psi.s5_id, psi.s5_name,
+    psi.s6_id, psi.s6_name, psi.store_leaf_id, psi.store_name,
+    d.fiscal_day_name, d.week_start_date, d.fiscal_week,
+    d.fiscal_year_week, d.fiscal_fd_week, d.fiscal_ld_week,
+    d.fiscal_month, d.month_name, d.fiscal_year_month,
+    d.fiscal_fd_month, d.fiscal_ld_month, d.fiscal_quarter,
+    d.fiscal_year_qtr, d.fiscal_fd_qtr, d.fiscal_ld_qtr,
+    d.fiscal_year, d.pcd_start_date, d.pcd_end_date,
+    ia.ia_discount, ia.ia_sales_units, ia.ia_revenue, ia.ia_margin,
+    ia.ia_spend, ia.ia_inventory, ia.ia_sellthrough, ia.ia_gm_percent, ia.ia_aur, ia.ia_aum, ia.ia_bop_inventory, ia.ia_eop_inventory,
+    fin.fin_discount, fin.fin_sales_units, fin.fin_revenue, fin.fin_margin,
+    fin.fin_spend, fin.fin_inventory, fin.fin_sellthrough, fin.fin_gm_percent, fin.fin_aur, fin.fin_aum, fin.fin_bop_inventory, fin.fin_eop_inventory,
+    act.actuals_discount, act.actuals_sales_units, act.actuals_revenue, act.actuals_margin,
+    act.actuals_spend, act.actuals_inventory, act.actuals_sellthrough, act.actuals_gm_percent, act.actuals_aur, act.actuals_aum, act.actuals_bop_inventory, act.actuals_eop_inventory,
+    inv.rt_inventory_date, inv.rt_on_hand_qty, inv.rt_in_transit_qty, inv.rt_total_inventory,
+    pr.rt_cost, pr.rt_msrp, pr.rt_current_price, pr.rt_current_price_vat
+FROM cte_ia_metrics ia
+FULL OUTER JOIN cte_fin_metrics fin
+    ON fin.product_id = ia.product_id AND fin.store_id = ia.store_id
+    AND fin.pcd_id = ia.pcd_id AND fin.date_id = ia.date_id
+FULL OUTER JOIN cte_actuals_metrics act
+    ON act.product_id = COALESCE(ia.product_id, fin.product_id)
+    AND act.store_id = COALESCE(ia.store_id, fin.store_id)
+    AND act.pcd_id = COALESCE(ia.pcd_id, fin.pcd_id)
+    AND act.date_id = COALESCE(ia.date_id, fin.date_id)
+JOIN (
+    SELECT DISTINCT product_id, store_id,
+           l0_id, l0_name, l1_id, l1_name, l2_id, l2_name,
+           l3_id, l3_name, l4_id, l4_name, l5_id, l5_name, l6_id, l6_name,
+           s0_id, s0_name, s1_id, s1_name, s2_id, s2_name,
+           s3_id, s3_name, s4_id, s4_name, s5_id, s5_name, s6_id, s6_name,
+           store_leaf_id, store_name
+    FROM cte_product_store_info
+) psi
+    ON psi.product_id = COALESCE(ia.product_id, fin.product_id, act.product_id)
+    AND psi.store_id = COALESCE(ia.store_id, fin.store_id, act.store_id)
+JOIN (
+    SELECT DISTINCT ON (date_id, pcd_id)
+           date_id, pcd_id, fiscal_day_name, week_start_date, fiscal_week,
+           fiscal_year_week, fiscal_fd_week, fiscal_ld_week,
+           fiscal_month, month_name, fiscal_year_month,
+           fiscal_fd_month, fiscal_ld_month, fiscal_quarter,
+           fiscal_year_qtr, fiscal_fd_qtr, fiscal_ld_qtr,
+           fiscal_year, pcd_start_date, pcd_end_date
+    FROM cte_dates ORDER BY date_id, pcd_id
+) d
+    ON d.date_id = COALESCE(ia.date_id, fin.date_id, act.date_id)
+    AND d.pcd_id = COALESCE(ia.pcd_id, fin.pcd_id, act.pcd_id)
+LEFT JOIN cte_rt_inventory inv
+    ON  inv.product_id = COALESCE(ia.product_id, fin.product_id, act.product_id)
+    AND inv.store_id   = COALESCE(ia.store_id,   fin.store_id,   act.store_id)
+LEFT JOIN cte_rt_pricing pr
+    ON  pr.product_id = COALESCE(ia.product_id, fin.product_id, act.product_id)
+    AND pr.store_id   = COALESCE(ia.store_id,   fin.store_id,   act.store_id)
+","[""cte_ia_metrics"", ""cte_fin_metrics"", ""cte_actuals_metrics"", ""cte_rt_inventory"", ""cte_rt_pricing""]","[]",false,6,true,2026-04-01 15:41:37.780,2026-04-01 15:41:37.780
+10,1,cte_rt_inventory,cte_rt_inventory,,"
+SELECT DISTINCT ON (inv.item_id, inv.location_id)
+    inv.item_id      AS product_id,
+    inv.location_id  AS store_id,
+    inv.dates        AS rt_inventory_date,
+    inv.on_hand_unit_qty   AS rt_on_hand_qty,
+    inv.in_transit_unit_qty AS rt_in_transit_qty,
+    inv.total_qty    AS rt_total_inventory
+FROM price_markdown.tb_inventory_oh_latest_mkd inv
+WHERE EXISTS (
+    SELECT 1 FROM cte_product_store_info psi
+    WHERE psi.product_id = inv.item_id
+      AND psi.store_id   = inv.location_id
+)
+ORDER BY inv.item_id, inv.location_id, inv.dates DESC
+","[""cte_product_store_info""]","[]",false,7,true,2026-04-01 15:53:27.070,2026-04-01 15:53:27.070
+11,1,cte_rt_pricing,cte_rt_pricing,,"
+SELECT DISTINCT ON (pr.product_id, pr.store_id)
+    pr.product_id,
+    pr.store_id,
+    pr.cost          AS rt_cost,
+    pr.msrp          AS rt_msrp,
+    pr.current_price AS rt_current_price,
+    pr.current_price_with_vat AS rt_current_price_vat
+FROM price_markdown.tb_product_store_price pr
+WHERE EXISTS (
+    SELECT 1 FROM cte_product_store_info psi
+    WHERE psi.product_id = pr.product_id
+      AND psi.store_id   = pr.store_id
+)
+ORDER BY pr.product_id, pr.store_id, pr.effective_from_date DESC
+","[""cte_product_store_info""]","[]",false,8,true,2026-04-01 15:53:27.070,2026-04-01 15:53:27.070

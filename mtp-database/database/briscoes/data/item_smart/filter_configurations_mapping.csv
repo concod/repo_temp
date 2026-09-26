@@ -1,0 +1,27 @@
+fc_code,label,column_name,type,display_type,level,dimension,is_mandatory,is_multiple_selection,range_min,range_max,default_value,is_disabled,is_clearable,display_order,is_required,extra,is_deleted
+4002,Price,price,cascaded,IntegerField,,product,false,false,"0","100000",,false,false,30,false,"{}",false
+4002,Product Description,product_description,cascaded,text,,product,false,false,,,,false,false,31,false,"{}",false
+4002,Color,color,cascaded,dropdown,,product,false,true,,,,false,true,10,false,"{}",false
+4002,Cost,cost,cascaded,IntegerField,,product,false,false,"0","1000",,false,false,11,false,"{}",false
+4003,Channel,channel,non-cascaded,dropdown,,channel,true,true,,,,false,true,8,true,"{}",false
+4003,End Year Month,end_date,non-cascaded,DateTimeField,,plan_period,true,false,,,,false,true,7,true,"{""views"": [""year"", ""month""], ""adjustTo"": ""endOfMonth"", ""adjustDate"": true, ""disablePast"": true}",false
+4003,Sales Organization,l0_name,cascaded,dropdown,1,product,true,false,,,,false,true,1,true,"{}",false
+4003,Category,l1_name,cascaded,dropdown,2,product,true,false,,,,false,true,2,true,"{}",false
+4003,Brand,l3_name,cascaded,dropdown,3,product,false,true,,,,false,true,3,true,"{}",false
+4003,Merchandise Category,l5_name,cascaded,dropdown,4,product,false,true,,,,false,true,4,true,"{}",false
+4003,Start Year Month,start_date,non-cascaded,DateTimeField,,plan_period,true,false,,,,false,true,6,true,"{""views"": [""year"", ""month""], ""adjustTo"": ""startOfMonth"", ""adjustDate"": true, ""disablePast"": true}",false
+4003,Value Stream,info_lifecycle_description,cascaded,dropdown,5,product,false,true,,,,false,true,5,true,"{}",false
+4004,Start Date,entry_date,non-cascaded,DateTimeField,,plan_period,true,false,,,,false,true,6,true,"{""views"": [""year"", ""month""], ""adjustTo"": ""startOfMonth"", ""adjustDate"": true, ""disablePast"": true}",false
+4004,End Date,exit_date,non-cascaded,DateTimeField,,plan_period,false,false,,,,false,true,7,true,"{""views"": [""year"", ""month""], ""adjustTo"": ""endOfMonth"", ""adjustDate"": true, ""disablePast"": true}",false
+4004,Sales Organization,l0_name,cascaded,dropdown,1,product,true,false,,,,false,true,1,true,"{}",false
+4004,Category,l1_name,cascaded,dropdown,2,product,true,false,,,,false,true,2,true,"{}",false
+4004,Sub-Category,l2_name,cascaded,dropdown,3,product,true,true,,,,false,true,3,true,"{}",false
+4004,Brand,l3_name,cascaded,dropdown,4,product,true,true,,,,false,true,4,true,"{}",false
+4004,Merchandise Category,l5_name,cascaded,dropdown,5,product,true,true,,,,false,true,5,true,"{}",false
+4444,Start Date,entry_date,non-cascaded,DateTimeField,,plan_period,true,false,,,,false,true,6,true,"{""views"": [""year"", ""month""], ""adjustTo"": ""startOfMonth"", ""adjustDate"": true, ""disablePast"": true}",false
+4444,End Date,exit_date,non-cascaded,DateTimeField,,plan_period,false,false,,,,false,true,7,true,"{""views"": [""year"", ""month""], ""adjustTo"": ""endOfMonth"", ""adjustDate"": true, ""disablePast"": true}",false
+4444,Sales Organization,l0_name,cascaded,dropdown,1,product,true,false,,,,false,true,1,true,"{}",false
+4444,Category,l1_name,cascaded,dropdown,2,product,true,false,,,,false,true,2,true,"{}",false
+4444,Brand,l3_name,cascaded,dropdown,3,product,true,false,,,,false,true,4,true,"{}",false
+4444,Merchandise Category,l5_name,cascaded,dropdown,4,product,true,false,,,,false,true,5,true,"{}",false
+4444,Sub-Category,l2_name,cascaded,dropdown,3,product,true,false,,,,false,true,3,true,"{}",false

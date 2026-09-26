@@ -1,0 +1,26 @@
+@import "Styles/mixins.scss";
+
+.user-maintained-dates {
+    margin-top: 24px;
+}
+
+.user-maintained-dates__header {
+    font-family: Poppins;
+    font-size: pxToRem(14);
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-bottom: 24px;
+}
+
+.toggle-parent-wrapper {
+    display: flex;
+    gap: 8px;
+    justify-content: right;
+    margin-bottom: 8px;
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.6;
+  }

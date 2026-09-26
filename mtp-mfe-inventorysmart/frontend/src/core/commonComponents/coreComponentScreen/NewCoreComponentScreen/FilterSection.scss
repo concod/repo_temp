@@ -1,0 +1,32 @@
+@import "Styles/mixins.scss";
+.main-container {
+  background: #ffffff;
+  position: relative;
+  margin-left: -24px;
+  margin-right: -24px;
+}
+
+.padding-8-24 {
+  padding: 8px 24px;
+}
+.filterseparater {
+  width: 1px;
+  height: 16px;
+  background: #d9dde7;
+  margin: 0px 12px;
+}
+
+.flat-filter-container {
+  padding: 16px;
+  width: 100%;
+}
+
+.badge-icon {
+  path {
+    stroke: white !important;
+  }
+}
+.filter-icons{
+  width: pxToRem(16) !important;
+  height: pxToRem(16) !important;
+}

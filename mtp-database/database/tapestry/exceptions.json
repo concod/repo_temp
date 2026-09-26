@@ -1,0 +1,63 @@
+{
+    "CASCADE": {
+        "exclusions": []
+    },
+    "DROP COLUMN": {
+        "exclusions": [
+            "database/tapestry/schemas/global/tables/fiscal_date_mapping.sql"
+        ]
+    },
+    "DROP CONSTRAINT": {
+        "exclusions": []
+    },
+    "DROP INDEX": {
+        "exclusions": []
+    },
+    "DROP MATERIALIZED VIEW": {
+        "exclusions": []
+    },
+    "DROP SEQUENCE": {
+        "exclusions": []
+    },
+    "DROP TABLE": {
+        "exclusions": [
+            "database/tapestry/schemas/public/procedures/sync_rcl_constraint.sql"
+        ]
+    },
+    "DROP TRIGGER": {
+        "exclusions": []
+    },
+    "DROP TYPE": {
+        "exclusions": []
+    },
+    "DROP VIEW": {
+        "exclusions": []
+    },
+    "INHERITS": {
+        "exclusions": []
+    },
+    "ONLY": {
+        "exclusions": []
+    },
+    "RENAME": {
+        "exclusions": []
+    },
+    "RESET": {
+        "exclusions": []
+    },
+    "STORAGE": {
+        "exclusions": []
+    },
+    "TEMPORARY": {
+        "exclusions": []
+    },
+    "TRUNCATE": {
+        "exclusions": [
+            "database/tapestry/schemas/public/procedures/generate_all_rcl_constraint_data.sql",
+            "database/tapestry/schemas/public/procedures/generate_all_week_level_rcl_constraint_data.sql"
+        ]
+    },
+    "WITHOUT": {
+        "exclusions": []
+    }
+}

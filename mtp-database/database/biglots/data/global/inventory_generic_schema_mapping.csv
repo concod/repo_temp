@@ -1,0 +1,6 @@
+"source_column_name","source_column_datatype","required_in_product","generic_column_name","is_pk","generic_column_datatype","formula","is_attribute","is_hierarchy","hierarchy_level","is_null_allowed","unique_by","display_name","is_partition_col","is_clustering_col"
+LOCATION_ID,INTEGER,true,store_code,true,varchar,,false,false,,false,true,,false,
+TRANSACTION_DT,DATE,true,date,true,date,,false,false,,false,true,,true,
+IN_TRANSIT_UNIT_QTY,FLOAT,true,it,false,float8,,false,false,,true,false,,false,
+ITEM_ID,INTEGER,true,product_code,true,varchar,,false,false,,false,true,,false,
+NET_ON_HAND_UNIT_QTY,FLOAT,true,oh,false,int8,,false,false,,true,false,,false,

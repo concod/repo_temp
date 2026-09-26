@@ -1,0 +1,233 @@
+.dimensionAxisLabel {
+  font-family: Manrope, sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.25;
+  color: #1f2b4d;
+}
+
+.jafMSc {
+  padding: 12px !important;
+  border-radius: 8px !important;
+}
+
+/* Figma: white inner cards, #EFF2FA border, 8px radius, 12px padding, 10px vertical rhythm */
+.dropZone .dimensionKey {
+  position: relative;
+  background: #fff !important;
+  border: 1px solid #eff2fa !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+  padding: 12px !important;
+  display: flex !important;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+  overflow: visible !important;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.removeDimensionButton {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  z-index: 10;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  .ia-styles.ia-btn.ia-btn-link svg path {
+    fill: #758490 !important;
+  }
+
+  .ia-styles.ia-btn {
+    border-radius: 4px !important;
+    padding: 2px !important;
+    min-width: unset !important;
+    min-height: unset !important;
+
+    &:focus,
+    &:active {
+      outline: none !important;
+      box-shadow: none !important;
+    }
+  }
+}
+
+.dimensionKeyRow {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  width: 100%;
+  min-width: 0;
+  padding: 10px 28px 0px 0px;
+  box-sizing: border-box;
+}
+
+.dropZone .dropZoneHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.dropZone .render-dimension-select {
+  flex: 1;
+  min-width: 0;
+}
+
+.tag-group-container {
+  gap: 8px !important;
+  margin-top: 0 !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  width: 100% !important;
+  align-items: flex-start !important;
+}
+
+.measuresLabel {
+  color: #60697d;
+  text-align: right;
+  font-family: Manrope, sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  flex-shrink: 0;
+}
+
+.measurePanelContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  flex-wrap: wrap;
+}
+
+.measurePannelButton {
+  flex: 1;
+  min-width: 0;
+  max-width: 100%;
+
+  .ia-btn {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+/* Legend under measures — match calculated-field tokens (Figma 10952:99626) */
+.measureFieldLegend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 8px;
+  padding-top: 0;
+  width: 100%;
+}
+
+.measureFieldLegend__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: Manrope, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  color: #60697d;
+}
+
+.measureFieldLegend__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.measureFieldLegend__dot--variance {
+  background: #f193e3;
+}
+
+.measureFieldLegend__dot--contribution {
+  background: #88e0f6;
+}
+
+/* Measures column: list + variance/contribution blocks — avoid clipping, flexible height */
+.dropZone .dimensionKey .selectedMetricsParentContainer {
+  overflow: visible;
+  width: 100%;
+  min-width: 0;
+}
+
+.dropZone .dimensionKey .selectedMetricsContainer {
+  height: auto;
+  min-height: 180px;
+  max-height: 300px;
+  margin-top: 0;
+  gap: 8px;
+  box-sizing: border-box;
+}
+
+.dropZone .dimensionKey .selectedKpiList {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  width: 100%;
+  min-width: 0;
+}
+
+.dropZone .dimensionKey .selectedMetricsContainer .selectedMetrics {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  min-width: 0;
+  min-height: 36px;
+  height: auto;
+  box-sizing: border-box;
+  padding: 8px 10px;
+  gap: 8px;
+}
+
+.dropZone .dimensionKey .selectedMetricsContainer .selectedMetricsIcon {
+  flex-shrink: 0;
+  margin-right: 0;
+  top: 0;
+}
+
+.dropZone .dimensionKey .selectedMetricsContainer .selectedMetricsLabel {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: left;
+}
+
+.draggedDimensionIcon {
+  height: 16px;
+  display: block;
+}
+
+.draggedDimensionContainer {
+  display: flex;
+  align-items: center;
+}
+
+.draggedDimensionLabel {
+  position: relative;
+  bottom: 0;
+}

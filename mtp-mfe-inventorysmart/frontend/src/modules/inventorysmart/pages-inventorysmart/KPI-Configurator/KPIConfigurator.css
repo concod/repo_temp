@@ -1,0 +1,551 @@
+
+/* Field Function Selector Additional Styles */
+
+.field-function-selector-color {
+  background-color: #F5F6FA;
+}
+
+.data-availability-icon {
+  color: #4259EE;
+  font-size: 20px;
+}
+
+.form-validation-error {
+  color: #d32f2f;
+  margin-top: 8px;
+  display: block;
+}
+
+.checkbox-label {
+  font-size: 14px;
+}
+
+/* Field Function Selector Styles */
+
+.data-availability-info {
+  background-color: #E2F4FF;
+  width: 586px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: flex-start;
+  overflow: hidden;
+  padding: 12px 16px !important;
+  transition: all 0.3s ease;
+}
+
+.data-availability-info.expanded {
+  min-height: 89px;
+}
+
+.data-availability-info.collapsed {
+  min-height: 50px;
+  height: auto;
+}
+
+.data-availability-info > div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.data-availability-info > div > svg {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin-top: 0;
+  align-self: flex-start;
+}
+
+.data-availability-info > div > div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+}
+
+.data-availability-info > div > div > .formula-preview-format-title {
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+
+.data-availability-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  color: #000000 !important;
+}
+
+.data-availability-header span {
+  color: #000000 !important;
+}
+
+.data-availability-toggle-icon {
+  font-size: 12px;
+  color: #60697D;
+  margin-left: 8px;
+  transition: transform 0.3s ease;
+}
+
+.data-availability-text-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 0;
+}
+
+.data-availability-text {
+  font-family: Manrope;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0%;
+  color: #7A8294;
+  margin: 0;
+}
+
+.static-time-window {
+  border-radius: 4px;
+}
+
+.rolling-period-option {
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  margin-bottom: 8px;
+}
+
+.rolling-period-option.selected {
+  padding: 12px;
+  background-color: #ECEEFD;
+}
+
+.rolling-period-option.unselected {
+  background-color: transparent;
+  border: 1px solid transparent;
+}
+
+.rolling-period-radio-container {
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.rolling-period-radio-container.selected {
+  margin-bottom: 12px;
+}
+
+.rolling-period-radio {
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  display: inline-block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  margin: 0;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.rolling-period-input {
+  width: 80px;
+  max-width: 80px;
+  flex-shrink: 0;
+}
+
+.formula-canvas-error-banner {
+  justify-self: anchor-center;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  border-radius: 8px;
+  background-color: #FEEAF3;
+  font-size: 12px;
+  white-space: nowrap;
+  height: fit-content;
+  margin: auto;
+}
+
+.formula-canvas-error-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background-color: #E15554;
+  color: #FFFFFF;
+  font-size: 15px;
+  font-weight: 300;
+}
+
+.formula-canvas-error-text {
+  font-size: 13px !important;
+}
+
+/* FieldFunctionSelector Component Styles */
+
+/* FormulaGenerator Component Styles */
+.formula-generator-section-title {
+  margin-bottom: 8px;
+  font-size: 0.8125rem; 
+  font-weight: 500;
+  line-height: 1.25;
+  color: #60697D; 
+  font-family: "Manrope";
+}
+
+/* Common class for operator and parenthesis buttons */
+
+.formula-generator-operator-button{
+  min-width: 30px !important;
+  width: 30px !important;
+  height: 30px !important;
+  padding: 0 !important;
+  border-radius: 6px !important;
+  font-size: 1.5rem !important; 
+  font-weight: 300 !important; 
+  line-height: 1.56 !important; 
+  color: #1D1D1D !important; 
+  background-color: #FFFFFF !important;
+  border-color: rgba(0, 0, 0, 0.12) !important; 
+  
+}
+.formula-generator-parenthesis-button {
+  min-width: 30px !important;
+  width: 30px !important;
+  height: 30px !important;
+  padding: 0 !important;
+  border-radius: 6px !important;
+  font-size: 1rem !important;
+  font-weight: 400 !important;
+  line-height: 1.56 !important; 
+  color: #1D1D1D !important; 
+  background-color: #FFFFFF !important; 
+  border-color: rgba(0, 0, 0, 0.12) !important; 
+}
+
+.formula-generator-canvas {
+  min-height: 150px;
+  position: relative;
+}
+
+.calculated-field-formula-container {
+  min-height: 84px;
+}
+
+.formula-generator-canvas.valid {
+  border: 1px solid #e0e0e0;
+}
+
+.formula-generator-canvas.invalid {
+  border: 1px solid #f44336;
+}
+
+.formula-generator-component-chip {
+  cursor: pointer;
+  position: relative;
+  font-size: 12px;
+  height: 28px !important;
+  max-width: 400px;
+  border-radius: 5px;
+}
+
+.formula-generator-component-chip .MuiChip-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-right: 4px;
+}
+
+.formula-generator-component-chip:hover {
+  background-color: #e3f2fd;
+}
+
+/* Common class for operator and parenthesis chips */
+.formula-generator-symbol-chip {
+  font-size: 14px !important;
+  height: 28px !important;
+  min-width: 32px;
+  position: relative;
+  border-radius: 5px;
+}
+
+/* Common delete icon styles for all formula chips */
+.formula-generator-component-chip:hover .MuiChip-deleteIcon,
+.formula-generator-symbol-chip:hover .MuiChip-deleteIcon {
+  opacity: 1;
+}
+
+.formula-generator-component-chip .MuiChip-deleteIcon,
+.formula-generator-symbol-chip .MuiChip-deleteIcon {
+  opacity: 0;
+  font-size: 14px;
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #666;
+  color: white;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s ease;
+}
+
+.formula-generator-component-chip .MuiChip-deleteIcon:hover,
+.formula-generator-symbol-chip .MuiChip-deleteIcon:hover {
+  background-color: #d32f2f;
+  color: white;
+}
+
+/* FormulaPreview Component Styles */
+.formula-preview-format-title {
+  font-weight: 600 !important;
+  font-size: 0.8125rem;
+  line-height: 1.25;
+  color: #60697D;
+  font-family: "Manrope";
+}
+
+.format-display-options-container {
+  min-height: 120px;
+}
+
+.format-display-options-wrapper {
+  gap: 16px;
+}
+
+.format-display-options-section {
+  flex: 1;
+}
+
+.aggregate-function-section {
+  flex: 1;
+}
+
+.format-display-fields {
+  gap: 16px;
+}
+
+.aggregate-function-field {
+  width: 100%;
+}
+
+.formula-preview-content-container {
+  background-color: #ECEEFD;
+  border-radius: 8px;
+  min-height: 60px;
+  border: 1px solid #e0e0e0;
+}
+
+.formula-preview-chip {
+  background-color: #6B7280;
+  color: white;
+  font-family: monospace;
+  font-size: 14px;
+  height: auto;
+}
+
+.formula-preview-chip .MuiChip-label {
+  padding: 8px 12px;
+  white-space: normal;
+  word-break: break-all;
+  line-height: 1.6;
+}
+
+.define-kpi-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100vh - 200px);
+  width: 100%;
+}
+
+.define-kpi-main-container {
+  height: 75.65vh;
+  width: 77.92%;
+  background-color: white;
+  flex-wrap: nowrap;
+  border-radius: 8px;
+}
+
+.common-border {
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 8px;
+}
+
+.height_80 {
+  height: 80%;
+}
+
+.add-fields-wrapper {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* ModuleMapping Component Styles */
+.module-mapping-row {
+  width: 100%;
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.module-mapping-column {
+  flex: 1;
+  min-width: 0;
+}
+
+.module-mapping-checkboxes {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.module-mapping-single-row {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+/* Formula Fields Container Styles */
+.formula-fields-container {
+  background-color: #FFFFFF;
+  border: 1px solid #E0E0E0;
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  min-height: 60px;
+}
+
+.formula-field-button {
+  padding: 6px 16px;
+  border-radius: 16px;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: "Manrope", sans-serif;
+  cursor: pointer;
+  border: 1px solid;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.formula-field-button.enabled {
+  background-color: #FFFFFF;
+  color: #1D1D1D;
+  border-color: #E0E0E0;
+}
+
+.formula-field-button.enabled:hover {
+  background-color: #F5F5F5;
+  border-color: #BDBDBD;
+}
+
+.formula-field-button.disabled {
+  background-color: #F5F5F5;
+  color: #9E9E9E;
+  border-color: #E0E0E0;
+  cursor: pointer;
+}
+
+.formula-field-button.disabled:hover {
+  background-color: #EEEEEE;
+  border-color: #BDBDBD;
+}
+
+/* Formula Instructions Styles */
+.formula-instructions-title {
+  margin-bottom: 8px;
+  font-size: 0.8125rem; 
+  font-weight: 500;
+  line-height: 1.25;
+  color: #000000;
+  font-family: "Manrope";
+}
+
+.formula-instructions-list li {
+  color:#7A8294;
+  font-size: 14px;
+  font-family: "Manrope";
+}
+
+.formula-instructions-list li:last-child {
+  margin-bottom: 0;
+}
+
+/* CustomKPIs Component - Modules Panel Styles */
+.modules-panel .impact_drawer_container,
+.modules-panel .impact_panel_container {
+  width: 400px !important;
+}
+
+.modules-panel-content {
+  padding: 16px;
+}
+
+.modules-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.module-item {
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  cursor: default;
+  border-radius: 8px;
+  background-color: #FFFFFF;
+  border: 1px solid #F3F4F6;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  color: #1F2937;
+  transition: all 0.2s ease;
+}
+
+.module-item:hover {
+  background-color: #F9FAFB;
+  border-color: #E5E7EB;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.modules-empty-state {
+  padding: 16px;
+  color: #60697D;
+}
+
+/* FieldFunctionSelector Component - Data Availability Styles */
+.data-availability-content-wrapper {
+  width: 100%;
+}
+
+.data-availability-header {
+  cursor: pointer;
+  user-select: none;
+}
+
+/* ModuleMapping Component Styles */
+.module-mapping-header {
+  font-size: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.module-mapping-select-all-button {
+  width: auto;
+  min-width: auto;
+  flex-shrink: 0;
+}

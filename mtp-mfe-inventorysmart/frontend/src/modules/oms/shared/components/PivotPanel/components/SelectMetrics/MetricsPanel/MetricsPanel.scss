@@ -1,0 +1,880 @@
+// Define color variables for better maintainability
+$disabled-bg-color: #e0e0e0;
+$disabled-text-color: #758490;
+
+.calculatedFieldsButton {
+  height: 32px;
+  padding-right: 12px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  background: #f5f6ff;
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+  color: #3649c6;
+  font-family: Manrope;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  margin-top: 20px;
+
+  label:hover {
+    cursor: pointer;
+  }
+
+  &.disabled {
+    background-color: $disabled-bg-color;
+    color: $disabled-text-color !important;
+
+    i,
+    label,
+    span {
+      color: $disabled-text-color !important;
+    }
+  }
+}
+
+.calculatedFieldsButton:hover {
+  cursor: pointer;
+}
+
+.calculatedFieldsButton.disabled path {
+  stroke: #758490 !important;
+}
+
+.calculatedFieldsChevron {
+  background-image: url("~assets/oms/viewManagement/chevron_down.svg");
+  background-repeat: no-repeat;
+  height: 18px;
+  width: 18px;
+  display: block;
+  transform: rotate(-90deg);
+  align-items: center;
+}
+
+.selectKpiContainer {
+  display: grid;
+  grid-template-columns: 80px 200px;
+  align-items: center;
+  width: 100%;
+  gap: 8px;
+  margin-top: 20px;
+
+  .ia-select-styled-dropdown-main-button {
+    width: 172px;
+  }
+}
+
+.varianceSection {
+  .impact_accordion_main_container {
+    padding: 0;
+    background-color: transparent;
+    margin-top: 16px;
+
+    .accordion_header .MuiAccordionSummary-content {
+      flex-grow: 0 !important;
+      padding: 4px !important;
+      border-radius: 5px;
+
+      font-size: 14px;
+      font-weight: 800;
+      line-height: 21px;
+      text-align: left;
+      text-underline-position: from-font;
+      text-decoration-skip-ink: none;
+
+      font-family: Manrope;
+    }
+  }
+}
+
+.varianceList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.varianceItem {
+  display: flex;
+  justify-content: space-between;
+  background-color: #f5f6ff;
+
+  padding: 10px 12px;
+  border-radius: 5px;
+  align-items: center;
+
+  font-size: 12px;
+  color: #60697d;
+  height: 52px;
+
+  font-weight: 400;
+  line-height: 18px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+
+.varianceHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.varianceCalculation {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dropdownInput {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.deleteIcon {
+  display: block;
+  height: 16px;
+  width: 16px;
+}
+
+.deleteIcon:hover {
+  cursor: pointer;
+}
+
+.versionSelect {
+  width: 100px;
+}
+
+.addVarianceButton {
+  width: max-content;
+}
+
+/*
+ * Selected variance / contribution under a metric (Figma 10952:99626).
+ * One outer tinted card: thick left accent + soft outline; inset white rows for each field.
+ * Avoid stacking border-left on wrapper + full border on inner (reads as “double frame”).
+ */
+.selectedCalculatedFieldsMainContainer {
+  margin: 8px 0 0;
+  padding: 0;
+  border: none;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.selectedCalculatedFieldsMainContainer.variance,
+.selectedCalculatedFieldsMainContainer.contribution {
+  border: none;
+}
+
+.selectedCalculatedFieldsContainer {
+  margin: 0;
+  padding: 8px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-sizing: border-box;
+}
+
+/* Outer shell: tint + subtle ring + strong left rail (matches Figma hierarchy) */
+.selectedCalculatedFieldsContainer.variance {
+  background-color: #fffafe;
+  border: 1px solid rgba(241, 147, 227, 0.45);
+}
+
+.selectedCalculatedFieldsContainer.contribution {
+  background-color: #f6fdff;
+  border: 1px solid rgba(136, 224, 246, 0.65);
+}
+
+/* Inner row: white pill, label + remove (no drag — base metric row keeps handle) */
+.varianceFields,
+.contributionFields {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  box-sizing: border-box;
+  background-color: transparent;
+}
+
+.selectedCalculatedFieldText {
+  flex: 1 1 auto;
+  min-width: 0;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.varianceFields .removeKpiIcon,
+.contributionFields .removeKpiIcon {
+  flex-shrink: 0;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  opacity: 0.55;
+  transition: opacity 0.15s ease;
+}
+
+.varianceFields:hover .removeKpiIcon,
+.contributionFields:hover .removeKpiIcon {
+  opacity: 0.85;
+}
+
+.selectedKpiList {
+  position: relative;
+}
+
+.kpiGroupListWrapper {
+  position: relative;
+  height: 100%;
+}
+
+.scrollHint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  max-width: 100%;
+  min-height: 24px;
+  background-color: #5f6673;
+  border-radius: 1000px;
+  color: white;
+  font-family: Manrope, sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+  margin: 8px auto 0 auto;
+  opacity: 0.95;
+  position: relative;
+  padding: 2px 8px;
+  gap: 6px;
+}
+
+/* Select metrics modal — Figma: frame 3145:61418 (full UI), metrics list 3156:62966 */
+.metrics-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 9999;
+}
+
+.metrics-panel-custom {
+  width: 699px;
+  max-width: calc(100vw - 48px);
+  height: 708px;
+  max-height: calc(100vh - 48px);
+  background-color: #ffffff;
+  border: 1px solid #d9dde7;
+  border-radius: 8px;
+  box-shadow: 0 2px 16px 4px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  animation: fadeInScale 0.3s ease-out;
+  overflow: hidden;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.metrics-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid #d9dde7;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+.metrics-title {
+  color: #0d152c;
+  font-family: Manrope, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 24px;
+  margin: 0;
+}
+
+.metrics-header__closeBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f6fa;
+  border-radius: 8px;
+  height: 32px;
+  width: 32px;
+}
+
+.metrics-header__closeBtn svg {
+  position: relative;
+  left: -2px;
+  top: -1px;
+}
+
+.metrics-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.metrics-panel-custom .kpiListContainer {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  align-items: stretch;
+  gap: 0;
+  height: auto !important;
+}
+
+.metrics-panel-custom .kpiGroup {
+  width: 264px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding-top: 0;
+}
+
+.metricsPanelLeftStack {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+  min-height: 0;
+}
+
+/* Figma: 20px after search, then 32px before bulk+list block */
+.metricsLeftColumnMain {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  flex: 1;
+  min-height: 0;
+}
+
+.metricsLeftListBlock {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  /* Figma: space between divider and scrollable metric list */
+  gap: 16px;
+}
+
+.metricsBulkBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.metricsClearAllBtn {
+  font-family: Manrope, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #60697d;
+  background: #f5f6fa;
+  border: none;
+  border-radius: 8px;
+  padding: 2px 12px;
+  min-height: 24px;
+  min-width: 56px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.metricsClearAllBtn:hover {
+  background: #eceef2;
+}
+
+.metricsClearAllBtn:focus-visible {
+  outline: 2px solid #4259ee;
+  outline-offset: 1px;
+}
+
+.metrics-search-input {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.searchInputContainer {
+  width: 100%;
+  max-width: 264px;
+  flex-shrink: 0;
+  align-self: stretch;
+  box-sizing: border-box;
+
+  input,
+  .impact-input-wrapper input {
+    text-align: left;
+  }
+}
+
+/* Figma search field: full width of column, 28px, radius 4px, border #c3c8d4 */
+.metrics-panel-custom .searchInputContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.metrics-panel-custom .searchInputContainer > * {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.metrics-panel-custom
+  .searchInputContainer
+  .impact_inputbox_container_with_icons {
+  width: 100%;
+  max-width: 100%;
+  min-height: 28px;
+  border: none !important;
+  border-radius: 4px !important;
+  box-sizing: border-box;
+}
+
+.metrics-panel-custom .searchInputContainer .impact-input-wrapper {
+  min-height: 28px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.metrics-panel-custom .searchInputContainer .MuiInputBase-root {
+  width: 100% !important;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.metrics-panel-custom .searchInputContainer .MuiInputBase-input {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Impact v3: input row is often flex; let the field grow to the icon */
+.metrics-panel-custom
+  .searchInputContainer
+  .impact_inputbox_container_with_icons {
+  display: flex !important;
+  align-items: center;
+  width: 100% !important;
+}
+
+.metrics-panel-custom .searchInputContainer .MuiFormControl-root {
+  width: 100%;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.metrics-panel-custom .searchInputContainer .searchIcon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.metrics-panel-custom
+  .impact_inputbox_container_with_icons
+  .impact-input-wrapper::placeholder,
+.metrics-panel-custom .searchInputContainer input::placeholder {
+  font-family: Manrope, sans-serif;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 1.25;
+  color: #b4bac7;
+}
+
+.metricsViewByRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  width: 264px;
+}
+
+.metricsViewByRow__label {
+  font-family: Manrope, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: #60697d;
+}
+
+.metricsViewByRow__radios {
+  gap: 6px;
+}
+
+.metricsViewByRow__radios .MuiFormControlLabel-root {
+  margin-right: 0;
+  margin-left: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.metricsViewByRow__radios .MuiFormControlLabel-label {
+  font-family: Manrope, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #60697d !important;
+}
+
+.metricsViewByRow__radios
+  .MuiFormControlLabel-root:has(.Mui-checked)
+  .MuiFormControlLabel-label {
+  color: #1f2b4d !important;
+}
+
+.metricsBulkActionsRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 264px;
+}
+
+.metricsBulkActionsRow__selectAll {
+  margin: 0 !important;
+  flex-shrink: 0;
+}
+
+.metricsBulkActionsRow__right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.metricsBulkActionsRow__filter {
+  color: #60697d;
+  padding: 0 !important;
+}
+
+.metricsBulkActionsRow__filter.Mui-disabled {
+  color: #60697d;
+  opacity: 0.45;
+}
+
+.metricsBulkDivider {
+  width: 264px;
+  height: 1px;
+  background: #d9dde7;
+  flex-shrink: 0;
+}
+
+.metricDivider {
+  width: 1px;
+  align-self: stretch;
+  min-height: calc(100% + 48px);
+  background-color: #d9dde7;
+  flex-shrink: 0;
+  margin: 0 16px;
+  position: relative;
+  top: -24px;
+}
+
+.metrics-panel-custom .kpiGroupListWrapper {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.metrics-panel-custom .metricsKpiSectionLabel {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  color: #5f6368;
+  padding: 4px 0 8px;
+}
+
+.metrics-panel-custom .kpiGroupListContainer {
+  flex: 1;
+  min-height: 0;
+  height: auto !important;
+  width: 264px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-top: 0;
+  scrollbar-width: thin;
+  scrollbar-color: #c3c8d4 transparent;
+}
+
+.metrics-panel-custom .kpiGroupListContainer::-webkit-scrollbar {
+  width: 4px;
+}
+
+.metrics-panel-custom .kpiGroupListContainer::-webkit-scrollbar-thumb {
+  background: #c3c8d4;
+  border-radius: 17px;
+}
+
+.metrics-panel-custom .kpiGroupListContainer::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Figma list indent for expanded versions */
+.metrics-panel-custom .kpiVersionList {
+  padding-left: 50px;
+}
+
+.metrics-panel-custom .kpiGroupList {
+  margin-top: 0;
+}
+
+.metrics-panel-custom .kpiGroupList + .kpiGroupList {
+  margin-top: 10px;
+}
+
+.metrics-panel-custom
+  .kpiToggleGroup
+  > .kpiGroupContainer.MuiFormControlLabel-root {
+  margin-left: 10px;
+}
+
+.kpiVersionFlatRow {
+  margin-bottom: 12px;
+}
+
+.kpiVersionFlatRow .kpiGroupContainer {
+  margin: 0;
+}
+
+.selectedContainer {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding-top: 0;
+  overflow: auto;
+}
+
+/* Right column: light tint + dashed drop zone + white metric cards (Figma 3145:61418) */
+.metrics-panel-custom .selectedContainer {
+  background: #ffffff;
+  border-radius: 8px;
+  padding-left: 7px;
+  box-sizing: border-box;
+}
+
+.metrics-panel-custom .SelectedMetricsHeading {
+  color: #1f2b4d;
+  font-weight: 800;
+  font-size: 14px;
+  line-height: 21px;
+  margin: 0 0 4px 0;
+}
+
+.metrics-panel-custom .SelectedMetricsSubHeading {
+  color: #758490;
+  margin-bottom: 8px;
+}
+
+.metrics-panel-custom .calculatedFieldsButton {
+  margin-top: 8px;
+  margin-bottom: 12px;
+}
+
+.metrics-panel-custom .selectedKpiContainer {
+  border: 1px dashed #b3bdf8;
+  background: #ffffff;
+  border-radius: 12px;
+  width: 100% !important;
+  margin: 0;
+  flex: 1;
+  min-height: 120px;
+  padding: 16px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: stretch;
+  background-color: #f5f6ff;
+}
+
+.metrics-panel-custom .selectedKpiContainer .selectedKpiList {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Selected metric row — Figma 3145:61418: white card, drag handle left, label, remove right */
+.metrics-panel-custom .selectedKpiContainer .selectedMetrics {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  min-height: 40px;
+  height: auto;
+  padding: 8px 10px 8px 8px;
+  box-sizing: border-box;
+  gap: 10px;
+  background: #ffffff;
+  border: 1px solid #e8eaf2;
+  border-radius: 8px;
+  cursor: grab;
+}
+
+.metrics-panel-custom .selectedKpiContainer .selectedMetrics:active {
+  cursor: grabbing;
+}
+
+.metrics-panel-custom .selectedKpiContainer .selectedMetrics:hover {
+  border-color: #b3bdf8;
+}
+
+.metrics-panel-custom .selectedKpiContainer .selectedMetricsIcon {
+  flex-shrink: 0;
+  margin-right: 0;
+  top: 0;
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+
+.metrics-panel-custom .selectedKpiContainer .selectedMetricsLabel {
+  flex: 1 1 auto;
+  min-width: 0;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: Manrope, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  color: #1f2b4d;
+}
+
+.metrics-panel-custom .selectedKpiContainer .selectedMetrics .removeKpiIcon {
+  flex-shrink: 0;
+  margin-left: 4px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.metrics-panel-custom
+  .selectedKpiContainer
+  .selectedMetrics:hover
+  .removeKpiIcon {
+  opacity: 1;
+}
+
+.metrics-panel-custom .emptyMetrics {
+  color: #758490;
+  top: auto;
+  padding: 24px 16px;
+}
+
+/* Calculated Fields Panel Styles */
+.calculated-fields-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 10000;
+}
+
+.calculated-fields-panel {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 699px;
+  height: 708px;
+  background-color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  z-index: 10001;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.calculated-fields-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-bottom: 1px solid #d9dde7;
+}
+
+.calculated-fields-header .calculated-fields-header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.calculated-fields-title {
+  font-family: Manrope;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 24px;
+}
+
+.backHeaderButton .ia-styles.ia-btn.ia-btn-outlined {
+  border-radius: 100px;
+  background: #eceefd;
+}
+
+.calculated-fields-content {
+  flex: 1;
+  overflow: auto;
+  padding: 20px;
+}
+
+.calculated-fields-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  padding: 12px 16px;
+  border-top: 1px solid #d9dde7;
+  height: 56px;
+}
+
+.calculatedFieldsIcon {
+  height: 15px;
+  width: 16px;
+}

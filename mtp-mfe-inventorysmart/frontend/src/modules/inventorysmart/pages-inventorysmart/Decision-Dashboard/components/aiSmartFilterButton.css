@@ -1,0 +1,228 @@
+.ai-smart-filter {
+  position: relative;
+  display: inline-flex;
+  font-family: "Manrope", sans-serif;
+}
+
+.ai-smart-filter__pill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 8px;
+  border-radius: 18px;
+  border: 1px solid #e4defb;
+  background: #f5f3ff;
+}
+
+/* Chevron buttons inside the pill / panel close (impact-ui-v3 Button variant="tertiary" size="small") */
+.ai-smart-filter .ia-btn.ai-smart-filter__chevron,
+.ai-smart-filter .ia-btn.ai-smart-filter__close {
+  width: 22px;
+  height: 22px;
+  min-width: 0;
+  padding: 0;
+  border-radius: 50%;
+  border-color: transparent;
+  background: transparent;
+  color: #6962ef;
+}
+
+.ai-smart-filter .ia-btn.ai-smart-filter__chevron svg,
+.ai-smart-filter .ia-btn.ai-smart-filter__chevron svg path,
+.ai-smart-filter .ia-btn.ai-smart-filter__close svg,
+.ai-smart-filter .ia-btn.ai-smart-filter__close svg path {
+  color: #6962ef !important;
+  fill: #6962ef !important;
+}
+
+.ai-smart-filter .ia-btn-tertiary.ai-smart-filter__chevron:hover,
+.ai-smart-filter .ia-btn-tertiary.ai-smart-filter__close:hover {
+  background-color: #ece8fd !important;
+  border-color: transparent !important;
+}
+
+.ai-smart-filter__pill-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.ai-smart-filter__pill-input {
+  width: 200px;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: "Manrope", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #1f2b4d;
+}
+
+.ai-smart-filter__pill-input::placeholder {
+  color: #9aa1b2;
+  font-weight: 400;
+}
+
+.ai-smart-filter__panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 340px;
+  background: #fff;
+  border: 1px solid #e4e7ec;
+  border-radius: 12px;
+  box-shadow: 0px 8px 24px rgba(31, 43, 77, 0.16);
+  padding: 16px;
+  z-index: 1300;
+}
+
+.ai-smart-filter__panel-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.ai-smart-filter__panel-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: linear-gradient(136.31deg, #2ac2ee 12.23%, #6962ef 49.23%, #f26921 88.52%);
+  flex-shrink: 0;
+}
+
+.ai-smart-filter__panel-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.ai-smart-filter__panel-icon svg path {
+  fill: #fff;
+}
+
+.ai-smart-filter__panel-titles {
+  flex: 1;
+}
+
+.ai-smart-filter__panel-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1f2b4d;
+  line-height: 20px;
+}
+
+.ai-smart-filter__panel-subtitle {
+  font-size: 12px;
+  color: #667085;
+  line-height: 16px;
+}
+
+.ai-smart-filter__panel .impact_textarea_layout {
+  display: block;
+  width: 100%;
+  margin: 0;
+}
+
+.ai-smart-filter__panel .impact_textarea_label {
+  display: none;
+}
+
+.ai-smart-filter__panel .impact_textarea_container,
+.ai-smart-filter__panel .impact_textarea {
+  display: block;
+  width: 100%;
+  margin-top: 0;
+  box-sizing: border-box;
+}
+
+.ai-smart-filter__panel textarea.ai-smart-filter__textarea {
+  width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box;
+  font-family: "Manrope", sans-serif;
+  font-size: 14px;
+  color: #1f2b4d;
+}
+
+.ai-smart-filter__panel textarea.ai-smart-filter__textarea:hover {
+  border-color: #6962ef !important;
+}
+
+.ai-smart-filter__panel textarea.ai-smart-filter__textarea:focus,
+.ai-smart-filter__panel textarea.ai-smart-filter__textarea:focus-visible {
+  border: 1px solid #6962ef !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.ai-smart-filter__suggestions-label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #6962ef;
+  text-transform: uppercase;
+}
+
+.ai-smart-filter__suggestions-label svg {
+  width: 12px;
+  height: 12px;
+}
+
+.ai-smart-filter__suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+/* Suggestion chips (impact-ui-v3 Chips) — override the library's default
+   blue hover accent to match the purple AI theme used throughout this panel. */
+.ai-smart-filter .impact-chip-container.ai-smart-filter__suggestion-chip .MuiChip-filled {
+  height: auto;
+  min-width: 0;
+  padding: 6px 12px;
+}
+
+.ai-smart-filter .impact-chip-container.ai-smart-filter__suggestion-chip .MuiChip-filled:hover {
+  background: #f5f3ff !important;
+  border-color: #6962ef !important;
+}
+
+.ai-smart-filter .impact-chip-container.ai-smart-filter__suggestion-chip .MuiChip-filled:hover .MuiChip-label {
+  color: #6962ef !important;
+}
+
+.ai-smart-filter__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 16px;
+}
+
+.ai-smart-filter .ia-btn.ai-smart-filter__clear-btn {
+  color: #6962ef;
+}
+
+.ai-smart-filter .ia-btn.ai-smart-filter__clear-btn.ia-btn-disabled {
+  color: #c3c0f5;
+}
+
+.ai-smart-filter .ia-btn.ia-btn-contained.ai-smart-filter__apply-btn {
+  background-color: #6962ef !important;
+  border-radius: 8px;
+}
+
+.ai-smart-filter .ia-btn.ia-btn-contained.ai-smart-filter__apply-btn:hover {
+  background-color: #564fd8 !important;
+}
+
+.ai-smart-filter .ia-btn.ia-btn-contained.ai-smart-filter__apply-btn.ia-btn-disabled {
+  background-color: #c3c0f5 !important;
+}

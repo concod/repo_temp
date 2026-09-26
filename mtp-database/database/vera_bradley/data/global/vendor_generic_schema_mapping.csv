@@ -1,0 +1,8 @@
+"source_column_name","source_column_datatype","required_in_product","generic_column_name","is_pk","generic_column_datatype","formula","is_attribute","is_hierarchy","hierarchy_level","is_null_allowed","unique_by","display_name","is_partition_col","is_clustering_col"
+NAME,varchar,true,name,false,varchar,,false,false,,false,false,"",false,
+VENDGROUP,varchar,true,vendor_group,false,varchar,,false,false,,false,false,"",false,
+BLOCKED,int8,true,is_blocked,false,int8,,false,false,,false,false,"",false,
+VRACREATEDDATETIME,date,true,created_on,false,date,,false,false,,false,false,"",false,
+DATAAREAID,varchar,true,DATAAREAID,false,varchar,,false,false,,false,true,"",false,
+ACCOUNTNUM,varchar,true,vendor_id,false,varchar,,false,false,,false,true,"",false,
+,date,true,date,false,date,Date(SYNCSTARTDATETIME),false,false,,false,true,"",false,

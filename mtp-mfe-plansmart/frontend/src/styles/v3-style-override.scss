@@ -1,0 +1,26 @@
+/* Styles for checked state */
+.impact-form-checkbox-container .MuiCheckbox-root.default-variant.Mui-checked {
+  background: white;
+}
+
+/* Blue tick for checked state */
+.impact-form-checkbox-container
+  .MuiCheckbox-root.impact-checkbox-container.Mui-checked
+  > svg {
+  fill: #0055af;
+}
+
+/* Styles for unchecked state */
+.impact-form-checkbox-container
+  .MuiCheckbox-root.impact-checkbox-container:not(.Mui-checked)
+  > svg {
+  fill: transparent;
+}
+
+.ia-styles.ia-switch .Mui-checked .MuiSwitch-thumb {
+  color: #0055af;
+}
+.ia-styles.ia-switch .Mui-checked + .MuiSwitch-track {
+  border: solid 1px #0055af;
+  background-color: white !important;
+}
